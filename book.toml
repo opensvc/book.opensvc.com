@@ -1,0 +1,33 @@
+[book]
+title = "OpenSVC"
+authors = ["support@opensvc.com"]
+description = "Documents the purpose and usage of the OpenSVC resilient and scalable infrastructure tools."
+
+[output.html]
+default-theme = "navy"
+preferred-dark-theme = "navy"
+smart-punctuation = true
+mathjax-support = false
+copy-fonts = true
+#additional-css = ["theme/custom.css"]
+#additional-js = ["custom.js"]
+no-section-label = false
+git-repository-url = "https://github.com/opensvc/docs.opensvc.com"
+git-repository-icon = "fa-github"
+#edit-url-template = "https://github.com/rust-lang/mdBook/edit/master/guide/{path}"
+site-url = "/v2.1/"
+cname = "docs.opensvc.com"
+input-404 = "not-found.md"
+
+[output.html.search]
+enable = true            # enables the search feature
+limit-results = 30       # maximum number of search results
+teaser-word-count = 30   # number of words used for a search result teaser
+use-boolean-and = true   # multiple search terms must all match
+boost-title = 2          # ranking boost factor for matches in headers
+boost-hierarchy = 1      # ranking boost factor for matches in page names
+boost-paragraph = 1      # ranking boost factor for matches in text
+expand = true            # partial words will match longer terms
+heading-split-level = 3  # link results to heading levels
+copy-js = true           # include Javascript code for search
+
