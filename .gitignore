@@ -1,2 +1,4 @@
 /book
 mdbook
+mdbook-*
+src/agent.reference.keywords.*.md
