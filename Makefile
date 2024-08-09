@@ -31,4 +31,4 @@ summary:
 	cat src/preamble/SUMMARY.md src/agent/SUMMARY.md src/agent.reference.keywords/SUMMARY.md > src/SUMMARY.md
 
 build:
-	PATH=. ./mdbook build
+	mdbook build
