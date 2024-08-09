@@ -34,12 +34,12 @@ Variable             | Default         | Role
 
 	om cluster set --kw node.env=PRD
 
-The {{#include kw}}`node.env` setting is used to enforce the following policies:
+The {{#include ../inc/kw}}`node.env` setting is used to enforce the following policies:
 
-*   Only services with {{#include kw}}`env=PRD` are allowed to start on a node with {{#include kw}}`node.env=PRD`
-*   Only nodes with {{#include kw}}`node.env=PRD` are allowed push data to a node with {{#include kw}}`node.env=PRD`
+*   Only services with {{#include ../inc/kw}}`env=PRD` are allowed to start on a node with {{#include ../inc/kw}}`node.env=PRD`
+*   Only nodes with {{#include ../inc/kw}}`node.env=PRD` are allowed push data to a node with {{#include ../inc/kw}}`node.env=PRD`
 
-Supported {{#include kw}}`node.env` values:
+Supported {{#include ../inc/kw}}`node.env` values:
 
 Env      | Behaves As | Description
 ---------|------------|---------------------
@@ -126,7 +126,7 @@ See Also:
 
 By default, the agent does not communicate with a collector.
 
-To enable communications with a collector, the {{#include kw}}`node.dbopensvc` node configuration parameter must be set. The simplest expression is:
+To enable communications with a collector, the {{#include ../inc/kw}}`node.dbopensvc` node configuration parameter must be set. The simplest expression is:
 
 	om cluster set --kw node.dbopensvc=collector.opensvc.com
 
@@ -139,7 +139,7 @@ The following expressions are also supported:
 	om cluster set --kw node.dbopensvc=https://collector.opensvc.com
 	om cluster set --kw node.dbopensvc=https://collector.opensvc.com/feed/default/call/xmlrpc
 
-The compliance framework uses a separate xmlrpc entrypoint. The {{#include kw}}`node.dbcompliance` can be set to override the default, which is deduced from the {{#include kw}}`node.dbopensvc` value.
+The compliance framework uses a separate xmlrpc entrypoint. The {{#include ../inc/kw}}`node.dbcompliance` can be set to override the default, which is deduced from the {{#include ../inc/kw}}`node.dbopensvc` value.
 
 	om cluster set --kw node.dbcompliance=https://collector.opensvc.com/init/compliance/call/xmlrpc
 

@@ -45,11 +45,11 @@ After the mirror initialization, you have to update the current links according 
 
 The repository must be known to the agent. This set up is done with either the node.repo or the node.repopkg ``node.conf`` parameters.
 
-{{#include kw}}`node.repo`
+{{#include ../inc/kw}}`node.repo`
 
 	This parameter allows to set up a URI pointing to a repository hosting both compliance gzipped tarballs in the compliance/ subdirectory and OpenSVC agent packages in the packages/ subdirectory.
 
-{{#include kw}}`node.repopkg`
+{{#include ../inc/kw}}`node.repopkg`
 
 	This parameter allows to set up a URI pointing to a pure OpenSVC agent packages repository. If specified node.repopkg overrides node.repo.
 

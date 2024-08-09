@@ -23,11 +23,11 @@ bar=1
 
 * `foo` is a section
 * `bar` is a option
-* {{#include kw}}`foo.bar` is a keyword.
+* {{#include ../inc/kw}}`foo.bar` is a keyword.
 
 ## Policies
 
 * If a keyword is present in both `node.conf` and `cluster.conf`, the value is evaluated from `node.conf`.
-* In this book, all keyword mentions are prefixed with a {{#include kw}} icon.
+* In this book, all keyword mentions are prefixed with a {{#include ../inc/kw}} icon.
 
 

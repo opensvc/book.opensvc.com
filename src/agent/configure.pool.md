@@ -18,7 +18,7 @@ The `default` pool always exist, even if not defined in the node configuration. 
 
 * The volume is hosted in the same namespace than its users.
 
-* If not explicitely set, the volume object name is `<consumer name>-vol-<volume resource index>`. For example, a {{#include svc}}`svc1` service with a `volume#1` resource will create a {{#include svc}}`svc1-vol-1` volume object.
+* If not explicitely set, the volume object name is `<consumer name>-vol-<volume resource index>`. For example, a {{#include ../inc/svc}}`svc1` service with a `volume#1` resource will create a {{#include ../inc/svc}}`svc1-vol-1` volume object.
 
 * A volume object can be referenced by multiple services in the same namespace.
 
@@ -32,10 +32,7 @@ The `default` pool always exist, even if not defined in the node configuration. 
 
 ## Volume Resources Keywords
 
-.. toctree::
-   :maxdepth: 2
-
-   agent.templates/template.service.volume
+- [Reference](/agent.reference.keywords/svc/volume.md)
 
 ### Access Modes
 
@@ -61,9 +58,9 @@ The `default` pool always exist, even if not defined in the node configuration. 
 
 ## Pool Selector
 
-A volume resource requires a size and capabilities from the pool, via its {{#include kw}}`size`, {{#include kw}}`access`, {{#include kw}}`shared` and {{#include kw}}`format` keywords.
+A volume resource requires a size and capabilities from the pool, via its {{#include ../inc/kw}}`size`, {{#include ../inc/kw}}`access`, {{#include ../inc/kw}}`shared` and {{#include ../inc/kw}}`format` keywords.
 
-If `{{#include kw}}pool` is not set explicitely to a pool name, the pool selector will return the available pool matching those criteria with the most free space.
+If `{{#include ../inc/kw}}pool` is not set explicitely to a pool name, the pool selector will return the available pool matching those criteria with the most free space.
 
 ## Pool Drivers
 
@@ -77,14 +74,11 @@ rox, rwx, roo, rwo
 
 A volume object from this type of pool contains:
 
-* a fs.directory resource, with {{#include kw}}`path` set to `<pool head>/<volume fqdn>`.
+* a fs.directory resource, with {{#include ../inc/kw}}`path=<pool head>/<volume fqdn>`.
 
 #### Keywords
 
-.. toctree::
-   :maxdepth: 2
-
-   agent.templates/template.node.pool.directory
+- [Reference](/agent.reference.keywords/node/pool.directory.md)
 
 ### drbd
 
@@ -98,30 +92,27 @@ A volume object from this type of pool contains:
 
 If a vg is defined in the pool configuration,
 
-* a fs resource, with {{#include kw}}`dev` set to the drbd device path
+* a fs resource, with {{#include ../inc/kw}}`dev=<drbd devpath>`
 * a drbd resource, layered over a logical volume of the pool vg
 * a lv resource
 
 If a zpool is defined in the pool configuration,
 
-* a fs resource, with {#include kw}}`dev` set to the drbd device path
+* a fs resource, with {{#include ../inc/kw}}`dev=<drbd devpath>`
 * a drbd resource, layered over a zvol of the pool zpool
 * a zvol resource
 
 If the pool configuration has neither vg nor zpool set,
 
-* a fs resource, with {#include kw}}`dev` set to the drbd device path
+* a fs resource, with {{#include ../inc/kw}}`dev=<drbd devpath>`
 * a drbd resource, layered over a logical volume
 * a lv resource
 * a vg resource
-* a loop resource, with image file hosted in the pool defined {#include kw}}`path` or in `<PATHVAR>/pool/<poolname>/`
+* a loop resource, with image file hosted in the pool defined {{#include ../inc/kw}}`path` or in `<PATHVAR>/pool/<poolname>/`
 
 #### Keywords
 
-.. toctree::
-   :maxdepth: 2
-
-   agent.templates/template.node.pool.drbd
+- [Reference](/agent.reference.keywords/node/pool.drbd.md)
 
 ### freenas
 
@@ -133,18 +124,15 @@ roo, rwo, shared, blk, iscsi
 
 A volume object from this type of pool contains:
 
-* a disk.disk resource named, with {#include kw}}`name` set to `<volume fqdn>`
+* a disk.disk resource named, with {{#include ../inc/kw}}`name=<volume fqdn>`
 
-If the consumer has {#include kw}}`format=true` (default), the volume object also contains:
+If the consumer has {{#include ../inc/kw}}`format=true` (default), the volume object also contains:
 
-* a fs.<pool fs_type> resource, with {#include kw}}`mnt` set to `/srv/<volume fqdn>`
+* a fs.<pool fs_type> resource, with {{#include ../inc/kw}}`mnt=/srv/<volume fqdn>`
 
 #### Keywords
 
-.. toctree::
-   :maxdepth: 2
-
-   agent.templates/template.node.pool.freenas
+- [Reference](/agent.reference.keywords/node/pool.freenas.md)
 
 ### loop
 
@@ -156,18 +144,15 @@ rox, rwx, roo, rwo, blk
 
 A volume object from this type of pool contains:
 
-* a disk.loop resource, with {#include kw}}`file` set to `<pool head>/<volume fqdn>.img`
+* a disk.loop resource, with {{#include ../inc/kw}}`file=<pool head>/<volume fqdn>.img`
 
-If the consumer has {#include kw}}`format=true` (default), the volume object also contains:
+If the consumer has {{#include ../inc/kw}}`format=true` (default), the volume object also contains:
 
-* a fs.<pool fs_type> resource, with {#include kw}}`mnt` set to `/srv/<volume fqdn>`
+* a fs.<pool fs_type> resource, with {{#include ../inc/kw}}`mnt=/srv/<volume fqdn>`
 
 #### Keywords
 
-.. toctree::
-   :maxdepth: 2
-
-   agent.templates/template.node.pool.loop
+- [Reference](/agent.reference.keywords/node/pool.loop.md)
 
 ### symmetrix
 
@@ -179,18 +164,15 @@ roo, rwo, shared, blk, fc
 
 A volume object from this type of pool contains:
 
-* a disk.disk resource named, with {#include kw}}`name` set to `<volume fqdn>`
+* a disk.disk resource named, with {{#include ../inc/kw}}`name=<volume fqdn>`
 
-If the consumer has {#include kw}}`format=true` (default), the volume object also contains:
+If the consumer has {{#include ../inc/kw}}`format=true` (default), the volume object also contains:
 
-* a fs.<pool fs_type> resource, with {#include kw}}`mnt` set to `/srv/<volume fqdn>`
+* a `fs.<pool fs_type>` resource, with {{#include ../inc/kw}}`mnt=/srv/<volume fqdn>`
 
 #### Keywords
 
-.. toctree::
-   :maxdepth: 2
-
-   agent.templates/template.node.pool.symmetrix
+- [Reference](/agent.reference.keywords/node/pool.symmetrix.md)
 
 ### vg
 
@@ -202,18 +184,15 @@ rox, rwx, roo, rwo, blk, snap
 
 A volume object from this type of pool contains:
 
-* a disk.lv resource, with {#include kw}}`name` set to `<volume fqdn>`
+* a disk.lv resource, with {{#include ../inc/kw}}`name=<volume fqdn>`
 
-If the consumer has {#include kw}}`format=true` (default), the volume object also contains:
+If the consumer has {{#include ../inc/kw}}`format=true` (default), the volume object also contains:
 
-* a fs.<pool fs_type> resource, with {#include kw}}`mnt` set to `/srv/<volume fqdn>`
+* a fs.<pool fs_type> resource, with {{#include ../inc/kw}}`mnt=/srv/<volume fqdn>`
 
 #### Keywords
 
-.. toctree::
-   :maxdepth: 2
-
-   agent.templates/template.node.pool.vg
+- [Reference](/agent.reference.keywords/node/pool.vg.md)
 
 ### share
 
@@ -225,14 +204,11 @@ rox, rwx, roo, rwo, shared
 
 A volume object from this type of pool contains:
 
-* a fs.directory resource, with `path` set to `<pool head>/<volume fqdn>`.
+* a fs.directory resource, with {{#include ../inc/kw}}`path=<pool head>/<volume fqdn>`.
 
 #### Keywords
 
-.. toctree::
-   :maxdepth: 2
-
-   agent.templates/template.node.pool.share
+- [Reference](/agent.reference.keywords/node/pool.share.md)
 
 ### zpool
 
@@ -244,14 +220,11 @@ rox, rwx, roo, rwo, blk, snap
 
 A volume object from this type of pool contains:
 
-* a fs.zfs resource, with `name` set to `<pool>/<volume fqdn>` and `mnt` set to `/srv/<volume fqdn>`.
+* a fs.zfs resource, with {{#include ../inc/kw}}`name=<pool>/<volume fqdn>` and {{#include ../inc/kw}}`mnt=/srv/<volume fqdn>`.
 
 #### Keywords
 
-.. toctree::
-   :maxdepth: 2
-
-   agent.templates/template.node.pool.zpool
+- [Reference](/agent.reference.keywords/node/pool.zpool.md)
 
 ### Virtual Pool Driver
 
@@ -267,10 +240,7 @@ Capabilities are user defined.
 
 #### Keywords
 
-.. toctree::
-   :maxdepth: 2
-
-   agent.templates/template.node.pool.virtual
+- [Reference](/agent.reference.keywords/node/pool.virtual.md)
 
 ## Pool Commands
 
@@ -294,7 +264,6 @@ name        type       caps                      head                           
 ```
 
 ## Examples
-========
 
 ### loop pool
 

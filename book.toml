@@ -31,8 +31,7 @@ expand = true            # partial words will match longer terms
 heading-split-level = 3  # link results to heading levels
 copy-js = true           # include Javascript code for search
 
-[preprocessor.toc]
-command = "mdbook-toc"
-renderer = ["html"]
-max-level = 2
+[output.html.fold]
+enable = true
+level = 0
 

@@ -153,9 +153,9 @@ netns = container#0
 expose = 80/tcp
 ```
 
-The container pointed by {{#include kw}}`netns` can be a docker or lxc container. {{#include kw}}`netns` can also be left empty, causing the weave ip address to be assigned to the service cgroup.
+The container pointed by {{#include ../inc/kw}}`netns` can be a docker or lxc container. {{#include ../inc/kw}}`netns` can also be left empty, causing the weave ip address to be assigned to the service cgroup.
 
-The {{#include kw}}`expose` keyword is optional. If set, a SRV record is served by the cluster DNS (in this example `_http._tcp.<svcname>.<namespace>.svc.<clustername>`). If {{#include kw}}`expose` is set to portmapping expression, for example `80:8001/tcp`, the portmap CNI plugin is will configure the portmapping and expose the `80/tcp` backend server on the `8001` port of the node public ip addresses.
+The {{#include ../inc/kw}}`expose` keyword is optional. If set, a SRV record is served by the cluster DNS (in this example `_http._tcp.<svcname>.<namespace>.svc.<clustername>`). If {{#include ../inc/kw}}`expose` is set to portmapping expression, for example `80:8001/tcp`, the portmap CNI plugin is will configure the portmapping and expose the `80/tcp` backend server on the `8001` port of the node public ip addresses.
 
 ## Useful commands
 

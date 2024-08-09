@@ -4,8 +4,8 @@ Upon agent installation, the node is considered part of its own 1-node cluster.
 
 In ``<OSVCETC>/cluster.conf``:
 
-* {{#include kw}}`cluster.secret` is auto-generated, if not already defined.
-* {{#include kw}}`cluster.name` is set to ``default``, if not already defined.
+* {{#include ../inc/kw}}`cluster.secret` is auto-generated, if not already defined.
+* {{#include ../inc/kw}}`cluster.name` is set to ``default``, if not already defined.
 
 ## Bootstrap a new cluster
 
@@ -47,7 +47,7 @@ For example, a dummy stonith configuration would be
 om cluster set --kw stonith#node2.cmd=/bin/true
 ```
 
-This configuration will execute :cmd:`/bin/true` on the node taking over a service which was previously running on the now stalled {{#include node}}`node2`.
+This configuration will execute :cmd:`/bin/true` on the node taking over a service which was previously running on the now stalled {{#include ../inc/node}}`node2`.
 
 Good, isolated fencing packages are freely available. For one, https://github.com/ClusterLabs/fence-agents
 
@@ -62,9 +62,9 @@ om cluster set --kw arbitrator#1.name=relay1 \
                --kw arbitrator#1.secret=10231023102310231023102310231023
 ```
 
-This configuration will ask for the agent on node {{#include node}}`relay1` for its vote in a quorum race, if needed to get a majority.
+This configuration will ask for the agent on node {{#include ../inc/node}}`relay1` for its vote in a quorum race, if needed to get a majority.
 
-The {{#include kw}}`arbitrator#1.secret` value comes from the {{#include kw}}`cluster.secret` value on the arbitrator `relay1`.
+The {{#include ../inc/kw}}`arbitrator#1.secret` value comes from the {{#include ../inc/kw}}`cluster.secret` value on the arbitrator `relay1`.
 
 <div class="warning">
 
@@ -78,13 +78,13 @@ See Also:
 
 The joining node can choose to join any of the cluster node already joined.
 
-On the joined node {{#include node}}`node1`
+On the joined node {{#include ../inc/node}}`node1`
 
 ```
 om cluster get --kw cluster.secret
 ```
 
-On the joining node {{#include node}}`node2`
+On the joining node {{#include ../inc/node}}`node2`
 
 ```
 om daemon join --secret <secret> --node node1

@@ -1,15 +1,34 @@
 OM:=om
 
-all: kw build
+SHELL=/bin/bash
+
+.ONESHELL: kw summary
+.SILENT: kw summary
+
+all: kw summary build
 
 kw:
-	(echo '# Keywords Reference: node\n\n<!-- toc -->\n\n' ;sudo ${OM} node doc --depth 1) > src/agent.reference.keywords.node.md
-	(echo '# Keywords Reference: cluster\n\n<!-- toc -->\n\n' ;sudo ${OM} cluster doc --depth 1) > src/agent.reference.keywords.cluster.md
-	(echo '# Keywords Reference: svc\n\n<!-- toc -->\n\n' ;sudo ${OM} svc doc --depth 1) > src/agent.reference.keywords.svc.md
-	(echo '# Keywords Reference: vol\n\n<!-- toc -->\n\n' ;sudo ${OM} vol doc --depth 1) > src/agent.reference.keywords.vol.md
-	(echo '# Keywords Reference: cfg\n\n<!-- toc -->\n\n' ;sudo ${OM} cfg doc --depth 1) > src/agent.reference.keywords.cfg.md
-	(echo '# Keywords Reference: sec\n\n<!-- toc -->\n\n' ;sudo ${OM} sec doc --depth 1) > src/agent.reference.keywords.sec.md
-	(echo '# Keywords Reference: usr\n\n<!-- toc -->\n\n' ;sudo ${OM} usr doc --depth 1) > src/agent.reference.keywords.usr.md
+	d="src/agent.reference.keywords"
+	rm -rf $$d
+	mkdir $$d
+	summary="SUMMARY.md"
+	echo -e "# Agent Keywords Reference\n" >$${d}/$${summary}
+	head=$$(pwd)
+	for kind in node cluster svc vol sec cfg usr; do
+		echo "- [$${kind}]()" >>$${d}/$${summary}
+		mkdir -p $${d}/$${kind}
+		cd $${d}/$${kind}
+		sudo ${OM} $${kind} doc | csplit -q -z - "/^# /" {*}
+		for f in $$(echo xx*); do
+	       		title=$$(head -n1 $$f|cut -c3-)
+			mv $${f} $${title}.md
+			echo "  - [$${title}](agent.reference.keywords/$${kind}/$${title}.md)" >>../$${summary}
+		done
+		cd $$head
+	done
+
+summary:
+	cat src/preamble/SUMMARY.md src/agent/SUMMARY.md src/agent.reference.keywords/SUMMARY.md > src/SUMMARY.md
 
 build:
 	PATH=. ./mdbook build
