@@ -31,7 +31,7 @@ Display the result
 
 See Also:
 
-* [Heartbeats](agent.daemon.heartbeats)
+* [Heartbeats](agent.daemon.heartbeats.md)
 
 </div>
 
