@@ -13,19 +13,19 @@ If the node joins an existing cluster, skip this section.
 
 ### Add Heartbeats
 
-On a new cluster, the heartbeats configuration need to be applied only on the first node. The joining nodes will fetch this configuration from this joined node.
+If the cluster seed node has no heartbeat setup, a `unicast` heartbeat with default settings will be automatically added on first join.
 
-For example, the simplest heartbeat configuration would be
+This default heartbeat requires all nodenames to be resolvable and reachable on 1215/tcp.
 
-```
-        om cluster set --kw hb#1.type=unicast
-```
+If this requirements are not met, you can setup one or more custom heartbeats on the seed node before joins.
 
-Display the result
+For example, a custom heartbeat configuration would be:
 
-```
+        om cluster set --kw hb#1.type=unicast --kw hb#1.port=1216
+
+The new heartbeats are visible in the top section of the monitoring command output:
+
         om mon
-```
 
 <div class="warning">
 
@@ -78,16 +78,16 @@ See Also:
 
 The joining node can choose to join any of the cluster node already joined.
 
-On the joined node {{#include ../inc/node}}`node1`
+On the joined node {{#include ../inc/node}}`node1`, generate a join token:
 
 ```
-om cluster get --kw cluster.secret
+$ om daemon auth --role join
 ```
 
-On the joining node {{#include ../inc/node}}`node2`
+On the joining node {{#include ../inc/node}}`node2`:
 
 ```
-om daemon join --secret <secret> --node node1
+om daemon join --token <token> --node node1
 ```
 
 <div class="warning">
