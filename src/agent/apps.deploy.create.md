@@ -22,8 +22,7 @@ Create a new object with minimal configuration. No resources are described.
 Resources and default keywords can be set right from the create command, using ``--kw <keyword>=<value>`` options
 
 	om <path> create
-		--kw container#0.type=docker \
-		--kw container#0.image=google/pause \
+		--kw container#0.type=oci \
 		--kw orchestrate=ha \
 		--kw nodes={clusternodes}
 
