@@ -5,9 +5,10 @@
 OpenSVC is an open-source software product and the name of the company developing and supporting it. In production since 2009, OpenSVC consists of:
 
 - **Agent**: A supervisor, clusterware, container orchestrator, and configuration manager (Apache 2.0 licensed since v3).
-- **Collector**: Aggregates agent data and manages configuration, infrastructure, and resources (Apache 2.0 licensed).
+- **Collector**: Optionally, aggregates agent data and manages configuration, infrastructure, and resources (Apache 2.0 licensed).
 
-### Key Features:
+## Why OpenSVC
+
 - **Service Mobility**: Ensures high availability and scalability.
 - **Configuration Management**: Handles thousands of servers and clusters with minimal dependencies.
 - **Inventoring**: Tracks assets, storage, networks, and services.
@@ -15,12 +16,13 @@ OpenSVC is an open-source software product and the name of the company developin
 - **Auditing**: Monitors performance, alerts, and audits infrastructure and services.
 - **Productivity Boost**: Reduces infrastructure maintenance and allows for task delegation.
 
-OpenSVC is OS, application, and hardware agnostic.
 
-## Subsystem Requirements
+## Requirements
 
-| Subsystem                                                  | Agent | Collector |
-|------------------------------------------------------------|-------|-----------|
+OpenSVC runs on Linux servers.
+
+| Subsystem                                                   | Agent | Collector |
+|-------------------------------------------------------------|-------|-----------|
 | Service mobility, clustering, container orchestration       |   O   |           |
 | Configuration management                                    |   O   |     O     |
 | Inventoring                                                 |   O   |     O     |
