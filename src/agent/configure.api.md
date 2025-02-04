@@ -47,6 +47,14 @@ Example:
     om system/usr/usr1 create --kw grant="admin:ns1 guest:ns2"
 
 
+## Testing the API
+
+A demonstration agent exposes the API manifest at https://relay3.opensvc.com/public/ui/
+
+    $ TOKEN=$(sudo om daemon auth token --subject usr1 --duration 10m)
+    $ curl -o- -k -s -H "Authorization: Bearer $TOKEN" https://localhost:1215/whoami
+    {"auth":"jwt","grant":{"guest":["ns2"], "admin": ["ns1"]},"name":"usr1","namespace":"system","raw_grant":"admin:ns1 guest:ns2"}
+
 ## Configure the listener
 
 A cluster-level self-signed certificate authority is automatically configured upon agent installation.
