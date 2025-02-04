@@ -2,25 +2,22 @@
 
 ## Ubuntu
 
+    #
     # Import opensvc gpg signing keys
-    curl -o- https://packages.opensvc.com/gpg.public.key.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/opensvc-package-pub.gpg
+    # -------------------------------
+    curl -s -o- https://packages.opensvc.com/gpg.public.key.asc | \
+        sudo gpg --dearmor --output /etc/apt/trusted.gpg.d/opensvc-package-pub.gpg --yes
 
+    #
     # Add the opensvc repository to apt sources
-    cat - <<EOF > /etc/apt/sources.list.d/opensvc.list 
+    # -----------------------------------------
+    cat - <<EOF | sudo tee /etc/apt/sources.list.d/opensvc.list 
     deb https://packages.opensvc.com/apt/ubuntu dev-opensvc-v3-noble main
     deb-src https://packages.opensvc.com/apt/ubuntu dev-opensvc-v3-noble main
+    EOF
 
+    #
     # Install the opensvc server
-    apt update
-    apt install opensvc-server
-
-
-
-<div class="warning">
-
-See Also:
-
-* [Installed files](agent.items.md)
-
-</div>
-
+    # --------------------------
+    sudo apt update
+    sudo apt install opensvc-server
