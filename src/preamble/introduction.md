@@ -26,5 +26,4 @@ OpenSVC is OS, application, and hardware agnostic.
 | Inventoring                                                 |   O   |     O     |
 | Orchestration and interoperability                          |   O   |     O     |
 | Continuous infrastructure, systems, and services auditing   |   O   |     O     |
-| Boost IT productivity                                       |   O   |     O     |
 
