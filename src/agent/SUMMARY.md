@@ -1,6 +1,7 @@
 # Agent
 
 - [Install](agent/install.md)
+  - [Installed Files](agent/items.md)
 - [Configure](agent/configure.md)
   - [Node](agent/configure.base.md)
   - [Cluster](agent/configure.cluster.md)
