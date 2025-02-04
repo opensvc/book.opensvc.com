@@ -21,9 +21,9 @@ bar@n2 = 2
 
 ## Policies
 
-* If a keyword is present in both `node.conf` and `cluster.conf`, the value is evaluated from `node.conf`.
-* A section only accepts known keywords, except the `[env]` and `[labels]` open sections.
-* The most specific scoped value overrides the least specific values.
+* If a keyword appears in both `node.conf` and `cluster.conf`, the value from node.conf takes precedence.
+* Sections only accept recognized keywords, with the exception of the `[env]` and `[labels]` sections, which are open.
+* More specific scoped values override less specific ones.
 
     With the above section in a `svc1` object configuration:
 
@@ -37,14 +37,13 @@ bar@n2 = 2
 
 ## Syntax validation
 
-A syntax validation is executed before committing a change done using either a `set` or `edit` command.
+A syntax check is performed before finalizing any modifications made with either the set or edit commands.
 
     om cluster ed
 
     om cluster set --kw hb#test.type=unsupported
 
-A direct configuration file change is not validated and can break the cluster.
-In this case, you can validate post portem using:
+A direct modification to the configuration file is not validated and may disrupt the cluster. In such cases, you can perform a post-hoc validation using:
 
     # verify the syntax of cluster.conf
     om cluster validate
