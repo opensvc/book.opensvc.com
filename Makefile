@@ -1,4 +1,6 @@
-OM:=om
+-include Makefile.inc
+
+OM-=om
 
 SHELL=/bin/bash
 
