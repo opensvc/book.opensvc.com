@@ -1,33 +1,39 @@
 # Agent Configuration
 
-## Configuration files
+## Concepts
 
-The agent configuration is the result of the merge of two `ini` configuration files:
+The agent uses `ini` configuration files.
 
-* ``/etc/opensvc/cluster.conf``
-
-  This file is replicated on all cluster nodes.
-
-* ``/etc/opensvc/node.conf``
-
-  This file is not replicated.
-
-## Keywords
-
-With a configuration like:
+Considering a configuration like:
 
 ```ini
-[foo]
-bar=1
+[env]
+bar = 1
+bar@n2 = 2
 ```
 
-* `foo` is a section
+* `env` is a section
 * `bar` is a option
-* {{#include ../inc/kw}}`foo.bar` is a keyword.
+* {{#include ../inc/kw}}`env.bar` is a keyword.
+* {{#include ../inc/kw}}`env.bar=1` is a keyword operation.
+* `1` is the {{#include ../inc/kw}}`env.bar` keyword value.
+* `@n2` is a node scope for the keyword {{#include ../inc/kw}}`env.bar
 
 ## Policies
 
 * If a keyword is present in both `node.conf` and `cluster.conf`, the value is evaluated from `node.conf`.
+* A section only accepts known keywords, except the `[env]` and `[labels]` open sections.
+* The most specific scoped value overrides the least specific values.
+
+    With the above section in a `svc1` object configuration:
+
+        # on n1:
+        $ om svc1 eval --kw env.bar
+        1
+
+        # on n2:
+        $ om svc1 eval --kw env.bar
+        2
 
 ## Syntax validation
 
@@ -35,9 +41,9 @@ A syntax validation is executed before committing a change done using either a `
 
     om cluster ed
 
-    om node set --kw labels.az=fr1
+    om cluster set --kw hb#test.type=unsupported
 
-A configuration file change not using these commands or the API is not validated and can break the cluster.
+A direct configuration file change is not validated and can break the cluster.
 In this case, you can validate post portem using:
 
     # verify the syntax of cluster.conf

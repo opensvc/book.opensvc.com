@@ -1,10 +1,10 @@
-# Remote Management
+# Client UI
 
-The `ox` program uses only the agent api and mirrors the `om` commandset, which makes it suitable for managing one or more clusters from a tiers linux box.
+The `ox` program uses only the agent API and mirrors the `om` commandset, which makes it suitable for managing one or more clusters from a tiers linux box.
 
 ## Configure remotes
 
-The remotes configuration is described in YAML format in the `~/.opensvc/config` file.
+The remotes configuration is described in YAML format in the `~/.config/opensvc/contexts.yaml` file.
 
 Example:
 
@@ -27,14 +27,19 @@ Example:
 	    user: mary
 	    cluster: bold-rat
 
-## Set a context
+## Terminal UI
 
+At this point, executing `ox` with no argument launches the Terminal User Interface, and offers a context selector dialog.
+
+## Commandline UI
+
+    # Set a context
+    # -------------
 	$ export OSVC_CONTEXT=john@dreamy-leopard
 
-## Manage
 
-As if using `om` when logged on a cluster node:
-
+    # Manage like om
+    # --------------
 	$ ox cluster get --kw cluster.name -o tab=data.value
 	dreamy-leopard 
 

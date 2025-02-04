@@ -1,6 +1,20 @@
 # Installed Items
 
-## Executables
+## Directories
+
+* `/etc/opensvc`           
+
+    The cluster, node and objects configuration files.
+
+* `/var/lib/opensvc`       
+
+    The state files. Deleting or creating files in this directory can have undesired side-effects.
+
+* `/var/tmp/opensvc`       
+
+    Temporary files. Deleting or creating files in this directory can have undesired side-effects.
+
+## Executable files
 
 * `/usr/bin/om`
 
@@ -16,17 +30,15 @@
 
     * The remote management commandline interface
 
-## Directories
+## Configuration files
 
-* `/etc/opensvc`           
+The agent configuration is the result of the merge of two `ini` configuration files:
 
-    The cluster, node and objects configuration files.
+* `/etc/opensvc/cluster.conf`
 
-* `/var/lib/opensvc`       
+    This file is replicated on all cluster nodes.
 
-    The state files. Deleting files in this directory can have undesired side-effects.
+* `/etc/opensvc/node.conf`
 
-* `/var/tmp/opensvc`       
-
-    Temporary files.
+    This file is not replicated.
 

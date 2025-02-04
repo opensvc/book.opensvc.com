@@ -1,6 +1,6 @@
 # Create, Deploy
 
-The following actions only modify files in ``<OSVCETC>``. No operating system configuration file is modified, so they are safe to experiment with.
+The following actions only modify files in `/etc/opensvc`. No operating system configuration file is modified, so they are safe to experiment with.
 
 The agent support object creation via two commands:
 

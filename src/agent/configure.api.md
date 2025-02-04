@@ -31,115 +31,93 @@ The listener supports the following authentication methods:
 
   Added in v3 agent.
 
+## Create Users
+
+Example:
+
+    #
+    # Create a cluster admin user
+    # ---------------------------
+    om system/usr/root create --kw grant=root
+
+    #
+    # Create a namespace ns1 admin user
+    # with read permission on ns2
+    # ---------------------------------
+    om system/usr/usr1 create --kw grant="admin:ns1 guest:ns2"
+
 
 ## Configure the listener
 
-Set an appropriate cluster name in cluster.conf, then
+A cluster-level self-signed certificate authority is automatically configured upon agent installation.
 
-```
-export CLUSTERNAME=$(om cluster get --kw cluster.name)
-```
+The listener needs a TLS certificate to allow remote connections. This certificate is also automatically generated.
 
-<div class="warning">
-Note: Changing the cluster name once the cluster is setup and used is hard.
-</div>
+The following steps are only necessary to resilver the CA or switch to an external PKI.
 
-The listener needs a TLS certificate to allow remote connections.
-
-The cluster can generate this certificate, or an external PKI can be trusted by the cluster.
 
 ### With external PKI
 
+    export CLUSTERNAME=$(om cluster get --kw cluster.name)
+
 Store the Certificate Authority certificate chain in a secret.
 
-```
-om system/sec/ca-external create
-om system/sec/ca-external add --key certificate_chain --from ~/ca_crt_chain.pem
-```
+    om system/sec/ca-external create
+    om system/sec/ca-external add --key certificate_chain --from ~/ca_crt_chain.pem
 
 Create the Certificate for the TLS listener as a secret.
 
-```
-om system/sec/cert-$CLUSTERNAME create
-om system/sec/cert-$CLUSTERNAME gen cert
-```
+    om system/sec/cert-$CLUSTERNAME create
+    om system/sec/cert-$CLUSTERNAME gen cert
 
 Make the external CA sign this certificate and load the resulting certificate key.
 
-```
-om system/sec/cert-$CLUSTERNAME create --kw cn=vip.$CLUSTERNAME.mycorp
-om system/sec/cert-$CLUSTERNAME decode --key certificate_signing_request >~/$CLUSTERNAME.csr
+    om system/sec/cert-$CLUSTERNAME create --kw cn=vip.$CLUSTERNAME.mycorp
+    om system/sec/cert-$CLUSTERNAME decode --key certificate_signing_request >~/$CLUSTERNAME.csr
 
 #### signing procedure ####
 
-om system/sec/cert-clu add --key certificate --from ~/$CLUSTERNAME_crt.pem
-om system/sec/cert-clu add --key certificate_chain --from ~/$CLUSTERNAME_crt_chain.pem
-```
+    om system/sec/cert-clu add --key certificate --from ~/$CLUSTERNAME_crt.pem
+    om system/sec/cert-clu add --key certificate_chain --from ~/$CLUSTERNAME_crt_chain.pem
 
 
 Declare this Certificate Authority for the TLS listener.
 
-```
-om cluster set --kw cluster.ca=system/sec/ca-external
-```
+    om cluster set --kw cluster.ca=system/sec/ca-external
 
 If available, declare the Certificate Revokation List location, so the listener can refuse revoked certificates before their expiration.
 
-```
-om cluster set --kw cluster.crl=http://crl.mycorp
-```
+    om cluster set --kw cluster.crl=http://crl.mycorp
 
 ### With internal PKI
 
-The v3 agent creates a default CA and listener certificate.
-
-The following commands are only necessary to create custom certificates, or if the agent is v2.
-
 Create the CA certificate.
 
-```
-om system/sec/ca-$CLUSTERNAME create
-om system/sec/ca-$CLUSTERNAME set \
-    --kw o=mycorp \
-    --kw c=fr \
-    --kw email=admin@mycorp
-om system/sec/ca-$CLUSTERNAME gen cert
-```
+    export CLUSTERNAME=$(om cluster get --kw cluster.name)
+    om system/sec/ca-$CLUSTERNAME create
+    om system/sec/ca-$CLUSTERNAME set \
+        --kw o=mycorp \
+        --kw c=fr \
+        --kw email=admin@mycorp
+    om system/sec/ca-$CLUSTERNAME gen cert
 
 Create the Certificate for the TLS listener as a secret.
 
-```
-om system/sec/cert-$CLUSTERNAME create \
-    --kw ca=system/sec/ca-$CLUSTERNAME \
-    --kw cn=vip.$CLUSTERNAME.mycorp
-om system/sec/cert-$CLUSTERNAME gen cert
-```
+    om system/sec/cert-$CLUSTERNAME create \
+        --kw ca=system/sec/ca-$CLUSTERNAME \
+        --kw cn=vip.$CLUSTERNAME.mycorp
+    om system/sec/cert-$CLUSTERNAME gen cert
 
-## Create Users
+### Recreate Users certificate
 
-```
-om system/usr/root create
-om system/usr/usr1 create
-```
-
-If the `system/sec/ca-$CLUSTERNAME` exists, the created users will automatically get populated with `certificate_chain`, `certificate` and `private_key` keys.
-The client certificate data can be extracted with:
-
-```
-om system/usr/usr1 decode --key certificate_chain
-om system/usr/usr1 decode --key certificate
-om system/usr/usr1 decode --key private_key
-```
+    om system/usr/root gencerts
+    om system/usr/usr1 gencerts
 
 
-## Grant
+    om system/usr/usr1 decode --key certificate_chain
+    om system/usr/usr1 decode --key certificate
+    om system/usr/usr1 decode --key private_key
 
-```
-om system/usr/root set --kw grant+=root
-om system/usr/usr1 set --kw grant+=squatter
-om system/usr/usr1 set --kw grant+=admin:ns1
-om system/usr/usr1 set --kw 'grant+=guest:*'
-```
 
 <div class="warning">
 

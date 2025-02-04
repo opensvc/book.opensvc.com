@@ -26,7 +26,7 @@ A service created without a specific namespace is assigned a `root` namespace va
 * Each instance runs a authoritative PowerDNS server, a PowerDNS recursor and a recursor cache janitoring daemon.
 * Each component runs as a privileged docker instance to have r/w access to shared unix domain sockets.
 * The DNS server and recursor share the node network namespace.
-* The PowerDNS server uses the dns thread of the OpenSVC daemon as a remote backend. Communications go through the `<OSVCVAR>/dns/pdns.sock` unix domain socket.
+* The PowerDNS server uses the dns thread of the OpenSVC daemon as a remote backend. Communications go through the `/var/lib/opensvc/dns/pdns.sock` unix domain socket.
 
 ### Docker images
 

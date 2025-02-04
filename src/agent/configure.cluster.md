@@ -2,10 +2,10 @@
 
 Upon agent installation, the node is considered part of its own 1-node cluster.
 
-In ``<OSVCETC>/cluster.conf``:
+In `/etc/opensvc/cluster.conf`:
 
-* {{#include ../inc/kw}}`cluster.secret` is auto-generated, if not already defined.
-* {{#include ../inc/kw}}`cluster.name` is set to ``default``, if not already defined.
+* {{#include ../inc/kw}}`cluster.secret` is initialized to a random value.
+* {{#include ../inc/kw}}`cluster.name` is initialized to a random value.
 
 ## Bootstrap a new cluster
 
@@ -15,7 +15,7 @@ If the node joins an existing cluster, skip this section.
 
 If the cluster seed node has no heartbeat setup, a `unicast` heartbeat with default settings will be automatically added on first join.
 
-This default heartbeat requires all nodenames to be resolvable and reachable on 1215/tcp.
+This default heartbeat requires every nodename to be resolved to an ip address reachable on 1215/tcp.
 
 If this requirements are not met, you can setup one or more custom heartbeats on the seed node before joins.
 
