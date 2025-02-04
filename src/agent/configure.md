@@ -17,7 +17,7 @@ bar@n2 = 2
 * {{#include ../inc/kw}}`env.bar` is a keyword.
 * {{#include ../inc/kw}}`env.bar=1` is a keyword operation.
 * `1` is the {{#include ../inc/kw}}`env.bar` keyword value.
-* `@n2` is a node scope for the keyword {{#include ../inc/kw}}`env.bar
+* `@n2` is a node scope for the keyword {{#include ../inc/kw}}`env.bar`
 
 ## Policies
 
