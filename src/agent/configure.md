@@ -28,6 +28,26 @@ bar=1
 ## Policies
 
 * If a keyword is present in both `node.conf` and `cluster.conf`, the value is evaluated from `node.conf`.
-* In this book, all keyword mentions are prefixed with a {{#include ../inc/kw}} icon.
+
+## Syntax validation
+
+A syntax validation is executed before committing a change done using either a `set` or `edit` command.
+
+    om cluster ed
+
+    om node set --kw labels.az=fr1
+
+A configuration file change not using these commands or the API is not validated and can break the cluster.
+In this case, you can validate post portem using:
+
+    # verify the syntax of cluster.conf
+    om cluster validate
+
+    # verify the syntax of node.conf
+    om node validate
+
+    # verify the syntax of a svc configuration
+    om svc1 validate
+
 
 
