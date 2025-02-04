@@ -49,7 +49,7 @@ Example:
 
 ## Testing the API
 
-A demonstration agent exposes the API manifest at https://relay3.opensvc.com/public/ui/
+A demonstration agent exposes the API manifest at [https://relay3.opensvc.com/public/ui/](https://relay3.opensvc.com/public/ui/)
 
     $ TOKEN=$(sudo om daemon auth token --subject usr1 --duration 10m)
     $ curl -o- -k -s -H "Authorization: Bearer $TOKEN" https://localhost:1215/whoami
