@@ -6,9 +6,12 @@ This driver reads and writes on a remote opensvc agent memory.
 
     [hb#2]
     type = relay
-    relay = relay1
+    relay = relay3.opensvc.com
     timeout = 15
-    secret = 1023102310230123123
+    username = relay
+    password = system/sec/relay
+
+Note the v3 relay configuration no longer supports the `secret` keyword. The authentication creadentials are specified using the `username` and `password` keywords. The `password` value is the path of a sec object containing a `password` key.
 
 ## Behaviour
 

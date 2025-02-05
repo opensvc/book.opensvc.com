@@ -70,7 +70,7 @@ The {{#include ../inc/kw}}`arbitrator#1.secret` value comes from the {{#include 
 
 See Also:
 
-* [Quorum](agent.daemon.quorum.md)
+* [Quorum](internals.daemon.quorum.md)
 
 </div>
 
