@@ -21,3 +21,11 @@
     # --------------------------
     sudo apt update
     sudo apt install opensvc-server
+
+<div class="warning">
+
+See Also:
+* [Installed Files](internals.installed_files.md)
+
+</div>
+

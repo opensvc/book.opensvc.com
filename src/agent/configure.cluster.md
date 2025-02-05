@@ -31,7 +31,7 @@ The new heartbeats are visible in the top section of the monitoring command outp
 
 See Also:
 
-* [Heartbeats](agent.daemon.heartbeats.md)
+* [Heartbeats](internals.daemon.heartbeats.md)
 
 </div>
 

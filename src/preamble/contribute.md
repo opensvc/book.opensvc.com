@@ -39,7 +39,7 @@ When producing command line output, it is expected to follow the steps below to 
 
 ## Install ansi2html
 
-From https://github.com/ralphbean/ansi2html
+From [https://github.com/ralphbean/ansi2html](https://github.com/ralphbean/ansi2html)
 
 ## generate raw html code from cli:
 

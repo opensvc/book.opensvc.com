@@ -1,7 +1,6 @@
 # Agent
 
 - [Install](agent/install.md)
-  - [Installed Files](agent/items.md)
 - [Configure](agent/configure.md)
   - [Node](agent/configure.base.md)
   - [Cluster](agent/configure.cluster.md)
@@ -19,6 +18,13 @@
 - [Operate Apps](agent/apps.operate.md)
 - [Design Apps](agent/apps.design.md)
 - [Internals](agent/internals.md)
+  - [Installed Files](agent/internals.installed_files.md)
+  - [Daemon]()
+    - [Heartbeats](agent/internals.daemon.heartbeats.md)
+      - [hb.unicast](agent/internals.daemon.heartbeats.unicast.md)
+      - [hb.multicast](agent/internals.daemon.heartbeats.multicast.md)
+      - [hb.disk](agent/internals.daemon.heartbeats.disk.md)
+      - [hb.relay](agent/internals.daemon.heartbeats.relay.md)
 - [Rosetta Stone](agent/rosettastone.md)
 - [Release Notes](agent/releasenotes.md)
 - [Changelog](agent/changelog.md)
