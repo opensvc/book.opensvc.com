@@ -26,6 +26,8 @@
       - [hb.disk](agent/internals.daemon.heartbeats.disk.md)
       - [hb.relay](agent/internals.daemon.heartbeats.relay.md)
     - [Quorum](agent/internals.daemon.quorum.md)
+      - [Quorum example 1](agent/internals.daemon.quorum.example1.md)
+      - [Quorum example 2](agent/internals.daemon.quorum.example2.md)
     - [Scheduler](agent/internals.daemon.scheduler.md)
 - [Rosetta Stone](agent/rosettastone.md)
 - [Release Notes](agent/releasenotes.md)
