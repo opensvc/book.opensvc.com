@@ -25,6 +25,7 @@
       - [hb.multicast](agent/internals.daemon.heartbeats.multicast.md)
       - [hb.disk](agent/internals.daemon.heartbeats.disk.md)
       - [hb.relay](agent/internals.daemon.heartbeats.relay.md)
+    - [Scheduler](agent/internals.daemon.scheduler.md)
 - [Rosetta Stone](agent/rosettastone.md)
 - [Release Notes](agent/releasenotes.md)
 - [Changelog](agent/changelog.md)
