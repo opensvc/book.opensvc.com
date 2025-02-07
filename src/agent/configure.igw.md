@@ -42,7 +42,9 @@ Listen on port 443, with a self-signed certificate.
     sudo om testigw/cfg/haproxy create
     sudo om testigw/cfg/haproxy add --key haproxy.cfg --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/igw_haproxy/basic-cfg-haproxy.cfg
 
-    # Deploy the Ingress Gateway svc (change the network to a cluster spaning network if you have one setup)
+    # Deploy the Ingress Gateway svc
+    # * change the network to a cluster spaning network if you have one setup
+    # * make sure requests from this network are allowed by the nameservers
     sudo om testigw/svc/haproxy deploy --config https://raw.githubusercontent.com/opensvc/opensvc_templates/main/igw_haproxy/basic-svc.conf --kw ip#1.network=default
 
 A `ip#1` failover-capable public IP address should be added and started for this service to be useful to extra-cluster clients, but it can be tested from a cluster node already.
@@ -53,9 +55,9 @@ A `ip#1` failover-capable public IP address should be added and started for this
     # Test
     curl -o- -k --resolve svc1.acme.com:443:$IP https://svc1.acme.com
 
-Deploy a test webserver to populate the svc1.acme.com backend:
-
-    # (change the network to a cluster spaning network if you have one setup)
+    # Deploy a test webserver to populate the svc1.acme.com backend:
+    # * change the network to a cluster spaning network if you have one setup
+    # * make sure requests from this network are allowed by the nameservers
     sudo om testigw/svc/svc1 deploy --config https://raw.githubusercontent.com/opensvc/opensvc_templates/main/igw_haproxy/nginx.conf --kw ip#1.network=default --wait
 
     # Retest until available
