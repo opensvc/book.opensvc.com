@@ -2,12 +2,12 @@
 
 ## Set the Node Environment
 
-	om cluster set --kw node.env=PRD
+	sudo om cluster set --kw node.env=PRD
 
 The {{#include ../inc/kw}}`node.env` setting is used to enforce the following policies:
 
-*   Only services with {{#include ../inc/kw}}`env=PRD` are allowed to start on a node with {{#include ../inc/kw}}`node.env=PRD`
-*   Only nodes with {{#include ../inc/kw}}`node.env=PRD` are allowed push data to a node with {{#include ../inc/kw}}`node.env=PRD`
+* Only production services are allowed to start on a production node.
+* Only production nodes are allowed push data to a production node.
 
 Supported {{#include ../inc/kw}}`node.env` values:
 
@@ -30,62 +30,30 @@ The setting is stored in `/etc/opensvc/cluster.conf`.
 
 ## Set Node Jobs Schedules
 
-The agent executes periodic tasks. All tasks have a default schedule, which you may want to change.
+The agent executes periodic tasks.
 
-A schedule configuration can be applied using
+Display the scheduler configuration and states:
+
+    $ sudo om node print schedule 
+    NODE      ACTION           LAST_RUN_AT                NEXT_RUN_AT           SCHEDULE      
+    eggplant  pushasset        2025-01-20T01:31:17+01:00  0001-01-01T00:00:00Z  ~00:00-06:00  
+    eggplant  checks           2025-01-20T16:40:20+01:00  0001-01-01T00:00:00Z  @10m          
+    eggplant  compliance_auto  2025-01-20T05:34:49+01:00  0001-01-01T00:00:00Z  02:00-06:00   
+    eggplant  pushdisks        2025-01-20T02:42:29+01:00  0001-01-01T00:00:00Z  ~00:00-06:00  
+    eggplant  pushpkg          2025-01-20T00:16:38+01:00  0001-01-01T00:00:00Z  ~00:00-06:00  
+    eggplant  pushpatch        2025-01-20T01:50:37+01:00  0001-01-01T00:00:00Z  ~00:00-06:00  
+    eggplant  sysreport        2025-01-20T00:58:22+01:00  0001-01-01T00:00:00Z  ~00:00-06:00  
+    eggplant  dequeue_actions  2023-08-03T14:05:50+02:00  0001-01-01T00:00:00Z                
+    eggplant  pushhcs          2025-01-15T18:00:59+01:00  0001-01-01T00:00:00Z  @1d           
+    eggplant  pushbrocade      0001-01-01T00:00:00Z       0001-01-01T00:00:00Z                
+
+Schedule configuration:
 
     # Set a job schedule
 	om node set --kw "brocade.schedule=02:00-04:00@120 sat,sun"
 
     # Disable a job schedule
 	om node set --kw "brocade.schedule=@0"
-
-Node schedules are defined in `/etc/opensvc/node.conf`, where the above command would produce this section:
-
-<pre>
-<code class="hljs">
-<span style="color: #aa5500">[brocade]</span>
-<span style="color: #767676">schedule </span>= 02:00-04:00@120 sat,sun
-</code>
-</pre>
-
-The live scheduler configuration and states can be extracted with
-
-<pre>
-<code class="hljs">
-$ om node print schedule
-<span style="font-weight: bold">Action                </span>  <span style="font-weight: bold">Last Run           </span>  <span style="font-weight: bold">Config Parameter         </span>  <span style="font-weight: bold">Schedule Definition                               </span>  
-|- <span style="color: #767676">auto_reboot        </span>  2017-09-30 16:59:19  reboot.schedule            16:00-17:00@1 sat:last,tue-mon:last * %2+1,feb-apr  
-|- <span style="color: #767676">auto_rotate_root_pw</span>  -                    rotate_root_pw.schedule    -                                                   
-|- <span style="color: #767676">checks             </span>  2017-10-01 17:43:29  checks.schedule            ["16:00-21:00@30 *:last", "! * wed", "*@1"]         
-|- <span style="color: #767676">collect_stats      </span>  2017-10-01 17:42:29  stats_collection.schedule  @10                                                 
-|- <span style="color: #767676">compliance_auto    </span>  2017-10-01 00:01:22  compliance.schedule        00:00-01:00@61                                      
-|- <span style="color: #767676">dequeue_actions    </span>  2017-01-30 10:02:01  dequeue_actions.schedule   -                                                   
-|- <span style="color: #767676">pushasset          </span>  2017-10-01 00:06:22  asset.schedule             00:00-06:00@361 mon-sun                             
-|- <span style="color: #767676">pushbrocade        </span>  -                    brocade.schedule           -                                                   
-|- <span style="color: #767676">pushcentera        </span>  -                    centera.schedule           -                                                   
-|- <span style="color: #767676">pushdcs            </span>  -                    dcs.schedule               -                                                   
-|- <span style="color: #767676">pushdisks          </span>  2017-10-01 00:03:22  disks.schedule             00:00-06:00@361 mon-sun                             
-|- <span style="color: #767676">pushemcvnx         </span>  -                    emcvnx.schedule            -                                                   
-|- <span style="color: #767676">pusheva            </span>  -                    eva.schedule               -                                                   
-|- <span style="color: #767676">pushfreenas        </span>  -                    freenas.schedule           -                                                   
-|- <span style="color: #767676">pushgcedisks       </span>  -                    gcedisks.schedule          -                                                   
-|- <span style="color: #767676">pushhds            </span>  -                    hds.schedule               -                                                   
-|- <span style="color: #767676">pushhp3par         </span>  -                    hp3par.schedule            -                                                   
-|- <span style="color: #767676">pushibmds          </span>  -                    ibmds.schedule             -                                                   
-|- <span style="color: #767676">pushibmsvc         </span>  -                    ibmsvc.schedule            -                                                   
-|- <span style="color: #767676">pushnecism         </span>  -                    necism.schedule            -                                                   
-|- <span style="color: #767676">pushnetapp         </span>  -                    netapp.schedule            -                                                   
-|- <span style="color: #767676">pushnsr            </span>  -                    nsr.schedule               -                                                   
-|- <span style="color: #767676">pushpatch          </span>  2017-10-01 00:16:01  patches.schedule           00:00-06:00@361 mon-sun                             
-|- <span style="color: #767676">pushpkg            </span>  2017-10-01 00:12:01  packages.schedule          00:00-06:00@361 mon-sun                             
-|- <span style="color: #767676">pushstats          </span>  2017-10-01 17:41:29  stats.schedule             ["00:00-23:59@10"]                                  
-|- <span style="color: #767676">pushsym            </span>  -                    sym.schedule               -                                                   
-|- <span style="color: #767676">pushvioserver      </span>  -                    vioserver.schedule         -                                                   
-|- <span style="color: #767676">pushxtremio        </span>  -                    xtremio.schedule           -                                                   
-`- <span style="color: #767676">sysreport          </span>  2017-10-01 00:25:02  sysreport.schedule         00:00-06:00@361 mon-sun                             
-</code>
-</pre>
 
 <div class="warning">
 

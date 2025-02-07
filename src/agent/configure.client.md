@@ -1,4 +1,4 @@
-# Client UI
+# Cluster API Client
 
 The `ox` program uses only the agent API and mirrors the `om` commandset, which makes it suitable for managing one or more clusters from a tiers linux box.
 

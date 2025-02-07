@@ -1,22 +1,22 @@
 # Cluster Domain Name Server
 
-The agent daemon can act as a remote backend for PowerDNS, serving dynamic records for the services deployed. This is most interesting when services get their ip addresses on private backends with internal IPAM.
+The OpenSVC agent daemon can act as a remote backend for PowerDNS, serving dynamic records for services deployed within the cluster. This functionality is particularly useful when services are assigned IP addresses on private backends with internal IPAM.
 
-If set up, when the agent starts a container, it sets up its resolver (dns and search) so they make use of the internal name server.
+If enabled, the agent configures the container's resolver (`nameserver` and `search`) to use the internal name server when starting a container.
 
 This feature is not enabled by default.
 
 ## Records
 
-* One A record `<hostname>.<svcname>.<namespace>.svc.<clustername>` for each resource embedding an ip address and a hostname in its "info".
-* One round-robin A record for `<svcname>.<namespace>.svc.<clustername>`. Each resource embedding an ip address in its "info" gets a slot in the RR.
-* One SRV record for `_<service>._<protocol>.<svcname>.<namespace>.svc.<clustername>`. Each resource with an expose keyword matching `<service>` and `<port>` gets a slot in the RR.
+* **A record:** `<hostname>.<svcname>.<namespace>.svc.<clustername>` for each resource that includes `ipaddr` and `hostname` in the `info` map in its states.
+* **Round-Robin A Record:** `<svcname>.<namespace>.svc.<clustername>` where each resource that includes `ipaddr` in the `info` map in its states is included in the round-robin.
+* **Round-Robin SRV Record:** `_<service>._<protocol>.<svcname>.<namespace>.svc.<clustername>` where each resource with an `expose` keyword matching `<port>/<service>` is included in the round-robin.
 
 <div class="warning">
 
 Note:
 
-A service created without a specific namespace is assigned a `root` namespace value.
+A service created without a specific namespace defaults to the `root` namespace.
 
 </div>
 
