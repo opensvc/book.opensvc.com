@@ -13,15 +13,17 @@ The backend composition is kept up to date by HAProxy the `resolvers` mechanism.
 To declare the cluster dns in the HAProxy configuration:
 
     resolvers clusterdns
+        parse-resolv-conf
         accepted_payload_size 8192
-        nameserver ns0 1.2.3.1:53
-        nameserver ns1 1.2.3.2:53
 
-Then this resolvers configuration can be referenced in every backend definition like:
+As the HAProxy server runs in a container resource started by OpenSVC, the `/etc/resolv.conf` file contains the cluster nameservers IP address.
+The `parse-resolv-conf` tells HAProxy to read the nameservers from there.
 
-    backend website1
+This `resolvers` configuration can be referenced in every `backend` definition like:
+
+    backend svc1
         option httpchk GET /health
-        server-template website1_ 1 svc1.ns1.svc.clu1:8080 resolvers clusterdns check init-addr none
+        server-template svc1_ 1 svc1.ns1.svc.${CLUSTERNAME}:8080 resolvers clusterdns check init-addr none
 
 ## Configurations
 
@@ -38,7 +40,7 @@ Listen on port 443, with a self-signed certificate.
 
     # Create a haproxy configuration as a cfg key
     sudo om testigw/cfg/haproxy create
-    sudo om testigw/cfg/haproxy add --key haproxy.cnf --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/igw_haproxy/basic-cfg-haproxy.cnf
+    sudo om testigw/cfg/haproxy add --key haproxy.cfg --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/igw_haproxy/basic-cfg-haproxy.cfg
 
     # Deploy the Ingress Gateway svc
     sudo om testigw/svc/haproxy deploy --config https://raw.githubusercontent.com/opensvc/opensvc_templates/main/igw_haproxy/basic-svc.conf
