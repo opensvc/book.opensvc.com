@@ -55,5 +55,8 @@ A `ip#1` failover-capable public IP address should be added and started for this
 
 Deploy a test webserver to populate the svc1.acme.com backend:
 
-    sudo om testigw/svc/svc1 deploy --config https://raw.githubusercontent.com/opensvc/opensvc_templates/main/igw_haproxy/nginx.conf --wait
+    # (change the network to a cluster spaning network if you have one setup)
+    sudo om testigw/svc/svc1 deploy --config https://raw.githubusercontent.com/opensvc/opensvc_templates/main/igw_haproxy/nginx.conf --kw ip#1.network=default --wait
+
+    # Retest until available
     curl -o- -k --resolve svc1.acme.com:443:$IP https://svc1.acme.com
