@@ -50,19 +50,15 @@ A service created without a specific namespace defaults to the `root` namespace.
 
 ### Declare DNS backends
 
-```
-om cluster set --kw cluster.dns+=192.168.100.11 --kw cluster.dns+=192.168.100.14
-```
+    om cluster set --kw cluster.dns+=192.168.100.11 --kw cluster.dns+=192.168.100.14
 
 ### Deploy the DNS service
 
-```
-om system/cfg/dns create
-om system/cfg/dns add --key server --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/pdns.conf.template
-om system/cfg/dns add --key recursor --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/recursor.conf.template
-om system/cfg/dns add --key configure --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/configure
-om system/svc/dns deploy --config https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/dns.conf
-```
+    om system/cfg/dns create
+    om system/cfg/dns add --key server --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/pdns.conf.template
+    om system/cfg/dns add --key recursor --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/recursor.conf.template
+    om system/cfg/dns add --key configure --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/configure
+    om system/svc/dns deploy --config https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/dns.conf
 
 <div class="warning">
 
@@ -71,6 +67,23 @@ Note:
 Make sure `allow-from` in the `recursor` key of `system/cfg/dns` contains all the cluster backend networks allowed to request the DNS (the default is `127.0.0.1/32,10.0.0.0/8,fd00::/112,::1`).
 
 </div>
+
+### Configure the nodes resolver
+
+On every node, execute:
+
+    # create the resolved configlet directory if it doesn't exist yet
+    $ mkdir -p /etc/systemd/resolved.conf.d
+
+    # install a configlet routing all requests to the cluster domain to the cluster nameservers
+    $ cat - <<EOF >/etc/systemd/resolved.conf.d/opensvc.conf
+    [Resolve]
+    Domains=$(om cluster get --kw cluster.name -o tab=data.value)
+    DNS=54.37.85.129 91.134.35.193 51.91.64.139
+    EOF
+
+    # activate the new configuration
+    $ systemctl restart systemd-resolved.service
 
 ## Verify
 
