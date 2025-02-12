@@ -79,7 +79,7 @@ On every node, execute:
     $ cat - <<EOF >/etc/systemd/resolved.conf.d/opensvc.conf
     [Resolve]
     Domains=$(om cluster get --kw cluster.name -o tab=data.value)
-    DNS=54.37.85.129 91.134.35.193 51.91.64.139
+    DNS=$(om cluster get --kw cluster.dns -o tab=data.value)
     EOF
 
     # activate the new configuration
