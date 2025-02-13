@@ -78,8 +78,8 @@ On every node, execute:
     # install a configlet routing all requests to the cluster domain to the cluster nameservers
     $ cat - <<EOF >/etc/systemd/resolved.conf.d/opensvc.conf
     [Resolve]
-    Domains=$(om cluster get --kw cluster.name -o tab=data.value)
-    DNS=$(om cluster get --kw cluster.dns -o tab=data.value)
+    Domains=$(om cluster get --kw cluster.name)
+    DNS=$(om cluster get --kw cluster.dns)
     EOF
 
     # activate the new configuration

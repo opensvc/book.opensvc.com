@@ -42,7 +42,7 @@ The `h` keypress displays a help page.
 
     # Manage like om
     # --------------
-	$ ox cluster get --kw cluster.name -o tab=data.value
+	$ ox cluster get --kw cluster.name
 	dreamy-leopard 
 
 	$ ox node ls
