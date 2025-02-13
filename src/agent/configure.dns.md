@@ -89,40 +89,30 @@ On every node, execute:
 
 ### Verify the backend
 
+#### Dump the records served by opensvc to the PowerDNS server
+
 ```
 om daemon dns dump
 ```
 
-```
-echo '{"method": "lookup", "parameters": {"qname": "cluster1.", "qtype": "SOA"}}' | socat - /var/lib/opensvc/dns/pdns.sock
-
-{"result": [{"ttl": 60, "qname": "cluster1.", "qtype": "SOA", "domain_id": -1, "content": "dns.cluster1. contact@opensvc.com 1 7200 3600 432000 86400"}]}
-```
-
-### Verify the DNS authoritative server
+#### Test the unix socket served by opensvc for the PowerDNS server
 
 ```
-dig +short cluster1. SOA @192.168.100.11 -p 5300
+echo '{"method": "list", "parameters": {"zonename": "cluster1."}}' | sudo socat - unix://var/lib/opensvc/dns/pdns.sock | jq
+```
+
+### Verify the DNS server
+
+#### Dump the zone contents asking the PowerDNS server
+
+```
+dig +noall +answer cluster1. AXFR @192.168.100.11 -p 5300
 ```
 
 ### Verify the DNS recursor
 
 ```
 dig +short cluster1. SOA @192.168.100.11
-```
-
-### Dump the zone contents asking DNS
-
-```
-dig +noall +answer cluster1. AXFR @192.168.100.11 -p 5300
-```
-
-### Dump the zone contents asking agent socket
-
-Same as `om daemon dns dump`
-
-```
-echo '{"method": "list", "parameters": {"zonename": "cluster1."}}' | sudo socat - unix://var/lib/opensvc/dns/pdns.sock | jq
 ```
 
 ## Administration
