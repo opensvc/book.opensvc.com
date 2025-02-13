@@ -131,7 +131,6 @@ Create the Certificate for the TLS listener as a secret.
 
 See Also:
 
-* [Configure Client](agent.configure.client.md)
 * [RBAC](agent.rbac)
 
 </div>
