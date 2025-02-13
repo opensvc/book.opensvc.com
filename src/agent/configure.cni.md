@@ -121,37 +121,22 @@ The {{#include ../inc/kw}}`expose` keyword is optional. If set, a SRV record is 
 
 ## Useful commands
 
-List networks:
-
 ```
 # om net ls
-default
-lo
-backend2
-backend
+NAME      TYPE           NETWORK        SIZE   USED  FREE   
+backend1  routed_bridge  fdfe::/112     65536  0     65536  
+backend2  routed_bridge  fdff::/112     65536  0     65536  
+backend3  routed_bridge  10.100.0.0/22  1024   2     1022   
+lo        lo             127.0.0.1/32   1      0     1      
+default   bridge         10.22.0.0/16   65536  0     65536  
 ```
 
-Show networks status:
-
+List the IP addresses allocated in networks associated with their respective requester object and resource:
 ```
-# om net status
-name         type           network       size   used  free   pct    
-|- backend   routed_bridge  10.40.0.0/16  65536  4     65532  0.01%  
-|- backend2  routed_bridge  10.41.0.0/16  65536  1     65535  0.00%  
-|- default   bridge         10.22.0.0/16  65536  0     65536  0.00%  
-`- lo        loopback       127.0.0.1/32  1      0     1      0.00%  
-```
-
-Show a network detailled status:
-
-```
-# om net status --verbose --name backend
-name                 type           network             size      used  free   pct    
-`- backend           routed_bridge  10.40.0.0/16        65536     4     65532  0.01%  
-   `- ip             node           service             resource  
-      |- 10.40.0.10  c1n1           testbackend/svc/s1  ip#0      
-      |- 10.40.12.7  c2n2           testbackend/svc/s4  ip#0      
-      |- 10.40.4.9   c1n2           testbackend/svc/s2  ip#0      
-      `- 10.40.8.7   c2n1           testbackend/svc/s3  ip#0      
+# om net ip ls
+OBJECT               NODE    RID   IP          NET_NAME  NET_TYPE       
+testigw/svc/haproxy  dev2n1  ip#1  10.100.0.2  backend3  routed_bridge  
+testigw/svc/haproxy  dev2n2  ip#1  10.100.1.2  backend3  routed_bridge  
+...
 ```
 
