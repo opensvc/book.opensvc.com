@@ -31,6 +31,8 @@ Example:
 
 At this point, executing `ox` with no argument launches the Terminal User Interface, and offers a context selector dialog.
 
+The `h` keypress displays a help page.
+
 ## Commandline UI
 
     # Set a context
