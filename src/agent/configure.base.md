@@ -114,12 +114,6 @@ Or if the settings were added to node.conf
 
 ## Extra System Configurations
 
-### HP-UX
-
-The python package provided by HP will output garbage on exec because it won't find terminfo at the expected places. To fix that, you have to export ``TERMINFO=/usr/share/lib/terminfo`` from ``/etc/profile``
-
-The HP-UX base system does not provide tools to handle scsi persistent reservations. You have to install the scu tool if you want to activate this feature.
-
 ### Linux LVM2
 
 OpenSVC controls volume group activation and desactivation. Old Linux distributions activate all visible volume groups at boot, some even re-activate them upon de-activation events. These mechanisms can be disabled using the following setup. It also provides another protection against unwanted volume group activation from a secondary cluster node.
