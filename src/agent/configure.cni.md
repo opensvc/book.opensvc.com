@@ -2,7 +2,7 @@
 
 These networks are only required for services private ip auto-allocation. If configured, the cluster DNS exposes the allocated ip addresses as predictible names, and the cluster Ingress Gateways or portmapping can expose the services to clients outside the cluster.
 
-OpenSVC relies on CNI for this subsystem. Any CNI plugin can be used but some plugins can have dependencies like etcd or consul, which OpenSVC does not require for himself. The bridge and weave plugin, having no such dependencies, are simpler to setup.
+OpenSVC relies on CNI for this subsystem. Any CNI plugin can be used but some plugins can have dependencies like etcd or consul, which OpenSVC does not require for himself. The bridge plugin, having no such dependencies, is simpler to setup.
 
 ## Install CNI
 
@@ -101,45 +101,7 @@ Some hosting providers, like OVH, don't support static network routes from node 
 $ om cluster set --kw network#backend1.tunnel=always
 ```
 
-### Weave
-
-On each node:
-
-```
-sudo curl -L git.io/weave -o /usr/local/bin/weave
-sudo chmod a+x /usr/local/bin/weave
-```
-
-The weave plugins runs daemons packaged as docker images. Before proceeding to the next weave installation step, make sure the docker daemon is started at boot and disable MountFlags.
-Also make sure the OpenSVC Cluster is configured and joined before the next step, for the `cluster.nodes` reference to be resolved.
-
-In this example, the package install plugins and config directories are used. Please adapt those paths as required.
-
-On each node:
-
-```
-sudo sed -i s/^MountFlags=slave/#MountFlags=slave/ /lib/systemd/system/docker.service
-sudo systemctl enable docker
-sudo systemctl start docker
-
-sudo weave setup
-sudo weave launch $(om node get --kw cluster.nodes)
-```
-
-If CNI was installed from package, the weave plugin needs to be referenced in the package plugin dir:
-
-```
-cd /usr/libexec/cni/
-sudo ln -s /opt/cni/bin/weave-ipam weave-ipam
-sudo ln -s /opt/cni/bin/weave-net weave-net
-```
-
-Finally declare the network:
-
-```
-$ om cluster set --kw network#weave1.type=weave \
-                 --kw network#weave1.network=10.32.0.0/12
-```
+The default tunnel mode is ipip if the network is ipv4, or ip6ip6 if the network is ipv6. The `tunnel_mode` keyword of the `routed_bridge` driver also accepts `gre`. The GRE tunnels can transport both ipv4 and ipv6 and may work in some hosting situations where ipip does not work (OVH).
 
 ## Use in service configurations
 
@@ -148,7 +110,7 @@ Here is a typical ip resource configuration, using the "weave" CNI network confi
 ```ini
 [ip#0]
 type = cni
-network = weave1
+network = backend1
 netns = container#0
 expose = 80/tcp
 ```
