@@ -20,7 +20,7 @@ kw:
 		echo "- [$${kind}]()" >>$${d}/$${summary}
 		mkdir -p $${d}/$${kind}
 		cd $${d}/$${kind}
-		${OM} $${kind} doc | csplit -q -z - "/^# /" {*}
+		${OM} $${kind} config doc | csplit -q -z - "/^# /" {*}
 		for f in $$(echo xx*); do
 	       		title=$$(head -n1 $$f|cut -c3-)
 			mv $${f} $${title}.md
