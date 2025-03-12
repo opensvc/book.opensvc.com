@@ -34,7 +34,7 @@ This behavior ensures that the execution of job reporting information to the col
 
 ## Node Scheduler
 
-    $ om node print schedule -o +KEY:data.key
+    $ om node schedule list -o +KEY:data.key
     NODE  ACTION           LAST_RUN_AT                NEXT_RUN_AT           SCHEDULE      KEY                       
     n1    pushasset        2025-01-27T05:57:06+01:00  0001-01-01T00:00:00Z  ~00:00-06:00  asset.schedule            
     n1    checks           2025-01-27T01:54:15+01:00  0001-01-01T00:00:00Z  ~00:00-06:00  checks.schedule           
@@ -92,7 +92,7 @@ The node supports the following jobs:
 
 ## Service Scheduler
 
-    $ om tflex print schedule
+    $ om tflex schedule list
     OBJECT  NODE    ACTION           KEY               LAST_RUN_AT                NEXT_RUN_AT                SCHEDULE    
     tflex   dev2n1  status           status_schedule   2025-01-30T11:54:55+01:00  2025-01-30T12:04:55+01:00  @10m        
     tflex   dev2n1  compliance_auto  comp_schedule     2025-01-27T00:09:18+01:00  0001-01-01T00:00:00Z       ~00:00-06:00

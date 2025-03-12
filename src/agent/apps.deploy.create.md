@@ -67,9 +67,6 @@ Templates can be served by the collector.
 
 	om <path> create --template <id|name> [--interactive] [--provision]
 
-## From Collector Service
-
-	om <path> pull
 
 <div class="warning">
 

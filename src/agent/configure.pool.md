@@ -270,7 +270,7 @@ name        type       caps                      head                           
 Pool configuration
 
 ```
-om cluster set \
+om cluster config set \
 	--kw pool#loop.type=loop \
 	--kw pool#loop.path=/bigfs \
 	--kw "pool#loop.mkfs_opt=-n ftype=1" \
@@ -313,7 +313,7 @@ mkfs_opt = -n ftype=1
 Pool configuration
 
 ```
-om cluster set \
+om cluster config set \
 	--kw pool#tank.type=zpool \
 	--kw pool#tank.name=tank \
 	--kw "pool#tank.mkfs_opt=-o mountpoint=legacy -o dedup=on -o compression=on"
@@ -350,7 +350,7 @@ mkfs_opt = -o mountpoint=legacy -o dedup=on -o compression=on
 Pools configuration
 
 ```
-om cluster set \
+om cluster config set \
 	--kw pool#freenas1.type=array \
 	--kw pool#freenas1.array=freenas1 \
 	--kw pool#freenas1.sparse=true \
@@ -436,7 +436,7 @@ shared = true
 Pools configuration
 
 ```
-om cluster set \
+om cluster config set \
 	--kw pool#freenas1.type=array \
 	--kw pool#freenas1.array=freenas1 \
 	--kw pool#freenas1.sparse=true \
@@ -530,7 +530,7 @@ vg = {namespace}-{svcname}
 Pools configuration
 
 ```
-om cluster set \
+om cluster config set \
 	--kw pool#freenas1.type=array \
 	--kw pool#freenas1.array=freenas1 \
 	--kw pool#freenas1.sparse=true \
@@ -627,10 +627,10 @@ format = false
 Pool configuration
 
 ```
-om cluster set \
+om cluster config set \
   --kw pool#drbdloop.type=drbd
 
-om cluster set \
+om cluster config set \
   --kw pool#drbdvg.type=drbd \
   --kw pool#drbdvg.vg=centos
 ```

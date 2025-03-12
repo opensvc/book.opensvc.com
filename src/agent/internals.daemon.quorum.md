@@ -8,15 +8,15 @@ OpenSVC minimizes the likelihood of a split-brain scenario by leveraging multipl
 
 Users who prefer to have a cluster segment shut down in such situations can enable quorum by setting `cluster.quorum` to `true`:
 
-    om cluster set --kw cluster.quorum=true
+    om cluster config set --kw cluster.quorum=true
 
 By default, the system allows split nodes to take over services, which may result in services running on multiple isolated segments. To revert to the default behavior, use:
 
-    om cluster unset --kw cluster.quorum
+    om cluster config unset --kw cluster.quorum
 
 To check the current quorum configuration:
 
-    om cluster get --kw cluster.quorum
+    om cluster config get --kw cluster.quorum
 
 ## Quorum Behavior
 

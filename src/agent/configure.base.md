@@ -2,7 +2,7 @@
 
 ## Set the Node Environment
 
-	sudo om cluster set --kw node.env=PRD
+	sudo om cluster config set --kw node.env=PRD
 
 The {{#include ../inc/kw}}`node.env` setting is used to enforce the following policies:
 
@@ -34,7 +34,7 @@ The agent executes periodic tasks.
 
 Display the scheduler configuration and states:
 
-    $ sudo om node print schedule 
+    $ sudo om node schedule list
     NODE      ACTION           LAST_RUN_AT                NEXT_RUN_AT           SCHEDULE      
     eggplant  pushasset        2025-01-20T01:31:17+01:00  0001-01-01T00:00:00Z  ~00:00-06:00  
     eggplant  checks           2025-01-20T16:40:20+01:00  0001-01-01T00:00:00Z  @10m          
@@ -50,10 +50,10 @@ Display the scheduler configuration and states:
 Schedule configuration:
 
     # Set a job schedule
-	om node set --kw "brocade.schedule=02:00-04:00@120 sat,sun"
+	om node config set --kw "brocade.schedule=02:00-04:00@120 sat,sun"
 
     # Disable a job schedule
-	om node set --kw "brocade.schedule=@0"
+	om node config set --kw "brocade.schedule=@0"
 
 <div class="warning">
 
@@ -70,7 +70,7 @@ By default, the agent does not communicate with a collector.
 
 To enable communications with a collector, the {{#include ../inc/kw}}`node.dbopensvc` node configuration parameter must be set. The simplest expression is:
 
-	om cluster set --kw node.dbopensvc=collector.opensvc.com
+	om cluster config set --kw node.dbopensvc=collector.opensvc.com
 
 Here the protocol and path are omitted. In this case, the ``https`` protocol is selected, and the path set to a value matching the standard collector integration.
 
@@ -78,12 +78,12 @@ Here the protocol and path are omitted. In this case, the ``https`` protocol is 
 
 The following expressions are also supported:
 
-	om cluster set --kw node.dbopensvc=https://collector.opensvc.com
-	om cluster set --kw node.dbopensvc=https://collector.opensvc.com/feed/default/call/xmlrpc
+	om cluster config set --kw node.dbopensvc=https://collector.opensvc.com
+	om cluster config set --kw node.dbopensvc=https://collector.opensvc.com/feed/default/call/xmlrpc
 
 The compliance framework uses a separate xmlrpc entrypoint. The {{#include ../inc/kw}}`node.dbcompliance` can be set to override the default, which is deduced from the {{#include ../inc/kw}}`node.dbopensvc` value.
 
-	om cluster set --kw node.dbcompliance=https://collector.opensvc.com/init/compliance/call/xmlrpc
+	om cluster config set --kw node.dbcompliance=https://collector.opensvc.com/init/compliance/call/xmlrpc
 
 ### Register the Node
 
@@ -104,13 +104,13 @@ A successful register is followed by a node discovery, so the collector has deta
 
 To disable collector communications, use:
 
-	om cluster unset --kw node.dbopensvc
-	om cluster unset --kw node.dbcompliance
+	om cluster config unset --kw node.dbopensvc
+	om cluster config unset --kw node.dbcompliance
 
 Or if the settings were added to node.conf
 
-	om node unset --kw node.dbopensvc
-	om node unset --kw node.dbcompliance
+	om node config unset --kw node.dbopensvc
+	om node config unset --kw node.dbcompliance
 
 ## Extra System Configurations
 

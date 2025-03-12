@@ -66,65 +66,53 @@ The following steps are only necessary to resilver the CA or switch to an extern
 
 ### With external PKI
 
-    export CLUSTERNAME=$(om cluster get --kw cluster.name)
+    export CLUSTERNAME=$(om cluster config get --kw cluster.name)
 
 Store the Certificate Authority certificate chain in a secret.
 
     om system/sec/ca-external create
-    om system/sec/ca-external add --key certificate_chain --from ~/ca_crt_chain.pem
+    om system/sec/ca-external key add --name certificate_chain --from ~/ca_crt_chain.pem
 
 Create the Certificate for the TLS listener as a secret.
 
     om system/sec/cert-$CLUSTERNAME create
-    om system/sec/cert-$CLUSTERNAME gen cert
+    om system/sec/cert-$CLUSTERNAME certificate create
 
 Make the external CA sign this certificate and load the resulting certificate key.
 
     om system/sec/cert-$CLUSTERNAME create --kw cn=vip.$CLUSTERNAME.mycorp
-    om system/sec/cert-$CLUSTERNAME decode --key certificate_signing_request >~/$CLUSTERNAME.csr
+    om system/sec/cert-$CLUSTERNAME key decode --name certificate_signing_request >~/$CLUSTERNAME.csr
 
 #### signing procedure ####
 
-    om system/sec/cert-clu add --key certificate --from ~/$CLUSTERNAME_crt.pem
-    om system/sec/cert-clu add --key certificate_chain --from ~/$CLUSTERNAME_crt_chain.pem
+    om system/sec/cert-clu key add --name certificate --from ~/$CLUSTERNAME_crt.pem
+    om system/sec/cert-clu key add --name certificate_chain --from ~/$CLUSTERNAME_crt_chain.pem
 
 
 Declare this Certificate Authority for the TLS listener.
 
-    om cluster set --kw cluster.ca=system/sec/ca-external
+    om cluster config set --kw cluster.ca=system/sec/ca-external
 
 If available, declare the Certificate Revokation List location, so the listener can refuse revoked certificates before their expiration.
 
-    om cluster set --kw cluster.crl=http://crl.mycorp
+    om cluster config set --kw cluster.crl=http://crl.mycorp
 
 ### With internal PKI
 
-Create the CA certificate.
+At first opensvc daemon startup,
 
-    export CLUSTERNAME=$(om cluster get --kw cluster.name)
-    om system/sec/ca-$CLUSTERNAME create
-    om system/sec/ca-$CLUSTERNAME set \
-        --kw o=mycorp \
-        --kw c=fr \
-        --kw email=admin@mycorp
-    om system/sec/ca-$CLUSTERNAME gen cert
-
-Create the Certificate for the TLS listener as a secret.
-
-    om system/sec/cert-$CLUSTERNAME create \
-        --kw ca=system/sec/ca-$CLUSTERNAME \
-        --kw cn=vip.$CLUSTERNAME.mycorp
-    om system/sec/cert-$CLUSTERNAME gen cert
+* A autosigned CA certificate is created as system/sec/ca
+* A listener certificate is created as system/sec/cert
 
 ### Recreate Users certificate
 
-    om system/usr/root gencerts
-    om system/usr/usr1 gencerts
+    om system/usr/root certificate create
+    om system/usr/usr1 certificate create
 
 
-    om system/usr/usr1 decode --key certificate_chain
-    om system/usr/usr1 decode --key certificate
-    om system/usr/usr1 decode --key private_key
+    om system/usr/usr1 key decode --name certificate_chain
+    om system/usr/usr1 key decode --name certificate
+    om system/usr/usr1 key decode --name private_key
 
 
 <div class="warning">

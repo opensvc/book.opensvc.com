@@ -28,31 +28,31 @@ bar@n2 = 2
     With the above section in a `svc1` object configuration:
 
         # on n1:
-        $ om svc1 eval --kw env.bar
+        $ om svc1 config eval --kw env.bar
         1
 
         # on n2:
-        $ om svc1 eval --kw env.bar
+        $ om svc1 config eval --kw env.bar
         2
 
 ## Syntax validation
 
 A syntax check is performed before finalizing any modifications made with either the set or edit commands.
 
-    om cluster ed
+    om cluster config edit
 
-    om cluster set --kw hb#test.type=unsupported
+    om cluster config set --kw hb#test.type=unsupported
 
 A direct modification to the configuration file is not validated and may disrupt the cluster. In such cases, you can perform a post-hoc validation using:
 
     # verify the syntax of cluster.conf
-    om cluster validate
+    om cluster config validate
 
     # verify the syntax of node.conf
-    om node validate
+    om node config validate
 
     # verify the syntax of a svc configuration
-    om svc1 validate
+    om svc1 config validate
 
 
 

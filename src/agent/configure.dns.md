@@ -50,14 +50,14 @@ A service created without a specific namespace defaults to the `root` namespace.
 
 ### Declare DNS backends
 
-    om cluster set --kw cluster.dns+=192.168.100.11 --kw cluster.dns+=192.168.100.14
+    om cluster config set --kw cluster.dns+=192.168.100.11 --kw cluster.dns+=192.168.100.14
 
 ### Deploy the DNS service
 
     om system/cfg/dns create
-    om system/cfg/dns add --key server --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/pdns.conf.template
-    om system/cfg/dns add --key recursor --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/recursor.conf.template
-    om system/cfg/dns add --key configure --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/configure
+    om system/cfg/dns key add --name server --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/pdns.conf.template
+    om system/cfg/dns key add --name recursor --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/recursor.conf.template
+    om system/cfg/dns key add --name configure --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/configure
     om system/svc/dns deploy --config https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/dns.conf
 
 <div class="warning">
@@ -78,8 +78,8 @@ On every node, execute:
     # install a configlet routing all requests to the cluster domain to the cluster nameservers
     $ cat - <<EOF >/etc/systemd/resolved.conf.d/opensvc.conf
     [Resolve]
-    Domains=$(om cluster get --kw cluster.name)
-    DNS=$(om cluster get --kw cluster.dns)
+    Domains=$(om cluster config get --kw cluster.name)
+    DNS=$(om cluster config get --kw cluster.dns)
     EOF
 
     # activate the new configuration

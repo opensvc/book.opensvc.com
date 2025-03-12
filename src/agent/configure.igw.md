@@ -38,11 +38,11 @@ Deploy a haproxy service using the basic example from the [igw_haproxy template]
 
     # Create a self signed key and certificate
     sudo om testigw/sec/haproxy create
-    sudo om testigw/sec/haproxy gencert
+    sudo om testigw/sec/haproxy certificate create
 
     # Create a haproxy configuration as a cfg key
     sudo om testigw/cfg/haproxy create
-    sudo om testigw/cfg/haproxy add --key haproxy.cfg --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/igw_haproxy/basic-cfg-haproxy.cfg
+    sudo om testigw/cfg/haproxy key add --name haproxy.cfg --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/igw_haproxy/basic-cfg-haproxy.cfg
 
     # Deploy the Ingress Gateway svc
     # * change the network to a cluster spaning network if you have one setup
