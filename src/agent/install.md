@@ -29,6 +29,11 @@
     sudo apt update
     sudo apt install opensvc-server
 
+    #
+    # Enable the systemd unit and start the server
+    # --------------------------------------------
+    sudo systemctl enable --now opensvc-server
+
 ## Ubuntu
 
     # Select a os version and opensvc branch
@@ -59,6 +64,11 @@
     sudo apt update
     sudo apt install opensvc-server
 
+    #
+    # Enable the systemd unit and start the server
+    # --------------------------------------------
+    sudo systemctl enable --now opensvc-server
+
 ## Red Hat Enterprise Linux 7
 
     # Select a os version and opensvc branch
@@ -83,6 +93,11 @@
     # --------------------------
     sudo yum update
     sudo yum install opensvc-server
+
+    #
+    # Enable the systemd unit and start the server
+    # --------------------------------------------
+    sudo systemctl enable --now opensvc-server
 
 ## Red Hat Enterprise Linux 8+
 
@@ -111,6 +126,11 @@
     sudo dnf update
     sudo dnf install opensvc-server
 
+    #
+    # Enable the systemd unit and start the server
+    # --------------------------------------------
+    sudo systemctl enable --now opensvc-server
+
 ## SuSE Linux Enterprise Server
 
     # Select a os version and opensvc branch
@@ -137,6 +157,11 @@
     # --------------------------
     sudo zypper --gpg-auto-import-keys --non-interactive refresh
     sudo zypper install opensvc-server
+
+    #
+    # Enable the systemd unit and start the server
+    # --------------------------------------------
+    sudo systemctl enable --now opensvc-server
 
 <div class="warning">
 
