@@ -81,13 +81,13 @@ The joining node can choose to join any of the cluster node already joined.
 On the joined node {{#include ../inc/node}}`node1`, generate a join token:
 
 ```
-$ om daemon auth --role join
+$ sudo om daemon auth --role join
 ```
 
 On the joining node {{#include ../inc/node}}`node2`:
 
 ```
-om daemon join --token <token> --node node1
+sudo om daemon join --token <token> --node node1
 ```
 
 <div class="warning">
@@ -101,7 +101,7 @@ Note:
 ## Leave a Cluster
 
 ```
-om daemon leave
+sudo om daemon leave
 ```
 
 
