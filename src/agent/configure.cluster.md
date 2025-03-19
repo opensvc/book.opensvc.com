@@ -21,7 +21,7 @@ If this requirements are not met, you can setup one or more custom heartbeats on
 
 For example, a custom heartbeat configuration would be:
 
-        om cluster config set --kw hb#1.type=unicast --kw hb#1.port=1216
+        om cluster config update --set hb#1.type=unicast --set hb#1.port=1216
 
 The new heartbeats are visible in the top section of the monitoring command output:
 
@@ -44,7 +44,7 @@ On a new cluster, the stonith configuration can be applied on the first node. Th
 For example, a dummy stonith configuration would be
 
 ```
-om cluster config set --kw stonith#node2.cmd=/bin/true
+om cluster config update --set stonith#node2.cmd=/bin/true
 ```
 
 This configuration will execute :cmd:`/bin/true` on the node taking over a service which was previously running on the now stalled {{#include ../inc/node}}`node2`.
@@ -58,8 +58,8 @@ Arbitrators are optional. Skip to the next section if not concerned.
 The arbitrator configuration can be applied on any node of the cluster.
 
 ```
-om cluster config set --kw arbitrator#1.name=relay1 \
-                      --kw arbitrator#1.secret=10231023102310231023102310231023
+om cluster config update --set arbitrator#1.name=relay1 \
+                      --set arbitrator#1.secret=10231023102310231023102310231023
 ```
 
 This configuration will ask for the agent on node {{#include ../inc/node}}`relay1` for its vote in a quorum race, if needed to get a majority.

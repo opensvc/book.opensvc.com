@@ -22,8 +22,8 @@ yum install -y containernetworking-cni
 Then tell OpenSVC where to find the CNI plugins and network configurations:
 
 ```
-om cluster config set --kw cni.plugins=/usr/libexec/cni \
-                      --kw cni.config=/var/lib/opensvc/cni/net.d
+om cluster config update --set cni.plugins=/usr/libexec/cni \
+                         --set cni.config=/var/lib/opensvc/cni/net.d
 ```
 
 ### From upstream
@@ -55,15 +55,15 @@ A local bridge network is always present and named `default`.
 To create another network of this type, named `local1`, available on every cluster node:
 
 ```
-$ om cluster config set --kw network#local1.type=bridge \
-                        --kw network#local1.network=10.10.10.0/24
+$ om cluster config update --set network#local1.type=bridge \
+                           --set network#local1.network=10.10.10.0/24
 ```
 
 To create another network of this type, named `local1`, available on the current cluster node only:
 
 ```
-$ om node config set --kw network#local1.type=bridge \
-                     --kw network#local1.network=10.10.10.0/24
+$ om node config update --set network#local1.type=bridge \
+                        --set network#local1.network=10.10.10.0/24
 ```
 
 ### Routed Bridge
@@ -75,9 +75,9 @@ The simple bridge CNI plugin is used for IPAM and plumbing in network namespaces
 To create a network of this type, named `backend1`, spanned on every cluster node:
 
 ```
-$ om cluster config set --kw network#backend1.type=routed_bridge \
-                        --kw network#backend1.network=10.11.0.0/16 \
-                        --kw network#backend1.ips_per_node=1024
+$ om cluster config update --set network#backend1.type=routed_bridge \
+                           --set network#backend1.network=10.11.0.0/16 \
+                           --set network#backend1.ips_per_node=1024
 ```
 
 In this example, the network is split like:
@@ -90,15 +90,15 @@ In this example, the network is split like:
 Tunnel endpoints addresses are guessed using a lookup of the nodenames. Different addresses can be setup if necessary, using:
 
 ```
-$ om cluster config set --kw network#backend1.addr@node1=1.2.3.4 \
-                        --kw network#backend1.addr@node2=1.2.3.5 \
-                        --kw network#backend1.addr@node3=1.2.4.4
+$ om cluster config update --set network#backend1.addr@node1=1.2.3.4 \
+                           --set network#backend1.addr@node2=1.2.3.5 \
+                           --set network#backend1.addr@node3=1.2.4.4
 ```
 
 Some hosting providers, like OVH, don't support static network routes from node to node, even if they have an ip address in a common subnet. For this situation, you can force OpenSVC to always use tunnels for this backend network::
 
 ```
-$ om cluster config set --kw network#backend1.tunnel=always
+$ om cluster config update --set network#backend1.tunnel=always
 ```
 
 The default tunnel mode is ipip if the network is ipv4, or ip6ip6 if the network is ipv6. The `tunnel_mode` keyword of the `routed_bridge` driver also accepts `gre`. The GRE tunnels can transport both ipv4 and ipv6 and may work in some hosting situations where ipip does not work (OVH).

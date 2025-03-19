@@ -91,11 +91,11 @@ Make the external CA sign this certificate and load the resulting certificate ke
 
 Declare this Certificate Authority for the TLS listener.
 
-    om cluster config set --kw cluster.ca=system/sec/ca-external
+    om cluster config update --set cluster.ca=system/sec/ca-external
 
 If available, declare the Certificate Revokation List location, so the listener can refuse revoked certificates before their expiration.
 
-    om cluster config set --kw cluster.crl=http://crl.mycorp
+    om cluster config update --set cluster.crl=http://crl.mycorp
 
 ### With internal PKI
 

@@ -30,19 +30,19 @@ The configuration file syntax is checked upon editor exit. The new configuration
 
 ## Non-Interactive Resource Addition
 
-	om <path> config set --kw fs#2.type=ext4 --kw fs#2.mnt=/srv/{fqdn}
+	om <path> config update --set fs#2.type=ext4 --set fs#2.mnt=/srv/{fqdn}
 
 The resource identifier (rid) must not be specified. The resource type must be specified (rtype). A free rid will be allocated.
 
 ## Non-Interactive Resource Modification
 
-	om <path> config set --kw fs#2.type=ext4 --kw fs#2.mnt=/srv/{fqdn}
+	om <path> config update --set fs#2.type=ext4 --set fs#2.mnt=/srv/{fqdn}
 
 The resource identifier must be specified.
 
 ## Non-Interactive Resource Deletion
 
-	om <path> config unset --section fs#2
+	om <path> config update --delete fs#2
 
 This command does not stop the resource before removing its definition. If desired, this can be done with
 

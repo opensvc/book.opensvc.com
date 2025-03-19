@@ -30,7 +30,7 @@ Any command that changes the timestamp of the following configuration files trig
 To set a timeout for the `hb#1` heartbeat, use this command:
 
 ```
-om cluster config set --kw hb#1.timeout=20
+om cluster config update --set hb#1.timeout=20
 ```
 
 ### Drop a Heartbeat
@@ -38,7 +38,7 @@ om cluster config set --kw hb#1.timeout=20
 To delete the `hb#1` heartbeat from the configuration:
 
 ```
-om cluster config unset --section hb#1
+om cluster config update --delete hb#1
 ```
 
 ## Monitoring

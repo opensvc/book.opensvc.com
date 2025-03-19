@@ -2,7 +2,7 @@
 
 ## Set the Node Environment
 
-	sudo om cluster config set --kw node.env=PRD
+	sudo om cluster config update --set node.env=PRD
 
 The {{#include ../inc/kw}}`node.env` setting is used to enforce the following policies:
 
@@ -50,10 +50,10 @@ Display the scheduler configuration and states:
 Schedule configuration:
 
     # Set a job schedule
-	om node config set --kw "brocade.schedule=02:00-04:00@120 sat,sun"
+	om node config update --set "brocade.schedule=02:00-04:00@120 sat,sun"
 
     # Disable a job schedule
-	om node config set --kw "brocade.schedule=@0"
+	om node config update --set "brocade.schedule=@0"
 
 <div class="warning">
 
@@ -70,7 +70,7 @@ By default, the agent does not communicate with a collector.
 
 To enable communications with a collector, the {{#include ../inc/kw}}`node.dbopensvc` node configuration parameter must be set. The simplest expression is:
 
-	om cluster config set --kw node.dbopensvc=collector.opensvc.com
+	om cluster config update --set node.dbopensvc=collector.opensvc.com
 
 Here the protocol and path are omitted. In this case, the ``https`` protocol is selected, and the path set to a value matching the standard collector integration.
 
@@ -78,12 +78,12 @@ Here the protocol and path are omitted. In this case, the ``https`` protocol is 
 
 The following expressions are also supported:
 
-	om cluster config set --kw node.dbopensvc=https://collector.opensvc.com
-	om cluster config set --kw node.dbopensvc=https://collector.opensvc.com/feed/default/call/xmlrpc
+	om cluster config update --set node.dbopensvc=https://collector.opensvc.com
+	om cluster config update --set node.dbopensvc=https://collector.opensvc.com/feed/default/call/xmlrpc
 
 The compliance framework uses a separate xmlrpc entrypoint. The {{#include ../inc/kw}}`node.dbcompliance` can be set to override the default, which is deduced from the {{#include ../inc/kw}}`node.dbopensvc` value.
 
-	om cluster config set --kw node.dbcompliance=https://collector.opensvc.com/init/compliance/call/xmlrpc
+	om cluster config update --set node.dbcompliance=https://collector.opensvc.com/init/compliance/call/xmlrpc
 
 ### Register the Node
 
@@ -95,22 +95,21 @@ If ``--app`` is not specified the collector automatically chooses one the user i
 
 A successful register is followed by a node discovery, so the collector has detailled information about the node and can serve contextualized compliance rulesets up front. The discovery is also scheduled daily, and can be manually replayed with:
 
-	om node pushasset
-	om node pushpkg
-	om node pushpatch
-	om node pushstats
+	om node push asset
+	om node push pkg
+	om node push patch
 	om node checks
 
 
 To disable collector communications, use:
 
-	om cluster config unset --kw node.dbopensvc
-	om cluster config unset --kw node.dbcompliance
+	om cluster config update --unset node.dbopensvc
+	om cluster config update --unset node.dbcompliance
 
 Or if the settings were added to node.conf
 
-	om node config unset --kw node.dbopensvc
-	om node config unset --kw node.dbcompliance
+	om node config update --unset node.dbopensvc
+	om node config update --unset node.dbcompliance
 
 ## Extra System Configurations
 

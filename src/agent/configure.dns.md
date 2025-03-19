@@ -50,7 +50,7 @@ A service created without a specific namespace defaults to the `root` namespace.
 
 ### Declare DNS backends
 
-    om cluster config set --kw cluster.dns+=192.168.100.11 --kw cluster.dns+=192.168.100.14
+    om cluster config update --set cluster.dns+=192.168.100.11 --set cluster.dns+=192.168.100.14
 
 ### Deploy the DNS service
 

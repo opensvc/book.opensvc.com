@@ -270,11 +270,11 @@ name        type       caps                      head                           
 Pool configuration
 
 ```
-om cluster config set \
-	--kw pool#loop.type=loop \
-	--kw pool#loop.path=/bigfs \
-	--kw "pool#loop.mkfs_opt=-n ftype=1" \
-	--kw pool#loop.fs_type=xfs
+om cluster config update \
+	--set pool#loop.type=loop \
+	--set pool#loop.path=/bigfs \
+	--set pool#loop.mkfs_opt="-n ftype=1" \
+	--set pool#loop.fs_type=xfs
 ```
 
 ```ini
@@ -313,10 +313,10 @@ mkfs_opt = -n ftype=1
 Pool configuration
 
 ```
-om cluster config set \
-	--kw pool#tank.type=zpool \
-	--kw pool#tank.name=tank \
-	--kw "pool#tank.mkfs_opt=-o mountpoint=legacy -o dedup=on -o compression=on"
+om cluster config update \
+	--set pool#tank.type=zpool \
+	--set pool#tank.name=tank \
+	--set pool#tank.mkfs_opt="-o mountpoint=legacy -o dedup=on -o compression=on"
 ```
 
 ```ini
@@ -350,18 +350,18 @@ mkfs_opt = -o mountpoint=legacy -o dedup=on -o compression=on
 Pools configuration
 
 ```
-om cluster config set \
-	--kw pool#freenas1.type=array \
-	--kw pool#freenas1.array=freenas1 \
-	--kw pool#freenas1.sparse=true \
-	--kw pool#freenas1.diskgroup=cluster1 \
-	--kw pool#freenas2.type=array \
-	--kw pool#freenas2.array=freenas2 \
-	--kw pool#freenas2.sparse=true \
-	--kw pool#freenas2.diskgroup=cluster1 \
-	--kw pool#mpool.type=virtual \
-	--kw pool#mpool.template=templates/mpool \
-	--kw "pool#mpool.capabilities=rox rwx roo rwo shared"
+om cluster config update \
+	--set pool#freenas1.type=array \
+	--set pool#freenas1.array=freenas1 \
+	--set pool#freenas1.sparse=true \
+	--set pool#freenas1.diskgroup=cluster1 \
+	--set pool#freenas2.type=array \
+	--set pool#freenas2.array=freenas2 \
+	--set pool#freenas2.sparse=true \
+	--set pool#freenas2.diskgroup=cluster1 \
+	--set pool#mpool.type=virtual \
+	--set pool#mpool.template=templates/mpool \
+	--set pool#mpool.capabilities="rox rwx roo rwo shared"
 ```
 
 ```ini
@@ -436,18 +436,18 @@ shared = true
 Pools configuration
 
 ```
-om cluster config set \
-	--kw pool#freenas1.type=array \
-	--kw pool#freenas1.array=freenas1 \
-	--kw pool#freenas1.sparse=true \
-	--kw pool#freenas1.diskgroup=cluster1 \
-	--kw pool#freenas2.type=array \
-	--kw pool#freenas2.array=freenas2 \
-	--kw pool#freenas2.sparse=true \
-	--kw pool#freenas2.diskgroup=cluster1 \
-	--kw pool#mvg.type=virtual \
-	--kw pool#mvg.template=templates/mvg \
-	--kw "pool#mvg.capabilities=rox rwx roo rwo shared"
+om cluster config update \
+	--set pool#freenas1.type=array \
+	--set pool#freenas1.array=freenas1 \
+	--set pool#freenas1.sparse=true \
+	--set pool#freenas1.diskgroup=cluster1 \
+	--set pool#freenas2.type=array \
+	--set pool#freenas2.array=freenas2 \
+	--set pool#freenas2.sparse=true \
+	--set pool#freenas2.diskgroup=cluster1 \
+	--set pool#mvg.type=virtual \
+	--set pool#mvg.template=templates/mvg \
+	--set pool#mvg.capabilities="rox rwx roo rwo shared"
 ```
 
 ```ini
@@ -530,18 +530,18 @@ vg = {namespace}-{svcname}
 Pools configuration
 
 ```
-om cluster config set \
-	--kw pool#freenas1.type=array \
-	--kw pool#freenas1.array=freenas1 \
-	--kw pool#freenas1.sparse=true \
-	--kw pool#freenas1.diskgroup=cluster1 \
-	--kw pool#freenas2.type=array \
-	--kw pool#freenas2.array=freenas2 \
-	--kw pool#freenas2.sparse=true \
-	--kw pool#freenas2.diskgroup=cluster1 \
-	--kw pool#md.type=virtual \
-	--kw pool#md.template=templates/md \
-	--kw "pool#md.capabilities=rox rwx roo rwo shared"
+om cluster config update \
+	--set pool#freenas1.type=array \
+	--set pool#freenas1.array=freenas1 \
+	--set pool#freenas1.sparse=true \
+	--set pool#freenas1.diskgroup=cluster1 \
+	--set pool#freenas2.type=array \
+	--set pool#freenas2.array=freenas2 \
+	--set pool#freenas2.sparse=true \
+	--set pool#freenas2.diskgroup=cluster1 \
+	--set pool#md.type=virtual \
+	--set pool#md.template=templates/md \
+	--set pool#md.capabilities="rox rwx roo rwo shared"
 ```
 
 ```ini
@@ -627,12 +627,12 @@ format = false
 Pool configuration
 
 ```
-om cluster config set \
-  --kw pool#drbdloop.type=drbd
+om cluster config update \
+  --set pool#drbdloop.type=drbd
 
-om cluster config set \
-  --kw pool#drbdvg.type=drbd \
-  --kw pool#drbdvg.vg=centos
+om cluster config update \
+  --set pool#drbdvg.type=drbd \
+  --set pool#drbdvg.vg=centos
 ```
 
 ```ini
