@@ -1,5 +1,11 @@
 # Install
 
+We feed packages in 3 different branches. Subscribe your servers to the appropriate repository branch:
+
+* **dev**: Unstable. Every candidate Pull Request causes a new package to be spawned here for OpenSVC QA purpose.
+* **uat**: Testing. OpenSVC will push there pre-release packages and packages that contain a candidate fixes for known issues that client are encouraged to validate.
+* **prod**: Stable. The recommended branch.
+
 ## Debian
 
     # Select a os version and opensvc branch
@@ -8,6 +14,7 @@
     DISTRIB=bullseye
     DISTRIB=buster
     BRANCH=dev
+    BRANCH=uat
     BRANCH=prod
     
     # Import opensvc gpg signing keys
@@ -42,6 +49,7 @@
     DISTRIB=jammy
     DISTRIB=noble
     BRANCH=dev
+    BRANCH=uat
     BRANCH=prod
 
     #
@@ -75,6 +83,7 @@
     # --------------------------------------
     DISTRIB=rhel7
     BRANCH=dev
+    BRANCH=uat
     BRANCH=prod
 
     #
@@ -106,6 +115,7 @@
     DISTRIB=rhel8
     DISTRIB=rhel9
     BRANCH=dev
+    BRANCH=uat
     BRANCH=prod
 
     #
@@ -137,6 +147,7 @@
     # --------------------------------------
     DISTRIB=sles15
     BRANCH=dev
+    BRANCH=uat
     BRANCH=prod
 
     #

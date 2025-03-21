@@ -26,4 +26,8 @@ A more precise definition allows specifying network interfaces, addresses, and p
     port@node2 = 10002
     timeout = 15s
 
+Note the driver accepts to use the same port for every node:
+
+    port = 10001
+
 Proper configuration of the `hb.unicast` driver ensures reliable communication between cluster nodes by leveraging TCP unicast.
