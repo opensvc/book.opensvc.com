@@ -18,6 +18,7 @@
   - [Purge, Delete](agent/apps.deploy.delete.md)
 - [Operate Apps](agent/apps.operate.md)
 - [Design Apps](agent/apps.design.md)
+  - [References](agent/agent.service.references.md)
 - [Internals](agent/internals.md)
   - [Installed Files](agent/internals.installed_files.md)
   - [Daemon]()
