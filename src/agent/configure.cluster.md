@@ -87,7 +87,7 @@ $ sudo om daemon auth --role join
 On the joining node {{#include ../inc/node}}`node2`:
 
 ```
-sudo om daemon join --token <token> --node node1
+sudo om cluster join --token <token> --node node1
 ```
 
 <div class="warning">
@@ -101,7 +101,7 @@ Note:
 ## Leave a Cluster
 
 ```
-sudo om daemon leave
+sudo om cluster leave
 ```
 
 
