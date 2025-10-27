@@ -44,10 +44,10 @@ On a new cluster, the stonith configuration can be applied on the first node. Th
 For example, a dummy stonith configuration would be
 
 ```
-om cluster config update --set stonith#node2.cmd=/bin/true
+om cluster config update --set stonith#node2.command=/bin/true
 ```
 
-This configuration will execute :cmd:`/bin/true` on the node taking over a service which was previously running on the now stalled {{#include ../inc/node}}`node2`.
+This configuration will execute {{#include ../inc/cmd}}`/bin/true` on the node taking over a service which was previously running on the now stalled {{#include ../inc/node}}`node2`.
 
 Good, isolated fencing packages are freely available. For one, https://github.com/ClusterLabs/fence-agents
 
