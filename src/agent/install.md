@@ -1,21 +1,36 @@
 # Install
 
-We feed packages in 3 different branches. Subscribe your servers to the appropriate repository branch:
+## Branch
 
-* **dev**: Unstable. Every candidate Pull Request causes a new package to be spawned here for OpenSVC QA purpose.
-* **uat**: Testing. OpenSVC will push there pre-release packages and packages that contain a candidate fixes for known issues that client are encouraged to validate.
-* **prod**: Stable. The recommended branch.
+We feed packages in 3 different branches:
 
-## Debian
+* `dev` is unstable.
 
-    # Select a os version and opensvc branch
-    # --------------------------------------
-    DISTRIB=bookworm
-    DISTRIB=bullseye
-    DISTRIB=buster
+  Every candidate Pull Request causes a new package to be spawned here for OpenSVC QA purpose.
+
+* `uat` is for testing.
+
+  OpenSVC will push there pre-release packages and packages that contain a candidate fixes for known issues that client are encouraged to validate.
+
+* `prod` is stable.
+
+  It is the default and recommended branch.
+
+
+Execute one of the following variable settings in a shell, and the code block corresponding to the operating system.
+
     BRANCH=dev
     BRANCH=uat
     BRANCH=prod
+
+
+## Debian, Ubuntu
+
+    # Set ID (ubuntu, debian) and VERSION_CODENAME (bookworm, bullseye, noble)
+    source /etc/os-release
+
+    BRANCH=${BRANCH:-prod}
+    DISTRIB=${VERSION_CODENAME:-noble}
     
     # Import opensvc gpg signing keys
     # -------------------------------
@@ -26,44 +41,8 @@ We feed packages in 3 different branches. Subscribe your servers to the appropri
     # Add the opensvc repository to apt sources
     # -----------------------------------------
     cat - <<EOF | sudo tee /etc/apt/sources.list.d/opensvc.list 
-    deb https://packages.opensvc.com/apt/debian $BRANCH-opensvc-v3-$DISTRIB main
-    deb-src https://packages.opensvc.com/apt/debian $BRANCH-opensvc-v3-$DISTRIB main
-    EOF
-
-    #
-    # Install the opensvc server
-    # --------------------------
-    sudo apt update
-    sudo apt install opensvc-server
-
-    #
-    # Enable the systemd unit and start the server
-    # --------------------------------------------
-    sudo systemctl enable --now opensvc-server
-
-## Ubuntu
-
-    # Select a os version and opensvc branch
-    # --------------------------------------
-    DISTRIB=focal
-    DISTRIB=jammy
-    DISTRIB=noble
-    BRANCH=dev
-    BRANCH=uat
-    BRANCH=prod
-
-    #
-    # Import opensvc gpg signing keys
-    # -------------------------------
-    curl -s -o- https://packages.opensvc.com/gpg.public.key.asc | \
-        sudo gpg --dearmor --output /etc/apt/trusted.gpg.d/opensvc-package-pub.gpg --yes
-
-    #
-    # Add the opensvc repository to apt sources
-    # -----------------------------------------
-    cat - <<EOF | sudo tee /etc/apt/sources.list.d/opensvc.list 
-    deb https://packages.opensvc.com/apt/ubuntu $BRANCH-opensvc-v3-$DISTRIB main
-    deb-src https://packages.opensvc.com/apt/ubuntu $BRANCH-opensvc-v3-$DISTRIB main
+    deb https://packages.opensvc.com/apt/$ID $BRANCH-opensvc-v3-$DISTRIB main
+    deb-src https://packages.opensvc.com/apt/$ID $BRANCH-opensvc-v3-$DISTRIB main
     EOF
 
     #
@@ -79,12 +58,11 @@ We feed packages in 3 different branches. Subscribe your servers to the appropri
 
 ## Red Hat Enterprise Linux 7
 
-    # Select a os version and opensvc branch
-    # --------------------------------------
-    DISTRIB=rhel7
-    BRANCH=dev
-    BRANCH=uat
-    BRANCH=prod
+    # Set ID (rhel) and VERSION_ID (7.2, ...)
+    source /etc/os-release
+
+    BRANCH=${BRANCH:-prod}
+    DISTRIB=${ID}${VERSION_ID%.*}
 
     #
     # Add the opensvc repository to apt sources
@@ -110,13 +88,11 @@ We feed packages in 3 different branches. Subscribe your servers to the appropri
 
 ## Red Hat Enterprise Linux 8+
 
-    # Select a os version and opensvc branch
-    # --------------------------------------
-    DISTRIB=rhel8
-    DISTRIB=rhel9
-    BRANCH=dev
-    BRANCH=uat
-    BRANCH=prod
+    # Set ID (rhel) and VERSION_ID (8.10, ...)
+    source /etc/os-release
+
+    BRANCH=${BRANCH:-prod}
+    DISTRIB=${ID}${VERSION_ID%.*}
 
     #
     # Add the opensvc repository to apt sources
@@ -143,12 +119,11 @@ We feed packages in 3 different branches. Subscribe your servers to the appropri
 
 ## SuSE Linux Enterprise Server
 
-    # Select a os version and opensvc branch
-    # --------------------------------------
-    DISTRIB=sles15
-    BRANCH=dev
-    BRANCH=uat
-    BRANCH=prod
+    # Set ID (rhel) and VERSION_ID (8.10, ...)
+    source /etc/os-release
+
+    BRANCH=${BRANCH:-prod}
+    DISTRIB=${ID}${VERSION_ID%.*}
 
     #
     # Add the opensvc repository to apt sources
