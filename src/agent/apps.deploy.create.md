@@ -68,11 +68,6 @@ Templates can be served by the collector.
 	om <path> create --template <id|name> [--interactive] [--provision]
 
 
-<div class="warning">
-
-See Also
-
-* [Provisioning](agent-service-provisioning)
-
-</div>
+> ➡️ See Also
+> * [Provisioning](agent-service-provisioning)
 

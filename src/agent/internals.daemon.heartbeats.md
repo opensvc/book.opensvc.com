@@ -108,10 +108,6 @@ Actions Performed by Rx:
     - **No Maintenance Advertised:** Immediately purge stale peer data.
     - **Maintenance Advertised:** Wait for the `node.maintenance grace_period` before purging.
 
-<div class="warning">
-
-See Also:
-* [Cluster Data](internals.cluster_data.md)
-
-</div>
+> ➡️ See Also
+> * [Cluster Data](internals.cluster_data.md)
 

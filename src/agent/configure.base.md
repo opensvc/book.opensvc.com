@@ -55,12 +55,8 @@ Schedule configuration:
     # Disable a job schedule
 	om node config update --set "brocade.schedule=@0"
 
-<div class="warning">
-
-See Also:
-* [Agent Scheduler](internals.daemon.scheduler.md)
-
-</div>
+> ➡️ See Also
+> * [Agent Scheduler](internals.daemon.scheduler.md)
 
 ## Register on a Collector
 

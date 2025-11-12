@@ -27,13 +27,8 @@ The new heartbeats are visible in the top section of the monitoring command outp
 
         om mon
 
-<div class="warning">
-
-See Also:
-
-* [Heartbeats](internals.daemon.heartbeats.md)
-
-</div>
+> ➡️ See Also
+> * [Heartbeats](internals.daemon.heartbeats.md)
 
 ### Add Stonith methods
 
@@ -66,13 +61,8 @@ This configuration will ask for the agent on node {{#include ../inc/node}}`relay
 
 The {{#include ../inc/kw}}`arbitrator#1.secret` value comes from the {{#include ../inc/kw}}`cluster.secret` value on the arbitrator `relay1`.
 
-<div class="warning">
-
-See Also:
-
-* [Quorum](internals.daemon.quorum.md)
-
-</div>
+> ➡️ See Also
+> * [Quorum](internals.daemon.quorum.md)
 
 ## Join a Cluster
 
@@ -106,16 +96,11 @@ sudo om cluster leave
 
 
 
-<div class="warning">
-
-See Also:
-
-* [Listener](agent.daemon.listener.md)
-* [Monitor](agent.daemon.monitor.md)
-* [Scheduler](agent.daemon.scheduler.md)
-* [Quorum](agent.daemon.quorum.md)
-* [Heartbeats](agent.daemon.heartbeats.md)
-* [Orchestration](agent.service.orchestration.md)
-* [DNS](agent.dns.md)
-
-</div>
+> ➡️ See Also
+> * [Listener](agent.daemon.listener.md)
+> * [Monitor](agent.daemon.monitor.md)
+> * [Scheduler](agent.daemon.scheduler.md)
+> * [Quorum](agent.daemon.quorum.md)
+> * [Heartbeats](agent.daemon.heartbeats.md)
+> * [Orchestration](agent.service.orchestration.md)
+> * [DNS](agent.dns.md)

@@ -149,10 +149,6 @@ Execute one of the following variable settings in a shell, and the code block co
     # --------------------------------------------
     sudo systemctl enable --now opensvc-server
 
-<div class="warning">
-
-See Also:
-* [Installed Files](internals.installed_files.md)
-
-</div>
+> ➡️ See Also
+> * [Installed Files](internals.installed_files.md)
 
