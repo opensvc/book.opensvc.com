@@ -78,7 +78,7 @@ Execute one of the following variable settings in a shell, and the code block co
     #
     # Install the opensvc server
     # --------------------------
-    sudo yum update
+    sudo yum makecache
     sudo yum install opensvc-server
 
     #
@@ -109,7 +109,7 @@ Execute one of the following variable settings in a shell, and the code block co
     #
     # Install the opensvc server
     # --------------------------
-    sudo dnf update
+    sudo dnf makecache
     sudo dnf install opensvc-server
 
     #
