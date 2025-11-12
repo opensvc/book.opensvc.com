@@ -1,29 +1,54 @@
 # hb.relay
 
-This driver reads and writes on a remote opensvc agent memory.
+This driver implements a heartbeat mechanism by reading and writing on the memory of a dedicated OpenSVC agent relay host.
+
+## Purpose
+
+The `hb.relay` heartbeat is designed to prevent split-brain scenarios in a cluster by establishing a neutral, off-site communication check.
+
+  * A relay should ideally be located in a **third site** that hosts **no other node** of the cluster.
+  * This setup allows the cluster to make a correct quorum decision when the sites hosting the cluster nodes become disconnected from each other, but can still independently reach the relay's site.
+  * The same relay host can be shared and used as a heartbeat mechanism by multiple different clusters.
 
 ## Configuration
 
-    [hb#2]
-    type = relay
-    relay = relay3.opensvc.com
-    timeout = 15
-    username = relay
-    password = system/sec/relay
+The heartbeat is defined in the cluster configuration file (`cluster.conf`) within a `[hb#N]` section.
 
-Note the v3 relay configuration no longer supports the `secret` keyword. The authentication creadentials are specified using the `username` and `password` keywords. The `password` value is the path of a sec object containing a `password` key.
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| **`type`** | String | Must be set to `relay`. |
+| **`relay`** | String | The hostname or IP address of the remote OpenSVC relay agent. |
+| **`timeout`** | Duration | The connection and I/O timeout (e.g., `15s`). |
+| **`username`** | String | The username for authentication with the relay host. |
+| **`password`** | String | The path to a `sec` object containing the authentication password key (e.g., `system/sec/relay`). |
 
-## Behaviour
+### Example
 
-The relay listener `<address>:<port>` must be reachable from all cluster nodes in normal operations.
+```ini
+[hb#2]
+type = relay
+relay = relay3.opensvc.com
+timeout = 15
+username = relay
+password = system/sec/relay
+```
 
-A relay should be located in a site hosting no other node of the cluster, so this heartbeat can prevent a split when the sites hosting cluster nodes are disconnected, but can still reach the relay's site.
+### Authentication Note
 
-The same relay can be used as heartbeat in different clusters.
-The relay host can also be used as an arbitrator.
+The OpenSVC v3 relay configuration **no longer supports** the `secret` keyword. Authentication credentials must be specified exclusively using the `username` and `password` keywords.
 
-* The rx thread loops over peer nodes and for each requests its heartbeat data from the relay
-* The tx thread sends to the relay
+## Requirements
 
-OpenSVC v3 clusters must use a OpenSVC v3 relay.
+  * **Reachability:** The relay listener (typically at `<address>:<port>`) must be **reachable** from all cluster nodes during normal operations.
+  * **Version Compatibility:** OpenSVC v3 clusters **must** use an OpenSVC v3 relay agent.
+  * **Arbitration:** The relay host **can** also be configured and used as a cluster arbitrator.
+
+## Key Operations
+
+The driver utilizes two primary threads for communication:
+
+  * **The Transmission Thread (TX):**
+      * This thread is responsible for **sending** the local cluster node's heartbeat data to the remote relay agent, updating its status in the relay's memory.
+  * **The Reception Thread (RX):**
+      * This thread constantly **loops** over all peer nodes in the cluster and for each one, **requests** its current heartbeat data from the relay agent. This data retrieval determines the peer's reachability.
 
