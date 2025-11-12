@@ -1,124 +1,174 @@
 # Cluster API
 
-The cluster API can be accessed remotely through any cluster node agent listener.
+The Cluster API provides remote access to the OpenSVC cluster management and monitoring functionality. It is accessible through the **agent listener** on any running cluster node.
 
-The cluster API URL servername can resolve as:
+## Access and Network Resolution
 
-* A single floating IP address, usually handled by the `system/svc/vip` failover service
-* Multiple floating IP addresses
-* All of the cluster nodes IP addresses
-* Some of the cluster nodes IP addresses
+The Cluster API URL (server name) can be configured to resolve to various network endpoints to ensure high availability and redundancy.
 
-The listener supports the following authentication methods:
+Possible Resolutions:
 
-* basic
+  * **Single Floating IP**
 
-  The username is given by the client in every request header.
+    A single virtual IP (VIP) address, typically managed by a failover service like `system/svc/vip`. This is the most common and robust approach.
 
-  The `system/usr/<username>` object must exist on the cluster and provide the grants.
+  * **Multiple Floating IP Addresses**
 
-* x509
+    A set of VIPs for complex network routing or multi-site setups.
 
-  The username is the `cn` of the certificate.
+  * **All Cluster Node IPs**
 
-  The `system/usr/<username>` object must exist on the cluster and provide the grants.
+    Every physical or virtual IP address of all nodes in the cluster.
 
-* JWT
+  * **Subset of Cluster Node IPs**
 
-  The username and grants are token claims.
+    A selection of node IP addresses, often used in large clusters or specific network segments.
 
-  The `system/usr/<username>` object does not need to exist.
 
-  Added in v3 agent.
+## Authentication Methods
 
-## Create Users
+The agent listener supports several industry-standard authentication methods to secure access to the API.
 
-Example:
+### Basic Authentication
 
-    #
-    # Create a cluster admin user
-    # ---------------------------
-    om system/usr/root create --kw grant=root
+  * **Mechanism:** The client provides the **username** and **password** in the request header of every API call and the password is compared to the `password` key of the `system/usr/<username>` object.
+  * **Authorization:** The RBAC grants are read from the `system/usr/<username>` `grant` key.
+  * **User Object:** The `system/usr/<username>` object **must exist** on the cluster.
 
-    #
-    # Create a namespace ns1 admin user
-    # with read permission on ns2
-    # ---------------------------------
-    om system/usr/usr1 create --kw grant="admin:ns1 guest:ns2"
+### X.509 Certificate Authentication
+
+  * **Mechanism:** Authentication is based on a client-side X.509 certificate.
+  * **Username:** The username is derived from the **Common Name (`cn`)** field of the client certificate.
+  * **Authorization:** The RBAC grants are read from the `system/usr/<username>` `grant` key.
+  * **User Object:** The `system/usr/<username>` object **must exist** on the cluster.
+
+### JSON Web Token (JWT)
+
+  * **Mechanism:** Authentication is based on a JWT passed as a bearer token.
+  * **Username:** The username is derived from the `sub` token claim.
+  * **Authorization:** The RBAC grants are derived from the `grant` token claim.
+  * **User Object:** The `system/usr/<username>` object **does not need to exist** on the cluster if the tokens are issued and managed by an external OpenID Connect (OIDC) server.
+  * **Availability:** This method was **added in OpenSVC v3** agents.
+
+
+## Managing API Users
+
+### Creating Local Users (`system/usr/`)
+
+Skip this step if you plan to use only OIDC-issued tokens for a user. Local user objects define the user's cluster grants for Basic and X.509 authentication.
+
+```bash
+# Create a cluster-wide administrator user
+om system/usr/root create --kw grant=root
+
+# Create user `usr1` with
+#  `admin` rights on namespace `ns1`
+#  `guest` (read-only) rights on namespace `ns2`
+om system/usr/usr1 create --kw grant="admin:ns1 guest:ns2"
+```
+
+
+### Generating X.509 Certificates for Users
+
+This step is only necessary if you require X.509 authentication for the user.
+
+```bash
+# Generate Certificate:
+om system/usr/root certificate create
+om system/usr/usr1 certificate create
+
+# Download Keys (for client use):
+om system/usr/usr1 key decode --name certificate_chain
+om system/usr/usr1 key decode --name certificate
+om system/usr/usr1 key decode --name private_key
+```
+
+These commands will print the PEM-encoded keys to standard output.
 
 
 ## Testing the API
 
-A demonstration agent exposes the API manifest at [https://relay3.opensvc.com/public/ui/](https://relay3.opensvc.com/public/ui/)
+The API manifest (documentation) is exposed by a demonstration agent for reference.
 
-    $ TOKEN=$(sudo om daemon auth token --subject usr1 --duration 10m)
-    $ curl -o- -k -s -H "Authorization: Bearer $TOKEN" https://localhost:1215/whoami
-    {"auth":"jwt","grant":{"guest":["ns2"], "admin": ["ns1"]},"name":"usr1","namespace":"system","raw_grant":"admin:ns1 guest:ns2"}
+A practical test using a JWT:
 
-## Configure the listener
+```bash
+# Generate a Temporary Token:
+$ TOKEN=$(sudo om daemon auth token --subject usr1 --duration 10m)
 
-A cluster-level self-signed certificate authority is automatically configured upon agent installation.
+# Call the `whoami` Endpoint:
+$ curl -o- -k -s -H "Authorization: Bearer $TOKEN" https://localhost:1215/whoami
+```
 
-The listener needs a TLS certificate to allow remote connections. This certificate is also automatically generated.
+Example Output:
 
-The following steps are only necessary to resilver the CA or switch to an external PKI.
+```json
+{"auth":"jwt","grant":{"guest":["ns2"], "admin": ["ns1"]},"name":"usr1","namespace":"system","raw_grant":"admin:ns1 guest:ns2"}
+```
 
 
-### With external PKI
+## Configuring the Listener TLS Certificate
 
+The agent listener requires a TLS certificate to accept remote connections securely.
+
+Upon initial agent installation and daemon startup:
+
+* A self-signed Certificate Authority (CA) is automatically created as `system/sec/ca`.
+* A listener certificate, signed by this internal CA, is automatically created as `system/sec/cert`.
+
+The following steps are only required if you need to **re-sign the internal CA** or **switch to an external PKI**.
+
+### Option 1: Using an External PKI
+
+1.  **Define Cluster Name:**
+    ```bash
     export CLUSTERNAME=$(om cluster config get --kw cluster.name)
-
-Store the Certificate Authority certificate chain in a secret.
-
+    ```
+2.  **Store the External CA Chain:**
+    ```bash
     om system/sec/ca-external create
     om system/sec/ca-external key add --name certificate_chain --from ~/ca_crt_chain.pem
-
-Create the Certificate for the TLS listener as a secret.
-
+    ```
+3.  **Create the Listener Certificate Request:**
+    ```bash
     om system/sec/cert-$CLUSTERNAME create
     om system/sec/cert-$CLUSTERNAME certificate create
-
-Make the external CA sign this certificate and load the resulting certificate key.
-
     om system/sec/cert-$CLUSTERNAME create --kw cn=vip.$CLUSTERNAME.mycorp
     om system/sec/cert-$CLUSTERNAME key decode --name certificate_signing_request >~/$CLUSTERNAME.csr
-
-#### signing procedure ####
-
-    om system/sec/cert-clu key add --name certificate --from ~/$CLUSTERNAME_crt.pem
-    om system/sec/cert-clu key add --name certificate_chain --from ~/$CLUSTERNAME_crt_chain.pem
-
-
-Declare this Certificate Authority for the TLS listener.
-
+    ```
+4.  **Perform External Signing:** *(This is an external procedure to be done with your PKI tool using the generated `.csr` file.)*
+5.  **Load the Signed Certificate:**
+    ```bash
+    om system/sec/cert-$CLUSTERNAME key add --name certificate --from ~/$CLUSTERNAME_crt.pem
+    om system/sec/cert-$CLUSTERNAME key add --name certificate_chain --from ~/$CLUSTERNAME_crt_chain.pem
+    ```
+6.  **Declare the External CA:** This tells the listener which CA to trust for client certificates.
+    ```bash
     om cluster config update --set cluster.ca=system/sec/ca-external
-
-If available, declare the Certificate Revokation List location, so the listener can refuse revoked certificates before their expiration.
-
+    ```
+7.  **Configure Certificate Revocation List (Optional):**
+    ```bash
     om cluster config update --set cluster.crl=http://crl.mycorp
+    ```
 
-### With internal PKI
+### Option 2: Using the Internal PKI
 
-At first opensvc daemon startup,
+The initial configuration is done automatically upon agent installation and daemon startup, creating:
 
-* A autosigned CA certificate is created as system/sec/ca
-* A listener certificate is created as system/sec/cert
+  * The CA certificate at `system/sec/ca`.
+  * The listener certificate at `system/sec/cert`.
 
-### Recreate Users certificate
+1. **Import a valid certificate in `system/sec/ca`:**
+    ```bash
+    om system/sec/ca key change --name certificate --from ~/$CLUSTERNAME.pem
+    om system/sec/ca key change --name certificate_chain --from ~/$CLUSTERNAME.chain
+    om system/sec/ca key change --name private_key --from ~/$CLUSTERNAME.key
+    ```
+2. **Recreate the listener certificate:**
+    ```bash
+    om system/sec/cert certificate create
+    ```
 
-    om system/usr/root certificate create
-    om system/usr/usr1 certificate create
 
-
-    om system/usr/usr1 key decode --name certificate_chain
-    om system/usr/usr1 key decode --name certificate
-    om system/usr/usr1 key decode --name private_key
-
-
-<div class="warning">
-
-See Also:
-
-* [RBAC](agent.rbac)
-
-</div>
+> ➡️  See Also
+> * [RBAC](agent.rbac) For detailed information on Role-Based Access Control and grant management.
