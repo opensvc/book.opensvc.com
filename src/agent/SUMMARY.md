@@ -9,15 +9,26 @@
   - [Cluster API Client](agent/configure.client.md)
   - [Cluster Networks](agent/configure.cni.md)
   - [Cluster DNS](agent/configure.dns.md)
-  - [Ingress Gateway](agent/configure.igw.md)
+  - [Cluster Gateway](agent/configure.igw.md)
 - [Upgrade](agent/upgrade.md)
-- [Deploy Apps](agent/apps.deploy.md)
+
+# Apps
+
+- [Deploy](agent/apps.deploy.md)
   - [Naming](agent/apps.deploy.naming.md)
   - [Create](agent/apps.deploy.create.md)
   - [Update](agent/apps.deploy.update.md)
   - [Purge, Delete](agent/apps.deploy.delete.md)
-- [Operate Apps](agent/apps.operate.md)
-- [Design Apps](agent/apps.design.md)
+- [Operate](agent/apps.operate.md)
+  - [Assess](agent/apps.operate.status.md)
+  - [Select](agent/apps.operate.select.md)
+  - [Action](agent/apps.operate.action.md)
+- [Design](agent/apps.design.md)
+  - [Scoping](agent/apps.design.scoping.md)
+
+# Dig
+
+- [Outputs](agent/outputs.md)
 - [Internals](agent/internals.md)
   - [Installed Files](agent/internals.installed_files.md)
   - [Daemon]()
