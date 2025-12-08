@@ -490,7 +490,7 @@ root@n1:~# om demo/svc/kvm1 create --kw nodes={clusternodes} --kw orchestrate=ha
 
 Then we add storage resources to the service
 ```
-om demo/svc/kvm1 config update --set volume#data.name={name} --set volume#data.shared=true --set volume#data.size=4G --set volume#data.format=false --set pool=drbdvm
+om demo/svc/kvm1 config update --set volume#data.name={name} --set volume#data.shared=true --set volume#data.size=4G --set volume#data.format=false --set volume#data.pool=drbdvm
 ```
 
 We have the following config at the moment
