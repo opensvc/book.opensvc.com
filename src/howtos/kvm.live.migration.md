@@ -618,7 +618,7 @@ For customization purposes, the `virt_customize` command brings the following fe
 First create the file `enp1s0.yaml` to configure network at boot
 
 ```
-cat >| <<EOF
+cat >| enp1s0.yaml <<EOF
 network:
   version: 2
   renderer: networkd
@@ -715,9 +715,8 @@ demo/svc/kvm1                    up
       └ container#1    ........  up    kvm kvm1              
 ```
 
-:::warning
-As the VM provisioning was done manually, the `mix-provisioned` state appear on the `n2` instance. We have to inform `n2` OpenSVC agent that the virtual machine resource is actually provisioned.
-:::
+> ⚠️ **Warning**: As the VM provisioning was done manually, the `mix-provisioned` state appear on the `n2` instance. We have to inform `n2` OpenSVC agent that the virtual machine resource is actually provisioned.
+
 
 ```
 root@n1:~# om demo/svc/kvm1 instance provision --state-only --node n2
@@ -744,7 +743,7 @@ It is now possible to test service failover between nodes. Two methods are possi
 - VM switch with downtime
 - VM switch with kvm live migration (no downtime)
 
-### VM switch ++with downtime++
+### VM switch with downtime
 
 The switch action can be submitted with the command `om demo/svc/kvm1 switch`
 
@@ -772,7 +771,7 @@ demo/svc/kvm1  n2    up
 
 > 🛈 **Info**: This process can take several seconds or even minutes depending on kvm domain use.
 
-### VM switch ++with kvm live migration (no downtime)++
+### VM switch with kvm live migration (no downtime)
 
 The switch action can be submitted with the command `om demo/svc/kvm1 switch --live`
 
