@@ -29,7 +29,7 @@ kw:
 	done
 
 summary:
-	cat src/preamble/SUMMARY.md.in src/agent/SUMMARY.md.in src/agent.reference.keywords/SUMMARY.md.in > src/SUMMARY.md
+	cat src/preamble/SUMMARY.md.in src/agent/SUMMARY.md.in src/howtos/SUMMARY.md.in src/agent.reference.keywords/SUMMARY.md.in > src/SUMMARY.md
 
 build:
 	mdbook build
