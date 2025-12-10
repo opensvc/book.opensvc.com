@@ -410,7 +410,7 @@ resource {{.Name}} {
         hosts{{range \$node := .Nodes}} {{\$node.Name}}{{end}};
     }
     net {
-	allow-two-primaries yes;
+	    allow-two-primaries yes;
     }
 }
 EOF
@@ -442,7 +442,7 @@ resource {{.Name}} {
         hosts{{range $node := .Nodes}} {{$node.Name}}{{end}};
     }
     net {
-	allow-two-primaries yes;
+	    allow-two-primaries yes;
     }
 }
 ```
@@ -579,6 +579,10 @@ resource kvm1.demo.vol.drbd4kvm {
     
     connection-mesh {
         hosts n1 n2;
+    }
+
+    net {
+	    allow-two-primaries yes;
     }
 }
 ```
