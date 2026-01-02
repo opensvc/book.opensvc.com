@@ -390,75 +390,17 @@ root@n1:~# ssh -i /root/.ssh/opensvc n2 hostname
 
 ### Configure DRBD storage pool
 
-As this tutorial demonstrates KVM live migration, we have to inject a custom DRBD configuration to be used by the OpenSVC pool.
-
-First we create this configuration:
-
-```
-cat >| live-migration <<EOF
-resource {{.Name}} {
-    {{range \$node := .Nodes}}
-    on {{\$node.Name}} {
-        device    {{\$node.Device}};
-        disk      {{\$node.Disk}};
-        meta-disk internal;
-        address   {{\$node.Addr}};
-        node-id   {{\$node.NodeId}};
-    }
-    {{end}}
-    connection-mesh {
-        hosts{{range \$node := .Nodes}} {{\$node.Name}}{{end}};
-    }
-    net {
-	    allow-two-primaries yes;
-    }
-}
-EOF
-```
-
-To store this configuration in the OpenSVC cluster, we have to create a special configmap `system/cfg/drbd`, which is a cluster-wide replicated object, and then load the drbd config as a configmap key.
-
-```
-root@n1:~# om system/cfg/drbd create
-
-root@n1:~# om system/cfg/drbd key add --name live-migration --from live-migration
-16:19:49.969 INF system/cfg/drbd: set key live-migration          
-
-root@n1:~# om system/cfg/drbd key list
-live-migration
-
-root@n1:~# om system/cfg/drbd key decode --name live-migration
-resource {{.Name}} {
-    {{range $node := .Nodes}}
-    on {{$node.Name}} {
-        device    {{$node.Device}};
-        disk      {{$node.Disk}};
-        meta-disk internal;
-        address   {{$node.Addr}};
-        node-id   {{$node.NodeId}};
-    }
-    {{end}}
-    connection-mesh {
-        hosts{{range $node := .Nodes}} {{$node.Name}}{{end}};
-    }
-    net {
-	    allow-two-primaries yes;
-    }
-}
-```
-
-To make smooth DRBD configuration, we declare a DRBD storage pool in the cluster, and specify that the pool must use a special drbd configuration template named `live-migration`.
+To make smooth DRBD configuration, we declare a DRBD storage pool in the cluster. The pool will be backed by the LVM volume group named `data`, which was created previously.
 
 
 ```
-root@n1:~# om cluster config update --set pool#drbdvm.type=drbd --set pool#drbdvm.vg=data --set pool#drbdvm.template=live-migration
+root@n1:~# om cluster config update --set pool#drbdvm.type=drbd --set pool#drbdvm.vg=data
 committed
 
 root@n1:~# om cluster config show --section pool#drbdvm
 [pool#drbdvm]
 type = drbd
 vg = data
-template = live-migration
 ```
 
 Once done, we can query the cluster about free space in the pool
@@ -580,10 +522,6 @@ resource kvm1.demo.vol.drbd4kvm {
     connection-mesh {
         hosts n1 n2;
     }
-
-    net {
-	    allow-two-primaries yes;
-    }
 }
 ```
 
@@ -592,6 +530,7 @@ The command below displays the devices involved in the service. We can see that 
 root@n1:~# om demo/svc/kvm1 instance device list
 OBJECT         RESOURCE     DRIVER_GROUP  DRIVER_NAME  ROLE     DEVICE                            
 demo/svc/kvm1  volume#data  volume                     exposed  /dev/drbd0
+demo/svc/kvm1  volume#data  volume                     sub      /dev/data/kvm1.demo.vol.drbd4kvm
 demo/svc/kvm1  volume#data  volume                     base     /dev/data/kvm1.demo.vol.drbd4kvm
 ```
 
@@ -631,7 +570,7 @@ network:
       dhcp4: no
       dhcp6: no
       addresses: 
-        - 10.30.0.20/24
+        - 10.30.0.95/24
       routes:
         - to: 0.0.0.0/0
           via: 10.30.0.1
@@ -719,7 +658,7 @@ demo/svc/kvm1                    up
       └ container#1    ........  up    kvm kvm1              
 ```
 
-> ⚠️ **Warning**: As the VM provisioning was done manually, the `mix-provisioned` state appear on the `n2` instance. We have to inform `n2` OpenSVC agent that the virtual machine resource is actually provisioned.
+> ⚠️ **Warning**: As the VM provisioning was done manually on `n1`, the `mix-provisioned` state appear on the `n2` instance. We have to inform `n2` OpenSVC agent that the virtual machine resource is actually provisioned.
 
 
 ```
