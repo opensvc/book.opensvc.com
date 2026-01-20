@@ -118,40 +118,7 @@ Upon initial agent installation and daemon startup:
 
 The following steps are only required if you need to **re-sign the internal CA** or **switch to an external PKI**.
 
-### Option 1: Using an External PKI
-
-1.  **Define Cluster Name:**
-    ```bash
-    export CLUSTERNAME=$(om cluster config get --kw cluster.name)
-    ```
-2.  **Store the External CA Chain:**
-    ```bash
-    om system/sec/ca-external create
-    om system/sec/ca-external key add --name certificate_chain --from ~/ca_crt_chain.pem
-    ```
-3.  **Create the Listener Certificate Request:**
-    ```bash
-    om system/sec/cert-$CLUSTERNAME create
-    om system/sec/cert-$CLUSTERNAME certificate create
-    om system/sec/cert-$CLUSTERNAME create --kw cn=vip.$CLUSTERNAME.mycorp
-    om system/sec/cert-$CLUSTERNAME key decode --name certificate_signing_request >~/$CLUSTERNAME.csr
-    ```
-4.  **Perform External Signing:** *(This is an external procedure to be done with your PKI tool using the generated `.csr` file.)*
-5.  **Load the Signed Certificate:**
-    ```bash
-    om system/sec/cert-$CLUSTERNAME key add --name certificate --from ~/$CLUSTERNAME_crt.pem
-    om system/sec/cert-$CLUSTERNAME key add --name certificate_chain --from ~/$CLUSTERNAME_crt_chain.pem
-    ```
-6.  **Declare the External CA:** This tells the listener which CA to trust for client certificates.
-    ```bash
-    om cluster config update --set cluster.ca=system/sec/ca-external
-    ```
-7.  **Configure Certificate Revocation List (Optional):**
-    ```bash
-    om cluster config update --set cluster.crl=http://crl.mycorp
-    ```
-
-### Option 2: Using the Internal PKI
+### Option 1: Using the Internal PKI
 
 The initial configuration is done automatically upon agent installation and daemon startup, creating:
 
@@ -167,6 +134,41 @@ The initial configuration is done automatically upon agent installation and daem
 2. **Recreate the listener certificate:**
     ```bash
     om system/sec/cert certificate create
+    ```
+
+### Option 2: Using an External PKI
+
+1.  **Adjust the Listener Certificate Subject:**
+
+    Only the `cn` is strictly required by OpenSVC, but the signing certificate authority will surely require more.
+
+    ```bash
+    om system/sec/cert config update --set cn=vip.$CLUSTERNAME.mycorp \
+        --set alt_names="node1.$CLUSTERNAME.mycorp node2.$CLUSTERNAME.mycorp" \
+        --set c=FR \
+        --set o=MyCorp \
+        --set ou=Support \
+        --set l=Paris \
+        --set st=IDF \
+        --set email=support@mycorp
+    ```
+2.  **Create the Listener Certificate Request:**
+    ```bash
+    om system/sec/cert certificate signing-request
+    ```
+3.  **Perform External Signing:** *(This is an external procedure to be done with your PKI tool using the generated csr.)*
+4.  **Load the Signed Certificate:**
+    ```bash
+    om system/sec/cert key change --name certificate_chain --from ~/$CLUSTERNAME_crt_chain.pem
+    ```
+    The certificate is always first, then the CA certificate chain.
+5.  **Configure Certificate Revocation List (Optional):**
+    ```bash
+    om cluster config update --set cluster.crl=http://crl.mycorp
+    ```
+6. **Restart the Daemons**
+    ```bash
+    om daemon restart --node="*"
     ```
 
 
