@@ -1,6 +1,6 @@
 # Contribute
 
-OpenSVC projects, including this documentation, are hosted on Github.
+OpenSVC projects, including this documentation, are hosted on GitHub.
 
 ## Install Git
 
@@ -26,7 +26,7 @@ From https://github.com/rust-lang/mdBook/releases
 
 	(cd book.opensvc.com && OM=../opensvc/bin/om make)
 
-## Contribute Documentations
+## Contribute to the documentation
 
 	(cd book.opensvc.com && && mdbook serve --open)
 
@@ -35,7 +35,7 @@ Modify the documentation source files (.md located in the `src` directory and re
 
 # Command Line Output Coloring
 
-When producing command line output, it is expected to follow the steps below to preserve colors, so as to provide a better experience for futures readers:
+When producing command line output, it is expected to follow the steps below to preserve colors, so as to provide a better experience for future readers:
 
 ## Install ansi2html
 

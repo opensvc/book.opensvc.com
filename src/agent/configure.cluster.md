@@ -17,7 +17,7 @@ If the cluster seed node has no heartbeat setup, a `unicast` heartbeat with defa
 
 This default heartbeat requires every nodename to be resolved to an ip address reachable on 1215/tcp.
 
-If this requirements are not met, you can setup one or more custom heartbeats on the seed node before joins.
+If these requirements are not met, you can setup one or more custom heartbeats on the seed node before joins.
 
 For example, a custom heartbeat configuration would be:
 

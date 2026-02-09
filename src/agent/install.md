@@ -6,7 +6,7 @@ We feed packages in 3 different branches:
 
 * `dev` is unstable.
 
-  Every candidate Pull Request causes a new package to be spawned here for OpenSVC QA purpose.
+  Every candidate Pull Request causes a new package to be spawned here for OpenSVC QA purposes.
 
 * `uat` is for testing.
 

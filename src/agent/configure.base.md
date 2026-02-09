@@ -111,7 +111,7 @@ Or if the settings were added to node.conf
 
 ### Linux LVM2
 
-OpenSVC controls volume group activation and desactivation. Old Linux distributions activate all visible volume groups at boot, some even re-activate them upon de-activation events. These mechanisms can be disabled using the following setup. It also provides another protection against unwanted volume group activation from a secondary cluster node.
+OpenSVC controls volume group activation and deactivation. Old Linux distributions activate all visible volume groups at boot, some even re-activate them upon de-activation events. These mechanisms can be disabled using the following setup. It also provides another protection against unwanted volume group activation from a secondary cluster node.
 
 This setup tells LVM2 commands to activate only the objects tagged with the hostname. Opensvc makes sure the tags are set on start and unset on stop. Opensvc also purges all tags before adding the one it needs to activate a volume group, so opensvc can satisfy a start request on a service uncleanly shut down.
 
