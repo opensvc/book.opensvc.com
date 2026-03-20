@@ -29,6 +29,5 @@ Install the opensvc-server package, then create the user account:
 > ➡️ See Also
 > * [How to install the agent](install.md)
 > * [How to add a relay heartbeat to a cluster](internals.daemon.heartbeats.relay.md)
-> * [How to add a arbitrator to a cluster](configure.cluster.md#add-arbitrators)
-> * [How quorum works](internals.daemon.quorum.md)
+> * [How to add a arbitrator to a cluster](configure.quorum.md)
 

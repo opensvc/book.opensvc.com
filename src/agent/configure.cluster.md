@@ -46,33 +46,6 @@ This configuration will execute {{#include ../inc/cmd}}`/bin/true` on the node t
 
 Good, isolated fencing packages are freely available. For one, https://github.com/ClusterLabs/fence-agents
 
-### Add Arbitrators
-
-Arbitrators are optional. Skip to the next section if not concerned.
-
-The arbitrator configuration can be applied on any node of the cluster.
-
-```
-om cluster config update --set arbitrator#1.uri=https://www.opensvc.com
-```
-
-This configuration will make the cluster node to connect `https://relay1:1215/metrics` on quorum votes, and 1 vote is granted in case of success.
-
-Any tcp server can be used as a arbitrator. If the arbitrator server uses TLS with a self signed certificate, {{#include ../inc/kw}}`insecure=true` can override the security block.
-
-```
-om cluster config update --set arbitrator#1.insecure=false
-```
-
-A successful connect can optionally grant more than 1 vote, which is useful for clusters with more than 2 nodes. A n-nodes cluster may want n-1 extra votes to survive the situation where only one node is online.
-
-```
-om cluster config update --set arbitrator#1.weight=2
-```
-
-> ➡️ See Also
-> * [How quorum works](internals.daemon.quorum.md)
-
 ## Join a Cluster
 
 The joining node can choose to join any of the cluster node already joined.

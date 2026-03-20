@@ -11,6 +11,7 @@
   - [Cluster DNS](agent/configure.dns.md)
   - [Cluster Gateway](agent/configure.igw.md)
   - [Cluster Relay](agent/configure.relay.md)
+  - [Cluster Quorum](agent/configure.quorum.md)
 - [Upgrade](agent/upgrade.md)
 
 # Apps
