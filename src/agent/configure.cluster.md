@@ -53,16 +53,25 @@ Arbitrators are optional. Skip to the next section if not concerned.
 The arbitrator configuration can be applied on any node of the cluster.
 
 ```
-om cluster config update --set arbitrator#1.name=relay1 \
-                      --set arbitrator#1.secret=10231023102310231023102310231023
+om cluster config update --set arbitrator#1.uri=https://www.opensvc.com
 ```
 
-This configuration will ask for the agent on node {{#include ../inc/node}}`relay1` for its vote in a quorum race, if needed to get a majority.
+This configuration will make the cluster node to connect `https://relay1:1215/metrics` on quorum votes, and 1 vote is granted in case of success.
 
-The {{#include ../inc/kw}}`arbitrator#1.secret` value comes from the {{#include ../inc/kw}}`cluster.secret` value on the arbitrator `relay1`.
+Any tcp server can be used as a arbitrator. If the arbitrator server uses TLS with a self signed certificate, {{#include ../inc/kw}}`insecure=true` can override the security block.
+
+```
+om cluster config update --set arbitrator#1.insecure=false
+```
+
+A successful connect can optionally grant more than 1 vote, which is useful for clusters with more than 2 nodes. A n-nodes cluster may want n-1 extra votes to survive the situation where only one node is online.
+
+```
+om cluster config update --set arbitrator#1.weight=2
+```
 
 > ➡️ See Also
-> * [Quorum](internals.daemon.quorum.md)
+> * [How quorum works](internals.daemon.quorum.md)
 
 ## Join a Cluster
 

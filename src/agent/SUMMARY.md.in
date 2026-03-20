@@ -10,6 +10,7 @@
   - [Cluster Networks](agent/configure.cni.md)
   - [Cluster DNS](agent/configure.dns.md)
   - [Cluster Gateway](agent/configure.igw.md)
+  - [Cluster Relay](agent/configure.relay.md)
 - [Upgrade](agent/upgrade.md)
 
 # Apps
