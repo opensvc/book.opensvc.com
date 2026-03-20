@@ -20,9 +20,9 @@ Changes:
 * The v3 server relay API handlers require the cluster nodes communicate with a user account with the `heartbeat` privilege.
 * The v3 server relay API handlers store the cluster nodes datasets in per-user namespaces, so a single relay can serve multiple client populations.
 
-## Configure a v3 relay
+## Configure a v3 relay server
 
-Install the opensvc-server package, then create the user account:
+Install the opensvc-server package, then create the user account the clusters will use:
 
     om system/usr/relay create --kw grant=heartbeat
 
