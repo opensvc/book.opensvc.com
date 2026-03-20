@@ -47,11 +47,26 @@ The agent listener supports several industry-standard authentication methods to 
   * **Mechanism:** Authentication is based on a JWT passed as a bearer token.
   * **Username:** The username is derived from the `sub` token claim.
   * **Authorization:** The RBAC grants are derived from the `grant` token claim.
-  * **User Object:** The `system/usr/<username>` object **does not need to exist** on the cluster if the tokens are issued and managed by an external OpenID Connect (OIDC) server.
+  * **User Object:** The `system/usr/<username>` object **does not need to exist** on the cluster **if** the tokens are issued and managed by an external OpenID Connect (OIDC) server.
   * **Availability:** This method was **added in OpenSVC v3** agents.
 
 
 ## Managing API Users
+
+### Using a openid server
+
+The openid server will need to be configured to provide tokens with the `grant` claim.
+
+```
+[listener]
+openid_issuer = https://auth.mycorp.com/realms/clusters
+openid_client_id = om3
+```
+
+> ➡️  See Also
+> * [The cluster `listener.openid_client_id` keyword](../agent.reference.keywords/cluster/listener.html#openid_client_id)
+> * [The cluster `listener.openid_issuer` keyword](../agent.reference.keywords/cluster/listener.html#openid_issuer)
+> * [The user `grant` keyword](../agent.reference.keywords/usr/DEFAULT.html#grant) 
 
 ### Creating Local Users (`system/usr/`)
 

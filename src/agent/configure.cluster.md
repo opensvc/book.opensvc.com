@@ -81,12 +81,6 @@ sudo om cluster leave
 ```
 
 
-
 > ➡️ See Also
-> * [Listener](agent.daemon.listener.md)
-> * [Monitor](agent.daemon.monitor.md)
-> * [Scheduler](agent.daemon.scheduler.md)
-> * [Quorum](agent.daemon.quorum.md)
-> * [Heartbeats](agent.daemon.heartbeats.md)
-> * [Orchestration](agent.service.orchestration.md)
-> * [DNS](agent.dns.md)
+> * [Scheduler](internals.daemon.scheduler.md)
+> * [Heartbeats](internals.daemon.heartbeats.md)
