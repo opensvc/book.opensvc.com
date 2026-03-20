@@ -21,11 +21,15 @@ If these requirements are not met, you can setup one or more custom heartbeats o
 
 For example, a custom heartbeat configuration would be:
 
-        om cluster config update --set hb#1.type=unicast --set hb#1.port=1216
+        om cluster config update --set hb#2.type=unicast --set hb#1.port=10002
 
-The new heartbeats are visible in the top section of the monitoring command output:
+The heartbeats status is summarized in the top section of the monitoring command output:
 
         om mon
+
+And the detailled status is shown by:
+
+        om daemon hb status
 
 > ➡️ See Also
 > * [Heartbeats](internals.daemon.heartbeats.md)
