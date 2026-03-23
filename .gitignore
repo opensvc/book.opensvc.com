@@ -3,3 +3,4 @@ mdbook
 mdbook-*
 src/agent.reference.*
 SUMMARY.md
+.idea
