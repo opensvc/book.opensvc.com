@@ -20,7 +20,7 @@ The heartbeat is defined in the cluster configuration file (`cluster.conf`) with
 | **`relay`** | String | The hostname or IP address of the remote OpenSVC relay agent. |
 | **`timeout`** | Duration | The connection and I/O timeout (e.g., `15s`). |
 | **`username`** | String | The username for authentication with the relay host. |
-| **`password`** | String | The path to a `sec` object containing the authentication password key (e.g., `system/sec/relay`). |
+| **`password`** | String | A datastore key reference to a password used to authenticate with the relay API. (e.g., `from system/sec/relay key password`). |
 
 ### Example
 
@@ -30,7 +30,7 @@ type = relay
 relay = relay3.opensvc.com
 timeout = 15
 username = relay
-password = system/sec/relay
+password = from system/sec/relay key password
 ```
 
 ### Authentication Note
