@@ -26,6 +26,11 @@ Install the opensvc-server package, then create the user account the clusters wi
 
     om system/usr/relay create --kw grant=heartbeat
 
+Set a password for the user. Example with a random generated password:
+
+    om system/usr/relay key add --name=password --from /dev/urandom
+    om system/usr/relay key decode --name=password
+
 > ➡️ See Also
 > * [How to install the agent](install.md)
 > * [How to add a relay heartbeat to a cluster](internals.daemon.heartbeats.relay.md)
