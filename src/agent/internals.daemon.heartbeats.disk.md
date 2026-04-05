@@ -28,4 +28,4 @@ Limits:
 * A <n>-nodes cluster requires a `(<n>+1)*4MB` device
 * The heartbeat data (which is gziped) must not exceed 4MB (slot size). A 10 services cluster usually produces ~3k messages.
 
-If a the local nodename is not found in any slot, the thread allocates one.
+If the local nodename is not found in any slot, the thread allocates one.

@@ -1,6 +1,6 @@
 # hb.multicast
 
-The hb.multicast driver sends and receives using TCP multicast packets.
+The hb.multicast driver sends and receives using UDP multicast packets.
 
 ## Basic Configuration
 
