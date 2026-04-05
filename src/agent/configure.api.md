@@ -53,9 +53,9 @@ The agent listener supports several industry-standard authentication methods to 
 
 ## Managing API Users
 
-### Using a openid server
+### Using an OpenID server
 
-The openid server will need to be configured to provide tokens with the `grant` claim.
+The OpenID server will need to be configured to provide tokens with the `grant` claim.
 
 ```
 [listener]

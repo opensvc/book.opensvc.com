@@ -10,7 +10,7 @@ In this case the translation from volumes to disks and filesystems is delegated 
 
 Pools are defined in the node configuration. Each pool is identified by its name (the section suffix). For example, a `pool#tank` section defines a pool named `tank`.
 
-The `default` pool always exist, even if not defined in the node configuration. If not explicitely changed, the `default` pool driver is `directory`.
+The `default` pool always exist, even if not defined in the node configuration. If not explicitly changed, the `default` pool driver is `directory`.
 
 ## Volumes
 
@@ -18,7 +18,7 @@ The `default` pool always exist, even if not defined in the node configuration. 
 
 * The volume is hosted in the same namespace than its users.
 
-* If not explicitely set, the volume object name is `<consumer name>-vol-<volume resource index>`. For example, a {{#include ../inc/svc}}`svc1` service with a `volume#1` resource will create a {{#include ../inc/svc}}`svc1-vol-1` volume object.
+* If not explicitly set, the volume object name is `<consumer name>-vol-<volume resource index>`. For example, a {{#include ../inc/svc}}`svc1` service with a `volume#1` resource will create a {{#include ../inc/svc}}`svc1-vol-1` volume object.
 
 * A volume object can be referenced by multiple services in the same namespace.
 
@@ -60,7 +60,7 @@ The `default` pool always exist, even if not defined in the node configuration. 
 
 A volume resource requires a size and capabilities from the pool, via its {{#include ../inc/kw}}`size`, {{#include ../inc/kw}}`access`, {{#include ../inc/kw}}`shared` and {{#include ../inc/kw}}`format` keywords.
 
-If `{{#include ../inc/kw}}pool` is not set explicitely to a pool name, the pool selector will return the available pool matching those criteria with the most free space.
+If `{{#include ../inc/kw}}pool` is not set explicitly to a pool name, the pool selector will return the available pool matching those criteria with the most free space.
 
 ## Pool Drivers
 

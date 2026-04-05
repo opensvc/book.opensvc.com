@@ -152,7 +152,7 @@ If your network enforces filtering, ensure the following flows are allowed:
 
 * `n1 <=> 22/tcp <=> n2` ssh communication between nodes
 * `n1 <=> 1215/tcp <=> n2` api communication between nodes
-* `n1 <=> 10000/tcp <=> n2` unicast hearbeat communication between nodes
+* `n1 <=> 10000/tcp <=> n2` unicast heartbeat communication between nodes
 * `n1 <=> 7289/tcp <=> n2` DRBD communication between nodes for first DRBD resource
 * `n1, n2 <=> icmp <=> 10.30.0.0/24` OpenSVC has security checks, one of them uses icmp ping
 
@@ -347,7 +347,7 @@ Objects ~ *     n1           n2
 
 > 🛈 **Info**: We can see that a unicast heartbeat `hb rx` and `hb tx` has been autoconfigured. By default, it exchanges information on TCP port 10000.
 
-Hearbeats details can be seen using `om daemon hb status` command.
+Heartbeats details can be seen using `om daemon hb status` command.
 
 
 ```

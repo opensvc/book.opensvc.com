@@ -28,7 +28,7 @@ From https://github.com/rust-lang/mdBook/releases
 
 ## Contribute to the documentation
 
-	(cd book.opensvc.com && && mdbook serve --open)
+	(cd book.opensvc.com && mdbook serve --open)
 
 Modify the documentation source files (.md located in the `src` directory and referenced in src/SUMMARY.md)
 
