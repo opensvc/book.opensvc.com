@@ -98,7 +98,7 @@ om daemon dns dump
 #### Test the unix socket served by opensvc for the PowerDNS server
 
 ```
-curl -H "Content-Type: application/json" --unix-socket /var/lib/opensvc/lsnr/http.sock http://localhost/api/node/name/localhost/daemon/dns/dump
+echo '{"method": "list", "parameters": {"zonename": "cluster1."}}' | sudo socat - unix://var/lib/opensvc/dns/pdns.sock | jq
 ```
 
 ### Verify the DNS server

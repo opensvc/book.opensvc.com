@@ -4,10 +4,6 @@ A reference is a marker in the value of a configuration keyword, replaced during
 
 A reference is formatted as `{<expression>}`.
 
-A reference can contain arithmetic evaluations.
-
-An arithmetic evaluation can contain references.
-
 References can be used to:
 
 * Abstract changing parts of a configuration, so this configuration can be used as a template
