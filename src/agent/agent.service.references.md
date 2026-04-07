@@ -93,10 +93,8 @@ pvs = {env.devs}
 devs = /dev/vdb
 ```
 
-These values can be overridden when creating a new object from this configuration file or template,
+These values can be overridden when creating a new object from this configuration file or template.
 
-* Interactively
-  `om <path> create --config <template> --interactive`
-
-* In the commandline
-  `om <path> create --config <template> --env devs=/dev/vdc`
+```
+om <path> create --config <template> --env devs=/dev/vdc
+```
