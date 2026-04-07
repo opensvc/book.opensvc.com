@@ -102,7 +102,7 @@ This output uses the golang template syntax, with the following extra functions:
 | `hasSuffix "foo" "o"`     | `true`        |
 | `contains [a b] a`        | `true`        |
 | `reMatch "f.*" "foo"`     | `true`        |
-| `fnMatch "f*"` "foo"`     | `true`        |
+| `fnMatch "f*" "foo"`      | `true`        |
 
 Example:
 ```

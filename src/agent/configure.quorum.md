@@ -28,14 +28,14 @@ Frozen nodes still vote for peer nodes quorum evaluation.
 
 ### Example Arbitrator Requirements
 
-To survive a interconnect outage:
+To survive an interconnect outage:
 
 - In a 2-node cluster, a single node requires 1 arbitrator vote to survive the split.
 - In a 3-node cluster, a single node requires 2 arbitrator votes.
 - In a 4-node cluster, a single node requires 3 arbitrator votes.
 - In a 5-node cluster, a single node requires 3 arbitrator votes.
 
-To survive a interconnect outage, plus all peers outage in the same availability zone:
+To survive an interconnect outage, plus all peers outage in the same availability zone:
 
 - In a 2-node cluster, a single node requires 1 arbitrator vote to survive the split.
 - In a 3-node cluster, a single node requires 2 arbitrator votes.

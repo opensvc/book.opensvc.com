@@ -65,7 +65,7 @@ Execute one of the following variable settings in a shell, and the code block co
     DISTRIB=${ID}${VERSION_ID%.*}
 
     #
-    # Add the opensvc repository to apt sources
+    # Add the opensvc repository to yum sources
     # -----------------------------------------
     cat << EOF >/etc/yum.repos.d/opensvc.repo
     [opensvc]
@@ -95,7 +95,7 @@ Execute one of the following variable settings in a shell, and the code block co
     DISTRIB=${ID}${VERSION_ID%.*}
 
     #
-    # Add the opensvc repository to apt sources
+    # Add the opensvc repository to yum sources
     # -----------------------------------------
     cat << EOF >/etc/yum.repos.d/opensvc.repo
     [opensvc]
@@ -126,7 +126,7 @@ Execute one of the following variable settings in a shell, and the code block co
     DISTRIB=${ID}${VERSION_ID%.*}
 
     #
-    # Add the opensvc repository to apt sources
+    # Add the opensvc repository to zypper sources
     # -----------------------------------------
     cat << EOF >/etc/zypp/repos.d/opensvc.repo
     [opensvc]

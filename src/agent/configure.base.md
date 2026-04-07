@@ -89,7 +89,7 @@ The collector requires the nodes to provide an authentication token (shared secr
 
 If ``--app`` is not specified the collector automatically chooses one the user is responsible of.
 
-A successful register is followed by a node discovery, so the collector has detailled information about the node and can serve contextualized compliance rulesets up front. The discovery is also scheduled daily, and can be manually replayed with:
+A successful register is followed by a node discovery, so the collector has detailed information about the node and can serve contextualized compliance rulesets up front. The discovery is also scheduled daily, and can be manually replayed with:
 
 	om node push asset
 	om node push pkg

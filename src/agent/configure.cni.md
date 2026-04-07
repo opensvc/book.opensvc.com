@@ -95,7 +95,7 @@ $ om cluster config update --set network#backend1.addr@node1=1.2.3.4 \
                            --set network#backend1.addr@node3=1.2.4.4
 ```
 
-Some hosting providers, like OVH, don't support static network routes from node to node, even if they have an ip address in a common subnet. For this situation, you can force OpenSVC to always use tunnels for this backend network::
+Some hosting providers, like OVH, don't support static network routes from node to node, even if they have an ip address in a common subnet. For this situation, you can force OpenSVC to always use tunnels for this backend network:
 
 ```
 $ om cluster config update --set network#backend1.tunnel=always
