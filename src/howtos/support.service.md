@@ -65,12 +65,41 @@ To ease resolution, you will be asked to provide **information**, configuration,
 * `/etc/opensvc/cluster.conf`
 
 ### Logs
-* Node agent log: `/var/log/opensvc/node.log`
-* Scheduler agent log: `/var/log/opensvc/scheduler.log`
-* **Object logs:**
-    * `/var/log/opensvc/<service>.log`
-    * **OR**
-    * `/var/log/opensvc/namespaces/<namespace>/<kind>/<service>.log`
+All logs are centralized by systemd-journald. By default, the journal is often configured to be **volatile** (stored in memory and lost after reboot).
+
+To ensure that logs are preserved after a reboot, you can configure journald to use **persistent** storage by creating the direct
+
+```bash
+mkdir -p /var/log/journal
+systemd-tmpfiles --create --prefix /var/log/journal # set permissions on the directory
+systemctl restart systemd-journald
+```
+
+To query logs, you can use the `journalctl` command. You can filter logs by metadata. Below are some key metadata fields to consider:
+
+| Keyword            | Description                                                                      |
+|:-------------------|:---------------------------------------------------------------------------------|
+| `_COMM`            | The process short name (e.g. `om`)                                               |
+| `PKG`              | The daemon subsystem used (e.g `imon`, `scheduler`)                              |
+| `OBJ_PATH`         | The path of the object related to the log message (e.g. `svc1`, `test/svc/svc1`) |
+| `SID`              | The session ID related to the log message                                        |
+| `ORCHESTRATION_ID` | The orchestration ID of a service operation                                      |
+
+To filter by one of these fields, use the following syntax :
+
+```bash
+# Show logs with high-precision ISO timestamps (includes milliseconds+), in UTC
+journalctl -o short-iso-precise --utc _COMM=om
+
+# Narrow to a precise time window (millisecond precision)
+journalctl --utc --since "2026-04-08 14:12:33.250" --until "2026-04-08 14:13:10.900" _COMM=om
+
+# Combine metadata filters with precise time output
+journalctl -o short-iso-precise --utc PKG=imon OBJ_PATH=test/svc/svc1
+
+# Show logs with UNIX timestamps (seconds since epoch), in UTC
+journalctl -o short-unix --utc _COMM=om
+```
 
 All **information** can be sent through email at [support@opensvc.com](mailto:support@opensvc.com) or uploaded using our [Support File Exchange](#support-file-exchange).
 
