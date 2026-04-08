@@ -65,12 +65,29 @@ To ease resolution, you will be asked to provide **information**, configuration,
 * `/etc/opensvc/cluster.conf`
 
 ### Logs
-* Node agent log: `/var/log/opensvc/node.log`
-* Scheduler agent log: `/var/log/opensvc/scheduler.log`
-* **Object logs:**
-    * `/var/log/opensvc/<service>.log`
-    * **OR**
-    * `/var/log/opensvc/namespaces/<namespace>/<kind>/<service>.log`
+All logs are centralized by systemd-journald. By default, the journal is often configured to be **volatile** (stored in memory and lost after reboot).
+
+To ensure that logs are preserved after a reboot, you can configure journald to use **persistent** storage by creating the direct
+
+```bash
+mkdir -p /var/log/journal
+systemd-tmpfiles --create --prefix /var/log/journal # set permissions on the directory
+systemctl restart systemd-journald
+```
+
+To collect logs, you can use the `journalctl` command. You can filter logs by metadata, below are some key metadata fields to consider:
+
+| Keyword    | Description                                                                      |
+|:-----------|:---------------------------------------------------------------------------------|
+| `_COMM`    | The process short name (e.g. `om`)                                               |
+| `PKG`      | The daemon subsystem used (e.g `imon`, `scheduler`)                              |
+| `OBJ_PATH` | The path of the object related to the log message (e.g. `svc1`, `test/svc/svc1`) |
+
+To filter by one of these fields, use the following syntax :
+
+```bash
+journalctl _COMM=om
+```
 
 All **information** can be sent through email at [support@opensvc.com](mailto:support@opensvc.com) or uploaded using our [Support File Exchange](#support-file-exchange).
 
