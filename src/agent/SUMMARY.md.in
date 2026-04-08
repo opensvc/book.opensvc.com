@@ -26,7 +26,8 @@
   - [Select](agent/apps.operate.select.md)
   - [Action](agent/apps.operate.action.md)
 - [Design](agent/apps.design.md)
-  - [References](agent/agent.service.references.md)
+  - [Namespaces](agent/apps.design.namespaces.md)
+  - [References](agent/apps.design.references.md)
   - [Scoping](agent/apps.design.scoping.md)
 
 # Dig
