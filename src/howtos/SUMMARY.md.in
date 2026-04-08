@@ -1,5 +1,7 @@
 # HOWTOs
 
 - [KVM Live Migration](howtos/kvm.live.migration.md)
-- [Support Service Procedures](howtos/support.service.md)
+- [Get Support](howtos/support.md)
+  - [Support Channels](howtos/support.channels.md)
+  - [Support Data](howtos/support.data.md)
 
