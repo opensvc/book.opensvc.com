@@ -2,7 +2,13 @@
 
 ## Set the Node Environment
 
+Set a default environment for all cluster nodes:
+
 	sudo om cluster config update --set node.env=PRD
+
+Optionally set an override in the node configuration:
+
+	sudo om node config update --set node.env=DEV
 
 The {{#include ../inc/kw}}`node.env` setting is used to enforce the following policies:
 
@@ -26,7 +32,6 @@ PRA      | not PRD    | Disaster recovery
 PRJ      | not PRD    | Project
 STG      | not PRD    | Staging
 
-The setting is stored in `/etc/opensvc/cluster.conf`.
 
 ## Set Node Jobs Schedules
 
