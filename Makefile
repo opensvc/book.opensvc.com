@@ -23,7 +23,7 @@ kw:
 		cd $${sd}/$${kind}
 		sudo ${OM} $${kind} config doc | csplit -q -z - "/^# /" {*}
 		for f in $$(echo xx*); do
-	       		title=$$(head -n1 $$f|cut -c3-)
+			title=$$(head -n1 $$f|cut -d'`' -f2)
 			mv $${f} $${title}.md
 			echo "  - [$${title}](agent.reference.keywords/$${kind}/$${title}.md)" >>../$${summary}
 			echo "- [$${title}]($${title}.md)" >>../$${kind}/SUMMARY.md
