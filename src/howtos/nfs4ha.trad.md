@@ -61,6 +61,7 @@ So they can be managed by OpenSVC.
 
 ```bash
 systemctl mask --now rpc-statd.service \
+                     rpc-gssd.service \
                      rpcbind.service \
                      rpcbind.socket \
                      nfs-server.service \
@@ -71,14 +72,13 @@ systemctl mask --now rpc-statd.service \
 
 ## Deploy the Service
 
-### Deploy with NFS4 Disabled
-
 Deploy the OpenSVC service named `nfsv4` in the `test` namespace, storing configurations and data in the `/dev/mapper/36001405102633e566cd41bebac415158` SAN disk formatted with an ext4 filesystem, reachable with the public DNS name `nfsv4.opensvc.com` configured on the network interface `eth0`.
 
 **On node1:**
 
 ```bash
 om test/svc/nfsv4 deploy \
+  --config https://raw.githubusercontent.com/opensvc/opensvc_templates/main/nfs/nfsv4.conf \
   --env dev=/dev/mapper/36001405102633e566cd41bebac415158 \
   --env nfshost=5.196.34.141 \
   --env nic=eth0
@@ -103,6 +103,9 @@ test/svc/nfsv4               up
       ├ app#3      ...../..  up    forking nfsd
       └ app#4      ...../..  up    simple rpc.mountd
 ```
+
+
+## Test
 
 ### Connect Clients
 
