@@ -112,7 +112,7 @@ A practical test using a JWT:
 $ TOKEN=$(sudo om daemon auth token --subject usr1 --duration 10m)
 
 # Call the `whoami` Endpoint:
-$ curl -o- -k -s -H "Authorization: Bearer $TOKEN" https://localhost:1215/whoami
+$ curl -o- -k -s -H "Authorization: Bearer $TOKEN" https://localhost:1215/api/auth/whoami
 ```
 
 Example Output:
