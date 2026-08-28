@@ -23,6 +23,7 @@
   - [Purge, Delete](agent/apps.deploy.delete.md)
 - [Operate](agent/apps.operate.md)
   - [Assess](agent/apps.operate.status.md)
+  - [Resource Info](agent/apps.operate.info.md)
   - [Select](agent/apps.operate.select.md)
   - [Action](agent/apps.operate.action.md)
 - [Design](agent/apps.design.md)
