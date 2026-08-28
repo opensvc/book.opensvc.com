@@ -40,10 +40,10 @@ Markers are used to optimize information density.
 
 #### Machine Readable
 
-Use the `--format` option for structured data output.
+Use the `--output` option for structured data output.
 
 ```bash
-om daemon status --format json
+om cluster status --output json
 ```
 
 #### Watch

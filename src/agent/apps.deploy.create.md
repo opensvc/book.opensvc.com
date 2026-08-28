@@ -33,7 +33,7 @@ Resources and default keywords can be set right from the create command, using `
 
 ## From Manifest
 
-The manifest must be ini formatted, structured like ``om <path> print config --format=json``.
+The manifest must be ini formatted, like the output of ``om <path> config show``.
 
 	om <path> create --config=<manifest uri>
 
@@ -45,7 +45,4 @@ or
 
 	om <src path> config show | om <dst path> create --config=-
 
-
-> ➡️ See Also
-> * [Provisioning](agent-service-provisioning)
 

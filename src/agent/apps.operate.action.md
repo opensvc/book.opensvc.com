@@ -76,7 +76,7 @@ om <path> giveback [--wait] [--time <duration expr>] [--watch]
 
 #### Handling Failures
 
-If an action fails, the orchestrator is blocked, and the failure is reported in `om mon` and `om <path> print status`.
+If an action fails, the orchestrator is blocked, and the failure is reported in `om mon` and `om <path> instance status`.
 
   * **Clear Failure:** Allows the daemon to **retry** the execution plan.
     ```

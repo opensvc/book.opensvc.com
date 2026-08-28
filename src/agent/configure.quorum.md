@@ -81,6 +81,6 @@ The `om mon` output show all arbitrator alive state from the point of view of ev
 * Disable quorum or freeze all nodes when doing a relayout of the cluster
 
 > ➡️ See Also
-> * [Example 1: Odd-nodes cluster](agent/internals.daemon.quorum.example1.md)
-> * [Example 2: Even-nodes cluster](agent/internals.daemon.quorum.example2.md)
+> * [Example 1: Odd-nodes cluster](internals.daemon.quorum.example1.md)
+> * [Example 2: Even-nodes cluster](internals.daemon.quorum.example2.md)
 
