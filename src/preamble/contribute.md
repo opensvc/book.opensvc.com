@@ -35,17 +35,17 @@ From https://github.com/rust-lang/mdBook/releases
 Modify the documentation source files (.md located in the `src` directory and referenced in src/SUMMARY.md)
 
 
-# Command Line Output Coloring
+## Command Line Output Coloring
 
 When producing command line output, it is expected to follow the steps below to preserve colors, so as to provide a better experience for future readers:
 
-## Install aha
+### Install aha
 
 The Ansi HTML Adapter, from
 [https://github.com/theZiz/aha](https://github.com/theZiz/aha), turns the
 escape sequences the agent emits into html.
 
-## generate raw html code from cli:
+### generate raw html code from cli:
 
 	$ om <path> instance device list --color=yes | aha -n
 

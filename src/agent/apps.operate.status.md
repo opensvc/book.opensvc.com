@@ -1,10 +1,10 @@
-## Services Status
+# Services Status
 
-### Cluster Overview (`om mon`)
+## Cluster Overview (`om mon`)
 
 The `om mon` command provides a real-time, human-readable overview of the cluster and service states.
 
-#### Human Readable
+### Human Readable
 
 ```bash
 om monitor
@@ -15,7 +15,7 @@ om monitor
 >   * The agent daemon must be **up and running**.
 >   * The displayed information is **near synchronous**.
 
-#### Status and Alert Markers
+### Status and Alert Markers
 
 Markers are used to optimize information density.
 
@@ -38,7 +38,7 @@ Markers are used to optimize information density.
 | **`*`** | Frozen instance | | Frozen node |
 | **`P`** | Not fully provisioned instance | | |
 
-#### Machine Readable
+### Machine Readable
 
 Use the `--output` option for structured data output.
 
@@ -46,7 +46,7 @@ Use the `--output` option for structured data output.
 om cluster status --output json
 ```
 
-#### Watch
+### Watch
 
 Continuously refresh the status display.
 

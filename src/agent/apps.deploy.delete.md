@@ -1,4 +1,6 @@
-# Purge
+# Purge, Delete
+
+## Purge
 
 	om <path> purge
 
@@ -8,7 +10,7 @@ Purging a service does not purge its referenced volumes.
 
 Purging a volume actually removes all volume data.
 
-# Delete
+## Delete
 
 	om <path> delete
 

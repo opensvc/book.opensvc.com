@@ -1,4 +1,4 @@
-## Resource Info
+# Resource Info
 
 Each resource of an instance publishes a set of key-values describing what it
 is made of: the device a disk resource activates, the mount point a fs
@@ -11,7 +11,7 @@ right now", changes constantly, and is evaluated every 10 minutes by default.
 Resource info answers "what is it made of", changes rarely, and is refreshed
 hourly. Keeping the two apart lets each have the schedule it deserves.
 
-### Read
+## Read
 
 ```bash
 om myapp instance info
@@ -39,7 +39,7 @@ om myapp disk info 1        # only disk#1
 om myapp resource info      # same as instance info
 ```
 
-### Refresh
+## Refresh
 
 ```bash
 om myapp instance info --refresh
@@ -59,7 +59,7 @@ Refreshing a subset merges into the cache rather than replacing it, so
 alone. A full refresh rewrites everything, and drops the resources the
 configuration no longer declares.
 
-### Centralization
+## Centralization
 
 The refresh does not talk to the collector. It only writes the local cache and
 signals the cluster.
@@ -78,7 +78,7 @@ The practical consequences:
   retried later, not lost.
 * Nothing is reported for an instance that never refreshed successfully.
 
-### Plug your own key-values
+## Plug your own key-values
 
 An `app` resource can feed arbitrary key-values into this subsystem with the
 `info` keyword, which makes the inventory extensible with data the agent has

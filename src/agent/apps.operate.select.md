@@ -1,11 +1,11 @@
-## Select Objects
+# Select Objects
 
 Commands use the `om <selector> <action>` syntax to operate on a selection of objects.
 The `om <selector> ls` command can test a selector before submitting a dangerous action.
 
 > Note the selector expression may need to be **quoted** for the shell not to interpret the `!` and `*` characters.
 
-### All Objects
+## All Objects
 
 List all cluster objects (services, volumes, etc.).
 
@@ -13,7 +13,7 @@ List all cluster objects (services, volumes, etc.).
 om '**' ls
 ```
 
-### All Services
+## All Services
 
 List all service objects.
 
@@ -22,7 +22,7 @@ om '*' ls
 om '*/svc/*' ls
 ```
 
-### Single Object
+## Single Object
 
 List a specific object.
 
@@ -31,7 +31,7 @@ om <path> ls
 om ns1/svc/web1 ls
 ```
 
-### List of objects
+## List of objects
 
 With a `/tmp/svc.list` containing:
 ```bash
@@ -69,7 +69,7 @@ om svc ls -o 'template={{ range . }}{{ if ne .data.frozen "frozen" }}{{println .
 
 
 
-### Unions
+## Unions
 
 List multiple specific objects.
 
@@ -78,7 +78,7 @@ om <path1>,<path2> ls
 om ns1/svc/web1,ns1/vol/web1 ls
 ```
 
-### Intersections
+## Intersections
 
 List objects matching multiple criteria.
 
@@ -90,7 +90,7 @@ is equivallent to
 om ns1/svc/web1 ls
 ```
 
-### Mixing Unions and Intersections
+## Mixing Unions and Intersections
 
 The unioned expressions are evaluated from comma to comma, intersections are evaluated in the context of the current union.
 
@@ -109,7 +109,7 @@ ns1/svc/web1
 ns2/svc/web1
 ```
 
-### Negation
+## Negation
 
 The negation marker is `!`. This symbol needs quoting for the shell not to interpret it.
 
@@ -119,7 +119,7 @@ Example:
 om 'ns1/**+!**/web1' ls
 ```
 
-### Services by State
+## Services by State
 
 Filter services based on their overall status.
 
@@ -132,7 +132,7 @@ Filter services based on their overall status.
     om '*' ls --status up,warn
     ```
 
-### Service Selector Expressions
+## Service Selector Expressions
 
 Use powerful expressions to filter objects based on configuration parameters.
 
@@ -162,7 +162,7 @@ Where $\text{<expr>}$ is a pattern or condition: $\text{<path glob pattern>}$ or
 
 > **Note:** Matching is **case-sensitive**, except for boolean values.
 
-#### Examples
+### Examples
 
 1.  Services with name ending with `dns` OR starting with `ha`, **AND** which have an `app` resource with a `timeout` greater than 1:
     ```bash
