@@ -27,6 +27,9 @@ Pick `failover` for something only one node may own at a time, like a database
 writing to a shared disk. Pick `flex` for something that scales by running more
 copies, like a stateless web front end.
 
+Configuration and secrets are objects too, installed into a service's storage
+before it starts. See [Configs and Secrets](apps.design.datastores.md).
+
 When the split is decided, each object must be named.
 
 Each object configuration can be designed on a development cluster or namespace. These configurations can be tracked alongside the application code base.

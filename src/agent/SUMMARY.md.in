@@ -32,6 +32,7 @@
   - [Action](agent/apps.operate.action.md)
 - [Design](agent/apps.design.md)
   - [Namespaces](agent/apps.design.namespaces.md)
+  - [Configs and Secrets](agent/apps.design.datastores.md)
   - [References](agent/apps.design.references.md)
   - [Scoping](agent/apps.design.scoping.md)
 
