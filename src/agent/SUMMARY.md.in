@@ -8,6 +8,7 @@
   - [Cluster Storage](agent/configure.pool.md)
     - [Pool Drivers](agent/configure.pool.drivers.md)
   - [Cluster API](agent/configure.api.md)
+  - [Access Control](agent/configure.rbac.md)
   - [Cluster API Client](agent/configure.client.md)
   - [Cluster Networks](agent/configure.cni.md)
   - [Cluster DNS](agent/configure.dns.md)
