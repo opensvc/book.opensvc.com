@@ -60,6 +60,9 @@ om svc2 create --config=svc1 --namespace=test
 
 This creates `test/svc/svc2` from the configuration of `svc1`.
 
+A configuration that refers to other objects survives the clone only if those
+references are relative. See [Relative object paths](#relative-object-paths).
+
 ## References
 
 A `{namespace}` reference is available in service configuration.
@@ -91,10 +94,35 @@ $ unset OSVC_NAMESPACE
 $ om svc1 create
 ```
 
+## Relative object paths
+
+An object referring to another one can name it with a path relative to its own
+namespace, by replacing the namespace with a `.`:
+
+```ini
+[DEFAULT]
+parents = ./svc/db
+
+[fs#1]
+install = /etc/app.conf from ./cfg/app key app.conf
+```
+
+`./svc/db` reads as "the `db` service, in whatever namespace I am in". For
+`test/svc/app` it resolves to `test/svc/db`, and for `prod/svc/app` to
+`prod/svc/db`, with no change to the configuration.
+
+That is the point of the notation: a set of objects designed together can be
+cloned from a development namespace to a production one, and keeps referring to
+its own members rather than reaching back into the namespace it came from. A
+fully qualified `test/svc/db` would follow the clone and still point at `test`.
+
+Node configuration is not namespaced, so the same notation in `node.conf`
+resolves in the `system` namespace: `./sec/relays` is `system/sec/relays`.
+
 ## Relations
 
 Children and parents relations use object paths or object names.
 
-- If a name is declared in the parents, slaves, or children lists, the related objects are searched in the same namespace.
+- If a name is declared in the parents, slaves, or children lists, the related objects are searched in the same namespace. `svc2` and `./svc/svc2` are the same relation, the second stating it explicitly.
 - A relation to an object in another namespace must be declared using its path instead of its name.
 - Relations to objects in the root pseudo namespace must be defined as `root/<kind>/<name>` to avoid ambiguity.
