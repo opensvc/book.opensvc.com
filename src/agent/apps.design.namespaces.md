@@ -12,36 +12,53 @@ This feature is available since version 1.9-2748.
 
 ## Operations with namespaces
 
-Users have 3 methods to select a namespace to operate into.
+### The object path
 
-### Selector expressions
+The namespace is part of the path, so naming the object names its namespace.
+This is the way to create an object in a namespace, and it works for every
+command:
+
 ```sh
 om test/svc/svc1 create
-```
-
-### Namespace command line option
-```sh
-om svc1 --namespace=test create
+om test/svc/svc1 start
+om 'test/**' ls
 ```
 
 ### OSVC_NAMESPACE environment variable
-```sh
-OSVC_NAMESPACE=test om svc1 create
-```
 
-With `OSVC_NAMESPACE` exported, all actions are applied in the context of the `test` namespace.
+`OSVC_NAMESPACE` narrows which objects a command sees, so a selector that would
+match the whole cluster is confined to one namespace:
+
 ```sh
 $ export OSVC_NAMESPACE=test
-$ om '*' ls
-svc1
-svc2
+$ om '**' ls
+test/svc/svc1
+test/svc/svc2
 ```
+
 ```sh
 $ unset OSVC_NAMESPACE
-$ om 'test/*' ls
-test/svc1
-test/svc2
+$ om '**' ls
+svc0
+test/svc/svc1
+test/svc/svc2
 ```
+
+It selects among the objects that exist. It does not decide where a new one is
+created: with `OSVC_NAMESPACE=test` exported, `om svc1 create` still creates
+`svc1` in the root namespace, because the path it was given says root. Name the
+namespace in the path instead.
+
+### Cloning into a namespace
+
+When creating an object from another one, `--namespace` overrides the
+destination namespace, which saves rewriting the path:
+
+```sh
+om svc2 create --config=svc1 --namespace=test
+```
+
+This creates `test/svc/svc2` from the configuration of `svc1`.
 
 ## References
 
@@ -65,7 +82,6 @@ The `{namespace}` reference evaluates to `root`.
 ### Select objects in the root namespace
 ```sh
 $ om 'root/**' ls
-$ om '**' ls --namespace=root
 $ OSVC_NAMESPACE=root om '**' ls
 ```
 
