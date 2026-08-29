@@ -25,7 +25,7 @@ A node metadata slot size is 4k, and contains the cluster node name.
 Limits:
 * 1000 nodes (metadata zone size/slot meta data size)
 * nodenames are limited to 4k characters (slot meta data size)
-* A <n>-nodes cluster requires a `(<n>+1)*4MB` device
+* A `<n>`-nodes cluster requires a `(<n>+1)*4MB` device
 * The heartbeat data (which is gziped) must not exceed 4MB (slot size). A 10 services cluster usually produces ~3k messages.
 
 If the local nodename is not found in any slot, the thread allocates one.

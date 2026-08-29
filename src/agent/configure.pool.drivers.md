@@ -67,7 +67,7 @@ A volume object from this type of pool contains:
 
 If the consumer has {{#include ../inc/kw}}`format=true` (default), the volume object also contains:
 
-* a fs.<pool fs_type> resource, with {{#include ../inc/kw}}`mnt=/srv/<volume fqdn>`
+* a `fs.<pool fs_type>` resource, with {{#include ../inc/kw}}`mnt=/srv/<volume fqdn>`
 
 ### Keywords
 
@@ -87,7 +87,7 @@ A volume object from this type of pool contains:
 
 If the consumer has {{#include ../inc/kw}}`format=true` (default), the volume object also contains:
 
-* a fs.<pool fs_type> resource, with {{#include ../inc/kw}}`mnt=/srv/<volume fqdn>`
+* a `fs.<pool fs_type>` resource, with {{#include ../inc/kw}}`mnt=/srv/<volume fqdn>`
 
 ### Keywords
 
@@ -127,7 +127,7 @@ A volume object from this type of pool contains:
 
 If the consumer has {{#include ../inc/kw}}`format=true` (default), the volume object also contains:
 
-* a fs.<pool fs_type> resource, with {{#include ../inc/kw}}`mnt=/srv/<volume fqdn>`
+* a `fs.<pool fs_type>` resource, with {{#include ../inc/kw}}`mnt=/srv/<volume fqdn>`
 
 ### Keywords
 

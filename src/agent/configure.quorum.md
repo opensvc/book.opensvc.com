@@ -75,7 +75,7 @@ The `om mon` output show all arbitrator alive state from the point of view of ev
 
 ## Best Practices
 
-* Configure <number of nodes> minus 1 arbitrators
+* Configure `<number of nodes>` minus 1 arbitrators
 * Host all arbitrators on the same 3rd site
 * Use one of the arbitrators as a relay for the relay heartbeat driver
 * Disable quorum or freeze all nodes when doing a relayout of the cluster

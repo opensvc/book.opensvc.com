@@ -67,7 +67,7 @@ These references can be used inside a configuration section, and their evaluated
 | `{initd}`                   | The object init directory path. ex: `/etc/opensvc/etc/<name>.d`                                                                                                                         | Yes                     | Yes                        |
 | `{private_var}`             | The object private directory under `{var}`                                                                                                                                              | Yes                     | Yes                        |
 | `{<rid>.exposed_devs}`      | The whitespace-separated list of devpaths exposed by `<rid>`                                                                                                                            | No                      | Yes                        |
-| `{<rid>.exposed_devs[<n>]}` | The <n>-th element of the list of devpaths exposed by `<rid>`                                                                                                                           | No                      | Yes                        |
+| `{<rid>.exposed_devs[<n>]}` | The `<n>`-th element of the list of devpaths exposed by `<rid>`                                                                                                                           | No                      | Yes                        |
 | `{<rid>.exposed_devs[#]}`   | The length of the list of devpaths exposed by `<rid>`                                                                                                                                   | No                      | Yes                        |
 
 Deprecated references:

@@ -140,25 +140,26 @@ Use powerful expressions to filter objects based on configuration parameters.
 om <expr> ls
 ```
 
-Where $\text{<expr>}$ is a pattern or condition: $\text{<path glob pattern>}$ or $\text{[!]\text{<param>}\text{<op>}\text{<value>}}$.
+Where `<expr>` is a pattern or condition, either a `<path glob pattern>` or
+`[!]<param><op><value>`.
 
-| Parameter ($\text{<param>}$) | Description |
+| Parameter (`<param>`) | Description |
 | :--- | :--- |
-| $\text{<rid>.\text{<key>}}$ | A key within a specific resource ID in the service config. |
-| $\text{<group>.\text{<key>}}$ | A key within a driver group (e.g., `disk`, `fs`, `app`). |
-| $\text{<key>}$ | A key in the service configuration file header. |
+| `<rid>.<key>` | A key within a specific resource ID in the service config. |
+| `<group>.<key>` | A key within a driver group (e.g., `disk`, `fs`, `app`). |
+| `<key>` | A key in the service configuration file header. |
 
-| Operator ($\text{<op>}$) | Description |
+| Operator (`<op>`) | Description |
 | :--- | :--- |
-| $\text{<}, \text{>}, \text{<=}, \text{>=}, \text{=}$ | Standard comparison operators. |
-| $\text{:}$ | **Existence test** operator (value is empty). |
-| $\text{~}$ | **Regular expression** operator. |
+| `<` `>` `<=` `>=` `=` | Standard comparison operators. |
+| `:` | **Existence test** operator (value is empty). |
+| `~` | **Regular expression** operator. |
 
 | Separators / Modifiers | Description |
 | :--- | :--- |
-| $\text{!}$ | **Negation** operator. |
-| $\text{+}$ | **AND** expression separator. |
-| $\text{,}$ | **OR** expression separator. |
+| `!` | **Negation** operator. |
+| `+` | **AND** expression separator. |
+| `,` | **OR** expression separator. |
 
 > **Note:** Matching is **case-sensitive**, except for boolean values.
 
