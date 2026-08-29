@@ -13,7 +13,7 @@ bar@n2 = 2
 ```
 
 * `env` is a section
-* `bar` is a option
+* `bar` is an option
 * {{#include ../inc/kw}}`env.bar` is a keyword.
 * {{#include ../inc/kw}}`env.bar=1` is a keyword operation.
 * `1` is the {{#include ../inc/kw}}`env.bar` keyword value.

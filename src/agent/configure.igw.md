@@ -2,7 +2,7 @@
 
 Services configured to obtain an IP address from a backend network are not naturally accessible to clients outside the cluster.
 
-To expose them, the user or a cluster administrator can deploy a ingress gateway configured with a public IP address.
+To expose them, the user or a cluster administrator can deploy an ingress gateway configured with a public IP address.
 
 HAProxy is our recommended program to route layer 4 and layer 7 communications from the frontend to the backend servers.
 

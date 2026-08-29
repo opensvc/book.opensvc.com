@@ -15,12 +15,12 @@ A resource driver may implement a provisioner, and most of the drivers that
 represent something allocatable do: the `disk`, `fs`, `ip`, `volume`,
 `container`, `share` and `app` families.
 
-A provisioner often needs keywords the resource does not need merely to run,
+A provisioner often needs keywords the resource does not need in order to run,
 such as a size or a pool. Those are listed with the driver in the keyword
 reference.
 
 A provisioner may also write back into the configuration. Most ip provisioners
-set the resource `ipname` once they know the address they obtained.
+set the resource's `ipname` once they know the address they obtained.
 
 ## Provisioning an object
 
@@ -47,9 +47,9 @@ om myapp instance provision --leader
 The provisioners run in the resource start order.
 
 `--leader` matters here. Driving this by hand, you are telling the agent which
-node is provisioning the resources that only one node may provision. Without
+node provisions the resources that only one node may provision. Without
 it, the local instance is treated as a follower: its own resources are
-provisioned, and the shared ones are skipped, silently. Pass `--leader` on the
+provisioned and the shared ones are silently skipped. Pass `--leader` on the
 node that should own them, and omit it on the others.
 
 The orchestrated `om myapp provision` above works this out for you, which is
@@ -79,7 +79,7 @@ picks the placement leader, and a manual provision needs `--leader` to say so.
 Resources that already existed when the object was created are reported as not
 provisioned, which `om mon` marks with a `P`.
 
-Starting such a resource successfully marks it provisioned: if it starts, it
+Successfully starting such a resource marks it provisioned: if it starts, it
 is sane to consider it provisioned. When starting it is not possible or not
 wanted, flag it without touching the system:
 
@@ -89,7 +89,7 @@ om myapp instance provision --state-only --rid disk#1
 
 This only sets the flag. Nothing is formatted, allocated or created. The flag
 matters because unprovision skips resources that were never provisioned, so an
-unflagged resource would survive an unprovision it should not have.
+unflagged resource survives an unprovision that should have destroyed it.
 
 ## Unprovisioning
 
@@ -98,7 +98,7 @@ om myapp unprovision
 ```
 
 This destroys the resources, and it is the dangerous half of the pair. Shared
-resources are unprovisioned once, by the leader, in the reverse order.
+resources are unprovisioned once, by the leader, in reverse order.
 
 > ➡️ See Also
 > * [Create, Deploy](apps.deploy.create.md)

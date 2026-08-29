@@ -14,7 +14,7 @@ scope:
       └ opensvc-ns.<namespace>-svc.<name>.slice
         └ opensvc-ns.<namespace>-svc.<name>-app.1.slice
 
-The processes of a resource live in its own leaf, inside its object, inside its
+A resource's processes live in its own leaf, inside its object, inside its
 namespace. That nesting is what makes a limit set at any level apply to
 everything below it.
 
@@ -26,7 +26,7 @@ pg_cpus = 0
 pg_mem_limit = 256m
 ```
 
-Starting it says what it applied:
+Starting the instance logs what it applied:
 
     INF myapp: applied pg /opensvc.slice/...-svc.myapp.slice: cpus=0 mem_limit=256m
     INF myapp: app#1: run: om exec --pg /opensvc.slice/...-svc.myapp-app.1.slice -- ...
@@ -49,14 +49,14 @@ The keywords are the usual cgroup controls:
 | `pg_cpu_shares` | its share of cpu **when the node is cpu-bound**, relative to other objects |
 | `pg_cpu_quota` | its cpu time whether or not the node is busy: `50%`, `50%@all`, `10%@2` |
 | `pg_cpu_cores` | a guaranteed cpu time reservation, in ms per period |
-| `pg_mem_limit` | resident memory, in bytes. Trespassing wakes the OOM killer |
+| `pg_mem_limit` | resident memory, in bytes. Exceeding it wakes the OOM killer |
 | `pg_vmem_limit` | memory plus swap |
 | `pg_mem_oom_control` | `0` lets the OOM killer run, `1` freezes the group instead |
 | `pg_mem_swappiness` | how readily its pages are swapped |
 | `pg_blkio_weight` | its share of block io, between `10` and `1000` |
 
 `pg_cpu_shares` and `pg_cpu_quota` are the pair worth telling apart: shares only
-arbitrate a contended cpu, a quota caps the group on an idle node too.
+arbitrate a contended cpu, whereas a quota caps the group on an idle node too.
 
 ## Capping a resource
 
@@ -76,15 +76,15 @@ pg_cpu_shares = 128
 
 ## Capping a namespace
 
-A `nscfg` object holds the defaults of its namespace, the `pg_*` keywords among
+An `nscfg` object holds the defaults of its namespace, the `pg_*` keywords among
 them:
 
 ```bash
 om test/nscfg/namespace create --kw pg_mem_limit=4g
 ```
 
-Every object in `test` is then capped by that, whoever created it, which is the
-knob for handing a namespace to a team without handing them the node.
+Every object in `test` is then capped by it, no matter who created it, which is
+how a namespace is handed to a team without handing them the node.
 
 ## Turning it off
 
@@ -94,7 +94,7 @@ create_pg = false
 ```
 
 Grouping is on by default. Turning it off leaves the processes ungrouped and
-uncapped, and is worth doing only where the cgroup itself is the problem.
+uncapped, and is worth doing only where the cgroup itself causes the problem.
 
 > ➡️ See Also
 > * [Namespaces](apps.design.namespaces.md)

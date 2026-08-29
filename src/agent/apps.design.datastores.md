@@ -1,13 +1,13 @@
 # Configs and Secrets
 
-An application needs configuration files, certificates, credentials. Baking
+An application needs configuration files, certificates and credentials. Baking
 them into the image ties the image to one environment. Leaving them on the
 nodes means every node has to be prepared identically, by something that is
 not the agent.
 
 OpenSVC stores them in objects of their own, `cfg` for configuration and `sec`
 for secrets, and installs them as files into a service's storage when it
-starts. `sec` keys are encrypted with the cluster secret at rest.
+starts. `sec` keys are encrypted at rest with the cluster secret.
 
 ## Put the data in a datastore
 
@@ -76,7 +76,7 @@ install = /etc/app.conf from ./cfg/app key app.conf mode 0600 user app group app
   restarted.
 * `template` treats the key as a Go template, evaluated against the `[env]`
   section, so one key serves several objects that differ only by a value.
-* `source` seeds the key from a uri or a local file during provisioning, if it
+* `source` seeds the key from a URI or a local file during provisioning, if it
   does not exist yet.
 * `required` stops the install if that item fails, rather than continuing.
 

@@ -34,5 +34,5 @@ Set a password for the user. Example with a random generated password:
 > ➡️ See Also
 > * [How to install the agent](install.md)
 > * [How to add a relay heartbeat to a cluster](internals.daemon.heartbeats.relay.md)
-> * [How to add a arbitrator to a cluster](configure.quorum.md)
+> * [How to add an arbitrator to a cluster](configure.quorum.md)
 

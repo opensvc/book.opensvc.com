@@ -5,12 +5,12 @@ This page takes about five minutes and needs nothing but the agent
 cluster. At the end you will have created a service, started it, proven it is
 serving, and stopped it.
 
-We will wrap a plain HTTP server, because it is the shortest thing that is
-unmistakably running.
+We will wrap a plain HTTP server, because it is the shortest thing whose
+running you can prove rather than take on trust.
 
 ## Create it
 
-An object is created from the command line, resource by resource. Here a
+An object is created from the command line, resource by resource. Here is a
 single `app` resource, told how to start:
 
 ```bash
@@ -69,8 +69,8 @@ om hello instance status
           └ app#1      ...../..  up  simple
 
 The instance is `up` because its only resource is `up`. Had the resource
-failed, both lines would say so, and this is the command you will reach for
-most often.
+failed, both lines would say so. This is the command you will reach for most
+often.
 
 ## Stop it
 
@@ -111,7 +111,7 @@ The configuration is gone, and with it the object.
 ## Two ways to start
 
 You used `om hello instance start`, which starts the instance **on this node,
-now**, and prints what it does as it does it.
+now**, and prints each step as it happens.
 
 Its cluster counterpart is `om hello start`, which does not act directly. It
 asks the cluster to reach the started state, and answers with an
@@ -122,8 +122,8 @@ orchestration id:
 
 The daemon then picks a node and starts the instance there, which is what you
 want once the object runs on more than one node. Watch it happen with `om mon`.
-Note that its `om hello stop` counterpart also freezes the instance, so the
-daemon does not immediately start it again.
+Note that the matching `om hello stop` also freezes the instance, so the daemon
+does not immediately start it again.
 
 ## What you just did
 
@@ -139,4 +139,4 @@ Where to go next:
 * [Create, Deploy](apps.deploy.create.md) for the other ways to create an
   object, including from a manifest.
 * [Cluster Configuration](configure.cluster.md) to add a second node, which is
-  where failover starts being the point.
+  where failover starts to matter.

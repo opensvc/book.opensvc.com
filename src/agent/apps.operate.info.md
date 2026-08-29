@@ -7,9 +7,9 @@ per-resource inventory, refreshed on a schedule and centralized on the
 collector.
 
 This is deliberately not the resource *status*. Status answers "is it up
-right now", changes constantly, and is evaluated every 10 minutes by default.
-Resource info answers "what is it made of", changes rarely, and is refreshed
-hourly. Keeping the two apart lets each have the schedule it deserves.
+right now?", changes constantly, and is evaluated every 10 minutes by default.
+Resource info answers "what is it made of?", changes rarely, and is refreshed
+hourly. Keeping the two apart lets each have the schedule it needs.
 
 ## Read
 
@@ -23,14 +23,14 @@ om myapp instance info
     myapp   dev2n1  app#1   driver         app.simple
     myapp   dev2n1  app#1   start          /opt/myapp/bin/start
 
-This reports a cache. It does not run anything on the resources, so it is
+This reports from a cache. It does not run anything on the resources, so it is
 cheap and safe to call as often as needed.
 
 Every resource contributes a common set of keys, `driver`, `standby`,
 `optional`, `disable`, `monitor`, `shared`, `encap`, and the restart policy
 when it has one. Each driver adds its own on top.
 
-The command is also mounted on every resource group, so a group name narrows
+The command is also available on every resource group, so a group name narrows
 the report, and a trailing pattern narrows it further:
 
 ```bash
