@@ -33,6 +33,7 @@
 - [Design](agent/apps.design.md)
   - [Namespaces](agent/apps.design.namespaces.md)
   - [Configs and Secrets](agent/apps.design.datastores.md)
+  - [Resource Capping](agent/apps.design.pg.md)
   - [References](agent/apps.design.references.md)
   - [Scoping](agent/apps.design.scoping.md)
 
