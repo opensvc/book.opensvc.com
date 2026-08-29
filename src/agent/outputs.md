@@ -68,20 +68,28 @@ items:
 
 ```
 
-## Key-Value
+Add `-o jsonline` for the same json unindented on a single line, which suits
+line-oriented tooling.
+
+## Flat key-value
+
+The `flat` renderer prints the same data as `json`, one leaf per line, as the
+jsonpath of the value and the value. It is the format to reach for when
+grepping for a field, or when you want the path to pass to `-o tab=`.
 
 ```
-$ om svc resource ls -o yaml
+$ om svc resource ls -o flat
 items[0].data.config.is_disabled = false
 items[0].data.config.is_monitored = false
 items[0].data.config.is_standby = false
-items[0].data.config.restart = 0
-items[0].data.monitor.restart.last_at = "0001-01-01T00:00:00Z"
-items[0].data.monitor.restart.remaining = 0
-items[0].data.status.label = "zfssnap 1d of foo"
-items[0].data.status.provisioned.mtime = "2025-10-03T19:04:15.963080783+02:00"
-items[0].data.status.provisioned.state = "n/a"
-items[0].data.status.status = "n/a"
+items[0].data.config.restart_delay = 500000000
+items[0].data.status.label = "flag /dev/shm/opensvc/test/svc/svc1/fs#0.flag"
+items[0].data.status.provisioned.mtime = "2026-06-04T22:20:43.238087911+02:00"
+items[0].data.status.provisioned.state = "true"
+items[0].data.status.status = "down"
+items[0].data.status.type = "fs.flag"
+items[0].kind = "ResourceItem"
+items[0].meta.node = "dev2n1"
 ...
 ```
 
