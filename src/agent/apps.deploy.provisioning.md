@@ -41,10 +41,19 @@ provisioning it.
 To act on the local instance only, without involving the daemon:
 
 ```bash
-om myapp instance provision
+om myapp instance provision --leader
 ```
 
 The provisioners run in the resource start order.
+
+`--leader` matters here. Driving this by hand, you are telling the agent which
+node is provisioning the resources that only one node may provision. Without
+it, the local instance is treated as a follower: its own resources are
+provisioned, and the shared ones are skipped, silently. Pass `--leader` on the
+node that should own them, and omit it on the others.
+
+The orchestrated `om myapp provision` above works this out for you, which is
+the reason to prefer it whenever the daemon is available.
 
 ## Shared resources
 
@@ -62,12 +71,8 @@ The provisioned state of a shared resource is synchronized across the object's
 nodes. The state of a non-shared resource is node-affine, and each node
 provisions its own.
 
-The leader is the node that provisions shared resources. When driving this by
-hand, that is what `--leader` selects:
-
-```bash
-om myapp instance provision --leader
-```
+Which node provisions them is the leader question above: the orchestrator
+picks the placement leader, and a manual provision needs `--leader` to say so.
 
 ## Resources you provisioned yourself
 
