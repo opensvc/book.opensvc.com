@@ -74,6 +74,39 @@ the same session can watch a remote cluster:
 ox tui --server https://mycluster.example.com:1215
 ```
 
+### Contexts
+
+On an admin station watching several clusters, passing the server on every
+command gets old, and says nothing about who you are. A context bundles an
+endpoint, a user and an optional default namespace under a name, in
+`~/.config/opensvc/contexts`.
+
+Declare the cluster, the user, and the context tying them together:
+
+```bash
+ox context cluster add --name prod --server https://prod.example.com:1215
+ox context user add --name alice --username alice   --client-certificate ~/.opensvc/alice.crt --client-key ~/.opensvc/alice.key
+ox context add --name prod --cluster prod --user alice --namespace myapp
+```
+
+Then select it with `OSVC_CONTEXT`, and every `ox` command follows:
+
+```bash
+$ export OSVC_CONTEXT=prod
+$ ox tui
+$ ox '**' ls
+```
+
+Switching clusters is switching the variable, so two terminals can watch two
+clusters at once without either forgetting who it is.
+
+```bash
+ox context list     # the configured contexts, and whether each is authenticated
+ox context show     # the resolved endpoint, user and namespace
+ox context login    # request and cache tokens
+ox context logout   # drop them
+```
+
 > **Requirements:**
 >
 >   * `ox` is packaged in `opensvc-client`.
