@@ -25,6 +25,19 @@ stonith236  dev2n2  fs#1    down
 ...
 ```
 
+**Add a column to the default table**
+
+A `+` prefix extends the command's own columns instead of replacing them,
+which saves respelling a table just to see one more field.
+
+```
+$ om svc resource ls -o +PROV:data.status.provisioned.state
+OBJECT  NODE    RID     ...  RESTART_REMAINING  PROV
+cva1    dev2n1  sync#1  ...                     true
+cva1    dev2n1  fs#1    ...                     true
+...
+```
+
 **Single column selection, without header**
 
 ```
