@@ -22,6 +22,7 @@
 - [Deploy](agent/apps.deploy.md)
   - [Naming](agent/apps.deploy.naming.md)
   - [Create](agent/apps.deploy.create.md)
+  - [Provisioning](agent/apps.deploy.provisioning.md)
   - [Update](agent/apps.deploy.update.md)
   - [Purge, Delete](agent/apps.deploy.delete.md)
 - [Operate](agent/apps.operate.md)

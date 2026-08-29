@@ -11,6 +11,8 @@ give it to the day you remove it:
   what each kind is for.
 * [Create, Deploy](apps.deploy.create.md) — the ways to bring an object into
   existence: from scratch, from another object, or from a manifest.
+* [Provisioning](apps.deploy.provisioning.md) — creating what the
+  configuration describes: disks, filesystems, addresses, images.
 * [Update](apps.deploy.update.md) — changing a configuration safely, rather
   than editing the file behind the agent's back.
 * [Purge, Delete](apps.deploy.delete.md) — removing the configuration, with or
