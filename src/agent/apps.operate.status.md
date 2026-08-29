@@ -54,3 +54,29 @@ Continuously refresh the status display.
 om monitor --watch
 ```
 
+## Interactive (`ox tui`)
+
+`om monitor` prints and returns, or redraws with `--watch`. To move around the
+cluster instead of reading it, the `ox` client carries a terminal interface:
+
+```bash
+ox tui
+```
+
+It shows the same data, and lets you select an object or an instance and act on
+it without leaving the view, which suits watching a service move between nodes
+while you drive it.
+
+`ox` is the client command. It talks to the API rather than the local node, so
+the same session can watch a remote cluster:
+
+```bash
+ox tui --server https://mycluster.example.com:1215
+```
+
+> **Requirements:**
+>
+>   * `ox` is packaged in `opensvc-client`.
+>   * The daemon must be reachable, and your user needs at least the `guest`
+>     grant on what you want to see. See [Access Control](configure.rbac.md).
+
