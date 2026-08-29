@@ -10,10 +10,11 @@ Optionally set an override in the node configuration:
 
 	sudo om node config update --set node.env=DEV
 
-The {{#include ../inc/kw}}`node.env` setting is used to enforce the following policies:
+{{#include ../inc/kw}}`node.env` marks a node production or not, which the
+agent then enforces two ways:
 
-* Only production services are allowed to start on a production node.
-* Only production nodes are allowed push data to a production node.
+* Only production services may start on a production node.
+* Only production nodes may push data to a production node.
 
 Supported {{#include ../inc/kw}}`node.env` values:
 
