@@ -6,6 +6,7 @@
   - [Node](agent/configure.base.md)
   - [Cluster](agent/configure.cluster.md)
   - [Cluster Storage](agent/configure.pool.md)
+    - [Pool Drivers](agent/configure.pool.drivers.md)
   - [Cluster API](agent/configure.api.md)
   - [Cluster API Client](agent/configure.client.md)
   - [Cluster Networks](agent/configure.cni.md)
