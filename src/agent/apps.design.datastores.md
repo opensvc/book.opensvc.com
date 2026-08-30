@@ -62,6 +62,37 @@ Resources start in driver group order, and both of those groups start before
 for the containers and applications that follow it, and never the other way
 round.
 
+## Sharing across namespaces
+
+A datastore serves its own namespace and no other. An object elsewhere naming
+it is refused, and the whole start is rolled back:
+
+    ERR consumer: fs#1: start: unauthorized install /etc/pw from prod/sec/shared key pw
+    INF consumer: rollback
+
+The `share` keyword on the datastore names the namespaces allowed to decode its
+keys:
+
+```ini
+[DEFAULT]
+share = prod staging
+```
+
+The same install then succeeds:
+
+    INF consumer: fs#1: install key pw from prod/sec/shared to .../etc/pw with owner : perm -rw-------
+
+This is what keeps one certificate, licence or database password in one place
+instead of copied into every namespace that needs it. The copies are the
+problem: they drift, and rotating the original leaves them behind.
+
+`*` shares with every namespace. The default is the datastore's own namespace,
+so sharing is always a deliberate act.
+
+> **Note:** sharing lets another namespace *decode* the keys. Who may read the
+> datastore object at all is a separate question, answered by
+> [Access Control](configure.rbac.md).
+
 ## Beyond plain files
 
 The `install` keyword takes more than a source and a destination:
@@ -71,6 +102,8 @@ install = /etc/app.conf from ./cfg/app key app.conf mode 0600 user app group app
 ```
 
 * `mode`, `user`, `group` set the installed file's permissions and ownership.
+  Without them a `sec` key installs `0600` and a `cfg` key `0644`, so a secret
+  is not left world-readable by omission.
 * `signal` sends a signal to another resource's processes when the content
   changes, so a running daemon reloads its configuration instead of being
   restarted.
