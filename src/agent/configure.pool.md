@@ -60,7 +60,7 @@ The `default` pool always exist, even if not defined in the node configuration. 
 
 A volume resource requires a size and capabilities from the pool, via its {{#include ../inc/kw}}`size`, {{#include ../inc/kw}}`access`, {{#include ../inc/kw}}`shared` and {{#include ../inc/kw}}`format` keywords.
 
-If `{{#include ../inc/kw}}pool` is not set explicitly to a pool name, the pool selector will return the available pool matching those criteria with the most free space.
+If {{#include ../inc/kw}}`pool` is not set explicitly to a pool name, the pool selector will return the available pool matching those criteria with the most free space.
 
 ## Pool Drivers
 
