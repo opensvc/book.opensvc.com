@@ -78,6 +78,26 @@ Threads                                <span class="ansi1">n1</span>        <spa
 </code>
 </pre>                                                                                 
 
+For the per-peer detail behind those markers, including which address or device
+each heartbeat uses and when it last changed state:
+
+```bash
+om daemon hb status
+```
+
+    RUNNING  BEATING  ID        NODE    PEER    TYPE       DESC                          CHANGED_AT
+    O        O        hb#1.rx   dev2n1  dev2n2  unicast    10.29.1.11:9994 ← 10.29.1.12  2026-08-28T21:23:43
+    O        O        hb#1.tx   dev2n1  dev2n2  unicast    → 10.29.1.12:9994             2026-08-28T21:23:43
+    O        O        hb#12.rx  dev2n1  dev2n2  multicast  224.3.29.71:9996 ← *          2026-08-28T21:23:43
+    O        O        hb#4.rx   dev2n1  dev2n2  disk       ← /dev/dm-21[9]               2026-08-28T21:23:47
+
+`RUNNING` is whether the thread is alive, `BEATING` whether data is actually
+flowing. A heartbeat can run and not beat, which is what you see when the peer
+is gone or the path between them is broken.
+
+Every node's view is reported, not just the local one, so a heartbeat beating
+in one direction only is visible from either end.
+
 The agent daemon automatically restarts heartbeat threads if they exit unexpectedly.
 
 ## Heartbeat Thread Pair
@@ -107,7 +127,4 @@ Actions Performed by Rx:
   - Purge stale peer data if:
     - **No Maintenance Advertised:** Immediately purge stale peer data.
     - **Maintenance Advertised:** Wait for the `node.maintenance grace_period` before purging.
-
-> ➡️ See Also
-> * [Cluster Data](internals.cluster_data.md)
 

@@ -1,6 +1,6 @@
 # Events
 
-* The daemon runs a event bus.
+* The daemon runs an event bus.
 * The daemon subsystems can publish events and subscribe to events.
 * Some events are relayed to peer nodes via the heartbeat links.
 * Events are exposed as a SEE feed via the daemon API.

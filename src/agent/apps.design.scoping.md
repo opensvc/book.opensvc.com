@@ -1,6 +1,8 @@
 # Scoping
 
-Most keywords in a service configuration support a scoping syntax, allowing each node agent to interpret the value differently.
+One configuration is shared by every node running the object. Scoping is how a
+keyword takes a different value depending on which node reads it, so the nodes
+stay described by a single file.
 
 ## Syntax
 
@@ -12,12 +14,12 @@ A scoped keyword is written as:
 
 ### Supported Scopes
 
-- `<nodename>`: The hostname of the node where the keyword value is interpreted as `<value>`.
-- `nodes`: The keyword value is interpreted as `<value>` on all service nodes.
-- `drpnodes`: The keyword value is interpreted as `<value>` on all service DRP nodes.
-- `encapnodes`: The keyword value is interpreted as `<value>` on all service encapsulated nodes.
-- `flex_primary`: The keyword value is interpreted as `<value>` on the flex service primary node.
-- `drp_flex_primary`: The keyword value is interpreted as `<value>` on the flex service disaster recovery primary node.
+The value applies:
+
+- `<nodename>`: on that node alone.
+- `nodes`: on all the object's nodes.
+- `drpnodes`: on all its disaster recovery nodes.
+- `encapnodes`: on all its encapsulated nodes.
 
 ## Examples
 
@@ -55,7 +57,16 @@ disable@n3 = true
 
 ## Precedence
 
-When a section has multiple definitions of the same keyword, the most specific takes precedence. If multiple definitions of the same rank are found, the last one takes precedence.
+The most specific definition wins. A node reading a keyword takes the first of
+these that it finds:
+
+1. `<keyword>@<its own nodename>`
+2. `<keyword>@nodes`, if it is one of the object's nodes
+3. `<keyword>@drpnodes`, if it is one of its DRP nodes
+4. `<keyword>@encapnodes`, if it is one of its encapsulated nodes
+5. `<keyword>`, unscoped
+
+Where two definitions have the same rank, the last one wins.
 
 ### Examples
 
@@ -91,4 +102,5 @@ disable@n3 = true
 disable@n3 = false
 ```
 
-This resource is disabled on `n3` because the last of the two same-ranked scoped definitions takes precedence.
+This resource is **enabled** on `n3`. Both definitions have the same rank, so
+the last one wins, and the last one is `false`.

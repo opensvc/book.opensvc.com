@@ -21,10 +21,12 @@ Create a new object with minimal configuration. No resources are described.
 
 Resources and default keywords can be set right from the create command, using ``--kw <keyword>=<value>`` options
 
-	om <path> create
+	om <path> create \
 		--kw container#0.type=oci \
 		--kw orchestrate=ha \
 		--kw nodes={clusternodes}
+
+Scripts should describe the object as completely as possible in this single command. The keywords given to ``create`` are part of the first and only commit, so the object is never announced to the cluster in a half-configured state. Creating a bare object then completing it with a series of ``config update`` commands publishes every intermediate state to the peers, and the orchestrator acts on them as soon as ``orchestrate`` is set.
 
 ## From Another Object
 
@@ -33,7 +35,7 @@ Resources and default keywords can be set right from the create command, using `
 
 ## From Manifest
 
-The manifest must be ini formatted, structured like ``om <path> print config --format=json``.
+The manifest must be ini formatted, like the output of ``om <path> config show``.
 
 	om <path> create --config=<manifest uri>
 
@@ -45,7 +47,6 @@ or
 
 	om <src path> config show | om <dst path> create --config=-
 
-
 > ➡️ See Also
-> * [Provisioning](agent-service-provisioning)
-
+> * [Provisioning](apps.deploy.provisioning.md)
+> * [Batching configuration changes](apps.deploy.update.md#batching)

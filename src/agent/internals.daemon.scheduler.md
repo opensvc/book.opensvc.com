@@ -93,13 +93,13 @@ The node supports the following jobs:
 ## Service Scheduler
 
     $ om tflex schedule list
-    OBJECT  NODE    ACTION           KEY               LAST_RUN_AT                NEXT_RUN_AT                SCHEDULE    
-    tflex   dev2n1  status           status_schedule   2025-01-30T11:54:55+01:00  2025-01-30T12:04:55+01:00  @10m        
-    tflex   dev2n1  compliance_auto  comp_schedule     2025-01-27T00:09:18+01:00  0001-01-01T00:00:00Z       ~00:00-06:00
-    tflex   dev2n1  run              task#1.schedule   2025-01-28T16:27:16+01:00  2025-01-30T16:27:16+01:00  @2d         
-    tflex   dev2n1  run              task#2.schedule   2025-01-29T16:27:08+01:00  2025-01-30T16:27:08+01:00  @1d         
-    tflex   dev2n1  run              task#3.schedule   2025-01-29T16:27:08+01:00  2025-01-30T16:27:08+01:00  @1d         
-    tflex   dev2n1  push_resinfo     resinfo_schedule  2025-01-27T18:56:47+01:00  0001-01-01T00:00:00Z       @60m        
+    OBJECT  NODE    ACTION           KEY              LAST_RUN_AT                NEXT_RUN_AT                SCHEDULE    
+    tflex   dev2n1  status           status_schedule  2025-01-30T11:54:55+01:00  2025-01-30T12:04:55+01:00  @10m        
+    tflex   dev2n1  compliance_auto  comp_schedule    2025-01-27T00:09:18+01:00  0001-01-01T00:00:00Z       ~00:00-06:00
+    tflex   dev2n1  run              task#1.schedule  2025-01-28T16:27:16+01:00  2025-01-30T16:27:16+01:00  @2d         
+    tflex   dev2n1  run              task#2.schedule  2025-01-29T16:27:08+01:00  2025-01-30T16:27:08+01:00  @1d         
+    tflex   dev2n1  run              task#3.schedule  2025-01-29T16:27:08+01:00  2025-01-30T16:27:08+01:00  @1d         
+    tflex   dev2n1  info             info_schedule    2025-01-27T18:56:47+01:00  0001-01-01T00:00:00Z       @60m        
 
 The scheduled jobs can be configured in the service configurations with a configlet like:
 
@@ -117,9 +117,15 @@ The `om <path>` command action executed when the job fires is displayed in the `
 The supported jobs are:
 
 * Service configuration audit and/or remediation : `compliance_auto`
-* Service resources kvstores inventoring : `push_env`
+* Service resources key-values inventoring : `info`
+* Service resources monitoring : `resource_monitor`
 * Service status evaluation : `status`
-* Service data sync : `sync_all`
+* Service tasks execution : `run`
+* Service data sync : `sync_update`
+
+The `info` job only refreshes a cache local to the instance. Reporting the
+key-values to the collector is the collector speaker's job, done on its own
+schedule, so this job does not talk to the collector itself.
 
 
 ## Advanced Schedule Definition

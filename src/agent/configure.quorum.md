@@ -46,7 +46,7 @@ To survive an interconnect outage, plus all peers outage in the same availabilit
 
 Any OpenSVC agent can act as an arbitrator, and multiple arbitrators can be configured. For example, to configure an arbitrator:
 
-### Use a https server as an arbitrator
+### Use an https server as an arbitrator
 
     [arbitrator#a1]
     uri = https://dev2n1:1215/metrics
@@ -75,12 +75,12 @@ The `om mon` output show all arbitrator alive state from the point of view of ev
 
 ## Best Practices
 
-* Configure <number of nodes> minus 1 arbitrators
+* Configure `<number of nodes>` minus 1 arbitrators
 * Host all arbitrators on the same 3rd site
 * Use one of the arbitrators as a relay for the relay heartbeat driver
 * Disable quorum or freeze all nodes when doing a relayout of the cluster
 
 > ➡️ See Also
-> * [Example 1: Odd-nodes cluster](agent/internals.daemon.quorum.example1.md)
-> * [Example 2: Even-nodes cluster](agent/internals.daemon.quorum.example2.md)
+> * [Example 1: Odd-nodes cluster](internals.daemon.quorum.example1.md)
+> * [Example 2: Even-nodes cluster](internals.daemon.quorum.example2.md)
 

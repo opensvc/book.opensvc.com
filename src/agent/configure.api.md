@@ -186,6 +186,5 @@ The initial configuration is done automatically upon agent installation and daem
     om daemon restart --node="*"
     ```
 
-
 > ➡️  See Also
-> * [RBAC](agent.rbac) For detailed information on Role-Based Access Control and grant management.
+> * [Access Control](configure.rbac.md) for roles and grant management.

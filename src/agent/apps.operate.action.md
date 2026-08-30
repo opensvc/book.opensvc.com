@@ -1,8 +1,8 @@
-## Action
+# Action
 
-### Base Actions
+## Base Actions
 
-#### Start
+### Start
 
 **Local Start (Bypasses Orchestrator)**
 
@@ -26,7 +26,7 @@ om <path> start [--wait] [--time <duration expr>] [--watch]
   * `--wait` holds the command until the action completes.
   * `--time` sets a maximum wait duration.
 
-#### Stop
+### Stop
 
 **Local Stop (Bypasses Orchestrator)**
 
@@ -46,7 +46,7 @@ Instruct the orchestrator to stop the service wherever it runs and **freeze** it
 om <path> stop [--wait] [--time <duration expr>] [--watch]
 ```
 
-#### Relocation
+### Relocation
 
 **Switch**
 
@@ -74,9 +74,9 @@ Thaw all nodes/instances, stop the service on non-leader nodes, and let the orch
 om <path> giveback [--wait] [--time <duration expr>] [--watch]
 ```
 
-#### Handling Failures
+### Handling Failures
 
-If an action fails, the orchestrator is blocked, and the failure is reported in `om mon` and `om <path> print status`.
+If an action fails, the orchestrator is blocked, and the failure is reported in `om mon` and `om <path> instance status`.
 
   * **Clear Failure:** Allows the daemon to **retry** the execution plan.
     ```
@@ -87,7 +87,7 @@ If an action fails, the orchestrator is blocked, and the failure is reported in 
     om <path> abort
     ```
 
-#### Sync
+### Sync
 
 **Sync All**
 
@@ -113,7 +113,7 @@ Trigger file synchronization to disaster recovery nodes. No-op if run from a nod
 om <path> sync update --target drp
 ```
 
-#### Run
+### Run
 
 Execute tasks defined within the service configuration.
 
@@ -121,7 +121,7 @@ Execute tasks defined within the service configuration.
 om <path> instance run [--rid ...]
 ```
 
-### Resource Filtering
+## Resource Filtering
 
 Filter actions to be executed only on specific resources using `--rid`, `--tags`, or `--subsets`.
 

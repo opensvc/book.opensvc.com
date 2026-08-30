@@ -48,3 +48,18 @@ This command does not stop the resource before removing its definition. If desir
 
 	om <path> stop --rid fs#2
 
+## Batching
+
+`om <path> config update` applies all its `--delete`, `--unset` and `--set` arguments as a single transaction: the batch is staged, validated, and committed once.
+
+Scripts should prefer one command carrying many changes:
+
+	om <path> config update \
+		--set app#1.type=forking \
+		--set app#1.start=/srv/app/bin/start \
+		--set app#1.check=/srv/app/bin/check
+
+Splitting this into one command per keyword commits three times. Each commit rewrites the configuration file, and every node in the object scope then fetches the whole file. Worse, each intermediate state is a state the peers and the orchestrator see and act upon, including the states where the resource definition is still incomplete.
+
+Scripts driving the daemon API have the same choice: the `PATCH /api/object/path/{namespace}/{kind}/{name}/config` handler accepts repeated `set`, `unset` and `delete` parameters, and commits them as one transaction.
+
