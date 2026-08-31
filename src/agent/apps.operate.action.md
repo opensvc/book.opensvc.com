@@ -87,30 +87,34 @@ If an action fails, the orchestrator is blocked, and the failure is reported in 
     om <path> abort
     ```
 
-### Sync
+### Data Replication
 
-**Sync All**
+> The disk, fs and sync resources support data replication.
+
+**Replicate All**
 
 Run resource replication to all configured targets (e.g., production (`prd`) or disaster recovery (`drp`)).
 
 ```
-om <path> update
+om <path> instance update
 ```
 
-**Sync Nodes**
+> This command can run on a schedule.
 
-Trigger file synchronization to secondary cluster nodes. No-op if run from a node not running the service.
+**Replicate to peer Nodes**
+
+Run resource replication to secondary cluster nodes. No-op if run from a node not running the service.
 
 ```
-om <path> sync update --target nodes
+om <path> instance update --target nodes
 ```
 
-**Sync DRP**
+**Replicate to DRP Nodes**
 
 Trigger file synchronization to disaster recovery nodes. No-op if run from a node not running the service.
 
 ```
-om <path> sync update --target drp
+om <path> instance update --target drp
 ```
 
 ### Run
@@ -120,6 +124,8 @@ Execute tasks defined within the service configuration.
 ```
 om <path> instance run [--rid ...]
 ```
+
+> This command can run on a schedule.
 
 ## Resource Filtering
 
