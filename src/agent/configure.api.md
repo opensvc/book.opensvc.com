@@ -38,7 +38,8 @@ The agent listener supports several industry-standard authentication methods to 
 ### X.509 Certificate Authentication
 
   * **Mechanism:** Authentication is based on a client-side X.509 certificate.
-  * **Username:** The username is derived from the **Common Name (`cn`)** field of the client certificate.
+  * **Trust:** The certificate must be signed by the cluster Certificate Authority (`system/sec/ca`) and carry the **TLS client authentication** extended key usage. A certificate signed by any other authority is refused, whatever its `cn`.
+  * **Username:** The username is derived from the **Common Name (`cn`)** field of the client certificate. A certificate with an empty `cn` is refused.
   * **Authorization:** The RBAC grants are read from the `system/usr/<username>` `grant` key.
   * **User Object:** The `system/usr/<username>` object **must exist** on the cluster.
 
@@ -46,8 +47,9 @@ The agent listener supports several industry-standard authentication methods to 
 
   * **Mechanism:** Authentication is based on a JWT passed as a bearer token.
   * **Username:** The username is derived from the `sub` token claim.
-  * **Authorization:** The RBAC grants are derived from the `grant` token claim.
+  * **Authorization:** The RBAC grants are derived from the `grant` claim of a token the cluster issued itself, or from the `entitlements` claim of a token issued by an OIDC server.
   * **User Object:** The `system/usr/<username>` object **does not need to exist** on the cluster **if** the tokens are issued and managed by an external OpenID Connect (OIDC) server.
+  * **Issuance:** A token is obtained from the `POST /api/auth/token` endpoint, which accepts only the requests authenticated by the **unix socket** (a local `om` command) or by **Basic Authentication**. A request authenticated by a token or by a certificate is refused with `403 not allowed to create token`. A remote client therefore presents its password once to obtain a token, and asks for a refresh token at the same time if it needs to renew without presenting the password again.
   * **Availability:** This method was **added in OpenSVC v3** agents.
 
 
@@ -55,13 +57,27 @@ The agent listener supports several industry-standard authentication methods to 
 
 ### Using an OpenID server
 
-The OpenID server will need to be configured to provide tokens with the `grant` claim.
+The OpenID server will need to be configured to provide tokens with an
+`entitlements` claim, holding the grant expressions this cluster is to give the
+user. The claim is not named `grant`: that is the claim of the tokens the
+cluster issues itself.
 
 ```
 [listener]
 openid_issuer = https://auth.mycorp.com/realms/clusters
 openid_client_id = om3
 ```
+
+The daemon reads `<openid_issuer>/.well-known/openid-configuration` to discover
+the provider, and fetches the signing keys from the `jwks_uri` it advertises. A
+token is accepted only if:
+
+  * Its `aud` claim contains the `openid_client_id` value.
+  * Its `iss` claim equals the `issuer` value **advertised by the discovery
+    document**, which is not necessarily the `openid_issuer` url used to reach
+    it.
+  * Its signature verifies against a key of the `jwks_uri` key set, named by the
+    token `kid` header.
 
 > ➡️  See Also
 > * [The cluster `listener.openid_client_id` keyword](../agent.reference.keywords/cluster/listener.html#openid_client_id)
@@ -87,7 +103,17 @@ om system/usr/usr1 create --kw grant="admin:ns1 guest:ns2"
 
 This step is only necessary if you require X.509 authentication for the user.
 
+The `cn` and `ca` keywords have no default, and `certificate create` uses them:
+without `cn` the certificate names no user, and without `ca` it is self-signed
+by an authority the listener does not trust. Set both before creating.
+
 ```bash
+# Set the certificate subject and its signing authority:
+#  cn: the username, which is what the grants are looked up under
+#  ca: the cluster certificate authority, the only one the listener trusts
+om system/usr/root config update --set cn=root --set ca=system/sec/ca
+om system/usr/usr1 config update --set cn=usr1 --set ca=system/sec/ca
+
 # Generate Certificate:
 om system/usr/root certificate create
 om system/usr/usr1 certificate create
