@@ -38,7 +38,7 @@ The agent listener supports several industry-standard authentication methods to 
 ### X.509 Certificate Authentication
 
   * **Mechanism:** Authentication is based on a client-side X.509 certificate.
-  * **Trust:** The certificate must be signed by the cluster Certificate Authority (`system/sec/ca`) and carry the **TLS client authentication** extended key usage. A certificate signed by any other authority is refused, whatever its `cn`.
+  * **Trust:** The certificate must be signed by one of the Certificate Authorities listed in the cluster `ca` keyword, `system/sec/ca` by default, and carry the **TLS client authentication** extended key usage. A certificate signed by any other authority is refused, whatever its `cn`.
   * **Username:** The username is derived from the **Common Name (`cn`)** field of the client certificate. A certificate with an empty `cn` is refused.
   * **Authorization:** The RBAC grants are read from the `system/usr/<username>` `grant` key.
   * **User Object:** The `system/usr/<username>` object **must exist** on the cluster.
@@ -103,17 +103,11 @@ om system/usr/usr1 create --kw grant="admin:ns1 guest:ns2"
 
 This step is only necessary if you require X.509 authentication for the user.
 
-The `cn` and `ca` keywords have no default, and `certificate create` uses them:
-without `cn` the certificate names no user, and without `ca` it is self-signed
-by an authority the listener does not trust. Set both before creating.
+The certificate is named after the object and signed by the cluster
+certificate authority, which is what the api expects of it. The `cn` and `ca`
+keywords hold those two and rarely need to be set.
 
 ```bash
-# Set the certificate subject and its signing authority:
-#  cn: the username, which is what the grants are looked up under
-#  ca: the cluster certificate authority, the only one the listener trusts
-om system/usr/root config update --set cn=root --set ca=system/sec/ca
-om system/usr/usr1 config update --set cn=usr1 --set ca=system/sec/ca
-
 # Generate Certificate:
 om system/usr/root certificate create
 om system/usr/usr1 certificate create
