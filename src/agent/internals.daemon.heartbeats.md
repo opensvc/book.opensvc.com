@@ -117,6 +117,23 @@ The Rx thread manages data reception and integration into cluster data:
 - Update peer data in the cluster.
 - Timeout if no heartbeat is received within the configured {{#include ../inc/kw}}`<hb#n>.timeout`. The default timeout is 15 seconds.
 
+The configured timeout is a floor rather than the last word. A timeout shorter than
+the beats it has to cover would declare a peer stale that is merely one beat late,
+so the unicast, disk and relay drivers raise it when it is too short for their
+interval:
+
+| Driver | Minimum timeout | Missed beats tolerated |
+| :--- | :--- | :--- |
+| `hb.unicast`, `hb.disk` | `interval * 2 + 1s` | 1 |
+| `hb.relay` | `interval * 4 + 1s` | 3 |
+
+The relay is the one reached over a network the cluster does not own, and the one
+whose beats are paced to the interval rather than sent on every change, so it is
+given the wider margin. The adjustment, when it happens, is logged as the heartbeat
+is configured:
+
+    daemon: hb: relay: hb#2: configure: reajust timeout: 15s => 4m1s (<interval>*4+1s)
+
 Actions Performed by Rx:
 
 - On receive data:
