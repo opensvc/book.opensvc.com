@@ -100,15 +100,15 @@ clusters behind one address.
 
 A refused request is answered `429 Too Many Requests` with a `Retry-After` header,
 and the heartbeat waits at least that long before posting again. A relay serving
-many clusters is worth watching through the listener metrics, on the relay host:
+many clusters is worth watching through the listener metrics of the relay host:
 
 ```bash
-curl -s --unix-socket /var/lib/opensvc/lsnr/http.sock \
-    http://localhost/metrics | grep rate_limiter
+om node metrics --node <relay> | grep rate_limiter
 ```
 
     opensvc_listener_rate_limiter_denied_total 0
 
-The refusals of a single relay client are in the per route breakdown, at
-`/metrics/api`.
+That is the count of every refusal the listener made. The breakdown by route, and
+the requests themselves, are on the relay host at `/metrics/api`, which is scraped
+apart from `/metrics`.
 
