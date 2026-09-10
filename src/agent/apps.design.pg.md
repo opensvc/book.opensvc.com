@@ -47,8 +47,7 @@ The keywords are the usual cgroup controls:
 | `pg_cpus` | the cpus the object may run on, as a list or range: `0,1,2` or `0-2` |
 | `pg_mems` | the memory nodes it may allocate from, same syntax |
 | `pg_cpu_shares` | its share of cpu **when the node is cpu-bound**, relative to other objects |
-| `pg_cpu_quota` | its cpu time whether or not the node is busy: `50%`, `50%@all`, `10%@2` |
-| `pg_cpu_cores` | a guaranteed cpu time reservation, in ms per period |
+| `pg_cpu_quota` | its cpu time whether or not the node is busy: `50%` is half of one cpu, `50%@all` half of every cpu the node has, `10%@2` a tenth of two |
 | `pg_mem_limit` | resident memory, in bytes. Exceeding it wakes the OOM killer |
 | `pg_vmem_limit` | memory plus swap |
 | `pg_mem_oom_control` | `0` lets the OOM killer run, `1` freezes the group instead |
@@ -85,6 +84,38 @@ om test/nscfg/namespace create --kw pg_mem_limit=4g
 
 Every object in `test` is then capped by it, no matter who created it, which is
 how a namespace is handed to a team without handing them the node.
+
+## Lifting a capping
+
+Removing a `pg_*` keyword does not lift what it capped. What was written stays
+written, because the agent has no way of telling a capping it wrote from one
+systemd or an operator wrote, and silently undoing the second would be worse
+than leaving the first.
+
+So lifting a capping is asked for, and there are two ways of asking.
+
+The keyword set to `default` puts that one capping back where a node that never
+capped anything leaves it:
+
+```ini
+[DEFAULT]
+pg_cpu_quota = default
+```
+
+This is the one to reach for. It is the configuration, so every node converges
+to it: a peer taking the object over, or a node provisioned tomorrow, lifts the
+capping too.
+
+The command lifts every capping of an instance at once, whatever the keywords
+say:
+
+```bash
+om test/svc/myapp instance pg reset
+```
+
+That one is for a capping the configuration knows nothing about — left by an
+older agent, by systemd, or by hand. It is not a lasting decision: a capping
+the keywords do name comes back at the next `pg update`, and at the next start.
 
 ## Turning it off
 
