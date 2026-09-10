@@ -43,6 +43,7 @@
 - [Outputs](agent/outputs.md)
 - [Internals](agent/internals.md)
   - [Installed Files](agent/internals.installed_files.md)
+  - [Session, Execution and Orchestration Ids](agent/internals.ids.md)
   - [Daemon](agent/internals.daemon.md)
     - [Events](agent/internals.daemon.events.md)
     - [Heartbeats](agent/internals.daemon.heartbeats.md)

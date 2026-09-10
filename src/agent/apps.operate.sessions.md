@@ -26,6 +26,13 @@ OBJECT  ORCHESTRATION_ID                      STATUS
 pod3    934a42f9-b7eb-4d7e-a3ac-18347522f9f9  accepted
 ```
 
+One session is not one run. A command reaching several objects, or several
+nodes, or both, runs one execution per object per node under the one session
+id, and each of them has its own outcome. The session id asks after the whole
+of what you submitted; the execution id, returned beside it, asks after one
+run of it. [Session, Execution and Orchestration
+Ids](internals.ids.md) says how the three relate.
+
 ## Asking after a session
 
 ```bash
@@ -100,4 +107,5 @@ dropped.
 
 > ➡️ See Also
 > * [Action](apps.operate.action.md)
+> * [Session, Execution and Orchestration Ids](internals.ids.md)
 > * [Events](internals.daemon.events.md)
