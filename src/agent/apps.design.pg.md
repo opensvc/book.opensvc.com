@@ -50,12 +50,16 @@ The keywords are the usual cgroup controls:
 | `pg_cpu_quota` | its cpu time whether or not the node is busy: `50%` is half of one cpu, `50%@all` half of every cpu the node has, `10%@2` a tenth of two |
 | `pg_mem_limit` | resident memory, in bytes. Exceeding it wakes the OOM killer |
 | `pg_vmem_limit` | memory plus swap |
-| `pg_mem_oom_control` | `0` lets the OOM killer run, `1` freezes the group instead |
-| `pg_mem_swappiness` | how readily its pages are swapped |
+| `pg_mem_oom_control` | `0` lets the OOM killer run, `1` freezes the group instead. v1 hierarchy only |
+| `pg_mem_swappiness` | how readily its pages are swapped. v1 hierarchy only |
 | `pg_blkio_weight` | its share of block io, between `10` and `1000` |
 
 `pg_cpu_shares` and `pg_cpu_quota` are the pair worth telling apart: shares only
 arbitrate a contended cpu, whereas a quota caps the group on an idle node too.
+
+The two marked *v1 hierarchy only* cap nothing on a node running the unified
+hierarchy, which has neither `memory.swappiness` nor `memory.oom_control`.
+Setting one there is warned about, and ignored.
 
 ## Capping a resource
 
