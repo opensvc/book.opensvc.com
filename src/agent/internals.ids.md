@@ -33,25 +33,36 @@ which there is a single outcome, a single duration and a single object, which
 is why it, and not the session, is what the daemon records:
 
 ```bash
-$ om 'pod[36]' instance stop --node 'dev2n[12]'
+$ om 'pod[36]' instance stop --node '*'
 OBJECT  NODE    SESSION_ID                            EXEC_ID
-pod3    dev2n1  8f7a32d8-1ad5-4851-834a-6794d02aa7c7  52c5a82d-c337-4109-bbc0-b01adedebfd6
-pod6    dev2n1  8f7a32d8-1ad5-4851-834a-6794d02aa7c7  081a5423-0389-4f32-887a-6944b82490b3
-pod3    dev2n2  8f7a32d8-1ad5-4851-834a-6794d02aa7c7  4a609641-19c4-4cf0-a196-799bfbd2d7ba
-pod6    dev2n2  8f7a32d8-1ad5-4851-834a-6794d02aa7c7  bb81cb61-cce6-49b5-82f6-112c70fee336
+pod6    dev2n1  e9440381-9507-42b3-bef3-2c815aceb169  d29abc32-2c0b-45ff-b639-508d5c19fbee
+pod3    dev2n1  e9440381-9507-42b3-bef3-2c815aceb169  9178f4f8-cd37-4ab5-874f-6d72b1d825f5
+pod6    dev2n2  e9440381-9507-42b3-bef3-2c815aceb169  f40da200-7b6f-41aa-b6aa-dc2568b8cde2
+pod3    dev2n2  e9440381-9507-42b3-bef3-2c815aceb169  83956396-5e06-4660-82d1-6a45d7e32a90
+pod3    dev2n3  e9440381-9507-42b3-bef3-2c815aceb169  330d06d0-6691-42d6-baeb-80579462f621
+pod6    dev2n3  e9440381-9507-42b3-bef3-2c815aceb169  d71c1b5f-61ab-480c-a06a-454bdd51de24
 ```
 
-One session, four executions, each with its own outcome. Two of them ran on
-`dev2n1`, so a node holds several executions of one session, and the exec id
+One session, six executions, each with its own outcome. Two of them ran on
+each node, so a node holds several executions of one session, and the exec id
 is what tells them apart:
 
 ```bash
-$ om daemon session list 8f7a32d8-1ad5-4851-834a-6794d02aa7c7 --node 'dev2n[12]'
-NODE    STATE      SESSION_ID  EXEC_ID   PATH  ORIGIN  BEGIN_AT                   DURATION  COMMAND
-dev2n1  succeeded  8f7a32d8…   081a5423…  pod6  api    2026-09-11T09:51:31+02:00  557ms     om pod6 instance stop
-dev2n1  succeeded  8f7a32d8…   52c5a82d…  pod3  api    2026-09-11T09:51:31+02:00  518ms     om pod3 instance stop
-dev2n2  succeeded  8f7a32d8…   bb81cb61…  pod6  api    2026-09-11T09:51:31+02:00  268ms     om pod6 instance stop
-dev2n2  succeeded  8f7a32d8…   4a609641…  pod3  api    2026-09-11T09:51:31+02:00  212ms     om pod3 instance stop
+$ om daemon exec list --session-id e9440381-9507-42b3-bef3-2c815aceb169 --node '*'
+NODE    STATE      EXEC_ID    SESSION_ID  PATH  ORIGIN  BEGIN_AT  DURATION  COMMAND
+dev2n1  succeeded  9178f4f8…  e9440381…   pod3  api     …         218ms     om pod3 instance stop
+dev2n1  succeeded  d29abc32…  e9440381…   pod6  api     …         11s       om pod6 instance stop
+dev2n2  succeeded  f40da200…  e9440381…   pod6  api     …         283ms     om pod6 instance stop
+…
+```
+
+Folding those back into the one thing that was submitted is what
+`om daemon session list` is for:
+
+```bash
+$ om daemon session list e9440381-9507-42b3-bef3-2c815aceb169
+SESSION_ID  STATE      EXECS  FAILED  NODES  OBJECTS  ORIGIN  BEGIN_AT  DURATION  COMMAND
+e9440381…   succeeded  6      0       3      2        api     …         11s       om pod3 instance stop (+5)
 ```
 
 ## orchestration_id, the orchestration
@@ -83,8 +94,9 @@ An accepted action returns the session id **and** the execution id of the run
 it accepted, so the submitter can ask after either scale:
 
 ```bash
-om daemon session list <session_id>              # every run of what I submitted
-om daemon session list --exec-id <exec_id>       # the one run I am waiting on
+om daemon session list <session_id>              # how the whole of what I submitted went
+om daemon exec list --session-id <session_id>    # each of its runs, one by one
+om daemon exec list <exec_id>                    # the one run I am waiting on
 om daemon orchestration list <orchestration_id>  # the target state, from any node
 ```
 
@@ -92,14 +104,23 @@ om daemon orchestration list <orchestration_id>  # the target state, from any no
 
 | id | log key | store | asked through |
 | :--- | :--- | :--- | :--- |
-| `session_id` | `SESSION_ID` | — | a filter over the execution store |
-| `exec_id` | `EXEC_ID` | executions | `GET /api/node/name/<node>/daemon/session` |
+| `session_id` | `SESSION_ID` | — | a filter over the exec store, folded by the client |
+| `exec_id` | `EXEC_ID` | execs | `GET /api/node/name/<node>/daemon/exec` |
 | `orchestration_id` | `ORCHESTRATION_ID` | orchestrations | `GET /api/node/name/<node>/daemon/orchestration` |
 
-The execution store is keyed by execution id and reached by session id,
-because the session id is what a submitter is given to poll with. Both stores
-are bounded, so an identifier the daemon no longer holds is reported as
-forgotten rather than as unknown.
+The exec store is keyed by exec id, and a session is a filter over it. There
+is no session store, and no session endpoint, because a session spans the
+nodes it reached and each daemon holds only the execs it ran: a per-node
+session would be a partial one. The client asks every node and folds what they
+answer.
+
+The exec store also answers what is running now. A running exec carries the
+pid of its process, joined from the process table on the exec id, which is why
+`om daemon ps` is that listing with the running state preselected rather than
+a second command over a second store.
+
+Both stores are bounded, so an identifier the daemon no longer holds is
+reported as forgotten rather than as unknown.
 
 The same three keys are set on the log entries, so what a store no longer
 holds can still be found for as long as the logs keep it:
