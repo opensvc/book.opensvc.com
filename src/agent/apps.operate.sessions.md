@@ -13,8 +13,8 @@ answer is on that node:
 
 ```bash
 $ om pod3 stop --node dev2n1
-OBJECT  NODE    SID
-pod3    dev2n1  efa38cf0-55f1-405d-b727-ac9791ef9938
+OBJECT  NODE    SESSION_ID                            EXEC_ID
+pod3    dev2n1  efa38cf0-55f1-405d-b727-ac9791ef9938  1149992d-4f0a-4a6b-9d2c-7c3e1b5a8f40
 ```
 
 An action addressed to the object is an **orchestration**. The cluster decides
@@ -37,8 +37,8 @@ Ids](internals.ids.md) says how the three relate.
 
 ```bash
 $ om daemon session list efa38cf0-55f1-405d-b727-ac9791ef9938
-NODE    STATE      ID        PATH  ORIGIN  BEGIN_AT                   DURATION  COMMAND
-dev2n1  succeeded  efa38cf0  pod3  api     2026-09-10T18:49:15+02:00  168ms     om pod3 instance stop
+NODE    STATE      SESSION_ID  EXEC_ID   PATH  ORIGIN  BEGIN_AT                   DURATION  COMMAND
+dev2n1  succeeded  efa38cf0    1149992d  pod3  api     2026-09-10T18:49:15+02:00  168ms     om pod3 instance stop
 ```
 
 Naming no session lists them all, and `--state` narrows:
@@ -57,8 +57,8 @@ output shows.
 
 ```bash
 $ om daemon orchestration list 934a42f9-b7eb-4d7e-a3ac-18347522f9f9
-STATE      ID        PATH  GLOBAL_EXPECT  ACCEPTED_BY  BEGIN_AT
-succeeded  934a42f9  pod3  placed@        dev2n1       2026-09-10T20:34:27+02:00
+STATE      ORCHESTRATION_ID  PATH  GLOBAL_EXPECT  ACCEPTED_BY  BEGIN_AT
+succeeded  934a42f9          pod3  placed@        dev2n1       2026-09-10T20:34:27+02:00
 ```
 
 **Any node answers.** Every node of the object learns of the orchestration
