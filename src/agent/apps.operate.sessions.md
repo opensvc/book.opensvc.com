@@ -93,6 +93,7 @@ $ om daemon exec list ff0c2d2e-e6a5-47ef-800b-304610179fc6 -o json
         "path": "pod3",
         "origin": "api",
         "started_at": "2026-09-11T12:31:23+02:00",
+        "ended_at": "2026-09-11T12:31:23+02:00",
         "duration": "35ms",
         "exit_code": 1,
         "command": "/usr/bin/om pod3 instance start --rid nosuch",
@@ -100,6 +101,13 @@ $ om daemon exec list ff0c2d2e-e6a5-47ef-800b-304610179fc6 -o json
     }
 ]
 ```
+
+The api carries the two ends and not the length. `duration` is derived where
+it is shown, the same way for an exec, a session and an orchestration, so the
+three numbers cannot drift apart: an exec's end is its start plus what the
+daemon measured while the process ran, never the instant the news reached the
+store. A span that has not ended is measured against the clock of whoever is
+reading.
 
 `exit_code` is what the shell would report: the process status, or 128 plus
 the signal number when a signal ended it (`143` for SIGTERM, `137` for
@@ -160,8 +168,8 @@ already ended selects nothing, which is the outcome you asked for.
 
 ```bash
 $ om daemon orchestration list 934a42f9-b7eb-4d7e-a3ac-18347522f9f9
-STATE      ORCHESTRATION_ID  PATH  GLOBAL_EXPECT  ACCEPTED_BY  STARTED_AT
-succeeded  934a42f9          pod3  placed@        dev2n1       2026-09-10T20:34:27+02:00
+STATE      ORCHESTRATION_ID  PATH  GLOBAL_EXPECT  ACCEPTED_BY  STARTED_AT                 DURATION
+succeeded  934a42f9          pod3  placed@        dev2n1       2026-09-10T20:34:27+02:00  4s
 ```
 
 **Any node answers.** Every node of the object learns of the orchestration
