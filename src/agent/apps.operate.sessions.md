@@ -101,9 +101,10 @@ $ om daemon exec list ff0c2d2e-e6a5-47ef-800b-304610179fc6 -o json
 ]
 ```
 
-An exit code of `-1` means the process exited with no status: killed by a
-signal, or never started at all. A running exec has no exit code, which is
-what tells it apart from one that exited zero.
+`exit_code` is what the shell would report: the process status, or 128 plus
+the signal number when a signal ended it (`143` for SIGTERM, `137` for
+SIGKILL). It is `-1` only when the process never ran at all. A running exec
+has no exit code, which is what tells it apart from one that exited zero.
 
 ## What is running now
 
@@ -114,12 +115,44 @@ PID      NODE    EXEC_ID                               PATH      RID  ORIGIN  DU
 3871248  dev2n1  be384858-f3d8-4fab-9fd4-f147427cb6d2  svc111         imon    20ms      om svc111 instance status -r
 ```
 
-The pid is what `om daemon kill` signals, and only these pids may be signaled.
+Only the processes listed here can be signaled.
 
 `ORIGIN` says what submitted the run: `api` for a command a client sent,
 `imon` and `nmon` for one the monitors decided on, `scheduler` for one that
 came due. `RID` is set on the scheduler's runs, naming the resource whose
 schedule fired.
+
+## Stopping what is running
+
+`om daemon kill` signals the execs a filter selects, and the filter is the one
+`om daemon exec list` takes, so what you listed is what you signal:
+
+```bash
+om daemon kill --session-id 723906bb-…  --node '*'   # stop what I submitted, everywhere
+om daemon kill --orchestration-id 934a42f9-…         # stop an orchestration's runs
+om daemon kill 823c9944-…                            # one exec
+om daemon kill --pid 3924688 --signal=term           # for when you are reading ps
+```
+
+Naming the exec rather than the pid is what makes signaling the wrong process
+impossible. A pid you read from a listing may have exited and been recycled by
+the time you send the signal; an exec id is resolved to its pid by the daemon
+at the moment it signals, under the lock that keeps the two in step.
+
+Something must narrow the selection. Signaling every exec of a node is not
+something you do by leaving the options out, and an empty filter is refused
+rather than obeyed. `--dry-run` reports what would be signaled and signals
+nothing:
+
+```bash
+$ om daemon kill --session-id 723906bb-… --node '*' --dry-run
+PID      NODE    EXEC_ID                               PATH  RID  ORIGIN  DURATION  COMMAND
+3955881  dev2n1  0131c61e-3a8a-412d-8ea1-8bcecc0ea9f5  pod1       api     1s        om pod1 instance start
+```
+
+The answer is the execs signaled, in the same shape the listing uses, so a
+kill that matched nothing says so by answering nothing. An exec that has
+already ended selects nothing, which is the outcome you asked for.
 
 ## Asking after an orchestration
 
