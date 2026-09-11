@@ -131,13 +131,15 @@ schedule fired.
 om daemon kill --session-id 723906bb-…  --node '*'   # stop what I submitted, everywhere
 om daemon kill --orchestration-id 934a42f9-…         # stop an orchestration's runs
 om daemon kill 823c9944-…                            # one exec
-om daemon kill --pid 3924688 --signal=term           # for when you are reading ps
+om daemon kill -s 'pod*' --signal=term               # everything running on these objects
 ```
 
-Naming the exec rather than the pid is what makes signaling the wrong process
-impossible. A pid you read from a listing may have exited and been recycled by
-the time you send the signal; an exec id is resolved to its pid by the daemon
-at the moment it signals, under the lock that keeps the two in step.
+There is no pid option, on purpose. Naming the exec rather than the pid is
+what makes signaling the wrong process impossible: a pid you read from a
+listing may have exited and been recycled by the time you send the signal,
+where an exec id is resolved to its pid by the daemon at the moment it
+signals, under the lock that keeps the two in step. The pid is reported all
+the same, and killing a pid is what the system's own `kill` is for.
 
 Something must narrow the selection. Signaling every exec of a node is not
 something you do by leaving the options out, and an empty filter is refused
