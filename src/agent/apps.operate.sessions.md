@@ -49,7 +49,7 @@ One row, whatever it took:
 
 ```bash
 $ om daemon session list e9440381-9507-42b3-bef3-2c815aceb169
-SESSION_ID  STATE      EXECS  FAILED  NODES  OBJECTS  ORIGIN  BEGIN_AT  DURATION  COMMAND
+SESSION_ID  STATE      EXECS  FAILED  NODES  OBJECTS  ORIGIN  STARTED_AT  DURATION  COMMAND
 e9440381…   succeeded  6      0       3      2        api     …         11s       om pod3 instance stop (+5)
 ```
 
@@ -76,7 +76,7 @@ When a session failed, the exec listing says which part did:
 
 ```bash
 $ om daemon exec list --session-id 1ed811b1-088d-4531-bd32-c4be35efe29e --node '*'
-NODE    STATE   EXEC_ID    SESSION_ID  PATH  ORIGIN  BEGIN_AT  DURATION  COMMAND
+NODE    STATE   EXEC_ID    SESSION_ID  PATH  ORIGIN  STARTED_AT  DURATION  COMMAND
 dev2n1  failed  ff0c2d2e…  1ed811b1…   pod3  api     …         35ms      om pod3 instance start --rid nosuch
 ```
 
@@ -92,7 +92,7 @@ $ om daemon exec list ff0c2d2e-e6a5-47ef-800b-304610179fc6 -o json
         "session_id": "1ed811b1-088d-4531-bd32-c4be35efe29e",
         "path": "pod3",
         "origin": "api",
-        "begin_at": "2026-09-11T12:31:23+02:00",
+        "started_at": "2026-09-11T12:31:23+02:00",
         "duration": "35ms",
         "exit_code": 1,
         "command": "/usr/bin/om pod3 instance start --rid nosuch",
@@ -160,7 +160,7 @@ already ended selects nothing, which is the outcome you asked for.
 
 ```bash
 $ om daemon orchestration list 934a42f9-b7eb-4d7e-a3ac-18347522f9f9
-STATE      ORCHESTRATION_ID  PATH  GLOBAL_EXPECT  ACCEPTED_BY  BEGIN_AT
+STATE      ORCHESTRATION_ID  PATH  GLOBAL_EXPECT  ACCEPTED_BY  STARTED_AT
 succeeded  934a42f9          pod3  placed@        dev2n1       2026-09-10T20:34:27+02:00
 ```
 

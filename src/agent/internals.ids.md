@@ -49,7 +49,7 @@ is what tells them apart:
 
 ```bash
 $ om daemon exec list --session-id e9440381-9507-42b3-bef3-2c815aceb169 --node '*'
-NODE    STATE      EXEC_ID    SESSION_ID  PATH  ORIGIN  BEGIN_AT  DURATION  COMMAND
+NODE    STATE      EXEC_ID    SESSION_ID  PATH  ORIGIN  STARTED_AT  DURATION  COMMAND
 dev2n1  succeeded  9178f4f8…  e9440381…   pod3  api     …         218ms     om pod3 instance stop
 dev2n1  succeeded  d29abc32…  e9440381…   pod6  api     …         11s       om pod6 instance stop
 dev2n2  succeeded  f40da200…  e9440381…   pod6  api     …         283ms     om pod6 instance stop
@@ -61,7 +61,7 @@ Folding those back into the one thing that was submitted is what
 
 ```bash
 $ om daemon session list e9440381-9507-42b3-bef3-2c815aceb169
-SESSION_ID  STATE      EXECS  FAILED  NODES  OBJECTS  ORIGIN  BEGIN_AT  DURATION  COMMAND
+SESSION_ID  STATE      EXECS  FAILED  NODES  OBJECTS  ORIGIN  STARTED_AT  DURATION  COMMAND
 e9440381…   succeeded  6      0       3      2        api     …         11s       om pod3 instance stop (+5)
 ```
 
