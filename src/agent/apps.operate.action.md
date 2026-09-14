@@ -26,6 +26,22 @@ om <path> start [--wait] [--time <duration expr>] [--watch]
   * `--wait` holds the command until the action completes.
   * `--time` sets a maximum wait duration.
 
+> **Frozen instances are started, and stay frozen.** Freezing tells the daemon
+> not to act by itself. It does not make an object refuse a start you asked
+> for, so a frozen instance is started and its freeze is left as you set it.
+> The daemon still never starts a frozen instance on its own, and still passes
+> over frozen nodes when choosing where to start.
+>
+> Since `om <path> stop` freezes, a stop followed by a start leaves the object
+> **up and frozen**, which means the daemon will not restart it elsewhere if it
+> fails. Thaw it when you want it back under orchestration:
+>
+> ```
+> om <path> unfreeze
+> ```
+>
+> Earlier versions, and OpenSVC v2, unfroze the object as part of starting it.
+
 ### Stop
 
 **Local Stop (Bypasses Orchestrator)**
@@ -45,6 +61,9 @@ Instruct the orchestrator to stop the service wherever it runs and **freeze** it
 ```
 om <path> stop [--wait] [--time <duration expr>] [--watch]
 ```
+
+> The freeze this sets outlives a later `om <path> start`, which no longer
+> thaws. Run `om <path> unfreeze` to put the object back under orchestration.
 
 ### Relocation
 
