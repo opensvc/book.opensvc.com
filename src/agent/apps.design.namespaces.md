@@ -63,6 +63,88 @@ This creates `test/svc/svc2` from the configuration of `svc1`.
 A configuration that refers to other objects survives the clone only if those
 references are relative. See [Relative object paths](#relative-object-paths).
 
+## Claims on cluster resources
+
+The objects of a namespace consume things the cluster owns and its peers share:
+the space of a pool, the addresses of a network. A namespace can be capped on
+what it takes of one, so that it cannot drain a resource the others are meant
+to share. A cap is declared in the namespace configuration, as a `claim`
+section naming the kind of resource, the resource, and the limit:
+
+```ini
+[claim#1]
+type = pool
+name = tank
+limit = 250m
+
+[claim#2]
+type = network
+name = backend2
+limit = 10
+```
+
+Edit it like any other object configuration, naming the namespace with a
+trailing `/`:
+
+```sh
+om test/ config update --set claim#1.type=pool --set claim#1.name=tank --set claim#1.limit=250m
+om / config show
+```
+
+A namespace declaring no claim on a resource is not capped on it. A claim
+naming no limit says the namespace uses the resource, not that it is capped on
+it.
+
+### Pool claims
+
+A pool claim counts the size each volume of the namespace was created or
+resized with, cluster-wide. An allocation or a resize taking the namespace over
+its limit is refused, and the pool is reported as one that does not match, with
+the reason:
+
+```
+$ om test/svc/app provision
+... no pool matching criteria: [tank] the test namespace may claim 250mi of it
+and already claims 200mi, so it cannot claim 100mi more
+```
+
+It counts what was asked for, not what is written: a pool hands out what it
+promised, and that promise is what is being rationed. So a namespace can be at
+its limit on a pool that is nearly empty, and a pool can be full while every
+namespace is under its limit.
+
+### Network claims
+
+A network claim counts the addresses the namespace holds in the network,
+cluster-wide. An allocation taking the namespace over its limit is refused:
+
+```
+$ om test/svc/app start
+... ip#1: start: network backend2: the test namespace may hold 10 address(es)
+of it and already holds 10
+```
+
+Addresses are counted, not reservations: a failover object holds the same
+address on every node it is configured on, and that is one address taken from
+the network, while the instances of a flex each hold one of their own.
+
+The limit is checked when an address is allocated, not when one already held is
+asked for again, so a namespace that reached its limit still restarts what it
+already runs. Lowering a limit below what a namespace already holds is
+therefore allowed, and takes effect on the next allocation rather than by
+taking addresses back.
+
+### Where the limit is read
+
+The limit is read from the namespace configuration on the node doing the
+allocation, never over the api. A namespace configuration is present on every
+cluster node, and most namespaces claim nothing, so the common case asks
+nothing of the daemon. Only a namespace that is actually capped needs the
+cluster-wide count of what it already holds, and failing to reach the daemon
+for that count leaves the claim unchecked rather than refused: a cap is
+something the cluster brokers, and where no daemon answers there is nothing
+brokering.
+
 ## References
 
 A `{namespace}` reference is available in service configuration.
