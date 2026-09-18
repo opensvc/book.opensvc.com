@@ -82,10 +82,14 @@ OpenSVC daemon with a user holding this role.
 ### join, leave
 
 May add a node to the cluster, or remove one from it, plus the reads a node
-performs while joining. These back the token minted for a joining node:
+performs while joining. These back the token minted on a node to enroll,
+which `om cluster enroll --token` uses to reach it:
 
-    om daemon auth --role join
+    om daemon auth --role join --duration 10m
+
+`om cluster enroll` and `om cluster evict` themselves require the `root`
+grant.
 
 > ➡️ See Also
 > * [Cluster API](configure.api.md)
-> * [Cluster Configuration](configure.cluster.md) for the join procedure.
+> * [Cluster Configuration](configure.cluster.md) for the enroll and evict procedures.

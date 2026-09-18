@@ -30,7 +30,7 @@ nfsv4.opensvc.com 5.196.34.141
 ## Setup the OpenSVC Cluster
 
 * [Install the agent](/agent/install.md#red-hat-enterprise-linux-8)
-* [Join the cluster](/agent/configure.cluster.md#join-a-cluster)
+* [Enroll the nodes in the cluster](/agent/configure.cluster.md#enroll-a-node)
 
 Now `om mon` should report:
 

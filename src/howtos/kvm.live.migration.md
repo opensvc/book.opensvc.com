@@ -282,44 +282,23 @@ opensvc@n1:~$ sudo om cluster config get --kw cluster.name
 drbd4kvm
 ```
 
-### Join cluster nodes
+### Enroll cluster nodes
 
-We join both nodes from our laptop:
+We enroll `n2` in the `n1` cluster from our laptop.
 
-On laptop, ask for a join token, and store it into a variable:
+A join token is created on `n2`, and piped to the `om cluster enroll` command executed on `n1`, which reads it from its standard input:
 ```
-token=$(ssh opensvc@n1 sudo om daemon auth --role join)
-```
-
-and then ask `n2` to join `n1` using token from variable:
-```
-ssh opensvc@$n2 "sudo om cluster join --node $n1 --token $token"
+ssh opensvc@n2 sudo om daemon auth --role join --duration 10m | ssh opensvc@n1 sudo om cluster enroll --node n2 --token /dev/stdin --wait
 ```
 
 The log should looks like below
 
 ```
-john@laptop:~$ token=$(ssh opensvc@n1 sudo om daemon auth --role join)
-john@laptop:~$ ssh opensvc@n2 "sudo om cluster join --node n1 --token $token"
-Fetch cluster config from n1
-Add localhost node to the remote cluster configuration on n1
-Daemon join
+john@laptop:~$ ssh opensvc@n2 sudo om daemon auth --role join --duration 10m | ssh opensvc@n1 sudo om cluster enroll --node n2 --token /dev/stdin --wait
+Node n2 accepted the join order
 Cluster nodes updated
-Fetch cluster from n1
-Fetch system/sec/ca from n1
-Fetch system/sec/cert from n1
-Fetch system/sec/hb from n1
-Draining node
-Stop daemon
-Dump all configs
-Save configs to /var/lib/opensvc/backup/.pre-daemon-join-2025-11-04T10:40:51.json
-Install fetched config system/sec/cert
-Install fetched config system/sec/hb
-Install fetched config cluster
-Install fetched config system/sec/ca
-Start daemon
-Joined
-
+Waiting for n2 to beat
+Node n2 is alive
 ```
 
 And the `om mon` command executed on one of the cluster nodes should looks like:

@@ -79,25 +79,30 @@ curl -o opensvc-2.1-latest.rpm https://repo.opensvc.com/rpms/2.1/current
 dnf -y install ./opensvc-2.1-latest.rpm
 ```
 
-### Join Cluster Nodes
+### Enroll Cluster Nodes
 
 **On node1:**
 
+Verify cluster on node1 defines cluster name and has at least one heartbeat or define cluster name and heartbeat.
 ```bash
 [root@node1 ~]# om cluster set --kw hb#1.type=unicast
 [root@node1 ~]# om cluster set --kw cluster.name=cluster1
-[root@node1 ~]# om cluster get --kw cluster.secret
-b26a1e28b84a11edab28525400d67af6
 ```
 
-**On node2:**
+**On node2** — create a join token, and copy the `/root/node2.token` file to node1:
 
 ```bash
-[root@node2 ~]# om daemon join --node node1 --secret b26a1e28b84a11edab28525400d67af6
-@ n:node2
-local node is already frozen
-join node node1
-W local node is left frozen as it was already before join
+[root@node2 ~]# om daemon auth --role join --duration 10m >/root/node2.token
+```
+
+**On node1** — enroll node2:
+
+```bash
+[root@node1 ~]# om cluster enroll --node node2 --token /root/node2.token --wait
+Node node2 accepted the join order
+Cluster nodes updated
+Waiting for node2 to beat
+Node node2 is alive
 ```
 
 **On node1** — unfreeze nodes and set up root SSH trust:
