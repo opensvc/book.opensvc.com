@@ -69,6 +69,7 @@ These references can be used inside a configuration section, and their evaluated
 | `{<rid>.exposed_devs}`      | The whitespace-separated list of devpaths exposed by `<rid>`                                                                                                                            | No                      | Yes                        |
 | `{<rid>.exposed_devs[<n>]}` | The `<n>`-th element of the list of devpaths exposed by `<rid>`                                                                                                                           | No                      | Yes                        |
 | `{<rid>.exposed_devs[#]}`   | The length of the list of devpaths exposed by `<rid>`                                                                                                                                   | No                      | Yes                        |
+| `{<rid>.capacity}`          | How big `<rid>` is now, in bytes, asked of the resource itself                                                                                                                          | No                      | Yes                        |
 
 Deprecated references:
 
@@ -77,6 +78,73 @@ Deprecated references:
 | `{svcname}`       | Deprecated by `{name}`       | No                      | Yes                        |
 | `{svcpath}`       | Deprecated by `{path}`       | No                      | Yes                        |
 | `{short_svcname}` | Deprecated by `{short_name}` | No                      | Yes                        |
+
+## Capacity
+
+`{<rid>.capacity}` is how big a resource is, asked of the resource. It is not
+that resource's `size` keyword: the keyword says what the resource was asked
+to be, and the capacity says what it holds now. The two differ wherever a
+driver rounds, keeps metadata of its own, or has been grown since.
+
+A resource answers it if it can say how big it is: volume groups, zpools, md
+arrays, logical volumes, zvols, loop and rados disks, and the filesystems that
+hold their own size.
+
+It is resolved when the resource exists. A reference to a resource of the same
+object that is configured but not built yet waits for it to be built, which is
+what lets a configuration naming one validate before anything is provisioned.
+
+## Arithmetic
+
+A reference can be computed on. An expression is written `$(...)`, and what it
+computes replaces it:
+
+```ini
+[disk#1]
+type = lv
+vg = {disk#vg.name}
+size = $(50% * {disk#vg.capacity})
+```
+
+The references are resolved first, so what the arithmetic reads is numbers.
+
+| Operator | Meaning                | Example      | Result |
+| :--- | :--- | :--- | :--- |
+| `+` `-` | sum and difference     | `$(10g - 1g)`  | 9663676416 |
+| `*` | product                | `$(2 * 512m)`  | 1073741824 |
+| `/` | division               | `$(10g / 2)`   | 5368709120 |
+| `//` | division, whole part   | `$(5 // 2)`    | 2 |
+| `%` | what a division leaves | `$(5 % 2)`     | 1 |
+| `<n>%` | a share of something   | `$(50% * 10g)` | 5368709120 |
+
+Numbers are written the way every other size in a configuration is written, so
+`10g`, `10GB` and `1ki` are numbers here. Parentheses group, and a leading `-`
+negates.
+
+A percent sign means one of two things, told apart by what follows it. A
+number follows a remainder, and an operator or the end of the expression
+follows a share, so `9 % 4` is 1 and `50% * 10g` is half of ten gibibytes.
+The spaces around the sign make no difference.
+
+The result is a whole number: a half of an odd number of bytes is one of them
+or the other, not an error. The drivers round it again to what their storage
+takes, so a filesystem asked for a third of a volume group lands on the
+nearest extent below it.
+
+**Arithmetic is computed only on keywords that convert to a number** — a size,
+an integer. `$(...)` is also how a shell substitutes a command, and keywords
+hold shell commands, so a trigger or the start of an app keeps what it was
+written with:
+
+```ini
+[app#1]
+type = forking
+start = /bin/echo $(date +%s)   # a command, left alone
+
+[disk#0]
+type = loop
+size = $(2 * 512m)              # a size, computed
+```
 
 ## References and `env` Section
 
