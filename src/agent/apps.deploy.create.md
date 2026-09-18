@@ -47,6 +47,26 @@ or
 
 	om <src path> config show | om <dst path> create --config=-
 
+## What a Clone Resets
+
+A clone is another object, so what the source recorded of itself does not come
+with it. Those keywords are marked in the keyword reference:
+
+	recorded:    written when what it names is made, and reset when the object is cloned
+
+The object id is one of them, and the clone is given a new one. The uuid of an
+md array is another: it is written when the array is created, and is what
+assembles that array again afterwards, so a clone keeping it would assemble
+the source's array rather than create one of its own.
+
+They are written again, for the clone, when the clone makes what they name.
+
+`--restore` keeps them, which is what restoring a saved configuration means:
+the object being created is the one the configuration was saved from, not
+another like it.
+
+	om <path> create --config=<backup> --restore
+
 > ➡️ See Also
 > * [Provisioning](apps.deploy.provisioning.md)
 > * [Batching configuration changes](apps.deploy.update.md#batching)
