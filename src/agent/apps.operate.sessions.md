@@ -188,6 +188,56 @@ The execs an orchestration caused are found by its id:
 om daemon exec list --orchestration-id 934a42f9-… --node '*'
 ```
 
+## Reading what an id logged
+
+The listings say how an action went. To read what it said while it went, give
+the same id to the matching `logs` command:
+
+```bash
+om daemon orchestration logs 934a42f9-b7eb-4d7e-a3ac-18347522f9f9
+om daemon session logs e9440381-9507-42b3-bef3-2c815aceb169
+om daemon exec logs d29abc32-2c0b-45ff-b639-508d5c19fbee
+```
+
+The three ids nest, and so do the three commands. An exec is one run of one
+command, on one node, for one object. The session it belongs to has the
+entries of its siblings too. The orchestration above that has every node's:
+
+```bash
+$ om daemon orchestration logs fcd85a86-152a-4065-953d-eb5a681c929c
+… dev2n1: daemon: imon: vol/testdrbd: change global expect none -> resized
+… dev2n3: daemon: imon: vol/testdrbd: change global expect none -> resized
+… dev2n2: daemon: imon: vol/testdrbd: change global expect none -> resized
+… dev2n1: daemon: imon: vol/testdrbd: -> exec [om vol/testdrbd instance resize --stage 0]
+…
+```
+
+**Every node is asked**, because what an id names is not confined to one. A
+session reaches the nodes of the objects it named, an orchestration reaches
+every node of the object, and an exec runs on one node that the id does not
+tell you. Narrowing to a node you have to name yourself is how following an
+action across a cluster is got wrong.
+
+These are the node logs with the filter already written. The ids are log
+fields, so the long form works too and is what the short form does:
+
+```bash
+om node logs --filter ORCHESTRATION_ID=934a42f9-… --node '*'
+```
+
+The options of the node logs are all still there, and narrow within the id
+rather than beside it:
+
+```bash
+om daemon exec logs d29abc32-… --grep 'exit code'
+om daemon orchestration logs 934a42f9-… --follow
+om daemon session logs e9440381-… --lines 200
+```
+
+An exec that logged nothing answers nothing. A resize stage with no work to do
+runs, succeeds and says nothing, and the empty answer is that, not a failure:
+the listing is where you learn whether it ran.
+
 ## When the daemon has forgotten
 
 What the daemon remembers is bounded, by age and by count, so a node that has
