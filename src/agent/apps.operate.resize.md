@@ -121,6 +121,14 @@ a resize is not. The array says so:
 	a raid0 array uses no size of its own on each member, so it cannot be
 	grown onto members that grew
 
+**A logical volume sized as a share of its volume group.** `size = 100%FREE`
+is resolved by lvm2, once, when the volume is created, and om never learns
+what it came out as. A resize would have to write a count of bytes over the
+share, answering a question nobody asked. Write the size as a size, or as an
+expression om computes, and it can be grown:
+
+	size = $(50% * {disk#vg.capacity})
+
 **An array that is not whole.** A degraded array grows without complaint if
 asked, and the space that adds has no redundancy and no member to rebuild it
 from. An array rebuilding, resyncing or reshaping is busy with the space it
