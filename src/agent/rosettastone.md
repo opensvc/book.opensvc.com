@@ -10,8 +10,8 @@ the command you know to its OpenSVC equivalent.
 | `om daemon start` | `hastart` | `clstart` |
 | `om daemon stop` | `hastop` | `clstop` |
 | `om mon` | `hastatus` | `clstat` |
-| `om daemon join` | `hasys -add` | |
-| `om daemon leave` | `hasys -delete` | |
+| `om cluster enroll` | `hasys -add` | |
+| `om cluster evict` | `hasys -delete` | |
 | `om node freeze` | `hasys -freeze` | |
 | `om node unfreeze` | `hasys -unfreeze` | |
 | `om <path> create` | `hagrp -add` | |
