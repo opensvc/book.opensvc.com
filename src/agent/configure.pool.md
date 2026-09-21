@@ -327,33 +327,54 @@ type = vg
 name = {namespace}-{svcname}
 pvs = {volume#1.exposed_devs[0]} {volume#2.exposed_devs[0]}
 
+[disk#2]
+shared = true
+type = lv
+name = root
+vg = {disk#1.name}
+size = 10m
+create_options = -m 1
+
 [fs#1]
 shared = true
 mnt = /srv/{namespace}/{svcname}
-dev = /dev/{disk#1.name}/root
+dev = {disk#2.exposed_devs[0]}
 type = ext4
-size = 10m
+
+[disk#3]
+shared = true
+type = lv
+name = data
+vg = {disk#1.name}
+size = $(60% * {disk#1.free})
 create_options = -m 1
-vg = {namespace}-{svcname}
 
 [fs#2]
 shared = true
 mnt = {fs#1.mnt}/data
-dev = /dev/{disk#1.name}/data
+dev = {disk#3.exposed_devs[0]}
 type = ext4
-size = 60%FREE
+
+[disk#4]
+shared = true
+type = lv
+name = log
+vg = {disk#1.name}
+size = $(40% * {disk#1.free})
 create_options = -m 1
-vg = {namespace}-{svcname}
 
 [fs#3]
 shared = true
 mnt = {fs#1.mnt}/log
-dev = /dev/{disk#1.name}/log
+dev = {disk#4.exposed_devs[0]}
 type = ext4
-size = 40%FREE
-create_options = -m 1
-vg = {namespace}-{svcname}
 ```
+
+A logical volume is a resource of its own: om knows how big it is, can grow
+it, and can count it against the claim its namespace holds on the pool. Each
+size is read when that volume is made, so the shares are of what is left at
+that point: data takes 60% of the free space the root volume left, and log 40%
+of what data left.
 
 ### virtual pool, mirrored md over 2 SAN disks
 
@@ -413,29 +434,44 @@ pvs = {disk#1.exposed_devs[0]}
 type = vg
 name = {namespace}-{svcname}
 
-[fs#1]
-vg = {namespace}-{svcname}
-mnt = /srv/{namespace}/{svcname}
-dev = /dev/{disk#1.name}/root
+[disk#3]
 shared = true
-type = ext4
+type = lv
+name = root
+vg = {disk#2.name}
 size = 10m
 
-[fs#2]
-vg = {namespace}-{svcname}
-mnt = {fs#1.mnt}/data
-dev = /dev/{disk#1.name}/data
+[fs#1]
+mnt = /srv/{namespace}/{svcname}
+dev = {disk#3.exposed_devs[0]}
 shared = true
 type = ext4
-size = 60%FREE
+
+[disk#4]
+shared = true
+type = lv
+name = data
+vg = {disk#2.name}
+size = $(60% * {disk#2.free})
+
+[fs#2]
+mnt = {fs#1.mnt}/data
+dev = {disk#4.exposed_devs[0]}
+shared = true
+type = ext4
+
+[disk#5]
+shared = true
+type = lv
+name = log
+vg = {disk#2.name}
+size = $(40% * {disk#2.free})
 
 [fs#3]
-vg = {namespace}-{svcname}
 mnt = {fs#1.mnt}/log
-dev = /dev/{disk#1.name}/log
+dev = {disk#5.exposed_devs[0]}
 shared = true
 type = ext4
-size = 40%FREE
 
 [volume#2]
 shared = true
