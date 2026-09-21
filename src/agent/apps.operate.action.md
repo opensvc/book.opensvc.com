@@ -32,15 +32,13 @@ om <path> start [--wait] [--time <duration expr>] [--watch]
 > The daemon still never starts a frozen instance on its own, and still passes
 > over frozen nodes when choosing where to start.
 >
-> Since `om <path> stop` freezes, a stop followed by a start leaves the object
-> **up and frozen**, which means the daemon will not restart it elsewhere if it
-> fails. Thaw it when you want it back under orchestration:
+> A stop does not freeze. It flags every instance of the object stopped on
+> purpose, and the start you ask for clears that flag, so a stop followed by a
+> start leaves the object up and under orchestration, with whatever freeze you
+> set yourself still exactly where you set it.
 >
-> ```
-> om <path> unfreeze
-> ```
->
-> Earlier versions, and OpenSVC v2, unfroze the object as part of starting it.
+> Earlier versions, and OpenSVC v2, unfroze the object as part of starting it,
+> and froze it as part of stopping it.
 
 ### Stop
 
@@ -54,22 +52,35 @@ om <path> instance stop
 
 > **Resource Stop Order:** `app`, `container`, `share`, `fs`, `disk`, `ip`.
 
-**Orchestrated Stop and Freeze**
+**Orchestrated Stop**
 
-Instruct the orchestrator to stop the service wherever it runs and **freeze** it to prevent automatic restarts.
+Instruct the orchestrator to stop the service wherever it runs, and to leave it
+down.
 
 ```
 om <path> stop [--wait] [--time <duration expr>] [--watch]
 ```
 
-> The freeze this sets outlives a later `om <path> start`, which no longer
-> thaws. Run `om <path> unfreeze` to put the object back under orchestration.
+> The stop flags every instance of the object stopped on purpose, which is what
+> keeps the daemon from starting it back: without the flag the next ha decision
+> would undo the stop. `om <path> print status` shows the flag as `stopped`,
+> and `om mon` as a `=` next to the instance.
+>
+> The flag is cleared by a start, a restart or a switch you ask for, on every
+> instance of the object, and by the instance being seen up again. It survives
+> a daemon restart and a reboot, so a node coming back up does not start what
+> you asked to be down.
+>
+> Earlier versions froze the instances to get the same result, which said more
+> than it meant: you could no longer tell your own freeze from one a stop had
+> left behind, and the object went on running without failover once started
+> again.
 
 ### Relocation
 
 **Switch**
 
-Stop the service on its current node(s) and start it on the specified target node. All instances are thawed afterward.
+Stop the service on its current node(s) and start it on the specified target node. The freeze you set on an instance is left as you set it: a switch is a request to place the object, not to thaw it.
 
 ```
 om <path> switch --node <nodename> [--wait] [--time <duration expr>] [--watch] [--live]
@@ -79,7 +90,7 @@ om <path> switch --node <nodename> [--wait] [--time <duration expr>] [--watch] [
 
 **Takeover**
 
-Stop the service instances on peer nodes and start it on the local node. All instances are thawed afterward.
+Stop the service instances on peer nodes and start it on the local node. The freeze you set on an instance is left as you set it.
 
 ```
 om <path> takeover [--wait] [--time <duration expr>] [--watch]
@@ -87,7 +98,7 @@ om <path> takeover [--wait] [--time <duration expr>] [--watch]
 
 **Giveback**
 
-Thaw all nodes/instances, stop the service on non-leader nodes, and let the orchestrator start instances on the designated leaders. All instances are thawed afterward.
+Stop the service on non-leader nodes, and let the orchestrator start instances on the designated leaders. The freeze you set on a node or an instance is left as you set it, and the daemon still passes over what is frozen when it chooses where to start.
 
 ```
 om <path> giveback [--wait] [--time <duration expr>] [--watch]

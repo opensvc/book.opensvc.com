@@ -122,8 +122,9 @@ orchestration id:
 
 The daemon then picks a node and starts the instance there, which is what you
 want once the object runs on more than one node. Watch it happen with `om mon`.
-Note that the matching `om hello stop` also freezes the instance, so the daemon
-does not immediately start it again.
+Note that the matching `om hello stop` flags the instance stopped on purpose,
+so the daemon does not immediately start it again. The next `om hello start`
+clears the flag.
 
 ## What you just did
 
