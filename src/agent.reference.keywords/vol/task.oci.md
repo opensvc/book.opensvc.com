@@ -1559,10 +1559,9 @@ Also support the `<user>:<group>` syntax.
 
 **Description:**
 
-If not set, the container will have a private userns other containers can
-share.
+Defines the podman container run --userns value.
 
-A container with `userns=host` will share the host's userns.
+the 'container#...' values are converted to container:id
 
 
 ## Keyword `utsns`

@@ -1,5 +1,7 @@
-# Agent Keywords Reference (v3.0.0-rc40-2-g2b57795d3)
+# Agent Keywords Reference (v3.0.0-rc41)
 
+- [Keyword changes](agent.reference.keywords/changes.md)
+- [Removed keywords](agent.reference.keywords/removed.md)
 - [node](agent.reference.keywords/node/SUMMARY.md)
   - [DEFAULT](agent.reference.keywords/node/DEFAULT.md)
   - [DEFAULT.drbd](agent.reference.keywords/node/DEFAULT.drbd.md)

@@ -33,12 +33,6 @@
    "converter": "nodes",
    "default": "*",
    "inherit": "head",
-   "kind": [
-    "cfg",
-    "nscfg",
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "1caa4703d77d7096"
   },
@@ -46,10 +40,6 @@
    "converter": "list",
    "default": "{namespace}",
    "inherit": "leaf2head",
-   "kind": [
-    "cfg",
-    "sec"
-   ],
    "textSum": "4085145e55f9ef10"
   },
   "cluster/DEFAULT.comment": {
@@ -103,14 +93,14 @@
    "textSum": "db58ec3f6f50cad6",
    "types": [
     "centera",
-    "eva",
-    "hds",
-    "freenas",
-    "nexenta",
-    "xtremio",
-    "truenas",
     "dorado",
-    "hoc"
+    "eva",
+    "freenas",
+    "hds",
+    "hoc",
+    "nexenta",
+    "truenas",
+    "xtremio"
    ]
   },
   "cluster/array.centera.server": {
@@ -128,18 +118,18 @@
    "textSum": "9b25591f34919dff",
    "types": [
     "centera",
+    "dorado",
     "eva",
+    "freenas",
     "hds",
+    "hoc",
     "ibmds",
     "ibmsvc",
-    "freenas",
     "netapp",
     "nexenta",
+    "truenas",
     "vioserver",
-    "xtremio",
-    "dorado",
-    "hoc",
-    "truenas"
+    "xtremio"
    ]
   },
   "cluster/array.dorado.api": {
@@ -165,8 +155,8 @@
   },
   "cluster/array.emcvnx.method": {
    "candidates": [
-    "secfile",
-    "credentials"
+    "credentials",
+    "secfile"
    ],
    "default": "secfile",
    "inherit": "leaf2head",
@@ -237,8 +227,8 @@
    "inherit": "leaf2head",
    "textSum": "116614c51f518a94",
    "types": [
-    "freenas",
     "dorado",
+    "freenas",
     "hoc",
     "truenas"
    ]
@@ -297,26 +287,26 @@
   },
   "cluster/array.hoc.model": {
    "candidates": [
-    "VSP G370",
-    "VSP G700",
-    "VSP G900",
-    "VSP F370",
-    "VSP F700",
-    "VSP F900",
-    "VSP G350",
+    "HUS VM",
+    "VSP F1500",
     "VSP F350",
-    "VSP G800",
-    "VSP F800",
-    "VSP G400",
-    "VSP G600",
+    "VSP F370",
     "VSP F400",
     "VSP F600",
-    "VSP G200",
+    "VSP F700",
+    "VSP F800",
+    "VSP F900",
     "VSP G1000",
     "VSP G1500",
-    "VSP F1500",
-    "Virtual Storage Platform",
-    "HUS VM"
+    "VSP G200",
+    "VSP G350",
+    "VSP G370",
+    "VSP G400",
+    "VSP G600",
+    "VSP G700",
+    "VSP G800",
+    "VSP G900",
+    "Virtual Storage Platform"
    ],
    "inherit": "leaf2head",
    "required": true,
@@ -366,8 +356,8 @@
   },
   "cluster/array.hp3par.method": {
    "candidates": [
-    "proxy",
     "cli",
+    "proxy",
     "ssh"
    ],
    "default": "ssh",
@@ -405,8 +395,8 @@
    "required": true,
    "textSum": "d0d5b33abf0cc737",
    "types": [
-    "netapp",
     "ibmsvc",
+    "netapp",
     "vioserver"
    ]
   },
@@ -433,9 +423,9 @@
    "inherit": "leaf2head",
    "textSum": "25d450f91bc0c642",
    "types": [
-    "pure",
-    "hoc",
     "freenas",
+    "hoc",
+    "pure",
     "truenas"
    ]
   },
@@ -508,22 +498,22 @@
   },
   "cluster/array.type": {
    "candidates": [
+    "centera",
+    "dorado",
+    "emcvnx",
+    "eva",
     "freenas",
     "hds",
-    "eva",
-    "nexenta",
-    "vioserver",
-    "centera",
-    "symmetrix",
-    "emcvnx",
-    "netapp",
+    "hoc",
     "hp3par",
     "ibmds",
     "ibmsvc",
-    "xtremio",
-    "dorado",
-    "hoc",
-    "truenas"
+    "netapp",
+    "nexenta",
+    "symmetrix",
+    "truenas",
+    "vioserver",
+    "xtremio"
    ],
    "inherit": "leaf2head",
    "required": true,
@@ -755,10 +745,10 @@
   },
   "cluster/hb.type": {
    "candidates": [
-    "unicast",
-    "multicast",
     "disk",
-    "relay"
+    "multicast",
+    "relay",
+    "unicast"
    ],
    "inherit": "leaf2head",
    "required": true,
@@ -963,8 +953,8 @@
   },
   "cluster/network.routed_bridge.tunnel": {
    "candidates": [
-    "auto",
     "always",
+    "auto",
     "never"
    ],
    "default": "auto",
@@ -977,8 +967,8 @@
   "cluster/network.routed_bridge.tunnel_mode": {
    "candidates": [
     "gre",
-    "ipip",
-    "ip6ip6"
+    "ip6ip6",
+    "ipip"
    ],
    "default": "ipip",
    "inherit": "leaf2head",
@@ -1183,8 +1173,8 @@
   "cluster/node.split_action": {
    "candidates": [
     "crash",
-    "reboot",
-    "disabled"
+    "disabled",
+    "reboot"
    ],
    "default": "crash",
    "inherit": "leaf2head",
@@ -1296,11 +1286,11 @@
    "scopable": true,
    "textSum": "57ccd3522d1d4d7f",
    "types": [
-    "freenas",
-    "symmetrix",
     "dorado",
+    "freenas",
     "hoc",
     "pure",
+    "symmetrix",
     "truenas"
    ]
   },
@@ -1316,9 +1306,6 @@
   },
   "cluster/pool.freenas.compression": {
    "candidates": [
-    "inherit",
-    "none",
-    "lz4",
     "gzip-1",
     "gzip-2",
     "gzip-3",
@@ -1328,8 +1315,11 @@
     "gzip-7",
     "gzip-8",
     "gzip-9",
-    "zle",
-    "lzjb"
+    "inherit",
+    "lz4",
+    "lzjb",
+    "none",
+    "zle"
    ],
    "default": "inherit",
    "inherit": "leaf2head",
@@ -1353,8 +1343,8 @@
    "required": true,
    "textSum": "3d67f0a14f4986c8",
    "types": [
-    "freenas",
     "dorado",
+    "freenas",
     "hoc",
     "pure",
     "truenas"
@@ -1365,16 +1355,16 @@
    "inherit": "leaf2head",
    "textSum": "c1bc9a2cfcc16fa0",
    "types": [
-    "freenas",
     "dorado",
-    "hoc",
-    "symmetrix",
     "drbd",
+    "freenas",
+    "hoc",
     "loop",
-    "vg",
     "pure",
+    "rados",
+    "symmetrix",
     "truenas",
-    "rados"
+    "vg"
    ]
   },
   "cluster/pool.freenas.insecure_tpc": {
@@ -1538,20 +1528,20 @@
   "cluster/pool.type": {
    "candidates": [
     "directory",
-    "loop",
-    "vg",
-    "zpool",
+    "dorado",
+    "drbd",
     "freenas",
+    "hoc",
+    "loop",
+    "pure",
+    "rados",
     "share",
     "shm",
     "symmetrix",
     "truenas",
+    "vg",
     "virtual",
-    "dorado",
-    "hoc",
-    "drbd",
-    "pure",
-    "rados"
+    "zpool"
    ],
    "default": "directory",
    "inherit": "leaf2head",
@@ -1625,8 +1615,8 @@
   },
   "cluster/switch.brocade.method": {
    "candidates": [
-    "telnet",
-    "ssh"
+    "ssh",
+    "telnet"
    ],
    "default": "ssh",
    "inherit": "leaf2head",
@@ -1678,10 +1668,10 @@
   "cluster/syslog.level": {
    "candidates": [
     "critical",
+    "debug",
     "error",
-    "warning",
     "info",
-    "debug"
+    "warning"
    ],
    "default": "info",
    "inherit": "leaf2head",
@@ -1748,14 +1738,14 @@
    "textSum": "db58ec3f6f50cad6",
    "types": [
     "centera",
-    "eva",
-    "hds",
-    "freenas",
-    "nexenta",
-    "xtremio",
-    "truenas",
     "dorado",
-    "hoc"
+    "eva",
+    "freenas",
+    "hds",
+    "hoc",
+    "nexenta",
+    "truenas",
+    "xtremio"
    ]
   },
   "node/array.centera.server": {
@@ -1773,18 +1763,18 @@
    "textSum": "9b25591f34919dff",
    "types": [
     "centera",
+    "dorado",
     "eva",
+    "freenas",
     "hds",
+    "hoc",
     "ibmds",
     "ibmsvc",
-    "freenas",
     "netapp",
     "nexenta",
+    "truenas",
     "vioserver",
-    "xtremio",
-    "dorado",
-    "hoc",
-    "truenas"
+    "xtremio"
    ]
   },
   "node/array.dorado.api": {
@@ -1810,8 +1800,8 @@
   },
   "node/array.emcvnx.method": {
    "candidates": [
-    "secfile",
-    "credentials"
+    "credentials",
+    "secfile"
    ],
    "default": "secfile",
    "inherit": "leaf2head",
@@ -1882,8 +1872,8 @@
    "inherit": "leaf2head",
    "textSum": "116614c51f518a94",
    "types": [
-    "freenas",
     "dorado",
+    "freenas",
     "hoc",
     "truenas"
    ]
@@ -1942,26 +1932,26 @@
   },
   "node/array.hoc.model": {
    "candidates": [
-    "VSP G370",
-    "VSP G700",
-    "VSP G900",
-    "VSP F370",
-    "VSP F700",
-    "VSP F900",
-    "VSP G350",
+    "HUS VM",
+    "VSP F1500",
     "VSP F350",
-    "VSP G800",
-    "VSP F800",
-    "VSP G400",
-    "VSP G600",
+    "VSP F370",
     "VSP F400",
     "VSP F600",
-    "VSP G200",
+    "VSP F700",
+    "VSP F800",
+    "VSP F900",
     "VSP G1000",
     "VSP G1500",
-    "VSP F1500",
-    "Virtual Storage Platform",
-    "HUS VM"
+    "VSP G200",
+    "VSP G350",
+    "VSP G370",
+    "VSP G400",
+    "VSP G600",
+    "VSP G700",
+    "VSP G800",
+    "VSP G900",
+    "Virtual Storage Platform"
    ],
    "inherit": "leaf2head",
    "required": true,
@@ -2011,8 +2001,8 @@
   },
   "node/array.hp3par.method": {
    "candidates": [
-    "proxy",
     "cli",
+    "proxy",
     "ssh"
    ],
    "default": "ssh",
@@ -2050,8 +2040,8 @@
    "required": true,
    "textSum": "d0d5b33abf0cc737",
    "types": [
-    "netapp",
     "ibmsvc",
+    "netapp",
     "vioserver"
    ]
   },
@@ -2078,9 +2068,9 @@
    "inherit": "leaf2head",
    "textSum": "25d450f91bc0c642",
    "types": [
-    "pure",
-    "hoc",
     "freenas",
+    "hoc",
+    "pure",
     "truenas"
    ]
   },
@@ -2153,22 +2143,22 @@
   },
   "node/array.type": {
    "candidates": [
+    "centera",
+    "dorado",
+    "emcvnx",
+    "eva",
     "freenas",
     "hds",
-    "eva",
-    "nexenta",
-    "vioserver",
-    "centera",
-    "symmetrix",
-    "emcvnx",
-    "netapp",
+    "hoc",
     "hp3par",
     "ibmds",
     "ibmsvc",
-    "xtremio",
-    "dorado",
-    "hoc",
-    "truenas"
+    "netapp",
+    "nexenta",
+    "symmetrix",
+    "truenas",
+    "vioserver",
+    "xtremio"
    ],
    "inherit": "leaf2head",
    "required": true,
@@ -2404,10 +2394,10 @@
   },
   "node/hb.type": {
    "candidates": [
-    "unicast",
-    "multicast",
     "disk",
-    "relay"
+    "multicast",
+    "relay",
+    "unicast"
    ],
    "inherit": "leaf2head",
    "required": true,
@@ -2612,8 +2602,8 @@
   },
   "node/network.routed_bridge.tunnel": {
    "candidates": [
-    "auto",
     "always",
+    "auto",
     "never"
    ],
    "default": "auto",
@@ -2626,8 +2616,8 @@
   "node/network.routed_bridge.tunnel_mode": {
    "candidates": [
     "gre",
-    "ipip",
-    "ip6ip6"
+    "ip6ip6",
+    "ipip"
    ],
    "default": "ipip",
    "inherit": "leaf2head",
@@ -2918,8 +2908,8 @@
   "node/node.split_action": {
    "candidates": [
     "crash",
-    "reboot",
-    "disabled"
+    "disabled",
+    "reboot"
    ],
    "default": "crash",
    "inherit": "leaf2head",
@@ -3040,11 +3030,11 @@
    "scopable": true,
    "textSum": "57ccd3522d1d4d7f",
    "types": [
-    "freenas",
-    "symmetrix",
     "dorado",
+    "freenas",
     "hoc",
     "pure",
+    "symmetrix",
     "truenas"
    ]
   },
@@ -3060,9 +3050,6 @@
   },
   "node/pool.freenas.compression": {
    "candidates": [
-    "inherit",
-    "none",
-    "lz4",
     "gzip-1",
     "gzip-2",
     "gzip-3",
@@ -3072,8 +3059,11 @@
     "gzip-7",
     "gzip-8",
     "gzip-9",
-    "zle",
-    "lzjb"
+    "inherit",
+    "lz4",
+    "lzjb",
+    "none",
+    "zle"
    ],
    "default": "inherit",
    "inherit": "leaf2head",
@@ -3097,8 +3087,8 @@
    "required": true,
    "textSum": "3d67f0a14f4986c8",
    "types": [
-    "freenas",
     "dorado",
+    "freenas",
     "hoc",
     "pure",
     "truenas"
@@ -3109,16 +3099,16 @@
    "inherit": "leaf2head",
    "textSum": "c1bc9a2cfcc16fa0",
    "types": [
-    "freenas",
     "dorado",
-    "hoc",
-    "symmetrix",
     "drbd",
+    "freenas",
+    "hoc",
     "loop",
-    "vg",
     "pure",
+    "rados",
+    "symmetrix",
     "truenas",
-    "rados"
+    "vg"
    ]
   },
   "node/pool.freenas.insecure_tpc": {
@@ -3282,20 +3272,20 @@
   "node/pool.type": {
    "candidates": [
     "directory",
-    "loop",
-    "vg",
-    "zpool",
+    "dorado",
+    "drbd",
     "freenas",
+    "hoc",
+    "loop",
+    "pure",
+    "rados",
     "share",
     "shm",
     "symmetrix",
     "truenas",
+    "vg",
     "virtual",
-    "dorado",
-    "hoc",
-    "drbd",
-    "pure",
-    "rados"
+    "zpool"
    ],
    "default": "directory",
    "inherit": "leaf2head",
@@ -3369,8 +3359,8 @@
   },
   "node/switch.brocade.method": {
    "candidates": [
-    "telnet",
-    "ssh"
+    "ssh",
+    "telnet"
    ],
    "default": "ssh",
    "inherit": "leaf2head",
@@ -3426,10 +3416,10 @@
   "node/syslog.level": {
    "candidates": [
     "critical",
+    "debug",
     "error",
-    "warning",
     "info",
-    "debug"
+    "warning"
    ],
    "default": "info",
    "inherit": "leaf2head",
@@ -3448,10 +3438,6 @@
   "sec/DEFAULT.alt_names": {
    "converter": "list",
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "ae7fe60a56e8d8cd"
   },
@@ -3464,35 +3450,21 @@
    "converter": "size",
    "default": "4kib",
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "57ca0d089ce60758"
   },
   "sec/DEFAULT.c": {
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "e27a7c7a601761ee"
   },
   "sec/DEFAULT.ca": {
    "inherit": "leaf2head",
-   "kind": [
-    "sec"
-   ],
    "scopable": true,
    "textSum": "d95ee2078c14346d"
   },
   "sec/DEFAULT.cn": {
    "inherit": "leaf2head",
-   "kind": [
-    "sec"
-   ],
    "scopable": true,
    "textSum": "de28bcd03898eef3"
   },
@@ -3508,10 +3480,6 @@
   },
   "sec/DEFAULT.email": {
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "0b232606e8679b6b"
   },
@@ -3531,10 +3499,6 @@
   },
   "sec/DEFAULT.l": {
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "b3315aaffe58d5ec"
   },
@@ -3542,30 +3506,16 @@
    "converter": "nodes",
    "default": "*",
    "inherit": "head",
-   "kind": [
-    "cfg",
-    "nscfg",
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "1caa4703d77d7096"
   },
   "sec/DEFAULT.o": {
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "ed08d8c7c25d9180"
   },
   "sec/DEFAULT.ou": {
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "870617c30298ef99"
   },
@@ -3573,18 +3523,10 @@
    "converter": "list",
    "default": "{namespace}",
    "inherit": "leaf2head",
-   "kind": [
-    "cfg",
-    "sec"
-   ],
    "textSum": "4085145e55f9ef10"
   },
   "sec/DEFAULT.st": {
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "75152076fc5c39ba"
   },
@@ -3592,10 +3534,6 @@
    "converter": "duration",
    "default": "1y",
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "8b72275cbab05b4d"
   },
@@ -3607,10 +3545,6 @@
   "svc/DEFAULT.children": {
    "converter": "listlowercase",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "edc612d89b942a00"
   },
   "svc/DEFAULT.comment": {
@@ -3620,10 +3554,6 @@
   "svc/DEFAULT.comp_schedule": {
    "default": "~00:00-06:00",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "80d1b1829aff623b"
   },
@@ -3631,21 +3561,12 @@
    "converter": "bool",
    "default": "true",
    "inherit": "leaf2head",
-   "kind": [
-    "nscfg",
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "5dd58b2595feb385"
   },
   "svc/DEFAULT.disable": {
    "converter": "bool",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "0d15bf1fd35168b6"
   },
@@ -3658,9 +3579,6 @@
   "svc/DEFAULT.encapnodes": {
    "converter": "list",
    "inherit": "head",
-   "kind": [
-    "svc"
-   ],
    "textSum": "f4aa0c969048e9d8"
   },
   "svc/DEFAULT.env": {
@@ -3682,10 +3600,6 @@
     "topology=flex"
    ],
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "441ddacf07e2f365"
   },
   "svc/DEFAULT.flex_min": {
@@ -3698,10 +3612,6 @@
     "topology=flex"
    ],
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "58b28bc70550e2be"
   },
   "svc/DEFAULT.flex_primary": {
@@ -3711,10 +3621,6 @@
     "topology=flex"
    ],
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "147c23d84a5b8693"
   },
@@ -3726,10 +3632,6 @@
     "topology=flex"
    ],
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "e60ce2a2f8467010"
   },
   "svc/DEFAULT.hard_affinity": {
@@ -3738,10 +3640,6 @@
    ],
    "converter": "listlowercase",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "158f610c4c0fc7db"
   },
   "svc/DEFAULT.hard_anti_affinity": {
@@ -3750,10 +3648,6 @@
    ],
    "converter": "listlowercase",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "ef04ac92eefc97f5"
   },
   "svc/DEFAULT.id": {
@@ -3768,10 +3662,6 @@
    ],
    "default": "@60m",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "e1a668630a3a5043"
   },
@@ -3786,20 +3676,12 @@
    "converter": "list",
    "default": "none",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "6881190ef6079e07"
   },
   "svc/DEFAULT.monitor_schedule": {
    "default": "@1m",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "5f08f275fa4861ec"
   },
@@ -3807,60 +3689,37 @@
    "converter": "nodes",
    "defaultText": "The lowercased hostname of the evaluating node.\n",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "1caa4703d77d7096"
   },
   "svc/DEFAULT.orchestrate": {
    "candidates": [
-    "no",
     "ha",
+    "no",
     "start"
    ],
    "default": "no",
    "inherit": "head",
-   "kind": [
-    "svc"
-   ],
    "textSum": "0cf786e66038adcc"
   },
   "svc/DEFAULT.parents": {
    "converter": "listlowercase",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "11a2f5f98b4c31e1"
   },
   "svc/DEFAULT.pg_blkio_weight": {
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "5fdd5b5127817859"
   },
   "svc/DEFAULT.pg_cpu_quota": {
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "da8e4e7f1a82df89"
   },
   "svc/DEFAULT.pg_cpu_shares": {
    "converter": "size",
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "05dbb19edee54af4"
   },
@@ -3869,57 +3728,33 @@
     "create_pg=true"
    ],
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "f5bce02980275085"
   },
   "svc/DEFAULT.pg_mem_limit": {
    "converter": "size",
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "e6536396e0947fdf"
   },
   "svc/DEFAULT.pg_mem_oom_control": {
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "1a627e554a156cd6"
   },
   "svc/DEFAULT.pg_mem_swappiness": {
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "723681277bf9e505"
   },
   "svc/DEFAULT.pg_mems": {
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "c897111f9d144da8"
   },
   "svc/DEFAULT.pg_vmem_limit": {
    "converter": "size",
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "00091add2fa543ab"
   },
@@ -3936,18 +3771,10 @@
    ],
    "default": "nodes order",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "2af73d1540514ae0"
   },
   "svc/DEFAULT.pre_monitor_action": {
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "4a0bfafcd8853185"
   },
@@ -3955,29 +3782,18 @@
    "converter": "int",
    "default": "50",
    "inherit": "head",
-   "kind": [
-    "svc"
-   ],
    "textSum": "a5a0b1d82ed76634"
   },
   "svc/DEFAULT.provision": {
    "converter": "bool",
    "default": "true",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "31332675852e5b20"
   },
   "svc/DEFAULT.provision_timeout": {
    "converter": "duration",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
   },
@@ -3985,19 +3801,11 @@
    "converter": "bool",
    "default": "true",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "25d624c8e071f601"
   },
   "svc/DEFAULT.run_schedule": {
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "e30ea5728217a43c"
   },
@@ -4005,58 +3813,34 @@
    "converter": "bool",
    "default": "true",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "905050fe14f75551"
   },
   "svc/DEFAULT.soft_affinity": {
    "converter": "listlowercase",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "45409ddaf3c28f54"
   },
   "svc/DEFAULT.soft_anti_affinity": {
    "converter": "listlowercase",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "099d2730d26422eb"
   },
   "svc/DEFAULT.start_timeout": {
    "converter": "duration",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
   },
   "svc/DEFAULT.stat_timeout": {
    "converter": "duration",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "b7563445d5da73ce"
   },
   "svc/DEFAULT.status_schedule": {
    "default": "@10m",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "06cdcd135a221c8a"
   },
@@ -4064,10 +3848,6 @@
    "converter": "duration",
    "default": "1m",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "a8d8d564b5d7df15"
   },
@@ -4078,39 +3858,23 @@
     "topology=failover"
    ],
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "16588e13ab1c925d"
   },
   "svc/DEFAULT.stop_timeout": {
    "converter": "duration",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
   },
   "svc/DEFAULT.sync_schedule": {
    "default": "04:00-06:00",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "f409356f829939ef"
   },
   "svc/DEFAULT.sync_timeout": {
    "converter": "duration",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
   },
@@ -4118,10 +3882,6 @@
    "converter": "duration",
    "default": "1h",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "0e8bae5232d4c6ba"
   },
@@ -4135,38 +3895,22 @@
    ],
    "default": "failover",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "b44ed525319c0977"
   },
   "svc/DEFAULT.type": {
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "0ec94003a3a09750"
   },
   "svc/DEFAULT.unprovision": {
    "converter": "bool",
    "default": "true",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "4f5cf87522375b1a"
   },
   "svc/DEFAULT.unprovision_timeout": {
    "converter": "duration",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
   },
@@ -5456,8 +5200,8 @@
   },
   "svc/container.docker.image_pull_policy": {
    "candidates": [
-    "once",
-    "always"
+    "always",
+    "once"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -6930,8 +6674,8 @@
   },
   "svc/container.oci.image_pull_policy": {
    "candidates": [
-    "once",
-    "always"
+    "always",
+    "once"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -7334,7 +7078,7 @@
   "svc/container.oci.userns": {
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "fe0a8ea734f8cdad",
+   "textSum": "ab398c3555152673",
    "types": [
     "oci"
    ]
@@ -7563,8 +7307,8 @@
   },
   "svc/container.podman.image_pull_policy": {
    "candidates": [
-    "once",
-    "always"
+    "always",
+    "once"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -11184,10 +10928,10 @@
   },
   "svc/disk.rados.access": {
    "candidates": [
-    "rwo",
     "roo",
-    "rwx",
-    "rox"
+    "rox",
+    "rwo",
+    "rwx"
    ],
    "default": "rwo",
    "inherit": "leaf2head",
@@ -36786,10 +36530,10 @@
    "candidates": [
     "bridge",
     "dedicated",
-    "macvlan",
     "ipvlan-l2",
     "ipvlan-l3",
     "ipvlan-l3s",
+    "macvlan",
     "ovs"
    ],
    "default": "bridge",
@@ -37583,10 +37327,10 @@
    "candidates": [
     "bridge",
     "dedicated",
-    "macvlan",
     "ipvlan-l2",
     "ipvlan-l3",
     "ipvlan-l3s",
+    "macvlan",
     "ovs"
    ],
    "default": "bridge",
@@ -38767,10 +38511,6 @@
   "svc/subset.parallel": {
    "converter": "bool",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "394b027efd9631cc"
   },
@@ -39010,9 +38750,9 @@
   },
   "svc/sync.rsync.target": {
    "candidates": [
-    "nodes",
     "drpnodes",
-    "local"
+    "local",
+    "nodes"
    ],
    "converter": "list",
    "inherit": "leaf2head",
@@ -39797,9 +39537,9 @@
   },
   "svc/sync.zfs.target": {
    "candidates": [
-    "nodes",
     "drpnodes",
-    "local"
+    "local",
+    "nodes"
    ],
    "converter": "list",
    "inherit": "leaf2head",
@@ -40132,9 +39872,9 @@
   },
   "svc/task.docker.check": {
    "candidates": [
+    "",
     "last_run",
-    "last_run_warn",
-    ""
+    "last_run_warn"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -40280,8 +40020,8 @@
   },
   "svc/task.docker.image_pull_policy": {
    "candidates": [
-    "once",
-    "always"
+    "always",
+    "once"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -40739,9 +40479,9 @@
   },
   "svc/task.host.check": {
    "candidates": [
+    "",
     "last_run",
-    "last_run_warn",
-    ""
+    "last_run_warn"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -41238,9 +40978,9 @@
   },
   "svc/task.oci.check": {
    "candidates": [
+    "",
     "last_run",
-    "last_run_warn",
-    ""
+    "last_run_warn"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -41386,8 +41126,8 @@
   },
   "svc/task.oci.image_pull_policy": {
    "candidates": [
-    "once",
-    "always"
+    "always",
+    "once"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -41769,7 +41509,7 @@
   "svc/task.oci.userns": {
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "fe0a8ea734f8cdad",
+   "textSum": "ab398c3555152673",
    "types": [
     "oci"
    ]
@@ -41861,9 +41601,9 @@
   },
   "svc/task.podman.check": {
    "candidates": [
+    "",
     "last_run",
-    "last_run_warn",
-    ""
+    "last_run_warn"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -42009,8 +41749,8 @@
   },
   "svc/task.podman.image_pull_policy": {
    "candidates": [
-    "once",
-    "always"
+    "always",
+    "once"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -42420,10 +42160,10 @@
   },
   "svc/volume..access": {
    "candidates": [
-    "rwo",
     "roo",
-    "rwx",
-    "rox"
+    "rox",
+    "rwo",
+    "rwx"
    ],
    "default": "rwo",
    "inherit": "leaf2head",
@@ -42851,10 +42591,6 @@
   "usr/DEFAULT.alt_names": {
    "converter": "list",
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "ae7fe60a56e8d8cd"
   },
@@ -42867,37 +42603,23 @@
    "converter": "size",
    "default": "4kib",
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "57ca0d089ce60758"
   },
   "usr/DEFAULT.c": {
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "e27a7c7a601761ee"
   },
   "usr/DEFAULT.ca": {
    "default": "system/sec/ca",
    "inherit": "leaf2head",
-   "kind": [
-    "usr"
-   ],
    "scopable": true,
    "textSum": "4eb542dec5161457"
   },
   "usr/DEFAULT.cn": {
    "default": "{name}",
    "inherit": "leaf2head",
-   "kind": [
-    "usr"
-   ],
    "scopable": true,
    "textSum": "e5ace799be4d6fb4"
   },
@@ -42913,10 +42635,6 @@
   },
   "usr/DEFAULT.email": {
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "0b232606e8679b6b"
   },
@@ -42931,9 +42649,6 @@
   "usr/DEFAULT.grant": {
    "converter": "listlowercase",
    "inherit": "head",
-   "kind": [
-    "usr"
-   ],
    "scopable": true,
    "textSum": "bfe7b77645cad525"
   },
@@ -42945,10 +42660,6 @@
   },
   "usr/DEFAULT.l": {
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "b3315aaffe58d5ec"
   },
@@ -42956,39 +42667,21 @@
    "converter": "nodes",
    "default": "*",
    "inherit": "head",
-   "kind": [
-    "cfg",
-    "nscfg",
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "1caa4703d77d7096"
   },
   "usr/DEFAULT.o": {
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "ed08d8c7c25d9180"
   },
   "usr/DEFAULT.ou": {
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "870617c30298ef99"
   },
   "usr/DEFAULT.st": {
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "75152076fc5c39ba"
   },
@@ -42996,25 +42689,18 @@
    "converter": "duration",
    "default": "1y",
    "inherit": "leaf2head",
-   "kind": [
-    "sec",
-    "usr"
-   ],
    "scopable": true,
    "textSum": "8b72275cbab05b4d"
   },
   "vol/DEFAULT.access": {
    "candidates": [
-    "rwo",
     "roo",
-    "rwx",
-    "rox"
+    "rox",
+    "rwo",
+    "rwx"
    ],
    "default": "rwo",
    "inherit": "head",
-   "kind": [
-    "vol"
-   ],
    "scopable": true,
    "textSum": "9bf8c7f8c12f4e71"
   },
@@ -43026,10 +42712,6 @@
   "vol/DEFAULT.children": {
    "converter": "listlowercase",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "edc612d89b942a00"
   },
   "vol/DEFAULT.comment": {
@@ -43039,10 +42721,6 @@
   "vol/DEFAULT.comp_schedule": {
    "default": "~00:00-06:00",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "80d1b1829aff623b"
   },
@@ -43050,29 +42728,17 @@
    "converter": "bool",
    "default": "true",
    "inherit": "leaf2head",
-   "kind": [
-    "nscfg",
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "5dd58b2595feb385"
   },
   "vol/DEFAULT.devices_from": {
    "converter": "list",
    "inherit": "head",
-   "kind": [
-    "vol"
-   ],
    "textSum": "eb12f9f1f496ac93"
   },
   "vol/DEFAULT.disable": {
    "converter": "bool",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "0d15bf1fd35168b6"
   },
@@ -43101,10 +42767,6 @@
     "topology=flex"
    ],
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "441ddacf07e2f365"
   },
   "vol/DEFAULT.flex_min": {
@@ -43117,10 +42779,6 @@
     "topology=flex"
    ],
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "58b28bc70550e2be"
   },
   "vol/DEFAULT.flex_primary": {
@@ -43130,10 +42788,6 @@
     "topology=flex"
    ],
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "147c23d84a5b8693"
   },
@@ -43145,10 +42799,6 @@
     "topology=flex"
    ],
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "e60ce2a2f8467010"
   },
   "vol/DEFAULT.hard_affinity": {
@@ -43157,10 +42807,6 @@
    ],
    "converter": "listlowercase",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "158f610c4c0fc7db"
   },
   "vol/DEFAULT.hard_anti_affinity": {
@@ -43169,10 +42815,6 @@
    ],
    "converter": "listlowercase",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "ef04ac92eefc97f5"
   },
   "vol/DEFAULT.id": {
@@ -43187,10 +42829,6 @@
    ],
    "default": "@60m",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "e1a668630a3a5043"
   },
@@ -43205,20 +42843,12 @@
    "converter": "list",
    "default": "none",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "6881190ef6079e07"
   },
   "vol/DEFAULT.monitor_schedule": {
    "default": "@1m",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "5f08f275fa4861ec"
   },
@@ -43226,47 +42856,27 @@
    "converter": "nodes",
    "defaultText": "The lowercased hostname of the evaluating node.\n",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "1caa4703d77d7096"
   },
   "vol/DEFAULT.parents": {
    "converter": "listlowercase",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "11a2f5f98b4c31e1"
   },
   "vol/DEFAULT.pg_blkio_weight": {
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "5fdd5b5127817859"
   },
   "vol/DEFAULT.pg_cpu_quota": {
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "da8e4e7f1a82df89"
   },
   "vol/DEFAULT.pg_cpu_shares": {
    "converter": "size",
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "05dbb19edee54af4"
   },
@@ -43275,57 +42885,33 @@
     "create_pg=true"
    ],
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "f5bce02980275085"
   },
   "vol/DEFAULT.pg_mem_limit": {
    "converter": "size",
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "e6536396e0947fdf"
   },
   "vol/DEFAULT.pg_mem_oom_control": {
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "1a627e554a156cd6"
   },
   "vol/DEFAULT.pg_mem_swappiness": {
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "723681277bf9e505"
   },
   "vol/DEFAULT.pg_mems": {
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "c897111f9d144da8"
   },
   "vol/DEFAULT.pg_vmem_limit": {
    "converter": "size",
    "inherit": "leaf",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "00091add2fa543ab"
   },
@@ -43342,26 +42928,15 @@
    ],
    "default": "nodes order",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "2af73d1540514ae0"
   },
   "vol/DEFAULT.pool": {
    "inherit": "head",
-   "kind": [
-    "vol"
-   ],
    "scopable": true,
    "textSum": "69691a888bc821a1"
   },
   "vol/DEFAULT.pre_monitor_action": {
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "4a0bfafcd8853185"
   },
@@ -43369,20 +42944,12 @@
    "converter": "bool",
    "default": "true",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "31332675852e5b20"
   },
   "vol/DEFAULT.provision_timeout": {
    "converter": "duration",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
   },
@@ -43390,19 +42957,11 @@
    "converter": "bool",
    "default": "true",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "25d624c8e071f601"
   },
   "vol/DEFAULT.run_schedule": {
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "e30ea5728217a43c"
   },
@@ -43410,67 +42969,40 @@
    "converter": "bool",
    "default": "true",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "905050fe14f75551"
   },
   "vol/DEFAULT.size": {
    "converter": "size",
    "inherit": "head",
-   "kind": [
-    "vol"
-   ],
    "scopable": true,
    "textSum": "7be07962b7a7d4fa"
   },
   "vol/DEFAULT.soft_affinity": {
    "converter": "listlowercase",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "45409ddaf3c28f54"
   },
   "vol/DEFAULT.soft_anti_affinity": {
    "converter": "listlowercase",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "099d2730d26422eb"
   },
   "vol/DEFAULT.start_timeout": {
    "converter": "duration",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
   },
   "vol/DEFAULT.stat_timeout": {
    "converter": "duration",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "b7563445d5da73ce"
   },
   "vol/DEFAULT.status_schedule": {
    "default": "@10m",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "06cdcd135a221c8a"
   },
@@ -43478,10 +43010,6 @@
    "converter": "duration",
    "default": "1m",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "a8d8d564b5d7df15"
   },
@@ -43492,39 +43020,23 @@
     "topology=failover"
    ],
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "16588e13ab1c925d"
   },
   "vol/DEFAULT.stop_timeout": {
    "converter": "duration",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
   },
   "vol/DEFAULT.sync_schedule": {
    "default": "04:00-06:00",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "f409356f829939ef"
   },
   "vol/DEFAULT.sync_timeout": {
    "converter": "duration",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
   },
@@ -43532,10 +43044,6 @@
    "converter": "duration",
    "default": "1h",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "0e8bae5232d4c6ba"
   },
@@ -43549,38 +43057,22 @@
    ],
    "default": "failover",
    "inherit": "head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "b44ed525319c0977"
   },
   "vol/DEFAULT.type": {
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "textSum": "0ec94003a3a09750"
   },
   "vol/DEFAULT.unprovision": {
    "converter": "bool",
    "default": "true",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "4f5cf87522375b1a"
   },
   "vol/DEFAULT.unprovision_timeout": {
    "converter": "duration",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
   },
@@ -46395,10 +45887,10 @@
   },
   "vol/disk.rados.access": {
    "candidates": [
-    "rwo",
     "roo",
-    "rwx",
-    "rox"
+    "rox",
+    "rwo",
+    "rwx"
    ],
    "default": "rwo",
    "inherit": "leaf2head",
@@ -72114,10 +71606,6 @@
   "vol/subset.parallel": {
    "converter": "bool",
    "inherit": "leaf2head",
-   "kind": [
-    "svc",
-    "vol"
-   ],
    "scopable": true,
    "textSum": "394b027efd9631cc"
   },
@@ -72357,9 +71845,9 @@
   },
   "vol/sync.rsync.target": {
    "candidates": [
-    "nodes",
     "drpnodes",
-    "local"
+    "local",
+    "nodes"
    ],
    "converter": "list",
    "inherit": "leaf2head",
@@ -73144,9 +72632,9 @@
   },
   "vol/sync.zfs.target": {
    "candidates": [
-    "nodes",
     "drpnodes",
-    "local"
+    "local",
+    "nodes"
    ],
    "converter": "list",
    "inherit": "leaf2head",
@@ -73479,9 +72967,9 @@
   },
   "vol/task.docker.check": {
    "candidates": [
+    "",
     "last_run",
-    "last_run_warn",
-    ""
+    "last_run_warn"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -73627,8 +73115,8 @@
   },
   "vol/task.docker.image_pull_policy": {
    "candidates": [
-    "once",
-    "always"
+    "always",
+    "once"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -74086,9 +73574,9 @@
   },
   "vol/task.host.check": {
    "candidates": [
+    "",
     "last_run",
-    "last_run_warn",
-    ""
+    "last_run_warn"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -74585,9 +74073,9 @@
   },
   "vol/task.oci.check": {
    "candidates": [
+    "",
     "last_run",
-    "last_run_warn",
-    ""
+    "last_run_warn"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -74733,8 +74221,8 @@
   },
   "vol/task.oci.image_pull_policy": {
    "candidates": [
-    "once",
-    "always"
+    "always",
+    "once"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -75116,7 +74604,7 @@
   "vol/task.oci.userns": {
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "fe0a8ea734f8cdad",
+   "textSum": "ab398c3555152673",
    "types": [
     "oci"
    ]
@@ -75208,9 +74696,9 @@
   },
   "vol/task.podman.check": {
    "candidates": [
+    "",
     "last_run",
-    "last_run_warn",
-    ""
+    "last_run_warn"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -75356,8 +74844,8 @@
   },
   "vol/task.podman.image_pull_policy": {
    "candidates": [
-    "once",
-    "always"
+    "always",
+    "once"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -75767,10 +75255,10 @@
   },
   "vol/volume..access": {
    "candidates": [
-    "rwo",
     "roo",
-    "rwx",
-    "rox"
+    "rox",
+    "rwo",
+    "rwx"
    ],
    "default": "rwo",
    "inherit": "leaf2head",
@@ -76196,5 +75684,5 @@
    ]
   }
  },
- "version": "v3.0.0-rc40-2-g2b57795d3"
+ "version": "v3.0.0-rc41"
 }

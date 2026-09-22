@@ -43,8 +43,13 @@ kw:
 	# The version the reference documents is the one the agent that generated
 	# it reported, and is read from the artifact rather than guessed here.
 	version=$$(cat $$src/version)
+	# The timeline outlives the reference: the pages are those of one
+	# release and are replaced by the next, the timeline is every release
+	# there has been.
+	[ -f $(KWDIR)/history.json ] && cp $(KWDIR)/history.json $$tmp/history.json || true
 	rm -rf $(KWDIR)
 	mkdir -p $(KWDIR)
+	[ -f $$tmp/history.json ] && cp $$tmp/history.json $(KWDIR)/history.json || true
 	summary="SUMMARY.md.in"
 	echo -e "# Agent Keywords Reference ($$version)\n" >$(KWDIR)/$${summary}
 	head=$$(pwd)
@@ -62,27 +67,16 @@ kw:
 		done
 		cd $$head
 	done
-	# The index is the compact corpus the next release computes its changes
-	# page from: the rendered pages say what a release has, the index is what
-	# two releases are compared through.
+	# The index is the corpus of this release, and the timeline is what it
+	# is compared with: the book documents the newest release, and the
+	# timeline says when a keyword appeared, when it went away, and what
+	# moved in between. A removed keyword is recorded nowhere else, a
+	# release having nothing to say about what it does not carry.
 	tools/kwindex.py --version "$$version" --out $(KWDIR)/index.json $$src/*.json
-
-# changes writes the page saying what the keywords of this release gained,
-# lost and changed, from the index of the release before it.
-#
-# A binary can only document itself: a keyword removed in this release is
-# simply absent from it, and no field of it could say it ever existed. The
-# indexes of two releases say it between them.
-changes:
-	set -e
-	if [ -z "$(PREVIOUS_INDEX)" ]; then
-		echo "PREVIOUS_INDEX=<path to the index.json of the previous release> is required" >&2
-		exit 1
-	fi
-	version=$$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['version'])" $(KWDIR)/index.json)
-	tools/kwdiff.py --from "$(PREVIOUS_INDEX)" --to $(KWDIR)/index.json --out $(KWDIR)/changes.md
+	tools/kwhistory.py update --history $(KWDIR)/history.json --index $(KWDIR)/index.json
+	tools/kwhistory.py render --history $(KWDIR)/history.json --dir $(KWDIR)
 	summary="$(KWDIR)/SUMMARY.md.in"
-	grep -q "changes.md" $${summary} || sed -i "2a - [Changes in $${version}](agent.reference.keywords/changes.md)" $${summary}
+	sed -i "2a - [Keyword changes](agent.reference.keywords/changes.md)\n- [Removed keywords](agent.reference.keywords/removed.md)" $${summary}
 
 summary:
 	cat src/preamble/SUMMARY.md.in src/agent/SUMMARY.md.in src/howtos/SUMMARY.md.in src/appendix/SUMMARY.md.in src/agent.reference.keywords/SUMMARY.md.in > src/SUMMARY.md
