@@ -34,10 +34,10 @@
    "default": "*",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>",
-    "<nil>",
-    "<nil>"
+    "cfg",
+    "nscfg",
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "1caa4703d77d7096"
@@ -47,8 +47,8 @@
    "default": "{namespace}",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "cfg",
+    "sec"
    ],
    "textSum": "4085145e55f9ef10"
   },
@@ -3449,8 +3449,8 @@
    "converter": "list",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "ae7fe60a56e8d8cd"
@@ -3465,8 +3465,8 @@
    "default": "4kib",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "57ca0d089ce60758"
@@ -3474,8 +3474,8 @@
   "sec/DEFAULT.c": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "e27a7c7a601761ee"
@@ -3483,7 +3483,7 @@
   "sec/DEFAULT.ca": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>"
+    "sec"
    ],
    "scopable": true,
    "textSum": "d95ee2078c14346d"
@@ -3491,7 +3491,7 @@
   "sec/DEFAULT.cn": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>"
+    "sec"
    ],
    "scopable": true,
    "textSum": "de28bcd03898eef3"
@@ -3509,8 +3509,8 @@
   "sec/DEFAULT.email": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "0b232606e8679b6b"
@@ -3532,8 +3532,8 @@
   "sec/DEFAULT.l": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "b3315aaffe58d5ec"
@@ -3543,10 +3543,10 @@
    "default": "*",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>",
-    "<nil>",
-    "<nil>"
+    "cfg",
+    "nscfg",
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "1caa4703d77d7096"
@@ -3554,8 +3554,8 @@
   "sec/DEFAULT.o": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "ed08d8c7c25d9180"
@@ -3563,8 +3563,8 @@
   "sec/DEFAULT.ou": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "870617c30298ef99"
@@ -3574,16 +3574,16 @@
    "default": "{namespace}",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "cfg",
+    "sec"
    ],
    "textSum": "4085145e55f9ef10"
   },
   "sec/DEFAULT.st": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "75152076fc5c39ba"
@@ -3593,8 +3593,8 @@
    "default": "1y",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "8b72275cbab05b4d"
@@ -3608,8 +3608,8 @@
    "converter": "listlowercase",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "edc612d89b942a00"
   },
@@ -3621,8 +3621,8 @@
    "default": "~00:00-06:00",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "80d1b1829aff623b"
@@ -3632,9 +3632,9 @@
    "default": "true",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>",
-    "<nil>"
+    "nscfg",
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "5dd58b2595feb385"
@@ -3643,8 +3643,8 @@
    "converter": "bool",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "0d15bf1fd35168b6"
@@ -3659,7 +3659,7 @@
    "converter": "list",
    "inherit": "head",
    "kind": [
-    "<nil>"
+    "svc"
    ],
    "textSum": "f4aa0c969048e9d8"
   },
@@ -3683,8 +3683,8 @@
    ],
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "441ddacf07e2f365"
   },
@@ -3699,8 +3699,8 @@
    ],
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "58b28bc70550e2be"
   },
@@ -3712,8 +3712,8 @@
    ],
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "147c23d84a5b8693"
@@ -3727,8 +3727,8 @@
    ],
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "e60ce2a2f8467010"
   },
@@ -3739,8 +3739,8 @@
    "converter": "listlowercase",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "158f610c4c0fc7db"
   },
@@ -3751,8 +3751,8 @@
    "converter": "listlowercase",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "ef04ac92eefc97f5"
   },
@@ -3769,8 +3769,8 @@
    "default": "@60m",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "e1a668630a3a5043"
@@ -3787,8 +3787,8 @@
    "default": "none",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "6881190ef6079e07"
@@ -3797,8 +3797,8 @@
    "default": "@1m",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "5f08f275fa4861ec"
@@ -3808,8 +3808,8 @@
    "defaultText": "The lowercased hostname of the evaluating node.\n",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "1caa4703d77d7096"
@@ -3823,7 +3823,7 @@
    "default": "no",
    "inherit": "head",
    "kind": [
-    "<nil>"
+    "svc"
    ],
    "textSum": "62fc12ba505606b3"
   },
@@ -3831,16 +3831,16 @@
    "converter": "listlowercase",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "11a2f5f98b4c31e1"
   },
   "svc/DEFAULT.pg_blkio_weight": {
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "5fdd5b5127817859"
@@ -3848,8 +3848,8 @@
   "svc/DEFAULT.pg_cpu_quota": {
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "da8e4e7f1a82df89"
@@ -3858,8 +3858,8 @@
    "converter": "size",
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "05dbb19edee54af4"
@@ -3870,8 +3870,8 @@
    ],
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "f5bce02980275085"
@@ -3880,8 +3880,8 @@
    "converter": "size",
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "e6536396e0947fdf"
@@ -3889,8 +3889,8 @@
   "svc/DEFAULT.pg_mem_oom_control": {
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "1a627e554a156cd6"
@@ -3898,8 +3898,8 @@
   "svc/DEFAULT.pg_mem_swappiness": {
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "723681277bf9e505"
@@ -3907,8 +3907,8 @@
   "svc/DEFAULT.pg_mems": {
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "c897111f9d144da8"
@@ -3917,8 +3917,8 @@
    "converter": "size",
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "00091add2fa543ab"
@@ -3937,16 +3937,16 @@
    "default": "nodes order",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "2af73d1540514ae0"
   },
   "svc/DEFAULT.pre_monitor_action": {
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "4a0bfafcd8853185"
@@ -3956,7 +3956,7 @@
    "default": "50",
    "inherit": "head",
    "kind": [
-    "<nil>"
+    "svc"
    ],
    "textSum": "a5a0b1d82ed76634"
   },
@@ -3965,8 +3965,8 @@
    "default": "true",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "31332675852e5b20"
@@ -3975,8 +3975,8 @@
    "converter": "duration",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
@@ -3986,8 +3986,8 @@
    "default": "true",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "25d624c8e071f601"
@@ -3995,8 +3995,8 @@
   "svc/DEFAULT.run_schedule": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "e30ea5728217a43c"
@@ -4006,8 +4006,8 @@
    "default": "true",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "905050fe14f75551"
@@ -4016,8 +4016,8 @@
    "converter": "listlowercase",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "45409ddaf3c28f54"
   },
@@ -4025,8 +4025,8 @@
    "converter": "listlowercase",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "099d2730d26422eb"
   },
@@ -4034,8 +4034,8 @@
    "converter": "duration",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
@@ -4044,8 +4044,8 @@
    "converter": "duration",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "b7563445d5da73ce"
@@ -4054,8 +4054,8 @@
    "default": "@10m",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "06cdcd135a221c8a"
@@ -4065,8 +4065,8 @@
    "default": "1m",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "a8d8d564b5d7df15"
@@ -4079,8 +4079,8 @@
    ],
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "16588e13ab1c925d"
   },
@@ -4088,8 +4088,8 @@
    "converter": "duration",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
@@ -4098,8 +4098,8 @@
    "default": "04:00-06:00",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "f409356f829939ef"
@@ -4108,8 +4108,8 @@
    "converter": "duration",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
@@ -4119,8 +4119,8 @@
    "default": "1h",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "0e8bae5232d4c6ba"
@@ -4136,16 +4136,16 @@
    "default": "failover",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "b44ed525319c0977"
   },
   "svc/DEFAULT.type": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "0ec94003a3a09750"
   },
@@ -4154,8 +4154,8 @@
    "default": "true",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "4f5cf87522375b1a"
@@ -4164,8 +4164,8 @@
    "converter": "duration",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
@@ -38768,8 +38768,8 @@
    "converter": "bool",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "394b027efd9631cc"
@@ -42852,8 +42852,8 @@
    "converter": "list",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "ae7fe60a56e8d8cd"
@@ -42868,8 +42868,8 @@
    "default": "4kib",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "57ca0d089ce60758"
@@ -42877,8 +42877,8 @@
   "usr/DEFAULT.c": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "e27a7c7a601761ee"
@@ -42887,7 +42887,7 @@
    "default": "system/sec/ca",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>"
+    "usr"
    ],
    "scopable": true,
    "textSum": "4eb542dec5161457"
@@ -42896,7 +42896,7 @@
    "default": "{name}",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>"
+    "usr"
    ],
    "scopable": true,
    "textSum": "e5ace799be4d6fb4"
@@ -42914,8 +42914,8 @@
   "usr/DEFAULT.email": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "0b232606e8679b6b"
@@ -42932,7 +42932,7 @@
    "converter": "listlowercase",
    "inherit": "head",
    "kind": [
-    "<nil>"
+    "usr"
    ],
    "scopable": true,
    "textSum": "bfe7b77645cad525"
@@ -42946,8 +42946,8 @@
   "usr/DEFAULT.l": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "b3315aaffe58d5ec"
@@ -42957,10 +42957,10 @@
    "default": "*",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>",
-    "<nil>",
-    "<nil>"
+    "cfg",
+    "nscfg",
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "1caa4703d77d7096"
@@ -42968,8 +42968,8 @@
   "usr/DEFAULT.o": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "ed08d8c7c25d9180"
@@ -42977,8 +42977,8 @@
   "usr/DEFAULT.ou": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "870617c30298ef99"
@@ -42986,8 +42986,8 @@
   "usr/DEFAULT.st": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "75152076fc5c39ba"
@@ -42997,8 +42997,8 @@
    "default": "1y",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "sec",
+    "usr"
    ],
    "scopable": true,
    "textSum": "8b72275cbab05b4d"
@@ -43013,7 +43013,7 @@
    "default": "rwo",
    "inherit": "head",
    "kind": [
-    "<nil>"
+    "vol"
    ],
    "scopable": true,
    "textSum": "9bf8c7f8c12f4e71"
@@ -43027,8 +43027,8 @@
    "converter": "listlowercase",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "edc612d89b942a00"
   },
@@ -43040,8 +43040,8 @@
    "default": "~00:00-06:00",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "80d1b1829aff623b"
@@ -43051,9 +43051,9 @@
    "default": "true",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>",
-    "<nil>"
+    "nscfg",
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "5dd58b2595feb385"
@@ -43062,7 +43062,7 @@
    "converter": "list",
    "inherit": "head",
    "kind": [
-    "<nil>"
+    "vol"
    ],
    "textSum": "eb12f9f1f496ac93"
   },
@@ -43070,8 +43070,8 @@
    "converter": "bool",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "0d15bf1fd35168b6"
@@ -43102,8 +43102,8 @@
    ],
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "441ddacf07e2f365"
   },
@@ -43118,8 +43118,8 @@
    ],
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "58b28bc70550e2be"
   },
@@ -43131,8 +43131,8 @@
    ],
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "147c23d84a5b8693"
@@ -43146,8 +43146,8 @@
    ],
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "e60ce2a2f8467010"
   },
@@ -43158,8 +43158,8 @@
    "converter": "listlowercase",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "158f610c4c0fc7db"
   },
@@ -43170,8 +43170,8 @@
    "converter": "listlowercase",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "ef04ac92eefc97f5"
   },
@@ -43188,8 +43188,8 @@
    "default": "@60m",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "e1a668630a3a5043"
@@ -43206,8 +43206,8 @@
    "default": "none",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "6881190ef6079e07"
@@ -43216,8 +43216,8 @@
    "default": "@1m",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "5f08f275fa4861ec"
@@ -43227,8 +43227,8 @@
    "defaultText": "The lowercased hostname of the evaluating node.\n",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "1caa4703d77d7096"
@@ -43237,16 +43237,16 @@
    "converter": "listlowercase",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "11a2f5f98b4c31e1"
   },
   "vol/DEFAULT.pg_blkio_weight": {
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "5fdd5b5127817859"
@@ -43254,8 +43254,8 @@
   "vol/DEFAULT.pg_cpu_quota": {
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "da8e4e7f1a82df89"
@@ -43264,8 +43264,8 @@
    "converter": "size",
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "05dbb19edee54af4"
@@ -43276,8 +43276,8 @@
    ],
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "f5bce02980275085"
@@ -43286,8 +43286,8 @@
    "converter": "size",
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "e6536396e0947fdf"
@@ -43295,8 +43295,8 @@
   "vol/DEFAULT.pg_mem_oom_control": {
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "1a627e554a156cd6"
@@ -43304,8 +43304,8 @@
   "vol/DEFAULT.pg_mem_swappiness": {
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "723681277bf9e505"
@@ -43313,8 +43313,8 @@
   "vol/DEFAULT.pg_mems": {
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "c897111f9d144da8"
@@ -43323,8 +43323,8 @@
    "converter": "size",
    "inherit": "leaf",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "00091add2fa543ab"
@@ -43343,15 +43343,15 @@
    "default": "nodes order",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "2af73d1540514ae0"
   },
   "vol/DEFAULT.pool": {
    "inherit": "head",
    "kind": [
-    "<nil>"
+    "vol"
    ],
    "scopable": true,
    "textSum": "69691a888bc821a1"
@@ -43359,8 +43359,8 @@
   "vol/DEFAULT.pre_monitor_action": {
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "4a0bfafcd8853185"
@@ -43370,8 +43370,8 @@
    "default": "true",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "31332675852e5b20"
@@ -43380,8 +43380,8 @@
    "converter": "duration",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
@@ -43391,8 +43391,8 @@
    "default": "true",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "25d624c8e071f601"
@@ -43400,8 +43400,8 @@
   "vol/DEFAULT.run_schedule": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "e30ea5728217a43c"
@@ -43411,8 +43411,8 @@
    "default": "true",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "905050fe14f75551"
@@ -43421,7 +43421,7 @@
    "converter": "size",
    "inherit": "head",
    "kind": [
-    "<nil>"
+    "vol"
    ],
    "scopable": true,
    "textSum": "7be07962b7a7d4fa"
@@ -43430,8 +43430,8 @@
    "converter": "listlowercase",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "45409ddaf3c28f54"
   },
@@ -43439,8 +43439,8 @@
    "converter": "listlowercase",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "099d2730d26422eb"
   },
@@ -43448,8 +43448,8 @@
    "converter": "duration",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
@@ -43458,8 +43458,8 @@
    "converter": "duration",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "b7563445d5da73ce"
@@ -43468,8 +43468,8 @@
    "default": "@10m",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "06cdcd135a221c8a"
@@ -43479,8 +43479,8 @@
    "default": "1m",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "a8d8d564b5d7df15"
@@ -43493,8 +43493,8 @@
    ],
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "16588e13ab1c925d"
   },
@@ -43502,8 +43502,8 @@
    "converter": "duration",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
@@ -43512,8 +43512,8 @@
    "default": "04:00-06:00",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "f409356f829939ef"
@@ -43522,8 +43522,8 @@
    "converter": "duration",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
@@ -43533,8 +43533,8 @@
    "default": "1h",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "0e8bae5232d4c6ba"
@@ -43550,16 +43550,16 @@
    "default": "failover",
    "inherit": "head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "b44ed525319c0977"
   },
   "vol/DEFAULT.type": {
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "textSum": "0ec94003a3a09750"
   },
@@ -43568,8 +43568,8 @@
    "default": "true",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "4f5cf87522375b1a"
@@ -43578,8 +43578,8 @@
    "converter": "duration",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "7009c8e11bd718e2"
@@ -72115,8 +72115,8 @@
    "converter": "bool",
    "inherit": "leaf2head",
    "kind": [
-    "<nil>",
-    "<nil>"
+    "svc",
+    "vol"
    ],
    "scopable": true,
    "textSum": "394b027efd9631cc"
