@@ -1,0 +1,43 @@
+# Driver `sysreport`
+
+**Supported keywords:**
+
+- comment
+- schedule
+
+## Keyword `comment`
+
+	required:    false
+	scopable:    false
+	rbac:        This driver group requires the root grant.
+
+**Description:**
+
+A free form text describing the role of the object, of the node, or of the
+section it is set in.
+
+The keyword is accepted in any section, so the DEFAULT section can document a
+configuration as a whole, and a resource, pool, heartbeat, array or network
+section can document itself.
+
+The agent does not interpret the value.
+
+
+## Keyword `schedule`
+
+	required:    false
+	scopable:    false
+	default:     ~00:00-06:00
+	rbac:        This driver group requires the root grant.
+
+**Description:**
+
+Schedule parameter for the `sysreport` node action, which collects into an
+archive all files and command outputs defined in /etc/opensvc/sysreport and
+sends that archive to the collector.
+
+The collector stores the unpacked files in a per-node git repository.
+
+See `usr/share/doc/schedule` for the schedule syntax.
+
+

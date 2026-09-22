@@ -1,1 +1,13 @@
 
+
+/* The version picker sits with the theme and search buttons, and reads as one
+   of them rather than as a form control dropped into the page. */
+.version-picker {
+    background: var(--bg);
+    color: var(--fg);
+    border: 1px solid var(--sidebar-bg);
+    border-radius: 4px;
+    margin-left: 0.5em;
+    padding: 0.1em 0.3em;
+    font-size: 0.9em;
+}

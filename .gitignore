@@ -1,6 +1,8 @@
 /book
 mdbook
 mdbook-*
-src/agent.reference.*
-SUMMARY.md
+# The keyword reference is tracked: it is generated at release time, with the
+# binary of that release, and read from the repository by every later build.
+# Only the summary mdbook assembles from the .in files is generated here.
+src/SUMMARY.md
 .idea
