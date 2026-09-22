@@ -3825,7 +3825,7 @@
    "kind": [
     "svc"
    ],
-   "textSum": "62fc12ba505606b3"
+   "textSum": "0cf786e66038adcc"
   },
   "svc/DEFAULT.parents": {
    "converter": "listlowercase",
@@ -76196,5 +76196,5 @@
    ]
   }
  },
- "version": "v3.0.0-rc26-2-g743c9fd72"
+ "version": "v3.0.0-rc40-2-g2b57795d3"
 }
