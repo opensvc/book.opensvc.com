@@ -1,0 +1,76 @@
+name: Refresh Keyword Reference
+
+# Lays down the keyword reference of the newest agent release, and commits it.
+#
+# The agent publishes the reference of a release with that release. This picks
+# it up: once a day, or on demand for a named release. A release that changed
+# no keyword produces a commit that says so in one line, the generation being
+# reproducible.
+
+on:
+  schedule:
+    # after the hour the agent releases are usually cut, so the reference of a
+    # release lands the same day
+    - cron: "23 5 * * *"
+  workflow_dispatch:
+    inputs:
+      release:
+        description: "agent release tag to document, empty for the newest"
+        required: false
+        type: string
+
+permissions:
+  contents: write # to commit the reference it lays down
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7.0.1
+        with:
+          # kept, to push the commit this makes
+          persist-credentials: true
+
+      - name: Find the release to document
+        id: release
+        run: |
+          set -e
+          tag="${{ inputs.release }}"
+          if [ -z "$tag" ]; then
+            tag=$(curl -sSfL https://api.github.com/repos/opensvc/om3/releases/latest |
+              python3 -c 'import json,sys;print(json.load(sys.stdin)["tag_name"])')
+          fi
+          have=$(python3 -c 'import json;print(json.load(open("src/agent.reference.keywords/index.json"))["version"])')
+          echo "tag=$tag" >>"$GITHUB_OUTPUT"
+          echo "have=$have" >>"$GITHUB_OUTPUT"
+          echo "documented: $have, newest: $tag"
+          # A release publishes its reference, and one that does not is one
+          # this cannot document: say so rather than failing on the download.
+          if ! curl -sSfLI -o /dev/null \
+            "https://github.com/opensvc/om3/releases/download/$tag/keywords-$tag.tar.gz"; then
+            echo "$tag published no keyword reference" >&2
+            echo "published=false" >>"$GITHUB_OUTPUT"
+          else
+            echo "published=true" >>"$GITHUB_OUTPUT"
+          fi
+
+      - name: Lay down the reference
+        if: steps.release.outputs.published == 'true' && steps.release.outputs.tag != steps.release.outputs.have
+        run: make kw KEYWORDS_VERSION=${{ steps.release.outputs.tag }}
+
+      - name: Commit the reference
+        if: steps.release.outputs.published == 'true' && steps.release.outputs.tag != steps.release.outputs.have
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A src/agent.reference.keywords
+          if git diff --cached --quiet; then
+            echo "nothing changed"
+            exit 0
+          fi
+          git commit -m "Document the keywords of ${{ steps.release.outputs.tag }}" \
+            -m "Laid down from the reference ${{ steps.release.outputs.tag }} published, and the timeline updated with it."
+          git push
