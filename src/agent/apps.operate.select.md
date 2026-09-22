@@ -5,31 +5,83 @@ The `om <selector> ls` command can test a selector before submitting a dangerous
 
 > Note the selector expression may need to be **quoted** for the shell not to interpret the `!` and `*` characters.
 
+> The **API** tabs assume the `$TOKEN` and the listener endpoint set up in
+> [Cluster API](configure.api.md). The selector expression is the same on
+> both sides: `GET /api/object/path?path=<selector>` answers the paths it
+> matches, and `GET /api/object?path=<selector>` answers what `om ls`
+> renders. The examples below show the cli form only where the point is the
+> expression itself.
+
 ## All Objects
 
 List all cluster objects (services, volumes, etc.).
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
 
 ```bash
 om '**' ls
 ```
 
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'path=**' \
+  "https://<node>:1215/api/object/path"
+```
+
+</div>
+</div>
+
 ## All Services
 
 List all service objects.
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
 
 ```bash
 om '*' ls
 om '*/svc/*' ls
 ```
 
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'path=*/svc/*' \
+  "https://<node>:1215/api/object/path"
+```
+
+</div>
+</div>
+
 ## Single Object
 
 List a specific object.
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
 
 ```bash
 om <path> ls
 om ns1/svc/web1 ls
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'path=ns1/svc/web1' \
+  "https://<node>:1215/api/object/path"
+```
+
+</div>
+</div>
 
 ## List of objects
 
@@ -73,10 +125,25 @@ om svc ls -o 'template={{ range . }}{{ if ne .data.frozen "frozen" }}{{println .
 
 List multiple specific objects.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om <path1>,<path2> ls
 om ns1/svc/web1,ns1/vol/web1 ls
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'path=ns1/svc/web1,ns1/vol/web1' \
+  "https://<node>:1215/api/object/path"
+```
+
+</div>
+</div>
 
 ## Intersections
 
@@ -114,10 +181,26 @@ ns2/svc/web1
 The negation marker is `!`. This symbol needs quoting for the shell not to interpret it.
 
 Example:
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 # All object of namespace `ns1` except those named `web1`:
 om 'ns1/**+!**/web1' ls
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+# All object of namespace `ns1` except those named `web1`:
+curl -s -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'path=ns1/**+!**/web1' \
+  "https://<node>:1215/api/object/path"
+```
+
+</div>
+</div>
 
 ## Services by State
 
@@ -131,6 +214,10 @@ Filter services based on their overall status.
     ```bash
     om '*' ls --status up,warn
     ```
+
+
+The api has no `--status` filter. `GET /api/object?path=<selector>` carries
+the availability of each object, and the client keeps the rows it wants.
 
 ## Service Selector Expressions
 

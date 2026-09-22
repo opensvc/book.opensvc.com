@@ -12,17 +12,42 @@ This feature is available since version 1.9-2748.
 
 ## Operations with namespaces
 
+> A namespace configuration is an object of kind `nscfg`, named `namespace`,
+> so `test/` is `/api/object/path/test/nscfg/namespace`. The **API** tabs
+> assume the `$TOKEN` and the listener endpoint set up in
+> [Cluster API](configure.api.md).
+
 ### The object path
 
 The namespace is part of the path, so naming the object names its namespace.
 This is the way to create an object in a namespace, and it works for every
 command:
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```sh
 om test/svc/svc1 create
 om test/svc/svc1 start
 om 'test/**' ls
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```sh
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/octet-stream" --data-binary '[DEFAULT]' \
+  "https://<node>:1215/api/object/path/test/svc/svc1/config/file"
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/test/svc/svc1/action/start"
+curl -s -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'path=test/**' \
+  "https://<node>:1215/api/object/path"
+```
+
+</div>
+</div>
 
 ### OSVC_NAMESPACE environment variable
 
@@ -86,10 +111,29 @@ limit = 10
 Edit it like any other object configuration, naming the namespace with a
 trailing `/`:
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```sh
 om test/ config update --set claim#1.type=pool --set claim#1.name=tank --set claim#1.limit=250m
 om / config show
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```sh
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'set=claim#1.type=pool' \
+  --data-urlencode 'set=claim#1.name=tank' \
+  --data-urlencode 'set=claim#1.limit=250m' \
+  "https://<node>:1215/api/object/path/test/nscfg/namespace/config"
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/root/nscfg/namespace/config/file"
+```
+
+</div>
+</div>
 
 A namespace declaring no claim on a resource is not capped on it. A claim
 naming no limit says the namespace uses the resource, not that it is capped on

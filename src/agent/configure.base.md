@@ -55,11 +55,40 @@ Display the scheduler configuration and states:
 
 Schedule configuration:
 
-    # Set a job schedule
-	om node config update --set "brocade.schedule=02:00-04:00@120 sat,sun"
+<div class="tabs">
+<div class="tab" data-title="CLI">
 
-    # Disable a job schedule
-	om node config update --set "brocade.schedule=@0"
+```bash
+# Set a job schedule
+om node config update --set "brocade.schedule=02:00-04:00@120 sat,sun"
+
+# Disable a job schedule
+om node config update --set "brocade.schedule=@0"
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+# Set a job schedule
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'set=brocade.schedule=02:00-04:00@120 sat,sun' \
+  "https://<node>:1215/api/node/name/<node>/config"
+
+# Disable a job schedule
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'set=brocade.schedule=@0' \
+  "https://<node>:1215/api/node/name/<node>/config"
+```
+
+</div>
+</div>
+
+> The **API** tabs assume the `$TOKEN` and the listener endpoint set up in
+> [Cluster API](configure.api.md). A node keyword is patched on the node that
+> holds it, `PATCH …/node/name/<node>/config`, and a cluster keyword on any
+> node, `PATCH /api/cluster/config`. Both take the same `set`, `unset` and
+> `delete` operations as the matching `config update` command.
 
 > ➡️ See Also
 > * [Agent Scheduler](internals.daemon.scheduler.md)
@@ -72,7 +101,24 @@ By default, the agent does not communicate with a collector.
 
 To enable communications with a collector, the {{#include ../inc/kw}}`node.dbopensvc` node configuration parameter must be set. The simplest expression is:
 
-	om cluster config update --set node.dbopensvc=collector.opensvc.com
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```bash
+om cluster config update --set node.dbopensvc=collector.opensvc.com
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'set=node.dbopensvc=collector.opensvc.com' \
+  "https://<node>:1215/api/cluster/config"
+```
+
+</div>
+</div>
 
 Here the protocol and path are omitted. In this case, the ``https`` protocol is selected, and the path set to a value matching the standard collector integration.
 

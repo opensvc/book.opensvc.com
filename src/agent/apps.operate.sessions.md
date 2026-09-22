@@ -4,6 +4,12 @@ An action submitted to the daemon returns before it is done. What comes back
 is a pair of identifiers, and the daemon remembers what became of them, so a
 client that asked for something can ask how it went.
 
+> The **API** tabs assume the `$TOKEN` and the listener endpoint set up in
+> [Cluster API](configure.api.md). The daemon answers for what it ran, so
+> an exec listing is per node and a client wanting the whole of a session
+> asks every node and folds the answers, which is what the cli commands do.
+> An orchestration needs no such union: any node answers for it.
+
 ## Three commands, three scales
 
 | command | one row is | ask it when |
@@ -64,11 +70,32 @@ Every node is asked. A session spans the nodes it reached, and the count of
 part of one is not the session's count, so this command does not default to
 the local node the way the others do.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om daemon session list                       # every session this cluster remembers
 om daemon session list --state failed        # sessions with a failed exec in them
 om daemon session list --origin scheduler
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+# the execs, to fold into sessions yourself, on each node in turn
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/daemon/exec"
+curl -s -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'state=failed' \
+  "https://<node>:1215/api/node/name/<node>/daemon/exec"
+curl -s -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'origin=scheduler' \
+  "https://<node>:1215/api/node/name/<node>/daemon/exec"
+```
+
+</div>
+</div>
 
 ## Asking after one run
 
@@ -135,12 +162,37 @@ schedule fired.
 `om daemon kill` signals the execs a filter selects, and the filter is the one
 `om daemon exec list` takes, so what you listed is what you signal:
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om daemon kill --session-id 723906bb-…  --node '*'   # stop what I submitted, everywhere
 om daemon kill --orchestration-id 934a42f9-…         # stop an orchestration's runs
 om daemon kill 823c9944-…                            # one exec
 om daemon kill -s 'pod*' --signal=term               # everything running on these objects
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+# each call signals the execs of one node
+curl -s -X DELETE -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'session_id=723906bb-…' \
+  "https://<node>:1215/api/node/name/<node>/daemon/exec"
+curl -s -X DELETE -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'orchestration_id=934a42f9-…' \
+  "https://<node>:1215/api/node/name/<node>/daemon/exec"
+curl -s -X DELETE -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'exec_id=823c9944-…' \
+  "https://<node>:1215/api/node/name/<node>/daemon/exec"
+curl -s -X DELETE -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'selector=pod*' --data-urlencode 'signal=TERM' \
+  "https://<node>:1215/api/node/name/<node>/daemon/exec"
+```
+
+</div>
+</div>
 
 There is no pid option, on purpose. Naming the exec rather than the pid is
 what makes signaling the wrong process impossible: a pid you read from a
@@ -182,11 +234,41 @@ runs, and a switch is precisely what moves it.
 on a node that only learned of it from the monitors. It is the one detail that
 differs between nodes; the state, the object, the target and the start do not.
 
+Through the api, the same id is asked of any node, and the call can be told to
+hold until the orchestration ends rather than answer its current state:
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/daemon/orchestration/id/934a42f9-…?wait=5m"
+```
+
+It answers 200 with the orchestration once it has ended, 408 if it is still
+running when `wait` expires, and 410 if the daemon no longer knows the id. A
+client that submitted an action and wants to know how it went has nothing else
+to keep: neither a connection held open since the submission, nor a node it
+has to come back to.
+
+
 The execs an orchestration caused are found by its id:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
 
 ```bash
 om daemon exec list --orchestration-id 934a42f9-… --node '*'
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'orchestration_id=934a42f9-…' \
+  "https://<node>:1215/api/node/name/<node>/daemon/exec"
+```
+
+</div>
+</div>
 
 ## Reading what an id logged
 
@@ -221,9 +303,24 @@ action across a cluster is got wrong.
 These are the node logs with the filter already written. The ids are log
 fields, so the long form works too and is what the short form does:
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om node logs --filter ORCHESTRATION_ID=934a42f9-… --node '*'
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -sN -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'filter=ORCHESTRATION_ID=934a42f9-…' \
+  "https://<node>:1215/api/node/name/<node>/log"
+```
+
+</div>
+</div>
 
 The options of the node logs are all still there, and narrow within the id
 rather than beside it:

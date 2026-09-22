@@ -11,11 +11,37 @@ starts. `sec` keys are encrypted at rest with the cluster secret.
 
 ## Put the data in a datastore
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om myapp/cfg/app create
 om myapp/cfg/app key add --name app.conf --from /tmp/app.conf
 om myapp/cfg/app key list
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/octet-stream" --data-binary '[DEFAULT]' \
+  "https://<node>:1215/api/object/path/myapp/cfg/app/config/file"
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d "[{\"action\": \"add\", \"name\": \"app.conf\", \"string\": $(jq -Rs . < /tmp/app.conf)}]" \
+  "https://<node>:1215/api/object/path/myapp/cfg/app/data"
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/myapp/cfg/app/data/keys"
+```
+
+</div>
+</div>
+
+The api tab above uses the `$TOKEN` and the listener endpoint set up in
+[Cluster API](configure.api.md). `PATCH …/data` applies a batch of `add`,
+`change`, `remove` and `rename` operations as one transaction, and a binary
+value goes in the `bytes` field, base64 encoded, rather than in `string`.
 
 Secrets work the same way, with `om myapp/sec/creds`.
 

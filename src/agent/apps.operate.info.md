@@ -11,11 +11,30 @@ right now?", changes constantly, and is evaluated every 10 minutes by default.
 Resource info answers "what is it made of?", changes rarely, and is refreshed
 hourly. Keeping the two apart lets each have the schedule it needs.
 
+> The **API** tabs assume the `$TOKEN` and the listener endpoint set up in
+> [Cluster API](configure.api.md). Reading is an object-wide call, answering
+> the table of every instance; refreshing is a per-node call, the refresh
+> being a run on the node holding the resources.
+
 ## Read
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
 
 ```bash
 om myapp instance info
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/root/svc/myapp/resource/info"
+```
+
+</div>
+</div>
 
     OBJECT  NODE    RID     KEY            VALUE
     myapp   dev2n1  disk#1  driver         disk.vg
@@ -41,9 +60,23 @@ om myapp resource info      # same as instance info
 
 ## Refresh
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om myapp instance info --refresh
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/instance/path/root/svc/myapp/action/info"
+```
+
+</div>
+</div>
 
 This walks the resources, asks each one for its key-values, and rewrites the
 cache. It is what the scheduler runs hourly, driven by the `info_schedule`

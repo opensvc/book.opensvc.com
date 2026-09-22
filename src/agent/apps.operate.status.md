@@ -1,5 +1,8 @@
 # Services Status
 
+> The **API** tabs assume the `$TOKEN` and the listener endpoint set up in
+> [Cluster API](configure.api.md).
+
 ## Cluster Overview (`om mon`)
 
 The `om mon` command provides a real-time, human-readable overview of the cluster and service states.
@@ -42,17 +45,47 @@ Markers are used to optimize information density.
 
 Use the `--output` option for structured data output.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om cluster status --output json
 ```
 
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/cluster/status"
+```
+
+</div>
+</div>
+
 ### Watch
 
-Continuously refresh the status display.
+Continuously refresh the status display. The api counterpart is the event
+stream the display is fed by: a `text/event-stream` the daemon keeps open,
+which the `filter` and `selector` query parameters narrow.
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
 
 ```bash
 om monitor --watch
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -sN -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/daemon/event"
+```
+
+</div>
+</div>
 
 ## Interactive (`ox tui`)
 

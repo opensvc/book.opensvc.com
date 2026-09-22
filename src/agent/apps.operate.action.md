@@ -1,5 +1,13 @@
 # Action
 
+Every action below is available both from the command line and through the
+cluster api. Pick the tab you want: the choice sticks for the whole book.
+
+> The **API** tabs assume the `$TOKEN` and the listener endpoint set up in
+> [Cluster API](configure.api.md). An object is addressed by the three
+> segments of its path, so `svc1` is `/api/object/path/root/svc/svc1`, and
+> `ns1/svc/svc1` is `/api/object/path/ns1/svc/svc1`.
+
 ## Base Actions
 
 ### Start
@@ -8,23 +16,68 @@
 
 Start the service instance on the local node directly.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```
 om <path> instance start
 ```
 
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/instance/path/<ns>/<kind>/<name>/action/start"
+```
+
+</div>
+</div>
+
 > **Resource Start Order:** `ip`, `disk`, `fs`, `share`, `container`, `app`.
+
+The api answers a `session_id` and an `exec_id` naming the run this node
+forked. `GET /api/node/name/<node>/daemon/exec/id/<exec_id>?wait=5m` holds
+until that run ends, which is the counterpart of the cli waiting for the
+command to return.
 
 **Orchestrated Start**
 
 Instruct the orchestrator to start the service on the node(s) selected by the placement policy.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```
 om <path> start [--wait] [--time <duration expr>] [--watch]
 ```
 
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/<ns>/<kind>/<name>/action/start"
+```
+
+</div>
+</div>
+
   * By default, the command returns upon daemon acknowledgment.
   * `--wait` holds the command until the action completes.
   * `--time` sets a maximum wait duration.
+
+The api answers the `orchestration_id` of the queued orchestration. Waiting
+for its end is a separate call, which any node of the cluster answers, even
+one carrying no instance of the object:
+
+```
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/daemon/orchestration/id/<orchestration_id>?wait=5m"
+```
+
+The call answers 200 with the orchestration state, 408 if it is still running
+when `wait` expires, and 410 if the id is no longer known.
 
 > **Frozen instances are started, and stay frozen.** Freezing tells the daemon
 > not to act by itself. It does not make an object refuse a start you asked
@@ -46,9 +99,23 @@ om <path> start [--wait] [--time <duration expr>] [--watch]
 
 Stop the service instance on the local node directly.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```
 om <path> instance stop
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/instance/path/<ns>/<kind>/<name>/action/stop"
+```
+
+</div>
+</div>
 
 > **Resource Stop Order:** `app`, `container`, `share`, `fs`, `disk`, `ip`.
 
@@ -57,9 +124,23 @@ om <path> instance stop
 Instruct the orchestrator to stop the service wherever it runs, and to leave it
 down.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```
 om <path> stop [--wait] [--time <duration expr>] [--watch]
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/<ns>/<kind>/<name>/action/stop"
+```
+
+</div>
+</div>
 
 > The stop flags every instance of the object stopped on purpose, which is what
 > keeps the daemon from starting it back: without the flag the next ha decision
@@ -82,9 +163,25 @@ om <path> stop [--wait] [--time <duration expr>] [--watch]
 
 Stop the service on its current node(s) and start it on the specified target node. The freeze you set on an instance is left as you set it: a switch is a request to place the object, not to thaw it.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```
 om <path> switch --node <nodename> [--wait] [--time <duration expr>] [--watch] [--live]
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"destination": ["<nodename>"], "live": false}' \
+  "https://<node>:1215/api/object/path/<ns>/<kind>/<name>/action/switch"
+```
+
+</div>
+</div>
 
 > The `container.kvm` supports live migration. Live migration requires the VM storage to be read-write from all nodes during the switch. SAN disks and drbd pass-through, NFS, Ceph, ClusterFS can satisfy this requirement.
 
@@ -92,30 +189,100 @@ om <path> switch --node <nodename> [--wait] [--time <duration expr>] [--watch] [
 
 Stop the service instances on peer nodes and start it on the local node. The freeze you set on an instance is left as you set it.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```
 om <path> takeover [--wait] [--time <duration expr>] [--watch]
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"destination": ["<this node>"], "live": false}' \
+  "https://<node>:1215/api/object/path/<ns>/<kind>/<name>/action/switch"
+```
+
+</div>
+</div>
+
+> A takeover is a switch whose destination is the node you run it from, so the
+> api has no separate endpoint for it.
 
 **Giveback**
 
 Stop the service on non-leader nodes, and let the orchestrator start instances on the designated leaders. The freeze you set on a node or an instance is left as you set it, and the daemon still passes over what is frozen when it chooses where to start.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```
 om <path> giveback [--wait] [--time <duration expr>] [--watch]
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/<ns>/<kind>/<name>/action/giveback"
+```
+
+</div>
+</div>
 
 ### Handling Failures
 
 If an action fails, the orchestrator is blocked, and the failure is reported in `om mon` and `om <path> instance status`.
 
-  * **Clear Failure:** Allows the daemon to **retry** the execution plan.
-    ```
-    om <path> clear
-    ```
-  * **Abort Action:** Aborts the currently blocked orchestrated action.
-    ```
-    om <path> abort
-    ```
+**Clear Failure**
+
+Allows the daemon to **retry** the execution plan. The failure is held by the
+instance monitor of each node, so the api clears it one node at a time, where
+the cli command clears it on every node of the object.
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```
+om <path> clear
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/instance/path/<ns>/<kind>/<name>/clear"
+```
+
+</div>
+</div>
+
+**Abort Action**
+
+Aborts the currently blocked orchestrated action.
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```
+om <path> abort
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/<ns>/<kind>/<name>/action/abort"
+```
+
+</div>
+</div>
 
 ### Data Replication
 
@@ -125,9 +292,23 @@ If an action fails, the orchestrator is blocked, and the failure is reported in 
 
 Run resource replication to all configured targets (e.g., production (`prd`) or disaster recovery (`drp`)).
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```
 om <path> instance update
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/instance/path/<ns>/<kind>/<name>/action/update"
+```
+
+</div>
+</div>
 
 > This command can run on a schedule.
 
@@ -135,25 +316,67 @@ om <path> instance update
 
 Run resource replication to secondary cluster nodes. No-op if run from a node not running the service.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```
 om <path> instance update --target nodes
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/instance/path/<ns>/<kind>/<name>/action/update?target=nodes"
+```
+
+</div>
+</div>
 
 **Replicate to DRP Nodes**
 
 Trigger file synchronization to disaster recovery nodes. No-op if run from a node not running the service.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```
 om <path> instance update --target drp
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/instance/path/<ns>/<kind>/<name>/action/update?target=drp"
+```
+
+</div>
+</div>
 
 ### Run
 
 Execute tasks defined within the service configuration.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```
 om <path> instance run [--rid ...]
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/instance/path/<ns>/<kind>/<name>/action/run?rid=task%231"
+```
+
+</div>
+</div>
 
 > This command can run on a schedule.
 
@@ -169,6 +392,9 @@ Filter actions to be executed only on specific resources using `--rid`, `--tags`
 | **`--tag` (AND/OR)** | `om <path> --tag tag1+tag2,tag3 <action>` | Execute action on resources tagged with **both** `tag1` **and** `tag2`, **OR** with `tag3`. |
 | **`--subset`** | `om <path> --subset s1,s2 <action>` | Execute action on resources belonging to subset `s1` **or** `s2`. |
 
+The instance action endpoints accept the same filters as the `rid`, `tag` and
+`subset` query parameters. The `#` of a resource id has to be percent-encoded
+as `%23`.
 
 ## Logging
 

@@ -95,9 +95,18 @@ name        type       caps                      head                           
 
 ## Examples
 
+> A pool is a cluster keyword, so every `om cluster config update` below is
+> a `PATCH /api/cluster/config` carrying the same `set` operations, with the
+> `$TOKEN` and the listener endpoint set up in
+> [Cluster API](configure.api.md). The first example shows both forms; the
+> others show the cli form only, the api one being the same substitution.
+
 ### loop pool
 
 Pool configuration
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
 
 ```
 om cluster config update \
@@ -106,6 +115,21 @@ om cluster config update \
 	--set pool#loop.mkfs_opt="-n ftype=1" \
 	--set pool#loop.fs_type=xfs
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'set=pool#loop.type=loop' \
+  --data-urlencode 'set=pool#loop.path=/bigfs' \
+  --data-urlencode 'set=pool#loop.mkfs_opt=-n ftype=1' \
+  --data-urlencode 'set=pool#loop.fs_type=xfs' \
+  "https://<node>:1215/api/cluster/config"
+```
+
+</div>
+</div>
 
 ```ini
 [pool#loop]

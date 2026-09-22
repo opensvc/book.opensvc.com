@@ -9,6 +9,10 @@ The reverse, unprovisioning, destroys them again. That distinction matters:
 deleting an object removes its configuration, unprovisioning destroys its
 data.
 
+> The **API** tabs assume the `$TOKEN` and the listener endpoint set up in
+> [Cluster API](configure.api.md). An object is addressed by the three
+> segments of its path, so `myapp` is `/api/object/path/root/svc/myapp`.
+
 ## Provisioners
 
 A resource driver may implement a provisioner, and most of the drivers that
@@ -24,9 +28,23 @@ set the resource's `ipname` once they know the address they obtained.
 
 ## Provisioning an object
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om myapp provision
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/root/svc/myapp/action/provision"
+```
+
+</div>
+</div>
 
 This is orchestrated. The daemon provisions the placement leader first and
 leaves the instance `up`, so that later provisioners can rely on what the
@@ -40,9 +58,23 @@ provisioning it.
 
 To act on the local instance only, without involving the daemon:
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om myapp instance provision --leader
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/instance/path/root/svc/myapp/action/provision?leader=true"
+```
+
+</div>
+</div>
 
 The provisioners run in the resource start order.
 
@@ -83,9 +115,23 @@ Successfully starting such a resource marks it provisioned: if it starts, it
 is sane to consider it provisioned. When starting it is not possible or not
 wanted, flag it without touching the system:
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om myapp instance provision --state-only --rid disk#1
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/instance/path/root/svc/myapp/action/provision?state_only=true&rid=disk%231"
+```
+
+</div>
+</div>
 
 This only sets the flag. Nothing is formatted, allocated or created. The flag
 matters because unprovision skips resources that were never provisioned, so an
@@ -93,9 +139,23 @@ unflagged resource survives an unprovision that should have destroyed it.
 
 ## Unprovisioning
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om myapp unprovision
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/root/svc/myapp/action/unprovision"
+```
+
+</div>
+</div>
 
 This destroys the resources, and it is the dangerous half of the pair. Shared
 resources are unprovisioned once, by the leader, in reverse order.

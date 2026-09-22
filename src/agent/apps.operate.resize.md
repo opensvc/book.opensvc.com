@@ -7,6 +7,12 @@ resize is the one command that does it.
 
 A resize only grows. There is no shrink.
 
+> The **API** tabs assume the `$TOKEN` and the listener endpoint set up in
+> [Cluster API](configure.api.md). `POST …/action/resize` takes the size in
+> its body and answers the `orchestration_id` of the queued orchestration.
+> The per-node commands below have no api counterpart: they drive the local
+> instance, which is what the orchestration does for you.
+
 ## The two commands
 
 | command | acts on | ask it when |
@@ -22,11 +28,27 @@ from then on.
 `SIZE` is a size to reach, as `11g`, `11GB` or `12Gi`, or an amount to add, as
 `+1g`.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om vol/data resize 20g
 om vol/data resize +5g
 ox vol/data resize 20g
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"size": "20g"}' \
+  "https://<node>:1215/api/object/path/root/vol/data/action/resize"
+```
+
+</div>
+</div>
 
 ## Seeing the plan first
 
@@ -78,9 +100,25 @@ The instance monitor says which stage a node has reached:
 A failed resize is final on the instance it failed on. Nothing is retried, on
 purpose: a chain left part way is grown by asking for it again.
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om vol/data resize            # no size: converge to the configured size
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+# no size: converge to the configured size
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" -d '{}' \
+  "https://<node>:1215/api/object/path/root/vol/data/action/resize"
+```
+
+</div>
+</div>
 
 The configured size is the target, and every link that already holds it is
 skipped, so asking again costs nothing on the nodes that finished and finishes
