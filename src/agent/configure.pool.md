@@ -74,15 +74,38 @@ The drivers, their capabilities and their keywords are listed in
 
 ## Pool Commands
 
+> The **API** tabs assume the `$TOKEN` and the listener endpoint set up in
+> [Cluster API](configure.api.md).
+
 ### Pool list
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```bash
+om pool ls
 ```
-# om pool ls
-NAME     TYPE       CAPABILITIES              HEAD                             VOLUME_COUNT  BIN_SIZE  BIN_USED  BIN_FREE
-default  directory  rox,rwx,roo,rwo           /opt/opensvc/var/pool/directory  0             29.0g     3.57g     24.0g
-freenas  freenas    roo,rwo,shared,blk,iscsi  array://freenas/osvcdata         6             195g      9.37g     185g
-mpool    virtual    roo,rox,rwo,rwx,shared    templates/mpool                  1             -         -         -
+
+    NAME     TYPE       CAPABILITIES              HEAD                             VOLUME_COUNT  BIN_SIZE  BIN_USED  BIN_FREE
+    default  directory  rox,rwx,roo,rwo           /opt/opensvc/var/pool/directory  0             29.0g     3.57g     24.0g
+    freenas  freenas    roo,rwo,shared,blk,iscsi  array://freenas/osvcdata         6             195g      9.37g     185g
+    mpool    virtual    roo,rox,rwo,rwx,shared    templates/mpool                  1             -         -         -
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/pool"
 ```
+
+Each item carries the `name`, `type`, `capabilities`, `head`, `volume_count`,
+`size`, `used` and `free` the columns render, the cli only formatting the byte
+counts. The `name` and `node` query parameters narrow the answer, as `--name`
+and `--node` narrow the listing.
+
+</div>
+</div>
 
 The sizes are what the pool can still hand out to volumes, which is the size a
 volume is asked for and the size a claim rations. A pool whose nodes each hold
@@ -92,9 +115,23 @@ pool instead, and `--node` shows one line per node.
 
 ### Pool volumes
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```bash
+om pool volume ls
 ```
-# om pool volume ls
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/pool/volume"
 ```
+
+</div>
+</div>
 
 This lists the volumes each pool holds, and takes the same `--name` to narrow
 on one pool.
