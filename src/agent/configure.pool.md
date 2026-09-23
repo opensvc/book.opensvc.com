@@ -78,20 +78,26 @@ The drivers, their capabilities and their keywords are listed in
 
 ```
 # om pool ls
-default
-freenas
-mpool
+NAME     TYPE       CAPABILITIES              HEAD                             VOLUME_COUNT  BIN_SIZE  BIN_USED  BIN_FREE
+default  directory  rox,rwx,roo,rwo           /opt/opensvc/var/pool/directory  0             29.0g     3.57g     24.0g
+freenas  freenas    roo,rwo,shared,blk,iscsi  array://freenas/osvcdata         6             195g      9.37g     185g
+mpool    virtual    roo,rox,rwo,rwx,shared    templates/mpool                  1             -         -         -
 ```
 
-### Pool Status
+The sizes are what the pool can still hand out to volumes, which is the size a
+volume is asked for and the size a claim rations. A pool whose nodes each hold
+a copy of every volume hands out what the node with the least room can take,
+not the sum of what its nodes hold. `--physical` shows the storage behind the
+pool instead, and `--node` shows one line per node.
+
+### Pool volumes
 
 ```
-# om pool status
-name        type       caps                      head                             vols  size   used   free   
-|- default  directory  rox,rwx,roo,rwo           /opt/opensvc/var/pool/directory  0     29.0g  3.57g  24.0g  
-|- freenas  freenas    roo,rwo,shared,blk,iscsi  array://freenas/osvcdata         6     195g   9.37g  185g   
-`- mpool    virtual    roo,rox,rwo,rwx,shared    templates/mpool                  1     -      -      -      
+# om pool volume ls
 ```
+
+This lists the volumes each pool holds, and takes the same `--name` to narrow
+on one pool.
 
 ## Examples
 

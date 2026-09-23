@@ -59,11 +59,8 @@ Any OpenSVC agent can act as an arbitrator, and multiple arbitrators can be conf
 
 ## Testing Arbitrators
 
-Alive test of an arbitrator:
-
-        $ om node ping --node a1
- 
-The `om mon` output show all arbitrator alive state from the point of view of every node.
+Every node votes on its own, so an arbitrator is alive from the point of view
+of a node, not of the cluster. The `om mon` output shows that grid:
 
         $ om mon
         ...
