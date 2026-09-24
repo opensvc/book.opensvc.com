@@ -8,10 +8,19 @@ serving, and stopped it.
 We will wrap a plain HTTP server, because it is the shortest thing whose
 running you can prove rather than take on trust.
 
+> The **API** tabs assume the `$TOKEN` and the listener endpoint set up in
+> [Cluster API](configure.api.md). `hello` is a `svc` of the `root` namespace,
+> so its path is `/api/object/path/root/svc/hello`. They are here to show that
+> nothing on this page is command line only: a reader following along has the
+> agent installed and no token yet, and does not need one.
+
 ## Create it
 
 An object is created from the command line, resource by resource. Here is a
 single `app` resource, told how to start:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
 
 ```bash
 om hello create \
@@ -19,12 +28,41 @@ om hello create \
   --kw 'app#1.start=/usr/bin/python3 -m http.server 8099'
 ```
 
+</div>
+<div class="tab" data-title="API">
+
+Creating an object through the api is posting its configuration file:
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/octet-stream" \
+  --data-binary $'[app#1]\ntype = simple\nstart = /usr/bin/python3 -m http.server 8099\n' \
+  "https://<node>:1215/api/object/path/root/svc/hello/config/file"
+```
+
+</div>
+</div>
+
 Nothing was started, and nothing outside `/etc/opensvc` was touched. The
 command only wrote a configuration, which you can read back:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
 
 ```bash
 om hello config show
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/root/svc/hello/config/file"
+```
+
+</div>
+</div>
 
     [DEFAULT]
     id = 0e745444-6724-48f9-8167-e865b4f9ec94
@@ -38,9 +76,26 @@ om hello config show
 
 ## Start it
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om hello instance start
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/instance/path/root/svc/hello/action/start"
+```
+
+The api answers the `session_id` and `exec_id` of the run it forked, where the
+cli prints the run as it happens.
+
+</div>
+</div>
 
     INF hello: >>> do start [om hello instance start] (origin user, sid 7b9772c8)
     INF hello: app#1: run: om exec --pg /opensvc.slice/... -- /usr/bin/python3 -m http.server 8099
@@ -58,9 +113,26 @@ curl -o /dev/null -w "%{http_code}\n" http://localhost:8099/
 
 ## Look at it
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om hello instance status
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/instance?path=root/svc/hello&node=<node>"
+```
+
+The api answers the configuration, status and monitor state of the instance as
+json, which the cli renders as the tree below.
+
+</div>
+</div>
 
     hello
     └ instances
@@ -74,9 +146,23 @@ often.
 
 ## Stop it
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om hello instance stop
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/instance/path/root/svc/hello/action/stop"
+```
+
+</div>
+</div>
 
     INF hello: app#1: send termination signal to process 2615892
     INF hello: app#1: process 2615892 is now terminated
@@ -99,9 +185,23 @@ om hello instance status
 
 ## Clean up
 
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```bash
 om hello delete
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/root/svc/hello/action/delete"
+```
+
+</div>
+</div>
 
     OBJECT  ORCHESTRATION_ID                      STATUS
     hello   068b4fb0-ba3f-4d62-81e7-92ed88039239  accepted

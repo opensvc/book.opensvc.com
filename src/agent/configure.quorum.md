@@ -6,17 +6,72 @@ OpenSVC minimizes the likelihood of a split-brain scenario by leveraging multipl
 
 ## Enabling Quorum Enforcement
 
+> The **API** tabs assume the `$TOKEN` and the listener endpoint set up in
+> [Cluster API](configure.api.md). `cluster.quorum` is a cluster keyword, so
+> it is written on any node with `PATCH /api/cluster/config`, which takes the
+> same `set` and `unset` operations as `om cluster config update`.
+
 Users who prefer to have a cluster segment shut down in such situations can enable quorum by setting `cluster.quorum` to `true`:
 
-    om cluster config update --set cluster.quorum=true
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```bash
+om cluster config update --set cluster.quorum=true
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'set=cluster.quorum=true' \
+  "https://<node>:1215/api/cluster/config"
+```
+
+</div>
+</div>
 
 By default, the system allows split nodes to take over services, which may result in services running on multiple isolated segments. To revert to the default behavior, use:
 
-    om cluster config update --unset cluster.quorum
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```bash
+om cluster config update --unset cluster.quorum
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'unset=cluster.quorum' \
+  "https://<node>:1215/api/cluster/config"
+```
+
+</div>
+</div>
 
 To check the current quorum configuration:
 
-    om cluster config get --kw cluster.quorum
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```bash
+om cluster config get --kw cluster.quorum
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/cluster/config?kw=cluster.quorum"
+```
+
+</div>
+</div>
 
 ## Quorum Behavior
 
@@ -59,19 +114,37 @@ Any OpenSVC agent can act as an arbitrator, and multiple arbitrators can be conf
 
 ## Testing Arbitrators
 
-Alive test of an arbitrator:
+Every node votes on its own, so an arbitrator is alive from the point of view
+of a node, not of the cluster. The monitor shows that grid:
 
-        $ om node ping --node a1
- 
-The `om mon` output show all arbitrator alive state from the point of view of every node.
+<div class="tabs">
+<div class="tab" data-title="CLI">
 
-        $ om mon
-        ...
-        Arbitrators                       n1   n2
-         a1                warn         | X    X          
-         a2                warn         | X    X          
-         a3                             | O    O          
-        ...
+```bash
+om mon
+```
+
+    ...
+    Arbitrators                       n1   n2
+     a1                warn         | X    X          
+     a2                warn         | X    X          
+     a3                             | O    O          
+    ...
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/cluster/status" |
+  jq '.cluster.node | map_values(.status.arbitrators)'
+```
+
+Each node status carries an `arbitrators` object, keyed by arbitrator name,
+which is what the grid renders one column per node.
+
+</div>
+</div>
 
 ## Best Practices
 

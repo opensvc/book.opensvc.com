@@ -48,17 +48,84 @@ A service created without a specific namespace defaults to the `root` namespace.
 * Make sure CNI is installed
 * Make sure you have access to pull from docker.io on selected dns nodes (you can pre-pull or save/load the images if not).
 
+> The **API** tabs assume the `$TOKEN` and the listener endpoint set up in
+> [Cluster API](configure.api.md). `cluster.dns` is a cluster keyword, so it is
+> written on any node with `PATCH /api/cluster/config`, and `system/cfg/dns` is
+> `/api/object/path/system/cfg/dns`.
+
 ### Declare DNS backends
 
-    om cluster config update --set cluster.dns+=192.168.100.11 --set cluster.dns+=192.168.100.14
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```bash
+om cluster config update --set cluster.dns+=192.168.100.11 --set cluster.dns+=192.168.100.14
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'set=cluster.dns+=192.168.100.11' \
+  --data-urlencode 'set=cluster.dns+=192.168.100.14' \
+  "https://<node>:1215/api/cluster/config"
+```
+
+</div>
+</div>
 
 ### Deploy the DNS service
 
-    om system/cfg/dns create
-    om system/cfg/dns key add --name server --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/pdns.conf.template
-    om system/cfg/dns key add --name recursor --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/recursor.conf.template
-    om system/cfg/dns key add --name configure --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/configure
-    om system/svc/dns deploy --config https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/dns.conf
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```bash
+om system/cfg/dns create
+om system/cfg/dns key add --name server --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/pdns.conf.template
+om system/cfg/dns key add --name recursor --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/recursor.conf.template
+om system/cfg/dns key add --name configure --from https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/configure
+om system/svc/dns deploy --config https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns/dns.conf
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+base=https://raw.githubusercontent.com/opensvc/opensvc_templates/main/dns
+
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/octet-stream" \
+  --data-binary '[DEFAULT]' \
+  "https://<node>:1215/api/object/path/system/cfg/dns/config/file"
+
+for key in server:pdns.conf.template recursor:recursor.conf.template configure:configure
+do
+  curl -sL "$base/${key#*:}" |
+  curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+    -H "Content-Type: application/octet-stream" \
+    --data-binary @- \
+    "https://<node>:1215/api/object/path/system/cfg/dns/data/key?name=${key%%:*}"
+done
+
+curl -sL "$base/dns.conf" |
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/octet-stream" \
+  --data-binary @- \
+  "https://<node>:1215/api/object/path/system/svc/dns/config/file"
+
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/system/svc/dns/action/provision"
+```
+
+The api fetches nothing for you: `--from <url>` and `--config <url>` are the
+cli reading the template and sending its bytes, which is what the pipes above
+do. `deploy` has no endpoint of its own either, being a create followed by a
+provision: post the configuration file, then post the provision action, which
+answers the `orchestration_id` of the queued orchestration.
+
+</div>
+</div>
 
 <div class="warning">
 
@@ -91,9 +158,23 @@ On every node, execute:
 
 #### Dump the records served by opensvc to the PowerDNS server
 
-```
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```bash
 om daemon dns dump
 ```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/daemon/dns/dump"
+```
+
+</div>
+</div>
 
 #### Test the unix socket served by opensvc for the PowerDNS server
 
