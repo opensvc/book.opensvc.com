@@ -104,6 +104,56 @@ the systemd instance of webapp is not running, /run/user/1001 does not exist: ru
 webapp has no subordinate ids in /etc/subuid: podman cannot map the users of a rootless container
 ```
 
+### 4. Allowing the account in the namespace
+
+The account a container runs as reaches everything else that account owns
+on the node, including the containers of other objects. So a namespace may
+use only the accounts its configuration lists, and only the squatter writes
+that list:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```sh
+om test/ config update --set rootless_users=webapp
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```sh
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'set=rootless_users=webapp' \
+  "https://<node>:1215/api/object/path/test/nscfg/namespace/config"
+```
+
+</div>
+</div>
+
+* `rootless_users` lists accounts by name or uid. An allowed account's
+  primary group is allowed too.
+* `rootless_groups` lists any other group a container may run as, through
+  `rootless_group`. A group reaches every file it owns, so a group like
+  `docker` or `disk` reaches the node itself.
+* The root account and the root group are never allowed.
+
+A namespace admin setting `rootless_user` or `rootless_group` to anything
+else is refused. The check reads the value as it evaluates, through
+references and on each node:
+
+```
+[403] denied: container#0 runs as daemon on n1: the test namespace does not allow rootless_user daemon (uid 1): it allows webapp
+```
+
+Root is not bound by the list. A container running as an account its
+namespace does not allow shows the reason as a status warning. That happens
+when root set it up, or when the squatter removed the account afterwards.
+
+Allowing one account in two namespaces lets each reach the other's
+containers. That is allowed but warned about, both in the daemon log when the
+namespace config is written and in the status of every container running as
+that account. Give each namespace an account of its own.
+
 ## Configuring a rootless container
 
 Set `rootless_user` on the container. `rootless_group` replaces the user's
