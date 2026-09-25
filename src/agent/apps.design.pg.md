@@ -48,14 +48,25 @@ The keywords are the usual cgroup controls:
 | `pg_mems` | the memory nodes it may allocate from, same syntax |
 | `pg_cpu_shares` | its share of cpu **when the node is cpu-bound**, relative to other objects |
 | `pg_cpu_quota` | its cpu time whether or not the node is busy: `50%` is half of one cpu, `50%@all` half of every cpu the node has, `10%@2` a tenth of two |
+| `pg_cpu_burst` | cpu time banked while under the quota and spent above it in a short spike, in the `pg_cpu_quota` notation. It cannot exceed the quota. Unified hierarchy only |
 | `pg_mem_limit` | resident memory, in bytes. Exceeding it wakes the OOM killer |
+| `pg_mem_high` | resident memory above which the kernel reclaims and throttles, without killing. Set it below `pg_mem_limit`. Unified hierarchy only |
 | `pg_vmem_limit` | memory plus swap |
+| `pg_pids_max` | processes and threads running at once. A fork beyond it fails |
 | `pg_mem_oom_control` | `0` lets the OOM killer run, `1` freezes the group instead. v1 hierarchy only |
 | `pg_mem_swappiness` | how readily its pages are swapped. v1 hierarchy only |
 | `pg_blkio_weight` | its share of block io, between `10` and `1000` |
 
 `pg_cpu_shares` and `pg_cpu_quota` are the pair worth telling apart: shares only
 arbitrate a contended cpu, whereas a quota caps the group on an idle node too.
+
+`pg_mem_high` and `pg_mem_limit` are the other pair: past the first, the group
+runs slower while the kernel reclaims its memory, and past the second it is
+killed. A memory claim counts `pg_mem_limit`, the one that bounds the group.
+
+systemd has no property for the cpu burst, so it neither keeps it nor resets
+it. The agent writes it every time it applies the caps, which is before each
+container starts in the group.
 
 The two marked *v1 hierarchy only* cap nothing on a node running the unified
 hierarchy, which has neither `memory.swappiness` nor `memory.oom_control`.
@@ -88,6 +99,46 @@ om test/nscfg/namespace create --kw pg_mem_limit=4g
 
 Every object in `test` is then capped by it, no matter who created it, which is
 how a namespace is handed to a team without handing them the node.
+
+A [rootless container](apps.design.rootless.md) is the exception. It runs in
+the cgroup tree of its user, outside `opensvc.slice`, and the namespace and
+node caps are not copied there. To bound what a namespace takes wherever its
+containers run, use [compute claims](apps.design.namespaces.md#compute-claims),
+which count the caps of the objects.
+
+## Caps that systemd keeps
+
+podman asks systemd to start the group of a container, and systemd writes a
+slice's cgroup files from the unit properties whenever it starts that slice.
+A cap written only to the files would be reset to "no cap" the next time a
+container started. So the agent also sets the caps as runtime properties of
+the slice, on the system manager, or on the user's manager for a rootless
+container:
+
+```bash
+$ systemctl show -p CPUQuotaPerSecUSec,MemoryMax 'opensvc-svc.myapp.slice'
+CPUQuotaPerSecUSec=500ms
+MemoryMax=268435456
+```
+
+They are runtime properties: they are lost at reboot, and the next start
+applies them again from the configuration.
+
+## Rootless containers
+
+The `pg_*` keywords of a rootless container, and those of its object and
+subset, cap groups the agent makes in the tree systemd delegates to the user:
+
+    user.slice/user-<uid>.slice/user@<uid>.service
+    └ opensvc.slice
+      └ opensvc-svc.<name>.slice
+        └ opensvc-svc.<name>-container.1.slice
+
+The cap files stay owned by root, so the user cannot lift them. A cap whose
+controller the user's tree is not delegated is reported as not applied. By
+default that is `pg_cpus`, `pg_mems` and `pg_blkio_weight`. See [Rootless
+Containers](apps.design.rootless.md#delegating-more-controllers) for how to
+delegate them.
 
 ## Lifting a capping
 
@@ -133,3 +184,4 @@ uncapped, and is worth doing only where the cgroup itself causes the problem.
 
 > ➡️ See Also
 > * [Namespaces](apps.design.namespaces.md)
+> * [Rootless Containers](apps.design.rootless.md)

@@ -91,10 +91,11 @@ references are relative. See [Relative object paths](#relative-object-paths).
 ## Claims on cluster resources
 
 The objects of a namespace consume things the cluster owns and its peers share:
-the space of a pool, the addresses of a network. A namespace can be capped on
-what it takes of one, so that it cannot drain a resource the others are meant
-to share. A cap is declared in the namespace configuration, as a `claim`
-section naming the kind of resource, the resource, and the limit:
+the space of a pool, the addresses of a network, the cpu and memory of the
+nodes. A namespace can be capped on what it takes of one, so that it cannot
+drain a resource the others are meant to share. A cap is declared in the
+namespace configuration, as a `claim` section naming the kind of resource, the
+resource when there are several of that kind, and the limit:
 
 ```ini
 [claim#1]
@@ -177,6 +178,105 @@ asked for again, so a namespace that reached its limit still restarts what it
 already runs. Lowering a limit below what a namespace already holds is
 therefore allowed, and takes effect on the next allocation rather than by
 taking addresses back.
+
+### Compute claims
+
+A `cpu` or `memory` claim bounds what the objects of the namespace may be
+capped to, cluster-wide. It names no resource, because the cluster has only
+one compute:
+
+```ini
+[claim#3]
+type = cpu
+limit = 800%
+default = 50%
+
+[claim#4]
+type = memory
+limit = 16g
+default = 512m
+```
+
+The cpu `limit` uses the `pg_cpu_quota` notation: `800%` or `100%@8` is eight
+cpus. `@all` is refused, because it depends on the size of a node. The memory
+`limit` is a size.
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```sh
+om test/ config update --set claim#3.type=cpu --set claim#3.limit=800% --set claim#3.default=50%
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```sh
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -G \
+  --data-urlencode 'set=claim#3.type=cpu' \
+  --data-urlencode 'set=claim#3.limit=800%' \
+  --data-urlencode 'set=claim#3.default=50%' \
+  "https://<node>:1215/api/object/path/test/nscfg/namespace/config"
+```
+
+</div>
+</div>
+
+**What an object claims.** An object claims what its processes are capped to
+(`pg_cpu_quota`, `pg_mem_limit`), counted on every instance it can run at
+once:
+
+* A resource is bounded by its own cap. A subset or an object cap bounds the
+  sum of the caps under it.
+* A failover object counts one started instance. A flex object counts
+  `flex_target` of them. Any node might run a started instance, so each one
+  is counted on the node where its caps are highest.
+* Every other node counts the object's standby resources, which run there too.
+
+So a flex object with a target of 2 and a 50% cpu container claims 1 cpu,
+however many nodes it lists. The daemon publishes each object's claim in its
+instance configuration, as `claims`.
+
+**Default caps.** A container, or a podman, docker or oci task, whose
+resource, subset and object all say no cap is given the claim's `default`. It
+runs with that cap, and is counted for it. The processes of `app` resources
+never get the default: capping them is up to the object.
+
+**Uncapped processes.** A process that nothing caps can take the whole node,
+so it cannot be counted. An object running one in a claimed namespace cannot
+grow its claim until it is capped:
+
+```
+$ om test/svc/web config update --set app#1.type=simple --set app#1.start="/bin/sleep 1000"
+Error: test/svc/web: [403] Forbidden: claim overrun: ... runs a process capped by nothing on it: cap it with pg_cpu_quota on its resource or its object (the default of a claim caps the containers only)
+```
+
+**When it is checked.** The claim is weighed when a configuration is written,
+before anything runs. A write that raises an object's claim past the limit is
+refused:
+
+```
+$ om test/svc/web config update --set container#2.pg_cpu_quota=60%
+Error: test/svc/web: [403] Forbidden: claim overrun: test/svc/web claims cpu 1.1 cpu, memory 384mi, and cpu: the test namespace may claim 1 cpu of it and already claims 0.75 cpu, so it cannot claim 0.35 cpu more
+```
+
+A write that leaves an object's claim unchanged, or lowers it, is always
+accepted. An object created before the namespace had a claim can therefore
+still be edited.
+
+**Starting more instances than counted.** Starting an instance on top of the
+ones its claim counts, such as a second instance of a failover object, is
+refused to users other than root:
+
+```
+[403] Forbidden: claim overrun: the test namespace claims the compute of 1 started instance(s) of test/svc/web, and 1 already run(s)
+```
+
+Root is let through, and the daemon logs a warning.
+
+Compute claims are how a namespace is bounded when its containers run
+[rootless](apps.design.rootless.md). Those run in their users' cgroup trees,
+which the namespace `pg_*` caps do not reach.
 
 ### Where the limit is read
 
