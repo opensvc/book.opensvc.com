@@ -184,5 +184,26 @@ Finally you need to rebuild the initrd/initramfs to prevent shared vg activation
 
 #### /etc/lvm/lvm_$HOSTNAME.conf
 
-	echo activation { volume_list = [\"@local\", \"@$HOSTNAME\"] } >/etc/lvm/lvm_$HOSTNAME.conf
+	cat >/etc/lvm/lvm_$HOSTNAME.conf <<EOF
+	activation {
+	    volume_list = [ "@local", "@$HOSTNAME" ]
+	    auto_activation_volume_list = [ "@local" ]
+	}
+	EOF
+
+``volume_list`` says what may be activated at all: the local volume groups, and
+the shared ones tagged with this node. ``auto_activation_volume_list`` says
+what LVM activates on its own, at boot or when a device appears: the local
+volume groups only. OpenSVC activates the shared volume groups itself, with a
+direct activation this second list does not apply to.
+
+Without it, a shared volume group still tagged with the node, as an unclean
+stop leaves it, is activated at the next boot. The ``boot`` action of the
+instance deactivates it once the agent starts, but until then it can be active
+on this node and on the node the service failed over to. And the ``boot``
+action runs only for the instances configured on the node: a node reinstalled
+under the same name activates the volume groups left tagged by its previous
+installation, and nothing deactivates them.
+
+Both lists are supported by the LVM2 of RHEL 7 and later.
 
