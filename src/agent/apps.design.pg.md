@@ -88,6 +88,74 @@ start = /opt/myapp/bin/indexer
 pg_cpu_shares = 128
 ```
 
+## Changing the caps of a running object
+
+Editing the keywords changes the configuration, not the running instances: the
+new caps apply at the next start. `cap` changes both at once. It sets the
+keywords, then applies them to every instance running, on every node, without
+a restart:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```
+om test/svc/myapp cap --set pg_cpu_quota=60% --set app#2.pg_cpu_shares=128
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/test/svc/myapp/action/cap?set=pg_cpu_quota%3D60%25&set=app%232.pg_cpu_shares%3D128"
+```
+
+</div>
+</div>
+
+A `--set` names a keyword of the object, as `pg_cpu_quota=60%`, or of a
+subset or a resource, as `app#2.pg_cpu_shares=128`, and takes a
+[scope](apps.design.scoping.md) as any keyword does:
+`pg_cpu_quota@node2=60%`. Only the `pg_*` keywords are accepted, and only
+with `=`. The command help lists them, and `om <path> config doc --kw
+pg_cpu_quota` prints the full text of one.
+
+`cap` needs the admin grant on the namespace of the object. The caps are
+checked as any configuration change is: a value the keyword does not take, a
+keyword the rbac policy does not grant, or a cap beyond the [compute
+claims](apps.design.namespaces.md#compute-claims) of the namespace is refused,
+and nothing is written.
+
+`cap` is an orchestration, so it is refused while another one is in progress
+on the object, and nothing is written then either. Like the other
+orchestrations, it returns once the daemon queues it, and `--wait` holds it
+until every node has applied the caps. An instance not running has nothing to
+apply them to, and gets them when it starts.
+
+With no `--set`, `cap` applies the caps the configuration already holds, which
+puts back a cap lifted or changed by hand:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```
+om test/svc/myapp cap
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/test/svc/myapp/action/cap"
+```
+
+</div>
+</div>
+
+The api answers the `orchestration_id` of the queued orchestration, which is
+waited for as the [other actions'](apps.operate.action.md) are.
+
 ## Capping a namespace
 
 An `nscfg` object holds the defaults of its namespace, the `pg_*` keywords among
@@ -159,7 +227,8 @@ pg_cpu_quota = default
 
 This is the one to reach for. It is the configuration, so every node converges
 to it: a peer taking the object over, or a node provisioned tomorrow, lifts the
-capping too.
+capping too. `om test/svc/myapp cap --set pg_cpu_quota=default` writes it and
+lifts the capping on the running instances at once.
 
 The command lifts every capping of an instance at once, whatever the keywords
 say:
