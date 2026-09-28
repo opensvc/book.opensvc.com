@@ -1,142 +1,278 @@
-# Cluster Backend Networks
+# Cluster Networks
 
-These networks are only required for services private ip auto-allocation. If configured, the cluster DNS exposes the allocated ip addresses as predictible names, and the cluster Ingress Gateways or portmapping can expose the services to clients outside the cluster.
+A cluster network gives objects private addresses that om hands out, tracks,
+and publishes in the cluster DNS. An object names a network, and gets an
+address, a device, a netmask and a gateway from it, with nothing to install
+and no external store to run: the addresses are allocated by the agent itself.
 
-OpenSVC relies on CNI for this subsystem. Any CNI plugin can be used but some plugins can have dependencies like etcd or consul, which OpenSVC does not require for himself. The bridge plugin, having no such dependencies, is simpler to setup.
+The resource that takes an address from a network is `ip.netns`. It plumbs the
+address into the network namespace of a container of the object.
 
-## Install CNI
+## Network types
 
-### From package
+| Type | Scope | Use |
+| :--- | :--- | :--- |
+| `bridge` | one node | addresses reachable from the node and its containers only |
+| `routed_bridge` | the cluster | addresses routed from node to node, each node drawing from a subnet of its own |
+| `lo` | one node | the loopback, which om allocates nothing in |
 
-Some distributions ship CNI packages.
+A network named `default`, of the `bridge` type on `10.22.0.0/16`, exists on
+every node of a fresh installation, so an object can take an address before any
+network is declared.
 
-On Red Hat or CentOS 7, for example, CNI is served by the EPEL repositories:
+## Declaring networks
 
-```
-# to activate epel repositories:
-# yum install -y epel-release
+Networks are sections of the cluster configuration, or of the node
+configuration for a network that exists on one node only.
 
-yum install -y containernetworking-cni
-```
+### Bridge
 
-Then tell OpenSVC where to find the CNI plugins and network configurations:
+A bridge network is node local: its addresses are not routed between nodes, so
+every node draws from the whole subnet, and the same address on two nodes never
+meets.
 
-```
-om cluster config update --set cni.plugins=/usr/libexec/cni \
-                         --set cni.config=/var/lib/opensvc/cni/net.d
-```
-
-### From upstream
-
-```
-cd /tmp
-wget https://github.com/containernetworking/cni/releases/download/v0.6.0/cni-amd64-v0.6.0.tgz
-wget https://github.com/containernetworking/plugins/releases/download/v0.6.0/cni-plugins-amd64-v0.6.0.tgz
-sudo mkdir -p /opt/cni/bin
-cd  /opt/cni/bin
-sudo tar xvf /tmp/cni-amd64-v0.6.0.tgz
-sudo tar xvf /tmp/cni-plugins-amd64-v0.6.0.tgz
-sudo mkdir -p /opt/cni/net.d
-```
-
-Here the plugins and network configurations directories are aligned with the OpenSVC defaults.
-
-
-## Configure networks
-
-Networks are declared in the OpenSVC node or cluster configuration.
-
-The agent create the CNI configuration files as needed.
-
-### Local Bridge
-
-A local bridge network is always present and named `default`.
-
-To create another network of this type, named `local1`, available on every cluster node:
+<div class="tabs">
+<div class="tab" data-title="CLI">
 
 ```
-$ om cluster config update --set network#local1.type=bridge \
-                           --set network#local1.network=10.10.10.0/24
+om cluster config update --set network#local1.type=bridge \
+                         --set network#local1.network=10.10.10.0/24
 ```
 
-To create another network of this type, named `local1`, available on the current cluster node only:
+</div>
+<div class="tab" data-title="API">
 
 ```
-$ om node config update --set network#local1.type=bridge \
-                        --set network#local1.network=10.10.10.0/24
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/cluster/config?set=network%23local1.type%3Dbridge&set=network%23local1.network%3D10.10.10.0%2F24"
 ```
 
-### Routed Bridge
+</div>
+</div>
 
-This network type split the subnet into per-node segments. Trafic is routed from node-to-node via static routes to each segment, and ipip tunnels are created if necessary.
+Use `om node config update` instead to declare it on the current node only.
 
-The simple bridge CNI plugin is used for IPAM and plumbing in network namespaces, and OpenSVC is responsible for node-to-node routing and tunneling.
+### Routed bridge
 
-To create a network of this type, named `backend1`, spanned on every cluster node:
+A routed bridge spans the cluster. Its subnet is split into one segment per
+node, each node allocating in its own segment, and om routes each segment to
+its node, through a tunnel when the peer is not on the same subnet:
 
-```
-$ om cluster config update --set network#backend1.type=routed_bridge \
-                           --set network#backend1.network=10.11.0.0/16 \
-                           --set network#backend1.ips_per_node=1024
-```
-
-In this example, the network is split like:
-
-* node 1 : 10.11.0.0/22
-* node 2 : 10.11.4.0/22
-* node 3 : 10.11.8.0/22
-* ...
-
-Tunnel endpoints addresses are guessed using a lookup of the nodenames. Different addresses can be setup if necessary, using:
+<div class="tabs">
+<div class="tab" data-title="CLI">
 
 ```
-$ om cluster config update --set network#backend1.addr@node1=1.2.3.4 \
-                           --set network#backend1.addr@node2=1.2.3.5 \
-                           --set network#backend1.addr@node3=1.2.4.4
+om cluster config update --set network#backend1.type=routed_bridge \
+                         --set network#backend1.network=10.11.0.0/16 \
+                         --set network#backend1.mask_per_node=22
 ```
 
-Some hosting providers, like OVH, don't support static network routes from node to node, even if they have an ip address in a common subnet. For this situation, you can force OpenSVC to always use tunnels for this backend network:
+</div>
+<div class="tab" data-title="API">
 
 ```
-$ om cluster config update --set network#backend1.tunnel=always
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/cluster/config?set=network%23backend1.type%3Drouted_bridge&set=network%23backend1.network%3D10.11.0.0%2F16&set=network%23backend1.mask_per_node%3D22"
 ```
 
-The default tunnel mode is ipip if the network is ipv4, or ip6ip6 if the network is ipv6. The `tunnel_mode` keyword of the `routed_bridge` driver also accepts `gre`. The GRE tunnels can transport both ipv4 and ipv6 and may work in some hosting situations where ipip does not work (OVH).
+</div>
+</div>
 
-## Use in service configurations
+`mask_per_node` is the prefix length of the segment each node gets. Here every
+node gets a `/22`, 1024 addresses, and the segments are assigned in the order
+of `cluster.nodes`, recorded as `subnet@<node>`:
 
-Here is a typical ip resource configuration, using the "weave" CNI network configured above.
+* node 1: `10.11.0.0/22`
+* node 2: `10.11.4.0/22`
+* node 3: `10.11.8.0/22`
+
+`ips_per_node`, the former way to size the segments, is still read, but
+`mask_per_node` wins when both are set: a count of addresses is unwieldy for an
+ipv6 network.
+
+The tunnel endpoints are the addresses the nodenames resolve to. Name others
+when the nodes reach each other on another network:
+
+```
+om cluster config update --set network#backend1.addr@node1=192.168.1.1 \
+                         --set network#backend1.addr@node2=192.168.1.2
+```
+
+Some hosting providers route traffic between servers even on a common subnet.
+Force the tunnels there:
+
+```
+om cluster config update --set network#backend1.tunnel=always
+```
+
+The tunnel mode is `ipip` for an ipv4 network and `ip6ip6` for an ipv6 one.
+`gre`, set with `tunnel_mode`, carries both, and works where some providers
+refuse `ipip`.
+
+### Masquerading
+
+Traffic leaving a `bridge` or `routed_bridge` network is masqueraded behind the
+node address. Set `public=true` on a network whose addresses are routable as
+they are, to leave them unmasqueraded.
+
+### Applying a network
+
+`om network setup` creates the bridges, routes, tunnels and nftables rules of
+the networks on the node it runs on. The daemon runs it on start and on every
+cluster configuration change, so a network declared on a running cluster is set
+up on every node without asking. It has no api counterpart: it acts on the
+node it runs on.
+
+## How addresses are allocated
+
+Each node allocates for itself, which is what makes the allocation safe without
+a lock held across the cluster: a `routed_bridge` node draws from its own
+segment only, and a `bridge` address never leaves its node.
+
+* **An address belongs to a resource.** The reservation is named after the
+  object and the resource id, so an object holding several `ip.netns`
+  resources in one network gets an address for each.
+* **The same resource gets the same address.** The search for a free address
+  starts from a point derived from the object and the resource id, so a
+  resource that stops and starts again gets its address back as long as nobody
+  took it meanwhile, and its DNS name keeps pointing to the same place.
+* **A stop releases the address**, and so does a start that fails and rolls
+  back, so an object that is down holds no address.
+* **The reservations are files** under `<var>/ipam/<network>/`, one per
+  address, holding the object path and the resource id that took it.
+
+The netmask of the resource is the one of the node's range, and its gateway is
+the first address of that range, which the node sets on the bridge.
+
+An earlier agent left the allocation of these networks to the `host-local` CNI
+plugin, which allocates the first free address, so an address moved as the
+neighbours of an object came and went. The first network setup of an upgraded
+node adopts the addresses the running resources hold, so no address is handed
+out twice during the transition.
+
+## Using a network in an object
+
+A container of the object, usually a pause container holding the network
+namespace, and an `ip.netns` resource naming the network:
 
 ```ini
+[container#0]
+type = podman
+image = ghcr.io/opensvc/pause
+rm = true
+
 [ip#0]
-type = cni
-network = backend1
+type = netns
 netns = container#0
-expose = 80/tcp
+network = backend1
 ```
 
-The container pointed by {{#include ../inc/kw}}`netns` can be a docker or lxc container. {{#include ../inc/kw}}`netns` can also be left empty, causing the weave ip address to be assigned to the service cgroup.
+Naming the network is enough. The resource takes from it:
 
-The {{#include ../inc/kw}}`expose` keyword is optional. If set, a SRV record is served by the cluster DNS (in this example `_http._tcp.<svcname>.<namespace>.svc.<clustername>`). If {{#include ../inc/kw}}`expose` is set to portmapping expression, for example `80:8001/tcp`, the portmap CNI plugin is will configure the portmapping and expose the `80/tcp` backend server on the `8001` port of the node public ip addresses.
+* `name`, the address, allocated as described above when left empty.
+* `dev`, the bridge of the network, `obr_<network>` unless the network names
+  another with its `dev` keyword.
+* `netmask` and `gateway`, from the node's range.
 
-## Useful commands
+Any of them set in the object configuration wins over the network.
+
+The other containers of the object join the namespace of the pause container
+with `netns = container#0`, and reach each other over `127.0.0.1`.
+
+`ip.netns` also plugs an address in modes other than a bridge: `macvlan`,
+`ipvlan-l2`, `ipvlan-l3`, `ipvlan-l3s`, `ovs` and `dedicated`, set with
+`mode`. See the [`mode`
+keyword](../agent.reference.keywords/svc/ip.netns.md#keyword-mode) for what
+each one lets the host and the containers reach.
+
+### Names
+
+The address is published in the cluster DNS under the name of the object:
 
 ```
-# om net ls
-NAME      TYPE           NETWORK        SIZE   USED  FREE   
-backend1  routed_bridge  fdfe::/112     65536  0     65536  
-backend2  routed_bridge  fdff::/112     65536  0     65536  
-backend3  routed_bridge  10.100.0.0/22  1024   2     1022   
-lo        lo             127.0.0.1/32   1      0     1      
-default   bridge         10.22.0.0/16   65536  0     65536  
+$ getent hosts web.test.svc.mycluster
+10.11.0.78      web.test.svc.mycluster
 ```
 
-List the IP addresses allocated in networks associated with their respective requester object and resource:
+A second address of the same object is told apart with `dns_name_suffix`,
+which is appended to the published name.
+
+`expose` publishes SRV records for the services the address serves, for
+example `expose = 443/tcp` publishes `_443._tcp.web.test.svc.mycluster`.
+
+### Namespace claims
+
+A namespace can be capped on the addresses it takes from a network, with a
+`claim` section of its configuration. An allocation taking the namespace over
+its limit is refused, while an address a resource already holds is never
+re-claimed, so an object at the limit still restarts. See [network
+claims](apps.design.namespaces.md#network-claims).
+
+## Inspecting networks
+
+The networks, and how full they are:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
 ```
-# om net ip ls
-OBJECT               NODE    RID   IP          NET_NAME  NET_TYPE       
-testigw/svc/haproxy  dev2n1  ip#1  10.100.0.2  backend3  routed_bridge  
-testigw/svc/haproxy  dev2n2  ip#1  10.100.1.2  backend3  routed_bridge  
-...
+$ om network ls
+NAME      TYPE           NETWORK        SIZE  USED  FREE
+backend1  routed_bridge  10.11.0.0/16   64ki  3     64ki
+lo        lo             127.0.0.1/32   1     0     1
+default   bridge         10.22.0.0/16   64ki  0     64ki
 ```
 
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/network"
+```
+
+</div>
+</div>
+
+The addresses allocated, with the object and resource holding each, here in
+one network:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```
+$ om network ip ls --name backend1
+OBJECT         NODE   RID   IP          NET_NAME  NET_TYPE
+test/svc/web   node1  ip#0  10.11.0.78  backend1  routed_bridge
+test/svc/db    node2  ip#0  10.11.4.12  backend1  routed_bridge
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/network/ip?name=backend1"
+```
+
+</div>
+</div>
+
+## CNI
+
+The `ip.cni` driver plugs an address through CNI plugins instead. It is the one
+to use for a network defined by a third-party CNI plugin, or to publish a port
+of the address on the node addresses: an `expose` entry with a host port, as
+`80:8001/tcp`, is configured by the `portmap` plugin.
+
+`ip.cni` needs the CNI plugins installed, where the `cni.plugins` and
+`cni.config` keywords of the node configuration say. Plugged into an om
+network, `bridge` or `routed_bridge`, it draws its address from the allocation
+described above, like `ip.netns`. Plugged into a network om does not define,
+the address is the plugin's to allocate.
+
+> ➡️ See Also
+> * [`ip.netns` keywords](../agent.reference.keywords/svc/ip.netns.md)
+> * [`ip.cni` keywords](../agent.reference.keywords/svc/ip.cni.md)
+> * [`network.routed_bridge` keywords](../agent.reference.keywords/cluster/network.routed_bridge.md)
+> * [Namespaces](apps.design.namespaces.md)
