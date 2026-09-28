@@ -87,17 +87,17 @@ stale copy raises a warning.
 ### Each peer has its own base
 
 Each update takes a snapshot of the source, named after the resource and the
-time it was taken, as `sync.1.20260928T154211Z` for `sync#1`. It then sends
-each peer the changes between that snapshot and the newest snapshot the peer
+time it was taken, to the microsecond, as `sync.1.20260928T154211.315216Z` for
+`sync#1`. It then sends each peer the changes between that snapshot and the newest snapshot the peer
 already holds, its base. The snapshots are matched by their guid, so a peer's
 base is found whatever either side calls it, after a failover too.
 
 Once a peer has received the new snapshot, its older ones are destroyed. The
 source keeps the newest snapshot, and the base of any peer that fell behind:
 
-    dev2n1: sync.1.20260928T154154Z sync.1.20260928T154203Z
-    dev2n2: sync.1.20260928T154203Z
-    dev2n3: sync.1.20260928T154154Z
+    dev2n1: sync.1.20260928T154154.161026Z sync.1.20260928T154203.972669Z
+    dev2n2: sync.1.20260928T154203.972669Z
+    dev2n3: sync.1.20260928T154154.161026Z
 
 Here `dev2n3` missed the last update. The update failed, and said why:
 
@@ -106,7 +106,7 @@ Here `dev2n3` missed the last update. The update failed, and said why:
 The next update sends `dev2n3` everything it missed, from the base it holds,
 and the three nodes are in step again:
 
-    INF test/svc/zfssync: sync#1: /usr/sbin/zfs send -R -I tank/zfssynctest@sync.1.20260928T154154Z tank/zfssynctest@sync.1.20260928T154211Z | ssh dev2n3 '/usr/sbin/zfs receive -dF tank'
+    INF test/svc/zfssync: sync#1: /usr/sbin/zfs send -R -I tank/zfssynctest@sync.1.20260928T154154.161026Z tank/zfssynctest@sync.1.20260928T154211.315216Z | ssh dev2n3 '/usr/sbin/zfs receive -dF tank'
 
 A short outage heals by itself, and a peer out of reach does not hold up the
 others.
