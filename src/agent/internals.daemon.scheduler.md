@@ -121,7 +121,7 @@ The supported jobs are:
 * Service resources monitoring : `resource_monitor`
 * Service status evaluation : `status`
 * Service tasks execution : `run`
-* Service data sync : `sync_update`
+* Service data sync and snapshots : `update`
 
 The `info` job only refreshes a cache local to the instance. Reporting the
 key-values to the collector is the collector speaker's job, done on its own

@@ -58,6 +58,37 @@ with no reference resource, only apps and syncs, gives no way to tell, and is
 not synced: give it one, a `fs.flag` if nothing else fits. `--force` sends from
 a node whose reference resources are warn.
 
+## Holding the updates
+
+`update_requires` holds the updates and the full copies of a resource until
+other resources are in the states it names. A snapshot of a dataset, for one,
+is taken only while the filesystem on it is mounted:
+
+```ini
+[fs#2]
+type = zfs
+dev = tank/{fqdn}
+mnt = /srv/{fqdn}
+
+[sync#3]
+type = zfssnap
+dataset = tank/{fqdn}
+name = hourly
+keep = 3
+schedule = @60m
+update_requires = fs#2(up)
+```
+
+The scheduler does not schedule the update while the requirement is not met,
+and schedules it again once it is. An update asked by hand is refused, and says
+why:
+
+    ERR test/svc/zfs30: sync#3: sync requires: the resource action requirements are not met: action update on resource sync#3 requires fs#2 in states (up), but is down
+
+A condition is `<rid>(<state>,...)`, and states left out mean `up,stdby up`.
+The v2 names `sync_update_requires`, `sync_nodes_requires` and
+`sync_drp_requires` are read as `update_requires`.
+
 ## Reading the status
 
 A sync resource reports whether the copy is fresh. On the node running the
