@@ -35,3 +35,8 @@ copy-js = true           # include Javascript code for search
 enable = true
 level = 0
 
+
+[output.html.redirect]
+# The cluster networks page was named after the cni, which it no longer
+# centers on.
+"/agent/configure.cni.html" = "/agent/configure.networks.html"

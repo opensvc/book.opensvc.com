@@ -10,7 +10,7 @@
   - [Cluster API](agent/configure.api.md)
   - [Access Control](agent/configure.rbac.md)
   - [Cluster API Client](agent/configure.client.md)
-  - [Cluster Networks](agent/configure.cni.md)
+  - [Cluster Networks](agent/configure.networks.md)
   - [Cluster DNS](agent/configure.dns.md)
   - [Cluster Gateway](agent/configure.igw.md)
   - [Cluster Relay](agent/configure.relay.md)
