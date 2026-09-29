@@ -113,6 +113,41 @@ array replication may report, counts as a warning:
 So the node standing by for a service reads down, as it should, and only a
 stale copy raises a warning.
 
+A copy goes stale with no event to tell, so each resource says when its status
+will change, and the daemon evaluates the status again then. A copy found stale
+turns fresh again when the next sync lands: the source writes the peer's last
+sync record, and the peer evaluates its status on it. The warnings come and go
+within seconds of the copies, not at the next scheduled status evaluation.
+
+### The recovery point objective
+
+The `max_delay` of a sync resource, explicit or derived from its schedule, is
+its recovery point objective: past it, the node standing by holds data older
+than the resource allows to lose. Each resource keeps its own. The logs of a
+database may be replicated with a 2 hours delay, and its redo logs with a 10
+minutes delay, in the same service.
+
+A node standing by breaches the recovery point objective as soon as one of its
+copies is older than its resource allows: were it to take over then, it would
+lose more data than that resource's contract. Each instance publishes when that
+happens, `rpo_breached_at`, the earliest time among its sync resources, and
+each resource publishes its own. The node the data is replicated from publishes
+none: its data is current.
+
+`om mon` marks with a red `L` the instances past that time:
+
+     test/svc/db   up!  ha  1/1 | O!^   X    X!L
+
+and the status tree tags them, the warning of the resource naming the contract
+breached:
+
+    ├ n3                down  warn rpo-breached idle
+    │ warn: n3 last sync is too old, at 2026-09-29 09:17:54 +0200 CEST, more than 45s ago (schedule @30s, half a period after the sync due)
+
+The time is compared to the clock when the status is read, so the mark is right
+whenever the instance status was last evaluated. Choosing a node to fail over
+to, prefer one with no mark.
+
 ## ZFS replication
 
 ### Each peer has its own base
