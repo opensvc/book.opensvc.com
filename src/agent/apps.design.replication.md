@@ -74,6 +74,32 @@ keeps running where it was, its monitoring on:
 
     syncs sync#2 still running after 10m0s: the instance is not stopped
 
+To stop or switch without waiting, ask to end the syncs instead. The rsync and
+ssh processes they started end with them, and a zfs copy the peer was receiving
+is discarded whole:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```
+om test/svc/db switch --to n2 --interrupt-syncs
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+  -d '{"destination": ["n2"], "live": false, "interrupt_syncs": true}' \
+  "https://<node>:1215/api/object/path/test/svc/db/action/switch"
+```
+
+</div>
+</div>
+
+`om test/svc/db stop --interrupt-syncs` stops the same way, `?interrupt_syncs=true`
+on the api.
+
 No scheduled sync starts while a stop, a switch or another orchestration is in
 progress: the next period syncs, from wherever the service runs then.
 
