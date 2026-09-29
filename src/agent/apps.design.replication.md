@@ -100,6 +100,11 @@ curl -s -X POST -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/
 `om test/svc/db stop --interrupt-syncs` stops the same way, `?interrupt_syncs=true`
 on the api.
 
+A stop run on the node, `om test/svc/db instance stop`, waits the same way for
+the syncs holding the object lock, and says so:
+
+    wait for the update of the syncs (pid 340343, running for 3s) to end, 10m0s at most: --interrupt-syncs ends them instead
+
 No scheduled sync starts while a stop, a switch or another orchestration is in
 progress: the next period syncs, from wherever the service runs then.
 
