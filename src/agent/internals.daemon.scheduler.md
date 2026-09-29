@@ -85,8 +85,8 @@ The node supports the following jobs:
 * Scheduled node reboot task : `auto_reboot`
 * Scheduled root password rotation task : `auto_rotate_root_pw`
 * Execution of node actions queued by the collector : `dequeue_actions`
-* SAN switches inventoring tasks : `pushbrocade`
-* Storage arrays inventoring tasks : `pushcentera` `pushdcs` `pushemcvnx` `pusheva` `pushfreenas` `pushhds` `pushhp3par` `pushibmds` `pushibmsvc` `pushnecism` `pushnetapp` `pushsym` `pushvioserver`
+* SAN switches inventoring tasks : `pushswitch`, one per `switch#<name>` section
+* Storage arrays inventoring tasks : `pusharray`, one per `array#<name>` section
 * Backup servers saves index inventoring tasks : `pushnsr`
 
 

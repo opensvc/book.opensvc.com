@@ -51,7 +51,7 @@ Display the scheduler configuration and states:
     eggplant  sysreport        2025-01-20T00:58:22+01:00  0001-01-01T00:00:00Z  ~00:00-06:00  
     eggplant  dequeue_actions  2023-08-03T14:05:50+02:00  0001-01-01T00:00:00Z                
     eggplant  pushhcs          2025-01-15T18:00:59+01:00  0001-01-01T00:00:00Z  @1d           
-    eggplant  pushbrocade      0001-01-01T00:00:00Z       0001-01-01T00:00:00Z                
+    eggplant  pushswitch       0001-01-01T00:00:00Z       0001-01-01T00:00:00Z                
 
 Schedule configuration:
 
@@ -60,10 +60,10 @@ Schedule configuration:
 
 ```bash
 # Set a job schedule
-om node config update --set "brocade.schedule=02:00-04:00@120 sat,sun"
+om node config update --set "switch#sansw1.schedule=02:00-04:00@120 sat,sun"
 
 # Disable a job schedule
-om node config update --set "brocade.schedule=@0"
+om node config update --set "switch#sansw1.schedule=@0"
 ```
 
 </div>
@@ -72,12 +72,12 @@ om node config update --set "brocade.schedule=@0"
 ```bash
 # Set a job schedule
 curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -G \
-  --data-urlencode 'set=brocade.schedule=02:00-04:00@120 sat,sun' \
+  --data-urlencode 'set=switch#sansw1.schedule=02:00-04:00@120 sat,sun' \
   "https://<node>:1215/api/node/name/<node>/config"
 
 # Disable a job schedule
 curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -G \
-  --data-urlencode 'set=brocade.schedule=@0' \
+  --data-urlencode 'set=switch#sansw1.schedule=@0' \
   "https://<node>:1215/api/node/name/<node>/config"
 ```
 
@@ -158,6 +158,38 @@ Or if the settings were added to node.conf
 
 	om node config update --unset node.dbopensvc
 	om node config update --unset node.dbcompliance
+
+### Inventory the SAN Switches
+
+A couple of nodes of the infrastructure usually inventory the SAN switches, and
+report their configuration to the collector, which indexes their ports, zones
+and aliases. A switch is a `switch#<name>` section of the node or cluster
+configuration:
+
+```ini
+[switch#sansw1]
+type = brocade
+name = sansw1.my.corp
+username = admin
+password = from system/sec/sansw1 key password
+schedule = 02:00-04:00
+```
+
+The node logs in over ssh, with the private key `key` points to or with the
+password of the secret, and runs `switchshow`, `nsshow` and `zoneshow`. The
+telnet method v2 offered is refused. The key of the switch is trusted on the
+first connection and recorded in the known hosts of root: a switch presenting
+another key later is refused, until its old key is removed from
+`/root/.ssh/known_hosts`.
+
+```bash
+# Push every switch, or the one named
+om node push switch
+om node push switch sansw1
+```
+
+The report goes to the switch feed of the collector. A collector that does not
+serve it yet is sent the report the way v2 sent it.
 
 ## Extra System Configurations
 
