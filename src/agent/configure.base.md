@@ -191,6 +191,79 @@ om node push switch sansw1
 The report goes to the switch feed of the collector. A collector that does not
 serve it yet is sent the report the way v2 sent it.
 
+### Track the System Configuration
+
+The node reports its configuration files, and the output of a few commands,
+to the collector, which keeps their history: what changed on a node, and when,
+is at hand when a service misbehaves there. The first report sends every
+tracked file, and the following ones what changed and what was deleted.
+
+The agent configuration files are always tracked, the cluster secret masked.
+The other files and commands are listed in files of the
+`/etc/opensvc/sysreport.conf.d` directory, one item per line:
+
+| Item | Tracks |
+| :--- | :--- |
+| `FILE <path>` | a file |
+| `DIR <path>` | a directory, recursively |
+| `GLOB <glob>` | the files and directories matching the pattern |
+| `EXC <glob>` | none of the files matching the pattern, among the ones above |
+| `CMD <argv>` | the output of a command, run without a shell |
+
+```
+# /etc/opensvc/sysreport.conf.d/system
+FILE /etc/hosts
+FILE /etc/fstab
+DIR /etc/netplan
+FILE /etc/multipath.conf
+FILE /etc/lvm/lvm.conf
+DIR /etc/sysctl.d
+CMD ip -br addr
+CMD lsblk -o NAME,TYPE,SIZE,FSTYPE,MOUNTPOINT
+CMD multipath -ll
+CMD systemctl list-unit-files --state=enabled --no-pager --no-legend
+```
+
+The files of the directory must belong to root and not be writable by others,
+or they are ignored. Track no file holding a credential, as an `iscsid.conf`
+with CHAP passwords can. Prefer the commands whose output only changes when
+the configuration does: a counter or a timestamp in an output makes every
+report a change.
+
+The report runs on the `sysreport.schedule`, once a day by default. Every hour:
+
+```bash
+om cluster config update --set sysreport.schedule=@60m
+```
+
+Run a report, or a full one, which sends every tracked file for the collector
+to replace what it holds of the node with:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```bash
+om node sysreport
+om node sysreport --force
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/action/sysreport"
+
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/action/sysreport?force=true"
+```
+
+</div>
+</div>
+
+A report the collector refused is followed by a full one, so no change is
+lost to a collector out of reach.
+
 ## Extra System Configurations
 
 ### Linux LVM2
