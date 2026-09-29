@@ -47,6 +47,39 @@ A restart is a simple stop-start sequence:
 * Maintenance period is announced
 * Peer nodes wait for the daemon to restart without taking over.
 
+A restart does not freeze the node, nor its peers, even when the daemons of
+all the nodes restart at once, as with `om daemon restart --node='*'`: the
+maintenance period is what keeps the peers from acting while a restart rolls.
+
+## Rejoin
+
+A starting daemon waits for its peers, `node.rejoin_grace_period` at most,
+before orchestrating. It freezes the node on its own in two cases only, both
+saying something went wrong:
+
+* A peer is still out of reach when the rejoin grace period expires: the node
+  may be split from the others, and does not orchestrate blind.
+* The server booted with the `osvc.freeze` option on the kernel command line.
+
+A node that was down misses the freezes asked meanwhile. When it comes back,
+it adopts a freeze of the whole cluster, `om cluster freeze`, and of a whole
+object, `om <path> freeze`, if a peer took it while the node was down:
+
+    the cluster was frozen while this daemon was down (peer n1 frozen): local node has been frozen
+
+It adopts no other freeze. A peer frozen alone, with `om node freeze` or
+`om <path> instance freeze --node <peer>`, stays the only one frozen, as does a
+peer the daemon froze on its own, for a drain, at boot, or at the end of its
+rejoin grace period.
+
+The node and instance statuses say which a freeze is, next to `frozen_at`:
+`frozen_scope` is `cluster` or `node` for a node, `object` or `instance` for an
+instance. A freeze adopted is a freeze of the node or of the instance: it is
+not adopted again from there.
+
+🛈 OpenSVC v2 adopted any freeze a peer took while the node was down, so a
+node frozen for maintenance froze its peers as they rebooted.
+
 ## Run
 
     om daemon run
