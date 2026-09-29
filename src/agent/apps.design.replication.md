@@ -58,6 +58,25 @@ with no reference resource, only apps and syncs, gives no way to tell, and is
 not synced: give it one, a `fs.flag` if nothing else fits. `--force` sends from
 a node whose reference resources are warn.
 
+## Stopping or switching while a sync runs
+
+Stopped under a sync, a service would hand its peers a copy the sync was
+writing. A stop or a switch waits for the syncs running on the instance to end,
+in the `wait syncs` state:
+
+    09:37:17 n1 wait syncs/up run=sync#2 | n2 stopped/down
+    09:37:36 n1 idle/down               | n2 starting/down
+    09:37:39 n1 idle/down               | n2 idle/up
+
+It waits `wait_syncs_timeout` at most, 10 minutes by default, set to what the
+largest syncs of the service take. Past it, the stop fails, and the service
+keeps running where it was, its monitoring on:
+
+    syncs sync#2 still running after 10m0s: the instance is not stopped
+
+No scheduled sync starts while a stop, a switch or another orchestration is in
+progress: the next period syncs, from wherever the service runs then.
+
 ## Holding the updates
 
 `update_requires` holds the updates and the full copies of a resource until
