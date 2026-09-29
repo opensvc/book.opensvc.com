@@ -77,6 +77,11 @@ keeps running where it was, its monitoring on:
 No scheduled sync starts while a stop, a switch or another orchestration is in
 progress: the next period syncs, from wherever the service runs then.
 
+A drain does not wait: the shutdown of the instances of a drained node ends the
+syncs running first, the rsync and ssh processes they started included, so
+none keeps sending to the peer taking over. No scheduled sync starts on a node
+being drained.
+
 ## Holding the updates
 
 `update_requires` holds the updates and the full copies of a resource until
