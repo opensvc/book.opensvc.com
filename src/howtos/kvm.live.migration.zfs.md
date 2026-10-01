@@ -26,6 +26,32 @@ The node the object is placed on then runs its start, which finds the filesystem
 
 A migration that fails unmounts the copy on the destination, and the virtual machine keeps running where it was.
 
+## How long a move may take
+
+The migration mirrors the whole disks of the virtual machine, so it takes the time to copy them over the link between the nodes, which grows with their size. It is not bounded by the `stop_timeout` of the `container.kvm` resource, which is the time a guest has to shut down, two minutes by default: a migration copying disks has no timeout of its own, and the stop action of the object bounds it, by `DEFAULT.stop_timeout`, else `DEFAULT.timeout`, one hour by default.
+
+Raise `DEFAULT.stop_timeout` when the disks take longer than that to copy, or bound the migration alone with the `migrate_timeout` keyword of the `container.kvm` resource:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```
+om kvm/svc/vm7 config update --set container#1.migrate_timeout=2h
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/kvm/svc/vm7/config?set=container%231.migrate_timeout%3D2h"
+```
+
+</div>
+</div>
+
+A migration that runs past its timeout is cancelled and rolled back, as a failed one is. A migration of shared storage, as a drbd in dual primary, copies the memory of the virtual machine only, and keeps the `stop_timeout` of the resource unless `migrate_timeout` is set.
+
 # Prerequisites
 
 - A ZFS pool of the same name on every node the object can run on, imported, with room for a copy of the datasets.
