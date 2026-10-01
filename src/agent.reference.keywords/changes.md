@@ -1,7 +1,403 @@
 # Keyword changes
 
-What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc41.
+What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc42.
 
+
+## v3.0.0-rc42
+
+
+### Added
+
+- `cluster/array.dorado.timeout`
+- `cluster/array.freenas.insecure`
+- `cluster/array.ibmsvc.key`
+- `cluster/pool.dorado.array`
+- `cluster/pool.dorado.diskgroup`
+- `cluster/pool.dorado.fs_type`
+- `cluster/pool.drbd.max_peers`
+- `cluster/pool.shm.mode`
+- `node/array.dorado.timeout`
+- `node/array.freenas.insecure`
+- `node/array.ibmsvc.key`
+- `node/pool.dorado.array`
+- `node/pool.dorado.diskgroup`
+- `node/pool.dorado.fs_type`
+- `node/pool.drbd.max_peers`
+- `node/pool.shm.mode`
+- `svc/DEFAULT.pg_cpu_burst`
+- `svc/DEFAULT.pg_mem_high`
+- `svc/DEFAULT.pg_pids_max`
+- `svc/DEFAULT.wait_syncs_timeout`
+- `svc/container.oci.rootless_group`
+- `svc/container.oci.rootless_user`
+- `svc/container.podman.rootless_group`
+- `svc/container.podman.rootless_user`
+- `svc/disk.hp3par.update_requires`
+- `svc/fs.tmpfs.mode`
+- `svc/fs.tmpfs.size`
+- `svc/sync.rsync.update_requires`
+- `svc/sync.symsnapvx.update_requires`
+- `svc/sync.symsrdfs.update_requires`
+- `svc/sync.zfs.max_lag_age`
+- `svc/sync.zfs.max_lag_size`
+- `svc/sync.zfs.update_requires`
+- `svc/sync.zfssnap.update_requires`
+- `svc/task.docker.read_only`
+- `svc/task.docker.stop_timeout`
+- `svc/task.docker.sysctl`
+- `svc/task.oci.read_only`
+- `svc/task.oci.rootless_group`
+- `svc/task.oci.rootless_user`
+- `svc/task.oci.stop_timeout`
+- `svc/task.oci.sysctl`
+- `svc/task.podman.read_only`
+- `svc/task.podman.rootless_group`
+- `svc/task.podman.rootless_user`
+- `svc/task.podman.stop_timeout`
+- `svc/task.podman.sysctl`
+- `vol/DEFAULT.pg_cpu_burst`
+- `vol/DEFAULT.pg_mem_high`
+- `vol/DEFAULT.pg_pids_max`
+- `vol/DEFAULT.wait_syncs_timeout`
+- `vol/disk.hp3par.update_requires`
+- `vol/fs.tmpfs.mode`
+- `vol/fs.tmpfs.size`
+- `vol/sync.rsync.update_requires`
+- `vol/sync.symsnapvx.update_requires`
+- `vol/sync.symsrdfs.update_requires`
+- `vol/sync.zfs.max_lag_age`
+- `vol/sync.zfs.max_lag_size`
+- `vol/sync.zfs.update_requires`
+- `vol/sync.zfssnap.update_requires`
+- `vol/task.docker.read_only`
+- `vol/task.docker.stop_timeout`
+- `vol/task.docker.sysctl`
+- `vol/task.oci.read_only`
+- `vol/task.oci.rootless_group`
+- `vol/task.oci.rootless_user`
+- `vol/task.oci.stop_timeout`
+- `vol/task.oci.sysctl`
+- `vol/task.podman.read_only`
+- `vol/task.podman.rootless_group`
+- `vol/task.podman.rootless_user`
+- `vol/task.podman.stop_timeout`
+- `vol/task.podman.sysctl`
+
+### Removed
+
+- `cluster/array.freenas.timeout`
+- `cluster/array.netapp.key`
+- `cluster/array.pure.insecure`
+- `cluster/drbd.max_peers`
+- `cluster/pool.freenas.array`
+- `cluster/pool.freenas.diskgroup`
+- `cluster/pool.freenas.fs_type`
+- `node/array.freenas.timeout`
+- `node/array.netapp.key`
+- `node/array.pure.insecure`
+- `node/drbd.max_peers`
+- `node/pool.freenas.array`
+- `node/pool.freenas.diskgroup`
+- `node/pool.freenas.fs_type`
+- `svc/disk.hp3par.sync_requires`
+- `svc/sync.rsync.sync_requires`
+- `svc/sync.symsnapvx.sync_requires`
+- `svc/sync.symsrdfs.sync_requires`
+- `svc/sync.zfs.sync_requires`
+- `svc/sync.zfssnap.sync_requires`
+- `vol/disk.hp3par.sync_requires`
+- `vol/sync.rsync.sync_requires`
+- `vol/sync.symsnapvx.sync_requires`
+- `vol/sync.symsrdfs.sync_requires`
+- `vol/sync.zfs.sync_requires`
+- `vol/sync.zfssnap.sync_requires`
+
+### Changed
+
+- `cluster/arbitrator.weight`
+  - description rewritten
+- `cluster/array.pure.secret`
+  - description rewritten
+- `node/arbitrator.weight`
+  - description rewritten
+- `node/array.pure.secret`
+  - description rewritten
+- `svc/DEFAULT.pg_cpu_shares`
+  - description rewritten
+- `svc/DEFAULT.pg_cpus`
+  - description rewritten
+- `svc/DEFAULT.pg_mem_limit`
+  - description rewritten
+- `svc/DEFAULT.pg_mem_oom_control`
+  - description rewritten
+- `svc/DEFAULT.pg_mems`
+  - description rewritten
+- `svc/DEFAULT.pg_vmem_limit`
+  - description rewritten
+- `svc/disk.drbd.template`
+  - description rewritten
+- `svc/disk.hp3par.array`
+  - description rewritten
+- `svc/disk.rados.config`
+  - description rewritten
+- `svc/disk.rados.keyring`
+  - description rewritten
+- `svc/disk.sgcp_nfs_cg.secret`
+  - description rewritten
+- `svc/fs.9pfs.install`
+  - description rewritten
+- `svc/fs.afs.install`
+  - description rewritten
+- `svc/fs.bfs.install`
+  - description rewritten
+- `svc/fs.bind.install`
+  - description rewritten
+- `svc/fs.btrfs.install`
+  - description rewritten
+- `svc/fs.cephfs.install`
+  - description rewritten
+- `svc/fs.cifs.install`
+  - description rewritten
+- `svc/fs.directory.install`
+  - description rewritten
+- `svc/fs.ext2.install`
+  - description rewritten
+- `svc/fs.ext3.install`
+  - description rewritten
+- `svc/fs.ext4.install`
+  - description rewritten
+- `svc/fs.f2fs.install`
+  - description rewritten
+- `svc/fs.gfs.install`
+  - description rewritten
+- `svc/fs.gfs2.install`
+  - description rewritten
+- `svc/fs.glusterfs.install`
+  - description rewritten
+- `svc/fs.gpfs.install`
+  - description rewritten
+- `svc/fs.hfs.install`
+  - description rewritten
+- `svc/fs.hfsplus.install`
+  - description rewritten
+- `svc/fs.hpfs.install`
+  - description rewritten
+- `svc/fs.jffs.install`
+  - description rewritten
+- `svc/fs.jffs2.install`
+  - description rewritten
+- `svc/fs.jfs.install`
+  - description rewritten
+- `svc/fs.jfs2.install`
+  - description rewritten
+- `svc/fs.lofs.install`
+  - description rewritten
+- `svc/fs.logfs.install`
+  - description rewritten
+- `svc/fs.minix.install`
+  - description rewritten
+- `svc/fs.msdos.install`
+  - description rewritten
+- `svc/fs.ncpfs.install`
+  - description rewritten
+- `svc/fs.nfs.install`
+  - description rewritten
+- `svc/fs.nfs4.install`
+  - description rewritten
+- `svc/fs.nilfs.install`
+  - description rewritten
+- `svc/fs.none.install`
+  - description rewritten
+- `svc/fs.ntfs.install`
+  - description rewritten
+- `svc/fs.ocfs.install`
+  - description rewritten
+- `svc/fs.ocfs2.install`
+  - description rewritten
+- `svc/fs.qnx4.install`
+  - description rewritten
+- `svc/fs.reiserfs.install`
+  - description rewritten
+- `svc/fs.reiserfs4.install`
+  - description rewritten
+- `svc/fs.rpc_pipefs.install`
+  - description rewritten
+- `svc/fs.sgcp_nfs.install`
+  - description rewritten
+- `svc/fs.sgcp_nfs.secret`
+  - description rewritten
+- `svc/fs.smbfs.install`
+  - description rewritten
+- `svc/fs.tmpfs.install`
+  - description rewritten
+- `svc/fs.tux3.install`
+  - description rewritten
+- `svc/fs.ufs.install`
+  - description rewritten
+- `svc/fs.ufs2.install`
+  - description rewritten
+- `svc/fs.umsdos.install`
+  - description rewritten
+- `svc/fs.vfat.install`
+  - description rewritten
+- `svc/fs.vxfs.install`
+  - description rewritten
+- `svc/fs.xfs.install`
+  - description rewritten
+- `svc/fs.xia.install`
+  - description rewritten
+- `svc/fs.zfs.install`
+  - description rewritten
+- `svc/ip.sgcp_dnsalias.secret`
+  - description rewritten
+- `svc/task.docker.max_parallel`
+  - description rewritten
+- `svc/task.host.max_parallel`
+  - description rewritten
+- `svc/task.oci.max_parallel`
+  - description rewritten
+- `svc/task.podman.max_parallel`
+  - description rewritten
+- `svc/volume..install`
+  - description rewritten
+- `vol/DEFAULT.pg_cpu_shares`
+  - description rewritten
+- `vol/DEFAULT.pg_cpus`
+  - description rewritten
+- `vol/DEFAULT.pg_mem_limit`
+  - description rewritten
+- `vol/DEFAULT.pg_mem_oom_control`
+  - description rewritten
+- `vol/DEFAULT.pg_mems`
+  - description rewritten
+- `vol/DEFAULT.pg_vmem_limit`
+  - description rewritten
+- `vol/disk.drbd.template`
+  - description rewritten
+- `vol/disk.hp3par.array`
+  - description rewritten
+- `vol/disk.rados.config`
+  - description rewritten
+- `vol/disk.rados.keyring`
+  - description rewritten
+- `vol/disk.sgcp_nfs_cg.secret`
+  - description rewritten
+- `vol/fs.9pfs.install`
+  - description rewritten
+- `vol/fs.afs.install`
+  - description rewritten
+- `vol/fs.bfs.install`
+  - description rewritten
+- `vol/fs.bind.install`
+  - description rewritten
+- `vol/fs.btrfs.install`
+  - description rewritten
+- `vol/fs.cephfs.install`
+  - description rewritten
+- `vol/fs.cifs.install`
+  - description rewritten
+- `vol/fs.directory.install`
+  - description rewritten
+- `vol/fs.ext2.install`
+  - description rewritten
+- `vol/fs.ext3.install`
+  - description rewritten
+- `vol/fs.ext4.install`
+  - description rewritten
+- `vol/fs.f2fs.install`
+  - description rewritten
+- `vol/fs.gfs.install`
+  - description rewritten
+- `vol/fs.gfs2.install`
+  - description rewritten
+- `vol/fs.glusterfs.install`
+  - description rewritten
+- `vol/fs.gpfs.install`
+  - description rewritten
+- `vol/fs.hfs.install`
+  - description rewritten
+- `vol/fs.hfsplus.install`
+  - description rewritten
+- `vol/fs.hpfs.install`
+  - description rewritten
+- `vol/fs.jffs.install`
+  - description rewritten
+- `vol/fs.jffs2.install`
+  - description rewritten
+- `vol/fs.jfs.install`
+  - description rewritten
+- `vol/fs.jfs2.install`
+  - description rewritten
+- `vol/fs.lofs.install`
+  - description rewritten
+- `vol/fs.logfs.install`
+  - description rewritten
+- `vol/fs.minix.install`
+  - description rewritten
+- `vol/fs.msdos.install`
+  - description rewritten
+- `vol/fs.ncpfs.install`
+  - description rewritten
+- `vol/fs.nfs.install`
+  - description rewritten
+- `vol/fs.nfs4.install`
+  - description rewritten
+- `vol/fs.nilfs.install`
+  - description rewritten
+- `vol/fs.none.install`
+  - description rewritten
+- `vol/fs.ntfs.install`
+  - description rewritten
+- `vol/fs.ocfs.install`
+  - description rewritten
+- `vol/fs.ocfs2.install`
+  - description rewritten
+- `vol/fs.qnx4.install`
+  - description rewritten
+- `vol/fs.reiserfs.install`
+  - description rewritten
+- `vol/fs.reiserfs4.install`
+  - description rewritten
+- `vol/fs.rpc_pipefs.install`
+  - description rewritten
+- `vol/fs.sgcp_nfs.install`
+  - description rewritten
+- `vol/fs.sgcp_nfs.secret`
+  - description rewritten
+- `vol/fs.smbfs.install`
+  - description rewritten
+- `vol/fs.tmpfs.install`
+  - description rewritten
+- `vol/fs.tux3.install`
+  - description rewritten
+- `vol/fs.ufs.install`
+  - description rewritten
+- `vol/fs.ufs2.install`
+  - description rewritten
+- `vol/fs.umsdos.install`
+  - description rewritten
+- `vol/fs.vfat.install`
+  - description rewritten
+- `vol/fs.vxfs.install`
+  - description rewritten
+- `vol/fs.xfs.install`
+  - description rewritten
+- `vol/fs.xia.install`
+  - description rewritten
+- `vol/fs.zfs.install`
+  - description rewritten
+- `vol/ip.sgcp_dnsalias.secret`
+  - description rewritten
+- `vol/task.docker.max_parallel`
+  - description rewritten
+- `vol/task.host.max_parallel`
+  - description rewritten
+- `vol/task.oci.max_parallel`
+  - description rewritten
+- `vol/task.podman.max_parallel`
+  - description rewritten
+- `vol/volume..install`
+  - description rewritten
 
 ## v3.0.0-rc41
 

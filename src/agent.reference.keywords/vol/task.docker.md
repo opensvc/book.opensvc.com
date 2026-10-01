@@ -51,13 +51,16 @@
 - optional
 - osvc_root_path
 - pg_blkio_weight
+- pg_cpu_burst
 - pg_cpu_quota
 - pg_cpu_shares
 - pg_cpus
+- pg_mem_high
 - pg_mem_limit
 - pg_mem_oom_control
 - pg_mem_swappiness
 - pg_mems
+- pg_pids_max
 - pg_vmem_limit
 - pidns
 - post_provision
@@ -72,6 +75,7 @@
 - provision
 - provision_requires
 - pull_timeout
+- read_only
 - registry_creds
 - retcodes
 - rm
@@ -85,7 +89,9 @@
 - standby
 - stat_timeout
 - stop_requires
+- stop_timeout
 - subset
+- sysctl
 - tags
 - timeout
 - tty
@@ -326,6 +332,7 @@ The current working directory set for the executed command.
 	required:    false
 	scopable:    true
 	convert:     shlex
+	rbac:        Host devices in container require the root grant.
 
 **Example:**
 
@@ -611,7 +618,7 @@ The task#xx.max_parallel=2 setting limits the number of concurrent task runs to 
 
 The default value is 1, ensuring backward compatibility.
 
-The run count is determined based on PID files created in the <resource var>/run/ directories.
+The run count is determined based on PID files created in the `<resource var>/run/` directories.
 
 The PID file is normally removed when the task execution ends, but if the executor dies abruptly (e.g., due to a SIGKILL), the stale PID file is not considered when computing the resource status. It is removed before the count check of the next run.
 
@@ -666,6 +673,7 @@ assigned.
 	required:    false
 	scopable:    true
 	aliases:     net
+	rbac:        The host network namespace requires the root grant.
 
 **Example:**
 
@@ -761,6 +769,37 @@ never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
 
+## Keyword `pg_cpu_burst`
+
+	required:    false
+	scopable:    true
+
+**Example:**
+
+	pg_cpu_burst=20%
+
+**Description:**
+
+The cpu time the group banks under its quota, and spends above it.
+
+It is the time the processes of the group may bank while under their
+`pg_cpu_quota`, and spend above it in a short spike, in the notation of
+`pg_cpu_quota`: `20%` lets the group run a fifth of a cpu above its quota
+during a period, out of what it left unused before.
+
+It serves a latency-sensitive service capped tightly: a request arriving
+after an idle spell is served at the speed of the burst, rather than
+throttled for the rest of the period. Over a longer time the group still
+uses no more than its quota.
+
+It needs `pg_cpu_quota`, and cannot exceed it: the kernel refuses a burst
+larger than the quota. Only the unified cgroup hierarchy has it.
+
+Setting this keyword to `default` puts the capping back where a node that
+never capped anything leaves it. Removing the keyword does not: what was
+written stays written, whether om wrote it or something else did.
+
+
 ## Keyword `pg_cpu_quota`
 
 	required:    false
@@ -805,11 +844,12 @@ written stays written, whether om wrote it or something else did.
 
 **Description:**
 
-The kernel default value is used, which usually is 1024 shares.
+The share of cpu the group gets when the node is cpu-bound.
 
-In a cpu-bound situation, this setting ensures the service does not use more
-than its share of cpu resource. The actual percentile depends on shares
-allowed to other services.
+The share is relative to the other groups.
+
+The actual percentile depends on the shares allowed to the other services.
+Unset, the kernel default is used, which usually is 1024 shares.
 
 Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
@@ -828,9 +868,39 @@ written stays written, whether om wrote it or something else did.
 
 **Description:**
 
-Allow service process to bind only the specified cpus.
+The cpus the processes of the group may run on.
 
 Cpus are specified as list or range : `0,1,2` or `0-2`.
+
+Setting this keyword to `default` puts the capping back where a node that
+never capped anything leaves it. Removing the keyword does not: what was
+written stays written, whether om wrote it or something else did.
+
+
+## Keyword `pg_mem_high`
+
+	required:    false
+	scopable:    true
+	convert:     size
+
+**Example:**
+
+	pg_mem_high=384m
+
+**Description:**
+
+The memory past which the kernel throttles the group, in bytes.
+
+Past it, the kernel slows the processes of the group down, reclaiming their
+memory and throttling their allocations.
+
+Unlike `pg_mem_limit`, reaching it does not wake the Out-Of-Memory killer: a
+group above it keeps running, slower, while the kernel reclaims. Set below
+`pg_mem_limit`, it gives a process growing too much the time to be noticed,
+or to shrink, before it is killed.
+
+It is a soft limit, so it is not what a memory claim counts: the claim counts
+`pg_mem_limit`. Only the unified cgroup hierarchy has it.
 
 Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
@@ -849,7 +919,7 @@ written stays written, whether om wrote it or something else did.
 
 **Description:**
 
-Ensures the service does not use more than specified memory (in bytes).
+The memory the processes of the group may use, in bytes.
 
 The Out-Of-Memory killer is triggered in case of tresspassing.
 
@@ -869,7 +939,9 @@ written stays written, whether om wrote it or something else did.
 
 **Description:**
 
-A flag (0 or 1) that enables or disables the Out of Memory killer for the
+Whether the Out of Memory killer runs for the group: 0 enables it.
+
+It is a flag (0 or 1) enabling or disabling the Out of Memory killer for the
 processes of the group.
 
 * If enabled (0), tasks that attempt to consume more memory than they are
@@ -914,9 +986,31 @@ it there is warned about, and ignored.
 
 **Description:**
 
-Allow service process to bind only the specified memory nodes.
+The memory nodes the processes of the group may allocate from.
 
 Memory nodes are specified as list or range : `0,1,2` or `0-2`.
+
+Setting this keyword to `default` puts the capping back where a node that
+never capped anything leaves it. Removing the keyword does not: what was
+written stays written, whether om wrote it or something else did.
+
+
+## Keyword `pg_pids_max`
+
+	required:    false
+	scopable:    true
+
+**Example:**
+
+	pg_pids_max=512
+
+**Description:**
+
+The most processes and threads the group may run at once.
+
+A fork beyond it fails in the process that asked for it, and nothing else
+of the node is touched: it is what keeps a runaway fork loop from exhausting
+the process table of the node.
 
 Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
@@ -935,7 +1029,7 @@ written stays written, whether om wrote it or something else did.
 
 **Description:**
 
-Ensures the service does not use more than specified memory+swap (in bytes).
+The memory plus swap the processes of the group may use, in bytes.
 
 The Out-Of-Memory killer is triggered in case of tresspassing.
 The specified value must be greater than `pg_mem_limit`.
@@ -1083,6 +1177,7 @@ Errors do not interrupt the action.
 	required:    false
 	scopable:    true
 	convert:     bool
+	rbac:        A privileged container requires the root grant.
 
 **Description:**
 
@@ -1142,6 +1237,20 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 **Description:**
 
 Wait for `<duration>` before declaring the container action a failure.
+
+
+## Keyword `read_only`
+
+	required:    false
+	scopable:    true
+	convert:     tristate
+
+**Description:**
+
+Mount the root filesystem of the task container as read only.
+
+The task writes only in its volume mounts and its tmpfs, as a container
+declaring the same keyword does.
 
 
 ## Keyword `registry_creds`
@@ -1414,6 +1523,24 @@ A condition is expressed as `<rid>(<state>,...)`.
 If states are omitted, `up,stdby up` is used as the default expected states.
 
 
+## Keyword `stop_timeout`
+
+	required:    false
+	scopable:    true
+	convert:     duration
+
+**Example:**
+
+	stop_timeout=2m
+
+**Description:**
+
+Wait for `<duration>` for the task container to exit on a stop before
+killing it.
+
+Unset, the container engine default applies.
+
+
 ## Keyword `subset`
 
 	required:    false
@@ -1430,6 +1557,21 @@ or in a less precise `[subset#<name>]` one.
 That section accepts `parallel`, to act on the members concurrently rather than
 one after the other, and the `pg_*` keywords, to place the members in their own
 process group.
+
+
+## Keyword `sysctl`
+
+	required:    false
+	scopable:    true
+	convert:     shlex
+
+**Example:**
+
+	sysctl=kernel.shm_rmid_forced=1 net.ipv4.tcp_syncookies=1
+
+**Description:**
+
+Set namespaced kernel tunables exposed via sysctl in the task container.
 
 
 ## Keyword `tags`
@@ -1591,6 +1733,7 @@ A container with `userns=host` will share the host's userns.
 	required:    false
 	scopable:    true
 	convert:     shlex
+	rbac:        Host path mounts in container require the root grant.
 
 **Example:**
 

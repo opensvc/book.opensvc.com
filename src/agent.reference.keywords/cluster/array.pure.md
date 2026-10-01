@@ -182,7 +182,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 **Description:**
 
-The secret to use to store the information required to create the login jwt, expressed as a <path> reference to a secret. The secret must be in the ``system`` namespace and must have the following keys: ``private_key``.
+The secret to use to store the information required to create the login jwt, expressed as a `<path>` reference to a secret. The secret must be in the ``system`` namespace and must have the following keys: ``private_key``.
 
 
 ## Keyword `type`

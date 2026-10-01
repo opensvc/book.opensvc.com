@@ -15,6 +15,7 @@
 - mkblk_opt
 - mkfs_opt
 - mnt_opt
+- mode
 - status_schedule
 - type
 
@@ -76,6 +77,31 @@ The mkfs command options to use to format the pool devices.
 **Description:**
 
 The mount options of the fs created over the pool devices.
+
+
+## Keyword `mode`
+
+	required:    false
+	scopable:    false
+	since:       v3.0.0-rc42
+	convert:     filemode
+	rbac:        This driver group requires the root grant.
+
+**Default:**
+
+`700`, unless mnt_opt names a mode: the volumes are for the objects using them, and the root of a tmpfs is everyone's to write in otherwise.
+
+**Example:**
+
+	mode=750
+
+**Description:**
+
+The permissions of the root of the volumes the pool makes, in octal, as `700`
+or `1777`.
+
+A volume is written with it as the mode keyword of its tmpfs, where it stays
+when the pool is changed afterwards.
 
 
 ## Keyword `status_schedule`

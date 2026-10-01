@@ -98,6 +98,6 @@ Arbitrators are verified every 60s to alert admins of the arbitrator failures.
 
 **Description:**
 
-During a quorum vote, this reachable arbitrator contributes <n> votes.
+During a quorum vote, this reachable arbitrator contributes `<n>` votes.
 
 
