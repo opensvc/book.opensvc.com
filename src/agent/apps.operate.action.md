@@ -183,7 +183,7 @@ curl -s -X POST -H "Authorization: Bearer $TOKEN" \
 </div>
 </div>
 
-> The `container.kvm` supports live migration. Live migration requires the VM storage to be read-write from all nodes during the switch. SAN disks and drbd pass-through, NFS, Ceph, ClusterFS can satisfy this requirement.
+> The `container.kvm` supports live migration. The VM storage is either read-write from all nodes during the switch, as SAN disks, drbd pass-through, NFS, Ceph or ClusterFS, or held by `fs.zfs` and `disk.zvol` resources, whose datasets the switch copies to the destination and whose disks the migration mirrors there: see [KVM Live Migration on ZFS](../howtos/kvm.live.migration.zfs.md).
 
 **Takeover**
 
