@@ -58,3 +58,12 @@ changed, say so in place rather than forking the page:
 
 The agent CHANGELOG remains the upgrade document. This is for the sentence a
 reader would otherwise act on without knowing it changed.
+
+## License
+
+The text and the images of the book are licensed under the Creative Commons
+Attribution 4.0 International license, whose legal code is in `LICENSE`. The
+keyword reference, generated from the agent source code, is licensed with it,
+under the Apache License 2.0. The scripts, styles, fonts and icons mdBook
+publishes the book with are under the licenses of their authors, listed in
+`src/appendix/third-party-licenses.md`.
