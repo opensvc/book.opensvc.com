@@ -32,3 +32,11 @@ A configuration still naming one of these is reported by `om <path> config valid
 | `vol/sync.symsrdfs.sync_requires` | v3.0.0-rc41 |
 | `vol/sync.zfs.sync_requires` | v3.0.0-rc41 |
 | `vol/sync.zfssnap.sync_requires` | v3.0.0-rc41 |
+| `cluster/console.insecure` | v3.0.0-rc42 |
+| `cluster/console.max_greet_timeout` | v3.0.0-rc42 |
+| `cluster/console.max_seats` | v3.0.0-rc42 |
+| `cluster/console.server` | v3.0.0-rc42 |
+| `node/console.insecure` | v3.0.0-rc42 |
+| `node/console.max_greet_timeout` | v3.0.0-rc42 |
+| `node/console.max_seats` | v3.0.0-rc42 |
+| `node/console.server` | v3.0.0-rc42 |

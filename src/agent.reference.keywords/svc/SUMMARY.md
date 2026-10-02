@@ -81,6 +81,7 @@
 - [ip.host](ip.host.md)
 - [ip.netns](ip.netns.md)
 - [ip.route](ip.route.md)
+- [ip.rule](ip.rule.md)
 - [ip.sgcp_dnsalias](ip.sgcp_dnsalias.md)
 - [share.nfs](share.nfs.md)
 - [subset](subset.md)

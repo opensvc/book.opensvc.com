@@ -1,7 +1,108 @@
 # Keyword changes
 
-What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc42.
+What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc43.
 
+
+## v3.0.0-rc43
+
+
+### Added
+
+- `cluster/console.port`
+- `cluster/console.url`
+- `node/console.port`
+- `node/console.url`
+- `svc/container.kvm.migrate_timeout`
+- `svc/ip.rule.blocking_post_provision`
+- `svc/ip.rule.blocking_post_start`
+- `svc/ip.rule.blocking_post_stop`
+- `svc/ip.rule.blocking_post_unprovision`
+- `svc/ip.rule.blocking_pre_provision`
+- `svc/ip.rule.blocking_pre_start`
+- `svc/ip.rule.blocking_pre_stop`
+- `svc/ip.rule.blocking_pre_unprovision`
+- `svc/ip.rule.disable`
+- `svc/ip.rule.encap`
+- `svc/ip.rule.monitor`
+- `svc/ip.rule.netns`
+- `svc/ip.rule.optional`
+- `svc/ip.rule.post_provision`
+- `svc/ip.rule.post_start`
+- `svc/ip.rule.post_stop`
+- `svc/ip.rule.post_unprovision`
+- `svc/ip.rule.pre_provision`
+- `svc/ip.rule.pre_start`
+- `svc/ip.rule.pre_stop`
+- `svc/ip.rule.pre_unprovision`
+- `svc/ip.rule.provision`
+- `svc/ip.rule.provision_requires`
+- `svc/ip.rule.restart`
+- `svc/ip.rule.restart_delay`
+- `svc/ip.rule.shared`
+- `svc/ip.rule.spec`
+- `svc/ip.rule.standby`
+- `svc/ip.rule.start_requires`
+- `svc/ip.rule.stop_requires`
+- `svc/ip.rule.subset`
+- `svc/ip.rule.tags`
+- `svc/ip.rule.unprovision`
+- `svc/ip.rule.unprovision_requires`
+
+### Removed
+
+- `cluster/console.insecure`
+- `cluster/console.max_greet_timeout`
+- `cluster/console.max_seats`
+- `cluster/console.server`
+- `node/console.insecure`
+- `node/console.max_greet_timeout`
+- `node/console.max_seats`
+- `node/console.server`
+
+### Changed
+
+- `cluster/switch.brocade.method`
+  - description rewritten
+- `cluster/switch.brocade.name`
+  - description rewritten
+- `cluster/switch.brocade.password`
+  - description rewritten
+- `cluster/switch.type`
+  - description rewritten
+- `node/switch.brocade.method`
+  - description rewritten
+- `node/switch.brocade.name`
+  - description rewritten
+- `node/switch.brocade.password`
+  - description rewritten
+- `node/switch.schedule`
+  - description rewritten
+- `node/switch.type`
+  - description rewritten
+- `svc/fs.zfs.quota`
+  - description rewritten
+- `svc/fs.zfs.refquota`
+  - defaultText: unset -> `x1` when `size` is set, none otherwise.
+
+  - description rewritten
+- `svc/fs.zfs.refreservation`
+  - description rewritten
+- `svc/fs.zfs.reservation`
+  - description rewritten
+- `svc/fs.zfs.size`
+  - description rewritten
+- `vol/fs.zfs.quota`
+  - description rewritten
+- `vol/fs.zfs.refquota`
+  - defaultText: unset -> `x1` when `size` is set, none otherwise.
+
+  - description rewritten
+- `vol/fs.zfs.refreservation`
+  - description rewritten
+- `vol/fs.zfs.reservation`
+  - description rewritten
+- `vol/fs.zfs.size`
+  - description rewritten
 
 ## v3.0.0-rc42
 

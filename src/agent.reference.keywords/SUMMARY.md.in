@@ -1,4 +1,4 @@
-# Agent Keywords Reference (v3.0.0-rc42)
+# Agent Keywords Reference (v3.0.0-rc43)
 
 - [Keyword changes](agent.reference.keywords/changes.md)
 - [Removed keywords](agent.reference.keywords/removed.md)
@@ -196,6 +196,7 @@
   - [ip.host](agent.reference.keywords/svc/ip.host.md)
   - [ip.netns](agent.reference.keywords/svc/ip.netns.md)
   - [ip.route](agent.reference.keywords/svc/ip.route.md)
+  - [ip.rule](agent.reference.keywords/svc/ip.rule.md)
   - [ip.sgcp_dnsalias](agent.reference.keywords/svc/ip.sgcp_dnsalias.md)
   - [share.nfs](agent.reference.keywords/svc/share.nfs.md)
   - [subset](agent.reference.keywords/svc/subset.md)
@@ -283,6 +284,7 @@
   - [ip.host](agent.reference.keywords/vol/ip.host.md)
   - [ip.netns](agent.reference.keywords/vol/ip.netns.md)
   - [ip.route](agent.reference.keywords/vol/ip.route.md)
+  - [ip.rule](agent.reference.keywords/vol/ip.rule.md)
   - [ip.sgcp_dnsalias](agent.reference.keywords/vol/ip.sgcp_dnsalias.md)
   - [share.nfs](agent.reference.keywords/vol/share.nfs.md)
   - [subset](agent.reference.keywords/vol/subset.md)

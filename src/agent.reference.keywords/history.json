@@ -1068,7 +1068,7 @@
     "textSum": "4fc87af39ca766ab"
    },
    "since": "v3.0.0-rc36",
-   "until": null
+   "until": "v3.0.0-rc42"
   },
   "cluster/console.max_greet_timeout": {
    "changes": {},
@@ -1079,7 +1079,7 @@
     "textSum": "5e41b7a258482e14"
    },
    "since": "v3.0.0-rc36",
-   "until": null
+   "until": "v3.0.0-rc42"
   },
   "cluster/console.max_seats": {
    "changes": {},
@@ -1090,6 +1090,17 @@
     "textSum": "1ac897dc20a2aea7"
    },
    "since": "v3.0.0-rc36",
+   "until": "v3.0.0-rc42"
+  },
+  "cluster/console.port": {
+   "changes": {},
+   "properties": {
+    "converter": "int",
+    "default": "1216",
+    "inherit": "leaf2head",
+    "textSum": "9b3e9f9eb3c70bf5"
+   },
+   "since": "v3.0.0-rc43",
    "until": null
   },
   "cluster/console.server": {
@@ -1099,6 +1110,15 @@
     "textSum": "cb98a4b92de623a3"
    },
    "since": "v3.0.0-rc36",
+   "until": "v3.0.0-rc42"
+  },
+  "cluster/console.url": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "c70b66b0446aacd5"
+   },
+   "since": "v3.0.0-rc43",
    "until": null
   },
   "cluster/disks.schedule": {
@@ -2818,7 +2838,11 @@
    "until": null
   },
   "cluster/switch.brocade.method": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "candidates": [
      "ssh",
@@ -2826,7 +2850,7 @@
     ],
     "default": "ssh",
     "inherit": "leaf2head",
-    "textSum": "bcf36a8bb799f657",
+    "textSum": "223a779312efc95f",
     "types": [
      "brocade"
     ]
@@ -2835,10 +2859,14 @@
    "until": null
   },
   "cluster/switch.brocade.name": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
-    "textSum": "5e79f8f1f8e01786",
+    "textSum": "5ebbde98846af739",
     "types": [
      "brocade"
     ]
@@ -2847,10 +2875,14 @@
    "until": null
   },
   "cluster/switch.brocade.password": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
-    "textSum": "5826b8eed9db3b40",
+    "textSum": "71451242f9b6d596",
     "types": [
      "brocade"
     ]
@@ -2872,14 +2904,18 @@
    "until": null
   },
   "cluster/switch.type": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "candidates": [
      "brocade"
     ],
     "inherit": "leaf2head",
     "required": true,
-    "textSum": "af07f5fd1fda03db"
+    "textSum": "31bc1d58036c103c"
    },
    "since": "v3.0.0-rc36",
    "until": null
@@ -3937,7 +3973,7 @@
     "textSum": "4fc87af39ca766ab"
    },
    "since": "v3.0.0-rc36",
-   "until": null
+   "until": "v3.0.0-rc42"
   },
   "node/console.max_greet_timeout": {
    "changes": {},
@@ -3948,7 +3984,7 @@
     "textSum": "5e41b7a258482e14"
    },
    "since": "v3.0.0-rc36",
-   "until": null
+   "until": "v3.0.0-rc42"
   },
   "node/console.max_seats": {
    "changes": {},
@@ -3959,6 +3995,17 @@
     "textSum": "1ac897dc20a2aea7"
    },
    "since": "v3.0.0-rc36",
+   "until": "v3.0.0-rc42"
+  },
+  "node/console.port": {
+   "changes": {},
+   "properties": {
+    "converter": "int",
+    "default": "1216",
+    "inherit": "leaf2head",
+    "textSum": "9b3e9f9eb3c70bf5"
+   },
+   "since": "v3.0.0-rc43",
    "until": null
   },
   "node/console.server": {
@@ -3968,6 +4015,15 @@
     "textSum": "cb98a4b92de623a3"
    },
    "since": "v3.0.0-rc36",
+   "until": "v3.0.0-rc42"
+  },
+  "node/console.url": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "c70b66b0446aacd5"
+   },
+   "since": "v3.0.0-rc43",
    "until": null
   },
   "node/disks.schedule": {
@@ -5892,7 +5948,11 @@
    "until": null
   },
   "node/switch.brocade.method": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "candidates": [
      "ssh",
@@ -5900,7 +5960,7 @@
     ],
     "default": "ssh",
     "inherit": "leaf2head",
-    "textSum": "bcf36a8bb799f657",
+    "textSum": "223a779312efc95f",
     "types": [
      "brocade"
     ]
@@ -5909,10 +5969,14 @@
    "until": null
   },
   "node/switch.brocade.name": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
-    "textSum": "5e79f8f1f8e01786",
+    "textSum": "5ebbde98846af739",
     "types": [
      "brocade"
     ]
@@ -5921,10 +5985,14 @@
    "until": null
   },
   "node/switch.brocade.password": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
-    "textSum": "5826b8eed9db3b40",
+    "textSum": "71451242f9b6d596",
     "types": [
      "brocade"
     ]
@@ -5946,23 +6014,31 @@
    "until": null
   },
   "node/switch.schedule": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
-    "textSum": "5077337b6e0d0216"
+    "textSum": "8debf76e6c705b90"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "node/switch.type": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "candidates": [
      "brocade"
     ],
     "inherit": "leaf2head",
     "required": true,
-    "textSum": "af07f5fd1fda03db"
+    "textSum": "31bc1d58036c103c"
    },
    "since": "v3.0.0-rc36",
    "until": null
@@ -9841,6 +9917,20 @@
     ]
    },
    "since": "v3.0.0-rc36",
+   "until": null
+  },
+  "svc/container.kvm.migrate_timeout": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "8042a8208aca6bd1",
+    "types": [
+     "kvm"
+    ]
+   },
+   "since": "v3.0.0-rc43",
    "until": null
   },
   "svc/container.kvm.monitor": {
@@ -58066,12 +58156,16 @@
    "until": null
   },
   "svc/fs.zfs.quota": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
     "provisioning": true,
     "scopable": true,
-    "textSum": "45f37d4f83c3b32c",
+    "textSum": "e47033c2e209a80d",
     "types": [
      "zfs"
     ]
@@ -58080,12 +58174,18 @@
    "until": null
   },
   "svc/fs.zfs.refquota": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "defaultText: unset -> `x1` when `size` is set, none otherwise.\n",
+     "description rewritten"
+    ]
+   },
    "properties": {
+    "defaultText": "`x1` when `size` is set, none otherwise.\n",
     "inherit": "leaf2head",
     "provisioning": true,
     "scopable": true,
-    "textSum": "de1ab643b5936d6d",
+    "textSum": "d42ef58d6680b3c1",
     "types": [
      "zfs"
     ]
@@ -58094,12 +58194,16 @@
    "until": null
   },
   "svc/fs.zfs.refreservation": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
     "provisioning": true,
     "scopable": true,
-    "textSum": "03d6f9ca1e1c1a63",
+    "textSum": "e518d1934373fad3",
     "types": [
      "zfs"
     ]
@@ -58108,12 +58212,16 @@
    "until": null
   },
   "svc/fs.zfs.reservation": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
     "provisioning": true,
     "scopable": true,
-    "textSum": "193949f96be60472",
+    "textSum": "2f0fc120f30c1ace",
     "types": [
      "zfs"
     ]
@@ -58196,6 +58304,9 @@
    "changes": {
     "v3.0.0-rc39": [
      "inherit: leaf2head -> leaf"
+    ],
+    "v3.0.0-rc43": [
+     "description rewritten"
     ]
    },
    "properties": {
@@ -58203,7 +58314,7 @@
     "inherit": "leaf",
     "provisioning": true,
     "scopable": true,
-    "textSum": "0da9ff6ea1cc3180",
+    "textSum": "924b8cf224ccf664",
     "types": [
      "zfs"
     ]
@@ -61270,6 +61381,459 @@
     ]
    },
    "since": "v3.0.0-rc36",
+   "until": null
+  },
+  "svc/ip.rule.blocking_post_provision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "c70107344575c995",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.blocking_post_start": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "0f3c566b8e1e008f",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.blocking_post_stop": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "ca0ee9d546a72150",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.blocking_post_unprovision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "670f8bcb1620b71d",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.blocking_pre_provision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "9fb3c26ee8e36afb",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.blocking_pre_start": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "7ab33a53af76c99e",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.blocking_pre_stop": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "fe96ab3e1f8ad488",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.blocking_pre_unprovision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "41e5d3b77e1dbabe",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.disable": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "49bfdfcbefd94317",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.encap": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "inherit": "leaf2head",
+    "textSum": "0c8c8239e9cdaae0",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.monitor": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "cdb8682c50827c0e",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.netns": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "required": true,
+    "scopable": true,
+    "textSum": "9773b9cd1f2df1f9",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.optional": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "inherit": "head2leaf",
+    "scopable": true,
+    "textSum": "336a573b0db15a9c",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.post_provision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "665e52a2df84b50e",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.post_start": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "98d783605aa577de",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.post_stop": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "19122bb33f652ff9",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.post_unprovision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "6287cee55474b8af",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.pre_provision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "0b85cb1138f343c6",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.pre_start": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "5462d41764ae2bf2",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.pre_stop": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "7c66b2e1ef37105a",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.pre_unprovision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "9ade3c1f712bc65e",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.provision": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "default": "true",
+    "inherit": "leaf2head",
+    "textSum": "01116f63c52501c8",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.provision_requires": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "ad0a44ebe3fee9cd",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.restart": {
+   "changes": {},
+   "properties": {
+    "converter": "int",
+    "default": "0",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "08d1ea74af584e2e",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.restart_delay": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "default": "500ms",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "fdc24dec81ad9b42",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.shared": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "396381bd071a7633",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.spec": {
+   "changes": {},
+   "properties": {
+    "converter": "shlex",
+    "inherit": "leaf2head",
+    "required": true,
+    "scopable": true,
+    "textSum": "e88d715c4eeeeef4",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.standby": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "f27870259e8feb61",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.start_requires": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "fd0a445714369edc",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.stop_requires": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "f5daeee356bc6702",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.subset": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "483bd6645699eba5",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.tags": {
+   "changes": {},
+   "properties": {
+    "converter": "set",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "27dd22c0175b2339",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.unprovision": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "default": "true",
+    "inherit": "leaf2head",
+    "textSum": "9140a9f0579b5bf8",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
+   "until": null
+  },
+  "svc/ip.rule.unprovision_requires": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "6a7549e4cf90602b",
+    "types": [
+     "rule"
+    ]
+   },
+   "since": "v3.0.0-rc43",
    "until": null
   },
   "svc/ip.sgcp_dnsalias.blocking_post_provision": {
@@ -114364,12 +114928,16 @@
    "until": null
   },
   "vol/fs.zfs.quota": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
     "provisioning": true,
     "scopable": true,
-    "textSum": "45f37d4f83c3b32c",
+    "textSum": "e47033c2e209a80d",
     "types": [
      "zfs"
     ]
@@ -114378,12 +114946,18 @@
    "until": null
   },
   "vol/fs.zfs.refquota": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "defaultText: unset -> `x1` when `size` is set, none otherwise.\n",
+     "description rewritten"
+    ]
+   },
    "properties": {
+    "defaultText": "`x1` when `size` is set, none otherwise.\n",
     "inherit": "leaf2head",
     "provisioning": true,
     "scopable": true,
-    "textSum": "de1ab643b5936d6d",
+    "textSum": "d42ef58d6680b3c1",
     "types": [
      "zfs"
     ]
@@ -114392,12 +114966,16 @@
    "until": null
   },
   "vol/fs.zfs.refreservation": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
     "provisioning": true,
     "scopable": true,
-    "textSum": "03d6f9ca1e1c1a63",
+    "textSum": "e518d1934373fad3",
     "types": [
      "zfs"
     ]
@@ -114406,12 +114984,16 @@
    "until": null
   },
   "vol/fs.zfs.reservation": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc43": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
     "provisioning": true,
     "scopable": true,
-    "textSum": "193949f96be60472",
+    "textSum": "2f0fc120f30c1ace",
     "types": [
      "zfs"
     ]
@@ -114494,6 +115076,9 @@
    "changes": {
     "v3.0.0-rc39": [
      "inherit: leaf2head -> leaf"
+    ],
+    "v3.0.0-rc43": [
+     "description rewritten"
     ]
    },
    "properties": {
@@ -114501,7 +115086,7 @@
     "inherit": "leaf",
     "provisioning": true,
     "scopable": true,
-    "textSum": "0da9ff6ea1cc3180",
+    "textSum": "924b8cf224ccf664",
     "types": [
      "zfs"
     ]
@@ -122357,6 +122942,7 @@
   "v3.0.0-rc39",
   "v3.0.0-rc40",
   "v3.0.0-rc41",
-  "v3.0.0-rc42"
+  "v3.0.0-rc42",
+  "v3.0.0-rc43"
  ]
 }

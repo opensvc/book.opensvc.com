@@ -3,10 +3,8 @@
 **Supported keywords:**
 
 - comment
-- insecure
-- max_greet_timeout
-- max_seats
-- server
+- port
+- url
 
 ## Keyword `comment`
 
@@ -25,60 +23,37 @@ section can document itself.
 The agent does not interpret the value.
 
 
-## Keyword `insecure`
+## Keyword `port`
 
 	required:    false
 	scopable:    false
-	convert:     bool
-
-**Description:**
-
-If set, don't verify the console server certificate.
-
-
-## Keyword `max_greet_timeout`
-
-	required:    false
-	scopable:    false
-	default:     20s
-	convert:     duration
-
-**Description:**
-
-This keyword sets the absolute upper limit (maximum duration) that an API user can request via the `greet_timeout` query parameter when calling the handler to start a service instance resource console.
-
-The console handler accepts a `greet_timeout` query parameter, which specifies how long the service instance should wait for the first client connection to the generated console URL.
-
-The `max_greet_timeout` acts as a security safeguard, preventing API users from setting excessively long `greet_timeout` values.
-
-If `max_greet_timeout` is set to 30s, any user request for greet_timeout=60s will be refused.
-
-Recommendation:
-
-* Keep Short: The effective timeout should generally be kept to a few seconds (e.g., 5s to 10s). A shorter timeout minimizes the risk that a malicious actor could successfully guess the console URL through a brute-force attack before the link expires.
-
-* Manual Testing: Users may occasionally need to set a slightly higher `greet_timeout` (e.g., 60s) for manual testing or debugging purposes, but this value will always be constrained by the `max_greet_timeout` defined here.
-
-
-## Keyword `max_seats`
-
-	required:    false
-	scopable:    false
-	default:     1
+	default:     1216
 	convert:     int
 
 **Description:**
 
-This keyword sets the absolute upper limit that an API user can request via the `seats` query parameter when calling the handler to start a service instance resource console.
+The port the console listener of the node listens on, on the address the api listens on.
+
+A console session is a websocket opened on this port with a ticket the api issued. The sessions are not served through the api port: each is a process of its own, which a daemon restart does not interrupt.
+
+The nodes of a cluster reach each other's console on the same port, so the keyword is best set in the cluster configuration.
 
 
-## Keyword `server`
+## Keyword `url`
 
 	required:    false
 	scopable:    false
 
+**Example:**
+
+	url=wss://access.example.com/opensvc-console/
+
 **Description:**
 
-The tty-proxy console server address. A TLS capable server is expected, so the value should be a TLS terminator reverse proxy.
+The url clients open the console sessions on, when it is not the console port of the node they reach the api on.
+
+Set it to the address a site access proxy publishes the console listener at. Any node accepts the sessions of any node, and relays the ones it does not serve itself, so the proxy can forward to whichever node it reaches.
+
+The proxy has to forward the websocket upgrade and the query string, which holds the session ticket.
 
 

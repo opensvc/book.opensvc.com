@@ -27,6 +27,7 @@
 - encap
 - guest_os
 - hostname
+- migrate_timeout
 - monitor
 - name
 - no_preempt_abort
@@ -267,6 +268,23 @@ The name of the operating system in the virtual machine.
 **Description:**
 
 Set the container hostname. If not set, the container `name` is used.
+
+
+## Keyword `migrate_timeout`
+
+	required:    false
+	scopable:    true
+	convert:     duration
+
+**Example:**
+
+	migrate_timeout=30m
+
+**Description:**
+
+The longest a live migration of the container may take, before it is cancelled and the move rolled back.
+
+Unset, a migration that copies no disk, its storage being shared with the destination as a drbd in dual primary is, is given the stop_timeout of the container: it copies the memory of the guest. A migration that copies the disks of the guest, held by fs.zfs or disk.zvol resources, is given no timeout of its own, as it takes the time to copy them, which the stop_timeout of a guest has nothing to say about: the stop action of the object bounds it, by its stop_timeout or its timeout.
 
 
 ## Keyword `monitor`

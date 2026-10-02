@@ -958,6 +958,8 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 The dataset `quota` property value to set on provision.
 
+The property bounds what the dataset holds with its descendants and its snapshots. Set it, to `x1` or more, to cap sub-datasets too: a `refquota` does not.
+
 The value can be:
 
 * `none`
@@ -966,12 +968,20 @@ The value can be:
 
 * A multiplier of the `size` keyword value (ex: `x2`), the `size` parameter must be explicitly defined.
 
+A resize sets a multiplier again from the new size, and moves with the size
+a property that was equal to it. A property set to a size of its own is left
+alone.
+
 
 ## Keyword `refquota`
 
 	required:    false
 	scopable:    true
 	rbac:        Requires the root grant.
+
+**Default:**
+
+`x1` when `size` is set, none otherwise.
 
 **Example:**
 
@@ -981,13 +991,19 @@ The value can be:
 
 The dataset `refquota` property value to set on provision.
 
+The property bounds what the dataset holds of its own: its descendants and its snapshots are not counted.
+
 The value can be:
 
 * `none`
 
 * A size expression
 
-* A multiplier of the `size` keyword value (ex: `x2`), , the `size` parameter must be explicitly defined.
+* A multiplier of the `size` keyword value (ex: `x2`), the `size` parameter must be explicitly defined.
+
+A resize sets a multiplier again from the new size, and moves with the size
+a property that was equal to it. A property set to a size of its own is left
+alone.
 
 
 ## Keyword `refreservation`
@@ -1000,13 +1016,19 @@ The value can be:
 
 The dataset `refreservation` property value to set on provision.
 
+The property guarantees the dataset space of the pool for what it holds of its own.
+
 The value can be:
 
 * `none`
 
 * A size expression
 
-* A multiplier of the `size` keyword value (ex: `x2`), , the `size` parameter must be explicitly defined.
+* A multiplier of the `size` keyword value (ex: `x2`), the `size` parameter must be explicitly defined.
+
+A resize sets a multiplier again from the new size, and moves with the size
+a property that was equal to it. A property set to a size of its own is left
+alone.
 
 
 ## Keyword `reservation`
@@ -1019,13 +1041,19 @@ The value can be:
 
 The dataset `reservation` property value to set on provision.
 
+The property guarantees the dataset space of the pool for what it holds with its descendants and its snapshots.
+
 The value can be:
 
 * `none`
 
 * A size expression
 
-* A multiplier of the `size` keyword value (ex: `x2`), , the `size` parameter must be explicitly defined.
+* A multiplier of the `size` keyword value (ex: `x2`), the `size` parameter must be explicitly defined.
+
+A resize sets a multiplier again from the new size, and moves with the size
+a property that was equal to it. A property set to a size of its own is left
+alone.
 
 
 ## Keyword `restart`
@@ -1155,10 +1183,14 @@ files changes.
 
 **Description:**
 
-Used by default as the refquota of the provisioned dataset.
+The size of the dataset.
 
-The quota, refquota, reservation and refreservation values can be expressed
-as a multiplier of size (example: `quota=x2`).
+Used by default as the `refquota` of the provisioned dataset, which bounds
+what the dataset holds of its own.
+
+The `quota`, `refquota`, `reservation` and `refreservation` values can be
+expressed as a multiplier of size (example: `quota=x2`). A resize of the
+volume moves them with the size.
 
 
 ## Keyword `standby`

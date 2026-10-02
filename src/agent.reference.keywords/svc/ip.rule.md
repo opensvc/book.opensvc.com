@@ -1,16 +1,18 @@
-# Driver `fs.zfs`
+# Driver `ip.rule`
 
 **Minimal configlet:**
 
-	[fs#1]
-	type = zfs
-	mnt = /srv/{fqdn}
+	[ip#1]
+	type = rule
+	netns = container#0
+	spec = from 192.168.100.0/24 table 100
 
 **Minimal setup command:**
 
-	om test/vol/foo set \
-		--kw="type=zfs" \
-		--kw="mnt=/srv/{fqdn}"
+	om test/svc/foo set \
+		--kw="type=rule" \
+		--kw="netns=container#0" \
+		--kw="spec=from 192.168.100.0/24 table 100"
 
 **Supported keywords:**
 
@@ -23,20 +25,11 @@
 - blocking_pre_stop
 - blocking_pre_unprovision
 - comment
-- configs
-- dev
-- directories
-- dirperm
 - disable
 - encap
-- group
-- install
-- mkfs_opt
-- mnt
-- mnt_opt
 - monitor
+- netns
 - optional
-- perm
 - pg_blkio_weight
 - pg_cpu_burst
 - pg_cpu_quota
@@ -59,16 +52,10 @@
 - pre_unprovision
 - provision
 - provision_requires
-- quota
-- refquota
-- refreservation
-- reservation
 - restart
 - restart_delay
-- secrets
 - shared
-- signal
-- size
+- spec
 - standby
 - start_requires
 - stat_timeout
@@ -78,8 +65,6 @@
 - type
 - unprovision
 - unprovision_requires
-- user
-- zone
 
 ## Keyword `blocking_post_provision`
 
@@ -206,88 +191,6 @@ section can document itself.
 The agent does not interpret the value.
 
 
-## Keyword `configs`
-
-	required:    false
-	scopable:    true
-	convert:     shlex
-	rbac:        A resource of a volume requires the root grant.
-
-**Example:**
-
-	configs=conf/mycnf:/etc/mysql/my.cnf:ro conf/sysctl:/etc/sysctl.d/01-db.conf
-
-**Description:**
-
-The whitespace-separated list of
-`<config name>/<key>:<volume relative path>:<options>`.
-
-
-## Keyword `dev`
-
-	required:    false
-	scopable:    true
-	default:     none
-	rbac:        A resource of a volume requires the root grant.
-
-**Example:**
-
-	dev=/dev/disk/by-id/nvme-eui.002538ba11b75ec8
-
-**Description:**
-
-The block device file or filesystem image file hosting the filesystem to mount.
-
-A different device can be set up on different nodes using the `dev@<nodename>`
-scoping syntax.
-
-
-## Keyword `directories`
-
-	required:    false
-	scopable:    true
-	convert:     list
-	rbac:        A resource of a volume requires the root grant.
-
-**Example:**
-
-	directories=a/b/c d /e
-
-**Description:**
-
-The whitespace-separated list of directories to create in the `vol` head.
-
-
-## Keyword `dirperm`
-
-	required:    false
-	scopable:    true
-	convert:     filemode
-	rbac:        A resource of a volume requires the root grant.
-
-**Default:**
-
-The value of `perm` with the execute bit added to each class (user,
-group, other) that has the read bit set. For example, `perm = 0640`
-implies `dirperm = 0750`: user gets `x` because user has `r`, group
-gets `x` because group has `r`, other gets neither because other has
-no `r`.
-
-If `perm` is also not set,
-* the permission of the head directory of the receiver is unchecked
-* the permission of other directories defaults to 0755
-* the permission of files from sec objects defaults to 0600
-* the permission of other files defaults to 0644
-
-**Example:**
-
-	dirperm=750
-
-**Description:**
-
-The permissions to apply to installed directories, in octal notation.
-
-
 ## Keyword `disable`
 
 	required:    false
@@ -325,130 +228,6 @@ These actions immediately return success.
 Set to `true` to ignore this resource in the nodes context and consider it in the encapnodes context. The resource is thus handled by agents deployed in the service containers.
 
 
-## Keyword `group`
-
-	required:    false
-	scopable:    true
-	rbac:        A resource of a volume requires the root grant.
-
-**Example:**
-
-	group=1001
-
-**Description:**
-
-The group name or id that will own the volume root and installed files and
-directories.
-
-
-## Keyword `install`
-
-	required:    false
-	scopable:    true
-	convert:     shlex
-	rbac:        A resource of a volume requires the root grant.
-
-**Example:**
-
-	install=
-		/etc/ mode 0750 user 1000 group 1000
-		/etc/ssl/ mode 0700 user 1000 group 1000
-		/etc/ from test/cfg/haproxy key haproxy.cfg mode 0640 user 1000 group 1000 signal HUP:container#haproxy
-		/etc/ssl/front.pem from ./sec/d key fullpem mode 0640 user 1000 group 1001 required
-		/etc/ssl/front.chain from ./sec/d key certificate_chain required
-		/etc/profile.d/ from ./sec/d key etc/profile.d/*
-		/init/nfs from ./cfg/{name} key init/nfs mode 0755 source https://raw.githubusercontent.com/opensvc/opensvc_templates/refs/heads/main/nfs/script
-		/init/backup from ./cfg/{name} key init/backup mode 0755 source /tmp/scripts/backup.sh
-		/init/config.sh from ./cfg/{name} key init/config.sh mode 0755 source https://example.com/templates/config.sh template
-		/data/
-
-**Description:**
-
-A list of files and directories to install in the volume from cfg and sec keys.
-
-	<path> from <obj_path|obj_relpath> [key <key>] [mode <mode>] [user <user>] [group <group>] [signal <sig>:<rid>] [source <uri>] [template] [required]
-	<path> [mode <mode>] [user <user>] [group <group>] [signal <sig>:<rid>]
-
-Where:
-
-* `<path>` (e.g. `/init/installed`, `/init/`)
-  * must start with a `/`.
-  * is relative to the target resource head.
-  * is considered a directory if it ends with a `/` or if `from <obj_path|obj_relpath>` is omitted.
-  * content is copied from the value of the key referenced by `from <obj_path|obj_relpath>`.
-  * if `key <key>` is not specified, the key name defaults to the `<path>` with the leading `/` stripped.
-    e.g. `fs#1.install = /a/b from ./sec/sec1` will install `<fs#1 head>/a/b` from the `./sec/sec1` key named `a/b`.
-
-* `<obj_path>` (e.g. `ns1/sec/d`)
-  * is the absolute path of the datastore to install keys from. Note that if the datastore and
-    the installing object namespaces are different, the datastore must explicitely share its keys with
-    the installing object.
-
-* `<obj_relpath>` (e.g. `./sec/d`)
-  * is the path of the datastore to install keys from, relative to the installing object namespace.
-
-* `key <key>`
-  * `<key>` is the key name or a globbing pattern from `<obj_path|obj_relpath>`.
-  * if not specified, defaults to the `<path>` with the leading `/` stripped.
-    e.g. `fs#1.install = /a/b from ./sec/sec1` will install `<fs#1 head>/a/b` from the `./sec/sec1` key named `a/b`.
-
-* `<mode>`, `<user>`, `<group>` default values are defined by the `mode`, `user` and `group` resource keyword.
-
-* `<sig>:<rid>` (e.g. `HUP:container#haproxy`)
-  * `<sig>` is the signal to send to the target resource `<rid>` processes when the file content is modified.
-
-* `<uri>`
-  * is the source URI or local file path to seed the datastore key with during provision if the key doesn't already exist.
-  * HTTP/HTTPS URIs (http://, https://) are fetched via HTTP GET.
-  * Local file paths are read directly from the filesystem.
-
-* `required`
-  * stop installing items if this item install failed.
-
-* `source <uri>`
-  * seed the datastore key with the content of `<uri>`.
-  * if `template` is also set, treat the `<uri>` content as a go template, and execute using the [env] section keys as the dataset.
-    e.g. {{.foo}} is replaced by the evaluated value of `env.foo`.
-
-
-## Keyword `mkfs_opt`
-
-	required:    false
-	scopable:    true
-	convert:     shlex
-	rbac:        A resource of a volume requires the root grant.
-
-**Description:**
-
-Options to pass to the `mkfs` command called by the `provision` action.
-
-
-## Keyword `mnt`
-
-	required:    true
-	scopable:    true
-	rbac:        A resource of a volume requires the root grant.
-
-**Example:**
-
-	mnt=/srv/{fqdn}
-
-**Description:**
-
-The mount point where to mount the filesystem.
-
-
-## Keyword `mnt_opt`
-
-	required:    false
-	scopable:    true
-	rbac:        A resource of a volume requires the root grant.
-
-**Description:**
-
-The mount options, as they would be defined in the fstab.
-
-
 ## Keyword `monitor`
 
 	required:    false
@@ -468,6 +247,21 @@ A resource with `monitor=true` will trigger the `monitor_action`
 * All restart tentatives failed.
 
 
+## Keyword `netns`
+
+	required:    true
+	scopable:    true
+	rbac:        The host network namespace requires the root grant.
+
+**Example:**
+
+	netns=container#0
+
+**Description:**
+
+The resource id of the container whose network namespace the rule is added in.
+
+
 ## Keyword `optional`
 
 	required:    false
@@ -485,30 +279,6 @@ The status of task and sync resources is always included in the overall status, 
 Resources tagged as `noaction` are considered optional by default.
 
 Dump filesystems are a typical use case for optional=true.
-
-
-## Keyword `perm`
-
-	required:    false
-	scopable:    true
-	convert:     filemode
-	rbac:        A resource of a volume requires the root grant.
-
-**Default:**
-
-If `perm` is not set,
-* the permission of files from sec objects defaults to 0600
-* the permission of other files defaults to 0644
-
-**Example:**
-
-	perm=660
-
-**Description:**
-
-The permissions to apply to installed files, in octal notation.
-
-Also used to compute a default value for `dirperm`.
 
 
 ## Keyword `pg_blkio_weight`
@@ -948,114 +718,6 @@ A condition is expressed as `<rid>(<state>,...)`.
 If states are omitted, `up,stdby up` is used as the default expected states.
 
 
-## Keyword `quota`
-
-	required:    false
-	scopable:    true
-	rbac:        A resource of a volume requires the root grant.
-
-**Description:**
-
-The dataset `quota` property value to set on provision.
-
-The property bounds what the dataset holds with its descendants and its snapshots. Set it, to `x1` or more, to cap sub-datasets too: a `refquota` does not.
-
-The value can be:
-
-* `none`
-
-* A size expression
-
-* A multiplier of the `size` keyword value (ex: `x2`), the `size` parameter must be explicitly defined.
-
-A resize sets a multiplier again from the new size, and moves with the size
-a property that was equal to it. A property set to a size of its own is left
-alone.
-
-
-## Keyword `refquota`
-
-	required:    false
-	scopable:    true
-	rbac:        A resource of a volume requires the root grant.
-
-**Default:**
-
-`x1` when `size` is set, none otherwise.
-
-**Example:**
-
-	refquota=x1
-
-**Description:**
-
-The dataset `refquota` property value to set on provision.
-
-The property bounds what the dataset holds of its own: its descendants and its snapshots are not counted.
-
-The value can be:
-
-* `none`
-
-* A size expression
-
-* A multiplier of the `size` keyword value (ex: `x2`), the `size` parameter must be explicitly defined.
-
-A resize sets a multiplier again from the new size, and moves with the size
-a property that was equal to it. A property set to a size of its own is left
-alone.
-
-
-## Keyword `refreservation`
-
-	required:    false
-	scopable:    true
-	rbac:        A resource of a volume requires the root grant.
-
-**Description:**
-
-The dataset `refreservation` property value to set on provision.
-
-The property guarantees the dataset space of the pool for what it holds of its own.
-
-The value can be:
-
-* `none`
-
-* A size expression
-
-* A multiplier of the `size` keyword value (ex: `x2`), the `size` parameter must be explicitly defined.
-
-A resize sets a multiplier again from the new size, and moves with the size
-a property that was equal to it. A property set to a size of its own is left
-alone.
-
-
-## Keyword `reservation`
-
-	required:    false
-	scopable:    true
-	rbac:        A resource of a volume requires the root grant.
-
-**Description:**
-
-The dataset `reservation` property value to set on provision.
-
-The property guarantees the dataset space of the pool for what it holds with its descendants and its snapshots.
-
-The value can be:
-
-* `none`
-
-* A size expression
-
-* A multiplier of the `size` keyword value (ex: `x2`), the `size` parameter must be explicitly defined.
-
-A resize sets a multiplier again from the new size, and moves with the size
-a property that was equal to it. A property set to a size of its own is left
-alone.
-
-
 ## Keyword `restart`
 
 	required:    false
@@ -1098,23 +760,6 @@ increase chances of a restart success.
 The minimum delay between two restart tentatives on the resource.
 
 
-## Keyword `secrets`
-
-	required:    false
-	scopable:    true
-	convert:     shlex
-	rbac:        A resource of a volume requires the root grant.
-
-**Example:**
-
-	secrets=cert/pem:server.pem cert/key:server.key
-
-**Description:**
-
-The whitespace-separated list of
-`<secret name>/<key>:<volume relative path>:<options>`.
-
-
 ## Keyword `shared`
 
 	required:    false
@@ -1152,45 +797,25 @@ the flex primary gets `--leader` commands.
   flagged as shared.
 
 
-## Keyword `signal`
+## Keyword `spec`
 
-	required:    false
+	required:    true
 	scopable:    true
-	rbac:        A resource of a volume requires the root grant.
+	convert:     shlex
+	rbac:        Requires the root grant.
 
 **Example:**
 
-	signal=hup:container#1
+	spec=from 192.168.100.0/24 table 100
 
 **Description:**
 
-A `<signal>:<target>` whitespace-separated list, where `<signal>` is a signal
-name or number (ex. `1`, `hup` or `sighup`), and target is the comma-separated
-list of resource ids to send the signal to (ex: `container#1,container#2`).
+The rule specification, as passed to the `ip rule` command run in the
+network namespace of the container. The same specification is used to add,
+delete and list the rule.
 
-If only the signal is specified, all candidate resources will be signaled.
-
-This keyword is typically used to reload daemons on certificate or configuration
-files changes.
-
-
-## Keyword `size`
-
-	required:    false
-	scopable:    true
-	convert:     size
-	rbac:        A resource of a volume requires the root grant.
-
-**Description:**
-
-The size of the dataset.
-
-Used by default as the `refquota` of the provisioned dataset, which bounds
-what the dataset holds of its own.
-
-The `quota`, `refquota`, `reservation` and `refreservation` values can be
-expressed as a multiplier of size (example: `quota=x2`). A resize of the
-volume moves them with the size.
+A specification selecting an IPv6 source or destination is applied to the
+IPv6 rule table.
 
 
 ## Keyword `standby`
@@ -1237,7 +862,6 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	default:     5s
 	convert:     duration
 
 **Description:**
@@ -1313,7 +937,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
-	rbac:        A resource of a volume requires the root grant.
+	rbac:        Requires the root grant, except for a cni address, and for a netns address om draws from a cluster network.
 
 **Description:**
 
@@ -1356,34 +980,5 @@ action.
 A condition is expressed as `<rid>(<state>,...)`.
 
 If states are omitted, `up,stdby up` is used as the default expected states.
-
-
-## Keyword `user`
-
-	required:    false
-	scopable:    true
-	rbac:        A resource of a volume requires the root grant.
-
-**Example:**
-
-	user=1001
-
-**Description:**
-
-The user name or id that will own the volume root and installed files and
-directories.
-
-
-## Keyword `zone`
-
-	required:    false
-	scopable:    true
-	rbac:        A resource of a volume requires the root grant.
-
-**Description:**
-
-The zone name the fs refers to.
-
-If set, the fs mount point is reparented into the zonepath rootfs.
 
 
