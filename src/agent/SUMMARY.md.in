@@ -35,6 +35,7 @@
 - [Design](agent/apps.design.md)
   - [Namespaces](agent/apps.design.namespaces.md)
   - [Configs and Secrets](agent/apps.design.datastores.md)
+  - [Certificates](agent/apps.design.certificates.md)
   - [Resource Capping](agent/apps.design.pg.md)
   - [Data Replication](agent/apps.design.replication.md)
   - [Rootless Containers](agent/apps.design.rootless.md)

@@ -206,5 +206,62 @@ The initial configuration is done automatically upon agent installation and daem
     om daemon restart --node="*"
     ```
 
+### Option 3: A Public Certificate from an ACME Directory
+
+`system/sec/cert` certifies the names the nodes reach each other by, which no
+public authority certifies. A name of the cluster published on the internet,
+as the name of its virtual address, can have a second certificate, which
+browsers and remote clients trust, obtained and renewed from an ACME directory
+like Let's Encrypt. The listener presents it to the clients asking that name,
+and `system/sec/cert` to the others.
+
+1.  **Create the sec of the public certificate:**
+
+    ```bash
+    om system/sec/public create --kw cn=vip.mycorp.com --kw email=support@mycorp.com \
+        --kw acme.directory=letsencrypt-staging
+    ```
+
+2.  **Have the listener present it, and answer its challenges:**
+
+    ```bash
+    om cluster set --kw listener.tls_secs=system/sec/public --kw listener.acme_port=80
+    ```
+
+    `listener.tls_secs` lists the secs whose certificates the listener
+    presents to the clients asking one of their names. `listener.acme_port`
+    has every node answer the http-01 challenges of these certificates in
+    plain http, on a port the nodes must leave free for it, `80` being the
+    one an ACME directory reads them from. The listener answers
+    `/.well-known/acme-challenge/<token>` there, and nothing else.
+
+3.  **Obtain the certificate:**
+
+    ```bash
+    om system/sec/public certificate renew
+    ```
+
+    The renewal stores the challenge token in the sec, which the daemon
+    replicates, and waits for every node to answer it before the directory
+    reads it. The name may resolve to any node, or to a virtual address that
+    moves between them. Once issued, the listener presents the certificate
+    from the next connection, on every node, without a restart.
+
+4.  **Switch to the trusted directory** once the staging certificate is in
+    place, keeping the ACME keys of the sec, which record the directory its
+    certificate comes from:
+
+    ```bash
+    om system/sec/public set --kw acme.directory=letsencrypt
+    om system/sec/public certificate renew
+    ```
+
+5.  **Schedule the renewal**, daily, from a cron of a node for example: it
+    does nothing until the certificate expires within 30 days.
+
+The http-01 challenge certifies a name, not a wildcard: a `*.mycorp.com`
+certificate needs the dns challenge, which is not supported.
+[Certificates](apps.design.certificates.md) describes the renewal.
+
 > ➡️  See Also
 > * [Access Control](configure.rbac.md) for roles and grant management.
