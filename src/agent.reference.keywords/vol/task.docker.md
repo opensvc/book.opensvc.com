@@ -1629,7 +1629,7 @@ Allocate a pseudo-tty.
 
 	required:    false
 	scopable:    false
-	rbac:        Requires the root grant, except for the values oci, docker, podman.
+	rbac:        Requires the root grant, except for the values oci, docker, podman, acme.
 
 **Description:**
 
@@ -1741,10 +1741,19 @@ A container with `userns=host` will share the host's userns.
 
 **Description:**
 
-The whitespace-separated list of `<volume name|local dir>:<containerized mount path>:<mount options>`.
+The whitespace-separated list of `<source>:<containerized mount path>:<mount options>`.
 
-When the source is a local dir, the default `<mount option>` is `rw`.
+The source is one of:
 
-When the source is a volume name, the default `<mount option>` is taken from volume access.
+* `/srv/data`, a directory of the node.
+* `volume#1:/etc/nginx`, a directory or a file in the resource `volume#1` of
+  the service, a volume or a filesystem, under its mount point.
+* `web-cfg/etc/nginx`, a directory or a file in the vol `web-cfg` of the
+  namespace, under its mount point.
+
+When the source is a directory of the node, the default `<mount option>` is `rw`.
+
+When the source is in a volume, the default `<mount option>` is taken from the
+volume access.
 
 

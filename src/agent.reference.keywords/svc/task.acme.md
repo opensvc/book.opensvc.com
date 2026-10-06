@@ -1,55 +1,35 @@
-# Driver `task.podman`
+# Driver `task.acme`
 
 **Minimal configlet:**
 
 	[task#1]
-	type = podman
-	image = ghcr.io/opensvc/pause
+	type = acme
+	secs = web ./sec/api ns2/sec/shared
 
 **Minimal setup command:**
 
-	om test/vol/foo set \
-		--kw="type=podman" \
-		--kw="image=ghcr.io/opensvc/pause"
+	om test/svc/foo set \
+		--kw="type=acme" \
+		--kw="secs=web ./sec/api ns2/sec/shared"
 
 **Supported keywords:**
 
 - blocking_post_provision
 - blocking_post_run
-- blocking_post_stop
 - blocking_post_unprovision
 - blocking_pre_provision
 - blocking_pre_run
-- blocking_pre_stop
 - blocking_pre_unprovision
 - check
-- command
 - comment
-- configs_environment
 - confirmation
-- cwd
-- devices
 - disable
-- dns
-- dns_search
 - encap
-- entrypoint
-- environment
-- guest_os
-- hostname
-- image
-- image_pull_policy
-- init
-- interactive
-- ipcns
 - log
 - max_parallel
 - monitor
-- name
-- netns
 - on_error
 - optional
-- osvc_root_path
 - pg_blkio_weight
 - pg_cpu_burst
 - pg_cpu_quota
@@ -62,48 +42,30 @@
 - pg_mems
 - pg_pids_max
 - pg_vmem_limit
-- pidns
 - post_provision
 - post_run
-- post_stop
 - post_unprovision
 - pre_provision
 - pre_run
-- pre_stop
 - pre_unprovision
-- privileged
 - provision
 - provision_requires
-- pull_timeout
-- read_only
-- registry_creds
 - retcodes
-- rm
-- rootless_group
-- rootless_user
-- run_args
 - run_requires
 - run_timeout
 - schedule
-- secrets_environment
+- secs
 - shared
 - snooze
 - standby
 - stat_timeout
-- stop_requires
-- stop_timeout
 - subset
-- sysctl
 - tags
 - timeout
-- tty
 - type
 - unprovision
 - unprovision_requires
-- user
-- userns
-- utsns
-- volume_mounts
+- webroot
 
 ## Keyword `blocking_post_provision`
 
@@ -129,19 +91,6 @@ This trigger is only executed on leaders.
 **Description:**
 
 A command or script to execute after the resource `run` action.
-
-Errors interrupt the action.
-
-
-## Keyword `blocking_post_stop`
-
-	required:    false
-	scopable:    true
-	rbac:        Triggers require the root grant.
-
-**Description:**
-
-A command or script to execute after the resource `stop` action.
 
 Errors interrupt the action.
 
@@ -187,19 +136,6 @@ A command or script to execute before the resource `run` action.
 Errors interrupt the action.
 
 
-## Keyword `blocking_pre_stop`
-
-	required:    false
-	scopable:    true
-	rbac:        Triggers require the root grant.
-
-**Description:**
-
-A command or script to execute before the resource `stop` action.
-
-Errors interrupt the action.
-
-
 ## Keyword `blocking_pre_unprovision`
 
 	required:    false
@@ -234,22 +170,6 @@ resource warning.
 If not set (default), the status of a task is always n/a.
 
 
-## Keyword `command`
-
-	required:    false
-	scopable:    true
-	aliases:     run_command
-	convert:     shlex
-
-**Example:**
-
-	command=/opt/tomcat/bin/catalina.sh
-
-**Description:**
-
-The command to execute in the docker container on run.
-
-
 ## Keyword `comment`
 
 	required:    false
@@ -267,41 +187,6 @@ section can document itself.
 The agent does not interpret the value.
 
 
-## Keyword `configs_environment`
-
-	required:    false
-	scopable:    true
-	convert:     shlex
-
-**Example:**
-
-	configs_environment=PORT=http/port webapp/app1* {name}/* {name}-debug/settings
-
-**Description:**
-
-A whitespace-separated list of `<var>=<cfg name>/<key path>` or
-`<cfg name>/<key matcher>`.
-
-If the `cfg` or config key doesn't exist then `start` and `stop` actions on
-the resource will fail with a non 0 exit code.
-
-A shell expression splitter is applied, so double quotes can be around
-`<cfg name>/<key path>` only or whole `<var>=<cfg name>/<key path>`.
-
-Example with,
-
-* `<ns>/cfg/nginx` a config having a `user` key with value `user1`.
-
-* `<ns>/cfg/cfg1` a config having a `key1` key with value `val1`.
-
-`configs_environment = NGINX_USER=nginx/user cfg1/*` creates the following
-variables in the container command execution environment:
-
-	NGINX_USER=user1
-	key1=val1
-
-
-
 ## Keyword `confirmation`
 
 	required:    false
@@ -313,37 +198,6 @@ variables in the container command execution environment:
 If set to `true`, ask for an interactive confirmation to run the task.
 
 This flag can be used for dangerous tasks like data restoration.
-
-
-## Keyword `cwd`
-
-	required:    false
-	scopable:    true
-
-**Example:**
-
-	cwd=/opt/foo
-
-**Description:**
-
-The current working directory set for the executed command.
-
-
-## Keyword `devices`
-
-	required:    false
-	scopable:    true
-	convert:     shlex
-	rbac:        Host devices in container require the root grant.
-
-**Example:**
-
-	devices=myvol1:/dev/xvda myvol2:/dev/xvdb
-
-**Description:**
-
-The whitespace-separated list of `<host devpath>:<containerized devpath>`
-exposing host devices as container devices.
 
 
 ## Keyword `disable`
@@ -372,50 +226,6 @@ These actions immediately return success.
   resource `disable` state.
 
 
-## Keyword `dns`
-
-	required:    false
-	scopable:    true
-	convert:     list
-	rbac:        Requires the root grant.
-
-**Example:**
-
-	dns=1.1.1.1 8.8.8.8
-
-**Description:**
-
-The whitespace-separated list of nameservers to add to the resolver of the
-container, after the nameservers of the cluster.
-
-om writes the `/etc/resolv.conf` of the container itself and mounts it, so the
-`--dns` argument of the container engine is not used and one set in `run_args`
-is dropped.
-
-A resolver reads the first three nameservers of a file and ignores the rest, so
-a cluster already naming three leaves no room here, and the ones dropped are
-named in a warning at start.
-
-
-## Keyword `dns_search`
-
-	required:    false
-	scopable:    true
-	convert:     list
-	rbac:        Requires the root grant.
-
-**Example:**
-
-	dns_search=opensvc.com
-
-**Description:**
-
-The whitespace-separated list of DNS domains to search for shortname lookups.
-
-If empty or not set, the list will be `<name>.<namespace>.svc.<clustername>
- <namespace>.svc.<clustername> svc.<clustername>`.
-
-
 ## Keyword `encap`
 
 	required:    false
@@ -425,168 +235,6 @@ If empty or not set, the list will be `<name>.<namespace>.svc.<clustername>
 **Description:**
 
 Set to `true` to ignore this resource in the nodes context and consider it in the encapnodes context. The resource is thus handled by agents deployed in the service containers.
-
-
-## Keyword `entrypoint`
-
-	required:    false
-	scopable:    true
-	convert:     shlex
-
-**Example:**
-
-	entrypoint=/bin/sh
-
-**Description:**
-
-The script or binary executed in the container.
-
-The entrypoint args must be set in `command`.
-
-
-## Keyword `environment`
-
-	required:    false
-	scopable:    true
-	convert:     shlex
-
-**Example:**
-
-	environment=KEY=cert1/server.key PASSWORD=db/password
-
-**Description:**
-
-A whitespace-separated list of `<var>=<value>`.
-
-A shell expression splitter is applied, so double quotes can be around
-`<value>` only or whole `<var>=<value>`.
-
-
-## Keyword `guest_os`
-
-	required:    false
-	scopable:    true
-	aliases:     guestos
-	candidates:  unix, windows
-	default:     unix
-
-**Example:**
-
-	guest_os=unix
-
-**Description:**
-
-The name of the operating system in the virtual machine.
-
-
-## Keyword `hostname`
-
-	required:    false
-	scopable:    true
-
-**Example:**
-
-	hostname=nginx1
-
-**Description:**
-
-Set the container hostname. If not set, a unique id is used.
-
-
-## Keyword `image`
-
-	required:    true
-	scopable:    true
-	aliases:     run_image
-
-**Example:**
-
-	image=ghcr.io/opensvc/pause
-
-**Description:**
-
-The docker image pull, and run the container with.
-
-
-## Keyword `image_pull_policy`
-
-	required:    false
-	scopable:    true
-	candidates:  once, always
-
-**Example:**
-
-	image_pull_policy=once
-
-**Description:**
-
-The docker image pull policy.
-
-* `always`
-
-  Pull upon each container start.
-
-* `once`
-
-  Pull if not already pulled (default).
-
-
-## Keyword `init`
-
-	required:    false
-	scopable:    true
-	default:     true
-	convert:     bool
-
-**Description:**
-
-Run an init inside the container that forwards signals and reaps processes.
-
-
-## Keyword `interactive`
-
-	required:    false
-	scopable:    true
-	convert:     bool
-
-**Description:**
-
-Keep stdin open even if not attached.
-
-To use if the container entrypoint is a shell.
-
-
-## Keyword `ipcns`
-
-	required:    false
-	scopable:    true
-
-**Example:**
-
-	ipcns=container#0
-
-**Description:**
-
-* empty
-
-  The docker daemon's default value is used.
-
-*  `none`
-
-  Do not mount /dev/shm.
-
-* `private`
-
-  Create a ipcns other containers can not share.
-
-
-* `shareable`
-
-   Create a ipcns other containers can share.
-
-* `container#<i>`
-
-   Share the `container#<i>` ipcns.
 
 
 ## Keyword `log`
@@ -648,58 +296,6 @@ A resource with `monitor=true` will trigger the `monitor_action`
 * All restart tentatives failed.
 
 
-## Keyword `name`
-
-	required:    false
-	scopable:    true
-
-**Default:**
-
-Autogenerated using a `<namespace>..<object name>.container.<resource index>`
-template.
-
-**Example:**
-
-	name=osvcprd..rundeck.container.db
-
-**Description:**
-
-The name to assign to the container on `docker run`.
-
-If not set, a `<namespace>..<name>.container.<rid idx>` name is automatically
-assigned.
-
-
-## Keyword `netns`
-
-	required:    false
-	scopable:    true
-	aliases:     net
-	rbac:        The host network namespace requires the root grant.
-
-**Example:**
-
-	netns=container#0
-
-**Description:**
-
-* empty or `none`
-
-  The container has a private netns other `container`, `ip.netns` or
-  `ip.cni` resources can share.
-
-* `<rid>`
-
-  The id of the resource that has the network namespace this container joins.
-
-  For example, a container with `netns=container#0` will share the
-  `container#0` netns.
-
-* `host`
-
-  Share the host network namespace.
-
-
 ## Keyword `on_error`
 
 	required:    false
@@ -731,24 +327,6 @@ The status of task and sync resources is always included in the overall status, 
 Resources tagged as `noaction` are considered optional by default.
 
 Dump filesystems are a typical use case for optional=true.
-
-
-## Keyword `osvc_root_path`
-
-	required:    false
-	scopable:    true
-
-**Example:**
-
-	osvc_root_path=/opt/opensvc
-
-**Description:**
-
-If the OpenSVC agent is installed via package in the container, this keyword
-must not be set.
-
-Else the value can be set to the fullpath hosting the agent installed from
-sources.
 
 
 ## Keyword `pg_blkio_weight`
@@ -1041,31 +619,6 @@ never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
 
-## Keyword `pidns`
-
-	required:    false
-	scopable:    true
-
-**Example:**
-
-	pidns=container#0
-
-**Description:**
-
-* empty
-
-  The container has a private pidns other containers can share.
-  Usually a pidns sharer will run a `pause` image to reap zombies.
-
-* `container#<i>`
-
-  Share  `container#<i>` pidns.
-
-* `host`
-
-  Share the host's pidns.
-
-
 ## Keyword `post_provision`
 
 	required:    false
@@ -1090,19 +643,6 @@ This trigger is only executed on leaders.
 **Description:**
 
 A command or script to execute after the resource `run` action.
-
-Errors do not interrupt the action.
-
-
-## Keyword `post_stop`
-
-	required:    false
-	scopable:    true
-	rbac:        Triggers require the root grant.
-
-**Description:**
-
-A command or script to execute after the resource `stop` action.
 
 Errors do not interrupt the action.
 
@@ -1148,19 +688,6 @@ A command or script to execute before the resource `run` action.
 Errors do not interrupt the action.
 
 
-## Keyword `pre_stop`
-
-	required:    false
-	scopable:    true
-	rbac:        Triggers require the root grant.
-
-**Description:**
-
-A command or script to execute before the resource `stop` action.
-
-Errors do not interrupt the action.
-
-
 ## Keyword `pre_unprovision`
 
 	required:    false
@@ -1172,18 +699,6 @@ Errors do not interrupt the action.
 A command or script to execute before the resource `unprovision` action.
 
 Errors do not interrupt the action.
-
-
-## Keyword `privileged`
-
-	required:    false
-	scopable:    true
-	convert:     bool
-	rbac:        A privileged container requires the root grant.
-
-**Description:**
-
-Give extended privileges to the container.
 
 
 ## Keyword `provision`
@@ -1225,53 +740,6 @@ A condition is expressed as `<rid>(<state>,...)`.
 If states are omitted, `up,stdby up` is used as the default expected states.
 
 
-## Keyword `pull_timeout`
-
-	required:    false
-	scopable:    true
-	default:     2m
-	convert:     duration
-
-**Example:**
-
-	pull_timeout=2m
-
-**Description:**
-
-Wait for `<duration>` before declaring the container action a failure.
-
-
-## Keyword `read_only`
-
-	required:    false
-	scopable:    true
-	convert:     tristate
-
-**Description:**
-
-Mount the root filesystem of the task container as read only.
-
-The task writes only in its volume mounts and its tmpfs, as a container
-declaring the same keyword does.
-
-
-## Keyword `registry_creds`
-
-	required:    false
-	scopable:    true
-
-**Example:**
-
-	registry_creds=creds-registry-opensvc-com
-
-**Description:**
-
-The name of a secret in the same namespace having a `config.json` key which
-value is used to login to the container image registry.
-
-If not specified, the node-level registry credential store is used.
-
-
 ## Keyword `retcodes`
 
 	required:    false
@@ -1295,108 +763,6 @@ Valid `<status names>` are:
 * `warn`
 * `n/a`
 * `undef`
-
-
-## Keyword `rm`
-
-	required:    false
-	scopable:    true
-	convert:     bool
-
-**Example:**
-
-	rm=false
-
-**Description:**
-
-If rm=true, the container task instance is removed after successfully run.
-
-
-## Keyword `rootless_group`
-
-	required:    false
-	scopable:    true
-	since:       v3.0.0-rc42
-
-**Example:**
-
-	rootless_group=opensvc
-
-**Description:**
-
-The group podman runs a rootless container as, in place of the primary group
-of rootless_user.
-
-It has no effect without rootless_user.
-
-
-## Keyword `rootless_user`
-
-	required:    false
-	scopable:    true
-	since:       v3.0.0-rc42
-
-**Example:**
-
-	rootless_user=opensvc
-
-**Description:**
-
-The unprivileged user podman runs the task container as, making it a rootless
-container. Every podman command of the container runs as that user, so the
-container, its image and its store are the user's, and its processes are
-mapped to the subordinate ids of the user.
-
-The node must be set up for it, and the container refuses to start until it
-is, naming what is missing:
-
-* the systemd instance of the user must run without a login session, which
-  `loginctl enable-linger <user>` makes it do,
-
-* the user must have subordinate ids in `/etc/subuid` and `/etc/subgid`.
-
-The pg_* keywords cap the container in the subtree of the cgroup hierarchy
-systemd delegates to the user, where podman places it. A capping whose
-controller that subtree is not delegated, like pg_cpus and pg_blkio_weight
-under a default `user@.service`, is reported as not applied.
-
-The resolver of the container is written under the runtime directory of the
-user, which podman can read, rather than in the var dir of the resource.
-
-A rootless container cannot be privileged, and its volume mounts must be
-readable by the user or its subordinate ids: see the userns keyword for
-mapping the user into the container.
-
-The ids of the container run as other ids of the host: its root as the user,
-and its ids from 1 as the subordinate ids of the user. A file the container
-reads as one of its ids is owned, on the host, by the id the reference
-`{<rid>.uid.<id>}` or `{<rid>.gid.<id>}` answers, `{<rid>.uid}` being its root.
-They answer the same ids for a rootful container, which runs its ids as
-themselves, so an install naming its owners by reference holds either way:
-
-    install = /etc/nginx/conf.d/ from ./cfg/web user {container#1.uid.101} group {container#1.gid.101}
-
-A container given a userns mapping answers no id: podman makes that mapping
-when the container starts.
-
-Empty, the default, runs the container as root.
-
-
-## Keyword `run_args`
-
-	required:    false
-	scopable:    true
-	convert:     shlex
-	rbac:        Requires the root grant.
-
-**Example:**
-
-	run_args=-v /opt/docker.opensvc.com/vol1:/vol1:rw -p 37.59.71.25:8080:8080
-
-**Description:**
-
-Extra arguments to pass to the docker run command, like volume and port
-mappings.
 
 
 ## Keyword `run_requires`
@@ -1451,39 +817,30 @@ Set the task `run` schedule.
 See `usr/share/doc/opensvc/schedule` for the schedule syntax reference.
 
 
-## Keyword `secrets_environment`
+## Keyword `secs`
 
-	required:    false
+	required:    true
 	scopable:    true
-	convert:     shlex
+	convert:     list
 
 **Example:**
 
-	secrets_environment=CRT=cert1/server.pem sec1/*
+	secs=web ./sec/api ns2/sec/shared
 
 **Description:**
 
-A whitespace-separated list of `<var>=<sec name>/<key path>` or
-`<sec name>/<key matcher>`.
+The secs whose certificates the task renews, when due: the certificate of a
+sec naming an `acme.directory` is obtained from that ACME directory, the
+certificate of another sec is generated as `certificate create` does,
+self-signed or signed by its `ca`.
 
-If the `sec` or secret key doesn't exist then `start` and `stop` actions on
-the resource will fail with a non 0 exit code.
+A sec is named as an install line names a store: `web` and `./sec/web` are
+secs of the namespace of the service, `ns2/sec/web` a sec of another
+namespace, which must share it with this one, its `share` keyword naming this
+namespace or `*`.
 
-A shell expression splitter is applied, so double quotes can be around
-`<sec name>/<key path>` only or whole `<var>=<sec name>/<key path>`.
-
-Example with,
-
-* `<ns>/sec/cert1` a secret having a `server.pem` key with value `mycrt`.
-
-* `<ns>/sec/sec1` a secret having a `key1` key with value `val1`.
-
-`secrets_environment = CRT=cert1/server.pem sec1/*` creates the following
-variables in the container command execution environment:
-
-	CRT=mycrt
-	key1=val1
-
+The volumes installing the renewed keys get the new ones, and the signals of
+their install lines are sent, on every node running them.
 
 
 ## Keyword `shared`
@@ -1576,43 +933,6 @@ When expired, the resource status is degraded is to warn, which can trigger
 a monitor action (reboot or crash the node) if the resource is monitored.
 
 
-## Keyword `stop_requires`
-
-	required:    false
-	scopable:    false
-
-**Example:**
-
-	stop_requires=ip#0 fs#0(down,stdby down)
-
-**Description:**
-
-A whitespace-separated list of conditions to meet to accept a 'stop'
-action.
-
-A condition is expressed as `<rid>(<state>,...)`.
-
-If states are omitted, `up,stdby up` is used as the default expected states.
-
-
-## Keyword `stop_timeout`
-
-	required:    false
-	scopable:    true
-	convert:     duration
-
-**Example:**
-
-	stop_timeout=2m
-
-**Description:**
-
-Wait for `<duration>` for the task container to exit on a stop before
-killing it.
-
-Unset, the container engine default applies.
-
-
 ## Keyword `subset`
 
 	required:    false
@@ -1629,21 +949,6 @@ or in a less precise `[subset#<name>]` one.
 That section accepts `parallel`, to act on the members concurrently rather than
 one after the other, and the `pg_*` keywords, to place the members in their own
 process group.
-
-
-## Keyword `sysctl`
-
-	required:    false
-	scopable:    true
-	convert:     shlex
-
-**Example:**
-
-	sysctl=kernel.shm_rmid_forced=1 net.ipv4.tcp_syncookies=1
-
-**Description:**
-
-Set namespaced kernel tunables exposed via sysctl in the task container.
 
 
 ## Keyword `tags`
@@ -1684,17 +989,6 @@ Some tags can influence the driver behaviour:
 Wait for `<duration>` before declaring the task `run` action a failure.
 
 If no timeout is set, the agent waits indefinitely for the task command to exit.
-
-
-## Keyword `tty`
-
-	required:    false
-	scopable:    true
-	convert:     bool
-
-**Description:**
-
-Allocate a pseudo-tty.
 
 
 ## Keyword `type`
@@ -1746,85 +1040,29 @@ A condition is expressed as `<rid>(<state>,...)`.
 If states are omitted, `up,stdby up` is used as the default expected states.
 
 
-## Keyword `user`
+## Keyword `webroot`
 
 	required:    false
 	scopable:    true
 
 **Example:**
 
-	user=guest
+	webroot=volume#1:/haproxy/acme-challenges
 
 **Description:**
 
-The user that will run the command inside the container.
+Where the http-01 challenge token of an ACME certificate is written: a
+directory the http server of the domains serves `/.well-known/acme-challenge/`
+from, in a volume or a filesystem of the service. It is named as the other
+paths of a service are, `volume#1:/haproxy/acme-challenges` in the resource
+`volume#1`, or `<vol name>/<path>` in a vol of the namespace. A path of the
+node is refused.
 
-Also support the `<user>:<group>` syntax.
+The token is written under `.well-known/acme-challenge/` in that directory,
+and never outside the volume or filesystem, whatever it holds.
 
-
-## Keyword `userns`
-
-	required:    false
-	scopable:    true
-
-**Example:**
-
-	userns=container#0
-
-**Description:**
-
-Defines the podman container run --userns value.
-
-the 'container#...' values are converted to container:id
-
-
-## Keyword `utsns`
-
-	required:    false
-	scopable:    true
-	candidates:  , host
-
-**Example:**
-
-	utsns=container#0
-
-**Description:**
-
-* empty
-
-  The container has a private utsns.
-
-* `host`
-
-  The container shares the host's hostname.
-
-
-## Keyword `volume_mounts`
-
-	required:    false
-	scopable:    true
-	convert:     shlex
-	rbac:        Host path mounts in container require the root grant.
-
-**Example:**
-
-	volume_mounts=myvol1:/vol1 myvol2:/vol2:rw /localdir:/data:ro
-
-**Description:**
-
-The whitespace-separated list of `<source>:<containerized mount path>:<mount options>`.
-
-The source is one of:
-
-* `/srv/data`, a directory of the node.
-* `volume#1:/etc/nginx`, a directory or a file in the resource `volume#1` of
-  the service, a volume or a filesystem, under its mount point.
-* `web-cfg/etc/nginx`, a directory or a file in the vol `web-cfg` of the
-  namespace, under its mount point.
-
-When the source is a directory of the node, the default `<mount option>` is `rw`.
-
-When the source is in a volume, the default `<mount option>` is taken from the
-volume access.
+The task runs where the service runs, so the http server it writes the token
+for is the one the domains reach. When empty, the `acme.webroot` of the sec is
+used, a host path its root administrator set.
 
 

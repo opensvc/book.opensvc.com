@@ -202,6 +202,10 @@ Errors interrupt the action.
 
 Defines a lxc configuration file in a non-standard location.
 
+The path is a path of the node, as `/srv/app/run.sh`, or a path in a volume or
+a filesystem of the service, as `volume#1:/run.sh` in the resource `volume#1`,
+or a path in a vol of the namespace, as `app-data/run.sh`.
+
 
 ## Keyword `comment`
 
@@ -297,6 +301,10 @@ If this keyword is set, the service configures a resource-private container
 data store.
 
 This setup is required for stateful service relocalization.
+
+The path is a path of the node, as `/srv/app/run.sh`, or a path in a volume or
+a filesystem of the service, as `volume#1:/run.sh` in the resource `volume#1`,
+or a path in a vol of the namespace, as `app-data/run.sh`.
 
 
 ## Keyword `disable`
@@ -978,6 +986,10 @@ The minimum delay between two restart tentatives on the resource.
 **Description:**
 
 Sets the root fs directory of the container.
+
+The path is a path of the node, as `/srv/app/run.sh`, or a path in a volume or
+a filesystem of the service, as `volume#1:/run.sh` in the resource `volume#1`,
+or a path in a vol of the namespace, as `app-data/run.sh`.
 
 
 ## Keyword `scsireserv`

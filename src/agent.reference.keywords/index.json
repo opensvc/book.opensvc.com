@@ -603,6 +603,58 @@
    "inherit": "leaf2head",
    "textSum": "6ae9216d7de64dc0"
   },
+  "cluster/collector.action_batch": {
+   "converter": "int",
+   "default": "100",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "08760b3202e3e6a4"
+  },
+  "cluster/collector.action_log_timeout": {
+   "converter": "duration",
+   "default": "10s",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "e23337b2a529dd71"
+  },
+  "cluster/collector.feeder": {
+   "defaultText": "`collector.url`/feeder if collector.url is defined.\n",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "a276beed17d6738c"
+  },
+  "cluster/collector.ping_interval": {
+   "converter": "duration",
+   "default": "60s",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "1108ac7a0b507794"
+  },
+  "cluster/collector.server": {
+   "defaultText": "`collector.url`/server if collector.url is defined.\n",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "8815e918d5dd6c1c"
+  },
+  "cluster/collector.status_delay": {
+   "converter": "duration",
+   "default": "10s",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "2f8235a4bdb7641a"
+  },
+  "cluster/collector.timeout": {
+   "converter": "duration",
+   "default": "5s",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "b91e8850d0c73383"
+  },
+  "cluster/collector.url": {
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "928e3e85b3ecc4bb"
+  },
   "cluster/compliance.auto_update": {
    "converter": "bool",
    "default": "false",
@@ -781,6 +833,12 @@
    "inherit": "leaf2head",
    "textSum": "f23bcfaedecac291"
   },
+  "cluster/listener.acme_port": {
+   "converter": "int",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "9ae458ecda8697bd"
+  },
   "cluster/listener.addr": {
    "aliases": [
     "tls_addr"
@@ -846,6 +904,12 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "e4d4f78c2aacf058"
+  },
+  "cluster/listener.tls_secs": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "9a9a81bfdec8f11c"
   },
   "cluster/network.bridge.dev": {
    "inherit": "leaf2head",
@@ -980,12 +1044,16 @@
    "textSum": "2bbad19ea739456e"
   },
   "cluster/node.collector": {
+   "deprecated": "v3.0.0-rc44",
    "inherit": "leaf2head",
+   "replacedBy": "collector.url",
    "textSum": "1e60bc405dba1554"
   },
   "cluster/node.collector_feeder": {
    "defaultText": "`node.collector`/feeder if node.collector is defined.",
+   "deprecated": "v3.0.0-rc44",
    "inherit": "leaf2head",
+   "replacedBy": "collector.feeder",
    "textSum": "cca82a98743dff65"
   },
   "cluster/node.collector_ping_interval": {
@@ -994,12 +1062,16 @@
    ],
    "converter": "duration",
    "default": "60s",
+   "deprecated": "v3.0.0-rc44",
    "inherit": "leaf2head",
+   "replacedBy": "collector.ping_interval",
    "textSum": "1108ac7a0b507794"
   },
   "cluster/node.collector_server": {
    "defaultText": "`node.collector`/server if node.collector is defined.",
+   "deprecated": "v3.0.0-rc44",
    "inherit": "leaf2head",
+   "replacedBy": "collector.server",
    "textSum": "4f007c6696386417"
   },
   "cluster/node.collector_status_delay": {
@@ -1008,14 +1080,18 @@
    ],
    "converter": "duration",
    "default": "10s",
+   "deprecated": "v3.0.0-rc44",
    "inherit": "leaf2head",
+   "replacedBy": "collector.status_delay",
    "textSum": "afa854edb29a487a"
   },
   "cluster/node.collector_timeout": {
    "converter": "duration",
    "default": "5s",
+   "deprecated": "v3.0.0-rc44",
    "inherit": "leaf2head",
-   "textSum": "709e4d0bf51147f4"
+   "replacedBy": "collector.timeout",
+   "textSum": "b91e8850d0c73383"
   },
   "cluster/node.dbcompliance": {
    "defaultText": "Same protocol, server and port as `dbopensvc`, but with a different path.\n",
@@ -1092,23 +1168,23 @@
    "inherit": "leaf2head",
    "textSum": "ea5b3dabb62967b0"
   },
-  "cluster/node.min_avail_mem_pct": {
+  "cluster/node.min_avail_mem": {
    "aliases": [
-    "min_avail_mem"
+    "min_avail_mem_pct"
    ],
-   "converter": "int",
-   "default": "2",
+   "converter": "share",
+   "default": "2%",
    "inherit": "leaf2head",
-   "textSum": "c79489e5b0bd8eed"
+   "textSum": "49572b8021e36163"
   },
-  "cluster/node.min_avail_swap_pct": {
+  "cluster/node.min_avail_swap": {
    "aliases": [
-    "min_avail_swap"
+    "min_avail_swap_pct"
    ],
-   "converter": "int",
-   "default": "10",
+   "converter": "share",
+   "default": "10%",
    "inherit": "leaf2head",
-   "textSum": "262d56c8bd7a9e57"
+   "textSum": "607eb2503273a045"
   },
   "cluster/node.ready_period": {
    "converter": "duration",
@@ -1594,6 +1670,16 @@
    "types": [
     "zpool"
    ]
+  },
+  "cluster/stats.disable": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "textSum": "bd9b0b3511003792"
+  },
+  "cluster/stats.schedule": {
+   "default": "~00:00-06:00",
+   "inherit": "leaf2head",
+   "textSum": "c9aac5cf4c8c1621"
   },
   "cluster/stonith.command": {
    "aliases": [
@@ -2251,6 +2337,58 @@
    "inherit": "leaf2head",
    "textSum": "6ae9216d7de64dc0"
   },
+  "node/collector.action_batch": {
+   "converter": "int",
+   "default": "100",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "08760b3202e3e6a4"
+  },
+  "node/collector.action_log_timeout": {
+   "converter": "duration",
+   "default": "10s",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "e23337b2a529dd71"
+  },
+  "node/collector.feeder": {
+   "defaultText": "`collector.url`/feeder if collector.url is defined.\n",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "a276beed17d6738c"
+  },
+  "node/collector.ping_interval": {
+   "converter": "duration",
+   "default": "60s",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "1108ac7a0b507794"
+  },
+  "node/collector.server": {
+   "defaultText": "`collector.url`/server if collector.url is defined.\n",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "8815e918d5dd6c1c"
+  },
+  "node/collector.status_delay": {
+   "converter": "duration",
+   "default": "10s",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "2f8235a4bdb7641a"
+  },
+  "node/collector.timeout": {
+   "converter": "duration",
+   "default": "5s",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "b91e8850d0c73383"
+  },
+  "node/collector.url": {
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "928e3e85b3ecc4bb"
+  },
   "node/compliance.auto_update": {
    "converter": "bool",
    "default": "false",
@@ -2429,6 +2567,12 @@
    "inherit": "leaf2head",
    "textSum": "f23bcfaedecac291"
   },
+  "node/listener.acme_port": {
+   "converter": "int",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "9ae458ecda8697bd"
+  },
   "node/listener.addr": {
    "aliases": [
     "tls_addr"
@@ -2494,6 +2638,12 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "e4d4f78c2aacf058"
+  },
+  "node/listener.tls_secs": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "since": "v3.0.0-rc44",
+   "textSum": "9a9a81bfdec8f11c"
   },
   "node/network.bridge.dev": {
    "inherit": "leaf2head",
@@ -2632,12 +2782,16 @@
    "textSum": "2bbad19ea739456e"
   },
   "node/node.collector": {
+   "deprecated": "v3.0.0-rc44",
    "inherit": "leaf2head",
+   "replacedBy": "collector.url",
    "textSum": "1e60bc405dba1554"
   },
   "node/node.collector_feeder": {
    "defaultText": "`node.collector`/feeder if node.collector is defined.",
+   "deprecated": "v3.0.0-rc44",
    "inherit": "leaf2head",
+   "replacedBy": "collector.feeder",
    "textSum": "cca82a98743dff65"
   },
   "node/node.collector_ping_interval": {
@@ -2646,12 +2800,16 @@
    ],
    "converter": "duration",
    "default": "60s",
+   "deprecated": "v3.0.0-rc44",
    "inherit": "leaf2head",
+   "replacedBy": "collector.ping_interval",
    "textSum": "1108ac7a0b507794"
   },
   "node/node.collector_server": {
    "defaultText": "`node.collector`/server if node.collector is defined.",
+   "deprecated": "v3.0.0-rc44",
    "inherit": "leaf2head",
+   "replacedBy": "collector.server",
    "textSum": "4f007c6696386417"
   },
   "node/node.collector_status_delay": {
@@ -2660,14 +2818,18 @@
    ],
    "converter": "duration",
    "default": "10s",
+   "deprecated": "v3.0.0-rc44",
    "inherit": "leaf2head",
+   "replacedBy": "collector.status_delay",
    "textSum": "afa854edb29a487a"
   },
   "node/node.collector_timeout": {
    "converter": "duration",
    "default": "5s",
+   "deprecated": "v3.0.0-rc44",
    "inherit": "leaf2head",
-   "textSum": "709e4d0bf51147f4"
+   "replacedBy": "collector.timeout",
+   "textSum": "b91e8850d0c73383"
   },
   "node/node.connect_to": {
    "inherit": "leaf2head",
@@ -2789,23 +2951,23 @@
    "inherit": "leaf2head",
    "textSum": "b493dbc2d35f72d6"
   },
-  "node/node.min_avail_mem_pct": {
+  "node/node.min_avail_mem": {
    "aliases": [
-    "min_avail_mem"
+    "min_avail_mem_pct"
    ],
-   "converter": "int",
-   "default": "2",
+   "converter": "share",
+   "default": "2%",
    "inherit": "leaf2head",
-   "textSum": "c79489e5b0bd8eed"
+   "textSum": "49572b8021e36163"
   },
-  "node/node.min_avail_swap_pct": {
+  "node/node.min_avail_swap": {
    "aliases": [
-    "min_avail_swap"
+    "min_avail_swap_pct"
    ],
-   "converter": "int",
-   "default": "10",
+   "converter": "share",
+   "default": "10%",
    "inherit": "leaf2head",
-   "textSum": "262d56c8bd7a9e57"
+   "textSum": "607eb2503273a045"
   },
   "node/node.model": {
    "inherit": "leaf2head",
@@ -3338,6 +3500,16 @@
     "zpool"
    ]
   },
+  "node/stats.disable": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "textSum": "bd9b0b3511003792"
+  },
+  "node/stats.schedule": {
+   "default": "~00:00-06:00",
+   "inherit": "leaf2head",
+   "textSum": "c9aac5cf4c8c1621"
+  },
   "node/stonith.command": {
    "aliases": [
     "cmd"
@@ -3534,6 +3706,21 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "8b72275cbab05b4d"
+  },
+  "sec/acme.directory": {
+   "inherit": "leaf2head",
+   "textSum": "072cf33f18da3cc5"
+  },
+  "sec/acme.renew_before": {
+   "converter": "duration",
+   "default": "30d",
+   "inherit": "leaf2head",
+   "textSum": "df886c05a6587205"
+  },
+  "sec/acme.webroot": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "c6908e5f09d44e66"
   },
   "svc/DEFAULT.app": {
    "default": "default",
@@ -4331,7 +4518,7 @@
   "svc/app.forking.script": {
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "23e0aa4dc221ccff",
+   "textSum": "12b57f3a7cbba52d",
    "types": [
     "forking"
    ]
@@ -4877,7 +5064,7 @@
   "svc/app.simple.script": {
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "23e0aa4dc221ccff",
+   "textSum": "12b57f3a7cbba52d",
    "types": [
     "simple"
    ]
@@ -5646,7 +5833,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "79b50f02a322c7b8",
+   "textSum": "b70a0d18b742cf79",
    "types": [
     "docker"
    ]
@@ -6125,7 +6312,7 @@
   "svc/container.lxc.cf": {
    "inherit": "leaf2head",
    "provisioning": true,
-   "textSum": "4a4273baa06f6cc2",
+   "textSum": "de304f28c73f9e0f",
    "types": [
     "lxc"
    ]
@@ -6166,7 +6353,7 @@
    ],
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "ee634d5092a7214a",
+   "textSum": "e39ba0428ef1c0fd",
    "types": [
     "lxc"
    ]
@@ -6386,7 +6573,7 @@
   "svc/container.lxc.rootfs": {
    "inherit": "leaf2head",
    "provisioning": true,
-   "textSum": "3a8f56aa52c2094c",
+   "textSum": "84f155bb69ef80d4",
    "types": [
     "lxc"
    ]
@@ -7147,7 +7334,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "79b50f02a322c7b8",
+   "textSum": "b70a0d18b742cf79",
    "types": [
     "oci"
    ]
@@ -7798,7 +7985,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "79b50f02a322c7b8",
+   "textSum": "b70a0d18b742cf79",
    "types": [
     "podman"
    ]
@@ -40232,6 +40419,323 @@
     "zfssnap"
    ]
   },
+  "svc/task.acme.blocking_post_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "c70107344575c995",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.blocking_post_run": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "7f46ad24eaa1a65f",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.blocking_post_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "670f8bcb1620b71d",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.blocking_pre_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "9fb3c26ee8e36afb",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.blocking_pre_run": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "5a0fb079a7838e3a",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.blocking_pre_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "41e5d3b77e1dbabe",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.check": {
+   "candidates": [
+    "",
+    "last_run",
+    "last_run_warn"
+   ],
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "8ec83fcbd32a4eb8",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.confirmation": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "textSum": "70667db088dfa0d4",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.disable": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "49bfdfcbefd94317",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.encap": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "textSum": "0c8c8239e9cdaae0",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.log": {
+   "converter": "bool",
+   "default": "true",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "c653e4c272ec2ea3",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.max_parallel": {
+   "converter": "int",
+   "default": "1",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "305debbb2660f990",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.monitor": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "cdb8682c50827c0e",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.on_error": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "227e4bc8ea569559",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.optional": {
+   "converter": "bool",
+   "inherit": "head2leaf",
+   "scopable": true,
+   "textSum": "336a573b0db15a9c",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.post_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "665e52a2df84b50e",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.post_run": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "ef5a7adf0a0feaba",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.post_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "6287cee55474b8af",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.pre_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "0b85cb1138f343c6",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.pre_run": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "659419c836c6d537",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.pre_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "9ade3c1f712bc65e",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.provision": {
+   "converter": "bool",
+   "default": "true",
+   "inherit": "leaf2head",
+   "textSum": "01116f63c52501c8",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.provision_requires": {
+   "inherit": "leaf2head",
+   "textSum": "ad0a44ebe3fee9cd",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.retcodes": {
+   "default": "0:up 1:down",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "40c12036e3d41a06",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.run_requires": {
+   "inherit": "leaf2head",
+   "textSum": "d20d31de9f2e5587",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.run_timeout": {
+   "converter": "duration",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "7009c8e11bd718e2",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.schedule": {
+   "defaultOption": "run_schedule",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "699dd64b8929cd02",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.secs": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "required": true,
+   "scopable": true,
+   "textSum": "9959216b377553fc",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.shared": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "396381bd071a7633",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.snooze": {
+   "converter": "duration",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "e3a9d222208d49ce",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.standby": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "f27870259e8feb61",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.subset": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "483bd6645699eba5",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.tags": {
+   "converter": "set",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "27dd22c0175b2339",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.timeout": {
+   "converter": "duration",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "0a13a7cd20c52b0c",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.unprovision": {
+   "converter": "bool",
+   "default": "true",
+   "inherit": "leaf2head",
+   "textSum": "9140a9f0579b5bf8",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.unprovision_requires": {
+   "inherit": "leaf2head",
+   "textSum": "6a7549e4cf90602b",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.webroot": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "117a1a2729e9f630",
+   "types": [
+    "acme"
+   ]
+  },
   "svc/task.docker.blocking_post_provision": {
    "inherit": "leaf2head",
    "scopable": true,
@@ -40877,7 +41381,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "79b50f02a322c7b8",
+   "textSum": "764e7844ccf94518",
    "types": [
     "docker"
    ]
@@ -42028,7 +42532,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "79b50f02a322c7b8",
+   "textSum": "764e7844ccf94518",
    "types": [
     "oci"
    ]
@@ -42696,7 +43200,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "79b50f02a322c7b8",
+   "textSum": "764e7844ccf94518",
    "types": [
     "podman"
    ]
@@ -74189,7 +74693,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "79b50f02a322c7b8",
+   "textSum": "764e7844ccf94518",
    "types": [
     "docker"
    ]
@@ -75340,7 +75844,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "79b50f02a322c7b8",
+   "textSum": "764e7844ccf94518",
    "types": [
     "oci"
    ]
@@ -76008,7 +76512,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "79b50f02a322c7b8",
+   "textSum": "764e7844ccf94518",
    "types": [
     "podman"
    ]
@@ -76444,5 +76948,5 @@
    ]
   }
  },
- "version": "v3.0.0-rc43"
+ "version": "v3.0.0-rc45"
 }

@@ -1039,6 +1039,98 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "cluster/collector.action_batch": {
+   "changes": {},
+   "properties": {
+    "converter": "int",
+    "default": "100",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "08760b3202e3e6a4"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "cluster/collector.action_log_timeout": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "default": "10s",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "e23337b2a529dd71"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "cluster/collector.feeder": {
+   "changes": {},
+   "properties": {
+    "defaultText": "`collector.url`/feeder if collector.url is defined.\n",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "a276beed17d6738c"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "cluster/collector.ping_interval": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "default": "60s",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "1108ac7a0b507794"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "cluster/collector.server": {
+   "changes": {},
+   "properties": {
+    "defaultText": "`collector.url`/server if collector.url is defined.\n",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "8815e918d5dd6c1c"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "cluster/collector.status_delay": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "default": "10s",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "2f8235a4bdb7641a"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "cluster/collector.timeout": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "default": "5s",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "b91e8850d0c73383"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "cluster/collector.url": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "928e3e85b3ecc4bb"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
   "cluster/compliance.auto_update": {
    "changes": {},
    "properties": {
@@ -1388,6 +1480,17 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "cluster/listener.acme_port": {
+   "changes": {},
+   "properties": {
+    "converter": "int",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "9ae458ecda8697bd"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
   "cluster/listener.addr": {
    "changes": {},
    "properties": {
@@ -1502,6 +1605,17 @@
     "textSum": "e4d4f78c2aacf058"
    },
    "since": "v3.0.0-rc36",
+   "until": null
+  },
+  "cluster/listener.tls_secs": {
+   "changes": {},
+   "properties": {
+    "converter": "list",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "9a9a81bfdec8f11c"
+   },
+   "since": "v3.0.0-rc45",
    "until": null
   },
   "cluster/network.bridge.dev": {
@@ -1717,69 +1831,112 @@
    "until": null
   },
   "cluster/node.collector": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "deprecated: unset -> v3.0.0-rc44",
+     "replacedBy: unset -> collector.url"
+    ]
+   },
    "properties": {
+    "deprecated": "v3.0.0-rc44",
     "inherit": "leaf2head",
+    "replacedBy": "collector.url",
     "textSum": "1e60bc405dba1554"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "cluster/node.collector_feeder": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "deprecated: unset -> v3.0.0-rc44",
+     "replacedBy: unset -> collector.feeder"
+    ]
+   },
    "properties": {
     "defaultText": "`node.collector`/feeder if node.collector is defined.",
+    "deprecated": "v3.0.0-rc44",
     "inherit": "leaf2head",
+    "replacedBy": "collector.feeder",
     "textSum": "cca82a98743dff65"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "cluster/node.collector_ping_interval": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "deprecated: unset -> v3.0.0-rc44",
+     "replacedBy: unset -> collector.ping_interval"
+    ]
+   },
    "properties": {
     "aliases": [
      "db_min_ping_interval"
     ],
     "converter": "duration",
     "default": "60s",
+    "deprecated": "v3.0.0-rc44",
     "inherit": "leaf2head",
+    "replacedBy": "collector.ping_interval",
     "textSum": "1108ac7a0b507794"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "cluster/node.collector_server": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "deprecated: unset -> v3.0.0-rc44",
+     "replacedBy: unset -> collector.server"
+    ]
+   },
    "properties": {
     "defaultText": "`node.collector`/server if node.collector is defined.",
+    "deprecated": "v3.0.0-rc44",
     "inherit": "leaf2head",
+    "replacedBy": "collector.server",
     "textSum": "4f007c6696386417"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "cluster/node.collector_status_delay": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "deprecated: unset -> v3.0.0-rc44",
+     "replacedBy: unset -> collector.status_delay"
+    ]
+   },
    "properties": {
     "aliases": [
      "db_min_update_interval"
     ],
     "converter": "duration",
     "default": "10s",
+    "deprecated": "v3.0.0-rc44",
     "inherit": "leaf2head",
+    "replacedBy": "collector.status_delay",
     "textSum": "afa854edb29a487a"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "cluster/node.collector_timeout": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "deprecated: unset -> v3.0.0-rc44",
+     "replacedBy: unset -> collector.timeout",
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "duration",
     "default": "5s",
+    "deprecated": "v3.0.0-rc44",
     "inherit": "leaf2head",
-    "textSum": "709e4d0bf51147f4"
+    "replacedBy": "collector.timeout",
+    "textSum": "b91e8850d0c73383"
    },
    "since": "v3.0.0-rc36",
    "until": null
@@ -1939,6 +2096,20 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "cluster/node.min_avail_mem": {
+   "changes": {},
+   "properties": {
+    "aliases": [
+     "min_avail_mem_pct"
+    ],
+    "converter": "share",
+    "default": "2%",
+    "inherit": "leaf2head",
+    "textSum": "49572b8021e36163"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
   "cluster/node.min_avail_mem_pct": {
    "changes": {},
    "properties": {
@@ -1951,6 +2122,20 @@
     "textSum": "c79489e5b0bd8eed"
    },
    "since": "v3.0.0-rc36",
+   "until": "v3.0.0-rc43"
+  },
+  "cluster/node.min_avail_swap": {
+   "changes": {},
+   "properties": {
+    "aliases": [
+     "min_avail_swap_pct"
+    ],
+    "converter": "share",
+    "default": "10%",
+    "inherit": "leaf2head",
+    "textSum": "607eb2503273a045"
+   },
+   "since": "v3.0.0-rc45",
    "until": null
   },
   "cluster/node.min_avail_swap_pct": {
@@ -1965,7 +2150,7 @@
     "textSum": "262d56c8bd7a9e57"
    },
    "since": "v3.0.0-rc36",
-   "until": null
+   "until": "v3.0.0-rc43"
   },
   "cluster/node.ready_period": {
    "changes": {},
@@ -2808,6 +2993,26 @@
     ]
    },
    "since": "v3.0.0-rc36",
+   "until": null
+  },
+  "cluster/stats.disable": {
+   "changes": {},
+   "properties": {
+    "converter": "list",
+    "inherit": "leaf2head",
+    "textSum": "bd9b0b3511003792"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "cluster/stats.schedule": {
+   "changes": {},
+   "properties": {
+    "default": "~00:00-06:00",
+    "inherit": "leaf2head",
+    "textSum": "c9aac5cf4c8c1621"
+   },
+   "since": "v3.0.0-rc45",
    "until": null
   },
   "cluster/stonith.command": {
@@ -3944,6 +4149,98 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "node/collector.action_batch": {
+   "changes": {},
+   "properties": {
+    "converter": "int",
+    "default": "100",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "08760b3202e3e6a4"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "node/collector.action_log_timeout": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "default": "10s",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "e23337b2a529dd71"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "node/collector.feeder": {
+   "changes": {},
+   "properties": {
+    "defaultText": "`collector.url`/feeder if collector.url is defined.\n",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "a276beed17d6738c"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "node/collector.ping_interval": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "default": "60s",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "1108ac7a0b507794"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "node/collector.server": {
+   "changes": {},
+   "properties": {
+    "defaultText": "`collector.url`/server if collector.url is defined.\n",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "8815e918d5dd6c1c"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "node/collector.status_delay": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "default": "10s",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "2f8235a4bdb7641a"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "node/collector.timeout": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "default": "5s",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "b91e8850d0c73383"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "node/collector.url": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "928e3e85b3ecc4bb"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
   "node/compliance.auto_update": {
    "changes": {},
    "properties": {
@@ -4293,6 +4590,17 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "node/listener.acme_port": {
+   "changes": {},
+   "properties": {
+    "converter": "int",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "9ae458ecda8697bd"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
   "node/listener.addr": {
    "changes": {},
    "properties": {
@@ -4407,6 +4715,17 @@
     "textSum": "e4d4f78c2aacf058"
    },
    "since": "v3.0.0-rc36",
+   "until": null
+  },
+  "node/listener.tls_secs": {
+   "changes": {},
+   "properties": {
+    "converter": "list",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc44",
+    "textSum": "9a9a81bfdec8f11c"
+   },
+   "since": "v3.0.0-rc45",
    "until": null
   },
   "node/network.bridge.dev": {
@@ -4631,69 +4950,112 @@
    "until": null
   },
   "node/node.collector": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "deprecated: unset -> v3.0.0-rc44",
+     "replacedBy: unset -> collector.url"
+    ]
+   },
    "properties": {
+    "deprecated": "v3.0.0-rc44",
     "inherit": "leaf2head",
+    "replacedBy": "collector.url",
     "textSum": "1e60bc405dba1554"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "node/node.collector_feeder": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "deprecated: unset -> v3.0.0-rc44",
+     "replacedBy: unset -> collector.feeder"
+    ]
+   },
    "properties": {
     "defaultText": "`node.collector`/feeder if node.collector is defined.",
+    "deprecated": "v3.0.0-rc44",
     "inherit": "leaf2head",
+    "replacedBy": "collector.feeder",
     "textSum": "cca82a98743dff65"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "node/node.collector_ping_interval": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "deprecated: unset -> v3.0.0-rc44",
+     "replacedBy: unset -> collector.ping_interval"
+    ]
+   },
    "properties": {
     "aliases": [
      "db_min_ping_interval"
     ],
     "converter": "duration",
     "default": "60s",
+    "deprecated": "v3.0.0-rc44",
     "inherit": "leaf2head",
+    "replacedBy": "collector.ping_interval",
     "textSum": "1108ac7a0b507794"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "node/node.collector_server": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "deprecated: unset -> v3.0.0-rc44",
+     "replacedBy: unset -> collector.server"
+    ]
+   },
    "properties": {
     "defaultText": "`node.collector`/server if node.collector is defined.",
+    "deprecated": "v3.0.0-rc44",
     "inherit": "leaf2head",
+    "replacedBy": "collector.server",
     "textSum": "4f007c6696386417"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "node/node.collector_status_delay": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "deprecated: unset -> v3.0.0-rc44",
+     "replacedBy: unset -> collector.status_delay"
+    ]
+   },
    "properties": {
     "aliases": [
      "db_min_update_interval"
     ],
     "converter": "duration",
     "default": "10s",
+    "deprecated": "v3.0.0-rc44",
     "inherit": "leaf2head",
+    "replacedBy": "collector.status_delay",
     "textSum": "afa854edb29a487a"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "node/node.collector_timeout": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "deprecated: unset -> v3.0.0-rc44",
+     "replacedBy: unset -> collector.timeout",
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "duration",
     "default": "5s",
+    "deprecated": "v3.0.0-rc44",
     "inherit": "leaf2head",
-    "textSum": "709e4d0bf51147f4"
+    "replacedBy": "collector.timeout",
+    "textSum": "b91e8850d0c73383"
    },
    "since": "v3.0.0-rc36",
    "until": null
@@ -4948,6 +5310,20 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "node/node.min_avail_mem": {
+   "changes": {},
+   "properties": {
+    "aliases": [
+     "min_avail_mem_pct"
+    ],
+    "converter": "share",
+    "default": "2%",
+    "inherit": "leaf2head",
+    "textSum": "49572b8021e36163"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
   "node/node.min_avail_mem_pct": {
    "changes": {},
    "properties": {
@@ -4960,6 +5336,20 @@
     "textSum": "c79489e5b0bd8eed"
    },
    "since": "v3.0.0-rc36",
+   "until": "v3.0.0-rc43"
+  },
+  "node/node.min_avail_swap": {
+   "changes": {},
+   "properties": {
+    "aliases": [
+     "min_avail_swap_pct"
+    ],
+    "converter": "share",
+    "default": "10%",
+    "inherit": "leaf2head",
+    "textSum": "607eb2503273a045"
+   },
+   "since": "v3.0.0-rc45",
    "until": null
   },
   "node/node.min_avail_swap_pct": {
@@ -4974,7 +5364,7 @@
     "textSum": "262d56c8bd7a9e57"
    },
    "since": "v3.0.0-rc36",
-   "until": null
+   "until": "v3.0.0-rc43"
   },
   "node/node.model": {
    "changes": {},
@@ -5920,6 +6310,26 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "node/stats.disable": {
+   "changes": {},
+   "properties": {
+    "converter": "list",
+    "inherit": "leaf2head",
+    "textSum": "bd9b0b3511003792"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "node/stats.schedule": {
+   "changes": {},
+   "properties": {
+    "default": "~00:00-06:00",
+    "inherit": "leaf2head",
+    "textSum": "c9aac5cf4c8c1621"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
   "node/stonith.command": {
    "changes": {},
    "properties": {
@@ -6294,6 +6704,36 @@
     "textSum": "8b72275cbab05b4d"
    },
    "since": "v3.0.0-rc36",
+   "until": null
+  },
+  "sec/acme.directory": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "072cf33f18da3cc5"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "sec/acme.renew_before": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "default": "30d",
+    "inherit": "leaf2head",
+    "textSum": "df886c05a6587205"
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "sec/acme.webroot": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "c6908e5f09d44e66"
+   },
+   "since": "v3.0.0-rc45",
    "until": null
   },
   "svc/DEFAULT.app": {
@@ -7672,11 +8112,15 @@
    "until": null
   },
   "svc/app.forking.script": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "23e0aa4dc221ccff",
+    "textSum": "12b57f3a7cbba52d",
     "types": [
      "forking"
     ]
@@ -8538,11 +8982,15 @@
    "until": null
   },
   "svc/app.simple.script": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "23e0aa4dc221ccff",
+    "textSum": "12b57f3a7cbba52d",
     "types": [
      "simple"
     ]
@@ -9741,12 +10189,16 @@
    "until": null
   },
   "svc/container.docker.volume_mounts": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "79b50f02a322c7b8",
+    "textSum": "b70a0d18b742cf79",
     "types": [
      "docker"
     ]
@@ -10501,11 +10953,15 @@
    "until": null
   },
   "svc/container.lxc.cf": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
     "provisioning": true,
-    "textSum": "4a4273baa06f6cc2",
+    "textSum": "de304f28c73f9e0f",
     "types": [
      "lxc"
     ]
@@ -10559,14 +11015,18 @@
    "until": null
   },
   "svc/container.lxc.data_dir": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "aliases": [
      "container_data_dir"
     ],
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "ee634d5092a7214a",
+    "textSum": "e39ba0428ef1c0fd",
     "types": [
      "lxc"
     ]
@@ -10907,11 +11367,15 @@
    "until": null
   },
   "svc/container.lxc.rootfs": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
     "provisioning": true,
-    "textSum": "3a8f56aa52c2094c",
+    "textSum": "84f155bb69ef80d4",
     "types": [
      "lxc"
     ]
@@ -12101,12 +12565,16 @@
    "until": null
   },
   "svc/container.oci.volume_mounts": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "79b50f02a322c7b8",
+    "textSum": "b70a0d18b742cf79",
     "types": [
      "oci"
     ]
@@ -13117,12 +13585,16 @@
    "until": null
   },
   "svc/container.podman.volume_mounts": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "79b50f02a322c7b8",
+    "textSum": "b70a0d18b742cf79",
     "types": [
      "podman"
     ]
@@ -64977,6 +65449,508 @@
    "since": "v3.0.0-rc42",
    "until": null
   },
+  "svc/task.acme.blocking_post_provision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "c70107344575c995",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.blocking_post_run": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "7f46ad24eaa1a65f",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.blocking_post_unprovision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "670f8bcb1620b71d",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.blocking_pre_provision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "9fb3c26ee8e36afb",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.blocking_pre_run": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "5a0fb079a7838e3a",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.blocking_pre_unprovision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "41e5d3b77e1dbabe",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.check": {
+   "changes": {},
+   "properties": {
+    "candidates": [
+     "",
+     "last_run",
+     "last_run_warn"
+    ],
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "8ec83fcbd32a4eb8",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.confirmation": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "inherit": "leaf2head",
+    "textSum": "70667db088dfa0d4",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.disable": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "49bfdfcbefd94317",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.encap": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "inherit": "leaf2head",
+    "textSum": "0c8c8239e9cdaae0",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.log": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "default": "true",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "c653e4c272ec2ea3",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.max_parallel": {
+   "changes": {},
+   "properties": {
+    "converter": "int",
+    "default": "1",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "305debbb2660f990",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.monitor": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "cdb8682c50827c0e",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.on_error": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "227e4bc8ea569559",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.optional": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "inherit": "head2leaf",
+    "scopable": true,
+    "textSum": "336a573b0db15a9c",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.post_provision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "665e52a2df84b50e",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.post_run": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "ef5a7adf0a0feaba",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.post_unprovision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "6287cee55474b8af",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.pre_provision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "0b85cb1138f343c6",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.pre_run": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "659419c836c6d537",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.pre_unprovision": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "9ade3c1f712bc65e",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.provision": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "default": "true",
+    "inherit": "leaf2head",
+    "textSum": "01116f63c52501c8",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.provision_requires": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "ad0a44ebe3fee9cd",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.retcodes": {
+   "changes": {},
+   "properties": {
+    "default": "0:up 1:down",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "40c12036e3d41a06",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.run_requires": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "d20d31de9f2e5587",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.run_timeout": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "7009c8e11bd718e2",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.schedule": {
+   "changes": {},
+   "properties": {
+    "defaultOption": "run_schedule",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "699dd64b8929cd02",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.secs": {
+   "changes": {},
+   "properties": {
+    "converter": "list",
+    "inherit": "leaf2head",
+    "required": true,
+    "scopable": true,
+    "textSum": "9959216b377553fc",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.shared": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "396381bd071a7633",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.snooze": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "e3a9d222208d49ce",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.standby": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "f27870259e8feb61",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.subset": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "483bd6645699eba5",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.tags": {
+   "changes": {},
+   "properties": {
+    "converter": "set",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "27dd22c0175b2339",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.timeout": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "0a13a7cd20c52b0c",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.unprovision": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "default": "true",
+    "inherit": "leaf2head",
+    "textSum": "9140a9f0579b5bf8",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.unprovision_requires": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "6a7549e4cf90602b",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.webroot": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "117a1a2729e9f630",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc45",
+   "until": null
+  },
   "svc/task.docker.blocking_post_provision": {
    "changes": {},
    "properties": {
@@ -65983,12 +66957,16 @@
    "until": null
   },
   "svc/task.docker.volume_mounts": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "79b50f02a322c7b8",
+    "textSum": "764e7844ccf94518",
     "types": [
      "docker"
     ]
@@ -67801,12 +68779,16 @@
    "until": null
   },
   "svc/task.oci.volume_mounts": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "79b50f02a322c7b8",
+    "textSum": "764e7844ccf94518",
     "types": [
      "oci"
     ]
@@ -68848,12 +69830,16 @@
    "until": null
   },
   "svc/task.podman.volume_mounts": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "79b50f02a322c7b8",
+    "textSum": "764e7844ccf94518",
     "types": [
      "podman"
     ]
@@ -119373,12 +120359,16 @@
    "until": null
   },
   "vol/task.docker.volume_mounts": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "79b50f02a322c7b8",
+    "textSum": "764e7844ccf94518",
     "types": [
      "docker"
     ]
@@ -121191,12 +122181,16 @@
    "until": null
   },
   "vol/task.oci.volume_mounts": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "79b50f02a322c7b8",
+    "textSum": "764e7844ccf94518",
     "types": [
      "oci"
     ]
@@ -122238,12 +123232,16 @@
    "until": null
   },
   "vol/task.podman.volume_mounts": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc45": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "79b50f02a322c7b8",
+    "textSum": "764e7844ccf94518",
     "types": [
      "podman"
     ]
@@ -122943,6 +123941,7 @@
   "v3.0.0-rc40",
   "v3.0.0-rc41",
   "v3.0.0-rc42",
-  "v3.0.0-rc43"
+  "v3.0.0-rc43",
+  "v3.0.0-rc45"
  ]
 }

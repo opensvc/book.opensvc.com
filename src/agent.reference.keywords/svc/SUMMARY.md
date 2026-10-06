@@ -90,6 +90,7 @@
 - [sync.symsrdfs](sync.symsrdfs.md)
 - [sync.zfs](sync.zfs.md)
 - [sync.zfssnap](sync.zfssnap.md)
+- [task.acme](task.acme.md)
 - [task.docker](task.docker.md)
 - [task.host](task.host.md)
 - [task.oci](task.oci.md)

@@ -1199,6 +1199,10 @@ This script must accept as argument 0 the action word:
 * `status` for status check
 * `info` for resource info
 
+The path is a path of the node, as `/srv/app/run.sh`, or a path in a volume or
+a filesystem of the service, as `volume#1:/run.sh` in the resource `volume#1`,
+or a path in a vol of the namespace, as `app-data/run.sh`.
+
 
 ## Keyword `secrets_environment`
 

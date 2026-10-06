@@ -39,8 +39,8 @@
 - mem_banks
 - mem_bytes
 - mem_slots
-- min_avail_mem_pct
-- min_avail_swap_pct
+- min_avail_mem
+- min_avail_swap
 - model
 - oci
 - os_arch
@@ -132,6 +132,7 @@ you are not responsible for.
 
 	required:    false
 	scopable:    false
+	deprecated:  since v3.0.0-rc44, replaced by collector.url
 
 **Example:**
 
@@ -149,6 +150,7 @@ derived from this value.
 
 	required:    false
 	scopable:    false
+	deprecated:  since v3.0.0-rc44, replaced by collector.feeder
 
 **Default:**
 
@@ -166,6 +168,7 @@ OpenSVC enables Collector v3 feeder calls upon detection of a collector v3 insta
 
 	required:    false
 	scopable:    false
+	deprecated:  since v3.0.0-rc44, replaced by collector.ping_interval
 	aliases:     db_min_ping_interval
 	default:     60s
 	convert:     duration
@@ -186,6 +189,7 @@ Minimum value: 60s
 
 	required:    false
 	scopable:    false
+	deprecated:  since v3.0.0-rc44, replaced by collector.server
 
 **Default:**
 
@@ -202,6 +206,7 @@ OpenSVC enables Collector v3 server calls upon detection of a collector v3 insta
 
 	required:    false
 	scopable:    false
+	deprecated:  since v3.0.0-rc44, replaced by collector.status_delay
 	aliases:     db_min_update_interval
 	default:     10s
 	convert:     duration
@@ -219,12 +224,15 @@ Minimum value: 10s
 
 	required:    false
 	scopable:    false
+	deprecated:  since v3.0.0-rc44, replaced by collector.timeout
 	default:     5s
 	convert:     duration
 
 **Description:**
 
-The maximum time to wait for a collector v3 call. Maximum allowed value 20.
+The maximum time to wait for a collector v3 call, as the send of the begin
+or the end of an instance action.
+Minimum value: 1s. Maximum value: 20s.
 
 
 ## Keyword `comment`
@@ -641,30 +649,53 @@ Override for the corresponding `om node push asset` discovery probe.
 Override for the corresponding `om node push asset` discovery probe.
 
 
-## Keyword `min_avail_mem_pct`
+## Keyword `min_avail_mem`
 
 	required:    false
 	scopable:    false
-	aliases:     min_avail_mem
-	default:     2
-	convert:     int
+	aliases:     min_avail_mem_pct
+	default:     2%
+	convert:     share
+
+**Example:**
+
+	min_avail_mem=2Gi
 
 **Description:**
 
-The minimum required available memory to allow orchestration.
+The minimum available memory to allow orchestration. Below it, the node is
+overloaded, and the daemon starts nothing on it.
+
+A share of the memory of the node, written as a percentage, `10` or `10%`, or
+as a size, `512m` or `2Gi`. A size is read as the whole percentage of the
+memory it amounts to, and as 50% at most. `0` disables the check.
+
+`min_avail_mem_pct`, which took a percentage alone, is read as this keyword.
 
 
-## Keyword `min_avail_swap_pct`
+## Keyword `min_avail_swap`
 
 	required:    false
 	scopable:    false
-	aliases:     min_avail_swap
-	default:     10
-	convert:     int
+	aliases:     min_avail_swap_pct
+	default:     10%
+	convert:     share
+
+**Example:**
+
+	min_avail_swap=4Gi
 
 **Description:**
 
-The minimum required available swap to allow orchestration.
+The minimum available swap to allow orchestration. Below it, the node is
+overloaded, and the daemon starts nothing on it.
+
+A share of the swap of the node, written as a percentage, `10` or `10%`, or as
+a size, `512m` or `2Gi`. A size is read as the whole percentage of the swap it
+amounts to. `0` disables the check, and a node without swap is never
+overloaded by it.
+
+`min_avail_swap_pct`, which took a percentage alone, is read as this keyword.
 
 
 ## Keyword `model`

@@ -40,3 +40,7 @@ A configuration still naming one of these is reported by `om <path> config valid
 | `node/console.max_greet_timeout` | v3.0.0-rc42 |
 | `node/console.max_seats` | v3.0.0-rc42 |
 | `node/console.server` | v3.0.0-rc42 |
+| `cluster/node.min_avail_mem_pct` | v3.0.0-rc43 |
+| `cluster/node.min_avail_swap_pct` | v3.0.0-rc43 |
+| `node/node.min_avail_mem_pct` | v3.0.0-rc43 |
+| `node/node.min_avail_swap_pct` | v3.0.0-rc43 |

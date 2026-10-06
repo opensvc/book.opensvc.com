@@ -1,7 +1,157 @@
 # Keyword changes
 
-What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc43.
+What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc45.
 
+
+## v3.0.0-rc45
+
+
+### Added
+
+- `cluster/collector.action_batch`
+- `cluster/collector.action_log_timeout`
+- `cluster/collector.feeder`
+- `cluster/collector.ping_interval`
+- `cluster/collector.server`
+- `cluster/collector.status_delay`
+- `cluster/collector.timeout`
+- `cluster/collector.url`
+- `cluster/listener.acme_port`
+- `cluster/listener.tls_secs`
+- `cluster/node.min_avail_mem`
+- `cluster/node.min_avail_swap`
+- `cluster/stats.disable`
+- `cluster/stats.schedule`
+- `node/collector.action_batch`
+- `node/collector.action_log_timeout`
+- `node/collector.feeder`
+- `node/collector.ping_interval`
+- `node/collector.server`
+- `node/collector.status_delay`
+- `node/collector.timeout`
+- `node/collector.url`
+- `node/listener.acme_port`
+- `node/listener.tls_secs`
+- `node/node.min_avail_mem`
+- `node/node.min_avail_swap`
+- `node/stats.disable`
+- `node/stats.schedule`
+- `sec/acme.directory`
+- `sec/acme.renew_before`
+- `sec/acme.webroot`
+- `svc/task.acme.blocking_post_provision`
+- `svc/task.acme.blocking_post_run`
+- `svc/task.acme.blocking_post_unprovision`
+- `svc/task.acme.blocking_pre_provision`
+- `svc/task.acme.blocking_pre_run`
+- `svc/task.acme.blocking_pre_unprovision`
+- `svc/task.acme.check`
+- `svc/task.acme.confirmation`
+- `svc/task.acme.disable`
+- `svc/task.acme.encap`
+- `svc/task.acme.log`
+- `svc/task.acme.max_parallel`
+- `svc/task.acme.monitor`
+- `svc/task.acme.on_error`
+- `svc/task.acme.optional`
+- `svc/task.acme.post_provision`
+- `svc/task.acme.post_run`
+- `svc/task.acme.post_unprovision`
+- `svc/task.acme.pre_provision`
+- `svc/task.acme.pre_run`
+- `svc/task.acme.pre_unprovision`
+- `svc/task.acme.provision`
+- `svc/task.acme.provision_requires`
+- `svc/task.acme.retcodes`
+- `svc/task.acme.run_requires`
+- `svc/task.acme.run_timeout`
+- `svc/task.acme.schedule`
+- `svc/task.acme.secs`
+- `svc/task.acme.shared`
+- `svc/task.acme.snooze`
+- `svc/task.acme.standby`
+- `svc/task.acme.subset`
+- `svc/task.acme.tags`
+- `svc/task.acme.timeout`
+- `svc/task.acme.unprovision`
+- `svc/task.acme.unprovision_requires`
+- `svc/task.acme.webroot`
+
+### Removed
+
+- `cluster/node.min_avail_mem_pct`
+- `cluster/node.min_avail_swap_pct`
+- `node/node.min_avail_mem_pct`
+- `node/node.min_avail_swap_pct`
+
+### Changed
+
+- `cluster/node.collector`
+  - deprecated: unset -> v3.0.0-rc44
+  - replacedBy: unset -> collector.url
+- `cluster/node.collector_feeder`
+  - deprecated: unset -> v3.0.0-rc44
+  - replacedBy: unset -> collector.feeder
+- `cluster/node.collector_ping_interval`
+  - deprecated: unset -> v3.0.0-rc44
+  - replacedBy: unset -> collector.ping_interval
+- `cluster/node.collector_server`
+  - deprecated: unset -> v3.0.0-rc44
+  - replacedBy: unset -> collector.server
+- `cluster/node.collector_status_delay`
+  - deprecated: unset -> v3.0.0-rc44
+  - replacedBy: unset -> collector.status_delay
+- `cluster/node.collector_timeout`
+  - deprecated: unset -> v3.0.0-rc44
+  - replacedBy: unset -> collector.timeout
+  - description rewritten
+- `node/node.collector`
+  - deprecated: unset -> v3.0.0-rc44
+  - replacedBy: unset -> collector.url
+- `node/node.collector_feeder`
+  - deprecated: unset -> v3.0.0-rc44
+  - replacedBy: unset -> collector.feeder
+- `node/node.collector_ping_interval`
+  - deprecated: unset -> v3.0.0-rc44
+  - replacedBy: unset -> collector.ping_interval
+- `node/node.collector_server`
+  - deprecated: unset -> v3.0.0-rc44
+  - replacedBy: unset -> collector.server
+- `node/node.collector_status_delay`
+  - deprecated: unset -> v3.0.0-rc44
+  - replacedBy: unset -> collector.status_delay
+- `node/node.collector_timeout`
+  - deprecated: unset -> v3.0.0-rc44
+  - replacedBy: unset -> collector.timeout
+  - description rewritten
+- `svc/app.forking.script`
+  - description rewritten
+- `svc/app.simple.script`
+  - description rewritten
+- `svc/container.docker.volume_mounts`
+  - description rewritten
+- `svc/container.lxc.cf`
+  - description rewritten
+- `svc/container.lxc.data_dir`
+  - description rewritten
+- `svc/container.lxc.rootfs`
+  - description rewritten
+- `svc/container.oci.volume_mounts`
+  - description rewritten
+- `svc/container.podman.volume_mounts`
+  - description rewritten
+- `svc/task.docker.volume_mounts`
+  - description rewritten
+- `svc/task.oci.volume_mounts`
+  - description rewritten
+- `svc/task.podman.volume_mounts`
+  - description rewritten
+- `vol/task.docker.volume_mounts`
+  - description rewritten
+- `vol/task.oci.volume_mounts`
+  - description rewritten
+- `vol/task.podman.volume_mounts`
+  - description rewritten
 
 ## v3.0.0-rc43
 

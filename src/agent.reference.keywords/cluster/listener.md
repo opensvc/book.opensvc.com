@@ -2,6 +2,7 @@
 
 **Supported keywords:**
 
+- acme_port
 - addr
 - comment
 - crl
@@ -13,6 +14,31 @@
 - rate_limiter_burst
 - rate_limiter_expires
 - rate_limiter_rate
+- tls_secs
+
+## Keyword `acme_port`
+
+	required:    false
+	scopable:    false
+	since:       v3.0.0-rc44
+	convert:     int
+	rbac:        This driver group requires the root grant.
+
+**Example:**
+
+	acme_port=80
+
+**Description:**
+
+The port of the node the listener answers http-01 ACME challenges on, in
+plain http, usually `80`: the port an ACME directory reads them from. No
+challenge is answered when empty.
+
+The listener answers only `/.well-known/acme-challenge/<token>`, from the
+tokens a renewal of a sec of `listener.tls_secs` stores in that sec, and
+every node answers them, so the names of the certificate may resolve to any
+node of the cluster.
+
 
 ## Keyword `addr`
 
@@ -190,5 +216,34 @@ The duration after that a inet listener rate limiter is cleaned up.
 **Description:**
 
 The rate of inet listener requests allowed to pass per seconds.
+
+
+## Keyword `tls_secs`
+
+	required:    false
+	scopable:    false
+	since:       v3.0.0-rc44
+	convert:     list
+	rbac:        This driver group requires the root grant.
+
+**Example:**
+
+	tls_secs=system/sec/public
+
+**Description:**
+
+The secs whose certificates the listener presents, besides the certificate
+of `system/sec/cert`, to the clients asking one of their names: a name of the
+cluster published on the internet, as the name of its virtual address, can
+have a certificate browsers trust, from an ACME directory, while the nodes
+keep reaching each other by their names, which only the cluster ca certifies.
+
+A sec is named by its path, as `system/sec/public`, or by its name in the
+`system` namespace. A client asking a name no listed certificate has gets the
+certificate of `system/sec/cert`.
+
+A certificate renewed is presented from the next connection, on every node.
+`om <sec> certificate renew` obtains the certificate of a listed sec through
+the listener, which serves the http-01 challenge on `listener.acme_port`.
 
 

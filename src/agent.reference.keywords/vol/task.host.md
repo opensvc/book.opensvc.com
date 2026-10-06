@@ -1274,7 +1274,7 @@ If no timeout is set, the agent waits indefinitely for the task command to exit.
 
 	required:    false
 	scopable:    false
-	rbac:        Requires the root grant, except for the values oci, docker, podman.
+	rbac:        Requires the root grant, except for the values oci, docker, podman, acme.
 
 **Description:**
 
