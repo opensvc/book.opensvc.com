@@ -1,7 +1,11 @@
 # Keyword changes
 
-What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc45.
+What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc46.
 
+
+## v3.0.0-rc46
+
+No keyword changed.
 
 ## v3.0.0-rc45
 
