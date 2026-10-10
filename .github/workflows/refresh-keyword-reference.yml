@@ -35,9 +35,11 @@ jobs:
 
       - name: Find the release to document
         id: release
+        env:
+          INPUT_RELEASE: ${{ inputs.release }}
         run: |
           set -e
-          tag="${{ inputs.release }}"
+          tag="$INPUT_RELEASE"
           if [ -z "$tag" ]; then
             tag=$(curl -sSfL https://api.github.com/repos/opensvc/om3/releases/latest |
               python3 -c 'import json,sys;print(json.load(sys.stdin)["tag_name"])')
