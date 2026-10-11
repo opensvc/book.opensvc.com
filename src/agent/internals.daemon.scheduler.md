@@ -127,6 +127,70 @@ The `info` job only refreshes a cache local to the instance. Reporting the
 key-values to the collector is the collector speaker's job, done on its own
 schedule, so this job does not talk to the collector itself.
 
+## Event-triggered Runs
+
+A task can also run on events of its node, rather than at a time. The `on`
+keyword lists the events, each one an event kind and the values of the fields
+it requires, as an [event filter](internals.daemon.events.md#filtering) does:
+
+```ini
+[task#refresh]
+type = host
+install = fs#1
+on = NetworkPeersUpdated
+pace = @30s backoff @1m
+```
+
+The kinds are:
+
+* `NetworkPeersUpdated`, with the fields `node` and `name`: a node joined or
+  left a network of the node, the address of a node changed, or the tunnel to
+  it. `NetworkPeersUpdated,name=backend1` runs on the changes of `backend1`
+  only.
+* `FileInstalled`, with the fields `node`, `path` and `rid`: an install of a
+  resource of the object wrote files, whatever ran it, a start, a provision, a
+  task or a change of a key. An install finding its files up to date publishes
+  none. The events of the other objects are not the task's.
+
+`pace` paces the runs, as `@<interval>[ backoff @<max>]`, `@10s` when unset.
+The task runs at the first event, then once at most each interval: the events
+coming during an interval run it once, at its end. With `backoff`, each
+interval ending with such a run doubles the next one, up to `<max>`, and each
+interval passing without an event halves it back. A node joining publishes one
+`NetworkPeersUpdated` per network, and the task runs twice, not once per
+network.
+
+The event runs require what the scheduled runs require, the instance
+provisioned and `run_requires`, and run whether the instance is frozen or not,
+as the scheduled runs do. A task can have both a `schedule` and `on`.
+
+### Installing files again
+
+A task's `install` keyword installs the files of volumes and filesystems again
+before the task's own work, as the `install` action does for them. A task of
+any type may set it, and a host task setting it needs no `command`. A failed
+install is a failed run, the task's own work not done.
+
+With `on = NetworkPeersUpdated`, the files a [template](apps.design.datastores.md#templates)
+renders from the networks of the node follow them. The install publishes a
+`FileInstalled` event when it wrote files, on which a second task has what
+reads them read them again:
+
+```ini
+[task#reload]
+type = host
+container = container#app
+command = app reload
+on = FileInstalled,rid=fs#1
+```
+
+A host task's `container` keyword runs its command in a container resource of
+the service, whatever its runtime, rather than on the node. A container not up
+is not run in: what the command acts on reads the files when it starts.
+
+Splitting the work in two tasks keeps the reload for the installs that changed
+something, whatever ran them: a change of a key the template read, a start, or
+the refresh.
 
 ## Advanced Schedule Definition
 

@@ -109,6 +109,13 @@ The tunnel mode is `ipip` for an ipv4 network and `ip6ip6` for an ipv6 one.
 `gre`, set with `tunnel_mode`, carries both, and works where some providers
 refuse `ipip`.
 
+What a node reaches its peers by, the addresses of both ends and the tunnel,
+is what a [template](apps.design.datastores.md#templates) reads with the
+`network`, `networks` and `tunnels` functions. A program configured from it, as
+the strongSwan of the [strongSwan Mesh](../howtos/strongswan.mesh.md) howto
+encrypting the tunnels, follows the peers with a task running on
+`NetworkPeersUpdated`.
+
 ### Masquerading
 
 Traffic leaving a `bridge` or `routed_bridge` network is masqueraded behind the
@@ -122,6 +129,10 @@ the networks on the node it runs on. The daemon runs it on start and on every
 cluster configuration change, so a network declared on a running cluster is set
 up on every node without asking. It has no api counterpart: it acts on the
 node it runs on.
+
+A setup that changed the peers of a network, a node joining or leaving it, the
+address of a node or the tunnel to it, publishes a `NetworkPeersUpdated` event
+on the node, which a task can [run on](internals.daemon.scheduler.md#event-triggered-runs).
 
 ## How addresses are allocated
 
@@ -184,6 +195,12 @@ with `netns = container#0`, and reach each other over `127.0.0.1`.
 `mode`. See the [`mode`
 keyword](../agent.reference.keywords/svc/ip.netns.md#keyword-mode) for what
 each one lets the host and the containers reach.
+
+A `disk.drbd` resource sends its replication traffic over a network with its
+`network` keyword. The address of each node is then the first of the segment
+the node was assigned, so the network is a `routed_bridge`: a network giving
+the nodes no segment of their own, as a `lan`, is refused. Name the addresses
+with `addr@<node>` on the resource there.
 
 ### Names
 

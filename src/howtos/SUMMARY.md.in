@@ -5,6 +5,7 @@
 - [Get Support](howtos/support.md)
   - [Support Channels](howtos/support.channels.md)
   - [Support Data](howtos/support.data.md)
+- [strongSwan Mesh](howtos/strongswan.mesh.md)
 - [NFS](howtos/nfsha.md)
   - [NFS4 High Availability setup - Traditional integration](howtos/nfs4ha.trad.md)
   - [NFS4 High Availability setup - Container integration](howtos/nfs4ha.cont.md)

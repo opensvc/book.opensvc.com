@@ -11,10 +11,28 @@
 
 ## Commands
 
-    om node events [--filter <expression>]
-    ox node events [--filter <expression>]
+Print the event stream of a node:
 
-Print the node event stream
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```bash
+om daemon events [--filter <expression>]
+ox daemon events [--filter <expression>]
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -N -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/daemon/event?filter=<expression>"
+```
+
+</div>
+</div>
+
+`node events` is the former name of the command.
 
 ## Filtering
 
@@ -69,6 +87,7 @@ Receive only events matching the filtering expression formatted as:
 
 #### Instance
 
+     FileInstalled
      InstanceConfigDeleted, InstanceConfigManagerDone, InstanceConfigUpdated
      InstanceFrozenFileRemoved, InstanceFrozenFileUpdated
      InstanceMonitorAction, InstanceMonitorDeleted, InstanceMonitorUpdated
@@ -91,6 +110,10 @@ Receive only events matching the filtering expression formatted as:
      NodeStatusArbitratorsUpdated, NodeStatusGenUpdates, NodeStatusLabelsUpdated
      SetNodeMonitor
      
+#### Network
+
+     NetworkPeersUpdated
+
 #### Object
 
      ObjectOrchestrationAccepted, ObjectOrchestrationEnd, ObjectOrchestrationRefused
@@ -114,6 +137,25 @@ Receive only events matching the filtering expression formatted as:
     InstanceStatusUpdated,path=svc1,node=n1,.instance_status.frozen_at>"0001-01-01T00:00:00Z"
     InstanceStatusUpdated,path=svc1,node=n1,.instance_status.avail="up"
     InstanceStatusUpdated,path=svc1,node=n1,.instance_status.resources."fs#1".avail="up"
+    FileInstalled,path=svc1,rid=fs#1
+    NetworkPeersUpdated,name=backend1
+
+### Events a task runs on
+
+A task's `on` keyword runs it on some events of its node, described in
+[Event-triggered Runs](internals.daemon.scheduler.md#event-triggered-runs):
+
+* `FileInstalled` is published when an install of a resource of a local
+  instance wrote files, whatever ran it, and not when it found them up to date.
+  `files` are the files written, relative to the head of the resource:
+
+      {"kind":"FileInstalled","data":{"node":"dev2n1","path":"system/svc/strongswan","rid":"fs#1","files":["/swanctl.conf"],"at":"2026-10-11T21:11:04.544314706+02:00"}}
+
+* `NetworkPeersUpdated` is published after the setup of a network of the node,
+  when its peers changed: a node joined or left it, the address of a node
+  changed, or the tunnel to it:
+
+      {"kind":"NetworkPeersUpdated","data":{"node":"dev2n1","name":"backend1"}}
 
 ## Templating
 
