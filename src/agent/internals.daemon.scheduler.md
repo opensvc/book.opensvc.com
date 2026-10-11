@@ -164,6 +164,14 @@ The event runs require what the scheduled runs require, the instance
 provisioned and `run_requires`, and run whether the instance is frozen or not,
 as the scheduled runs do. A task can have both a `schedule` and `on`.
 
+A run the events asked for is the last run of the task, as a scheduled one is:
+`schedule list` shows it in `LAST_RUN_AT`, with the events and the pace in
+`ON` and `PACE`, and the scheduled run is planned from it, the work it would
+do being done. A `schedule` then is the net catching the events missed: with
+`@1h`, the task runs at most an hour after its last run, whatever ran it. A run
+the events asked for and skipped, the instance not provisioned for example, is
+no run.
+
 ### Installing files again
 
 A task's `install` keyword installs the files of volumes and filesystems again
