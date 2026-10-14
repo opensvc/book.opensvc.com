@@ -355,7 +355,9 @@ them, with no restart.
 A node warns, in its log and in the issues of its configuration, when the
 certificate of `system/sec/cert` expires within 14 days, or the one of
 `system/sec/ca` within 90: the renewal failed, or the certificate was
-installed from elsewhere. `om mon` marks a node with issues.
+installed from elsewhere. It warns too when a CA the cluster `ca` keyword
+keeps, as a former one, expires within 90 days: the certificates it signed
+are refused once it does. `om mon` marks a node with issues.
 
 <div class="tabs">
 <div class="tab" data-title="CLI">
