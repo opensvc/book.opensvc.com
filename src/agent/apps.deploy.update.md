@@ -84,7 +84,9 @@ The resource identifier (rid) must not be specified. The resource type must be s
 om <path> config update --set fs#2.type=ext4 --set fs#2.mnt=/srv/{fqdn}
 ```
 
-The resource identifier must be specified.
+The resource identifier must be specified. A change of what a resource holds
+on a node, as this mount point, is refused while the resource is up: see
+[Changes Refused While a Resource Is Up](#changes-refused-while-a-resource-is-up).
 
 ## Non-Interactive Resource Deletion
 
@@ -107,11 +109,74 @@ curl -s -X PATCH -H "Authorization: Bearer $TOKEN" \
 </div>
 </div>
 
-This command does not stop the resource before removing its definition. If desired, this can be done with
+The section of a resource up on a node is not removed: its resource is
+stopped first, as nothing would stop it once its section is gone.
 
 ```
 om <path> stop --rid fs#2
 ```
+
+## Changes Refused While a Resource Is Up
+
+Some keywords say what a resource holds on a node once started: the `mnt` and
+`dev` of a fs, the address, `dev`, `netns` and `network` of an ip, the `name`
+of a volume group or a container, ... The stop of a resource acts on the
+configuration it reads then, so a change of one of them while the resource is
+up would have the stop umount the new mount point, and leave the former one
+mounted. Such a change is refused, for every user, root included, while the
+resource is up on a node, and so are a change of the `type` of the resource,
+and the removal of its section:
+
+```
+$ om <path> config update --set fs#1.mnt=/srv/new
+Error: <path>: [403] Forbidden: denied: the resource is up: change fs#1.mnt from "/srv/old" to "/srv/new": up on node1: stop it before
+```
+
+A keyword concerned says so in its documentation, `om <path> config doc
+--kw fs#1.mnt`:
+
+```
+stop first:  a change is refused while the resource is up
+```
+
+The change is judged on the value evaluated on each node the resource is up
+on, so a change of a reference the value holds, as `mnt = /srv/{env.dir}`
+with `env.dir` changed, is refused too. A resource is up on a node unless its
+status there is `down`, `stdby down` or `n/a`. Stop the resource, change the
+keyword, and start it again:
+
+```
+om <path> stop --rid fs#1
+om <path> config update --set fs#1.mnt=/srv/new
+om <path> start --rid fs#1
+```
+
+Root writes the change all the same with `force`, as to recover from a
+resource that cannot be stopped. What the former value set up stays on the
+node, for root to undo:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```
+om <path> config update --set fs#1.mnt=/srv/new --force
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" \
+  --data-urlencode 'set=fs#1.mnt=/srv/new' \
+  --data-urlencode 'force=true' \
+  -G "https://<node>:1215/api/object/path/<ns>/<kind>/<name>/config"
+```
+
+</div>
+</div>
+
+`om <path> config edit --force`, and the `force` parameter of
+`PUT …/config/file`, do the same for an edited configuration.
 
 ## Batching
 

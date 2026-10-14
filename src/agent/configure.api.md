@@ -207,10 +207,13 @@ The agent listener requires a TLS certificate to accept remote connections secur
 
 Upon initial agent installation and daemon startup:
 
-* A self-signed Certificate Authority (CA) is automatically created as `system/sec/ca`.
+* A self-signed Certificate Authority (CA) is automatically created as `system/sec/ca`, valid 10 years.
 * A listener certificate, signed by this internal CA, is automatically created as `system/sec/cert`.
 
-The following steps are only required if you need to **re-sign the internal CA** or **switch to an external PKI**.
+The daemon renews both before they expire: see
+[Cluster Certificate Lifecycle](#cluster-certificate-lifecycle). The
+following steps are only required if you need to **re-sign the internal CA**
+or **switch to an external PKI**.
 
 ### Option 1: Using the Internal PKI
 
@@ -321,6 +324,139 @@ and `system/sec/cert` to the others.
 The http-01 challenge certifies a name, not a wildcard: a `*.mycorp.com`
 certificate needs the dns challenge, which is not supported.
 [Certificates](apps.design.certificates.md) describes the renewal.
+
+## Cluster Certificate Lifecycle
+
+Every node verifies the certificate a peer presents with the cluster
+authorities: `system/sec/ca`, and the secs the cluster `ca` keyword lists. A
+certificate that expired, or that no cluster authority signed, is refused,
+and the nodes stop exchanging configurations, as a CA that expired makes
+every certificate it signed refused at once.
+
+### Automatic Renewal
+
+The daemon speaker renews the certificates of the internal PKI, at its start,
+daily, and when they change:
+
+* `system/sec/ca`, with the same key, a fifth of its validity before it
+  expires, a year at most: the certificates it signed are verified by the
+  renewed one. A CA created before its validity was set, valid 1 year, is
+  given `validity = 10y` first.
+* `system/sec/cert`, 30 days before it expires, when the cluster nodes
+  change, and when `system/sec/ca` is renewed, as its chain holds the
+  certificate of the CA.
+
+A certificate installed from elsewhere, as one of an external PKI, is not
+renewed. Every node installs the renewed certificates as soon as it receives
+them, with no restart.
+
+### Watching the Expiry
+
+A node warns, in its log and in the issues of its configuration, when the
+certificate of `system/sec/cert` expires within 14 days, or the one of
+`system/sec/ca` within 90: the renewal failed, or the certificate was
+installed from elsewhere. `om mon` marks a node with issues.
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```
+om cluster status -o json | jq '.cluster.node[].config.issues'
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/cluster/status" | jq '.cluster.node[].config.issues'
+```
+
+</div>
+</div>
+
+To renew one at once:
+
+```
+om system/sec/cert certificate renew
+om system/sec/ca certificate renew --force
+```
+
+The renewal runs on the node the command runs on, and has no api
+counterpart. The CA is renewed with its key, its certificate only being
+replaced.
+
+### Rotating the CA Key
+
+A CA key disclosed, or too weak, is replaced, with no node refusing another
+meanwhile:
+
+```
+om cluster ca rotate
+```
+
+1. A new CA is created as `system/sec/ca-next`, and the certificate of the
+   current one kept, without its key, as `system/sec/ca-former-<date>`. The
+   cluster `ca` keyword lists both, until every node has them.
+2. `system/sec/ca` takes the key and the certificate of the new CA, and
+   `system/sec/cert` is issued again by it, until every node has them.
+3. `system/sec/ca-next` is deleted.
+
+Every cluster node is waited for at each step, a node down among them: a node
+that would come back trusting the former CA alone could reach no peer. A wait
+that expires, after `--timeout` (5 minutes by default), interrupts the
+rotation, which is resumed by running the command again.
+
+The former CA stays trusted, for the certificates it signed, as the ones of
+the users created by `om system/usr/<name> certificate create`, and the api
+tokens it signed stay valid until they expire. Once the user certificates are
+renewed, stop trusting it:
+
+```
+om cluster config update --set cluster.ca-=system/sec/ca-former-<date>
+om system/sec/ca-former-<date> delete
+```
+
+`om cluster ca rotate --drop-former` does it at the end of the rotation, and
+is refused while the former CA signed the certificate of a user. The command
+runs on a cluster node, and has no api counterpart.
+
+### Recovering from an Expired CA
+
+A CA that expired before it was renewed, as one created before the automatic
+renewal, makes every node refuse its peers: the configurations do not reach
+the other nodes, so a renewal on one node does not either. Renew on one
+node, copy the two secs to the others, and restart the daemons:
+
+1. On one node, renew the CA, then the listener certificate it signs:
+
+    ```bash
+    om system/sec/ca config update --set validity=10y
+    om system/sec/ca certificate renew --force
+    om system/sec/cert certificate renew
+    ```
+
+2. Copy their configuration files to the other nodes, as they are: their
+   values are encrypted with the cluster secret, which every node shares.
+
+    ```bash
+    for node in node2 node3; do
+        scp /etc/opensvc/namespaces/system/sec/ca.conf \
+            /etc/opensvc/namespaces/system/sec/cert.conf \
+            $node:/etc/opensvc/namespaces/system/sec/
+    done
+    ```
+
+3. Restart the daemon of every node, which installs the certificate files
+   from the secs at its start:
+
+    ```bash
+    om daemon restart
+    ```
+
+The renewal keeps the key of the CA, so the certificates of the users it
+signed are valid again too. None of this has an api counterpart: the api of
+the other nodes is the one the expired CA keeps out of reach.
 
 > ➡️  See Also
 > * [Access Control](configure.rbac.md) for roles and grant management.
