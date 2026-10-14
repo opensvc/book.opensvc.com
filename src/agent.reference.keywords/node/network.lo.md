@@ -56,11 +56,24 @@ The `ips_per_node` keyword is deprecated because its value is hard to manage for
 
 	required:    false
 	scopable:    false
-	candidates:  bridge, routed_bridge
+	candidates:  bridge, routed_bridge, lan
 	default:     bridge
 
 **Description:**
 
 The type of network.
+
+* `bridge`: a subnet on a bridge of each node, the same on every node, its
+  traffic masqueraded out of the node.
+* `routed_bridge`: a subnet cut into one range per node, routed between the
+  nodes.
+* `lan`: ranges of a segment the nodes share, the addresses of which an
+  object takes along when it moves to another node, as the floating address
+  of a failover service.
+
+The traffic the nodes forward for the `bridge` and `routed_bridge` networks
+is accepted in the om nft table, and, on a node running docker, whose
+forward chain drops what docker did not accept, in a chain the docker
+`DOCKER-USER` chain jumps to.
 
 

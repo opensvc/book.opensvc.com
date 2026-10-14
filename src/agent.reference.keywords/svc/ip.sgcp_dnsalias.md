@@ -958,7 +958,7 @@ The DNS record name to point the alias to.
 
 	required:    false
 	scopable:    false
-	rbac:        Requires the root grant, except for a cni address, and for a netns address om draws from a cluster network.
+	rbac:        Requires the root grant, except for a cni address, for a netns address om draws from a cluster network, and for a host address om draws from a lan network, on the interface and with the netmask the network says.
 
 **Description:**
 

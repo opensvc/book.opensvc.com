@@ -20,6 +20,7 @@
 
 **Supported keywords:**
 
+- addr
 - alias
 - blocking_post_provision
 - blocking_post_start
@@ -84,6 +85,45 @@
 - vlan_mode
 - vlan_tag
 - wait_dns
+
+## Keyword `addr`
+
+	required:    false
+	scopable:    true
+	recorded:    written when what it names is made, and reset when the object is cloned
+	rbac:        An address of the user's choosing requires the root grant: om writes the address it draws from the network.
+
+**Example:**
+
+	addr=fd01:2345:6789:2902::5:e8
+
+**Description:**
+
+The address drawn from the lan network the `network` keyword names, which om
+writes here when the resource first starts, and removes when it is
+unprovisioned.
+
+On a lan network the resource keeps its address from a start to the next,
+until it is unprovisioned, as an ip.host resource does: the hosts of the
+segment know the service by its address. Every node holds the
+configuration, so every node uses this address for the resource, whichever
+node drew it and whatever became of that node. Set it to keep an address
+drawn before, or unset it to have the next start draw another one, and
+remove the one it replaces from the namespace.
+
+On the other networks the address is drawn at each start and released at
+each stop, and the clients reach the service by its DNS record, which
+follows the address: this keyword is not used.
+
+A configuration copied to create another object leaves it behind, so the
+copy draws an address of its own rather than bring this one up twice.
+
+A resource not shared of a flex object draws an address per instance, as
+its instances run at once. The address of an instance is not written here:
+the node keeps it in its reservation store, from a start to the next, until
+the instance is unprovisioned. Set addr@<nodename> to choose the address of
+an instance; an addr without a node is not taken as one.
+
 
 ## Keyword `alias`
 
@@ -360,7 +400,21 @@ socket services that mandate a SRV exposition.
 
 **Description:**
 
-The gateway to configure in the network namespace.
+The gateway the default route of the network namespace goes through.
+
+When not set, it is the gateway of the network the address is drawn from:
+the address of the bridge of a bridge or routed_bridge network, the gateway
+keyword of a lan network. With no gateway at all, the default route goes
+through the interface of the resource.
+
+Several ip resources may share a namespace, and a namespace has one default
+route. The resource setting it is the one whose gateway is set here, rather
+than taken from its network, rather than none; the lowest resource id among
+equals, whatever the order the resources start in. The others leave the route
+alone, and a gateway set here that is not used is reported in the status.
+
+The default route is set only when the namespace has none: one another
+resource of the container set, as an ip.cni one, is kept.
 
 
 ## Keyword `macaddr`
@@ -561,6 +615,7 @@ The resource id of the container to plumb the ip into.
 
 	required:    false
 	scopable:    true
+	rbac:        A network named by a path requires the root grant.
 
 **Example:**
 
@@ -576,7 +631,23 @@ object needs nothing more than `network=default` to receive an address.
 Naming a network is enough: the `dev`, `netmask` and `gateway` of the resource
 are the network's to know, and are taken from it when the configuration does
 not set them. Leaving `name` empty has the address allocated from the network
-too, and the same resource keeps the same address across restarts.
+too.
+
+On a bridge or routed_bridge network, the address is drawn at each start and
+released at each stop, and the clients reach the service by its DNS record,
+which follows the address.
+
+On a lan network, the address is kept from a start to the next until the
+resource is unprovisioned, and recorded in `addr`. The `dev` is the interface
+of the node on the segment, and the `netmask` the prefix length of the
+segment. The `gateway` is the one of the network, the router of the segment,
+and none when the network names none. The `macvlan` and
+`ipvlan-l2` modes put the address on the segment. The `bridge` mode needs
+`dev` to be a linux bridge on the segment, and the `ovs` mode needs `dev` set
+to an openvswitch bridge on the segment. The `ipvlan-l3` and `ipvlan-l3s`
+modes are refused, as the hosts of the segment would not reach the address,
+and the `dedicated` mode needs a `dev` of its own, not the interface of the
+node on the segment.
 
 This keyword used to hold the address of the network, in dotted notation, to
 set the destination of the route removed by `del_net_route`. That destination
@@ -1252,7 +1323,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
-	rbac:        Requires the root grant, except for a cni address, and for a netns address om draws from a cluster network.
+	rbac:        Requires the root grant, except for a cni address, for a netns address om draws from a cluster network, and for a host address om draws from a lan network, on the interface and with the netmask the network says.
 
 **Description:**
 

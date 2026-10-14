@@ -310,6 +310,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    true
 	scopable:    true
+	rbac:        A container name of the user's choosing requires the root grant: the default name is the object's own.
 
 **Description:**
 

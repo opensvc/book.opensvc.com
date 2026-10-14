@@ -481,6 +481,7 @@ Set the container hostname. If not set, a unique id is used.
 	scopable:    true
 	aliases:     run_image
 	default:     ghcr.io/opensvc/pause
+	rbac:        An image starting with a '-' requires the root grant.
 
 **Description:**
 
@@ -605,6 +606,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
+	rbac:        A container name of the user's choosing requires the root grant: the default name is the object's own.
 
 **Default:**
 

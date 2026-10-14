@@ -34,6 +34,7 @@
 - [hook](hook.md)
 - [listener](listener.md)
 - [network.bridge](network.bridge.md)
+- [network.lan](network.lan.md)
 - [network.lo](network.lo.md)
 - [network.routed_bridge](network.routed_bridge.md)
 - [node](node.md)

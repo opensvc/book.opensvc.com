@@ -22,11 +22,13 @@
 - comment
 - configs_environment
 - confirmation
+- container
 - cwd
 - disable
 - encap
 - environment
 - group
+- install
 - limit_as
 - limit_core
 - limit_cpu
@@ -41,8 +43,10 @@
 - log
 - max_parallel
 - monitor
+- on
 - on_error
 - optional
+- pace
 - pg_blkio_weight
 - pg_cpu_burst
 - pg_cpu_quota
@@ -261,6 +265,32 @@ If set to `true`, ask for an interactive confirmation to run the task.
 This flag can be used for dangerous tasks like data restoration.
 
 
+## Keyword `container`
+
+	required:    false
+	scopable:    true
+
+**Example:**
+
+	container=container#1
+
+**Description:**
+
+The container resource the command runs in, by the runtime of the container,
+rather than on the node. e.g. `container#1`.
+
+The command is the `command` keyword, run with the `environment`,
+`configs_environment` and `secrets_environment` of the task, within its
+`timeout`. The `cwd`, `user`, `group`, `umask` and limits of the task apply to
+a command run on the node only.
+
+A container not up is not run in, and the run does nothing: what the command
+acts on runs in the container, and does it when it starts.
+
+Such a task with `on = FileInstalled,rid=<rid>` has a container read again
+the files a volume or fs `install` wrote, e.g. `swanctl --load-all`.
+
+
 ## Keyword `cwd`
 
 	required:    false
@@ -336,6 +366,48 @@ A shell expression splitter is applied, so double quotes can be around
 
 If the binary is owned by the `root` user, run it as the specified group
 instead of `root`.
+
+
+## Keyword `install`
+
+	required:    false
+	scopable:    true
+	convert:     list
+
+**Example:**
+
+	install=fs#1
+
+**Description:**
+
+The volumes and filesystems whose files the task installs again before its
+own work, as the `install` action does for them: `fs#1 volume#data`. A host
+task installing files needs no `command`.
+
+The files rendered from a template are rendered from what the node knows at
+the time, and the install publishes a `FileInstalled` event for the ones it
+wrote. With `on`, the files follow what the events say changed, and the
+tasks on `FileInstalled` have what reads them read them again:
+
+    [task#refresh]
+    type = host
+    install = fs#1
+    on = NetworkPeersUpdated
+
+    [task#load_all]
+    type = host
+    container = container#swanctl
+    command = swanctl --load-all
+    on = FileInstalled,rid=fs#1
+
+    [fs#1]
+    install = /swanctl.conf from ./cfg/{name} key swanctl.conf template
+
+The install takes the lock of the object, as the install action does. It
+writes only in the volumes and filesystems of the object, from the install
+lines they declare, so a task of any type may ask for it.
+
+A failed install is a failed run, the task's own work not done.
 
 
 ## Keyword `limit_as`
@@ -526,6 +598,48 @@ A resource with `monitor=true` will trigger the `monitor_action`
 * All restart tentatives failed.
 
 
+## Keyword `on`
+
+	required:    false
+	scopable:    true
+	convert:     list
+
+**Example:**
+
+	on=NetworkPeersUpdated,name=backend1
+
+**Description:**
+
+The events of the node running the task, each one an event kind and the values
+of the fields of the event it requires, as in `om node events --filter`:
+`NetworkPeersUpdated` runs it when the peers of any network of the node
+changed, `NetworkPeersUpdated,name=backend1` when the ones of backend1 did.
+
+The kinds are:
+
+* `FileInstalled`: an install of a resource of the object wrote files, by a
+  start, a provision, a task or a change of a key. It is not published for
+  an install finding its files up to date. Its fields are `node`, `path` and
+  `rid`, the resource, and the events of the other objects are not the
+  task's.
+
+* `NetworkPeersUpdated`: a node joined or left a network, the address of a
+  node changed, or the tunnel to it. Its fields are `node` and `name`, the
+  network.
+
+The runs are paced by `pace`, and require what the scheduled runs
+require: the instance provisioned, and `run_requires`. They run whether the
+instance is frozen or not, as the scheduled runs do.
+
+A task installing again the files rendered from the networks with
+`install` has them follow the networks:
+
+    [task#refresh]
+    type = host
+    install = fs#1
+    on = NetworkPeersUpdated
+
+
 ## Keyword `on_error`
 
 	required:    false
@@ -557,6 +671,30 @@ The status of task and sync resources is always included in the overall status, 
 Resources tagged as `noaction` are considered optional by default.
 
 Dump filesystems are a typical use case for optional=true.
+
+
+## Keyword `pace`
+
+	required:    false
+	scopable:    true
+	default:     @10s
+
+**Example:**
+
+	pace=@30s backoff @1m
+
+**Description:**
+
+The pace of the runs the `on` events ask for, `@<interval>[ backoff @<max>]`,
+written as the interval of a schedule.
+
+The task runs at the first event, then once at most each interval: the events
+coming during an interval run it once at its end.
+
+With `backoff`, each interval ending with such a run doubles the next one, up
+to `<max>`, and each interval passing without an event halves it back, down to
+`<interval>`: `@30s backoff @1m` runs at most each 30s, and at most each minute
+while the events keep coming faster.
 
 
 ## Keyword `pg_blkio_weight`

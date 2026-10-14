@@ -32,6 +32,7 @@
 - encap
 - group
 - install
+- label
 - mkfs_opt
 - mnt
 - mnt_opt
@@ -74,6 +75,7 @@
 - stat_timeout
 - stop_requires
 - subset
+- subvol
 - tags
 - type
 - unprovision
@@ -258,6 +260,11 @@ The whitespace-separated list of
 
 The block device file or filesystem image file hosting the filesystem to mount.
 
+The device is written as the other devices of a service are: `/dev/sdb` is a
+device of the node, `data` the device a vol of the namespace exposes, and
+`disk#1` the device a resource of the service exposes, which must expose one
+device.
+
 A different device can be set up on different nodes using the `dev@<nodename>`
 scoping syntax.
 
@@ -412,7 +419,9 @@ Where:
   * if not specified, defaults to the `<path>` with the leading `/` stripped.
     e.g. `fs#1.install = /a/b from ./sec/sec1` will install `<fs#1 head>/a/b` from the `./sec/sec1` key named `a/b`.
 
-* `<mode>`, `<user>`, `<group>` default values are defined by the `mode`, `user` and `group` resource keyword.
+* `<mode>`, `<user>`, `<group>` default values are defined by the `perm`, `user` and `group` resource keywords,
+  and the `<mode>` of a directory by the `dirperm` resource keyword. Without `perm`, a file from a sec is installed
+  with mode `0600`, and a file from a cfg with mode `0644`.
 
 * `<sig>:<rid>` (e.g. `HUP:container#haproxy`)
   * `<sig>` is the signal to send to the target resource `<rid>` processes when the file content is modified.
@@ -426,9 +435,55 @@ Where:
   * stop installing items if this item install failed.
 
 * `source <uri>`
-  * seed the datastore key with the content of `<uri>`.
-  * if `template` is also set, treat the `<uri>` content as a go template, and execute using the [env] section keys as the dataset.
-    e.g. {{.foo}} is replaced by the evaluated value of `env.foo`.
+  * seed the datastore key with the content of `<uri>`, as it is written: a template is stored as a template.
+
+* `template`
+  * the key content is a go template, rendered on each node at each install into the installed file. The key
+    keeps the template, so a file says what the node it is installed on knows when it is installed.
+  * the data is the [env] section: `{{.foo}}` is replaced by the evaluated value of `env.foo`.
+  * the functions are:
+    * `ref "<reference>"`: the value of an om reference, written without its braces, evaluated for this node.
+      e.g. `{{ref "nodename"}}`, `{{ref "clusternodes"}}`, `{{ref "volume#1.mnt"}}`.
+    * `split <string>`: the words of a string, as a list a reference returns.
+      e.g. `{{range split (ref "clusternodes")}}{{.}} {{end}}`.
+    * `key "<obj_path|obj_relpath>" "<key>"`: the content of a datastore key, the datastore sharing its keys with
+      the installing object namespace. The installed file mode is the line's, so a file rendering a sec key
+      wants a `mode` as tight as the key's.
+    * `network "<name>"`: the network `<name>`, with the fields `Name`, `Type`, `Network` and `Peers`. A
+      routed_bridge network lists the other nodes in `Peers`, as this node reaches them, with the fields
+      `Nodename`, `Local` and `Remote` (the addresses of this node and the peer the network joins), `Subnet`,
+      and `Tunnel` (the tunnel device, empty when the network is routed to the peer). Other networks list none.
+    * `networks`: the networks of the node, each as `network` returns it.
+    * `tunnels`: the peers the networks of the node reach by a tunnel, each tunnel once, as networks joining the
+      same two addresses share one. e.g. `{{range tunnels}}{{.Nodename}} {{.Local}} {{.Remote}}{{end}}`.
+  * the file is compared to what the template renders at each install, so the `signal` follows a change of
+    what the template reads too, at the next install.
+  * a change of a key the `key` function read at the last render installs the file again, on each node, as a
+    change of the template key does: a file rendered from a sec follows the sec.
+
+An install writing files, whatever runs it, a start, a provision, a task or a change of a key, publishes a
+`FileInstalled` event, and none when it finds them up to date. A task with `on = FileInstalled,rid=<rid>` has
+what reads them read them again, e.g. a host task with `container` running `swanctl --load-all`.
+
+
+## Keyword `label`
+
+	required:    false
+	scopable:    true
+	since:       v3.0.0-rc47
+	rbac:        A resource of a volume requires the root grant.
+
+**Example:**
+
+	label={name}.fs1
+
+**Description:**
+
+The label of the btrfs, set when it is formatted.
+
+The sync resources find the filesystem by its label on every node, the device of the filesystem changing from a node to another, so the label is set in a keyword of its own they can reference, as `src = {fs#1.label}:{fs#1.subvol}`.
+
+A `-L` or `--label` option of mkfs_opt naming another label is refused.
 
 
 ## Keyword `mkfs_opt`
@@ -543,6 +598,9 @@ If `perm` is not set,
 The permissions to apply to installed files, in octal notation.
 
 Also used to compute a default value for `dirperm`.
+
+When not set, a file from a sec is installed with mode `0600`, and a file from
+a cfg with mode `0644`.
 
 
 ## Keyword `pg_blkio_weight`
@@ -1234,6 +1292,26 @@ or in a less precise `[subset#<name>]` one.
 That section accepts `parallel`, to act on the members concurrently rather than
 one after the other, and the `pg_*` keywords, to place the members in their own
 process group.
+
+
+## Keyword `subvol`
+
+	required:    false
+	scopable:    true
+	since:       v3.0.0-rc47
+	rbac:        A resource of a volume requires the root grant.
+
+**Example:**
+
+	subvol=data
+
+**Description:**
+
+The path of the subvolume of the btrfs to mount, from the root of the filesystem, as `data`.
+
+The subvolume is created when the resource is provisioned. It is the `subvol=` mount option, set in a keyword of its own so the sync resources can reference it, as `src = {fs#1.label}:{fs#1.subvol}`.
+
+A `subvol=` option of mnt_opt naming the same subvolume is ignored, and one naming another subvolume, or a `subvolid=` option, is refused: the resource does not start rather than mount another subvolume than the one replicated.
 
 
 ## Keyword `tags`

@@ -18,6 +18,7 @@
 - mkblk_opt
 - mkfs_opt
 - mnt_opt
+- network
 - path
 - status_schedule
 - template
@@ -130,6 +131,28 @@ The mkfs command options to use to format the pool devices.
 **Description:**
 
 The mount options of the fs created over the pool devices.
+
+
+## Keyword `network`
+
+	required:    false
+	scopable:    false
+
+**Example:**
+
+	network=backend1
+
+**Description:**
+
+The name of the backend network to use for the drbd traffic of the volumes
+the pool creates, set as the `network` keyword of their `disk.drbd`
+resource. Set this keyword if some node names are resolved to NATed
+addresses.
+
+The address of a node is then the first of the segment the network assigned
+it, so the network is a `routed_bridge`: a network giving the nodes no
+segment of their own, as a `lan`, is refused. Name the addresses with
+`addr@<node>` there.
 
 
 ## Keyword `path`

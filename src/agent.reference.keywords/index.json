@@ -21,7 +21,7 @@
    ],
    "defaultText": "The same as the node `env`.\n",
    "inherit": "head",
-   "textSum": "74afeba961a3e3c5"
+   "textSum": "d97422ac868a7f96"
   },
   "cfg/DEFAULT.id": {
    "defaultText": "A random generated UUID.\n",
@@ -63,7 +63,7 @@
    ],
    "inherit": "leaf2head",
    "required": true,
-   "textSum": "d3159e74286171df"
+   "textSum": "8560033bcf0c55bb"
   },
   "cluster/arbitrator.weight": {
    "converter": "int",
@@ -653,7 +653,7 @@
   "cluster/collector.url": {
    "inherit": "leaf2head",
    "since": "v3.0.0-rc44",
-   "textSum": "928e3e85b3ecc4bb"
+   "textSum": "05a9ad60a42bcdc9"
   },
   "cluster/compliance.auto_update": {
    "converter": "bool",
@@ -936,6 +936,37 @@
     "routed_bridge"
    ]
   },
+  "cluster/network.lan.dev": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "502adbd8a5387e0f",
+   "types": [
+    "lan"
+   ]
+  },
+  "cluster/network.lan.gateway": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "002812dbdf3f8a55",
+   "types": [
+    "lan"
+   ]
+  },
+  "cluster/network.lan.network": {
+   "inherit": "leaf2head",
+   "textSum": "8affbf1e1bb5bc90",
+   "types": [
+    "lan"
+   ]
+  },
+  "cluster/network.lan.ranges": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "textSum": "c5ae8f50ae0b3c18",
+   "types": [
+    "lan"
+   ]
+  },
   "cluster/network.mask_per_node": {
    "converter": "int",
    "default": "0",
@@ -1023,11 +1054,17 @@
   "cluster/network.type": {
    "candidates": [
     "bridge",
+    "lan",
     "routed_bridge"
    ],
    "default": "bridge",
    "inherit": "leaf2head",
-   "textSum": "a806ac8b5b9eba82"
+   "textSum": "51a28f194b16bcfc"
+  },
+  "cluster/node.allow_envs": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "textSum": "3c79b954680aac33"
   },
   "cluster/node.allowed_networks": {
    "converter": "list",
@@ -1047,7 +1084,7 @@
    "deprecated": "v3.0.0-rc44",
    "inherit": "leaf2head",
    "replacedBy": "collector.url",
-   "textSum": "1e60bc405dba1554"
+   "textSum": "ef34d8b34f339eca"
   },
   "cluster/node.collector_feeder": {
    "defaultText": "`node.collector`/feeder if node.collector is defined.",
@@ -1116,7 +1153,7 @@
   "cluster/node.env": {
    "default": "TST",
    "inherit": "leaf2head",
-   "textSum": "d55f221cdd6e1298"
+   "textSum": "4c8ad33ab38b9c6d"
   },
   "cluster/node.loc_addr": {
    "inherit": "leaf2head",
@@ -1356,6 +1393,13 @@
    "inherit": "leaf2head",
    "provisioning": true,
    "textSum": "7da7a4477d62b907",
+   "types": [
+    "drbd"
+   ]
+  },
+  "cluster/pool.drbd.network": {
+   "inherit": "leaf2head",
+   "textSum": "e7689ef795c83472",
    "types": [
     "drbd"
    ]
@@ -1793,7 +1837,7 @@
    ],
    "inherit": "leaf2head",
    "required": true,
-   "textSum": "d3159e74286171df"
+   "textSum": "8560033bcf0c55bb"
   },
   "node/arbitrator.weight": {
    "converter": "int",
@@ -2387,7 +2431,7 @@
   "node/collector.url": {
    "inherit": "leaf2head",
    "since": "v3.0.0-rc44",
-   "textSum": "928e3e85b3ecc4bb"
+   "textSum": "05a9ad60a42bcdc9"
   },
   "node/compliance.auto_update": {
    "converter": "bool",
@@ -2670,6 +2714,37 @@
     "routed_bridge"
    ]
   },
+  "node/network.lan.dev": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "502adbd8a5387e0f",
+   "types": [
+    "lan"
+   ]
+  },
+  "node/network.lan.gateway": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "002812dbdf3f8a55",
+   "types": [
+    "lan"
+   ]
+  },
+  "node/network.lan.network": {
+   "inherit": "leaf2head",
+   "textSum": "8affbf1e1bb5bc90",
+   "types": [
+    "lan"
+   ]
+  },
+  "node/network.lan.ranges": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "textSum": "c5ae8f50ae0b3c18",
+   "types": [
+    "lan"
+   ]
+  },
   "node/network.mask_per_node": {
    "converter": "int",
    "default": "0",
@@ -2757,11 +2832,17 @@
   "node/network.type": {
    "candidates": [
     "bridge",
+    "lan",
     "routed_bridge"
    ],
    "default": "bridge",
    "inherit": "leaf2head",
-   "textSum": "a806ac8b5b9eba82"
+   "textSum": "51a28f194b16bcfc"
+  },
+  "node/node.allow_envs": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "textSum": "3c79b954680aac33"
   },
   "node/node.allowed_networks": {
    "converter": "list",
@@ -2785,7 +2866,7 @@
    "deprecated": "v3.0.0-rc44",
    "inherit": "leaf2head",
    "replacedBy": "collector.url",
-   "textSum": "1e60bc405dba1554"
+   "textSum": "ef34d8b34f339eca"
   },
   "node/node.collector_feeder": {
    "defaultText": "`node.collector`/feeder if node.collector is defined.",
@@ -2880,7 +2961,7 @@
   "node/node.env": {
    "default": "TST",
    "inherit": "leaf2head",
-   "textSum": "d55f221cdd6e1298"
+   "textSum": "4c8ad33ab38b9c6d"
   },
   "node/node.loc_addr": {
    "inherit": "leaf2head",
@@ -3185,6 +3266,13 @@
    "inherit": "leaf2head",
    "provisioning": true,
    "textSum": "7da7a4477d62b907",
+   "types": [
+    "drbd"
+   ]
+  },
+  "node/pool.drbd.network": {
+   "inherit": "leaf2head",
+   "textSum": "e7689ef795c83472",
    "types": [
     "drbd"
    ]
@@ -3659,7 +3747,7 @@
    ],
    "defaultText": "The same as the node `env`.\n",
    "inherit": "head",
-   "textSum": "74afeba961a3e3c5"
+   "textSum": "d97422ac868a7f96"
   },
   "sec/DEFAULT.id": {
    "defaultText": "A random generated UUID.\n",
@@ -3709,7 +3797,7 @@
   },
   "sec/acme.directory": {
    "inherit": "leaf2head",
-   "textSum": "072cf33f18da3cc5"
+   "textSum": "9c4de93fff0510d2"
   },
   "sec/acme.renew_before": {
    "converter": "duration",
@@ -3772,7 +3860,7 @@
    ],
    "defaultText": "The same as the node `env`.\n",
    "inherit": "head",
-   "textSum": "74afeba961a3e3c5"
+   "textSum": "d97422ac868a7f96"
   },
   "svc/DEFAULT.flex_max": {
    "aliases": [
@@ -8438,7 +8526,7 @@
    "inherit": "leaf2head",
    "required": true,
    "scopable": true,
-   "textSum": "6e42270eb0e6f6bd",
+   "textSum": "d47ef123c3757cb8",
    "types": [
     "crypt"
    ]
@@ -9194,7 +9282,7 @@
   "svc/disk.drbd.network": {
    "inherit": "leaf2head",
    "provisioning": true,
-   "textSum": "2744c265e400df35",
+   "textSum": "ec2dcfa7c2acc9db",
    "types": [
     "drbd"
    ]
@@ -10722,7 +10810,7 @@
    "inherit": "leaf2head",
    "provisioning": true,
    "scopable": true,
-   "textSum": "c1b3465309ee07e9",
+   "textSum": "1eb16ab2ff85f214",
    "types": [
     "lvm"
    ]
@@ -10908,7 +10996,7 @@
    "inherit": "leaf2head",
    "provisioning": true,
    "scopable": true,
-   "textSum": "95b7c8120bf67d6a",
+   "textSum": "3c6cedc1b8d31ed1",
    "types": [
     "md"
    ]
@@ -11621,7 +11709,7 @@
    "inherit": "leaf2head",
    "required": true,
    "scopable": true,
-   "textSum": "eeccfaa630b9f302",
+   "textSum": "0f12a2965f866bad",
    "types": [
     "raw"
    ]
@@ -12444,7 +12532,7 @@
    "inherit": "leaf2head",
    "provisioning": true,
    "scopable": true,
-   "textSum": "c1b3465309ee07e9",
+   "textSum": "1eb16ab2ff85f214",
    "types": [
     "vg"
    ]
@@ -13626,7 +13714,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "9pfs"
    ]
@@ -13679,7 +13767,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "9pfs"
    ]
@@ -13743,7 +13831,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "9pfs"
    ]
@@ -14068,7 +14156,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "afs"
    ]
@@ -14121,7 +14209,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "afs"
    ]
@@ -14185,7 +14273,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "afs"
    ]
@@ -14510,7 +14598,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "bfs"
    ]
@@ -14563,7 +14651,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "bfs"
    ]
@@ -14627,7 +14715,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "bfs"
    ]
@@ -14952,7 +15040,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "bind"
    ]
@@ -15005,7 +15093,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "bind"
    ]
@@ -15069,7 +15157,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "bind"
    ]
@@ -15394,7 +15482,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "btrfs"
    ]
@@ -15447,7 +15535,17 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/fs.btrfs.label": {
+   "inherit": "leaf2head",
+   "provisioning": true,
+   "scopable": true,
+   "since": "v3.0.0-rc47",
+   "textSum": "348f547bc9926147",
    "types": [
     "btrfs"
    ]
@@ -15511,7 +15609,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "btrfs"
    ]
@@ -15708,6 +15806,15 @@
     "btrfs"
    ]
   },
+  "svc/fs.btrfs.subvol": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "since": "v3.0.0-rc47",
+   "textSum": "87fc7d6815c77589",
+   "types": [
+    "btrfs"
+   ]
+  },
   "svc/fs.btrfs.tags": {
    "converter": "set",
    "inherit": "leaf2head",
@@ -15836,7 +15943,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "cephfs"
    ]
@@ -15889,7 +15996,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "cephfs"
    ]
@@ -15953,7 +16060,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "cephfs"
    ]
@@ -16278,7 +16385,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "cifs"
    ]
@@ -16331,7 +16438,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "cifs"
    ]
@@ -16395,7 +16502,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "cifs"
    ]
@@ -16754,7 +16861,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "directory"
    ]
@@ -16781,7 +16888,7 @@
    "inherit": "leaf2head",
    "required": true,
    "scopable": true,
-   "textSum": "4760fa9ef52ebcf5",
+   "textSum": "38d3044595b263f5",
    "types": [
     "directory"
    ]
@@ -16791,7 +16898,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "directory"
    ]
@@ -17091,7 +17198,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ext2"
    ]
@@ -17144,7 +17251,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ext2"
    ]
@@ -17208,7 +17315,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ext2"
    ]
@@ -17533,7 +17640,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ext3"
    ]
@@ -17586,7 +17693,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ext3"
    ]
@@ -17650,7 +17757,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ext3"
    ]
@@ -17975,7 +18082,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ext4"
    ]
@@ -18028,7 +18135,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ext4"
    ]
@@ -18092,7 +18199,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ext4"
    ]
@@ -18417,7 +18524,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "f2fs"
    ]
@@ -18470,7 +18577,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "f2fs"
    ]
@@ -18534,7 +18641,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "f2fs"
    ]
@@ -19123,7 +19230,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "gfs"
    ]
@@ -19176,7 +19283,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "gfs"
    ]
@@ -19240,7 +19347,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "gfs"
    ]
@@ -19565,7 +19672,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "gfs2"
    ]
@@ -19618,7 +19725,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "gfs2"
    ]
@@ -19682,7 +19789,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "gfs2"
    ]
@@ -20007,7 +20114,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "glusterfs"
    ]
@@ -20060,7 +20167,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "glusterfs"
    ]
@@ -20124,7 +20231,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "glusterfs"
    ]
@@ -20449,7 +20556,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "gpfs"
    ]
@@ -20502,7 +20609,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "gpfs"
    ]
@@ -20566,7 +20673,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "gpfs"
    ]
@@ -20891,7 +20998,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "hfs"
    ]
@@ -20944,7 +21051,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "hfs"
    ]
@@ -21008,7 +21115,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "hfs"
    ]
@@ -21333,7 +21440,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "hfsplus"
    ]
@@ -21386,7 +21493,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "hfsplus"
    ]
@@ -21450,7 +21557,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "hfsplus"
    ]
@@ -21775,7 +21882,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "hpfs"
    ]
@@ -21828,7 +21935,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "hpfs"
    ]
@@ -21892,7 +21999,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "hpfs"
    ]
@@ -22217,7 +22324,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "jffs"
    ]
@@ -22270,7 +22377,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "jffs"
    ]
@@ -22334,7 +22441,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "jffs"
    ]
@@ -22659,7 +22766,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "jffs2"
    ]
@@ -22712,7 +22819,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "jffs2"
    ]
@@ -22776,7 +22883,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "jffs2"
    ]
@@ -23101,7 +23208,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "jfs"
    ]
@@ -23154,7 +23261,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "jfs"
    ]
@@ -23218,7 +23325,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "jfs"
    ]
@@ -23543,7 +23650,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "jfs2"
    ]
@@ -23596,7 +23703,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "jfs2"
    ]
@@ -23660,7 +23767,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "jfs2"
    ]
@@ -23985,7 +24092,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "lofs"
    ]
@@ -24038,7 +24145,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "lofs"
    ]
@@ -24102,7 +24209,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "lofs"
    ]
@@ -24427,7 +24534,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "logfs"
    ]
@@ -24480,7 +24587,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "logfs"
    ]
@@ -24544,7 +24651,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "logfs"
    ]
@@ -24869,7 +24976,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "minix"
    ]
@@ -24922,7 +25029,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "minix"
    ]
@@ -24986,7 +25093,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "minix"
    ]
@@ -25311,7 +25418,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "msdos"
    ]
@@ -25364,7 +25471,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "msdos"
    ]
@@ -25428,7 +25535,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "msdos"
    ]
@@ -25753,7 +25860,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ncpfs"
    ]
@@ -25806,7 +25913,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ncpfs"
    ]
@@ -25870,7 +25977,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ncpfs"
    ]
@@ -26195,7 +26302,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "nfs"
    ]
@@ -26248,7 +26355,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "nfs"
    ]
@@ -26312,7 +26419,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "nfs"
    ]
@@ -26637,7 +26744,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "nfs4"
    ]
@@ -26690,7 +26797,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "nfs4"
    ]
@@ -26754,7 +26861,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "nfs4"
    ]
@@ -27079,7 +27186,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "nilfs"
    ]
@@ -27132,7 +27239,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "nilfs"
    ]
@@ -27196,7 +27303,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "nilfs"
    ]
@@ -27521,7 +27628,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "none"
    ]
@@ -27574,7 +27681,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "none"
    ]
@@ -27638,7 +27745,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "none"
    ]
@@ -27963,7 +28070,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ntfs"
    ]
@@ -28016,7 +28123,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ntfs"
    ]
@@ -28080,7 +28187,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ntfs"
    ]
@@ -28405,7 +28512,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ocfs"
    ]
@@ -28458,7 +28565,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ocfs"
    ]
@@ -28522,7 +28629,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ocfs"
    ]
@@ -28847,7 +28954,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ocfs2"
    ]
@@ -28900,7 +29007,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ocfs2"
    ]
@@ -28964,7 +29071,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ocfs2"
    ]
@@ -29289,7 +29396,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "qnx4"
    ]
@@ -29342,7 +29449,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "qnx4"
    ]
@@ -29406,7 +29513,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "qnx4"
    ]
@@ -29731,7 +29838,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "reiserfs"
    ]
@@ -29784,7 +29891,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "reiserfs"
    ]
@@ -29848,7 +29955,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "reiserfs"
    ]
@@ -30173,7 +30280,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "reiserfs4"
    ]
@@ -30226,7 +30333,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "reiserfs4"
    ]
@@ -30290,7 +30397,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "reiserfs4"
    ]
@@ -30615,7 +30722,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "rpc_pipefs"
    ]
@@ -30668,7 +30775,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "rpc_pipefs"
    ]
@@ -30732,7 +30839,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "rpc_pipefs"
    ]
@@ -31057,7 +31164,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "sgcp_nfs"
    ]
@@ -31136,7 +31243,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "sgcp_nfs"
    ]
@@ -31181,7 +31288,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "sgcp_nfs"
    ]
@@ -31530,7 +31637,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "smbfs"
    ]
@@ -31583,7 +31690,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "smbfs"
    ]
@@ -31647,7 +31754,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "smbfs"
    ]
@@ -31972,7 +32079,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "tmpfs"
    ]
@@ -32025,7 +32132,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "tmpfs"
    ]
@@ -32099,7 +32206,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "tmpfs"
    ]
@@ -32435,7 +32542,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "tux3"
    ]
@@ -32488,7 +32595,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "tux3"
    ]
@@ -32552,7 +32659,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "tux3"
    ]
@@ -32877,7 +32984,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ufs"
    ]
@@ -32930,7 +33037,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ufs"
    ]
@@ -32994,7 +33101,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ufs"
    ]
@@ -33319,7 +33426,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ufs2"
    ]
@@ -33372,7 +33479,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ufs2"
    ]
@@ -33436,7 +33543,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ufs2"
    ]
@@ -33761,7 +33868,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "umsdos"
    ]
@@ -33814,7 +33921,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "umsdos"
    ]
@@ -33878,7 +33985,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "umsdos"
    ]
@@ -34203,7 +34310,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "vfat"
    ]
@@ -34256,7 +34363,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "vfat"
    ]
@@ -34320,7 +34427,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "vfat"
    ]
@@ -34645,7 +34752,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "vxfs"
    ]
@@ -34698,7 +34805,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "vxfs"
    ]
@@ -34762,7 +34869,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "vxfs"
    ]
@@ -35087,7 +35194,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "xfs"
    ]
@@ -35140,7 +35247,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "xfs"
    ]
@@ -35204,7 +35311,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "xfs"
    ]
@@ -35529,7 +35636,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "xia"
    ]
@@ -35582,7 +35689,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "xia"
    ]
@@ -35646,7 +35753,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "xia"
    ]
@@ -35961,7 +36068,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "zfs"
    ]
@@ -36014,7 +36121,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "zfs"
    ]
@@ -36069,7 +36176,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "zfs"
    ]
@@ -36651,6 +36758,15 @@
     "cni"
    ]
   },
+  "svc/ip.docker.addr": {
+   "inherit": "leaf2head",
+   "recorded": true,
+   "scopable": true,
+   "textSum": "46a7620d310b134f",
+   "types": [
+    "docker"
+   ]
+  },
   "svc/ip.docker.alias": {
    "converter": "bool",
    "default": "true",
@@ -36794,7 +36910,7 @@
    "inherit": "leaf2head",
    "provisioning": true,
    "scopable": true,
-   "textSum": "b1f352c7b811910f",
+   "textSum": "3ef3b2de21aa18e8",
    "types": [
     "docker"
    ]
@@ -36871,7 +36987,7 @@
   "svc/ip.docker.network": {
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "f5f587e40c92e829",
+   "textSum": "1b53c473c6ab27e4",
    "types": [
     "docker"
    ]
@@ -37096,6 +37212,15 @@
     "docker"
    ]
   },
+  "svc/ip.host.addr": {
+   "inherit": "leaf2head",
+   "recorded": true,
+   "scopable": true,
+   "textSum": "0af3fa39a9c09b59",
+   "types": [
+    "host"
+   ]
+  },
   "svc/ip.host.alias": {
    "converter": "bool",
    "default": "true",
@@ -37185,9 +37310,8 @@
     "ipdev"
    ],
    "inherit": "leaf2head",
-   "required": true,
    "scopable": true,
-   "textSum": "613e560789ba8c48",
+   "textSum": "da97af962751d77b",
    "types": [
     "host"
    ]
@@ -37242,7 +37366,7 @@
    ],
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "35dbaa6e1c961d4d",
+   "textSum": "9bba46d15c466061",
    "types": [
     "host"
    ]
@@ -37257,9 +37381,8 @@
   },
   "svc/ip.host.network": {
    "inherit": "leaf2head",
-   "provisioning": true,
    "scopable": true,
-   "textSum": "a21e456693af62b5",
+   "textSum": "6c5bee19a587184c",
    "types": [
     "host"
    ]
@@ -37448,6 +37571,15 @@
     "host"
    ]
   },
+  "svc/ip.netns.addr": {
+   "inherit": "leaf2head",
+   "recorded": true,
+   "scopable": true,
+   "textSum": "46a7620d310b134f",
+   "types": [
+    "netns"
+   ]
+  },
   "svc/ip.netns.alias": {
    "converter": "bool",
    "default": "true",
@@ -37591,7 +37723,7 @@
    "inherit": "leaf2head",
    "provisioning": true,
    "scopable": true,
-   "textSum": "b1f352c7b811910f",
+   "textSum": "3ef3b2de21aa18e8",
    "types": [
     "netns"
    ]
@@ -37668,7 +37800,7 @@
   "svc/ip.netns.network": {
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "f5f587e40c92e829",
+   "textSum": "1b53c473c6ab27e4",
    "types": [
     "netns"
    ]
@@ -38893,7 +39025,7 @@
    "inherit": "leaf2head",
    "required": true,
    "scopable": true,
-   "textSum": "33850ccdb9b54714",
+   "textSum": "3ac40378937a9928",
    "types": [
     "nfs"
    ]
@@ -38902,7 +39034,7 @@
    "inherit": "leaf2head",
    "required": true,
    "scopable": true,
-   "textSum": "fe21df38b99ff57f",
+   "textSum": "fabf846cf4aea890",
    "types": [
     "nfs"
    ]
@@ -39077,6 +39209,505 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "394b027efd9631cc"
+  },
+  "svc/sync.btrfs.blocking_post_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "c70107344575c995",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.blocking_post_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "670f8bcb1620b71d",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.blocking_pre_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "9fb3c26ee8e36afb",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.blocking_pre_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "41e5d3b77e1dbabe",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.disable": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "49bfdfcbefd94317",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.dst": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "0d5e4bf3dddcbc65",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.encap": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "textSum": "0c8c8239e9cdaae0",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.max_delay": {
+   "aliases": [
+    "sync_max_delay"
+   ],
+   "converter": "duration",
+   "defaultOption": "sync_max_delay",
+   "inherit": "leaf2head",
+   "textSum": "6e32c0853da4ef1e",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.max_lag_age": {
+   "converter": "duration",
+   "default": "24h",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "ef258201058912ba",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.monitor": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "cdb8682c50827c0e",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.optional": {
+   "converter": "bool",
+   "inherit": "head2leaf",
+   "scopable": true,
+   "textSum": "336a573b0db15a9c",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.post_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "665e52a2df84b50e",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.post_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "6287cee55474b8af",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.pre_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "0b85cb1138f343c6",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.pre_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "9ade3c1f712bc65e",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.provision": {
+   "converter": "bool",
+   "default": "true",
+   "inherit": "leaf2head",
+   "textSum": "01116f63c52501c8",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.provision_requires": {
+   "inherit": "leaf2head",
+   "textSum": "ad0a44ebe3fee9cd",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.recursive": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "ee7d41521273a03f",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.schedule": {
+   "defaultOption": "sync_schedule",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "699dd64b8929cd02",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.shared": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "396381bd071a7633",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.src": {
+   "inherit": "leaf2head",
+   "required": true,
+   "scopable": true,
+   "textSum": "d7fa43deac2b09f0",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.standby": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "f27870259e8feb61",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.subset": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "483bd6645699eba5",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.tags": {
+   "converter": "set",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "27dd22c0175b2339",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.target": {
+   "candidates": [
+    "drpnodes",
+    "local",
+    "nodes"
+   ],
+   "converter": "list",
+   "inherit": "leaf2head",
+   "required": true,
+   "scopable": true,
+   "textSum": "fe0b4bb795a15bd8",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.timeout": {
+   "converter": "duration",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "aeaca1810c80b14a",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.unprovision": {
+   "converter": "bool",
+   "default": "true",
+   "inherit": "leaf2head",
+   "textSum": "9140a9f0579b5bf8",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.unprovision_requires": {
+   "inherit": "leaf2head",
+   "textSum": "6a7549e4cf90602b",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfs.update_requires": {
+   "aliases": [
+    "sync_drp_requires",
+    "sync_nodes_requires",
+    "sync_requires",
+    "sync_update_requires"
+   ],
+   "inherit": "leaf2head",
+   "textSum": "5fd08e0cfce8541c",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "svc/sync.btrfssnap.blocking_post_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "c70107344575c995",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.blocking_post_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "670f8bcb1620b71d",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.blocking_pre_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "9fb3c26ee8e36afb",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.blocking_pre_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "41e5d3b77e1dbabe",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.disable": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "49bfdfcbefd94317",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.encap": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "textSum": "0c8c8239e9cdaae0",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.keep": {
+   "converter": "int",
+   "default": "3",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "bee41e82f34761e9",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.max_delay": {
+   "aliases": [
+    "sync_max_delay"
+   ],
+   "converter": "duration",
+   "defaultOption": "sync_max_delay",
+   "inherit": "leaf2head",
+   "textSum": "6e32c0853da4ef1e",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.monitor": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "cdb8682c50827c0e",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.name": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "c4bb825d1fa34f34",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.optional": {
+   "converter": "bool",
+   "inherit": "head2leaf",
+   "scopable": true,
+   "textSum": "336a573b0db15a9c",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.post_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "665e52a2df84b50e",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.post_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "6287cee55474b8af",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.pre_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "0b85cb1138f343c6",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.pre_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "9ade3c1f712bc65e",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.provision": {
+   "converter": "bool",
+   "default": "true",
+   "inherit": "leaf2head",
+   "textSum": "01116f63c52501c8",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.provision_requires": {
+   "inherit": "leaf2head",
+   "textSum": "ad0a44ebe3fee9cd",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.recursive": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "950dec8c792da7cb",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.schedule": {
+   "defaultOption": "sync_schedule",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "699dd64b8929cd02",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.shared": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "396381bd071a7633",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.standby": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "f27870259e8feb61",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.subset": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "483bd6645699eba5",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.subvol": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "required": true,
+   "scopable": true,
+   "textSum": "b0b11e87c404931a",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.tags": {
+   "converter": "set",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "27dd22c0175b2339",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.unprovision": {
+   "converter": "bool",
+   "default": "true",
+   "inherit": "leaf2head",
+   "textSum": "9140a9f0579b5bf8",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.unprovision_requires": {
+   "inherit": "leaf2head",
+   "textSum": "6a7549e4cf90602b",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "svc/sync.btrfssnap.update_requires": {
+   "aliases": [
+    "sync_drp_requires",
+    "sync_nodes_requires",
+    "sync_requires",
+    "sync_update_requires"
+   ],
+   "inherit": "leaf2head",
+   "textSum": "5fd08e0cfce8541c",
+   "types": [
+    "btrfssnap"
+   ]
   },
   "svc/sync.rsync.blocking_post_provision": {
    "inherit": "leaf2head",
@@ -39266,7 +39897,7 @@
   "svc/sync.rsync.snap": {
    "converter": "bool",
    "inherit": "leaf2head",
-   "textSum": "4ccab84b54e7502b",
+   "textSum": "22b11e1ab53274bf",
    "types": [
     "rsync"
    ]
@@ -40505,6 +41136,15 @@
     "acme"
    ]
   },
+  "svc/task.acme.install": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "af7a85f6cb49cc0f",
+   "types": [
+    "acme"
+   ]
+  },
   "svc/task.acme.log": {
    "converter": "bool",
    "default": "true",
@@ -40534,6 +41174,15 @@
     "acme"
    ]
   },
+  "svc/task.acme.on": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "dcaa0e686de6da19",
+   "types": [
+    "acme"
+   ]
+  },
   "svc/task.acme.on_error": {
    "inherit": "leaf2head",
    "scopable": true,
@@ -40547,6 +41196,15 @@
    "inherit": "head2leaf",
    "scopable": true,
    "textSum": "336a573b0db15a9c",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.pace": {
+   "default": "@10s",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "1bf734333b2547ad",
    "types": [
     "acme"
    ]
@@ -40970,6 +41628,15 @@
     "docker"
    ]
   },
+  "svc/task.docker.install": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "af7a85f6cb49cc0f",
+   "types": [
+    "docker"
+   ]
+  },
   "svc/task.docker.interactive": {
    "converter": "bool",
    "inherit": "leaf2head",
@@ -41036,6 +41703,15 @@
     "docker"
    ]
   },
+  "svc/task.docker.on": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "dcaa0e686de6da19",
+   "types": [
+    "docker"
+   ]
+  },
   "svc/task.docker.on_error": {
    "inherit": "leaf2head",
    "scopable": true,
@@ -41057,6 +41733,15 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "b143794345fdf885",
+   "types": [
+    "docker"
+   ]
+  },
+  "svc/task.docker.pace": {
+   "default": "@10s",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "1bf734333b2547ad",
    "types": [
     "docker"
    ]
@@ -41472,6 +42157,14 @@
     "host"
    ]
   },
+  "svc/task.host.container": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "64bf3df799f76ac9",
+   "types": [
+    "host"
+   ]
+  },
   "svc/task.host.cwd": {
    "inherit": "leaf2head",
    "scopable": true,
@@ -41510,6 +42203,15 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "da4d7c28c532fc6c",
+   "types": [
+    "host"
+   ]
+  },
+  "svc/task.host.install": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "af7a85f6cb49cc0f",
    "types": [
     "host"
    ]
@@ -41642,6 +42344,15 @@
     "host"
    ]
   },
+  "svc/task.host.on": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "dcaa0e686de6da19",
+   "types": [
+    "host"
+   ]
+  },
   "svc/task.host.on_error": {
    "inherit": "leaf2head",
    "scopable": true,
@@ -41655,6 +42366,15 @@
    "inherit": "head2leaf",
    "scopable": true,
    "textSum": "336a573b0db15a9c",
+   "types": [
+    "host"
+   ]
+  },
+  "svc/task.host.pace": {
+   "default": "@10s",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "1bf734333b2547ad",
    "types": [
     "host"
    ]
@@ -42103,6 +42823,15 @@
     "oci"
    ]
   },
+  "svc/task.oci.install": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "af7a85f6cb49cc0f",
+   "types": [
+    "oci"
+   ]
+  },
   "svc/task.oci.interactive": {
    "converter": "bool",
    "inherit": "leaf2head",
@@ -42169,6 +42898,15 @@
     "oci"
    ]
   },
+  "svc/task.oci.on": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "dcaa0e686de6da19",
+   "types": [
+    "oci"
+   ]
+  },
   "svc/task.oci.on_error": {
    "inherit": "leaf2head",
    "scopable": true,
@@ -42190,6 +42928,15 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "b143794345fdf885",
+   "types": [
+    "oci"
+   ]
+  },
+  "svc/task.oci.pace": {
+   "default": "@10s",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "1bf734333b2547ad",
    "types": [
     "oci"
    ]
@@ -42771,6 +43518,15 @@
     "podman"
    ]
   },
+  "svc/task.podman.install": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "af7a85f6cb49cc0f",
+   "types": [
+    "podman"
+   ]
+  },
   "svc/task.podman.interactive": {
    "converter": "bool",
    "inherit": "leaf2head",
@@ -42837,6 +43593,15 @@
     "podman"
    ]
   },
+  "svc/task.podman.on": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "dcaa0e686de6da19",
+   "types": [
+    "podman"
+   ]
+  },
   "svc/task.podman.on_error": {
    "inherit": "leaf2head",
    "scopable": true,
@@ -42858,6 +43623,15 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "b143794345fdf885",
+   "types": [
+    "podman"
+   ]
+  },
+  "svc/task.podman.pace": {
+   "default": "@10s",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "1bf734333b2547ad",
    "types": [
     "podman"
    ]
@@ -43353,7 +44127,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     ""
    ]
@@ -43401,7 +44175,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     ""
    ]
@@ -43691,7 +44465,7 @@
    ],
    "defaultText": "The same as the node `env`.\n",
    "inherit": "head",
-   "textSum": "74afeba961a3e3c5"
+   "textSum": "d97422ac868a7f96"
   },
   "usr/DEFAULT.grant": {
    "converter": "listlowercase",
@@ -43801,7 +44575,7 @@
    ],
    "defaultText": "The same as the node `env`.\n",
    "inherit": "head",
-   "textSum": "74afeba961a3e3c5"
+   "textSum": "d97422ac868a7f96"
   },
   "vol/DEFAULT.flex_max": {
    "aliases": [
@@ -44214,7 +44988,7 @@
    "inherit": "leaf2head",
    "required": true,
    "scopable": true,
-   "textSum": "6e42270eb0e6f6bd",
+   "textSum": "d47ef123c3757cb8",
    "types": [
     "crypt"
    ]
@@ -44970,7 +45744,7 @@
   "vol/disk.drbd.network": {
    "inherit": "leaf2head",
    "provisioning": true,
-   "textSum": "2744c265e400df35",
+   "textSum": "ec2dcfa7c2acc9db",
    "types": [
     "drbd"
    ]
@@ -46498,7 +47272,7 @@
    "inherit": "leaf2head",
    "provisioning": true,
    "scopable": true,
-   "textSum": "c1b3465309ee07e9",
+   "textSum": "1eb16ab2ff85f214",
    "types": [
     "lvm"
    ]
@@ -46684,7 +47458,7 @@
    "inherit": "leaf2head",
    "provisioning": true,
    "scopable": true,
-   "textSum": "95b7c8120bf67d6a",
+   "textSum": "3c6cedc1b8d31ed1",
    "types": [
     "md"
    ]
@@ -47397,7 +48171,7 @@
    "inherit": "leaf2head",
    "required": true,
    "scopable": true,
-   "textSum": "eeccfaa630b9f302",
+   "textSum": "0f12a2965f866bad",
    "types": [
     "raw"
    ]
@@ -48220,7 +48994,7 @@
    "inherit": "leaf2head",
    "provisioning": true,
    "scopable": true,
-   "textSum": "c1b3465309ee07e9",
+   "textSum": "1eb16ab2ff85f214",
    "types": [
     "vg"
    ]
@@ -49402,7 +50176,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "9pfs"
    ]
@@ -49455,7 +50229,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "9pfs"
    ]
@@ -49519,7 +50293,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "9pfs"
    ]
@@ -49844,7 +50618,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "afs"
    ]
@@ -49897,7 +50671,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "afs"
    ]
@@ -49961,7 +50735,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "afs"
    ]
@@ -50286,7 +51060,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "bfs"
    ]
@@ -50339,7 +51113,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "bfs"
    ]
@@ -50403,7 +51177,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "bfs"
    ]
@@ -50728,7 +51502,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "bind"
    ]
@@ -50781,7 +51555,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "bind"
    ]
@@ -50845,7 +51619,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "bind"
    ]
@@ -51170,7 +51944,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "btrfs"
    ]
@@ -51223,7 +51997,17 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/fs.btrfs.label": {
+   "inherit": "leaf2head",
+   "provisioning": true,
+   "scopable": true,
+   "since": "v3.0.0-rc47",
+   "textSum": "348f547bc9926147",
    "types": [
     "btrfs"
    ]
@@ -51287,7 +52071,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "btrfs"
    ]
@@ -51484,6 +52268,15 @@
     "btrfs"
    ]
   },
+  "vol/fs.btrfs.subvol": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "since": "v3.0.0-rc47",
+   "textSum": "87fc7d6815c77589",
+   "types": [
+    "btrfs"
+   ]
+  },
   "vol/fs.btrfs.tags": {
    "converter": "set",
    "inherit": "leaf2head",
@@ -51612,7 +52405,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "cephfs"
    ]
@@ -51665,7 +52458,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "cephfs"
    ]
@@ -51729,7 +52522,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "cephfs"
    ]
@@ -52054,7 +52847,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "cifs"
    ]
@@ -52107,7 +52900,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "cifs"
    ]
@@ -52171,7 +52964,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "cifs"
    ]
@@ -52530,7 +53323,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "directory"
    ]
@@ -52557,7 +53350,7 @@
    "inherit": "leaf2head",
    "required": true,
    "scopable": true,
-   "textSum": "4760fa9ef52ebcf5",
+   "textSum": "38d3044595b263f5",
    "types": [
     "directory"
    ]
@@ -52567,7 +53360,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "directory"
    ]
@@ -52867,7 +53660,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ext2"
    ]
@@ -52920,7 +53713,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ext2"
    ]
@@ -52984,7 +53777,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ext2"
    ]
@@ -53309,7 +54102,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ext3"
    ]
@@ -53362,7 +54155,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ext3"
    ]
@@ -53426,7 +54219,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ext3"
    ]
@@ -53751,7 +54544,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ext4"
    ]
@@ -53804,7 +54597,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ext4"
    ]
@@ -53868,7 +54661,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ext4"
    ]
@@ -54193,7 +54986,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "f2fs"
    ]
@@ -54246,7 +55039,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "f2fs"
    ]
@@ -54310,7 +55103,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "f2fs"
    ]
@@ -54899,7 +55692,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "gfs"
    ]
@@ -54952,7 +55745,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "gfs"
    ]
@@ -55016,7 +55809,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "gfs"
    ]
@@ -55341,7 +56134,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "gfs2"
    ]
@@ -55394,7 +56187,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "gfs2"
    ]
@@ -55458,7 +56251,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "gfs2"
    ]
@@ -55783,7 +56576,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "glusterfs"
    ]
@@ -55836,7 +56629,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "glusterfs"
    ]
@@ -55900,7 +56693,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "glusterfs"
    ]
@@ -56225,7 +57018,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "gpfs"
    ]
@@ -56278,7 +57071,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "gpfs"
    ]
@@ -56342,7 +57135,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "gpfs"
    ]
@@ -56667,7 +57460,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "hfs"
    ]
@@ -56720,7 +57513,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "hfs"
    ]
@@ -56784,7 +57577,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "hfs"
    ]
@@ -57109,7 +57902,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "hfsplus"
    ]
@@ -57162,7 +57955,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "hfsplus"
    ]
@@ -57226,7 +58019,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "hfsplus"
    ]
@@ -57551,7 +58344,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "hpfs"
    ]
@@ -57604,7 +58397,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "hpfs"
    ]
@@ -57668,7 +58461,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "hpfs"
    ]
@@ -57993,7 +58786,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "jffs"
    ]
@@ -58046,7 +58839,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "jffs"
    ]
@@ -58110,7 +58903,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "jffs"
    ]
@@ -58435,7 +59228,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "jffs2"
    ]
@@ -58488,7 +59281,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "jffs2"
    ]
@@ -58552,7 +59345,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "jffs2"
    ]
@@ -58877,7 +59670,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "jfs"
    ]
@@ -58930,7 +59723,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "jfs"
    ]
@@ -58994,7 +59787,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "jfs"
    ]
@@ -59319,7 +60112,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "jfs2"
    ]
@@ -59372,7 +60165,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "jfs2"
    ]
@@ -59436,7 +60229,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "jfs2"
    ]
@@ -59761,7 +60554,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "lofs"
    ]
@@ -59814,7 +60607,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "lofs"
    ]
@@ -59878,7 +60671,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "lofs"
    ]
@@ -60203,7 +60996,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "logfs"
    ]
@@ -60256,7 +61049,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "logfs"
    ]
@@ -60320,7 +61113,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "logfs"
    ]
@@ -60645,7 +61438,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "minix"
    ]
@@ -60698,7 +61491,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "minix"
    ]
@@ -60762,7 +61555,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "minix"
    ]
@@ -61087,7 +61880,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "msdos"
    ]
@@ -61140,7 +61933,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "msdos"
    ]
@@ -61204,7 +61997,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "msdos"
    ]
@@ -61529,7 +62322,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ncpfs"
    ]
@@ -61582,7 +62375,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ncpfs"
    ]
@@ -61646,7 +62439,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ncpfs"
    ]
@@ -61971,7 +62764,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "nfs"
    ]
@@ -62024,7 +62817,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "nfs"
    ]
@@ -62088,7 +62881,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "nfs"
    ]
@@ -62413,7 +63206,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "nfs4"
    ]
@@ -62466,7 +63259,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "nfs4"
    ]
@@ -62530,7 +63323,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "nfs4"
    ]
@@ -62855,7 +63648,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "nilfs"
    ]
@@ -62908,7 +63701,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "nilfs"
    ]
@@ -62972,7 +63765,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "nilfs"
    ]
@@ -63297,7 +64090,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "none"
    ]
@@ -63350,7 +64143,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "none"
    ]
@@ -63414,7 +64207,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "none"
    ]
@@ -63739,7 +64532,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ntfs"
    ]
@@ -63792,7 +64585,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ntfs"
    ]
@@ -63856,7 +64649,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ntfs"
    ]
@@ -64181,7 +64974,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ocfs"
    ]
@@ -64234,7 +65027,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ocfs"
    ]
@@ -64298,7 +65091,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ocfs"
    ]
@@ -64623,7 +65416,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ocfs2"
    ]
@@ -64676,7 +65469,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ocfs2"
    ]
@@ -64740,7 +65533,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ocfs2"
    ]
@@ -65065,7 +65858,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "qnx4"
    ]
@@ -65118,7 +65911,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "qnx4"
    ]
@@ -65182,7 +65975,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "qnx4"
    ]
@@ -65507,7 +66300,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "reiserfs"
    ]
@@ -65560,7 +66353,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "reiserfs"
    ]
@@ -65624,7 +66417,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "reiserfs"
    ]
@@ -65949,7 +66742,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "reiserfs4"
    ]
@@ -66002,7 +66795,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "reiserfs4"
    ]
@@ -66066,7 +66859,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "reiserfs4"
    ]
@@ -66391,7 +67184,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "rpc_pipefs"
    ]
@@ -66444,7 +67237,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "rpc_pipefs"
    ]
@@ -66508,7 +67301,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "rpc_pipefs"
    ]
@@ -66833,7 +67626,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "sgcp_nfs"
    ]
@@ -66912,7 +67705,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "sgcp_nfs"
    ]
@@ -66957,7 +67750,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "sgcp_nfs"
    ]
@@ -67306,7 +68099,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "smbfs"
    ]
@@ -67359,7 +68152,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "smbfs"
    ]
@@ -67423,7 +68216,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "smbfs"
    ]
@@ -67748,7 +68541,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "tmpfs"
    ]
@@ -67801,7 +68594,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "tmpfs"
    ]
@@ -67875,7 +68668,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "tmpfs"
    ]
@@ -68211,7 +69004,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "tux3"
    ]
@@ -68264,7 +69057,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "tux3"
    ]
@@ -68328,7 +69121,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "tux3"
    ]
@@ -68653,7 +69446,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ufs"
    ]
@@ -68706,7 +69499,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ufs"
    ]
@@ -68770,7 +69563,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ufs"
    ]
@@ -69095,7 +69888,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "ufs2"
    ]
@@ -69148,7 +69941,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "ufs2"
    ]
@@ -69212,7 +70005,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "ufs2"
    ]
@@ -69537,7 +70330,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "umsdos"
    ]
@@ -69590,7 +70383,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "umsdos"
    ]
@@ -69654,7 +70447,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "umsdos"
    ]
@@ -69979,7 +70772,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "vfat"
    ]
@@ -70032,7 +70825,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "vfat"
    ]
@@ -70096,7 +70889,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "vfat"
    ]
@@ -70421,7 +71214,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "vxfs"
    ]
@@ -70474,7 +71267,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "vxfs"
    ]
@@ -70538,7 +71331,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "vxfs"
    ]
@@ -70863,7 +71656,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "xfs"
    ]
@@ -70916,7 +71709,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "xfs"
    ]
@@ -70980,7 +71773,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "xfs"
    ]
@@ -71305,7 +72098,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "xia"
    ]
@@ -71358,7 +72151,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "xia"
    ]
@@ -71422,7 +72215,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "xia"
    ]
@@ -71737,7 +72530,7 @@
    "default": "none",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "d8787849910eb2f0",
+   "textSum": "a22420ba9c24d11c",
    "types": [
     "zfs"
    ]
@@ -71790,7 +72583,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     "zfs"
    ]
@@ -71845,7 +72638,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     "zfs"
    ]
@@ -72522,7 +73315,7 @@
    "inherit": "leaf2head",
    "required": true,
    "scopable": true,
-   "textSum": "33850ccdb9b54714",
+   "textSum": "3ac40378937a9928",
    "types": [
     "nfs"
    ]
@@ -72531,7 +73324,7 @@
    "inherit": "leaf2head",
    "required": true,
    "scopable": true,
-   "textSum": "fe21df38b99ff57f",
+   "textSum": "fabf846cf4aea890",
    "types": [
     "nfs"
    ]
@@ -72706,6 +73499,505 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "394b027efd9631cc"
+  },
+  "vol/sync.btrfs.blocking_post_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "c70107344575c995",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.blocking_post_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "670f8bcb1620b71d",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.blocking_pre_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "9fb3c26ee8e36afb",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.blocking_pre_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "41e5d3b77e1dbabe",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.disable": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "49bfdfcbefd94317",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.dst": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "0d5e4bf3dddcbc65",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.encap": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "textSum": "0c8c8239e9cdaae0",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.max_delay": {
+   "aliases": [
+    "sync_max_delay"
+   ],
+   "converter": "duration",
+   "defaultOption": "sync_max_delay",
+   "inherit": "leaf2head",
+   "textSum": "6e32c0853da4ef1e",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.max_lag_age": {
+   "converter": "duration",
+   "default": "24h",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "ef258201058912ba",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.monitor": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "cdb8682c50827c0e",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.optional": {
+   "converter": "bool",
+   "inherit": "head2leaf",
+   "scopable": true,
+   "textSum": "336a573b0db15a9c",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.post_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "665e52a2df84b50e",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.post_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "6287cee55474b8af",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.pre_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "0b85cb1138f343c6",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.pre_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "9ade3c1f712bc65e",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.provision": {
+   "converter": "bool",
+   "default": "true",
+   "inherit": "leaf2head",
+   "textSum": "01116f63c52501c8",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.provision_requires": {
+   "inherit": "leaf2head",
+   "textSum": "ad0a44ebe3fee9cd",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.recursive": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "ee7d41521273a03f",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.schedule": {
+   "defaultOption": "sync_schedule",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "699dd64b8929cd02",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.shared": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "396381bd071a7633",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.src": {
+   "inherit": "leaf2head",
+   "required": true,
+   "scopable": true,
+   "textSum": "d7fa43deac2b09f0",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.standby": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "f27870259e8feb61",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.subset": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "483bd6645699eba5",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.tags": {
+   "converter": "set",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "27dd22c0175b2339",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.target": {
+   "candidates": [
+    "drpnodes",
+    "local",
+    "nodes"
+   ],
+   "converter": "list",
+   "inherit": "leaf2head",
+   "required": true,
+   "scopable": true,
+   "textSum": "fe0b4bb795a15bd8",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.timeout": {
+   "converter": "duration",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "aeaca1810c80b14a",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.unprovision": {
+   "converter": "bool",
+   "default": "true",
+   "inherit": "leaf2head",
+   "textSum": "9140a9f0579b5bf8",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.unprovision_requires": {
+   "inherit": "leaf2head",
+   "textSum": "6a7549e4cf90602b",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfs.update_requires": {
+   "aliases": [
+    "sync_drp_requires",
+    "sync_nodes_requires",
+    "sync_requires",
+    "sync_update_requires"
+   ],
+   "inherit": "leaf2head",
+   "textSum": "5fd08e0cfce8541c",
+   "types": [
+    "btrfs"
+   ]
+  },
+  "vol/sync.btrfssnap.blocking_post_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "c70107344575c995",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.blocking_post_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "670f8bcb1620b71d",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.blocking_pre_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "9fb3c26ee8e36afb",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.blocking_pre_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "41e5d3b77e1dbabe",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.disable": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "49bfdfcbefd94317",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.encap": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "textSum": "0c8c8239e9cdaae0",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.keep": {
+   "converter": "int",
+   "default": "3",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "bee41e82f34761e9",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.max_delay": {
+   "aliases": [
+    "sync_max_delay"
+   ],
+   "converter": "duration",
+   "defaultOption": "sync_max_delay",
+   "inherit": "leaf2head",
+   "textSum": "6e32c0853da4ef1e",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.monitor": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "cdb8682c50827c0e",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.name": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "c4bb825d1fa34f34",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.optional": {
+   "converter": "bool",
+   "inherit": "head2leaf",
+   "scopable": true,
+   "textSum": "336a573b0db15a9c",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.post_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "665e52a2df84b50e",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.post_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "6287cee55474b8af",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.pre_provision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "0b85cb1138f343c6",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.pre_unprovision": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "9ade3c1f712bc65e",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.provision": {
+   "converter": "bool",
+   "default": "true",
+   "inherit": "leaf2head",
+   "textSum": "01116f63c52501c8",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.provision_requires": {
+   "inherit": "leaf2head",
+   "textSum": "ad0a44ebe3fee9cd",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.recursive": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "950dec8c792da7cb",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.schedule": {
+   "defaultOption": "sync_schedule",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "699dd64b8929cd02",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.shared": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "396381bd071a7633",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.standby": {
+   "converter": "bool",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "f27870259e8feb61",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.subset": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "483bd6645699eba5",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.subvol": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "required": true,
+   "scopable": true,
+   "textSum": "b0b11e87c404931a",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.tags": {
+   "converter": "set",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "27dd22c0175b2339",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.unprovision": {
+   "converter": "bool",
+   "default": "true",
+   "inherit": "leaf2head",
+   "textSum": "9140a9f0579b5bf8",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.unprovision_requires": {
+   "inherit": "leaf2head",
+   "textSum": "6a7549e4cf90602b",
+   "types": [
+    "btrfssnap"
+   ]
+  },
+  "vol/sync.btrfssnap.update_requires": {
+   "aliases": [
+    "sync_drp_requires",
+    "sync_nodes_requires",
+    "sync_requires",
+    "sync_update_requires"
+   ],
+   "inherit": "leaf2head",
+   "textSum": "5fd08e0cfce8541c",
+   "types": [
+    "btrfssnap"
+   ]
   },
   "vol/sync.rsync.blocking_post_provision": {
    "inherit": "leaf2head",
@@ -72895,7 +74187,7 @@
   "vol/sync.rsync.snap": {
    "converter": "bool",
    "inherit": "leaf2head",
-   "textSum": "4ccab84b54e7502b",
+   "textSum": "22b11e1ab53274bf",
    "types": [
     "rsync"
    ]
@@ -74282,6 +75574,15 @@
     "docker"
    ]
   },
+  "vol/task.docker.install": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "af7a85f6cb49cc0f",
+   "types": [
+    "docker"
+   ]
+  },
   "vol/task.docker.interactive": {
    "converter": "bool",
    "inherit": "leaf2head",
@@ -74348,6 +75649,15 @@
     "docker"
    ]
   },
+  "vol/task.docker.on": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "dcaa0e686de6da19",
+   "types": [
+    "docker"
+   ]
+  },
   "vol/task.docker.on_error": {
    "inherit": "leaf2head",
    "scopable": true,
@@ -74369,6 +75679,15 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "b143794345fdf885",
+   "types": [
+    "docker"
+   ]
+  },
+  "vol/task.docker.pace": {
+   "default": "@10s",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "1bf734333b2547ad",
    "types": [
     "docker"
    ]
@@ -74784,6 +76103,14 @@
     "host"
    ]
   },
+  "vol/task.host.container": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "64bf3df799f76ac9",
+   "types": [
+    "host"
+   ]
+  },
   "vol/task.host.cwd": {
    "inherit": "leaf2head",
    "scopable": true,
@@ -74822,6 +76149,15 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "da4d7c28c532fc6c",
+   "types": [
+    "host"
+   ]
+  },
+  "vol/task.host.install": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "af7a85f6cb49cc0f",
    "types": [
     "host"
    ]
@@ -74954,6 +76290,15 @@
     "host"
    ]
   },
+  "vol/task.host.on": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "dcaa0e686de6da19",
+   "types": [
+    "host"
+   ]
+  },
   "vol/task.host.on_error": {
    "inherit": "leaf2head",
    "scopable": true,
@@ -74967,6 +76312,15 @@
    "inherit": "head2leaf",
    "scopable": true,
    "textSum": "336a573b0db15a9c",
+   "types": [
+    "host"
+   ]
+  },
+  "vol/task.host.pace": {
+   "default": "@10s",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "1bf734333b2547ad",
    "types": [
     "host"
    ]
@@ -75415,6 +76769,15 @@
     "oci"
    ]
   },
+  "vol/task.oci.install": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "af7a85f6cb49cc0f",
+   "types": [
+    "oci"
+   ]
+  },
   "vol/task.oci.interactive": {
    "converter": "bool",
    "inherit": "leaf2head",
@@ -75481,6 +76844,15 @@
     "oci"
    ]
   },
+  "vol/task.oci.on": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "dcaa0e686de6da19",
+   "types": [
+    "oci"
+   ]
+  },
   "vol/task.oci.on_error": {
    "inherit": "leaf2head",
    "scopable": true,
@@ -75502,6 +76874,15 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "b143794345fdf885",
+   "types": [
+    "oci"
+   ]
+  },
+  "vol/task.oci.pace": {
+   "default": "@10s",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "1bf734333b2547ad",
    "types": [
     "oci"
    ]
@@ -76083,6 +77464,15 @@
     "podman"
    ]
   },
+  "vol/task.podman.install": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "af7a85f6cb49cc0f",
+   "types": [
+    "podman"
+   ]
+  },
   "vol/task.podman.interactive": {
    "converter": "bool",
    "inherit": "leaf2head",
@@ -76149,6 +77539,15 @@
     "podman"
    ]
   },
+  "vol/task.podman.on": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "dcaa0e686de6da19",
+   "types": [
+    "podman"
+   ]
+  },
   "vol/task.podman.on_error": {
    "inherit": "leaf2head",
    "scopable": true,
@@ -76170,6 +77569,15 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "b143794345fdf885",
+   "types": [
+    "podman"
+   ]
+  },
+  "vol/task.podman.pace": {
+   "default": "@10s",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "1bf734333b2547ad",
    "types": [
     "podman"
    ]
@@ -76665,7 +78073,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c155b35416a47256",
+   "textSum": "1d7ef995c34d9270",
    "types": [
     ""
    ]
@@ -76713,7 +78121,7 @@
    "defaultText": "If `perm` is not set,\n* the permission of files from sec objects defaults to 0600\n* the permission of other files defaults to 0644\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "01a5e00c99cdea95",
+   "textSum": "5901fd62c4758c32",
    "types": [
     ""
    ]
@@ -76948,5 +78356,5 @@
    ]
   }
  },
- "version": "v3.0.0-rc46"
+ "version": "v3.0.0-rc48"
 }

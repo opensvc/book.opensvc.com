@@ -1,7 +1,882 @@
 # Keyword changes
 
-What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc46.
+What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc48.
 
+
+## v3.0.0-rc48
+
+
+### Added
+
+- `cluster/network.lan.dev`
+- `cluster/network.lan.gateway`
+- `cluster/network.lan.network`
+- `cluster/network.lan.ranges`
+- `cluster/node.allow_envs`
+- `cluster/pool.drbd.network`
+- `node/network.lan.dev`
+- `node/network.lan.gateway`
+- `node/network.lan.network`
+- `node/network.lan.ranges`
+- `node/node.allow_envs`
+- `node/pool.drbd.network`
+- `svc/fs.btrfs.label`
+- `svc/fs.btrfs.subvol`
+- `svc/ip.docker.addr`
+- `svc/ip.host.addr`
+- `svc/ip.netns.addr`
+- `svc/sync.btrfs.blocking_post_provision`
+- `svc/sync.btrfs.blocking_post_unprovision`
+- `svc/sync.btrfs.blocking_pre_provision`
+- `svc/sync.btrfs.blocking_pre_unprovision`
+- `svc/sync.btrfs.disable`
+- `svc/sync.btrfs.dst`
+- `svc/sync.btrfs.encap`
+- `svc/sync.btrfs.max_delay`
+- `svc/sync.btrfs.max_lag_age`
+- `svc/sync.btrfs.monitor`
+- `svc/sync.btrfs.optional`
+- `svc/sync.btrfs.post_provision`
+- `svc/sync.btrfs.post_unprovision`
+- `svc/sync.btrfs.pre_provision`
+- `svc/sync.btrfs.pre_unprovision`
+- `svc/sync.btrfs.provision`
+- `svc/sync.btrfs.provision_requires`
+- `svc/sync.btrfs.recursive`
+- `svc/sync.btrfs.schedule`
+- `svc/sync.btrfs.shared`
+- `svc/sync.btrfs.src`
+- `svc/sync.btrfs.standby`
+- `svc/sync.btrfs.subset`
+- `svc/sync.btrfs.tags`
+- `svc/sync.btrfs.target`
+- `svc/sync.btrfs.timeout`
+- `svc/sync.btrfs.unprovision`
+- `svc/sync.btrfs.unprovision_requires`
+- `svc/sync.btrfs.update_requires`
+- `svc/sync.btrfssnap.blocking_post_provision`
+- `svc/sync.btrfssnap.blocking_post_unprovision`
+- `svc/sync.btrfssnap.blocking_pre_provision`
+- `svc/sync.btrfssnap.blocking_pre_unprovision`
+- `svc/sync.btrfssnap.disable`
+- `svc/sync.btrfssnap.encap`
+- `svc/sync.btrfssnap.keep`
+- `svc/sync.btrfssnap.max_delay`
+- `svc/sync.btrfssnap.monitor`
+- `svc/sync.btrfssnap.name`
+- `svc/sync.btrfssnap.optional`
+- `svc/sync.btrfssnap.post_provision`
+- `svc/sync.btrfssnap.post_unprovision`
+- `svc/sync.btrfssnap.pre_provision`
+- `svc/sync.btrfssnap.pre_unprovision`
+- `svc/sync.btrfssnap.provision`
+- `svc/sync.btrfssnap.provision_requires`
+- `svc/sync.btrfssnap.recursive`
+- `svc/sync.btrfssnap.schedule`
+- `svc/sync.btrfssnap.shared`
+- `svc/sync.btrfssnap.standby`
+- `svc/sync.btrfssnap.subset`
+- `svc/sync.btrfssnap.subvol`
+- `svc/sync.btrfssnap.tags`
+- `svc/sync.btrfssnap.unprovision`
+- `svc/sync.btrfssnap.unprovision_requires`
+- `svc/sync.btrfssnap.update_requires`
+- `svc/task.acme.install`
+- `svc/task.acme.on`
+- `svc/task.acme.pace`
+- `svc/task.docker.install`
+- `svc/task.docker.on`
+- `svc/task.docker.pace`
+- `svc/task.host.container`
+- `svc/task.host.install`
+- `svc/task.host.on`
+- `svc/task.host.pace`
+- `svc/task.oci.install`
+- `svc/task.oci.on`
+- `svc/task.oci.pace`
+- `svc/task.podman.install`
+- `svc/task.podman.on`
+- `svc/task.podman.pace`
+- `vol/fs.btrfs.label`
+- `vol/fs.btrfs.subvol`
+- `vol/sync.btrfs.blocking_post_provision`
+- `vol/sync.btrfs.blocking_post_unprovision`
+- `vol/sync.btrfs.blocking_pre_provision`
+- `vol/sync.btrfs.blocking_pre_unprovision`
+- `vol/sync.btrfs.disable`
+- `vol/sync.btrfs.dst`
+- `vol/sync.btrfs.encap`
+- `vol/sync.btrfs.max_delay`
+- `vol/sync.btrfs.max_lag_age`
+- `vol/sync.btrfs.monitor`
+- `vol/sync.btrfs.optional`
+- `vol/sync.btrfs.post_provision`
+- `vol/sync.btrfs.post_unprovision`
+- `vol/sync.btrfs.pre_provision`
+- `vol/sync.btrfs.pre_unprovision`
+- `vol/sync.btrfs.provision`
+- `vol/sync.btrfs.provision_requires`
+- `vol/sync.btrfs.recursive`
+- `vol/sync.btrfs.schedule`
+- `vol/sync.btrfs.shared`
+- `vol/sync.btrfs.src`
+- `vol/sync.btrfs.standby`
+- `vol/sync.btrfs.subset`
+- `vol/sync.btrfs.tags`
+- `vol/sync.btrfs.target`
+- `vol/sync.btrfs.timeout`
+- `vol/sync.btrfs.unprovision`
+- `vol/sync.btrfs.unprovision_requires`
+- `vol/sync.btrfs.update_requires`
+- `vol/sync.btrfssnap.blocking_post_provision`
+- `vol/sync.btrfssnap.blocking_post_unprovision`
+- `vol/sync.btrfssnap.blocking_pre_provision`
+- `vol/sync.btrfssnap.blocking_pre_unprovision`
+- `vol/sync.btrfssnap.disable`
+- `vol/sync.btrfssnap.encap`
+- `vol/sync.btrfssnap.keep`
+- `vol/sync.btrfssnap.max_delay`
+- `vol/sync.btrfssnap.monitor`
+- `vol/sync.btrfssnap.name`
+- `vol/sync.btrfssnap.optional`
+- `vol/sync.btrfssnap.post_provision`
+- `vol/sync.btrfssnap.post_unprovision`
+- `vol/sync.btrfssnap.pre_provision`
+- `vol/sync.btrfssnap.pre_unprovision`
+- `vol/sync.btrfssnap.provision`
+- `vol/sync.btrfssnap.provision_requires`
+- `vol/sync.btrfssnap.recursive`
+- `vol/sync.btrfssnap.schedule`
+- `vol/sync.btrfssnap.shared`
+- `vol/sync.btrfssnap.standby`
+- `vol/sync.btrfssnap.subset`
+- `vol/sync.btrfssnap.subvol`
+- `vol/sync.btrfssnap.tags`
+- `vol/sync.btrfssnap.unprovision`
+- `vol/sync.btrfssnap.unprovision_requires`
+- `vol/sync.btrfssnap.update_requires`
+- `vol/task.docker.install`
+- `vol/task.docker.on`
+- `vol/task.docker.pace`
+- `vol/task.host.container`
+- `vol/task.host.install`
+- `vol/task.host.on`
+- `vol/task.host.pace`
+- `vol/task.oci.install`
+- `vol/task.oci.on`
+- `vol/task.oci.pace`
+- `vol/task.podman.install`
+- `vol/task.podman.on`
+- `vol/task.podman.pace`
+
+### Changed
+
+- `cfg/DEFAULT.env`
+  - description rewritten
+- `cluster/arbitrator.uri`
+  - description rewritten
+- `cluster/collector.url`
+  - description rewritten
+- `cluster/network.type`
+  - candidates: bridge, routed_bridge -> bridge, lan, routed_bridge
+  - description rewritten
+- `cluster/node.collector`
+  - description rewritten
+- `cluster/node.env`
+  - description rewritten
+- `node/arbitrator.uri`
+  - description rewritten
+- `node/collector.url`
+  - description rewritten
+- `node/network.type`
+  - candidates: bridge, routed_bridge -> bridge, lan, routed_bridge
+  - description rewritten
+- `node/node.collector`
+  - description rewritten
+- `node/node.env`
+  - description rewritten
+- `sec/DEFAULT.env`
+  - description rewritten
+- `sec/acme.directory`
+  - description rewritten
+- `svc/DEFAULT.env`
+  - description rewritten
+- `svc/disk.crypt.dev`
+  - description rewritten
+- `svc/disk.drbd.network`
+  - description rewritten
+- `svc/disk.lvm.pvs`
+  - description rewritten
+- `svc/disk.md.devs`
+  - description rewritten
+- `svc/disk.raw.devs`
+  - description rewritten
+- `svc/disk.vg.pvs`
+  - description rewritten
+- `svc/fs.9pfs.dev`
+  - description rewritten
+- `svc/fs.9pfs.install`
+  - description rewritten
+- `svc/fs.9pfs.perm`
+  - description rewritten
+- `svc/fs.afs.dev`
+  - description rewritten
+- `svc/fs.afs.install`
+  - description rewritten
+- `svc/fs.afs.perm`
+  - description rewritten
+- `svc/fs.bfs.dev`
+  - description rewritten
+- `svc/fs.bfs.install`
+  - description rewritten
+- `svc/fs.bfs.perm`
+  - description rewritten
+- `svc/fs.bind.dev`
+  - description rewritten
+- `svc/fs.bind.install`
+  - description rewritten
+- `svc/fs.bind.perm`
+  - description rewritten
+- `svc/fs.btrfs.dev`
+  - description rewritten
+- `svc/fs.btrfs.install`
+  - description rewritten
+- `svc/fs.btrfs.perm`
+  - description rewritten
+- `svc/fs.cephfs.dev`
+  - description rewritten
+- `svc/fs.cephfs.install`
+  - description rewritten
+- `svc/fs.cephfs.perm`
+  - description rewritten
+- `svc/fs.cifs.dev`
+  - description rewritten
+- `svc/fs.cifs.install`
+  - description rewritten
+- `svc/fs.cifs.perm`
+  - description rewritten
+- `svc/fs.directory.install`
+  - description rewritten
+- `svc/fs.directory.path`
+  - description rewritten
+- `svc/fs.directory.perm`
+  - description rewritten
+- `svc/fs.ext2.dev`
+  - description rewritten
+- `svc/fs.ext2.install`
+  - description rewritten
+- `svc/fs.ext2.perm`
+  - description rewritten
+- `svc/fs.ext3.dev`
+  - description rewritten
+- `svc/fs.ext3.install`
+  - description rewritten
+- `svc/fs.ext3.perm`
+  - description rewritten
+- `svc/fs.ext4.dev`
+  - description rewritten
+- `svc/fs.ext4.install`
+  - description rewritten
+- `svc/fs.ext4.perm`
+  - description rewritten
+- `svc/fs.f2fs.dev`
+  - description rewritten
+- `svc/fs.f2fs.install`
+  - description rewritten
+- `svc/fs.f2fs.perm`
+  - description rewritten
+- `svc/fs.gfs.dev`
+  - description rewritten
+- `svc/fs.gfs.install`
+  - description rewritten
+- `svc/fs.gfs.perm`
+  - description rewritten
+- `svc/fs.gfs2.dev`
+  - description rewritten
+- `svc/fs.gfs2.install`
+  - description rewritten
+- `svc/fs.gfs2.perm`
+  - description rewritten
+- `svc/fs.glusterfs.dev`
+  - description rewritten
+- `svc/fs.glusterfs.install`
+  - description rewritten
+- `svc/fs.glusterfs.perm`
+  - description rewritten
+- `svc/fs.gpfs.dev`
+  - description rewritten
+- `svc/fs.gpfs.install`
+  - description rewritten
+- `svc/fs.gpfs.perm`
+  - description rewritten
+- `svc/fs.hfs.dev`
+  - description rewritten
+- `svc/fs.hfs.install`
+  - description rewritten
+- `svc/fs.hfs.perm`
+  - description rewritten
+- `svc/fs.hfsplus.dev`
+  - description rewritten
+- `svc/fs.hfsplus.install`
+  - description rewritten
+- `svc/fs.hfsplus.perm`
+  - description rewritten
+- `svc/fs.hpfs.dev`
+  - description rewritten
+- `svc/fs.hpfs.install`
+  - description rewritten
+- `svc/fs.hpfs.perm`
+  - description rewritten
+- `svc/fs.jffs.dev`
+  - description rewritten
+- `svc/fs.jffs.install`
+  - description rewritten
+- `svc/fs.jffs.perm`
+  - description rewritten
+- `svc/fs.jffs2.dev`
+  - description rewritten
+- `svc/fs.jffs2.install`
+  - description rewritten
+- `svc/fs.jffs2.perm`
+  - description rewritten
+- `svc/fs.jfs.dev`
+  - description rewritten
+- `svc/fs.jfs.install`
+  - description rewritten
+- `svc/fs.jfs.perm`
+  - description rewritten
+- `svc/fs.jfs2.dev`
+  - description rewritten
+- `svc/fs.jfs2.install`
+  - description rewritten
+- `svc/fs.jfs2.perm`
+  - description rewritten
+- `svc/fs.lofs.dev`
+  - description rewritten
+- `svc/fs.lofs.install`
+  - description rewritten
+- `svc/fs.lofs.perm`
+  - description rewritten
+- `svc/fs.logfs.dev`
+  - description rewritten
+- `svc/fs.logfs.install`
+  - description rewritten
+- `svc/fs.logfs.perm`
+  - description rewritten
+- `svc/fs.minix.dev`
+  - description rewritten
+- `svc/fs.minix.install`
+  - description rewritten
+- `svc/fs.minix.perm`
+  - description rewritten
+- `svc/fs.msdos.dev`
+  - description rewritten
+- `svc/fs.msdos.install`
+  - description rewritten
+- `svc/fs.msdos.perm`
+  - description rewritten
+- `svc/fs.ncpfs.dev`
+  - description rewritten
+- `svc/fs.ncpfs.install`
+  - description rewritten
+- `svc/fs.ncpfs.perm`
+  - description rewritten
+- `svc/fs.nfs.dev`
+  - description rewritten
+- `svc/fs.nfs.install`
+  - description rewritten
+- `svc/fs.nfs.perm`
+  - description rewritten
+- `svc/fs.nfs4.dev`
+  - description rewritten
+- `svc/fs.nfs4.install`
+  - description rewritten
+- `svc/fs.nfs4.perm`
+  - description rewritten
+- `svc/fs.nilfs.dev`
+  - description rewritten
+- `svc/fs.nilfs.install`
+  - description rewritten
+- `svc/fs.nilfs.perm`
+  - description rewritten
+- `svc/fs.none.dev`
+  - description rewritten
+- `svc/fs.none.install`
+  - description rewritten
+- `svc/fs.none.perm`
+  - description rewritten
+- `svc/fs.ntfs.dev`
+  - description rewritten
+- `svc/fs.ntfs.install`
+  - description rewritten
+- `svc/fs.ntfs.perm`
+  - description rewritten
+- `svc/fs.ocfs.dev`
+  - description rewritten
+- `svc/fs.ocfs.install`
+  - description rewritten
+- `svc/fs.ocfs.perm`
+  - description rewritten
+- `svc/fs.ocfs2.dev`
+  - description rewritten
+- `svc/fs.ocfs2.install`
+  - description rewritten
+- `svc/fs.ocfs2.perm`
+  - description rewritten
+- `svc/fs.qnx4.dev`
+  - description rewritten
+- `svc/fs.qnx4.install`
+  - description rewritten
+- `svc/fs.qnx4.perm`
+  - description rewritten
+- `svc/fs.reiserfs.dev`
+  - description rewritten
+- `svc/fs.reiserfs.install`
+  - description rewritten
+- `svc/fs.reiserfs.perm`
+  - description rewritten
+- `svc/fs.reiserfs4.dev`
+  - description rewritten
+- `svc/fs.reiserfs4.install`
+  - description rewritten
+- `svc/fs.reiserfs4.perm`
+  - description rewritten
+- `svc/fs.rpc_pipefs.dev`
+  - description rewritten
+- `svc/fs.rpc_pipefs.install`
+  - description rewritten
+- `svc/fs.rpc_pipefs.perm`
+  - description rewritten
+- `svc/fs.sgcp_nfs.dev`
+  - description rewritten
+- `svc/fs.sgcp_nfs.install`
+  - description rewritten
+- `svc/fs.sgcp_nfs.perm`
+  - description rewritten
+- `svc/fs.smbfs.dev`
+  - description rewritten
+- `svc/fs.smbfs.install`
+  - description rewritten
+- `svc/fs.smbfs.perm`
+  - description rewritten
+- `svc/fs.tmpfs.dev`
+  - description rewritten
+- `svc/fs.tmpfs.install`
+  - description rewritten
+- `svc/fs.tmpfs.perm`
+  - description rewritten
+- `svc/fs.tux3.dev`
+  - description rewritten
+- `svc/fs.tux3.install`
+  - description rewritten
+- `svc/fs.tux3.perm`
+  - description rewritten
+- `svc/fs.ufs.dev`
+  - description rewritten
+- `svc/fs.ufs.install`
+  - description rewritten
+- `svc/fs.ufs.perm`
+  - description rewritten
+- `svc/fs.ufs2.dev`
+  - description rewritten
+- `svc/fs.ufs2.install`
+  - description rewritten
+- `svc/fs.ufs2.perm`
+  - description rewritten
+- `svc/fs.umsdos.dev`
+  - description rewritten
+- `svc/fs.umsdos.install`
+  - description rewritten
+- `svc/fs.umsdos.perm`
+  - description rewritten
+- `svc/fs.vfat.dev`
+  - description rewritten
+- `svc/fs.vfat.install`
+  - description rewritten
+- `svc/fs.vfat.perm`
+  - description rewritten
+- `svc/fs.vxfs.dev`
+  - description rewritten
+- `svc/fs.vxfs.install`
+  - description rewritten
+- `svc/fs.vxfs.perm`
+  - description rewritten
+- `svc/fs.xfs.dev`
+  - description rewritten
+- `svc/fs.xfs.install`
+  - description rewritten
+- `svc/fs.xfs.perm`
+  - description rewritten
+- `svc/fs.xia.dev`
+  - description rewritten
+- `svc/fs.xia.install`
+  - description rewritten
+- `svc/fs.xia.perm`
+  - description rewritten
+- `svc/fs.zfs.dev`
+  - description rewritten
+- `svc/fs.zfs.install`
+  - description rewritten
+- `svc/fs.zfs.perm`
+  - description rewritten
+- `svc/ip.docker.gateway`
+  - description rewritten
+- `svc/ip.docker.network`
+  - description rewritten
+- `svc/ip.host.dev`
+  - required: true -> unset
+  - description rewritten
+- `svc/ip.host.name`
+  - description rewritten
+- `svc/ip.host.network`
+  - provisioning: true -> unset
+  - description rewritten
+- `svc/ip.netns.gateway`
+  - description rewritten
+- `svc/ip.netns.network`
+  - description rewritten
+- `svc/share.nfs.opts`
+  - description rewritten
+- `svc/share.nfs.path`
+  - description rewritten
+- `svc/sync.rsync.snap`
+  - description rewritten
+- `svc/volume..install`
+  - description rewritten
+- `svc/volume..perm`
+  - description rewritten
+- `usr/DEFAULT.env`
+  - description rewritten
+- `vol/DEFAULT.env`
+  - description rewritten
+- `vol/disk.crypt.dev`
+  - description rewritten
+- `vol/disk.drbd.network`
+  - description rewritten
+- `vol/disk.lvm.pvs`
+  - description rewritten
+- `vol/disk.md.devs`
+  - description rewritten
+- `vol/disk.raw.devs`
+  - description rewritten
+- `vol/disk.vg.pvs`
+  - description rewritten
+- `vol/fs.9pfs.dev`
+  - description rewritten
+- `vol/fs.9pfs.install`
+  - description rewritten
+- `vol/fs.9pfs.perm`
+  - description rewritten
+- `vol/fs.afs.dev`
+  - description rewritten
+- `vol/fs.afs.install`
+  - description rewritten
+- `vol/fs.afs.perm`
+  - description rewritten
+- `vol/fs.bfs.dev`
+  - description rewritten
+- `vol/fs.bfs.install`
+  - description rewritten
+- `vol/fs.bfs.perm`
+  - description rewritten
+- `vol/fs.bind.dev`
+  - description rewritten
+- `vol/fs.bind.install`
+  - description rewritten
+- `vol/fs.bind.perm`
+  - description rewritten
+- `vol/fs.btrfs.dev`
+  - description rewritten
+- `vol/fs.btrfs.install`
+  - description rewritten
+- `vol/fs.btrfs.perm`
+  - description rewritten
+- `vol/fs.cephfs.dev`
+  - description rewritten
+- `vol/fs.cephfs.install`
+  - description rewritten
+- `vol/fs.cephfs.perm`
+  - description rewritten
+- `vol/fs.cifs.dev`
+  - description rewritten
+- `vol/fs.cifs.install`
+  - description rewritten
+- `vol/fs.cifs.perm`
+  - description rewritten
+- `vol/fs.directory.install`
+  - description rewritten
+- `vol/fs.directory.path`
+  - description rewritten
+- `vol/fs.directory.perm`
+  - description rewritten
+- `vol/fs.ext2.dev`
+  - description rewritten
+- `vol/fs.ext2.install`
+  - description rewritten
+- `vol/fs.ext2.perm`
+  - description rewritten
+- `vol/fs.ext3.dev`
+  - description rewritten
+- `vol/fs.ext3.install`
+  - description rewritten
+- `vol/fs.ext3.perm`
+  - description rewritten
+- `vol/fs.ext4.dev`
+  - description rewritten
+- `vol/fs.ext4.install`
+  - description rewritten
+- `vol/fs.ext4.perm`
+  - description rewritten
+- `vol/fs.f2fs.dev`
+  - description rewritten
+- `vol/fs.f2fs.install`
+  - description rewritten
+- `vol/fs.f2fs.perm`
+  - description rewritten
+- `vol/fs.gfs.dev`
+  - description rewritten
+- `vol/fs.gfs.install`
+  - description rewritten
+- `vol/fs.gfs.perm`
+  - description rewritten
+- `vol/fs.gfs2.dev`
+  - description rewritten
+- `vol/fs.gfs2.install`
+  - description rewritten
+- `vol/fs.gfs2.perm`
+  - description rewritten
+- `vol/fs.glusterfs.dev`
+  - description rewritten
+- `vol/fs.glusterfs.install`
+  - description rewritten
+- `vol/fs.glusterfs.perm`
+  - description rewritten
+- `vol/fs.gpfs.dev`
+  - description rewritten
+- `vol/fs.gpfs.install`
+  - description rewritten
+- `vol/fs.gpfs.perm`
+  - description rewritten
+- `vol/fs.hfs.dev`
+  - description rewritten
+- `vol/fs.hfs.install`
+  - description rewritten
+- `vol/fs.hfs.perm`
+  - description rewritten
+- `vol/fs.hfsplus.dev`
+  - description rewritten
+- `vol/fs.hfsplus.install`
+  - description rewritten
+- `vol/fs.hfsplus.perm`
+  - description rewritten
+- `vol/fs.hpfs.dev`
+  - description rewritten
+- `vol/fs.hpfs.install`
+  - description rewritten
+- `vol/fs.hpfs.perm`
+  - description rewritten
+- `vol/fs.jffs.dev`
+  - description rewritten
+- `vol/fs.jffs.install`
+  - description rewritten
+- `vol/fs.jffs.perm`
+  - description rewritten
+- `vol/fs.jffs2.dev`
+  - description rewritten
+- `vol/fs.jffs2.install`
+  - description rewritten
+- `vol/fs.jffs2.perm`
+  - description rewritten
+- `vol/fs.jfs.dev`
+  - description rewritten
+- `vol/fs.jfs.install`
+  - description rewritten
+- `vol/fs.jfs.perm`
+  - description rewritten
+- `vol/fs.jfs2.dev`
+  - description rewritten
+- `vol/fs.jfs2.install`
+  - description rewritten
+- `vol/fs.jfs2.perm`
+  - description rewritten
+- `vol/fs.lofs.dev`
+  - description rewritten
+- `vol/fs.lofs.install`
+  - description rewritten
+- `vol/fs.lofs.perm`
+  - description rewritten
+- `vol/fs.logfs.dev`
+  - description rewritten
+- `vol/fs.logfs.install`
+  - description rewritten
+- `vol/fs.logfs.perm`
+  - description rewritten
+- `vol/fs.minix.dev`
+  - description rewritten
+- `vol/fs.minix.install`
+  - description rewritten
+- `vol/fs.minix.perm`
+  - description rewritten
+- `vol/fs.msdos.dev`
+  - description rewritten
+- `vol/fs.msdos.install`
+  - description rewritten
+- `vol/fs.msdos.perm`
+  - description rewritten
+- `vol/fs.ncpfs.dev`
+  - description rewritten
+- `vol/fs.ncpfs.install`
+  - description rewritten
+- `vol/fs.ncpfs.perm`
+  - description rewritten
+- `vol/fs.nfs.dev`
+  - description rewritten
+- `vol/fs.nfs.install`
+  - description rewritten
+- `vol/fs.nfs.perm`
+  - description rewritten
+- `vol/fs.nfs4.dev`
+  - description rewritten
+- `vol/fs.nfs4.install`
+  - description rewritten
+- `vol/fs.nfs4.perm`
+  - description rewritten
+- `vol/fs.nilfs.dev`
+  - description rewritten
+- `vol/fs.nilfs.install`
+  - description rewritten
+- `vol/fs.nilfs.perm`
+  - description rewritten
+- `vol/fs.none.dev`
+  - description rewritten
+- `vol/fs.none.install`
+  - description rewritten
+- `vol/fs.none.perm`
+  - description rewritten
+- `vol/fs.ntfs.dev`
+  - description rewritten
+- `vol/fs.ntfs.install`
+  - description rewritten
+- `vol/fs.ntfs.perm`
+  - description rewritten
+- `vol/fs.ocfs.dev`
+  - description rewritten
+- `vol/fs.ocfs.install`
+  - description rewritten
+- `vol/fs.ocfs.perm`
+  - description rewritten
+- `vol/fs.ocfs2.dev`
+  - description rewritten
+- `vol/fs.ocfs2.install`
+  - description rewritten
+- `vol/fs.ocfs2.perm`
+  - description rewritten
+- `vol/fs.qnx4.dev`
+  - description rewritten
+- `vol/fs.qnx4.install`
+  - description rewritten
+- `vol/fs.qnx4.perm`
+  - description rewritten
+- `vol/fs.reiserfs.dev`
+  - description rewritten
+- `vol/fs.reiserfs.install`
+  - description rewritten
+- `vol/fs.reiserfs.perm`
+  - description rewritten
+- `vol/fs.reiserfs4.dev`
+  - description rewritten
+- `vol/fs.reiserfs4.install`
+  - description rewritten
+- `vol/fs.reiserfs4.perm`
+  - description rewritten
+- `vol/fs.rpc_pipefs.dev`
+  - description rewritten
+- `vol/fs.rpc_pipefs.install`
+  - description rewritten
+- `vol/fs.rpc_pipefs.perm`
+  - description rewritten
+- `vol/fs.sgcp_nfs.dev`
+  - description rewritten
+- `vol/fs.sgcp_nfs.install`
+  - description rewritten
+- `vol/fs.sgcp_nfs.perm`
+  - description rewritten
+- `vol/fs.smbfs.dev`
+  - description rewritten
+- `vol/fs.smbfs.install`
+  - description rewritten
+- `vol/fs.smbfs.perm`
+  - description rewritten
+- `vol/fs.tmpfs.dev`
+  - description rewritten
+- `vol/fs.tmpfs.install`
+  - description rewritten
+- `vol/fs.tmpfs.perm`
+  - description rewritten
+- `vol/fs.tux3.dev`
+  - description rewritten
+- `vol/fs.tux3.install`
+  - description rewritten
+- `vol/fs.tux3.perm`
+  - description rewritten
+- `vol/fs.ufs.dev`
+  - description rewritten
+- `vol/fs.ufs.install`
+  - description rewritten
+- `vol/fs.ufs.perm`
+  - description rewritten
+- `vol/fs.ufs2.dev`
+  - description rewritten
+- `vol/fs.ufs2.install`
+  - description rewritten
+- `vol/fs.ufs2.perm`
+  - description rewritten
+- `vol/fs.umsdos.dev`
+  - description rewritten
+- `vol/fs.umsdos.install`
+  - description rewritten
+- `vol/fs.umsdos.perm`
+  - description rewritten
+- `vol/fs.vfat.dev`
+  - description rewritten
+- `vol/fs.vfat.install`
+  - description rewritten
+- `vol/fs.vfat.perm`
+  - description rewritten
+- `vol/fs.vxfs.dev`
+  - description rewritten
+- `vol/fs.vxfs.install`
+  - description rewritten
+- `vol/fs.vxfs.perm`
+  - description rewritten
+- `vol/fs.xfs.dev`
+  - description rewritten
+- `vol/fs.xfs.install`
+  - description rewritten
+- `vol/fs.xfs.perm`
+  - description rewritten
+- `vol/fs.xia.dev`
+  - description rewritten
+- `vol/fs.xia.install`
+  - description rewritten
+- `vol/fs.xia.perm`
+  - description rewritten
+- `vol/fs.zfs.dev`
+  - description rewritten
+- `vol/fs.zfs.install`
+  - description rewritten
+- `vol/fs.zfs.perm`
+  - description rewritten
+- `vol/share.nfs.opts`
+  - description rewritten
+- `vol/share.nfs.path`
+  - description rewritten
+- `vol/sync.rsync.snap`
+  - description rewritten
+- `vol/volume..install`
+  - description rewritten
+- `vol/volume..perm`
+  - description rewritten
 
 ## v3.0.0-rc46
 

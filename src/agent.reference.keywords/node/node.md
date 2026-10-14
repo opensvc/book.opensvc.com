@@ -2,6 +2,7 @@
 
 **Supported keywords:**
 
+- allow_envs
 - allowed_networks
 - asset_env
 - bios_version
@@ -64,6 +65,28 @@
 - team_support
 - tz
 - uuid
+
+## Keyword `allow_envs`
+
+	required:    false
+	scopable:    false
+	convert:     list
+
+**Example:**
+
+	allow_envs=PRD PPRD
+
+**Description:**
+
+The envs of the objects allowed to run on this node.
+
+When unset, the node `env` decides: a PRD node runs the PRD objects only, and
+a non-PRD node runs the objects of every env, the PRD ones included, as in a
+DRP situation.
+
+When set, the node runs the objects of these envs only, whatever its own env.
+For example, on a PRD cluster, `PRD PPRD` also allows the PPRD objects to run.
+
 
 ## Keyword `allowed_networks`
 
@@ -142,8 +165,10 @@ you are not responsible for.
 
 The system enables OpenSVC Collector 3 calls conditional upon the detection of
 the Collector 3 environment.
-If collector_feeder or collector_server are not explicitly defined, they are
-derived from this value.
+
+The url of each api is derived from this one by appending its path, unless
+set by its own keyword: `<collector>/feeder` for collector_feeder, and
+`<collector>/server` for collector_server.
 
 
 ## Keyword `collector_feeder`
@@ -421,9 +446,10 @@ Override for the corresponding `om node push asset` discovery probe.
 
 A code like PRD, DEV, etc... the agent can use to enforce data protection policies:
 
-* A non-PRD object instance can not be started on a PRD node
+* A non-PRD object instance can not be started on a PRD node, unless the node `allow_envs` keyword allows its env
 * A PRD object instance can be started on a non-PRD node (typically in a DRP situation)
-
+* A PRD object instance running on a non-PRD node does not sync its data to its peers
+* A non-PRD node does not sync data to a PRD node
 
 
 ## Keyword `loc_addr`

@@ -242,7 +242,14 @@ The agent does not interpret the value.
 
 **Description:**
 
-The md member devices to use with the `mdadm create` command.
+The md member devices to use with the `mdadm create` command, written as the
+other devices of a service are:
+
+* `/dev/sdb` is a device of the node.
+* `data-a` is the device a vol of the namespace exposes, as `data-a data-b`
+  to mirror two block volumes served by two pools.
+* `disk#1` is the devices a resource of the service exposes, which must start
+  before this one.
 
 
 ## Keyword `disable`

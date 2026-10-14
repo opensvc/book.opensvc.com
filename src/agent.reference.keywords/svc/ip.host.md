@@ -4,16 +4,14 @@
 
 	[ip#1]
 	type = host
-	dev = eth0
 
 **Minimal setup command:**
 
-	om test/svc/foo set \
-		--kw="type=host" \
-		--kw="dev=eth0"
+	om test/svc/foo set --kw="type=host"
 
 **Supported keywords:**
 
+- addr
 - alias
 - blocking_post_provision
 - blocking_post_start
@@ -70,6 +68,40 @@
 - unprovision
 - unprovision_requires
 - wait_dns
+
+## Keyword `addr`
+
+	required:    false
+	scopable:    true
+	recorded:    written when what it names is made, and reset when the object is cloned
+	rbac:        An address of the user's choosing requires the root grant: om writes the address it draws from the network.
+
+**Example:**
+
+	addr=fd01:2345:6789:2902::5:e8
+
+**Description:**
+
+The address drawn from the om network the `network` keyword names, which om
+writes here when the resource first starts, and removes when it is
+unprovisioned.
+
+Every node holds the configuration, so every node uses this address for the
+resource, whichever node drew it and whatever became of that node: a
+failover service keeps its address on a node it moves to after the others
+crashed. Set it to keep an address drawn before, or unset it to have the
+next start draw another one, and remove the one it replaces from the
+interface.
+
+A configuration copied to create another object leaves it behind, so the
+copy draws an address of its own rather than bring this one up twice.
+
+A resource not shared of a flex object draws an address per instance, as
+its instances run at once. The address of an instance is not written here:
+the node keeps it in its reservation store, from a start to the next, until
+the instance is unprovisioned. Set addr@<nodename> to choose the address of
+an instance; an addr without a node is not taken as one.
+
 
 ## Keyword `alias`
 
@@ -229,7 +261,7 @@ The agent does not interpret the value.
 
 ## Keyword `dev`
 
-	required:    true
+	required:    false
 	scopable:    true
 	aliases:     ipdev
 	rbac:        Requires the root grant.
@@ -241,6 +273,9 @@ The agent does not interpret the value.
 **Description:**
 
 The interface name to setup the ip address on.
+
+When not set, the interface the network the address is drawn from names: the
+interface of the node on the segment of a `lan` network.
 
 This interface can be different from one node to the other, in which case the
 `dev@<nodename>` scoping syntax can be used.
@@ -350,6 +385,9 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 The DNS name or IP address of the ip resource.
 
+When not set, the address is drawn from the om network the `network` keyword
+names.
+
 Scoping
 -------
 
@@ -424,16 +462,28 @@ The format is:
 
 	required:    false
 	scopable:    true
+	rbac:        A network named by a path requires the root grant.
 
 **Example:**
 
-	network=10.0.0.0/16
+	network=san
 
 **Description:**
 
-The ip address network, in dotted notation.
+The name of the om network the address is drawn from, when `name` is not set.
 
-Used to set the network route if `del_net_route=true`.
+The address is drawn when the resource first starts, and written to the
+`addr` keyword: every node then uses it, so the address follows a failover
+service to whichever node it moves to, the floating address of the service,
+which its clients know it by. It is kept until the resource is unprovisioned,
+a stop keeping it.
+
+The `dev` and `netmask` of the resource are the network's to know, and are
+taken from it when the configuration does not set them: the interface of the
+node on the segment of a `lan` network, and the prefix length of the segment.
+
+This keyword used to hold the address of the network, in dotted notation. A
+value that is still an address is obsolete, reported and ignored.
 
 
 ## Keyword `optional`
@@ -1090,7 +1140,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
-	rbac:        Requires the root grant, except for a cni address, and for a netns address om draws from a cluster network.
+	rbac:        Requires the root grant, except for a cni address, for a netns address om draws from a cluster network, and for a host address om draws from a lan network, on the interface and with the netmask the network says.
 
 **Description:**
 

@@ -77,6 +77,8 @@
 - [ip.sgcp_dnsalias](ip.sgcp_dnsalias.md)
 - [share.nfs](share.nfs.md)
 - [subset](subset.md)
+- [sync.btrfs](sync.btrfs.md)
+- [sync.btrfssnap](sync.btrfssnap.md)
 - [sync.rsync](sync.rsync.md)
 - [sync.symsnapvx](sync.symsnapvx.md)
 - [sync.symsrdfs](sync.symsrdfs.md)
