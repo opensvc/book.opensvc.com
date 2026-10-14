@@ -396,7 +396,7 @@ om cluster ca rotate
 ```
 
 1. A new CA is created as `system/sec/ca-next`, and the certificate of the
-   current one kept, without its key, as `system/sec/ca-former-<date>`. The
+   current one kept, without its key, as `system/sec/ca-former-<yyyymmdd-hhmm>`. The
    cluster `ca` keyword lists both, until every node has them.
 2. `system/sec/ca` takes the key and the certificate of the new CA, and
    `system/sec/cert` is issued again by it, until every node has them.
@@ -409,16 +409,26 @@ rotation, which is resumed by running the command again.
 
 The former CA stays trusted, for the certificates it signed, as the ones of
 the users created by `om system/usr/<name> certificate create`, and the api
-tokens it signed stay valid until they expire. Once the user certificates are
-renewed, stop trusting it:
+tokens it signed stay valid until they expire. The end of the rotation says,
+of each former CA the cluster `ca` keyword lists, the certificates it signed
+still in use:
 
 ```
-om cluster config update --set cluster.ca-=system/sec/ca-former-<date>
-om system/sec/ca-former-<date> delete
+system/sec/ca-former-20261014-1741: trusted still, as it signed the certificate of system/usr/cva: renew them with 'om <path> certificate create', then stop trusting it
+system/sec/ca-former-20261014-1841: signed no certificate in use, stop trusting it with:
+  om cluster config update --set cluster.ca-=system/sec/ca-former-20261014-1841
+  om system/sec/ca-former-20261014-1841 delete
+```
+
+Once the certificates it signed are renewed, stop trusting a former CA:
+
+```
+om cluster config update --set cluster.ca-=system/sec/ca-former-<yyyymmdd-hhmm>
+om system/sec/ca-former-<yyyymmdd-hhmm> delete
 ```
 
 `om cluster ca rotate --drop-former` does it at the end of the rotation, and
-is refused while the former CA signed the certificate of a user. The command
+is refused while the former CA signed a certificate in use. The command
 runs on a cluster node, and has no api counterpart.
 
 ### Recovering from an Expired CA
