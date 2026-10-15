@@ -68,6 +68,12 @@ then `preflighted` in `om mon`:
   would wipe;
 * a volume group, a logical volume, a zpool, a zvol, an md array, a mapped
   encrypted device, a loop file of the name;
+* a docker or podman container of the name, running or not, which a start
+  would otherwise take for a leftover of its own;
+* a kvm domain or an lxc container of the name, when the provision would
+  create one: when the resource sets a keyword used only to provision it, as
+  `virtinst` or a `template`. A resource setting none is configured on a
+  virtual machine a sysadmin made, which is its own;
 * an address that answers.
 
 A conflict on any node ends the orchestration as a provision failure on every
