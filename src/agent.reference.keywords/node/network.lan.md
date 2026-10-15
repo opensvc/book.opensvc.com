@@ -13,11 +13,15 @@
 
 - comment
 - dev
+- dns
 - gateway
 - mask_per_node
+- modes
 - network
 - ranges
 - type
+- vlan_mode
+- vlan_tag
 
 ## Keyword `comment`
 
@@ -53,6 +57,29 @@ network are configured on, as `eth1`.
 When not set, it is the interface holding an address of the segment, not
 counting the addresses of the ranges. Set it when the nodes have no address
 on the segment, or when several interfaces hold one.
+
+
+## Keyword `dns`
+
+	required:    false
+	scopable:    true
+	convert:     list
+
+**Example:**
+
+	dns=2001:db8::53 192.0.2.53
+
+**Description:**
+
+The nameservers reachable from the network, which the containers whose
+network namespace holds an address of it, from an ip.netns or an ip.cni, are
+given in place of the nameservers of the cluster: a segment the cluster
+nameservers are not reachable from, as a public one, needs its own. The `dns`
+keyword of a container adds its own nameservers after them.
+
+Unset, the containers are given the nameservers of the cluster. A container
+with addresses on several networks naming nameservers is given the ones of
+each, in the order of its ip resources.
 
 
 ## Keyword `gateway`
@@ -95,6 +122,32 @@ If both `mask_per_node` and `ips_per_node` are set, `ips_per_node` is ignored.
 If only `ips_per_node` is set, it is honored for backward compatibility.
 
 The `ips_per_node` keyword is deprecated because its value is hard to manage for large ipv6 subnets (e.g a x.x.x.x/48 subnet has 281474976710656 ips).
+
+## Keyword `modes`
+
+	required:    false
+	scopable:    true
+	candidates:  bridge, macvlan, ipvlan-l2, dedicated, ovs
+	convert:     list
+
+**Example:**
+
+	modes=macvlan ipvlan-l2
+
+**Description:**
+
+The modes an ip.netns drawing its address from the network may join the
+segment with, the first being the one of an ip.netns naming none: the
+network says how the segment is joined, as `macvlan` where the interface of
+the node on it is no bridge, and an ip.netns naming another mode is refused.
+
+Unset, an ip.netns joins the segment with the mode it names, `bridge` by
+default, which needs the interface of the node on the segment to be a bridge.
+
+A namespace administrator can not name the mode of an ip.netns: the network
+choosing it is what lets the address of a namespace be on any segment. The
+keyword is scopable, for the nodes whose interface on the segment differs.
+
 
 ## Keyword `network`
 
@@ -178,5 +231,39 @@ The traffic the nodes forward for the `bridge` and `routed_bridge` networks
 is accepted in the om nft table, and, on a node running docker, whose
 forward chain drops what docker did not accept, in a chain the docker
 `DOCKER-USER` chain jumps to.
+
+
+## Keyword `vlan_mode`
+
+	required:    false
+	scopable:    true
+	candidates:  access, native-tagged, native-untagged
+
+**Example:**
+
+	vlan_mode=access
+
+**Description:**
+
+The VLAN mode of the port an ip.netns joining the segment in `ovs` mode adds
+to the openvswitch bridge, when the ip.netns names none: `access`,
+`native-tagged` or `native-untagged`.
+
+
+## Keyword `vlan_tag`
+
+	required:    false
+	scopable:    true
+
+**Example:**
+
+	vlan_tag=44
+
+**Description:**
+
+The VLAN of the segment an ip.netns joining it in `ovs` mode puts its port
+in, the `tag` of the port on the openvswitch bridge, when the ip.netns names
+none. The segment is the network's: a namespace administrator, who can not
+name the tag of an ip.netns, joins it so.
 
 

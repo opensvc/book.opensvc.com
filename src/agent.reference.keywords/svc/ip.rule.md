@@ -251,6 +251,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    true
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        The host network namespace requires the root grant.
 
 **Example:**
@@ -801,6 +802,7 @@ the flex primary gets `--leader` commands.
 
 	required:    true
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	convert:     shlex
 	rbac:        Requires the root grant.
 

@@ -1,7 +1,297 @@
 # Keyword changes
 
-What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc48.
+What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc49.
 
+
+## v3.0.0-rc49
+
+
+### Added
+
+- `cluster/cluster.dns_reverse`
+- `cluster/network.bridge.dns`
+- `cluster/network.lan.modes`
+- `cluster/network.lan.vlan_mode`
+- `cluster/network.lan.vlan_tag`
+- `node/cluster.dns_reverse`
+- `node/network.bridge.dns`
+- `node/network.lan.modes`
+- `node/network.lan.vlan_mode`
+- `node/network.lan.vlan_tag`
+- `svc/task.acme.directory`
+- `svc/task.acme.domains_from`
+- `svc/task.acme.domains_to`
+- `svc/task.acme.email`
+
+### Changed
+
+- `svc/container.docker.volume_mounts`
+  - description rewritten
+- `svc/container.oci.volume_mounts`
+  - description rewritten
+- `svc/container.podman.volume_mounts`
+  - description rewritten
+- `svc/fs.9pfs.install`
+  - description rewritten
+- `svc/fs.afs.install`
+  - description rewritten
+- `svc/fs.bfs.install`
+  - description rewritten
+- `svc/fs.bind.install`
+  - description rewritten
+- `svc/fs.btrfs.install`
+  - description rewritten
+- `svc/fs.cephfs.install`
+  - description rewritten
+- `svc/fs.cifs.install`
+  - description rewritten
+- `svc/fs.directory.install`
+  - description rewritten
+- `svc/fs.ext2.install`
+  - description rewritten
+- `svc/fs.ext3.install`
+  - description rewritten
+- `svc/fs.ext4.install`
+  - description rewritten
+- `svc/fs.f2fs.install`
+  - description rewritten
+- `svc/fs.gfs.install`
+  - description rewritten
+- `svc/fs.gfs2.install`
+  - description rewritten
+- `svc/fs.glusterfs.install`
+  - description rewritten
+- `svc/fs.gpfs.install`
+  - description rewritten
+- `svc/fs.hfs.install`
+  - description rewritten
+- `svc/fs.hfsplus.install`
+  - description rewritten
+- `svc/fs.hpfs.install`
+  - description rewritten
+- `svc/fs.jffs.install`
+  - description rewritten
+- `svc/fs.jffs2.install`
+  - description rewritten
+- `svc/fs.jfs.install`
+  - description rewritten
+- `svc/fs.jfs2.install`
+  - description rewritten
+- `svc/fs.lofs.install`
+  - description rewritten
+- `svc/fs.logfs.install`
+  - description rewritten
+- `svc/fs.minix.install`
+  - description rewritten
+- `svc/fs.msdos.install`
+  - description rewritten
+- `svc/fs.ncpfs.install`
+  - description rewritten
+- `svc/fs.nfs.install`
+  - description rewritten
+- `svc/fs.nfs4.install`
+  - description rewritten
+- `svc/fs.nilfs.install`
+  - description rewritten
+- `svc/fs.none.install`
+  - description rewritten
+- `svc/fs.ntfs.install`
+  - description rewritten
+- `svc/fs.ocfs.install`
+  - description rewritten
+- `svc/fs.ocfs2.install`
+  - description rewritten
+- `svc/fs.qnx4.install`
+  - description rewritten
+- `svc/fs.reiserfs.install`
+  - description rewritten
+- `svc/fs.reiserfs4.install`
+  - description rewritten
+- `svc/fs.rpc_pipefs.install`
+  - description rewritten
+- `svc/fs.sgcp_nfs.install`
+  - description rewritten
+- `svc/fs.smbfs.install`
+  - description rewritten
+- `svc/fs.tmpfs.install`
+  - description rewritten
+- `svc/fs.tux3.install`
+  - description rewritten
+- `svc/fs.ufs.install`
+  - description rewritten
+- `svc/fs.ufs2.install`
+  - description rewritten
+- `svc/fs.umsdos.install`
+  - description rewritten
+- `svc/fs.vfat.install`
+  - description rewritten
+- `svc/fs.vxfs.install`
+  - description rewritten
+- `svc/fs.xfs.install`
+  - description rewritten
+- `svc/fs.xia.install`
+  - description rewritten
+- `svc/fs.zfs.install`
+  - description rewritten
+- `svc/ip.docker.mode`
+  - default: bridge -> unset
+  - defaultText: unset -> The first of the `modes` of the network the address is drawn from, else `bridge`.
+
+- `svc/ip.docker.vlan_mode`
+  - default: native-untagged -> unset
+  - defaultText: unset -> The `vlan_mode` of the network the address is drawn from, else `native-untagged`.
+
+- `svc/ip.docker.vlan_tag`
+  - description rewritten
+- `svc/ip.netns.mode`
+  - default: bridge -> unset
+  - defaultText: unset -> The first of the `modes` of the network the address is drawn from, else `bridge`.
+
+- `svc/ip.netns.vlan_mode`
+  - default: native-untagged -> unset
+  - defaultText: unset -> The `vlan_mode` of the network the address is drawn from, else `native-untagged`.
+
+- `svc/ip.netns.vlan_tag`
+  - description rewritten
+- `svc/task.acme.on`
+  - description rewritten
+- `svc/task.acme.secs`
+  - required: true -> unset
+  - description rewritten
+- `svc/task.docker.on`
+  - description rewritten
+- `svc/task.docker.volume_mounts`
+  - description rewritten
+- `svc/task.host.on`
+  - description rewritten
+- `svc/task.oci.on`
+  - description rewritten
+- `svc/task.oci.volume_mounts`
+  - description rewritten
+- `svc/task.podman.on`
+  - description rewritten
+- `svc/task.podman.volume_mounts`
+  - description rewritten
+- `svc/volume..install`
+  - description rewritten
+- `vol/fs.9pfs.install`
+  - description rewritten
+- `vol/fs.afs.install`
+  - description rewritten
+- `vol/fs.bfs.install`
+  - description rewritten
+- `vol/fs.bind.install`
+  - description rewritten
+- `vol/fs.btrfs.install`
+  - description rewritten
+- `vol/fs.cephfs.install`
+  - description rewritten
+- `vol/fs.cifs.install`
+  - description rewritten
+- `vol/fs.directory.install`
+  - description rewritten
+- `vol/fs.ext2.install`
+  - description rewritten
+- `vol/fs.ext3.install`
+  - description rewritten
+- `vol/fs.ext4.install`
+  - description rewritten
+- `vol/fs.f2fs.install`
+  - description rewritten
+- `vol/fs.gfs.install`
+  - description rewritten
+- `vol/fs.gfs2.install`
+  - description rewritten
+- `vol/fs.glusterfs.install`
+  - description rewritten
+- `vol/fs.gpfs.install`
+  - description rewritten
+- `vol/fs.hfs.install`
+  - description rewritten
+- `vol/fs.hfsplus.install`
+  - description rewritten
+- `vol/fs.hpfs.install`
+  - description rewritten
+- `vol/fs.jffs.install`
+  - description rewritten
+- `vol/fs.jffs2.install`
+  - description rewritten
+- `vol/fs.jfs.install`
+  - description rewritten
+- `vol/fs.jfs2.install`
+  - description rewritten
+- `vol/fs.lofs.install`
+  - description rewritten
+- `vol/fs.logfs.install`
+  - description rewritten
+- `vol/fs.minix.install`
+  - description rewritten
+- `vol/fs.msdos.install`
+  - description rewritten
+- `vol/fs.ncpfs.install`
+  - description rewritten
+- `vol/fs.nfs.install`
+  - description rewritten
+- `vol/fs.nfs4.install`
+  - description rewritten
+- `vol/fs.nilfs.install`
+  - description rewritten
+- `vol/fs.none.install`
+  - description rewritten
+- `vol/fs.ntfs.install`
+  - description rewritten
+- `vol/fs.ocfs.install`
+  - description rewritten
+- `vol/fs.ocfs2.install`
+  - description rewritten
+- `vol/fs.qnx4.install`
+  - description rewritten
+- `vol/fs.reiserfs.install`
+  - description rewritten
+- `vol/fs.reiserfs4.install`
+  - description rewritten
+- `vol/fs.rpc_pipefs.install`
+  - description rewritten
+- `vol/fs.sgcp_nfs.install`
+  - description rewritten
+- `vol/fs.smbfs.install`
+  - description rewritten
+- `vol/fs.tmpfs.install`
+  - description rewritten
+- `vol/fs.tux3.install`
+  - description rewritten
+- `vol/fs.ufs.install`
+  - description rewritten
+- `vol/fs.ufs2.install`
+  - description rewritten
+- `vol/fs.umsdos.install`
+  - description rewritten
+- `vol/fs.vfat.install`
+  - description rewritten
+- `vol/fs.vxfs.install`
+  - description rewritten
+- `vol/fs.xfs.install`
+  - description rewritten
+- `vol/fs.xia.install`
+  - description rewritten
+- `vol/fs.zfs.install`
+  - description rewritten
+- `vol/task.docker.on`
+  - description rewritten
+- `vol/task.docker.volume_mounts`
+  - description rewritten
+- `vol/task.host.on`
+  - description rewritten
+- `vol/task.oci.on`
+  - description rewritten
+- `vol/task.oci.volume_mounts`
+  - description rewritten
+- `vol/task.podman.on`
+  - description rewritten
+- `vol/task.podman.volume_mounts`
+  - description rewritten
+- `vol/volume..install`
+  - description rewritten
 
 ## v3.0.0-rc48
 

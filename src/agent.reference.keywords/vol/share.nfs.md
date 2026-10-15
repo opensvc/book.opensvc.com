@@ -270,6 +270,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    true
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        A resource of a volume requires the root grant.
 
 **Example:**
@@ -287,6 +288,7 @@ The export options of each client, as they would be set in `/etc/exports`, a
 
 	required:    true
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        A resource of a volume requires the root grant.
 
 **Example:**

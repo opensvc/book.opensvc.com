@@ -270,6 +270,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    true
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        An export option other than rw, ro, sync, async, wdelay, no_wdelay, subtree_check, no_subtree_check, secure, hide, root_squash, all_squash, no_all_squash, sec, anonuid and anongid, or an anonuid or anongid of 0, requires the root grant.
 
 **Example:**
@@ -287,6 +288,7 @@ The export options of each client, as they would be set in `/etc/exports`, a
 
 	required:    true
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        A path other than the mount point of a volume, written <vol name> or volume#<n>:/, requires the root grant.
 
 **Example:**

@@ -91,6 +91,7 @@
 	required:    false
 	scopable:    true
 	recorded:    written when what it names is made, and reset when the object is cloned
+	stop first:  a change is refused while the resource is up
 	rbac:        An address of the user's choosing requires the root grant: om writes the address it draws from the network.
 
 **Example:**
@@ -302,6 +303,7 @@ In this case set `del_net_route=true` and `network=<cidr>`.
 	required:    false
 	scopable:    true
 	aliases:     ipdev
+	stop first:  a change is refused while the resource is up
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -436,9 +438,13 @@ The hardware address to set on the interface in the network namespace.
 
 	required:    false
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	candidates:  bridge, dedicated, macvlan, ipvlan-l2, ipvlan-l3, ipvlan-l3s, ovs
-	default:     bridge
 	rbac:        Requires the root grant.
+
+**Default:**
+
+The first of the `modes` of the network the address is drawn from, else `bridge`.
 
 **Example:**
 
@@ -514,6 +520,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 	required:    false
 	scopable:    true
 	aliases:     ipname
+	stop first:  a change is refused while the resource is up
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -600,6 +607,7 @@ The format is:
 	required:    true
 	scopable:    true
 	aliases:     container_rid
+	stop first:  a change is refused while the resource is up
 	rbac:        The host network namespace requires the root grant.
 
 **Example:**
@@ -615,6 +623,7 @@ The resource id of the container to plumb the ip into.
 
 	required:    false
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        A network named by a path requires the root grant.
 
 **Example:**
@@ -1374,8 +1383,11 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    true
 	candidates:  access, native-tagged, native-untagged
 	depends:     .mode=ovs
-	default:     native-untagged
 	rbac:        Requires the root grant.
+
+**Default:**
+
+The `vlan_mode` of the network the address is drawn from, else `native-untagged`.
 
 **Example:**
 
@@ -1399,7 +1411,9 @@ The VLAN port mode.
 
 **Description:**
 
-The VLAN tag the switch port will relay.
+The VLAN tag the switch port will relay, the `tag` of the port the `ovs` mode
+adds to the openvswitch bridge. Unset, the `vlan_tag` of the network the
+address is drawn from, if any.
 
 
 ## Keyword `wait_dns`

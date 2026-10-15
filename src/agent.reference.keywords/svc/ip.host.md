@@ -74,6 +74,7 @@
 	required:    false
 	scopable:    true
 	recorded:    written when what it names is made, and reset when the object is cloned
+	stop first:  a change is refused while the resource is up
 	rbac:        An address of the user's choosing requires the root grant: om writes the address it draws from the network.
 
 **Example:**
@@ -264,6 +265,7 @@ The agent does not interpret the value.
 	required:    false
 	scopable:    true
 	aliases:     ipdev
+	stop first:  a change is refused while the resource is up
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -375,6 +377,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 	required:    false
 	scopable:    true
 	aliases:     ipname
+	stop first:  a change is refused while the resource is up
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -462,6 +465,7 @@ The format is:
 
 	required:    false
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        A network named by a path requires the root grant.
 
 **Example:**

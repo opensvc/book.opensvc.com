@@ -286,6 +286,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 	required:    false
 	scopable:    true
 	aliases:     container_rid
+	stop first:  a change is refused while the resource is up
 	rbac:        The host network namespace requires the root grant.
 
 **Example:**
@@ -301,6 +302,7 @@ The resource id of the container to plumb the ip into.
 
 	required:    false
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	default:     default
 	rbac:        A network named by a path requires the root grant.
 

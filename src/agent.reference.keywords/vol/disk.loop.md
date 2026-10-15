@@ -237,6 +237,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    true
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        This driver group requires the root grant.
 
 **Example:**

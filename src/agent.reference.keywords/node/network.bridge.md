@@ -13,6 +13,7 @@
 
 - comment
 - dev
+- dns
 - mask_per_node
 - network
 - public
@@ -43,6 +44,29 @@ The agent does not interpret the value.
 **Description:**
 
 The network bridge device name. If not set the name will be `obr_<network name>`. Use this keyword if you need the network to use an already existing bridge.
+
+
+## Keyword `dns`
+
+	required:    false
+	scopable:    true
+	convert:     list
+
+**Example:**
+
+	dns=2001:db8::53 192.0.2.53
+
+**Description:**
+
+The nameservers reachable from the network, which the containers whose
+network namespace holds an address of it, from an ip.netns or an ip.cni, are
+given in place of the nameservers of the cluster: a segment the cluster
+nameservers are not reachable from, as a public one, needs its own. The `dns`
+keyword of a container adds its own nameservers after them.
+
+Unset, the containers are given the nameservers of the cluster. A container
+with addresses on several networks naming nameservers is given the ones of
+each, in the order of its ip resources.
 
 
 ## Keyword `mask_per_node`

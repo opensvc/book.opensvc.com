@@ -275,6 +275,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        Requires the root grant.
 
 **Description:**
@@ -1007,6 +1008,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        Requires the root grant.
 
 **Description:**
@@ -1019,6 +1021,7 @@ If not set, the start tries to detect uuid to update, or create new one, the sto
 
 	required:    true
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        Requires the root grant.
 
 **Description:**

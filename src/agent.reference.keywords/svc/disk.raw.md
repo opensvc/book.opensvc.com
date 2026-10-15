@@ -223,6 +223,7 @@ delete them using the `raw` kernel driver.
 
 	required:    true
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	convert:     list
 	rbac:        This driver group requires the root grant.
 

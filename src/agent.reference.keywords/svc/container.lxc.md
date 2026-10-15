@@ -290,6 +290,7 @@ A shell expression splitter is applied, so double quotes can be around
 	required:    false
 	scopable:    true
 	aliases:     container_data_dir
+	stop first:  a change is refused while the resource is up
 
 **Example:**
 
@@ -398,6 +399,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    true
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        A container name of the user's choosing requires the root grant: the default name is the object's own.
 
 **Description:**

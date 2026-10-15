@@ -199,6 +199,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        Requires the root grant.
 
 **Default:**
@@ -255,6 +256,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    true
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -289,6 +291,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    true
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        The host network namespace requires the root grant.
 
 **Example:**
@@ -954,6 +957,7 @@ Some tags can influence the driver behaviour:
 
 	required:    true
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        Requires the root grant.
 
 **Example:**

@@ -332,6 +332,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
+	stop first:  a change is refused while the resource is up
 	rbac:        This driver group requires the root grant.
 
 **Default:**
@@ -1159,6 +1160,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	required:    false
 	scopable:    true
 	recorded:    written when what it names is made, and reset when the object is cloned
+	stop first:  a change is refused while the resource is up
 	rbac:        This driver group requires the root grant.
 
 **Example:**

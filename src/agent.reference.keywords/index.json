@@ -553,6 +553,12 @@
    "scopable": true,
    "textSum": "b62c0f36efb2a033"
   },
+  "cluster/cluster.dns_reverse": {
+   "converter": "bool",
+   "default": "true",
+   "inherit": "leaf2head",
+   "textSum": "de8eefd4092f052e"
+  },
   "cluster/cluster.drpnodes": {
    "converter": "list",
    "inherit": "leaf2head",
@@ -919,6 +925,17 @@
     "routed_bridge"
    ]
   },
+  "cluster/network.bridge.dns": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "bb0bb43a064a31fc",
+   "types": [
+    "bridge",
+    "lan",
+    "routed_bridge"
+   ]
+  },
   "cluster/network.bridge.network": {
    "inherit": "leaf2head",
    "scopable": true,
@@ -952,6 +969,22 @@
     "lan"
    ]
   },
+  "cluster/network.lan.modes": {
+   "candidates": [
+    "bridge",
+    "dedicated",
+    "ipvlan-l2",
+    "macvlan",
+    "ovs"
+   ],
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "e90ddf921ff30e82",
+   "types": [
+    "lan"
+   ]
+  },
   "cluster/network.lan.network": {
    "inherit": "leaf2head",
    "textSum": "8affbf1e1bb5bc90",
@@ -963,6 +996,27 @@
    "converter": "list",
    "inherit": "leaf2head",
    "textSum": "c5ae8f50ae0b3c18",
+   "types": [
+    "lan"
+   ]
+  },
+  "cluster/network.lan.vlan_mode": {
+   "candidates": [
+    "access",
+    "native-tagged",
+    "native-untagged"
+   ],
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "f90f2cf43de0ef89",
+   "types": [
+    "lan"
+   ]
+  },
+  "cluster/network.lan.vlan_tag": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "9f343bf51cca758a",
    "types": [
     "lan"
    ]
@@ -2331,6 +2385,12 @@
    "scopable": true,
    "textSum": "b62c0f36efb2a033"
   },
+  "node/cluster.dns_reverse": {
+   "converter": "bool",
+   "default": "true",
+   "inherit": "leaf2head",
+   "textSum": "de8eefd4092f052e"
+  },
   "node/cluster.drpnodes": {
    "converter": "list",
    "inherit": "leaf2head",
@@ -2697,6 +2757,17 @@
     "routed_bridge"
    ]
   },
+  "node/network.bridge.dns": {
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "bb0bb43a064a31fc",
+   "types": [
+    "bridge",
+    "lan",
+    "routed_bridge"
+   ]
+  },
   "node/network.bridge.network": {
    "inherit": "leaf2head",
    "scopable": true,
@@ -2730,6 +2801,22 @@
     "lan"
    ]
   },
+  "node/network.lan.modes": {
+   "candidates": [
+    "bridge",
+    "dedicated",
+    "ipvlan-l2",
+    "macvlan",
+    "ovs"
+   ],
+   "converter": "list",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "e90ddf921ff30e82",
+   "types": [
+    "lan"
+   ]
+  },
   "node/network.lan.network": {
    "inherit": "leaf2head",
    "textSum": "8affbf1e1bb5bc90",
@@ -2741,6 +2828,27 @@
    "converter": "list",
    "inherit": "leaf2head",
    "textSum": "c5ae8f50ae0b3c18",
+   "types": [
+    "lan"
+   ]
+  },
+  "node/network.lan.vlan_mode": {
+   "candidates": [
+    "access",
+    "native-tagged",
+    "native-untagged"
+   ],
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "f90f2cf43de0ef89",
+   "types": [
+    "lan"
+   ]
+  },
+  "node/network.lan.vlan_tag": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "9f343bf51cca758a",
    "types": [
     "lan"
    ]
@@ -5921,7 +6029,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "b70a0d18b742cf79",
+   "textSum": "4ee25ce1d1fef83e",
    "types": [
     "docker"
    ]
@@ -7422,7 +7530,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "b70a0d18b742cf79",
+   "textSum": "4ee25ce1d1fef83e",
    "types": [
     "oci"
    ]
@@ -8073,7 +8181,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "b70a0d18b742cf79",
+   "textSum": "4ee25ce1d1fef83e",
    "types": [
     "podman"
    ]
@@ -13767,7 +13875,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "9pfs"
    ]
@@ -14209,7 +14317,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "afs"
    ]
@@ -14651,7 +14759,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "bfs"
    ]
@@ -15093,7 +15201,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "bind"
    ]
@@ -15535,7 +15643,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "btrfs"
    ]
@@ -15996,7 +16104,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "cephfs"
    ]
@@ -16438,7 +16546,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "cifs"
    ]
@@ -16861,7 +16969,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "directory"
    ]
@@ -17251,7 +17359,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ext2"
    ]
@@ -17693,7 +17801,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ext3"
    ]
@@ -18135,7 +18243,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ext4"
    ]
@@ -18577,7 +18685,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "f2fs"
    ]
@@ -19283,7 +19391,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "gfs"
    ]
@@ -19725,7 +19833,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "gfs2"
    ]
@@ -20167,7 +20275,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "glusterfs"
    ]
@@ -20609,7 +20717,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "gpfs"
    ]
@@ -21051,7 +21159,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "hfs"
    ]
@@ -21493,7 +21601,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "hfsplus"
    ]
@@ -21935,7 +22043,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "hpfs"
    ]
@@ -22377,7 +22485,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "jffs"
    ]
@@ -22819,7 +22927,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "jffs2"
    ]
@@ -23261,7 +23369,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "jfs"
    ]
@@ -23703,7 +23811,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "jfs2"
    ]
@@ -24145,7 +24253,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "lofs"
    ]
@@ -24587,7 +24695,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "logfs"
    ]
@@ -25029,7 +25137,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "minix"
    ]
@@ -25471,7 +25579,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "msdos"
    ]
@@ -25913,7 +26021,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ncpfs"
    ]
@@ -26355,7 +26463,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "nfs"
    ]
@@ -26797,7 +26905,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "nfs4"
    ]
@@ -27239,7 +27347,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "nilfs"
    ]
@@ -27681,7 +27789,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "none"
    ]
@@ -28123,7 +28231,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ntfs"
    ]
@@ -28565,7 +28673,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ocfs"
    ]
@@ -29007,7 +29115,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ocfs2"
    ]
@@ -29449,7 +29557,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "qnx4"
    ]
@@ -29891,7 +29999,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "reiserfs"
    ]
@@ -30333,7 +30441,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "reiserfs4"
    ]
@@ -30775,7 +30883,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "rpc_pipefs"
    ]
@@ -31243,7 +31351,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "sgcp_nfs"
    ]
@@ -31690,7 +31798,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "smbfs"
    ]
@@ -32132,7 +32240,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "tmpfs"
    ]
@@ -32595,7 +32703,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "tux3"
    ]
@@ -33037,7 +33145,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ufs"
    ]
@@ -33479,7 +33587,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ufs2"
    ]
@@ -33921,7 +34029,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "umsdos"
    ]
@@ -34363,7 +34471,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "vfat"
    ]
@@ -34805,7 +34913,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "vxfs"
    ]
@@ -35247,7 +35355,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "xfs"
    ]
@@ -35689,7 +35797,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "xia"
    ]
@@ -36121,7 +36229,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "zfs"
    ]
@@ -36933,7 +37041,7 @@
     "macvlan",
     "ovs"
    ],
-   "default": "bridge",
+   "defaultText": "The first of the `modes` of the network the address is drawn from, else `bridge`.\n",
    "inherit": "leaf2head",
    "minimal": true,
    "scopable": true,
@@ -37180,7 +37288,7 @@
     "native-tagged",
     "native-untagged"
    ],
-   "default": "native-untagged",
+   "defaultText": "The `vlan_mode` of the network the address is drawn from, else `native-untagged`.\n",
    "depends": [
     ".mode=ovs"
    ],
@@ -37197,7 +37305,7 @@
    ],
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "87186d67afe5fc16",
+   "textSum": "42da9805975d5774",
    "types": [
     "docker"
    ]
@@ -37746,7 +37854,7 @@
     "macvlan",
     "ovs"
    ],
-   "default": "bridge",
+   "defaultText": "The first of the `modes` of the network the address is drawn from, else `bridge`.\n",
    "inherit": "leaf2head",
    "minimal": true,
    "scopable": true,
@@ -37993,7 +38101,7 @@
     "native-tagged",
     "native-untagged"
    ],
-   "default": "native-untagged",
+   "defaultText": "The `vlan_mode` of the network the address is drawn from, else `native-untagged`.\n",
    "depends": [
     ".mode=ovs"
    ],
@@ -38010,7 +38118,7 @@
    ],
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "87186d67afe5fc16",
+   "textSum": "42da9805975d5774",
    "types": [
     "netns"
    ]
@@ -41119,11 +41227,43 @@
     "acme"
    ]
   },
+  "svc/task.acme.directory": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "c144da5d81c4f3d4",
+   "types": [
+    "acme"
+   ]
+  },
   "svc/task.acme.disable": {
    "converter": "bool",
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "49bfdfcbefd94317",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.domains_from": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "1cc35b5c317a49f9",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.domains_to": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "b5184689dc01ab89",
+   "types": [
+    "acme"
+   ]
+  },
+  "svc/task.acme.email": {
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "7d3e5af839bc4651",
    "types": [
     "acme"
    ]
@@ -41178,7 +41318,7 @@
    "converter": "list",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "dcaa0e686de6da19",
+   "textSum": "d82951a1eacd1ca8",
    "types": [
     "acme"
    ]
@@ -41310,9 +41450,8 @@
   "svc/task.acme.secs": {
    "converter": "list",
    "inherit": "leaf2head",
-   "required": true,
    "scopable": true,
-   "textSum": "9959216b377553fc",
+   "textSum": "b0aec79596e8fdb9",
    "types": [
     "acme"
    ]
@@ -41707,7 +41846,7 @@
    "converter": "list",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "dcaa0e686de6da19",
+   "textSum": "d82951a1eacd1ca8",
    "types": [
     "docker"
    ]
@@ -42066,7 +42205,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "764e7844ccf94518",
+   "textSum": "7397d96e8bc61e95",
    "types": [
     "docker"
    ]
@@ -42348,7 +42487,7 @@
    "converter": "list",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "dcaa0e686de6da19",
+   "textSum": "d82951a1eacd1ca8",
    "types": [
     "host"
    ]
@@ -42902,7 +43041,7 @@
    "converter": "list",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "dcaa0e686de6da19",
+   "textSum": "d82951a1eacd1ca8",
    "types": [
     "oci"
    ]
@@ -43279,7 +43418,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "764e7844ccf94518",
+   "textSum": "7397d96e8bc61e95",
    "types": [
     "oci"
    ]
@@ -43597,7 +43736,7 @@
    "converter": "list",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "dcaa0e686de6da19",
+   "textSum": "d82951a1eacd1ca8",
    "types": [
     "podman"
    ]
@@ -43974,7 +44113,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "764e7844ccf94518",
+   "textSum": "7397d96e8bc61e95",
    "types": [
     "podman"
    ]
@@ -44127,7 +44266,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     ""
    ]
@@ -50229,7 +50368,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "9pfs"
    ]
@@ -50671,7 +50810,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "afs"
    ]
@@ -51113,7 +51252,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "bfs"
    ]
@@ -51555,7 +51694,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "bind"
    ]
@@ -51997,7 +52136,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "btrfs"
    ]
@@ -52458,7 +52597,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "cephfs"
    ]
@@ -52900,7 +53039,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "cifs"
    ]
@@ -53323,7 +53462,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "directory"
    ]
@@ -53713,7 +53852,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ext2"
    ]
@@ -54155,7 +54294,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ext3"
    ]
@@ -54597,7 +54736,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ext4"
    ]
@@ -55039,7 +55178,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "f2fs"
    ]
@@ -55745,7 +55884,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "gfs"
    ]
@@ -56187,7 +56326,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "gfs2"
    ]
@@ -56629,7 +56768,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "glusterfs"
    ]
@@ -57071,7 +57210,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "gpfs"
    ]
@@ -57513,7 +57652,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "hfs"
    ]
@@ -57955,7 +58094,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "hfsplus"
    ]
@@ -58397,7 +58536,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "hpfs"
    ]
@@ -58839,7 +58978,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "jffs"
    ]
@@ -59281,7 +59420,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "jffs2"
    ]
@@ -59723,7 +59862,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "jfs"
    ]
@@ -60165,7 +60304,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "jfs2"
    ]
@@ -60607,7 +60746,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "lofs"
    ]
@@ -61049,7 +61188,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "logfs"
    ]
@@ -61491,7 +61630,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "minix"
    ]
@@ -61933,7 +62072,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "msdos"
    ]
@@ -62375,7 +62514,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ncpfs"
    ]
@@ -62817,7 +62956,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "nfs"
    ]
@@ -63259,7 +63398,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "nfs4"
    ]
@@ -63701,7 +63840,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "nilfs"
    ]
@@ -64143,7 +64282,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "none"
    ]
@@ -64585,7 +64724,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ntfs"
    ]
@@ -65027,7 +65166,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ocfs"
    ]
@@ -65469,7 +65608,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ocfs2"
    ]
@@ -65911,7 +66050,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "qnx4"
    ]
@@ -66353,7 +66492,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "reiserfs"
    ]
@@ -66795,7 +66934,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "reiserfs4"
    ]
@@ -67237,7 +67376,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "rpc_pipefs"
    ]
@@ -67705,7 +67844,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "sgcp_nfs"
    ]
@@ -68152,7 +68291,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "smbfs"
    ]
@@ -68594,7 +68733,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "tmpfs"
    ]
@@ -69057,7 +69196,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "tux3"
    ]
@@ -69499,7 +69638,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ufs"
    ]
@@ -69941,7 +70080,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "ufs2"
    ]
@@ -70383,7 +70522,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "umsdos"
    ]
@@ -70825,7 +70964,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "vfat"
    ]
@@ -71267,7 +71406,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "vxfs"
    ]
@@ -71709,7 +71848,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "xfs"
    ]
@@ -72151,7 +72290,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "xia"
    ]
@@ -72583,7 +72722,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     "zfs"
    ]
@@ -75653,7 +75792,7 @@
    "converter": "list",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "dcaa0e686de6da19",
+   "textSum": "d82951a1eacd1ca8",
    "types": [
     "docker"
    ]
@@ -76012,7 +76151,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "764e7844ccf94518",
+   "textSum": "7397d96e8bc61e95",
    "types": [
     "docker"
    ]
@@ -76294,7 +76433,7 @@
    "converter": "list",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "dcaa0e686de6da19",
+   "textSum": "d82951a1eacd1ca8",
    "types": [
     "host"
    ]
@@ -76848,7 +76987,7 @@
    "converter": "list",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "dcaa0e686de6da19",
+   "textSum": "d82951a1eacd1ca8",
    "types": [
     "oci"
    ]
@@ -77225,7 +77364,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "764e7844ccf94518",
+   "textSum": "7397d96e8bc61e95",
    "types": [
     "oci"
    ]
@@ -77543,7 +77682,7 @@
    "converter": "list",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "dcaa0e686de6da19",
+   "textSum": "d82951a1eacd1ca8",
    "types": [
     "podman"
    ]
@@ -77920,7 +78059,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "764e7844ccf94518",
+   "textSum": "7397d96e8bc61e95",
    "types": [
     "podman"
    ]
@@ -78073,7 +78212,7 @@
    "converter": "shlex",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "1d7ef995c34d9270",
+   "textSum": "780bb7313f27a4dc",
    "types": [
     ""
    ]
@@ -78356,5 +78495,5 @@
    ]
   }
  },
- "version": "v3.0.0-rc48"
+ "version": "v3.0.0-rc49"
 }

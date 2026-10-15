@@ -868,6 +868,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    false
+	stop first:  a change is refused while the resource is up
 	rbac:        This driver group requires the root grant.
 
 **Example:**

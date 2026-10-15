@@ -952,6 +952,17 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "cluster/cluster.dns_reverse": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "default": "true",
+    "inherit": "leaf2head",
+    "textSum": "de8eefd4092f052e"
+   },
+   "since": "v3.0.0-rc49",
+   "until": null
+  },
   "cluster/cluster.drpnodes": {
    "changes": {},
    "properties": {
@@ -1643,6 +1654,22 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "cluster/network.bridge.dns": {
+   "changes": {},
+   "properties": {
+    "converter": "list",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "bb0bb43a064a31fc",
+    "types": [
+     "bridge",
+     "lan",
+     "routed_bridge"
+    ]
+   },
+   "since": "v3.0.0-rc49",
+   "until": null
+  },
   "cluster/network.bridge.network": {
    "changes": {},
    "properties": {
@@ -1696,6 +1723,27 @@
    "since": "v3.0.0-rc48",
    "until": null
   },
+  "cluster/network.lan.modes": {
+   "changes": {},
+   "properties": {
+    "candidates": [
+     "bridge",
+     "dedicated",
+     "ipvlan-l2",
+     "macvlan",
+     "ovs"
+    ],
+    "converter": "list",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "e90ddf921ff30e82",
+    "types": [
+     "lan"
+    ]
+   },
+   "since": "v3.0.0-rc49",
+   "until": null
+  },
   "cluster/network.lan.network": {
    "changes": {},
    "properties": {
@@ -1719,6 +1767,37 @@
     ]
    },
    "since": "v3.0.0-rc48",
+   "until": null
+  },
+  "cluster/network.lan.vlan_mode": {
+   "changes": {},
+   "properties": {
+    "candidates": [
+     "access",
+     "native-tagged",
+     "native-untagged"
+    ],
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "f90f2cf43de0ef89",
+    "types": [
+     "lan"
+    ]
+   },
+   "since": "v3.0.0-rc49",
+   "until": null
+  },
+  "cluster/network.lan.vlan_tag": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "9f343bf51cca758a",
+    "types": [
+     "lan"
+    ]
+   },
+   "since": "v3.0.0-rc49",
    "until": null
   },
   "cluster/network.mask_per_node": {
@@ -4156,6 +4235,17 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "node/cluster.dns_reverse": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "default": "true",
+    "inherit": "leaf2head",
+    "textSum": "de8eefd4092f052e"
+   },
+   "since": "v3.0.0-rc49",
+   "until": null
+  },
   "node/cluster.drpnodes": {
    "changes": {},
    "properties": {
@@ -4847,6 +4937,22 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "node/network.bridge.dns": {
+   "changes": {},
+   "properties": {
+    "converter": "list",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "bb0bb43a064a31fc",
+    "types": [
+     "bridge",
+     "lan",
+     "routed_bridge"
+    ]
+   },
+   "since": "v3.0.0-rc49",
+   "until": null
+  },
   "node/network.bridge.network": {
    "changes": {},
    "properties": {
@@ -4900,6 +5006,27 @@
    "since": "v3.0.0-rc48",
    "until": null
   },
+  "node/network.lan.modes": {
+   "changes": {},
+   "properties": {
+    "candidates": [
+     "bridge",
+     "dedicated",
+     "ipvlan-l2",
+     "macvlan",
+     "ovs"
+    ],
+    "converter": "list",
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "e90ddf921ff30e82",
+    "types": [
+     "lan"
+    ]
+   },
+   "since": "v3.0.0-rc49",
+   "until": null
+  },
   "node/network.lan.network": {
    "changes": {},
    "properties": {
@@ -4923,6 +5050,37 @@
     ]
    },
    "since": "v3.0.0-rc48",
+   "until": null
+  },
+  "node/network.lan.vlan_mode": {
+   "changes": {},
+   "properties": {
+    "candidates": [
+     "access",
+     "native-tagged",
+     "native-untagged"
+    ],
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "f90f2cf43de0ef89",
+    "types": [
+     "lan"
+    ]
+   },
+   "since": "v3.0.0-rc49",
+   "until": null
+  },
+  "node/network.lan.vlan_tag": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "9f343bf51cca758a",
+    "types": [
+     "lan"
+    ]
+   },
+   "since": "v3.0.0-rc49",
    "until": null
   },
   "node/network.mask_per_node": {
@@ -10396,13 +10554,16 @@
    "changes": {
     "v3.0.0-rc45": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "b70a0d18b742cf79",
+    "textSum": "4ee25ce1d1fef83e",
     "types": [
      "docker"
     ]
@@ -12772,13 +12933,16 @@
    "changes": {
     "v3.0.0-rc45": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "b70a0d18b742cf79",
+    "textSum": "4ee25ce1d1fef83e",
     "types": [
      "oci"
     ]
@@ -13792,13 +13956,16 @@
    "changes": {
     "v3.0.0-rc45": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "b70a0d18b742cf79",
+    "textSum": "4ee25ce1d1fef83e",
     "types": [
      "podman"
     ]
@@ -22950,13 +23117,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "9pfs"
     ]
@@ -23667,13 +23837,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "afs"
     ]
@@ -24384,13 +24557,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "bfs"
     ]
@@ -25101,13 +25277,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "bind"
     ]
@@ -25818,13 +25997,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "btrfs"
     ]
@@ -26564,13 +26746,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "cephfs"
     ]
@@ -27281,13 +27466,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "cifs"
     ]
@@ -27965,13 +28153,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "directory"
     ]
@@ -28604,13 +28795,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ext2"
     ]
@@ -29321,13 +29515,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ext3"
     ]
@@ -30038,13 +30235,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ext4"
     ]
@@ -30755,13 +30955,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "f2fs"
     ]
@@ -31896,13 +32099,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "gfs"
     ]
@@ -32613,13 +32819,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "gfs2"
     ]
@@ -33330,13 +33539,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "glusterfs"
     ]
@@ -34047,13 +34259,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "gpfs"
     ]
@@ -34764,13 +34979,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "hfs"
     ]
@@ -35481,13 +35699,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "hfsplus"
     ]
@@ -36198,13 +36419,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "hpfs"
     ]
@@ -36915,13 +37139,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "jffs"
     ]
@@ -37632,13 +37859,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "jffs2"
     ]
@@ -38349,13 +38579,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "jfs"
     ]
@@ -39066,13 +39299,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "jfs2"
     ]
@@ -39783,13 +40019,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "lofs"
     ]
@@ -40500,13 +40739,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "logfs"
     ]
@@ -41217,13 +41459,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "minix"
     ]
@@ -41934,13 +42179,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "msdos"
     ]
@@ -42651,13 +42899,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ncpfs"
     ]
@@ -43368,13 +43619,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "nfs"
     ]
@@ -44085,13 +44339,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "nfs4"
     ]
@@ -44802,13 +45059,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "nilfs"
     ]
@@ -45519,13 +45779,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "none"
     ]
@@ -46236,13 +46499,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ntfs"
     ]
@@ -46953,13 +47219,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ocfs"
     ]
@@ -47670,13 +47939,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ocfs2"
     ]
@@ -48387,13 +48659,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "qnx4"
     ]
@@ -49104,13 +49379,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "reiserfs"
     ]
@@ -49821,13 +50099,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "reiserfs4"
     ]
@@ -50538,13 +50819,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "rpc_pipefs"
     ]
@@ -51300,13 +51584,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "sgcp_nfs"
     ]
@@ -52026,13 +52313,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "smbfs"
     ]
@@ -52743,13 +53033,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "tmpfs"
     ]
@@ -53491,13 +53784,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "tux3"
     ]
@@ -54208,13 +54504,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ufs"
     ]
@@ -54925,13 +55224,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ufs2"
     ]
@@ -55642,13 +55944,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "umsdos"
     ]
@@ -56359,13 +56664,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "vfat"
     ]
@@ -57076,13 +57384,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "vxfs"
     ]
@@ -57793,13 +58104,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "xfs"
     ]
@@ -58510,13 +58824,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "xia"
     ]
@@ -59212,13 +59529,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "zfs"
     ]
@@ -60521,7 +60841,12 @@
    "until": null
   },
   "svc/ip.docker.mode": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "default: bridge -> unset",
+     "defaultText: unset -> The first of the `modes` of the network the address is drawn from, else `bridge`.\n"
+    ]
+   },
    "properties": {
     "candidates": [
      "bridge",
@@ -60532,7 +60857,7 @@
      "macvlan",
      "ovs"
     ],
-    "default": "bridge",
+    "defaultText": "The first of the `modes` of the network the address is drawn from, else `bridge`.\n",
     "inherit": "leaf2head",
     "minimal": true,
     "scopable": true,
@@ -60916,14 +61241,19 @@
    "until": null
   },
   "svc/ip.docker.vlan_mode": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "default: native-untagged -> unset",
+     "defaultText: unset -> The `vlan_mode` of the network the address is drawn from, else `native-untagged`.\n"
+    ]
+   },
    "properties": {
     "candidates": [
      "access",
      "native-tagged",
      "native-untagged"
     ],
-    "default": "native-untagged",
+    "defaultText": "The `vlan_mode` of the network the address is drawn from, else `native-untagged`.\n",
     "depends": [
      ".mode=ovs"
     ],
@@ -60938,14 +61268,18 @@
    "until": null
   },
   "svc/ip.docker.vlan_tag": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "depends": [
      ".mode=ovs"
     ],
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "87186d67afe5fc16",
+    "textSum": "42da9805975d5774",
     "types": [
      "docker"
     ]
@@ -61816,7 +62150,12 @@
    "until": null
   },
   "svc/ip.netns.mode": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "default: bridge -> unset",
+     "defaultText: unset -> The first of the `modes` of the network the address is drawn from, else `bridge`.\n"
+    ]
+   },
    "properties": {
     "candidates": [
      "bridge",
@@ -61827,7 +62166,7 @@
      "macvlan",
      "ovs"
     ],
-    "default": "bridge",
+    "defaultText": "The first of the `modes` of the network the address is drawn from, else `bridge`.\n",
     "inherit": "leaf2head",
     "minimal": true,
     "scopable": true,
@@ -62211,14 +62550,19 @@
    "until": null
   },
   "svc/ip.netns.vlan_mode": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "default: native-untagged -> unset",
+     "defaultText: unset -> The `vlan_mode` of the network the address is drawn from, else `native-untagged`.\n"
+    ]
+   },
    "properties": {
     "candidates": [
      "access",
      "native-tagged",
      "native-untagged"
     ],
-    "default": "native-untagged",
+    "defaultText": "The `vlan_mode` of the network the address is drawn from, else `native-untagged`.\n",
     "depends": [
      ".mode=ovs"
     ],
@@ -62233,14 +62577,18 @@
    "until": null
   },
   "svc/ip.netns.vlan_tag": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "depends": [
      ".mode=ovs"
     ],
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "87186d67afe5fc16",
+    "textSum": "42da9805975d5774",
     "types": [
      "netns"
     ]
@@ -67237,6 +67585,19 @@
    "since": "v3.0.0-rc45",
    "until": null
   },
+  "svc/task.acme.directory": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "c144da5d81c4f3d4",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc49",
+   "until": null
+  },
   "svc/task.acme.disable": {
    "changes": {},
    "properties": {
@@ -67249,6 +67610,45 @@
     ]
    },
    "since": "v3.0.0-rc45",
+   "until": null
+  },
+  "svc/task.acme.domains_from": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "1cc35b5c317a49f9",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc49",
+   "until": null
+  },
+  "svc/task.acme.domains_to": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "b5184689dc01ab89",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc49",
+   "until": null
+  },
+  "svc/task.acme.email": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "scopable": true,
+    "textSum": "7d3e5af839bc4651",
+    "types": [
+     "acme"
+    ]
+   },
+   "since": "v3.0.0-rc49",
    "until": null
   },
   "svc/task.acme.encap": {
@@ -67323,12 +67723,16 @@
    "until": null
   },
   "svc/task.acme.on": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "list",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "dcaa0e686de6da19",
+    "textSum": "d82951a1eacd1ca8",
     "types": [
      "acme"
     ]
@@ -67536,13 +67940,17 @@
    "until": null
   },
   "svc/task.acme.secs": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "required: true -> unset",
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "list",
     "inherit": "leaf2head",
-    "required": true,
     "scopable": true,
-    "textSum": "9959216b377553fc",
+    "textSum": "b0aec79596e8fdb9",
     "types": [
      "acme"
     ]
@@ -68151,12 +68559,16 @@
    "until": null
   },
   "svc/task.docker.on": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "list",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "dcaa0e686de6da19",
+    "textSum": "d82951a1eacd1ca8",
     "types": [
      "docker"
     ]
@@ -68723,13 +69135,16 @@
    "changes": {
     "v3.0.0-rc45": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "764e7844ccf94518",
+    "textSum": "7397d96e8bc61e95",
     "types": [
      "docker"
     ]
@@ -69170,12 +69585,16 @@
    "until": null
   },
   "svc/task.host.on": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "list",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "dcaa0e686de6da19",
+    "textSum": "d82951a1eacd1ca8",
     "types": [
      "host"
     ]
@@ -70038,12 +70457,16 @@
    "until": null
   },
   "svc/task.oci.on": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "list",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "dcaa0e686de6da19",
+    "textSum": "d82951a1eacd1ca8",
     "types": [
      "oci"
     ]
@@ -70642,13 +71065,16 @@
    "changes": {
     "v3.0.0-rc45": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "764e7844ccf94518",
+    "textSum": "7397d96e8bc61e95",
     "types": [
      "oci"
     ]
@@ -71135,12 +71561,16 @@
    "until": null
   },
   "svc/task.podman.on": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "list",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "dcaa0e686de6da19",
+    "textSum": "d82951a1eacd1ca8",
     "types": [
      "podman"
     ]
@@ -71735,13 +72165,16 @@
    "changes": {
     "v3.0.0-rc45": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "764e7844ccf94518",
+    "textSum": "7397d96e8bc61e95",
     "types": [
      "podman"
     ]
@@ -71980,13 +72413,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      ""
     ]
@@ -81949,13 +82385,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "9pfs"
     ]
@@ -82666,13 +83105,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "afs"
     ]
@@ -83383,13 +83825,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "bfs"
     ]
@@ -84100,13 +84545,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "bind"
     ]
@@ -84817,13 +85265,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "btrfs"
     ]
@@ -85563,13 +86014,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "cephfs"
     ]
@@ -86280,13 +86734,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "cifs"
     ]
@@ -86964,13 +87421,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "directory"
     ]
@@ -87603,13 +88063,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ext2"
     ]
@@ -88320,13 +88783,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ext3"
     ]
@@ -89037,13 +89503,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ext4"
     ]
@@ -89754,13 +90223,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "f2fs"
     ]
@@ -90895,13 +91367,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "gfs"
     ]
@@ -91612,13 +92087,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "gfs2"
     ]
@@ -92329,13 +92807,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "glusterfs"
     ]
@@ -93046,13 +93527,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "gpfs"
     ]
@@ -93763,13 +94247,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "hfs"
     ]
@@ -94480,13 +94967,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "hfsplus"
     ]
@@ -95197,13 +95687,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "hpfs"
     ]
@@ -95914,13 +96407,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "jffs"
     ]
@@ -96631,13 +97127,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "jffs2"
     ]
@@ -97348,13 +97847,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "jfs"
     ]
@@ -98065,13 +98567,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "jfs2"
     ]
@@ -98782,13 +99287,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "lofs"
     ]
@@ -99499,13 +100007,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "logfs"
     ]
@@ -100216,13 +100727,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "minix"
     ]
@@ -100933,13 +101447,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "msdos"
     ]
@@ -101650,13 +102167,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ncpfs"
     ]
@@ -102367,13 +102887,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "nfs"
     ]
@@ -103084,13 +103607,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "nfs4"
     ]
@@ -103801,13 +104327,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "nilfs"
     ]
@@ -104518,13 +105047,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "none"
     ]
@@ -105235,13 +105767,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ntfs"
     ]
@@ -105952,13 +106487,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ocfs"
     ]
@@ -106669,13 +107207,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ocfs2"
     ]
@@ -107386,13 +107927,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "qnx4"
     ]
@@ -108103,13 +108647,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "reiserfs"
     ]
@@ -108820,13 +109367,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "reiserfs4"
     ]
@@ -109537,13 +110087,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "rpc_pipefs"
     ]
@@ -110299,13 +110852,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "sgcp_nfs"
     ]
@@ -111025,13 +111581,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "smbfs"
     ]
@@ -111742,13 +112301,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "tmpfs"
     ]
@@ -112490,13 +113052,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "tux3"
     ]
@@ -113207,13 +113772,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ufs"
     ]
@@ -113924,13 +114492,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "ufs2"
     ]
@@ -114641,13 +115212,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "umsdos"
     ]
@@ -115358,13 +115932,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "vfat"
     ]
@@ -116075,13 +116652,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "vxfs"
     ]
@@ -116792,13 +117372,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "xfs"
     ]
@@ -117509,13 +118092,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "xia"
     ]
@@ -118211,13 +118797,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      "zfs"
     ]
@@ -123154,12 +123743,16 @@
    "until": null
   },
   "vol/task.docker.on": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "list",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "dcaa0e686de6da19",
+    "textSum": "d82951a1eacd1ca8",
     "types": [
      "docker"
     ]
@@ -123726,13 +124319,16 @@
    "changes": {
     "v3.0.0-rc45": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "764e7844ccf94518",
+    "textSum": "7397d96e8bc61e95",
     "types": [
      "docker"
     ]
@@ -124173,12 +124769,16 @@
    "until": null
   },
   "vol/task.host.on": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "list",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "dcaa0e686de6da19",
+    "textSum": "d82951a1eacd1ca8",
     "types": [
      "host"
     ]
@@ -125041,12 +125641,16 @@
    "until": null
   },
   "vol/task.oci.on": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "list",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "dcaa0e686de6da19",
+    "textSum": "d82951a1eacd1ca8",
     "types": [
      "oci"
     ]
@@ -125645,13 +126249,16 @@
    "changes": {
     "v3.0.0-rc45": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "764e7844ccf94518",
+    "textSum": "7397d96e8bc61e95",
     "types": [
      "oci"
     ]
@@ -126138,12 +126745,16 @@
    "until": null
   },
   "vol/task.podman.on": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc49": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "list",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "dcaa0e686de6da19",
+    "textSum": "d82951a1eacd1ca8",
     "types": [
      "podman"
     ]
@@ -126738,13 +127349,16 @@
    "changes": {
     "v3.0.0-rc45": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "764e7844ccf94518",
+    "textSum": "7397d96e8bc61e95",
     "types": [
      "podman"
     ]
@@ -126983,13 +127597,16 @@
     ],
     "v3.0.0-rc48": [
      "description rewritten"
+    ],
+    "v3.0.0-rc49": [
+     "description rewritten"
     ]
    },
    "properties": {
     "converter": "shlex",
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "1d7ef995c34d9270",
+    "textSum": "780bb7313f27a4dc",
     "types": [
      ""
     ]
@@ -127454,6 +128071,7 @@
   "v3.0.0-rc43",
   "v3.0.0-rc45",
   "v3.0.0-rc46",
-  "v3.0.0-rc48"
+  "v3.0.0-rc48",
+  "v3.0.0-rc49"
  ]
 }

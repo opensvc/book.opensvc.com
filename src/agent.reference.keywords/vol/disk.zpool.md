@@ -299,6 +299,7 @@ If left empty, the current `multihost` property is left unchanged.
 	required:    true
 	scopable:    true
 	aliases:     poolname
+	stop first:  a change is refused while the resource is up
 	rbac:        This driver group requires the root grant.
 
 **Example:**

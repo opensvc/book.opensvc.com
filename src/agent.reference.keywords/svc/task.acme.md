@@ -4,13 +4,10 @@
 
 	[task#1]
 	type = acme
-	secs = web ./sec/api ns2/sec/shared
 
 **Minimal setup command:**
 
-	om test/svc/foo set \
-		--kw="type=acme" \
-		--kw="secs=web ./sec/api ns2/sec/shared"
+	om test/svc/foo set --kw="type=acme"
 
 **Supported keywords:**
 
@@ -23,7 +20,11 @@
 - check
 - comment
 - confirmation
+- directory
 - disable
+- domains_from
+- domains_to
+- email
 - encap
 - install
 - log
@@ -203,6 +204,25 @@ If set to `true`, ask for an interactive confirmation to run the task.
 This flag can be used for dangerous tasks like data restoration.
 
 
+## Keyword `directory`
+
+	required:    false
+	scopable:    true
+
+**Example:**
+
+	directory=letsencrypt
+
+**Description:**
+
+The ACME directory the secs of the domains obtain their certificate from,
+written as their `acme.directory`: `letsencrypt`, `letsencrypt-staging`, or
+the url of a directory. A change applies to every sec of the domains at the
+next run, which obtains their certificates again from the new directory.
+
+Without it, the certificates of the domains are generated, self-signed.
+
+
 ## Keyword `disable`
 
 	required:    false
@@ -227,6 +247,87 @@ These actions immediately return success.
 
 > **Note**: The `enable` and `disable` actions preserve the individual
   resource `disable` state.
+
+
+## Keyword `domains_from`
+
+	required:    false
+	scopable:    true
+
+**Example:**
+
+	domains_from=volume#1:/haproxy/conf.d/*.cfg
+
+**Description:**
+
+The files whose names are the domains to obtain a certificate for: a directory
+in a volume or a filesystem of the service, named as `webroot` is, and a file
+name pattern holding one `*`, the part of a name it matches being a domain.
+
+e.g. `volume#1:/haproxy/conf.d/*.cfg` reads the domain `www.example.com` from
+the file `conf.d/www.example.com.cfg`, as the configuration of a proxy routing
+the domain. A name whose part is no lowercase domain, as `README` or
+`tcp-smtp.cfg`, names none.
+
+At each run, for each domain:
+
+* a domain resolving to an address of an ip resource of the service gets a sec,
+  `domains_to` naming it, created with the `directory` and the `email` of the
+  task, and its certificate is obtained, and renewed when due.
+* a domain resolving elsewhere, or not yet, is pending: it gets no sec, its
+  certificate would not be obtained, and the sec it has is kept, so a dns
+  record going astray for a while does not take its certificate away. The run
+  fails, saying which domains are pending.
+* the sec of a domain no file names any longer is deleted, on every node.
+
+A run creates 10 secs at most: the certificates obtained are installed, and an
+install running the task, as `on = FileInstalled`, creates the next ones.
+Nothing is deleted when the directory can not be read.
+
+The secs renewed, the ones of the domains and the ones `secs` names, share one
+account at each directory: a directory limits the accounts an address
+registers. The first one to need it registers it, and the others take it.
+
+
+## Keyword `domains_to`
+
+	required:    false
+	scopable:    true
+
+**Example:**
+
+	domains_to=./sec/{name}-*
+
+**Description:**
+
+The secs of the domains `domains_from` reads, named by a pattern holding one
+`*`, which the domain replaces: `./sec/{name}-*` names the sec of the domain
+`www.example.com` `<namespace>/sec/<name>-www.example.com`. A name longer than
+an object name may be keeps the beginning of the domain, and a hash of it.
+
+The secs are in the namespace of the service. The task creates and deletes the
+ones it created only, marked with an `acme_owner` key naming the task, and
+tells the domain of a sec by its `cn`: another sec the pattern matches is left
+as it is.
+
+An install line naming the same pattern installs the certificate of each, as
+`/haproxy/certs/*.pem from ./sec/{name}-* key fullpem`.
+
+
+## Keyword `email`
+
+	required:    false
+	scopable:    true
+
+**Example:**
+
+	email=admin@example.com
+
+**Description:**
+
+The contact of the account at the ACME directory the secs of the domains
+share, written as their `email`, which the directory may write to about the
+account and its certificates. An account without one is valid all the same.
 
 
 ## Keyword `encap`
@@ -360,11 +461,11 @@ changed, `NetworkPeersUpdated,name=backend1` when the ones of backend1 did.
 
 The kinds are:
 
-* `FileInstalled`: an install of a resource of the object wrote files, by a
-  start, a provision, a task or a change of a key. It is not published for
-  an install finding its files up to date. Its fields are `node`, `path` and
-  `rid`, the resource, and the events of the other objects are not the
-  task's.
+* `FileInstalled`: an install of a resource of the object wrote files, or
+  removed the files of keys gone, by a start, a provision, a task or a change
+  of a key. It is not published for an install finding its files up to date.
+  Its fields are `node`, `path` and `rid`, the resource, and the events of the
+  other objects are not the task's.
 
 * `NetworkPeersUpdated`: a node joined or left a network, the address of a
   node changed, or the tunnel to it. Its fields are `node` and `name`, the
@@ -930,13 +1031,13 @@ See `usr/share/doc/opensvc/schedule` for the schedule syntax reference.
 
 ## Keyword `secs`
 
-	required:    true
+	required:    false
 	scopable:    true
 	convert:     list
 
 **Example:**
 
-	secs=web ./sec/api ns2/sec/shared
+	secs=web ./sec/api ns2/sec/shared ./sec/web-*
 
 **Description:**
 
@@ -950,8 +1051,17 @@ secs of the namespace of the service, `ns2/sec/web` a sec of another
 namespace, which must share it with this one, its `share` keyword naming this
 namespace or `*`.
 
+A name holding a `*` names the secs matching it, the `*` matching one
+character or more, as `./sec/web-*`: the secs there are when the task runs,
+as the ones a service creates and deletes. A pattern matching none names none,
+and leaves out the secs of another namespace not shared with this one, where a
+sec named that does not exist, or is not shared, fails the task.
+
 The volumes installing the renewed keys get the new ones, and the signals of
 their install lines are sent, on every node running them.
+
+The secs are optional when `domains_from` names the domains to obtain the
+certificates of.
 
 
 ## Keyword `shared`

@@ -766,11 +766,11 @@ changed, `NetworkPeersUpdated,name=backend1` when the ones of backend1 did.
 
 The kinds are:
 
-* `FileInstalled`: an install of a resource of the object wrote files, by a
-  start, a provision, a task or a change of a key. It is not published for
-  an install finding its files up to date. Its fields are `node`, `path` and
-  `rid`, the resource, and the events of the other objects are not the
-  task's.
+* `FileInstalled`: an install of a resource of the object wrote files, or
+  removed the files of keys gone, by a start, a provision, a task or a change
+  of a key. It is not published for an install finding its files up to date.
+  Its fields are `node`, `path` and `rid`, the resource, and the events of the
+  other objects are not the task's.
 
 * `NetworkPeersUpdated`: a node joined or left a network, the address of a
   node changed, or the tunnel to it. Its fields are `node` and `name`, the
@@ -1934,6 +1934,11 @@ The source is one of:
   the service, a volume or a filesystem, under its mount point.
 * `web-cfg/etc/nginx`, a directory or a file in the vol `web-cfg` of the
   namespace, under its mount point.
+* `tmpfs`, a memory filesystem of the container's own, which the engine
+  mounts at the start and discards at the stop: `tmpfs:/var/lib/app` or
+  `tmpfs:/var/lib/app:size=16m,mode=0750`. The `<mount options>` are the ones
+  of a tmpfs. The memory it holds counts in the one of the container, which
+  its memory limit bounds.
 
 When the source is a directory of the node, the default `<mount option>` is `rw`.
 
