@@ -57,6 +57,72 @@ state.
 `om myapp deploy` does the same in one step, creating the object and
 provisioning it.
 
+## What a provision checks first
+
+Before any node provisions, every node of the object checks that nothing on
+it holds what the provision would take, the instances showing `preflighting`
+then `preflighted` in `om mon`:
+
+* a filesystem mounted on a mount point, or on the device a filesystem would
+  be made on, a device held by another one, or holding a signature the format
+  would wipe;
+* a volume group, a logical volume, a zpool, a zvol, an md array, a mapped
+  encrypted device, a loop file of the name;
+* an address that answers.
+
+A conflict on any node ends the orchestration as a provision failure on every
+node, with nothing provisioned: the leader would otherwise have created what
+another node then refuses, as a disk. The instance log says what holds what:
+
+```
+provision preflight: fs#1: a filesystem is mounted on /srv/web
+```
+
+What a provision made is not checked again. A provision of an object whose
+instances were provisioned before this check existed may be refused for what
+it holds itself: `--adopt` once lets it record them.
+
+To take over what the provision finds, as the replicated storage a restored
+object finds, provision with `--adopt`. `deploy --restore` implies it.
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```bash
+om myapp provision --adopt
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/object/path/root/svc/myapp/action/provision?adopt=true"
+```
+
+</div>
+</div>
+
+To run the check alone on a node:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```bash
+om myapp instance provision --preflight
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/instance/path/root/svc/myapp/action/provision?preflight=true"
+```
+
+</div>
+</div>
+
 To act on the local instance only, without involving the daemon:
 
 <div class="tabs">
@@ -113,8 +179,10 @@ Resources that already existed when the object was created are reported as not
 provisioned, which `om mon` marks with a `P`.
 
 Successfully starting such a resource marks it provisioned: if it starts, it
-is sane to consider it provisioned. When starting it is not possible or not
-wanted, flag it without touching the system:
+is sane to consider it provisioned. It does not make it the object's own in
+the eyes of the [check a provision makes first](#what-a-provision-checks-first),
+which refuses what the object did not make: provision with `--adopt`, or flag
+it without touching the system, which records it as the object's own:
 
 <div class="tabs">
 <div class="tab" data-title="CLI">
