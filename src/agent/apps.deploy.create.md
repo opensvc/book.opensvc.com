@@ -226,6 +226,36 @@ object name, as `{name}`, `{fqdn}`, a container named after the object, an
 address drawn from a network, never conflict, which makes them the ones to
 use in a configuration meant to be cloned.
 
+### Recreating an object under another name, or taking over from another
+
+A disabled object holds nothing, its resources being never started: the
+holds of an object stopped and disabled are free for another to take. That
+is the way to restore an object under another name, or in place of an object
+receiving its replicated data:
+
+```
+om <src path> stop --wait
+om <src path> disable
+om <dst path> create --config=<saved config of src> --restore
+om <dst path> provision --wait
+```
+
+The object is disabled on every node a moment after the command: the check of
+the create reads what each node published, and refuses until they say the
+object is disabled.
+
+A resource up is not disabled, as it would be left running with nothing to
+stop it, and what it holds held with no configuration saying so:
+
+```
+$ om <src path> disable
+Error: <src path>: [403] Forbidden: the resource is up: disable fs#1: up on node1: stop it before
+```
+
+And enabling the object again is refused while another holds what it would
+hold again: the original does not come back on top of the object made in its
+place.
+
 Root writes the configuration all the same with `force`:
 
 <div class="tabs">
