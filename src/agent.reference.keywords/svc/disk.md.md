@@ -74,6 +74,7 @@
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -197,6 +198,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -233,6 +235,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     list
 	rbac:        This driver group requires the root grant.
 
@@ -295,6 +298,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -970,6 +974,7 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	default:     0
 	convert:     int
 	rbac:        This driver group requires the root grant.

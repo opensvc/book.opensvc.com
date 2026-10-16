@@ -8995,6 +8995,7 @@
   },
   "svc/disk.disk.disk_id": {
    "inherit": "leaf2head",
+   "recorded": true,
    "scopable": true,
    "textSum": "b928cd232602036a",
    "types": [
@@ -45488,6 +45489,7 @@
   },
   "vol/disk.disk.disk_id": {
    "inherit": "leaf2head",
+   "recorded": true,
    "scopable": true,
    "textSum": "b928cd232602036a",
    "types": [
@@ -78495,5 +78497,5 @@
    ]
   }
  },
- "version": "v3.0.0-rc49"
+ "version": "v3.0.0-rc50"
 }

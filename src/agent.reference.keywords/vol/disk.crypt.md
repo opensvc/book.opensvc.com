@@ -263,6 +263,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	default:     {fqdn}
 	rbac:        This driver group requires the root grant.
 
@@ -277,6 +278,7 @@ A label helps admin understand the role of a device.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	default:     true
 	convert:     bool
 	rbac:        This driver group requires the root grant.

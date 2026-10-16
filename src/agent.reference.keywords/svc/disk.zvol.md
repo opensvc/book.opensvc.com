@@ -182,6 +182,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -216,6 +217,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     shlex
 	rbac:        This driver group requires the root grant.
 
@@ -920,6 +922,7 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     size
 	rbac:        This driver group requires the root grant.
 

@@ -398,6 +398,7 @@ socket services that mandate a SRV exposition.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	rbac:        Requires the root grant.
 
 **Description:**

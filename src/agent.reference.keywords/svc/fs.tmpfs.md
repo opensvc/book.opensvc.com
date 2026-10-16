@@ -489,6 +489,7 @@ what reads them read them again, e.g. a host task with `container` running `swan
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     shlex
 	rbac:        Requires the root grant.
 
@@ -1229,6 +1230,7 @@ files changes.
 	required:    false
 	scopable:    true
 	since:       v3.0.0-rc42
+	provision:   used only by the provision of the resource
 	convert:     size
 	rbac:        Requires the root grant.
 

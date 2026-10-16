@@ -242,6 +242,7 @@ These actions immediately return success.
 
 	required:    false
 	scopable:    true
+	recorded:    written when what it names is made, and reset when the object is cloned
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -947,6 +948,7 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     size
 	rbac:        This driver group requires the root grant.
 

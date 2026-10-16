@@ -202,6 +202,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     shlex
 	rbac:        This driver group requires the root grant.
 
@@ -910,6 +911,7 @@ the flex primary gets `--leader` commands.
 	required:    false
 	scopable:    true
 	arithmetic:  an expression written $(...) is computed
+	provision:   used only by the provision of the resource
 	rbac:        This driver group requires the root grant.
 
 **Example:**

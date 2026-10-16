@@ -15260,9 +15260,14 @@
    "until": null
   },
   "svc/disk.disk.disk_id": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc50": [
+     "recorded: unset -> true"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
+    "recorded": true,
     "scopable": true,
     "textSum": "b928cd232602036a",
     "types": [
@@ -74528,9 +74533,14 @@
    "until": null
   },
   "vol/disk.disk.disk_id": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc50": [
+     "recorded: unset -> true"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
+    "recorded": true,
     "scopable": true,
     "textSum": "b928cd232602036a",
     "types": [
@@ -128072,6 +128082,7 @@
   "v3.0.0-rc45",
   "v3.0.0-rc46",
   "v3.0.0-rc48",
-  "v3.0.0-rc49"
+  "v3.0.0-rc49",
+  "v3.0.0-rc50"
  ]
 }

@@ -467,6 +467,7 @@ what reads them read them again, e.g. a host task with `container` running `swan
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     shlex
 	rbac:        A resource of a volume requires the root grant.
 
@@ -1008,6 +1009,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	rbac:        A resource of a volume requires the root grant.
 
 **Description:**
@@ -1033,6 +1035,7 @@ alone.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	rbac:        A resource of a volume requires the root grant.
 
 **Default:**
@@ -1066,6 +1069,7 @@ alone.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	rbac:        A resource of a volume requires the root grant.
 
 **Description:**
@@ -1091,6 +1095,7 @@ alone.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	rbac:        A resource of a volume requires the root grant.
 
 **Description:**
@@ -1234,6 +1239,7 @@ files changes.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     size
 	rbac:        A resource of a volume requires the root grant.
 

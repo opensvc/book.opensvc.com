@@ -1015,6 +1015,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	default:     5m
 	convert:     duration
 	rbac:        This driver group requires the root grant.
@@ -1124,6 +1125,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	default:     10s
 	convert:     duration
 	rbac:        This driver group requires the root grant.

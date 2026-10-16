@@ -487,6 +487,7 @@ what reads them read them again, e.g. a host task with `container` running `swan
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     shlex
 	rbac:        Requires the root grant.
 

@@ -490,6 +490,7 @@ what reads them read them again, e.g. a host task with `container` running `swan
 	required:    false
 	scopable:    true
 	since:       v3.0.0-rc47
+	provision:   used only by the provision of the resource
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -509,6 +510,7 @@ A `-L` or `--label` option of mkfs_opt naming another label is refused.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     shlex
 	rbac:        Requires the root grant.
 

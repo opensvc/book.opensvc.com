@@ -201,6 +201,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     shlex
 	rbac:        This driver group requires the root grant.
 
@@ -1100,6 +1101,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     list
 	rbac:        This driver group requires the root grant.
 

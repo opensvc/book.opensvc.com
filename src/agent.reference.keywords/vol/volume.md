@@ -70,6 +70,7 @@
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	candidates:  rwo, roo, rwx, rox
 	default:     rwo
 	rbac:        A resource of a volume requires the root grant.
@@ -315,6 +316,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	default:     true
 	convert:     bool
 	rbac:        A resource of a volume requires the root grant.
@@ -495,6 +497,7 @@ An object can only reference a `vol` in the same namespace.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	default:     {.nodes}
 	convert:     nodes
 	rbac:        A resource of a volume requires the root grant.
@@ -846,6 +849,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	rbac:        A resource of a volume requires the root grant.
 
 **Description:**
@@ -1122,6 +1126,7 @@ files changes.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     size
 	rbac:        A resource of a volume requires the root grant.
 
@@ -1249,6 +1254,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	rbac:        A resource of a volume requires the root grant.
 
 **Description:**
@@ -1317,6 +1323,7 @@ directories.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	default:     false
 	convert:     bool
 	rbac:        A resource of a volume requires the root grant.

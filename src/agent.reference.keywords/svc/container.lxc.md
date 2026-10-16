@@ -193,6 +193,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    false
+	provision:   used only by the provision of the resource
 
 **Example:**
 
@@ -228,6 +229,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     shlex
 
 **Example:**
@@ -248,6 +250,7 @@ A shell expression splitter is applied, so double quotes can be around
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     shlex
 
 **Example:**
@@ -269,6 +272,7 @@ A shell expression splitter is applied, so double quotes can be around
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     shlex
 
 **Example:**
@@ -981,6 +985,7 @@ The minimum delay between two restart tentatives on the resource.
 
 	required:    false
 	scopable:    false
+	provision:   used only by the provision of the resource
 
 **Example:**
 
@@ -1200,6 +1205,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
+	provision:   used only by the provision of the resource
 
 **Example:**
 
@@ -1215,6 +1221,7 @@ of the template passed to `lxc-create`.
 
 	required:    false
 	scopable:    false
+	provision:   used only by the provision of the resource
 	convert:     shlex
 
 **Example:**

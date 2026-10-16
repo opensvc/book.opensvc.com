@@ -74,6 +74,7 @@
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	rbac:        This driver group requires the root grant.
 
 **Default:**
@@ -247,6 +248,7 @@ These actions immediately return success.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -274,6 +276,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    false
+	provision:   used only by the provision of the resource
 	convert:     int
 	rbac:        This driver group requires the root grant.
 
@@ -316,6 +319,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    false
+	provision:   used only by the provision of the resource
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -674,6 +678,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     int
 	rbac:        This driver group requires the root grant.
 
@@ -1109,6 +1114,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
+	provision:   used only by the provision of the resource
 	rbac:        This driver group requires the root grant.
 
 **Example:**

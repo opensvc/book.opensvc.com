@@ -70,6 +70,7 @@
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	candidates:  rwo, roo, rwx, rox
 	default:     rwo
 
@@ -312,6 +313,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	default:     true
 	convert:     bool
 
@@ -489,6 +491,7 @@ An object can only reference a `vol` in the same namespace.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	default:     {.nodes}
 	convert:     nodes
 
@@ -839,6 +842,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 
 **Description:**
 
@@ -1112,6 +1116,7 @@ files changes.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	convert:     size
 
 **Description:**
@@ -1238,6 +1243,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 
 **Description:**
 
@@ -1304,6 +1310,7 @@ directories.
 
 	required:    false
 	scopable:    true
+	provision:   used only by the provision of the resource
 	default:     false
 	convert:     bool
 

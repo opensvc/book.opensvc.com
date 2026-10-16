@@ -77,6 +77,7 @@ The filesystem to format the pool devices with.
 
 	required:    false
 	scopable:    false
+	provision:   used only by the provision of the resource
 	convert:     int
 
 **Default:**

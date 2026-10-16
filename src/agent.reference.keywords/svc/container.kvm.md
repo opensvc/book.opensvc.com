@@ -1167,6 +1167,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    false
+	provision:   used only by the provision of the resource
 	convert:     shlex
 
 **Example:**

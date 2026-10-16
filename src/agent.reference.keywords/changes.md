@@ -1,7 +1,17 @@
 # Keyword changes
 
-What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc49.
+What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc50.
 
+
+## v3.0.0-rc50
+
+
+### Changed
+
+- `svc/disk.disk.disk_id`
+  - recorded: unset -> true
+- `vol/disk.disk.disk_id`
+  - recorded: unset -> true
 
 ## v3.0.0-rc49
 
