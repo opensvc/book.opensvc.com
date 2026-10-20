@@ -4021,7 +4021,7 @@
    ],
    "converter": "listlowercase",
    "inherit": "head",
-   "textSum": "158f610c4c0fc7db"
+   "textSum": "6adb6f94b83cd1a6"
   },
   "svc/DEFAULT.hard_anti_affinity": {
    "aliases": [
@@ -4029,7 +4029,7 @@
    ],
    "converter": "listlowercase",
    "inherit": "head",
-   "textSum": "ef04ac92eefc97f5"
+   "textSum": "42272835ef62731f"
   },
   "svc/DEFAULT.id": {
    "defaultText": "A random generated UUID.\n",
@@ -4216,12 +4216,12 @@
   "svc/DEFAULT.soft_affinity": {
    "converter": "listlowercase",
    "inherit": "head",
-   "textSum": "45409ddaf3c28f54"
+   "textSum": "cda1dd66f92bf2f4"
   },
   "svc/DEFAULT.soft_anti_affinity": {
    "converter": "listlowercase",
    "inherit": "head",
-   "textSum": "099d2730d26422eb"
+   "textSum": "d3a0a37b04bf8866"
   },
   "svc/DEFAULT.start_timeout": {
    "converter": "duration",
@@ -5321,7 +5321,7 @@
   "svc/app.simple.stop": {
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "89ec029e2ef1e8c6",
+   "textSum": "34ec92fdd7f03090",
    "types": [
     "simple"
    ]
@@ -44768,7 +44768,7 @@
    ],
    "converter": "listlowercase",
    "inherit": "head",
-   "textSum": "158f610c4c0fc7db"
+   "textSum": "6adb6f94b83cd1a6"
   },
   "vol/DEFAULT.hard_anti_affinity": {
    "aliases": [
@@ -44776,7 +44776,7 @@
    ],
    "converter": "listlowercase",
    "inherit": "head",
-   "textSum": "ef04ac92eefc97f5"
+   "textSum": "42272835ef62731f"
   },
   "vol/DEFAULT.id": {
    "defaultText": "A random generated UUID.\n",
@@ -44958,12 +44958,12 @@
   "vol/DEFAULT.soft_affinity": {
    "converter": "listlowercase",
    "inherit": "head",
-   "textSum": "45409ddaf3c28f54"
+   "textSum": "cda1dd66f92bf2f4"
   },
   "vol/DEFAULT.soft_anti_affinity": {
    "converter": "listlowercase",
    "inherit": "head",
-   "textSum": "099d2730d26422eb"
+   "textSum": "d3a0a37b04bf8866"
   },
   "vol/DEFAULT.start_timeout": {
    "converter": "duration",
@@ -78497,5 +78497,5 @@
    ]
   }
  },
- "version": "v3.0.0-rc50"
+ "version": "v3.0.0-rc52"
 }

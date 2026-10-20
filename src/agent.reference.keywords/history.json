@@ -7261,27 +7261,35 @@
    "until": null
   },
   "svc/DEFAULT.hard_affinity": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc52": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "aliases": [
      "affinity"
     ],
     "converter": "listlowercase",
     "inherit": "head",
-    "textSum": "158f610c4c0fc7db"
+    "textSum": "6adb6f94b83cd1a6"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "svc/DEFAULT.hard_anti_affinity": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc52": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "aliases": [
      "anti_affinity"
     ],
     "converter": "listlowercase",
     "inherit": "head",
-    "textSum": "ef04ac92eefc97f5"
+    "textSum": "42272835ef62731f"
    },
    "since": "v3.0.0-rc36",
    "until": null
@@ -7666,21 +7674,29 @@
    "until": null
   },
   "svc/DEFAULT.soft_affinity": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc52": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "listlowercase",
     "inherit": "head",
-    "textSum": "45409ddaf3c28f54"
+    "textSum": "cda1dd66f92bf2f4"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "svc/DEFAULT.soft_anti_affinity": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc52": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "listlowercase",
     "inherit": "head",
-    "textSum": "099d2730d26422eb"
+    "textSum": "d3a0a37b04bf8866"
    },
    "since": "v3.0.0-rc36",
    "until": null
@@ -9444,11 +9460,15 @@
    "until": null
   },
   "svc/app.simple.stop": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc52": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
     "scopable": true,
-    "textSum": "89ec029e2ef1e8c6",
+    "textSum": "34ec92fdd7f03090",
     "types": [
      "simple"
     ]
@@ -73266,27 +73286,35 @@
    "until": null
   },
   "vol/DEFAULT.hard_affinity": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc52": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "aliases": [
      "affinity"
     ],
     "converter": "listlowercase",
     "inherit": "head",
-    "textSum": "158f610c4c0fc7db"
+    "textSum": "6adb6f94b83cd1a6"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "vol/DEFAULT.hard_anti_affinity": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc52": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "aliases": [
      "anti_affinity"
     ],
     "converter": "listlowercase",
     "inherit": "head",
-    "textSum": "ef04ac92eefc97f5"
+    "textSum": "42272835ef62731f"
    },
    "since": "v3.0.0-rc36",
    "until": null
@@ -73662,21 +73690,29 @@
    "until": null
   },
   "vol/DEFAULT.soft_affinity": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc52": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "listlowercase",
     "inherit": "head",
-    "textSum": "45409ddaf3c28f54"
+    "textSum": "cda1dd66f92bf2f4"
    },
    "since": "v3.0.0-rc36",
    "until": null
   },
   "vol/DEFAULT.soft_anti_affinity": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc52": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "listlowercase",
     "inherit": "head",
-    "textSum": "099d2730d26422eb"
+    "textSum": "d3a0a37b04bf8866"
    },
    "since": "v3.0.0-rc36",
    "until": null
@@ -128083,6 +128119,7 @@
   "v3.0.0-rc46",
   "v3.0.0-rc48",
   "v3.0.0-rc49",
-  "v3.0.0-rc50"
+  "v3.0.0-rc50",
+  "v3.0.0-rc52"
  ]
 }

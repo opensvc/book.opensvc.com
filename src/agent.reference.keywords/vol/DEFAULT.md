@@ -356,10 +356,20 @@ If `orchestrate=ha`, the daemon is free to take action to reach the
 
 **Description:**
 
-A whitespace separated list of object paths.
+A whitespace separated list of object paths, a name alone being a svc of the
+object namespace.
 
-These objects must be started on the local node to allow the local monitor
-to start an instance of the service.
+An instance of the object starts only on a node where an instance of each of
+these objects is up: the daemon starts it, switches it or gives it back to
+no other node, and the start command refuses to start it elsewhere, unless
+`--force-affinity`. An instance running is not moved when one of these
+objects leaves its node.
+
+Objects whose hard affinities name each other, none of them up anywhere,
+would each wait for the others: the daemon starts the one of the smallest
+`priority`, then of the first path in alphanumeric order, as if it had no
+hard affinity with the others, and the others follow it. A start asked for
+one of the others waits for it.
 
 
 ## Keyword `hard_anti_affinity`
@@ -376,10 +386,14 @@ to start an instance of the service.
 
 **Description:**
 
-A whitespace separated list of object paths.
+A whitespace separated list of object paths, a name alone being a svc of the
+object namespace.
 
-These object must not be started on the local node to allow the local monitor
-to start an instance of the object.
+An instance of the object starts only on a node where no instance of these
+objects is up, standby resources aside: the daemon starts it, switches it or
+gives it back to no other node, and the start command refuses to start it
+elsewhere, unless `--force-affinity`. An instance running is not moved when
+one of these objects comes to its node.
 
 
 ## Keyword `id`
@@ -1008,9 +1022,12 @@ The size used by this volume in its pool.
 
 **Description:**
 
-A whitespace separated list of services that must be started on the node to allow the monitor to start this service.
+A whitespace separated list of object paths, a name alone being a svc of the
+object namespace.
 
-If the local node is the only candidate ignore this constraint and allow start.
+The daemon prefers the nodes where instances of these objects are up when it
+starts or switches the object, the more the better, the placement policy
+ordering the nodes it prefers the same. No node is excluded.
 
 
 ## Keyword `soft_anti_affinity`
@@ -1026,9 +1043,12 @@ If the local node is the only candidate ignore this constraint and allow start.
 
 **Description:**
 
-A whitespace separated list of services that must not be started on the node to allow the monitor to start this service.
+A whitespace separated list of object paths, a name alone being a svc of the
+object namespace.
 
-If the local node is the only candidate ignore this constraint and allow start.
+The daemon prefers the nodes where no instance of these objects is up when it
+starts or switches the object, the placement policy ordering the nodes it
+prefers the same. No node is excluded.
 
 
 ## Keyword `start_timeout`

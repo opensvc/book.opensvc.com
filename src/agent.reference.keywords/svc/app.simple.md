@@ -1402,7 +1402,9 @@ If `true`, redirect the checker script:
 
    Execute this command on `stop` action.
 
-If not set, the driver will lookup and kill the process it started.
+The driver then terminates the processes the start command left running,
+as it does when the keyword is not set: a stop command not ending them
+leaves the resource stopped all the same.
 
 
 ## Keyword `stop_requires`

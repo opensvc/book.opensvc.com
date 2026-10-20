@@ -1,7 +1,31 @@
 # Keyword changes
 
-What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc50.
+What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc52.
 
+
+## v3.0.0-rc52
+
+
+### Changed
+
+- `svc/DEFAULT.hard_affinity`
+  - description rewritten
+- `svc/DEFAULT.hard_anti_affinity`
+  - description rewritten
+- `svc/DEFAULT.soft_affinity`
+  - description rewritten
+- `svc/DEFAULT.soft_anti_affinity`
+  - description rewritten
+- `svc/app.simple.stop`
+  - description rewritten
+- `vol/DEFAULT.hard_affinity`
+  - description rewritten
+- `vol/DEFAULT.hard_anti_affinity`
+  - description rewritten
+- `vol/DEFAULT.soft_affinity`
+  - description rewritten
+- `vol/DEFAULT.soft_anti_affinity`
+  - description rewritten
 
 ## v3.0.0-rc50
 
