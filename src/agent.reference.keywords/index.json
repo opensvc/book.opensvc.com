@@ -39376,6 +39376,16 @@
     "btrfs"
    ]
   },
+  "svc/sync.btrfs.log": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "60a62b3058e4e2b0",
+   "types": [
+    "btrfs"
+   ]
+  },
   "svc/sync.btrfs.max_delay": {
    "aliases": [
     "sync_max_delay"
@@ -39639,6 +39649,16 @@
     "btrfssnap"
    ]
   },
+  "svc/sync.btrfssnap.log": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "60a62b3058e4e2b0",
+   "types": [
+    "btrfssnap"
+   ]
+  },
   "svc/sync.btrfssnap.max_delay": {
    "aliases": [
     "sync_max_delay"
@@ -39886,6 +39906,16 @@
    "converter": "bool",
    "inherit": "leaf2head",
    "textSum": "0c8c8239e9cdaae0",
+   "types": [
+    "rsync"
+   ]
+  },
+  "svc/sync.rsync.log": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "60a62b3058e4e2b0",
    "types": [
     "rsync"
    ]
@@ -40180,6 +40210,16 @@
     "symsnapvx"
    ]
   },
+  "svc/sync.symsnapvx.log": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "60a62b3058e4e2b0",
+   "types": [
+    "symsnapvx"
+   ]
+  },
   "svc/sync.symsnapvx.max_delay": {
    "aliases": [
     "sync_max_delay"
@@ -40418,6 +40458,16 @@
    "converter": "bool",
    "inherit": "leaf2head",
    "textSum": "0c8c8239e9cdaae0",
+   "types": [
+    "symsrdfs"
+   ]
+  },
+  "svc/sync.symsrdfs.log": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "60a62b3058e4e2b0",
    "types": [
     "symsrdfs"
    ]
@@ -40709,6 +40759,16 @@
     "zfs"
    ]
   },
+  "svc/sync.zfs.log": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "60a62b3058e4e2b0",
+   "types": [
+    "zfs"
+   ]
+  },
   "svc/sync.zfs.max_delay": {
    "aliases": [
     "sync_max_delay"
@@ -40986,6 +41046,16 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "bee41e82f34761e9",
+   "types": [
+    "zfssnap"
+   ]
+  },
+  "svc/sync.zfssnap.log": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "60a62b3058e4e2b0",
    "types": [
     "zfssnap"
    ]
@@ -41288,10 +41358,10 @@
   },
   "svc/task.acme.log": {
    "converter": "bool",
-   "default": "true",
+   "default": "false",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c653e4c272ec2ea3",
+   "textSum": "407fb5c5868b7024",
    "types": [
     "acme"
    ]
@@ -41796,10 +41866,10 @@
   },
   "svc/task.docker.log": {
    "converter": "bool",
-   "default": "true",
+   "default": "false",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c653e4c272ec2ea3",
+   "textSum": "407fb5c5868b7024",
    "types": [
     "docker"
    ]
@@ -42457,10 +42527,10 @@
   },
   "svc/task.host.log": {
    "converter": "bool",
-   "default": "true",
+   "default": "false",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c653e4c272ec2ea3",
+   "textSum": "407fb5c5868b7024",
    "types": [
     "host"
    ]
@@ -42991,10 +43061,10 @@
   },
   "svc/task.oci.log": {
    "converter": "bool",
-   "default": "true",
+   "default": "false",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c653e4c272ec2ea3",
+   "textSum": "407fb5c5868b7024",
    "types": [
     "oci"
    ]
@@ -43686,10 +43756,10 @@
   },
   "svc/task.podman.log": {
    "converter": "bool",
-   "default": "true",
+   "default": "false",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c653e4c272ec2ea3",
+   "textSum": "407fb5c5868b7024",
    "types": [
     "podman"
    ]
@@ -73698,6 +73768,16 @@
     "btrfs"
    ]
   },
+  "vol/sync.btrfs.log": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "60a62b3058e4e2b0",
+   "types": [
+    "btrfs"
+   ]
+  },
   "vol/sync.btrfs.max_delay": {
    "aliases": [
     "sync_max_delay"
@@ -73961,6 +74041,16 @@
     "btrfssnap"
    ]
   },
+  "vol/sync.btrfssnap.log": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "60a62b3058e4e2b0",
+   "types": [
+    "btrfssnap"
+   ]
+  },
   "vol/sync.btrfssnap.max_delay": {
    "aliases": [
     "sync_max_delay"
@@ -74208,6 +74298,16 @@
    "converter": "bool",
    "inherit": "leaf2head",
    "textSum": "0c8c8239e9cdaae0",
+   "types": [
+    "rsync"
+   ]
+  },
+  "vol/sync.rsync.log": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "60a62b3058e4e2b0",
    "types": [
     "rsync"
    ]
@@ -74502,6 +74602,16 @@
     "symsnapvx"
    ]
   },
+  "vol/sync.symsnapvx.log": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "60a62b3058e4e2b0",
+   "types": [
+    "symsnapvx"
+   ]
+  },
   "vol/sync.symsnapvx.max_delay": {
    "aliases": [
     "sync_max_delay"
@@ -74740,6 +74850,16 @@
    "converter": "bool",
    "inherit": "leaf2head",
    "textSum": "0c8c8239e9cdaae0",
+   "types": [
+    "symsrdfs"
+   ]
+  },
+  "vol/sync.symsrdfs.log": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "60a62b3058e4e2b0",
    "types": [
     "symsrdfs"
    ]
@@ -75031,6 +75151,16 @@
     "zfs"
    ]
   },
+  "vol/sync.zfs.log": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "60a62b3058e4e2b0",
+   "types": [
+    "zfs"
+   ]
+  },
   "vol/sync.zfs.max_delay": {
    "aliases": [
     "sync_max_delay"
@@ -75308,6 +75438,16 @@
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "bee41e82f34761e9",
+   "types": [
+    "zfssnap"
+   ]
+  },
+  "vol/sync.zfssnap.log": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "scopable": true,
+   "textSum": "60a62b3058e4e2b0",
    "types": [
     "zfssnap"
    ]
@@ -75743,10 +75883,10 @@
   },
   "vol/task.docker.log": {
    "converter": "bool",
-   "default": "true",
+   "default": "false",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c653e4c272ec2ea3",
+   "textSum": "407fb5c5868b7024",
    "types": [
     "docker"
    ]
@@ -76404,10 +76544,10 @@
   },
   "vol/task.host.log": {
    "converter": "bool",
-   "default": "true",
+   "default": "false",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c653e4c272ec2ea3",
+   "textSum": "407fb5c5868b7024",
    "types": [
     "host"
    ]
@@ -76938,10 +77078,10 @@
   },
   "vol/task.oci.log": {
    "converter": "bool",
-   "default": "true",
+   "default": "false",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c653e4c272ec2ea3",
+   "textSum": "407fb5c5868b7024",
    "types": [
     "oci"
    ]
@@ -77633,10 +77773,10 @@
   },
   "vol/task.podman.log": {
    "converter": "bool",
-   "default": "true",
+   "default": "false",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "c653e4c272ec2ea3",
+   "textSum": "407fb5c5868b7024",
    "types": [
     "podman"
    ]
@@ -78497,5 +78637,5 @@
    ]
   }
  },
- "version": "v3.0.0-rc52"
+ "version": "v3.0.0-rc53"
 }

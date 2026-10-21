@@ -25,6 +25,7 @@
 - dst
 - encap
 - intermediary
+- log
 - max_delay
 - max_lag_age
 - max_lag_size
@@ -202,6 +203,24 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 **Description:**
 
 Synchronize the snapshots of the selected datasets that were created since the last update.
+
+
+## Keyword `log`
+
+	required:    false
+	scopable:    true
+	default:     false
+	convert:     bool
+	rbac:        This driver group requires the root grant.
+
+**Description:**
+
+Log the scheduled runs of the resource, the updates the daemon scheduler
+starts, as a run asked by a user is.
+
+The daemon scheduler logs the runs of the jobs it starts only when they ask
+it, so a scheduled update of a resource with `log = false` leaves no trace
+in the journal but its status.
 
 
 ## Keyword `max_delay`

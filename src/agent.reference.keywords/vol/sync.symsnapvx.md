@@ -25,6 +25,7 @@
 - devs_from
 - disable
 - encap
+- log
 - max_delay
 - monitor
 - name
@@ -233,6 +234,24 @@ These actions immediately return success.
 **Description:**
 
 Set to `true` to ignore this resource in the nodes context and consider it in the encapnodes context. The resource is thus handled by agents deployed in the service containers.
+
+
+## Keyword `log`
+
+	required:    false
+	scopable:    true
+	default:     false
+	convert:     bool
+	rbac:        This driver group requires the root grant.
+
+**Description:**
+
+Log the scheduled runs of the resource, the updates the daemon scheduler
+starts, as a run asked by a user is.
+
+The daemon scheduler logs the runs of the jobs it starts only when they ask
+it, so a scheduled update of a resource with `log = false` leaves no trace
+in the journal but its status.
 
 
 ## Keyword `max_delay`

@@ -1,7 +1,57 @@
 # Keyword changes
 
-What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc52.
+What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc53.
 
+
+## v3.0.0-rc53
+
+
+### Added
+
+- `svc/sync.btrfs.log`
+- `svc/sync.btrfssnap.log`
+- `svc/sync.rsync.log`
+- `svc/sync.symsnapvx.log`
+- `svc/sync.symsrdfs.log`
+- `svc/sync.zfs.log`
+- `svc/sync.zfssnap.log`
+- `vol/sync.btrfs.log`
+- `vol/sync.btrfssnap.log`
+- `vol/sync.rsync.log`
+- `vol/sync.symsnapvx.log`
+- `vol/sync.symsrdfs.log`
+- `vol/sync.zfs.log`
+- `vol/sync.zfssnap.log`
+
+### Changed
+
+- `svc/task.acme.log`
+  - default: true -> false
+  - description rewritten
+- `svc/task.docker.log`
+  - default: true -> false
+  - description rewritten
+- `svc/task.host.log`
+  - default: true -> false
+  - description rewritten
+- `svc/task.oci.log`
+  - default: true -> false
+  - description rewritten
+- `svc/task.podman.log`
+  - default: true -> false
+  - description rewritten
+- `vol/task.docker.log`
+  - default: true -> false
+  - description rewritten
+- `vol/task.host.log`
+  - default: true -> false
+  - description rewritten
+- `vol/task.oci.log`
+  - default: true -> false
+  - description rewritten
+- `vol/task.podman.log`
+  - default: true -> false
+  - description rewritten
 
 ## v3.0.0-rc52
 

@@ -387,12 +387,17 @@ A failed install is a failed run, the task's own work not done.
 
 	required:    false
 	scopable:    true
-	default:     true
+	default:     false
 	convert:     bool
 
 **Description:**
 
-Log the task outputs in the service log.
+Log the task outputs in the object logs, and log its scheduled runs as a
+run asked by a user is.
+
+The daemon scheduler logs the runs of the jobs it starts only when they ask
+it, so a scheduled run of a task with `log = false` leaves no trace in the
+journal but its status and its exit code.
 
 
 ## Keyword `max_parallel`
