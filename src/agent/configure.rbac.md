@@ -95,8 +95,9 @@ OpenSVC daemon with a user holding this role.
 ### join, leave
 
 May add a node to the cluster, or remove one from it, plus the reads a node
-performs while joining. These back the token minted on a node to enroll,
-which `om cluster enroll --token` uses to reach it:
+performs while joining, and the collector registration of the joining node
+by the node it joins through. These back the token minted on a node to
+enroll, which `om cluster enroll --token` uses to reach it:
 
     om daemon auth --role join --duration 10m
 
