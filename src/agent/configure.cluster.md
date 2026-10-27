@@ -162,6 +162,23 @@ Its configuration directory is moved to the backup directory, then the cluster, 
 
 </div>
 
+### Collector Registration
+
+The collector registration id of the enrolled node, its {{#include ../inc/kw}}`node.uuid` keyword, is in the configuration directory moved aside. When the node was registered on the collector, the join keeps it registered:
+
+* Before its daemon starts, the enrolled node asks the cluster node it joins through to register it on the collector, with the registration id it held before the join.
+* That cluster node, authenticated on the collector by its own registration id, registers it. The collector moves the enrolled node to the app and the cluster of that node, and hands it a new registration id, which the enrolled node stores in its {{#include ../inc/kw}}`node.uuid`.
+* Once its daemon has started, the enrolled node pushes the inventory `om node register` pushes: asset, packages, disks, sysreport and checks.
+
+This requires a collector server api 1.0.4 or later, allowing a node to register another one (the collector `allow_node_enroll` setting, on by default), and a cluster node registered on it.
+
+The join does not depend on the collector: a node that was not registered is left unregistered, and a node the collector refuses to register is warned. Register it with:
+
+	om node register --credential /root/collector.cred
+
+> ➡️ See Also
+> * [Register on a Collector](configure.base.md#register-on-a-collector)
+
 ## Evict a Node
 
 A node is removed from the cluster by another cluster node. The evicted node leaves the cluster, then restarts its daemon alone, in a new 1-node cluster.

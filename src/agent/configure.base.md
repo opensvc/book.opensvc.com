@@ -99,13 +99,13 @@ curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -G \
 
 By default, the agent does not communicate with a collector.
 
-To enable communications with a collector, the {{#include ../inc/kw}}`node.dbopensvc` node configuration parameter must be set. The simplest expression is:
+To enable communications with an OpenSVC Collector v3, set the {{#include ../inc/kw}}`collector.url` cluster configuration parameter:
 
 <div class="tabs">
 <div class="tab" data-title="CLI">
 
 ```bash
-om cluster config update --set node.dbopensvc=collector.opensvc.com
+om cluster config update --set collector.url=https://collector.opensvc.com
 ```
 
 </div>
@@ -113,51 +113,88 @@ om cluster config update --set node.dbopensvc=collector.opensvc.com
 
 ```bash
 curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -G \
-  --data-urlencode 'set=node.dbopensvc=collector.opensvc.com' \
+  --data-urlencode 'set=collector.url=https://collector.opensvc.com' \
   "https://<node>:1215/api/cluster/config"
 ```
 
 </div>
 </div>
 
-Here the protocol and path are omitted. In this case, the ``https`` protocol is selected, and the path set to a value matching the standard collector integration.
+The node feeds the collector at `<collector.url>/feeder`, and calls its server api at `<collector.url>/server`.
 
 #### Advanced Url Formats
 
-The following expressions are also supported:
+Each api url can be set apart, when the collector does not serve them under the same url:
 
-	om cluster config update --set node.dbopensvc=https://collector.opensvc.com
-	om cluster config update --set node.dbopensvc=https://collector.opensvc.com/feed/default/call/xmlrpc
+	om cluster config update --set collector.feeder=https://feeder.collector.opensvc.com
+	om cluster config update --set collector.server=https://server.collector.opensvc.com
 
-The compliance framework uses a separate xmlrpc entrypoint. The {{#include ../inc/kw}}`node.dbcompliance` can be set to override the default, which is deduced from the {{#include ../inc/kw}}`node.dbopensvc` value.
-
-	om cluster config update --set node.dbcompliance=https://collector.opensvc.com/init/compliance/call/xmlrpc
+{{#include ../inc/kw}}`collector.feeder` and {{#include ../inc/kw}}`collector.server` take precedence over the url derived from {{#include ../inc/kw}}`collector.url`.
 
 ### Register the Node
 
-The collector requires the nodes to provide an authentication token (shared secret) with each request. The token is forged by the collector and stored on the node in `/etc/opensvc/node.conf`. The token initialization is handled by the command:
+The collector requires the nodes to provide an authentication token (shared secret) with each request. The token is forged by the collector and stored on the node in the {{#include ../inc/kw}}`node.uuid` keyword of `/etc/opensvc/node.conf`.
 
-	om node register --user my.self@my.com [--app MYAPP]
+The token is obtained with the credential of a collector user able to register a node. Store its `<username>:<password>` in a file, so the password does not show on a command line:
 
-If ``--app`` is not specified the collector automatically chooses one the user is responsible of.
+```bash
+install -m 600 /dev/null /root/collector.cred
+echo 'my.self@my.com:mypassword' >/root/collector.cred
+```
+
+Then register the node, or every node of the cluster:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```bash
+om node register --credential /root/collector.cred [--app MYAPP]
+om cluster register --credential /root/collector.cred [--app MYAPP]
+```
+
+The `OSVC_COLLECTOR_CREDENTIAL` environment variable is used when `--credential` is not set.
+
+</div>
+<div class="tab" data-title="API">
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"user": "my.self@my.com", "password": "mypassword", "app": "MYAPP"}' \
+  "https://<node>:1215/api/node/name/<node>/action/register"
+
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"credential": "my.self@my.com:mypassword", "app": "MYAPP"}' \
+  "https://<node>:1215/api/cluster/register"
+```
+
+Both are asynchronous: the response is sent when the registration is started, not when it is done.
+
+</div>
+</div>
+
+If `--app` is not specified the collector automatically chooses one the user is responsible of.
+
+The registration also sends the cluster id, so the collector places the node in its cluster before its first daemon status. This requires a collector server api 1.0.4 or later.
 
 A successful register is followed by a node discovery, so the collector has detailed information about the node and can serve contextualized compliance rulesets up front. The discovery is also scheduled daily, and can be manually replayed with:
 
 	om node push asset
 	om node push pkg
-	om node push patch
+	om node push disk
+	om node sysreport
 	om node checks
 
+A node enrolled into a cluster whose nodes are registered does not need to be registered again: see [Enroll a Node](configure.cluster.md#enroll-a-node).
 
 To disable collector communications, use:
 
-	om cluster config update --unset node.dbopensvc
-	om cluster config update --unset node.dbcompliance
+	om cluster config update --unset collector.url
 
-Or if the settings were added to node.conf
+Or if the setting was added to node.conf
 
-	om node config update --unset node.dbopensvc
-	om node config update --unset node.dbcompliance
+	om node config update --unset collector.url
 
 ### Inventory the SAN Switches
 
