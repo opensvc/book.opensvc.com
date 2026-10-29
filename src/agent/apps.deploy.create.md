@@ -214,9 +214,8 @@ point, a block device, a volume group, a container name, an ip address, on a
 node. A device path meets the volume that exposes it: `dev = /dev/datavg/web`
 meets the logical volume `datavg/web` another object holds.
 
-A value referencing what a resource exposes once provisioned, as
-`dev = {disk#1.exposed_devs[0]}`, is held by the resource it comes from, whose
-own values are checked. Once up, the resources also say the devices they were
+A value naming what a resource exposes once provisioned, as `dev = disk#1`,
+is held by the resource it comes from, whose own values are checked. Once up, the resources also say the devices they were
 found holding, so a device no configuration names is checked too.
 
 The check judges what a write adds: an update giving a resource a value

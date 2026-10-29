@@ -72,6 +72,11 @@ These references can be used inside a configuration section, and their evaluated
 | `{<rid>.exposed_devs[#]}`   | The length of the list of devpaths exposed by `<rid>`                                                                                                                                   | No                      | Yes                        |
 | `{<rid>.capacity}`          | How big `<rid>` is now, in bytes, asked of the resource itself                                                                                                                          | No                      | Yes                        |
 
+A device keyword, as `dev`, `devs`, `pvs`, `disk` or `vdev`, names the device
+a resource of the object exposes by the resource id alone, `dev = disk#1`,
+rather than `dev = {disk#1.exposed_devs[0]}`: the resource stopped, its device
+not exposed, the resource stacked over it is down, rather than in error.
+
 Deprecated references:
 
 | Reference         | Description                  | Node Configuration File | Service Configuration File |

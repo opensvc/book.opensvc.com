@@ -201,7 +201,7 @@ file = /bigfs/<fqdn>.img
 
 [fs#1]
 type = xfs
-dev = {disk#1.exposed_devs[0]}
+dev = disk#1
 mnt = /srv/<fqdn>
 mkfs_opt = -n ftype=1
 ```
@@ -293,7 +293,7 @@ disable = true
 [disk#1]
 name = {namespace}-{svcname}
 type = zpool
-vdev = mirror {volume#1.exposed_devs[0]} {volume#2.exposed_devs[0]}
+vdev = mirror volume#1 volume#2
 shared = true
 
 [fs#1]
@@ -393,7 +393,7 @@ format = false
 shared = true
 type = vg
 name = {namespace}-{svcname}
-pvs = {volume#1.exposed_devs[0]} {volume#2.exposed_devs[0]}
+pvs = volume#1 volume#2
 
 [disk#2]
 shared = true
@@ -406,7 +406,7 @@ create_options = -m 1
 [fs#1]
 shared = true
 mnt = /srv/{namespace}/{svcname}
-dev = {disk#2.exposed_devs[0]}
+dev = disk#2
 type = ext4
 
 [disk#3]
@@ -420,7 +420,7 @@ create_options = -m 1
 [fs#2]
 shared = true
 mnt = {fs#1.mnt}/data
-dev = {disk#3.exposed_devs[0]}
+dev = disk#3
 type = ext4
 
 [disk#4]
@@ -434,7 +434,7 @@ create_options = -m 1
 [fs#3]
 shared = true
 mnt = {fs#1.mnt}/log
-dev = {disk#4.exposed_devs[0]}
+dev = disk#4
 type = ext4
 ```
 
@@ -492,13 +492,13 @@ nodes = *
 
 [disk#1]
 shared = true
-devs = {volume#1.exposed_devs[0]} {volume#2.exposed_devs[0]}
+devs = volume#1 volume#2
 type = md
 level = raid1
 
 [disk#2]
 shared = true
-pvs = {disk#1.exposed_devs[0]}
+pvs = disk#1
 type = vg
 name = {namespace}-{svcname}
 
@@ -511,7 +511,7 @@ size = 10m
 
 [fs#1]
 mnt = /srv/{namespace}/{svcname}
-dev = {disk#3.exposed_devs[0]}
+dev = disk#3
 shared = true
 type = ext4
 
@@ -524,7 +524,7 @@ size = $(60% * {disk#2.free})
 
 [fs#2]
 mnt = {fs#1.mnt}/data
-dev = {disk#4.exposed_devs[0]}
+dev = disk#4
 shared = true
 type = ext4
 
@@ -537,7 +537,7 @@ size = $(40% * {disk#2.free})
 
 [fs#3]
 mnt = {fs#1.mnt}/log
-dev = {disk#5.exposed_devs[0]}
+dev = disk#5
 shared = true
 type = ext4
 

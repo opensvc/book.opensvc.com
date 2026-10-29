@@ -196,7 +196,7 @@ devices_from = disk#1
 [disk#1]
 type = md
 level = raid1
-devs = {volume#1.exposed_devs} {volume#2.exposed_devs}
+devs = volume#1 volume#2
 
 [volume#1]
 pool = default
@@ -213,8 +213,8 @@ the pool serves are the things that exist. A consumer asking this pool for
 allocated from the `default` pool, and whose array is created over them.
 
 Write the template with references rather than names wherever a name would be
-the template's own. `{volume#1.exposed_devs}` above resolves in each copy to
-that copy's devices, where a device path written out would be the template's.
+the template's own. `volume#1` above names in each copy the device that copy's
+volume exposes, where a device path written out would be the template's.
 
 ### What a copy does not inherit
 
