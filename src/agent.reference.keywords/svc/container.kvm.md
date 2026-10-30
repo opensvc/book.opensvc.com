@@ -246,6 +246,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 	aliases:     guestos
 	candidates:  unix, windows
 	default:     unix
+	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -260,6 +261,7 @@ The name of the operating system in the virtual machine.
 
 	required:    false
 	scopable:    true
+	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -275,6 +277,7 @@ Set the container hostname. If not set, the container `name` is used.
 	required:    false
 	scopable:    true
 	convert:     duration
+	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -355,6 +358,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
+	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -785,6 +789,7 @@ It overrides the object-level `prkey` and the node-level `prkey`.
 	required:    false
 	scopable:    true
 	convert:     bool
+	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
 **Description:**
 
@@ -836,6 +841,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	required:    false
 	scopable:    true
 	convert:     bool
+	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
 **Description:**
 
@@ -850,6 +856,7 @@ This option requires qemu guest agent to be installed in the container.
 	scopable:    true
 	default:     10s
 	convert:     duration
+	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
 **Description:**
 
@@ -861,6 +868,7 @@ Wait after we successfully tested a pwd in the container, so the os is sufficien
 	scopable:    true
 	default:     /usr/bin/ssh -o StrictHostKeyChecking=accept-new -o ForwardX11=no
 	convert:     shlex
+	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -1013,6 +1021,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    true
 	default:     4m
 	convert:     duration
+	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -1063,6 +1072,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    true
 	default:     2m
 	convert:     duration
+	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -1169,6 +1179,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    false
 	provision:   used only by the provision of the resource
 	convert:     shlex
+	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
 **Example:**
 

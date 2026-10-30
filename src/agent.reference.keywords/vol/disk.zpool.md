@@ -1101,7 +1101,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	provision:   used only by the provision of the resource
+	provision:   used only by the provision of the resource, which fails without it
 	convert:     list
 	rbac:        This driver group requires the root grant.
 
@@ -1113,6 +1113,10 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 The vdev list, including optional parity keywords, as would be passed to zpool
 create.
+
+A device is a device of the node, as `/dev/mapper/23`, or the id of a
+resource of the service, as `disk#1`, the devices it exposes, as a logical
+volume or a md does: `mirror disk#1 disk#2`.
 
 
 ## Keyword `zone`

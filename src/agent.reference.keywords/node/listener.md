@@ -11,10 +11,11 @@
 - openid_client_id
 - openid_issuer
 - port
-- rate_limiter_burst
-- rate_limiter_expires
-- rate_limiter_rate
+- throttle_burst
+- throttle_expires
+- throttle_rate
 - tls_secs
+- ux_owner_group
 
 ## Keyword `acme_port`
 
@@ -169,10 +170,11 @@ there are actions to unqueue. The opensvc daemon executes the
 The `listener.port` value is sent to the collector on `om node push asset`.
 
 
-## Keyword `rate_limiter_burst`
+## Keyword `throttle_burst`
 
 	required:    false
 	scopable:    true
+	aliases:     rate_limiter_burst
 	default:     100
 	convert:     int
 
@@ -182,10 +184,11 @@ The maximum number of inet listener requests to pass at the same moment.
 It additionally allows a number of requests to pass when rate limit is reached.
 
 
-## Keyword `rate_limiter_expires`
+## Keyword `throttle_expires`
 
 	required:    false
 	scopable:    true
+	aliases:     rate_limiter_expires
 	default:     60s
 	convert:     duration
 
@@ -194,10 +197,11 @@ It additionally allows a number of requests to pass when rate limit is reached.
 The duration after that a inet listener rate limiter is cleaned up.
 
 
-## Keyword `rate_limiter_rate`
+## Keyword `throttle_rate`
 
 	required:    false
 	scopable:    true
+	aliases:     rate_limiter_rate
 	default:     20
 	convert:     int
 
@@ -232,5 +236,36 @@ certificate of `system/sec/cert`.
 A certificate renewed is presented from the next connection, on every node.
 `om <sec> certificate renew` obtains the certificate of a listed sec through
 the listener, which serves the http-01 challenge on `listener.acme_port`.
+
+
+## Keyword `ux_owner_group`
+
+	required:    false
+	scopable:    false
+	default:     opensvc
+
+**Example:**
+
+	ux_owner_group=osvc-users
+
+**Description:**
+
+The group owning the user socket, `/run/opensvc-ux/http.sock`, which its
+members connect to the api through as themselves, with no token: the
+daemon reads who they are from the connection, and grants them what the
+`[uxgroup#<group>]` sections and the `uxuser` keyword of the `usr` objects
+say.
+
+The socket is mode 0660 and its directory 0750, both owned by root and
+this group. A group the node does not know serves no socket, and the
+daemon logs why. Set it empty to serve none: a socket served is closed at
+once, with the connections open through it, as it is when set to a group
+the node does not know. Changed to another group, the socket is given to it
+and the connections open through it are closed, so the members of the former
+group lose the api at once. A group set on a node serving no socket is
+served from the next daemon start.
+
+The root user of the node is not root through this socket: it uses the
+root socket.
 
 

@@ -511,7 +511,10 @@ Options to pass to the `mkfs` command called by the `provision` action.
 
 **Description:**
 
-The mount point where to mount the filesystem.
+The mount point where to mount the filesystem, an absolute path.
+
+With `zone` set, the path in the container, the filesystem being mounted
+under the root directory of that container on the host.
 
 
 ## Keyword `mnt_opt`
@@ -1439,8 +1442,12 @@ directories.
 
 **Description:**
 
-The zone name the fs refers to.
+The name, or the rid, of the container.lxc resource of the object the
+filesystem is mounted in.
 
-If set, the fs mount point is reparented into the zonepath rootfs.
+If set, the `mnt` path is taken in the container: the filesystem is
+mounted under the root directory of the container on the host. A zone
+naming no such container fails the actions of the resource, rather than
+mount the filesystem on the host path.
 
 

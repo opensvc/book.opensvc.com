@@ -118,7 +118,6 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    false
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -137,7 +136,6 @@ The agent does not interpret the value.
 	required:    false
 	scopable:    true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -164,7 +162,6 @@ These actions immediately return success.
 	required:    false
 	scopable:    false
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -177,7 +174,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 	scopable:    true
 	default:     3
 	convert:     int
-	rbac:        This driver group requires the root grant.
+	rbac:        A keyword of the btrfssnap driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -194,7 +191,7 @@ The maximum number of snapshots to retain.
 	scopable:    true
 	default:     false
 	convert:     bool
-	rbac:        This driver group requires the root grant.
+	rbac:        A keyword of the btrfssnap driver, which needs the root grant to choose.
 
 **Description:**
 
@@ -212,7 +209,7 @@ in the journal but its status.
 	scopable:    false
 	aliases:     sync_max_delay
 	convert:     duration
-	rbac:        This driver group requires the root grant.
+	rbac:        A keyword of the btrfssnap driver, which needs the root grant to choose.
 
 **Description:**
 
@@ -228,7 +225,6 @@ The scheduler task interval should be lower than `max_delay`.
 	required:    false
 	scopable:    true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -247,7 +243,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
+	rbac:        Requires the root grant.
 
 **Example:**
 
@@ -265,7 +261,6 @@ A full snapshot name is formatted as `<subvol>/.snap/<UTC datetime>Z,<name>`, or
 	required:    false
 	scopable:    true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -284,7 +279,6 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -305,7 +299,6 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -337,7 +330,6 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -371,7 +363,6 @@ written stays written, whether om wrote it or something else did.
 	required:    false
 	scopable:    true
 	convert:     size
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -396,7 +387,6 @@ written stays written, whether om wrote it or something else did.
 	required:    false
 	scopable:    true
 	depends:     create_pg=true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -418,7 +408,6 @@ written stays written, whether om wrote it or something else did.
 	required:    false
 	scopable:    true
 	convert:     size
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -449,7 +438,6 @@ written stays written, whether om wrote it or something else did.
 	required:    false
 	scopable:    true
 	convert:     size
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -470,7 +458,6 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -500,7 +487,6 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -519,7 +505,6 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -540,7 +525,6 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -564,7 +548,6 @@ written stays written, whether om wrote it or something else did.
 	required:    false
 	scopable:    true
 	convert:     size
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -644,7 +627,6 @@ Errors do not interrupt the action.
 	scopable:    false
 	default:     true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -663,7 +645,6 @@ destroy data.
 
 	required:    false
 	scopable:    false
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -685,7 +666,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    true
 	default:     false
 	convert:     bool
-	rbac:        This driver group requires the root grant.
+	rbac:        Requires the root grant.
 
 **Description:**
 
@@ -696,7 +677,7 @@ Also snapshot the writable subvolumes nested in the subvolumes, each in its own 
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
+	rbac:        A keyword of the btrfssnap driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -714,7 +695,6 @@ See `usr/share/doc/opensvc/schedule` for the schedule syntax reference.
 	required:    false
 	scopable:    true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -752,7 +732,6 @@ the flex primary gets `--leader` commands.
 	required:    false
 	scopable:    true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -774,7 +753,6 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 	required:    false
 	scopable:    true
 	convert:     duration
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -789,7 +767,6 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -809,7 +786,7 @@ process group.
 	required:    true
 	scopable:    true
 	convert:     list
-	rbac:        This driver group requires the root grant.
+	rbac:        Requires the root grant.
 
 **Example:**
 
@@ -827,7 +804,6 @@ A whitespace separated list of `<label>:<subvol>` to snapshot.
 	required:    false
 	scopable:    true
 	convert:     set
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -850,7 +826,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
-	rbac:        This driver group requires the root grant.
+	rbac:        Requires the root grant, except for the values store.
 
 **Description:**
 
@@ -863,7 +839,6 @@ The resource driver name.
 	scopable:    false
 	default:     true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -881,7 +856,6 @@ destroy data.
 
 	required:    false
 	scopable:    false
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -902,7 +876,6 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	required:    false
 	scopable:    false
 	aliases:     sync_requires, sync_update_requires, sync_nodes_requires, sync_drp_requires
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 

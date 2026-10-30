@@ -1,6 +1,7 @@
 # cluster
 
 - [DEFAULT](DEFAULT.md)
+- [ai](ai.md)
 - [arbitrator](arbitrator.md)
 - [array.centera](array.centera.md)
 - [array.dorado](array.dorado.md)
@@ -55,6 +56,8 @@
 - [pool.virtual](pool.virtual.md)
 - [pool.zpool](pool.zpool.md)
 - [stats](stats.md)
+- [store.tar](store.tar.md)
 - [switch.brocade](switch.brocade.md)
 - [syslog](syslog.md)
 - [sysreport](sysreport.md)
+- [uxgroup](uxgroup.md)

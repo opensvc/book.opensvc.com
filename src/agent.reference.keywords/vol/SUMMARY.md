@@ -80,6 +80,7 @@
 - [sync.btrfs](sync.btrfs.md)
 - [sync.btrfssnap](sync.btrfssnap.md)
 - [sync.rsync](sync.rsync.md)
+- [sync.store](sync.store.md)
 - [sync.symsnapvx](sync.symsnapvx.md)
 - [sync.symsrdfs](sync.symsrdfs.md)
 - [sync.zfs](sync.zfs.md)

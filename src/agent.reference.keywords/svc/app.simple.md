@@ -34,6 +34,7 @@
 - group
 - info
 - info_timeout
+- kill
 - limit_as
 - limit_core
 - limit_cpu
@@ -70,8 +71,10 @@
 - pre_unprovision
 - provision
 - provision_requires
+- quiesce
 - restart
 - restart_delay
+- resume
 - retcodes
 - script
 - secrets_environment
@@ -225,7 +228,7 @@ Errors interrupt the action.
 
    Execute this command on `status` action.
 
-If not set, the driver will lookup the process it started.
+If not set, the driver looks for the processes the `kill` keyword says.
 
 
 ## Keyword `check_timeout`
@@ -459,6 +462,36 @@ for the app launcher to return.
 
 A timeout can be coupled with `optional=true` to not abort a service instance
 info when an app launcher did not return.
+
+
+## Keyword `kill`
+
+	required:    false
+	scopable:    true
+	candidates:  parent, tree
+	default:     tree
+	rbac:        This driver group requires the root grant.
+
+**Description:**
+
+The processes the `stop` action terminates, and the `status` action looks
+for when the `check` keyword is not set.
+
+* `tree`
+
+   Every process carrying the resource identity, the `OPENSVC_ID` and
+   `OPENSVC_RID` variables, in its environment: the one the start command
+   launched, and the ones it started.
+
+* `parent`
+
+   The process the start command launched, which the start records. The
+   processes it started are left running, for example the sessions of a
+   server outliving its restart, and the resource is down once it is gone.
+
+   A process the application wants terminated with the resource is then for
+   a `stop` command to end. A process staying in the resource process group
+   keeps its limits, and the group can not be removed while it runs.
 
 
 ## Keyword `limit_as`
@@ -1112,6 +1145,27 @@ A condition is expressed as `<rid>(<state>,...)`.
 If states are omitted, `up,stdby up` is used as the default expected states.
 
 
+## Keyword `quiesce`
+
+	required:    false
+	scopable:    true
+	rbac:        This driver group requires the root grant.
+
+**Example:**
+
+	quiesce=/usr/local/bin/app-flush --lock
+
+**Description:**
+
+The command suspending the writes of the app before a run of a sync resource
+of the object, for the data it saves to be consistent, as a flush and a lock.
+`resume` resumes them after the run. A failure aborts the run, and what was
+quiesced is resumed.
+
+As the other commands of the app, `true` runs the script with the quiesce
+argument.
+
+
 ## Keyword `restart`
 
 	required:    false
@@ -1154,6 +1208,25 @@ increase chances of a restart success.
 **Description:**
 
 The minimum delay between two restart tentatives on the resource.
+
+
+## Keyword `resume`
+
+	required:    false
+	scopable:    true
+	rbac:        This driver group requires the root grant.
+
+**Example:**
+
+	resume=/usr/local/bin/app-flush --unlock
+
+**Description:**
+
+The command resuming the writes of the app `quiesce` suspended, after the run
+of a sync resource of the object.
+
+As the other commands of the app, `true` runs the script with the resume
+argument.
 
 
 ## Keyword `retcodes`
@@ -1403,8 +1476,8 @@ If `true`, redirect the checker script:
    Execute this command on `stop` action.
 
 The driver then terminates the processes the start command left running,
-as it does when the keyword is not set: a stop command not ending them
-leaves the resource stopped all the same.
+as the `kill` keyword says, as it does when the keyword is not set: a stop
+command not ending them leaves the resource stopped all the same.
 
 
 ## Keyword `stop_requires`

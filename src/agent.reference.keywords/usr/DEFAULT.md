@@ -19,6 +19,7 @@
 - o
 - ou
 - st
+- uxuser
 - validity
 
 ## Keyword `alt_names`
@@ -357,6 +358,31 @@ Certificate Signing Request Organizational Unit.
 **Description:**
 
 Certificate Signing Request State.
+
+
+## Keyword `uxuser`
+
+	required:    false
+	scopable:    true
+	convert:     list
+
+**Example:**
+
+	uxuser=alice 1001
+
+**Description:**
+
+The local logins, or uids, this user is on the user socket of the nodes:
+a process of one of them connected to the socket gets the grants of this
+user, as a client presenting the certificate named by `cn` does.
+
+A user without it is no local login, even one of the same name: a user
+made for the api does not grant the account of that name on every node.
+
+A uid is matched without asking the name service, which keeps the user
+working while a directory server does not answer.
+
+Setting it requires the root grant.
 
 
 ## Keyword `validity`

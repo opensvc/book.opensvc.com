@@ -67,6 +67,7 @@
 - stop_requires
 - subset
 - tags
+- thin_pool
 - type
 - unprovision
 - unprovision_requires
@@ -911,7 +912,7 @@ the flex primary gets `--leader` commands.
 	required:    false
 	scopable:    true
 	arithmetic:  an expression written $(...) is computed
-	provision:   used only by the provision of the resource
+	provision:   used only by the provision of the resource, which fails without it
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1053,6 +1054,33 @@ Some tags can influence the driver behaviour:
 * `nostatus`
 
   Force the status `n/a`.
+
+
+## Keyword `thin_pool`
+
+	required:    false
+	scopable:    true
+	since:       v3.0.0-rc54
+	provision:   used only by the provision of the resource
+	rbac:        This driver group requires the root grant.
+
+**Example:**
+
+	thin_pool=pool1
+
+**Description:**
+
+The name of the thin pool, a logical volume of the volume group `vg`, the
+volume is provisioned in. The volume is then a thin volume: its `size` is the
+size it is seen with, and it takes from the pool only the blocks written to it,
+so the volumes of a pool may add up to more than the pool holds.
+
+A thin volume is snapshotted in its pool, with no size of its own, which a
+`sync.store` resource copies from. The pool is made by the sysadmin, as the
+volume group is: `lvcreate --type thin-pool -L <size> -n <pool> <vg>`.
+
+The resource warns when the data or the metadata of the pool is 80% used: a
+full pool fails the writes of all its volumes.
 
 
 ## Keyword `type`

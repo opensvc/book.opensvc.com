@@ -243,6 +243,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 	aliases:     guestos
 	candidates:  unix, windows
 	default:     unix
+	rbac:        A keyword of the vbox driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -260,6 +261,7 @@ The name of the operating system in the virtual machine.
 	deprecated:  since 3.0
 	default:     false
 	convert:     bool
+	rbac:        A keyword of the vbox driver, which needs the root grant to choose.
 
 **Description:**
 
@@ -269,6 +271,7 @@ Using --type Headless in the 'VBoxManage startvm' command
 
 	required:    false
 	scopable:    true
+	rbac:        A keyword of the vbox driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -347,6 +350,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
+	rbac:        A keyword of the vbox driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -777,6 +781,7 @@ It overrides the object-level `prkey` and the node-level `prkey`.
 	required:    false
 	scopable:    true
 	convert:     bool
+	rbac:        A keyword of the vbox driver, which needs the root grant to choose.
 
 **Description:**
 
@@ -829,6 +834,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    true
 	default:     /usr/bin/ssh -o StrictHostKeyChecking=accept-new -o ForwardX11=no
 	convert:     shlex
+	rbac:        A keyword of the vbox driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -981,6 +987,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    true
 	default:     4m
 	convert:     duration
+	rbac:        A keyword of the vbox driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -1031,6 +1038,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    true
 	default:     2m
 	convert:     duration
+	rbac:        A keyword of the vbox driver, which needs the root grant to choose.
 
 **Example:**
 

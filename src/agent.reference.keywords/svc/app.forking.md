@@ -74,8 +74,10 @@
 - pre_unprovision
 - provision
 - provision_requires
+- quiesce
 - restart
 - restart_delay
+- resume
 - retcodes
 - script
 - secrets_environment
@@ -1115,6 +1117,27 @@ A condition is expressed as `<rid>(<state>,...)`.
 If states are omitted, `up,stdby up` is used as the default expected states.
 
 
+## Keyword `quiesce`
+
+	required:    false
+	scopable:    true
+	rbac:        This driver group requires the root grant.
+
+**Example:**
+
+	quiesce=/usr/local/bin/app-flush --lock
+
+**Description:**
+
+The command suspending the writes of the app before a run of a sync resource
+of the object, for the data it saves to be consistent, as a flush and a lock.
+`resume` resumes them after the run. A failure aborts the run, and what was
+quiesced is resumed.
+
+As the other commands of the app, `true` runs the script with the quiesce
+argument.
+
+
 ## Keyword `restart`
 
 	required:    false
@@ -1157,6 +1180,25 @@ increase chances of a restart success.
 **Description:**
 
 The minimum delay between two restart tentatives on the resource.
+
+
+## Keyword `resume`
+
+	required:    false
+	scopable:    true
+	rbac:        This driver group requires the root grant.
+
+**Example:**
+
+	resume=/usr/local/bin/app-flush --unlock
+
+**Description:**
+
+The command resuming the writes of the app `quiesce` suspended, after the run
+of a sync resource of the object.
+
+As the other commands of the app, `true` runs the script with the resume
+argument.
 
 
 ## Keyword `retcodes`

@@ -44,3 +44,10 @@ A configuration still naming one of these is reported by `om <path> config valid
 | `cluster/node.min_avail_swap_pct` | v3.0.0-rc43 |
 | `node/node.min_avail_mem_pct` | v3.0.0-rc43 |
 | `node/node.min_avail_swap_pct` | v3.0.0-rc43 |
+| `cluster/listener.rate_limiter_burst` | v3.0.0-rc53 |
+| `cluster/listener.rate_limiter_expires` | v3.0.0-rc53 |
+| `cluster/listener.rate_limiter_rate` | v3.0.0-rc53 |
+| `node/backup.schedule` | v3.0.0-rc53 |
+| `node/listener.rate_limiter_burst` | v3.0.0-rc53 |
+| `node/listener.rate_limiter_expires` | v3.0.0-rc53 |
+| `node/listener.rate_limiter_rate` | v3.0.0-rc53 |

@@ -194,6 +194,7 @@ Errors interrupt the action.
 	required:    false
 	scopable:    false
 	provision:   used only by the provision of the resource
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -231,6 +232,7 @@ The agent does not interpret the value.
 	scopable:    true
 	provision:   used only by the provision of the resource
 	convert:     shlex
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -252,6 +254,7 @@ A shell expression splitter is applied, so double quotes can be around
 	scopable:    true
 	provision:   used only by the provision of the resource
 	convert:     shlex
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -274,6 +277,7 @@ A shell expression splitter is applied, so double quotes can be around
 	scopable:    true
 	provision:   used only by the provision of the resource
 	convert:     shlex
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -295,6 +299,7 @@ A shell expression splitter is applied, so double quotes can be around
 	scopable:    true
 	aliases:     container_data_dir
 	stop first:  a change is refused while the resource is up
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -356,6 +361,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 	aliases:     guestos
 	candidates:  unix, windows
 	default:     unix
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -370,6 +376,7 @@ The name of the operating system in the virtual machine.
 
 	required:    false
 	scopable:    true
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -448,6 +455,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -878,6 +886,7 @@ It overrides the object-level `prkey` and the node-level `prkey`.
 	required:    false
 	scopable:    true
 	convert:     bool
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Description:**
 
@@ -929,6 +938,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	required:    false
 	scopable:    true
 	convert:     shlex
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -986,6 +996,7 @@ The minimum delay between two restart tentatives on the resource.
 	required:    false
 	scopable:    false
 	provision:   used only by the provision of the resource
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -1100,6 +1111,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    true
 	default:     4m
 	convert:     duration
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -1150,6 +1162,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    true
 	default:     2m
 	convert:     duration
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -1206,6 +1219,7 @@ Some tags can influence the driver behaviour:
 	required:    false
 	scopable:    false
 	provision:   used only by the provision of the resource
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -1223,6 +1237,7 @@ of the template passed to `lxc-create`.
 	scopable:    false
 	provision:   used only by the provision of the resource
 	convert:     shlex
+	rbac:        A keyword of the lxc driver, which needs the root grant to choose.
 
 **Example:**
 

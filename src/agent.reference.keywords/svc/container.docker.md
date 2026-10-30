@@ -71,10 +71,15 @@
 - provision
 - provision_requires
 - pull_timeout
+- quiesce
+- quiesce_input
+- quiesce_ready
+- quiesce_timeout
 - read_only
 - registry_creds
 - restart
 - restart_delay
+- resume_input
 - rm
 - run_args
 - scsireserv
@@ -96,6 +101,7 @@
 - user
 - userns
 - utsns
+- uxgrant
 - volume_mounts
 
 ## Keyword `blocking_post_provision`
@@ -1210,6 +1216,83 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 Wait for `<duration>` before declaring the container action a failure.
 
 
+## Keyword `quiesce`
+
+	required:    false
+	scopable:    true
+
+**Example:**
+
+	quiesce=pause
+
+**Description:**
+
+How the writes of the container are suspended during a run of a sync resource
+of the object, for the data it saves to be consistent: the processes of the
+container frozen with `pause`, using the engine's pause and unpause, or a
+command run in the container with `sh -c`. Nothing by default.
+
+A command ends before the run, as a flush, unless `quiesce_ready` is set: it is
+then a session held open during the run, as a database client holding a lock,
+and ended at the resume. A command that fails, or a session not ready within
+`quiesce_timeout`, aborts the run, and what was quiesced is resumed.
+
+It runs in the container, so a namespace admin sets it.
+
+
+## Keyword `quiesce_input`
+
+	required:    false
+	scopable:    true
+
+**Example:**
+
+	quiesce_input=FLUSH TABLES WITH READ LOCK; SELECT 'quiesced';
+
+**Description:**
+
+What the quiesce command reads on its stdin when it starts, as the statements
+a database client runs. Variables expand in the container, so a password read
+from its environment never shows in the configuration or a process list.
+
+
+## Keyword `quiesce_ready`
+
+	required:    false
+	scopable:    true
+
+**Example:**
+
+	quiesce_ready=quiesced
+
+**Description:**
+
+A text the quiesce command prints on its stdout once the writes are
+suspended: the quiesce is then a session held open until the resume, as a
+database lock lasts only while the client holding it is connected. The run
+starts once a line holds it, within `quiesce_timeout`.
+
+If om ends before the resume, the session's stdin closes, the command exits,
+and a lock it held drops by itself.
+
+
+## Keyword `quiesce_timeout`
+
+	required:    false
+	scopable:    true
+	default:     30s
+	convert:     duration
+
+**Example:**
+
+	quiesce_timeout=1m
+
+**Description:**
+
+How long a quiesce command may take to end, or a session to say it is ready
+and to end at the resume.
+
+
 ## Keyword `read_only`
 
 	required:    false
@@ -1278,6 +1361,21 @@ increase chances of a restart success.
 **Description:**
 
 The minimum delay between two restart tentatives on the resource.
+
+
+## Keyword `resume_input`
+
+	required:    false
+	scopable:    true
+
+**Example:**
+
+	resume_input=UNLOCK TABLES;
+
+**Description:**
+
+What the quiesce session reads on its stdin at the resume, before its stdin is
+closed and it is waited for, as the statement releasing a lock.
 
 
 ## Keyword `rm`
@@ -1675,6 +1773,32 @@ A container with `userns=host` will share the host's userns.
 * `host`
 
   The container shares the host's hostname.
+
+
+## Keyword `uxgrant`
+
+	required:    false
+	scopable:    true
+	convert:     listlowercase
+	rbac:        Requires the root grant.
+
+**Example:**
+
+	uxgrant=operator:ns1
+
+**Description:**
+
+The grants of the processes of the container connected to the user socket
+of the node, `/run/opensvc-ux/http.sock`, bind mounted into the container:
+the same grants as the `grant` keyword of a `usr` object.
+
+The daemon tells a process of the container by its cgroup, which the
+container runtime places under the process group of the resource, and a
+process of the container can not leave: neither its uid nor a token is
+looked at. A sidecar can so act on the cluster with the grants given here,
+with no credential to hand it.
+
+Setting it requires the root grant.
 
 
 ## Keyword `volume_mounts`

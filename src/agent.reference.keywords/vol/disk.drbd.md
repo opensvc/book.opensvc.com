@@ -248,7 +248,7 @@ These actions immediately return success.
 
 	required:    false
 	scopable:    true
-	provision:   used only by the provision of the resource
+	provision:   used only by the provision of the resource, which fails without it
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -257,7 +257,17 @@ These actions immediately return success.
 
 **Description:**
 
-The path of the device to provision the drbd on.
+The device to provision the drbd on, written as the other devices of a
+service are:
+
+* `/dev/vg1/lv1` is a device of the node.
+* `disk#1` is the device a resource of the service exposes, as a logical
+  volume. The resource must expose one device, and start before this one.
+
+The resource file of the drbd names the disk of every node: a resource id is
+the device the resource exposes on the node provisioning it, as a logical
+volume of the same name on the others. A different device can be set on
+different nodes using the `disk@<nodename>` scoping syntax.
 
 
 ## Keyword `encap`

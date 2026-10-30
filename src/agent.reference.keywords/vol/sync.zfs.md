@@ -124,7 +124,6 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    false
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -143,7 +142,6 @@ The agent does not interpret the value.
 	required:    false
 	scopable:    true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -169,7 +167,7 @@ These actions immediately return success.
 
 	required:    true
 	scopable:    true
-	rbac:        This driver group requires the root grant.
+	rbac:        Requires the root grant.
 
 **Example:**
 
@@ -185,7 +183,6 @@ Destination dataset of the sync.
 	required:    false
 	scopable:    false
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -198,7 +195,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 	scopable:    true
 	default:     true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
+	rbac:        Requires the root grant.
 
 **Description:**
 
@@ -211,7 +208,7 @@ Synchronize the snapshots of the selected datasets that were created since the l
 	scopable:    true
 	default:     false
 	convert:     bool
-	rbac:        This driver group requires the root grant.
+	rbac:        A keyword of the zfs driver, which needs the root grant to choose.
 
 **Description:**
 
@@ -229,7 +226,7 @@ in the journal but its status.
 	scopable:    false
 	aliases:     sync_max_delay
 	convert:     duration
-	rbac:        This driver group requires the root grant.
+	rbac:        A keyword of the zfs driver, which needs the root grant to choose.
 
 **Description:**
 
@@ -246,7 +243,7 @@ The scheduler task interval should be lower than `max_delay`.
 	scopable:    true
 	default:     24h
 	convert:     duration
-	rbac:        This driver group requires the root grant.
+	rbac:        Requires the root grant.
 
 **Example:**
 
@@ -264,7 +261,7 @@ A peer that missed updates is sent the changes since the last snapshot it receiv
 	required:    false
 	scopable:    true
 	default:     20%
-	rbac:        This driver group requires the root grant.
+	rbac:        Requires the root grant.
 
 **Example:**
 
@@ -282,7 +279,6 @@ The value is a size, or a percentage of the space the pool would have free witho
 	required:    false
 	scopable:    true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -302,7 +298,6 @@ A resource with `monitor=true` will trigger the `monitor_action`
 	required:    false
 	scopable:    true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -321,7 +316,6 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -342,7 +336,6 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -374,7 +367,6 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -408,7 +400,6 @@ written stays written, whether om wrote it or something else did.
 	required:    false
 	scopable:    true
 	convert:     size
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -433,7 +424,6 @@ written stays written, whether om wrote it or something else did.
 	required:    false
 	scopable:    true
 	depends:     create_pg=true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -455,7 +445,6 @@ written stays written, whether om wrote it or something else did.
 	required:    false
 	scopable:    true
 	convert:     size
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -486,7 +475,6 @@ written stays written, whether om wrote it or something else did.
 	required:    false
 	scopable:    true
 	convert:     size
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -507,7 +495,6 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -537,7 +524,6 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -556,7 +542,6 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -577,7 +562,6 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -601,7 +585,6 @@ written stays written, whether om wrote it or something else did.
 	required:    false
 	scopable:    true
 	convert:     size
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -681,7 +664,6 @@ Errors do not interrupt the action.
 	scopable:    false
 	default:     true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -700,7 +682,6 @@ destroy data.
 
 	required:    false
 	scopable:    false
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -722,7 +703,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    true
 	default:     true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
+	rbac:        Requires the root grant.
 
 **Description:**
 
@@ -733,7 +714,7 @@ Synchronize the datasets nested in the src datasets.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
+	rbac:        A keyword of the zfs driver, which needs the root grant to choose.
 
 **Example:**
 
@@ -751,7 +732,6 @@ See `usr/share/doc/opensvc/schedule` for the schedule syntax reference.
 	required:    false
 	scopable:    true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -788,7 +768,7 @@ the flex primary gets `--leader` commands.
 
 	required:    true
 	scopable:    true
-	rbac:        This driver group requires the root grant.
+	rbac:        Requires the root grant.
 
 **Example:**
 
@@ -804,7 +784,6 @@ Source dataset of the sync.
 	required:    false
 	scopable:    true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -826,7 +805,6 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 	required:    false
 	scopable:    true
 	convert:     duration
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -841,7 +819,6 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 
 	required:    false
 	scopable:    true
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -861,7 +838,6 @@ process group.
 	required:    false
 	scopable:    true
 	convert:     set
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -886,7 +862,7 @@ Some tags can influence the driver behaviour:
 	scopable:    true
 	candidates:  nodes, drpnodes, local
 	convert:     list
-	rbac:        This driver group requires the root grant.
+	rbac:        Requires the root grant.
 
 **Description:**
 
@@ -906,7 +882,7 @@ sends the data from the `src` dataset.
 	required:    false
 	scopable:    true
 	convert:     duration
-	rbac:        This driver group requires the root grant.
+	rbac:        Requires the root grant.
 
 **Example:**
 
@@ -923,7 +899,7 @@ If no timeout is set, the agent waits indefinitely for the `sync` action to exit
 
 	required:    false
 	scopable:    false
-	rbac:        This driver group requires the root grant.
+	rbac:        Requires the root grant, except for the values store.
 
 **Description:**
 
@@ -936,7 +912,6 @@ The resource driver name.
 	scopable:    false
 	default:     true
 	convert:     bool
-	rbac:        This driver group requires the root grant.
 
 **Description:**
 
@@ -954,7 +929,6 @@ destroy data.
 
 	required:    false
 	scopable:    false
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 
@@ -975,7 +949,6 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	required:    false
 	scopable:    false
 	aliases:     sync_requires, sync_update_requires, sync_nodes_requires, sync_drp_requires
-	rbac:        This driver group requires the root grant.
 
 **Example:**
 

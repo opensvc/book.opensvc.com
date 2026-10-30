@@ -17,6 +17,7 @@
 - dirperm
 - disable
 - encap
+- exclusive
 - format
 - group
 - install
@@ -54,6 +55,7 @@
 - shared
 - signal
 - size
+- snap
 - standby
 - start_requires
 - stat_timeout
@@ -307,6 +309,22 @@ These actions immediately return success.
 **Description:**
 
 Set to `true` to ignore this resource in the nodes context and consider it in the encapnodes context. The resource is thus handled by agents deployed in the service containers.
+
+
+## Keyword `exclusive`
+
+	required:    false
+	scopable:    false
+	default:     true
+	convert:     bool
+
+**Description:**
+
+Set to false to share the volume with the other objects using it with `exclusive=false`.
+
+A volume is used by one object by default: a configuration using a volume another object uses is refused, as a clone or a restore keeping the volume name of its source would write in its data. The objects sharing a volume each say so.
+
+A volume resource with `shared=true` also asks the objects sharing its volume to be local parents of each other, so they fail over together.
 
 
 ## Keyword `format`
@@ -1116,12 +1134,28 @@ files changes.
 
 	required:    false
 	scopable:    true
-	provision:   used only by the provision of the resource
+	provision:   used only by the provision of the resource, which fails without it
 	convert:     size
 
 **Description:**
 
 The size to allocate in the pool.
+
+
+## Keyword `snap`
+
+	required:    false
+	scopable:    true
+	provision:   used only by the provision of the resource
+	default:     false
+	convert:     bool
+
+**Description:**
+
+Set to true to allocate the volume from a pool whose volumes take snapshots,
+as a zpool pool: a backup of the object then copies a snapshot of the volume
+taken while its resources are quiesced, which resume once it is taken,
+rather than the volume itself, quiesced for the whole copy.
 
 
 ## Keyword `standby`

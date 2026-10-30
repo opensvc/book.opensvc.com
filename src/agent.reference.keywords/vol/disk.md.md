@@ -235,7 +235,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
-	provision:   used only by the provision of the resource
+	provision:   used only by the provision of the resource, which fails without it
 	convert:     list
 	rbac:        This driver group requires the root grant.
 
@@ -298,7 +298,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
-	provision:   used only by the provision of the resource
+	provision:   used only by the provision of the resource, which fails without it
 	rbac:        This driver group requires the root grant.
 
 **Example:**

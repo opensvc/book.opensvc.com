@@ -21,6 +21,7 @@
 - mnt_opt
 - name
 - status_schedule
+- thin_pool
 - type
 
 ## Keyword `comment`
@@ -111,6 +112,28 @@ The value to set to the `status_schedule` keyword of the `vol` objects
 allocated from the pool.
 
 See `usr/share/doc/schedule` for the schedule syntax.
+
+
+## Keyword `thin_pool`
+
+	required:    false
+	scopable:    false
+	since:       v3.0.0-rc54
+
+**Example:**
+
+	thin_pool=pool1
+
+**Description:**
+
+The name of a thin pool, a logical volume of the volume group `name`, to
+allocate the pool volumes in as thin volumes. The pool then has the `snap`
+capability: a thin volume is snapshotted in its pool, with no size of its own,
+which a `sync.store` resource copies from. Its usage is the one of the thin
+pool, and the volumes may add up to more than it holds.
+
+The thin pool is made by the sysadmin, as the volume group is:
+`lvcreate --type thin-pool -L <size> -n <thin pool> <name>`.
 
 
 ## Keyword `type`

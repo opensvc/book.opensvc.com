@@ -805,7 +805,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	provision:   used only by the provision of the resource
+	provision:   used only by the provision of the resource, which fails without it
 	convert:     list
 	rbac:        This driver group requires the root grant.
 

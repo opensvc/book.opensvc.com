@@ -41,6 +41,7 @@
 - priority
 - provision
 - provision_timeout
+- restore_from
 - rollback
 - run_schedule
 - shared
@@ -953,6 +954,32 @@ This acts like a glass the user has to break to access the provision button.
 Wait for `<duration>` before declaring the action a failure.
 
 Takes precedence over `timeout`.
+
+
+## Keyword `restore_from`
+
+	required:    false
+	scopable:    false
+	rbac:        Requires the root grant.
+
+**Example:**
+
+	restore_from=store1 ns1/svc/svc1 7c0e41d2-9a1b-4c3d-8e5f-0a1b2c3d4e5f
+
+**Description:**
+
+The snapshot the heads of the object are restored from when they are
+provisioned: `<store> <object path> <snapshot id>`, the store by its name,
+the object the snapshot is of, and the id of the snapshot.
+
+A provision restores the member of the snapshot named after a resource into
+the head of that resource when it moved the resource from unprovisioned to
+provisioned, after the heads are up and before the resources using their
+data start. A head provisioned already is left as it is, so a provision run
+again, or on a node added later, restores into the new heads only.
+
+`deploy --store <store> --snapshot <id>` sets it, the configuration of the
+object being the one of the snapshot.
 
 
 ## Keyword `rollback`

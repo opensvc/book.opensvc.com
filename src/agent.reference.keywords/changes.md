@@ -1,7 +1,567 @@
 # Keyword changes
 
-What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc53.
+What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc56.
 
+
+## v3.0.0-rc56
+
+
+### Added
+
+- `cluster/ai.agent_url`
+- `cluster/listener.throttle_burst`
+- `cluster/listener.throttle_expires`
+- `cluster/listener.throttle_rate`
+- `cluster/listener.ux_owner_group`
+- `cluster/pool.vg.thin_pool`
+- `cluster/store.keep`
+- `cluster/store.schedule`
+- `cluster/store.tar.host_key`
+- `cluster/store.tar.shared`
+- `cluster/store.tar.ssh_private_key`
+- `cluster/store.tar.url`
+- `cluster/store.type`
+- `cluster/uxgroup.grant`
+- `node/ai.agent_url`
+- `node/listener.throttle_burst`
+- `node/listener.throttle_expires`
+- `node/listener.throttle_rate`
+- `node/listener.ux_owner_group`
+- `node/pool.vg.thin_pool`
+- `node/store.keep`
+- `node/store.schedule`
+- `node/store.tar.host_key`
+- `node/store.tar.shared`
+- `node/store.tar.ssh_private_key`
+- `node/store.tar.url`
+- `node/store.type`
+- `node/uxgroup.grant`
+- `sec/store.keep`
+- `sec/store.tar.host_key`
+- `sec/store.tar.ssh_private_key`
+- `sec/store.tar.url`
+- `sec/store.type`
+- `svc/DEFAULT.restore_from`
+- `svc/app.forking.quiesce`
+- `svc/app.forking.resume`
+- `svc/app.simple.kill`
+- `svc/app.simple.quiesce`
+- `svc/app.simple.resume`
+- `svc/container.docker.quiesce`
+- `svc/container.docker.quiesce_input`
+- `svc/container.docker.quiesce_ready`
+- `svc/container.docker.quiesce_timeout`
+- `svc/container.docker.resume_input`
+- `svc/container.docker.uxgrant`
+- `svc/container.oci.quiesce`
+- `svc/container.oci.quiesce_input`
+- `svc/container.oci.quiesce_ready`
+- `svc/container.oci.quiesce_timeout`
+- `svc/container.oci.resume_input`
+- `svc/container.oci.uxgrant`
+- `svc/container.podman.quiesce`
+- `svc/container.podman.quiesce_input`
+- `svc/container.podman.quiesce_ready`
+- `svc/container.podman.quiesce_timeout`
+- `svc/container.podman.resume_input`
+- `svc/container.podman.uxgrant`
+- `svc/disk.lv.thin_pool`
+- `svc/sync.store.blocking_post_provision`
+- `svc/sync.store.blocking_post_unprovision`
+- `svc/sync.store.blocking_pre_provision`
+- `svc/sync.store.blocking_pre_unprovision`
+- `svc/sync.store.disable`
+- `svc/sync.store.encap`
+- `svc/sync.store.exclude`
+- `svc/sync.store.include_refs`
+- `svc/sync.store.keep`
+- `svc/sync.store.log`
+- `svc/sync.store.max_delay`
+- `svc/sync.store.monitor`
+- `svc/sync.store.optional`
+- `svc/sync.store.post_provision`
+- `svc/sync.store.post_unprovision`
+- `svc/sync.store.pre_provision`
+- `svc/sync.store.pre_unprovision`
+- `svc/sync.store.provision`
+- `svc/sync.store.provision_requires`
+- `svc/sync.store.rids`
+- `svc/sync.store.schedule`
+- `svc/sync.store.shared`
+- `svc/sync.store.snapshot`
+- `svc/sync.store.standby`
+- `svc/sync.store.store`
+- `svc/sync.store.subset`
+- `svc/sync.store.tags`
+- `svc/sync.store.unprovision`
+- `svc/sync.store.unprovision_requires`
+- `svc/sync.store.update_requires`
+- `svc/volume..exclusive`
+- `svc/volume..snap`
+- `usr/DEFAULT.uxuser`
+- `vol/DEFAULT.restore_from`
+- `vol/disk.lv.thin_pool`
+- `vol/sync.store.blocking_post_provision`
+- `vol/sync.store.blocking_post_unprovision`
+- `vol/sync.store.blocking_pre_provision`
+- `vol/sync.store.blocking_pre_unprovision`
+- `vol/sync.store.disable`
+- `vol/sync.store.encap`
+- `vol/sync.store.exclude`
+- `vol/sync.store.include_refs`
+- `vol/sync.store.keep`
+- `vol/sync.store.log`
+- `vol/sync.store.max_delay`
+- `vol/sync.store.monitor`
+- `vol/sync.store.optional`
+- `vol/sync.store.post_provision`
+- `vol/sync.store.post_unprovision`
+- `vol/sync.store.pre_provision`
+- `vol/sync.store.pre_unprovision`
+- `vol/sync.store.provision`
+- `vol/sync.store.provision_requires`
+- `vol/sync.store.rids`
+- `vol/sync.store.schedule`
+- `vol/sync.store.shared`
+- `vol/sync.store.snapshot`
+- `vol/sync.store.standby`
+- `vol/sync.store.store`
+- `vol/sync.store.subset`
+- `vol/sync.store.tags`
+- `vol/sync.store.unprovision`
+- `vol/sync.store.unprovision_requires`
+- `vol/sync.store.update_requires`
+- `vol/volume..exclusive`
+- `vol/volume..snap`
+
+### Removed
+
+- `cluster/listener.rate_limiter_burst`
+- `cluster/listener.rate_limiter_expires`
+- `cluster/listener.rate_limiter_rate`
+- `node/backup.schedule`
+- `node/listener.rate_limiter_burst`
+- `node/listener.rate_limiter_expires`
+- `node/listener.rate_limiter_rate`
+
+### Changed
+
+- `cluster/node.max_parallel`
+  - description rewritten
+- `node/node.max_parallel`
+  - description rewritten
+- `svc/app.simple.check`
+  - description rewritten
+- `svc/app.simple.stop`
+  - description rewritten
+- `svc/disk.drbd.disk`
+  - description rewritten
+- `svc/disk.zpool.vdev`
+  - description rewritten
+- `svc/fs.9pfs.mnt`
+  - description rewritten
+- `svc/fs.9pfs.zone`
+  - description rewritten
+- `svc/fs.afs.mnt`
+  - description rewritten
+- `svc/fs.afs.zone`
+  - description rewritten
+- `svc/fs.bfs.mnt`
+  - description rewritten
+- `svc/fs.bfs.zone`
+  - description rewritten
+- `svc/fs.bind.mnt`
+  - description rewritten
+- `svc/fs.bind.zone`
+  - description rewritten
+- `svc/fs.btrfs.mnt`
+  - description rewritten
+- `svc/fs.btrfs.zone`
+  - description rewritten
+- `svc/fs.cephfs.mnt`
+  - description rewritten
+- `svc/fs.cephfs.zone`
+  - description rewritten
+- `svc/fs.cifs.mnt`
+  - description rewritten
+- `svc/fs.cifs.zone`
+  - description rewritten
+- `svc/fs.ext2.mnt`
+  - description rewritten
+- `svc/fs.ext2.zone`
+  - description rewritten
+- `svc/fs.ext3.mnt`
+  - description rewritten
+- `svc/fs.ext3.zone`
+  - description rewritten
+- `svc/fs.ext4.mnt`
+  - description rewritten
+- `svc/fs.ext4.zone`
+  - description rewritten
+- `svc/fs.f2fs.mnt`
+  - description rewritten
+- `svc/fs.f2fs.zone`
+  - description rewritten
+- `svc/fs.gfs.mnt`
+  - description rewritten
+- `svc/fs.gfs.zone`
+  - description rewritten
+- `svc/fs.gfs2.mnt`
+  - description rewritten
+- `svc/fs.gfs2.zone`
+  - description rewritten
+- `svc/fs.glusterfs.mnt`
+  - description rewritten
+- `svc/fs.glusterfs.zone`
+  - description rewritten
+- `svc/fs.gpfs.mnt`
+  - description rewritten
+- `svc/fs.gpfs.zone`
+  - description rewritten
+- `svc/fs.hfs.mnt`
+  - description rewritten
+- `svc/fs.hfs.zone`
+  - description rewritten
+- `svc/fs.hfsplus.mnt`
+  - description rewritten
+- `svc/fs.hfsplus.zone`
+  - description rewritten
+- `svc/fs.hpfs.mnt`
+  - description rewritten
+- `svc/fs.hpfs.zone`
+  - description rewritten
+- `svc/fs.jffs.mnt`
+  - description rewritten
+- `svc/fs.jffs.zone`
+  - description rewritten
+- `svc/fs.jffs2.mnt`
+  - description rewritten
+- `svc/fs.jffs2.zone`
+  - description rewritten
+- `svc/fs.jfs.mnt`
+  - description rewritten
+- `svc/fs.jfs.zone`
+  - description rewritten
+- `svc/fs.jfs2.mnt`
+  - description rewritten
+- `svc/fs.jfs2.zone`
+  - description rewritten
+- `svc/fs.lofs.mnt`
+  - description rewritten
+- `svc/fs.lofs.zone`
+  - description rewritten
+- `svc/fs.logfs.mnt`
+  - description rewritten
+- `svc/fs.logfs.zone`
+  - description rewritten
+- `svc/fs.minix.mnt`
+  - description rewritten
+- `svc/fs.minix.zone`
+  - description rewritten
+- `svc/fs.msdos.mnt`
+  - description rewritten
+- `svc/fs.msdos.zone`
+  - description rewritten
+- `svc/fs.ncpfs.mnt`
+  - description rewritten
+- `svc/fs.ncpfs.zone`
+  - description rewritten
+- `svc/fs.nfs.mnt`
+  - description rewritten
+- `svc/fs.nfs.zone`
+  - description rewritten
+- `svc/fs.nfs4.mnt`
+  - description rewritten
+- `svc/fs.nfs4.zone`
+  - description rewritten
+- `svc/fs.nilfs.mnt`
+  - description rewritten
+- `svc/fs.nilfs.zone`
+  - description rewritten
+- `svc/fs.none.mnt`
+  - description rewritten
+- `svc/fs.none.zone`
+  - description rewritten
+- `svc/fs.ntfs.mnt`
+  - description rewritten
+- `svc/fs.ntfs.zone`
+  - description rewritten
+- `svc/fs.ocfs.mnt`
+  - description rewritten
+- `svc/fs.ocfs.zone`
+  - description rewritten
+- `svc/fs.ocfs2.mnt`
+  - description rewritten
+- `svc/fs.ocfs2.zone`
+  - description rewritten
+- `svc/fs.qnx4.mnt`
+  - description rewritten
+- `svc/fs.qnx4.zone`
+  - description rewritten
+- `svc/fs.reiserfs.mnt`
+  - description rewritten
+- `svc/fs.reiserfs.zone`
+  - description rewritten
+- `svc/fs.reiserfs4.mnt`
+  - description rewritten
+- `svc/fs.reiserfs4.zone`
+  - description rewritten
+- `svc/fs.rpc_pipefs.mnt`
+  - description rewritten
+- `svc/fs.rpc_pipefs.zone`
+  - description rewritten
+- `svc/fs.sgcp_nfs.mnt`
+  - description rewritten
+- `svc/fs.sgcp_nfs.zone`
+  - description rewritten
+- `svc/fs.smbfs.mnt`
+  - description rewritten
+- `svc/fs.smbfs.zone`
+  - description rewritten
+- `svc/fs.tmpfs.mnt`
+  - description rewritten
+- `svc/fs.tmpfs.zone`
+  - description rewritten
+- `svc/fs.tux3.mnt`
+  - description rewritten
+- `svc/fs.tux3.zone`
+  - description rewritten
+- `svc/fs.ufs.mnt`
+  - description rewritten
+- `svc/fs.ufs.zone`
+  - description rewritten
+- `svc/fs.ufs2.mnt`
+  - description rewritten
+- `svc/fs.ufs2.zone`
+  - description rewritten
+- `svc/fs.umsdos.mnt`
+  - description rewritten
+- `svc/fs.umsdos.zone`
+  - description rewritten
+- `svc/fs.vfat.mnt`
+  - description rewritten
+- `svc/fs.vfat.zone`
+  - description rewritten
+- `svc/fs.vxfs.mnt`
+  - description rewritten
+- `svc/fs.vxfs.zone`
+  - description rewritten
+- `svc/fs.xfs.mnt`
+  - description rewritten
+- `svc/fs.xfs.zone`
+  - description rewritten
+- `svc/fs.xia.mnt`
+  - description rewritten
+- `svc/fs.xia.zone`
+  - description rewritten
+- `svc/fs.zfs.mnt`
+  - description rewritten
+- `svc/fs.zfs.zone`
+  - description rewritten
+- `vol/disk.drbd.disk`
+  - description rewritten
+- `vol/disk.zpool.vdev`
+  - description rewritten
+- `vol/fs.9pfs.mnt`
+  - description rewritten
+- `vol/fs.9pfs.zone`
+  - description rewritten
+- `vol/fs.afs.mnt`
+  - description rewritten
+- `vol/fs.afs.zone`
+  - description rewritten
+- `vol/fs.bfs.mnt`
+  - description rewritten
+- `vol/fs.bfs.zone`
+  - description rewritten
+- `vol/fs.bind.mnt`
+  - description rewritten
+- `vol/fs.bind.zone`
+  - description rewritten
+- `vol/fs.btrfs.mnt`
+  - description rewritten
+- `vol/fs.btrfs.zone`
+  - description rewritten
+- `vol/fs.cephfs.mnt`
+  - description rewritten
+- `vol/fs.cephfs.zone`
+  - description rewritten
+- `vol/fs.cifs.mnt`
+  - description rewritten
+- `vol/fs.cifs.zone`
+  - description rewritten
+- `vol/fs.ext2.mnt`
+  - description rewritten
+- `vol/fs.ext2.zone`
+  - description rewritten
+- `vol/fs.ext3.mnt`
+  - description rewritten
+- `vol/fs.ext3.zone`
+  - description rewritten
+- `vol/fs.ext4.mnt`
+  - description rewritten
+- `vol/fs.ext4.zone`
+  - description rewritten
+- `vol/fs.f2fs.mnt`
+  - description rewritten
+- `vol/fs.f2fs.zone`
+  - description rewritten
+- `vol/fs.gfs.mnt`
+  - description rewritten
+- `vol/fs.gfs.zone`
+  - description rewritten
+- `vol/fs.gfs2.mnt`
+  - description rewritten
+- `vol/fs.gfs2.zone`
+  - description rewritten
+- `vol/fs.glusterfs.mnt`
+  - description rewritten
+- `vol/fs.glusterfs.zone`
+  - description rewritten
+- `vol/fs.gpfs.mnt`
+  - description rewritten
+- `vol/fs.gpfs.zone`
+  - description rewritten
+- `vol/fs.hfs.mnt`
+  - description rewritten
+- `vol/fs.hfs.zone`
+  - description rewritten
+- `vol/fs.hfsplus.mnt`
+  - description rewritten
+- `vol/fs.hfsplus.zone`
+  - description rewritten
+- `vol/fs.hpfs.mnt`
+  - description rewritten
+- `vol/fs.hpfs.zone`
+  - description rewritten
+- `vol/fs.jffs.mnt`
+  - description rewritten
+- `vol/fs.jffs.zone`
+  - description rewritten
+- `vol/fs.jffs2.mnt`
+  - description rewritten
+- `vol/fs.jffs2.zone`
+  - description rewritten
+- `vol/fs.jfs.mnt`
+  - description rewritten
+- `vol/fs.jfs.zone`
+  - description rewritten
+- `vol/fs.jfs2.mnt`
+  - description rewritten
+- `vol/fs.jfs2.zone`
+  - description rewritten
+- `vol/fs.lofs.mnt`
+  - description rewritten
+- `vol/fs.lofs.zone`
+  - description rewritten
+- `vol/fs.logfs.mnt`
+  - description rewritten
+- `vol/fs.logfs.zone`
+  - description rewritten
+- `vol/fs.minix.mnt`
+  - description rewritten
+- `vol/fs.minix.zone`
+  - description rewritten
+- `vol/fs.msdos.mnt`
+  - description rewritten
+- `vol/fs.msdos.zone`
+  - description rewritten
+- `vol/fs.ncpfs.mnt`
+  - description rewritten
+- `vol/fs.ncpfs.zone`
+  - description rewritten
+- `vol/fs.nfs.mnt`
+  - description rewritten
+- `vol/fs.nfs.zone`
+  - description rewritten
+- `vol/fs.nfs4.mnt`
+  - description rewritten
+- `vol/fs.nfs4.zone`
+  - description rewritten
+- `vol/fs.nilfs.mnt`
+  - description rewritten
+- `vol/fs.nilfs.zone`
+  - description rewritten
+- `vol/fs.none.mnt`
+  - description rewritten
+- `vol/fs.none.zone`
+  - description rewritten
+- `vol/fs.ntfs.mnt`
+  - description rewritten
+- `vol/fs.ntfs.zone`
+  - description rewritten
+- `vol/fs.ocfs.mnt`
+  - description rewritten
+- `vol/fs.ocfs.zone`
+  - description rewritten
+- `vol/fs.ocfs2.mnt`
+  - description rewritten
+- `vol/fs.ocfs2.zone`
+  - description rewritten
+- `vol/fs.qnx4.mnt`
+  - description rewritten
+- `vol/fs.qnx4.zone`
+  - description rewritten
+- `vol/fs.reiserfs.mnt`
+  - description rewritten
+- `vol/fs.reiserfs.zone`
+  - description rewritten
+- `vol/fs.reiserfs4.mnt`
+  - description rewritten
+- `vol/fs.reiserfs4.zone`
+  - description rewritten
+- `vol/fs.rpc_pipefs.mnt`
+  - description rewritten
+- `vol/fs.rpc_pipefs.zone`
+  - description rewritten
+- `vol/fs.sgcp_nfs.mnt`
+  - description rewritten
+- `vol/fs.sgcp_nfs.zone`
+  - description rewritten
+- `vol/fs.smbfs.mnt`
+  - description rewritten
+- `vol/fs.smbfs.zone`
+  - description rewritten
+- `vol/fs.tmpfs.mnt`
+  - description rewritten
+- `vol/fs.tmpfs.zone`
+  - description rewritten
+- `vol/fs.tux3.mnt`
+  - description rewritten
+- `vol/fs.tux3.zone`
+  - description rewritten
+- `vol/fs.ufs.mnt`
+  - description rewritten
+- `vol/fs.ufs.zone`
+  - description rewritten
+- `vol/fs.ufs2.mnt`
+  - description rewritten
+- `vol/fs.ufs2.zone`
+  - description rewritten
+- `vol/fs.umsdos.mnt`
+  - description rewritten
+- `vol/fs.umsdos.zone`
+  - description rewritten
+- `vol/fs.vfat.mnt`
+  - description rewritten
+- `vol/fs.vfat.zone`
+  - description rewritten
+- `vol/fs.vxfs.mnt`
+  - description rewritten
+- `vol/fs.vxfs.zone`
+  - description rewritten
+- `vol/fs.xfs.mnt`
+  - description rewritten
+- `vol/fs.xfs.zone`
+  - description rewritten
+- `vol/fs.xia.mnt`
+  - description rewritten
+- `vol/fs.xia.zone`
+  - description rewritten
+- `vol/fs.zfs.mnt`
+  - description rewritten
+- `vol/fs.zfs.zone`
+  - description rewritten
 
 ## v3.0.0-rc53
 
