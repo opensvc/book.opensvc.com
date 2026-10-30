@@ -155,6 +155,8 @@ curl -s -X PATCH -H "Authorization: Bearer $TOKEN" \
 
 The `vsock_port` keyword of the `container.kvm` resource names the port on the master side, `1215` by default. Set it to `0` to not use this way.
 
+The next port, `1216` by default, serves the console of the guest. `om <path> container enter` opens a root shell in the guest through it, with no network and no key, and uses `rcmd` when the guest does not serve it. `ox` reaches the same shell through the master. A session is a process of its own in the guest, so restarting the agent from it does not end it. Only the hypervisor can ask for such a shell: a `root` grant over the network can not.
+
 ## Managing API Users
 
 ### Using an OpenID server
