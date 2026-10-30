@@ -112,6 +112,49 @@ curl -s -X PATCH -H "Authorization: Bearer $TOKEN" \
 > **Note:** A `sudo` rule letting a user run `om` is a root grant, whatever arguments the rule allows: om runs commands as root by design, as the start command of an app, the editor of `om <path> config edit`, or a task. Give the user a group mapped by a `[uxgroup#<group>]` section, and `ox`, instead.
 
 
+### Hypervisor to Guest (vsock)
+
+  * **Mechanism:** A kvm guest serves the API on a vsock port. The master reaches it from its hypervisor, with no network in the guest and no key.
+  * **Authorization:** A connection of the hypervisor from a reserved source port, which only a privileged process can bind, gets the `root` grant, the hypervisor being root on its guests anyway. The guest drops any other peer.
+  * **Availability:** This method was **added in OpenSVC v3** agents, for `container.kvm` guests.
+
+The master prefers this way for the status, the config and the provision, unprovision, start, stop, shutdown and startstandby actions of the encap instances. When the guest daemon does not answer, it uses `qga` or `rcmd`.
+
+The guest needs a vsock device. A provision adds it to a `virtinst` running a `virt-install` that knows `--vsock`. On an existing guest, add it to the domain definition, for the next start:
+
+```xml
+<vsock model='virtio'>
+  <cid auto='yes'/>
+</vsock>
+```
+
+libvirt allocates the context id, and a start or a live migration may change it, so nothing needs configuring and nothing should store it. The running value is the `vsock_cid` of the resource status info.
+
+A hypervisor with no `/dev/vhost-vsock` starts such a guest without the device, with a warning, and reaches it through `qga` or `rcmd`: its definition keeps the device, for the other nodes. A guest running with the device can not be moved live to such a hypervisor: stop it to move it.
+
+Then have the guest daemon serve the port, in the guest, and restart its daemon. Leave it unset on the hypervisors.
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```
+om cluster config update --set listener.vsock_port=1215
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" \
+  --data-urlencode 'set=listener.vsock_port=1215' \
+  -G "https://<guest>:1215/api/cluster/config"
+```
+
+</div>
+</div>
+
+The `vsock_port` keyword of the `container.kvm` resource names the port on the master side, `1215` by default. Set it to `0` to not use this way.
+
 ## Managing API Users
 
 ### Using an OpenID server
