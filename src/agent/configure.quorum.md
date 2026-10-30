@@ -105,7 +105,7 @@ Any OpenSVC agent can act as an arbitrator, and multiple arbitrators can be conf
 ### Use an https server as an arbitrator
 
     [arbitrator#a1]
-    uri = https://dev2n1:1215/metrics
+    uri = https://dev2n1:1215/api/auth/info
     #insecure = true
 
 ### Use a tcp server as an arbitrator

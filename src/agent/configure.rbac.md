@@ -105,6 +105,98 @@ enroll, which `om cluster enroll --token` uses to reach it:
 `om cluster enroll` and `om cluster evict` themselves require the `root`
 grant.
 
+### scraper
+
+May read every metric of the nodes, and nothing else of the API: the role of a
+prometheus, whose credential sits in a file, and should open no more than it
+needs. It reads `/metrics`, the detail pages `/metrics/<subsystem>`, and the
+metrics of any node through the API, unfiltered, the daemon and the host series
+included. It cannot list objects, read a configuration, or change anything.
+
+Create the user of the prometheus:
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```
+om system/usr/prometheus create --kw grant=scraper
+om system/usr/prometheus key add --name password --value <password>
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/octet-stream" \
+  --data-binary $'[DEFAULT]\ngrant = scraper\n' \
+  "https://<node>:1215/api/object/path/system/usr/prometheus/config/file"
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/octet-stream" \
+  --data-binary '<password>' \
+  "https://<node>:1215/api/object/path/system/usr/prometheus/data/key?name=password"
+```
+
+</div>
+</div>
+
+Then scrape each node with it, on its own: `/metrics` for the aggregates, and a
+job per detail page, at a longer interval, for the series of the objects.
+
+```yaml
+scrape_configs:
+  - job_name: opensvc
+    scheme: https
+    tls_config:
+      ca_file: /etc/prometheus/opensvc-ca.pem
+    basic_auth:
+      username: prometheus
+      password_file: /etc/prometheus/opensvc.password
+    static_configs:
+      - targets: ['n1:1215', 'n2:1215']
+  - job_name: opensvc-pg
+    metrics_path: /metrics/pg
+    scrape_interval: 1m
+    scheme: https
+    tls_config:
+      ca_file: /etc/prometheus/opensvc-ca.pem
+    basic_auth:
+      username: prometheus
+      password_file: /etc/prometheus/opensvc.password
+    static_configs:
+      - targets: ['n1:1215', 'n2:1215']
+```
+
+An access token lasts 24h at most, which does not suit a scraper: prefer the
+password, or an x509 client certificate.
+
+The namespace roles read metrics too, through
+`/api/node/name/<node>/metrics` and `/api/node/name/<node>/metrics/pg`, filtered
+to the objects of their namespaces. A user with no `scraper` or `root` grant
+gets neither the daemon series nor the host ones.
+
+To serve `/metrics` with no authentication, set `listener.public_metrics`. The
+page holds aggregates and no object name. The detail pages stay protected.
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```
+om cluster config update --set listener.public_metrics=true
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" \
+  --data-urlencode 'set=listener.public_metrics=true' \
+  -G "https://<node>:1215/api/cluster/config"
+```
+
+</div>
+</div>
+
 ## Keyword rules
 
 A role says which objects a user may write. Some keywords ask for more than
