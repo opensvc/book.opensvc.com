@@ -11,7 +11,9 @@ In this case the translation from volumes to disks and filesystems is delegated 
 
 Pools are defined in the node configuration. Each pool is identified by its name (the section suffix). For example, a `pool#tank` section defines a pool named `tank`.
 
-The `default` pool always exist, even if not defined in the node configuration. If not explicitly changed, the `default` pool driver is `directory`.
+The `default` pool always exist, even if not defined in the node configuration. If not explicitly changed, the `default` pool driver is `loop`: each volume is a file holding a filesystem of its size, formatted `ext4` by default, which bounds what the volume holds.
+
+A pool saying the `quota` capability bounds its volumes this way. A `directory` pool does only with its `quota` keyword set, a volume being otherwise a directory of the filesystem holding the pool, which it can fill whatever its size. A namespace can not claim a pool without the capability: a new volume is refused there. A pool with the capability refuses a volume with no `size`.
 
 ## Volumes
 
@@ -88,7 +90,7 @@ om pool ls
 ```
 
     NAME     TYPE       CAPABILITIES              HEAD                             VOLUME_COUNT  BIN_SIZE  BIN_USED  BIN_FREE
-    default  directory  rox,rwx,roo,rwo           /opt/opensvc/var/pool/directory  0             29.0g     3.57g     24.0g
+    default  loop       quota,rox,rwx,roo,rwo     /opt/opensvc/var/pool/loop       0             29.0g     3.57g     24.0g
     freenas  freenas    roo,rwo,shared,blk,iscsi  array://freenas/osvcdata         6             195g      9.37g     185g
     mpool    virtual    roo,rox,rwo,rwx,shared    templates/mpool                  1             -         -         -
 
