@@ -63,19 +63,19 @@ A volume shared by several objects needs `exclusive = false` on all their `volum
 
 ## Download Images
 
-The node policy on urls refuses every image url by default. Root says the sources the cluster trusts, for all the nodes:
+The node policy on urls refuses every url by default. Root says the sources the cluster trusts, for all the nodes:
 
 <div class="tabs">
 <div class="tab" data-title="CLI">
 
 ```
-om cluster config update --set "node.image_urls=https://cloud-images.ubuntu.com/*"
+om cluster config update --set "node.allowed_urls=https://cloud-images.ubuntu.com/*"
 ```
 
 </div>
 </div>
 
-`node.image_cidrs` allows the private range of a mirror of the site. Redirects stay refused, so a url must be the final one.
+They apply to all that fetches a url on a node, as the source of a key. `node.allowed_cidrs` allows the private range of a mirror of the site, a url being still needed. A url is fetched as root from the node, so these are root's to set, and redirects stay refused: a url must be the final one.
 
 ## Install From a CDROM
 
