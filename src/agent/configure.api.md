@@ -114,8 +114,8 @@ curl -s -X PATCH -H "Authorization: Bearer $TOKEN" \
 
 ### Hypervisor to Guest (vsock)
 
-  * **Mechanism:** A kvm guest serves the API on a vsock port. The master reaches it from its hypervisor, with no network in the guest and no key.
-  * **Authorization:** A connection of the hypervisor from a reserved source port, which only a privileged process can bind, gets the `root` grant, the hypervisor being root on its guests anyway. The guest drops any other peer.
+  * **Mechanism:** A kvm guest serves the API on a vsock port. The master reaches it from its hypervisor, with no network in the guest.
+  * **Authorization:** A connection of the hypervisor from a reserved source port gets the `root` grant, the hypervisor being root on its guests anyway, when it holds a token signed with the key of the cluster. The guest verifies it with the public key the start of the domain writes in its firmware, and for its own uuid, so a process of the hypervisor that binds a reserved port but can not read the key of the cluster gets nothing. The guest drops any other peer. A guest gets the key at its next start.
   * **Availability:** This method was **added in OpenSVC v3** agents, for `container.kvm` guests.
 
 The master prefers this way for the status, the config and the provision, unprovision, start, stop, shutdown and startstandby actions of the encap instances. When the guest daemon does not answer, it uses `qga` or `rcmd`.
