@@ -148,6 +148,34 @@ curl -s -X POST -H "Authorization: Bearer $TOKEN" \
 
 The binary messages of the websocket opened with the ticket are the bytes of the RFB protocol. A guest with a spice display says so: the browser speaks vnc.
 
+## Logs
+
+The container logs of a guest are what it writes to its first serial port, from its first boot on: the kernel, the init system and cloud-init, whose host key fingerprints are a way to check the key a first ssh connection is shown.
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```
+om <path> container logs --rid container#1 --follow
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -N -H "Authorization: Bearer $TOKEN" \
+  "https://<node>:1215/api/node/name/<node>/instance/path/<ns>/svc/<name>/container/log?rid=container%231&follow=true"
+```
+
+</div>
+</div>
+
+Reading them takes the root role, and each node keeps the file of the runs it held, so the output of a run before a failover is read on the node it ran on. A guest provisioned before this feature gets the file at its next start.
+
+The terminal sequences are removed from what is read, not from the file. Whatever shows on the serial console is kept, a session logged in there included. A guest writing nothing to its serial port, as Windows does by default, has empty logs.
+
+The qemu log of the domain stays in `/var/log/libvirt/qemu/<name>.log`: it is the one of the hypervisor, and a start that fails says its error in the logs of the action.
+
 ## Caps and Claims
 
 A guest runs in the process group of its resource, under the ones of its object and its namespace, so the `pg_*` keywords bound it. A cap changes live with `om <path> instance pg update`.
