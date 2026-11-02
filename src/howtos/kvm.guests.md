@@ -63,6 +63,8 @@ An uploaded file is marked with who sent it and when, in the `user.opensvc.uploa
 
 The files of the volume are reached in its directories with the `dir` parameter, a path relative to the top of the volume, which no component may lead up from nor be hidden. The listing (`GET …/file?dir=isos`) returns the files, directories and links, a link being listed as what it says and never followed, the first 1000 by name and `truncated` when there are more. `POST …/file/directory?dir=isos&name=debian` makes a directory, and no parent. `DELETE …/file?dir=isos&name=x` removes a file, a link, or an empty directory: nothing recursively. A directory not existing is answered `404`, one that is something else `409`. An installer uploaded in a directory is named as `volume#2:/isos/debian.iso` by the `cdrom` and `image` keywords.
 
+A file of a volume is read the same way: `POST …/file/download?dir=isos&name=debian.iso` issues the ticket, and a `GET` of the console port with it answers the bytes, `200`, or `206` for a single `Range`, as an attachment of the name of the file. A ticket opens one read. A link is not followed: it is answered `409`, as a directory is, and a file not existing `404`.
+
 A volume shared by several objects needs `exclusive = false` on all their `volume` resources.
 
 ## Download Images
