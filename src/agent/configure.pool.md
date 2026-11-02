@@ -597,7 +597,7 @@ name = {name}
 type = oci
 image = postgres
 volume_mounts = {name}/data:/var/lib/postgresql/data
-secrets_environment = POSTGRES_PASSWORD=pg/password
+environment = POSTGRES_PASSWORD from ./sec/pg key password
 rm = true
 shared = true
 ```
