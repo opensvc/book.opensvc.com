@@ -61,6 +61,8 @@ The file appears complete or not at all, and never in place of a file of its nam
 
 An uploaded file is marked with who sent it and when, in the `user.opensvc.upload` extended attribute, and the listing of the files says so in their `uploaded_by` and `uploaded_at`. A file rewritten in place keeps the mark, its `modified_at` then later than its `uploaded_at`. A filesystem keeping no extended attributes leaves the files unmarked.
 
+The files of the volume are reached in its directories with the `dir` parameter, a path relative to the top of the volume, which no component may lead up from nor be hidden. The listing (`GET …/file?dir=isos`) returns the files, directories and links, a link being listed as what it says and never followed, the first 1000 by name and `truncated` when there are more. `POST …/file/directory?dir=isos&name=debian` makes a directory, and no parent. `DELETE …/file?dir=isos&name=x` removes a file, a link, or an empty directory: nothing recursively. A directory not existing is answered `404`, one that is something else `409`. An installer uploaded in a directory is named as `volume#2:/isos/debian.iso` by the `cdrom` and `image` keywords.
+
 A volume shared by several objects needs `exclusive = false` on all their `volume` resources.
 
 ## Download Images
