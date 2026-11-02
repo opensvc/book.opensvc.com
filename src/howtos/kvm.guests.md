@@ -57,7 +57,9 @@ curl -X PUT --data-binary @noble.qcow2 "https://<node>:1216/?ticket=$TICKET"
 </div>
 </div>
 
-The file appears complete or not at all. The transfer is answered `204`, `409` when the volume is not available on the node, and `507` when the file does not fit in the size of the volume.
+The file appears complete or not at all, and never in place of a file of its name unless the ticket is asked with `replace=true`: the ticket is refused `409` when the file exists, and so is the transfer when the file was created meanwhile, by the services using the volume for example. The transfer is answered `204`, `409` when the volume is not available on the node or the file exists, and `507` when the file does not fit in the size of the volume.
+
+An uploaded file is marked with who sent it and when, in the `user.opensvc.upload` extended attribute, and the listing of the files says so in their `uploaded_by` and `uploaded_at`. A file rewritten in place keeps the mark, its `modified_at` then later than its `uploaded_at`. A filesystem keeping no extended attributes leaves the files unmarked.
 
 A volume shared by several objects needs `exclusive = false` on all their `volume` resources.
 
