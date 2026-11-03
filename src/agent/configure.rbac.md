@@ -59,8 +59,9 @@ audit first.
 
 ### squatter
 
-May create namespaces, and may write a namespace configuration. The creator is
-automatically granted `admin` on the namespace it creates.
+May create namespaces, by their namespace configuration, and may write a
+namespace configuration. The squatter gets no role on the namespaces it
+creates: the objects of a namespace are created with the `admin` role on it.
 
 A namespace configuration says what the objects of that namespace may take of
 what the cluster shares: how much of a pool, how many addresses of a network,
