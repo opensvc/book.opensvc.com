@@ -81,8 +81,6 @@
 - restart_delay
 - resume_input
 - rm
-- rootless_group
-- rootless_user
 - run_args
 - scsireserv
 - secrets_environment
@@ -344,7 +342,12 @@ A disabled resource status is `n/a`.
 If set in the `DEFAULT` section of an object, the object is disabled and
 ignores `start`, `stop`, `shutdown`, `provision` and `unprovision` actions.
 
-These actions immediately return success.
+These actions do nothing, and exit 7, a code telling the action was not
+done because the instance is disabled, which the daemon takes as the end of
+a stop and of an unprovision: a disabled object is purged. An `unprovision`
+of a disabled instance whose resources are provisioned fails: the object
+would be deleted with its storage left on the node. Enable it to
+unprovision it.
 
 `om <path> disable` sets `DEFAULT.disable=true`.
 
@@ -669,7 +672,15 @@ assigned.
 * empty or `none`
 
   The container has a private netns other `container`, `ip.netns` or
-  `ip.cni` resources can share.
+  `ip.cni` resources can share. An engine network set in `run_args`, as
+  `--net <network>` or `--network <network>`, replaces it. The ports `run_args` publishes, as
+  `-p 2222:22`, are published on an engine network only: the engines
+  discard them in a private netns. The `expose` keyword makes SRV records,
+  and publishes nothing.
+
+  The ip of an om network, by an `ip.netns` resource, is not supported in a
+  container joined to an engine network: the netns would keep the default
+  route of the engine, which the replies to the cluster nodes would take.
 
 * `<rid>`
 
@@ -1414,77 +1425,6 @@ closed and it is waited for, as the statement releasing a lock.
 If rm=true, the container instance is removed when the resource is stopped.
 If detach=false, the driver automatically behaves as if rm=true.
 
-## Keyword `rootless_group`
-
-	required:    false
-	scopable:    true
-	since:       v3.0.0-rc42
-
-**Example:**
-
-	rootless_group=opensvc
-
-**Description:**
-
-The group podman runs a rootless container as, in place of the primary group
-of rootless_user.
-
-It has no effect without rootless_user.
-
-
-## Keyword `rootless_user`
-
-	required:    false
-	scopable:    true
-	since:       v3.0.0-rc42
-	stop first:  a change is refused while the resource is up
-
-**Example:**
-
-	rootless_user=opensvc
-
-**Description:**
-
-The unprivileged user podman runs the container as, making it a rootless
-container. Every podman command of the container runs as that user, so the
-container, its image and its store are the user's, and its processes are
-mapped to the subordinate ids of the user.
-
-The node must be set up for it, and the container refuses to start until it
-is, naming what is missing:
-
-* the systemd instance of the user must run without a login session, which
-  `loginctl enable-linger <user>` makes it do,
-
-* the user must have subordinate ids in `/etc/subuid` and `/etc/subgid`.
-
-The pg_* keywords cap the container in the subtree of the cgroup hierarchy
-systemd delegates to the user, where podman places it. A capping whose
-controller that subtree is not delegated, like pg_cpus and pg_blkio_weight
-under a default `user@.service`, is reported as not applied.
-
-The resolver of the container is written under the runtime directory of the
-user, which podman can read, rather than in the var dir of the resource.
-
-A rootless container cannot be privileged, and its volume mounts must be
-readable by the user or its subordinate ids: see the userns keyword for
-mapping the user into the container.
-
-The ids of the container run as other ids of the host: its root as the user,
-and its ids from 1 as the subordinate ids of the user. A file the container
-reads as one of its ids is owned, on the host, by the id the reference
-`{<rid>.uid.<id>}` or `{<rid>.gid.<id>}` answers, `{<rid>.uid}` being its root.
-They answer the same ids for a rootful container, which runs its ids as
-themselves, so an install naming its owners by reference holds either way:
-
-    install = /etc/nginx/conf.d/ from ./cfg/web user {container#1.uid.101} group {container#1.gid.101}
-
-A container given a userns mapping answers no id: podman makes that mapping
-when the container starts.
-
-Empty, the default, runs the container as root.
-
-
 ## Keyword `run_args`
 
 	required:    false
@@ -1841,9 +1781,10 @@ Also support the `<user>:<group>` syntax.
 
 **Description:**
 
-Defines the podman container run --userns value.
+If not set, the container will have a private userns other containers can
+share.
 
-the 'container#...' values are converted to container:id
+A container with `userns=host` will share the host's userns.
 
 
 ## Keyword `utsns`

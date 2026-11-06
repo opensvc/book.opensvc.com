@@ -13,9 +13,11 @@
 
 - blocking_post_provision
 - blocking_post_run
+- blocking_post_stop
 - blocking_post_unprovision
 - blocking_pre_provision
 - blocking_pre_run
+- blocking_pre_stop
 - blocking_pre_unprovision
 - check
 - command
@@ -61,9 +63,11 @@
 - pg_vmem_limit
 - post_provision
 - post_run
+- post_stop
 - post_unprovision
 - pre_provision
 - pre_run
+- pre_stop
 - pre_unprovision
 - provision
 - provision_requires
@@ -77,6 +81,7 @@
 - standby
 - stat_timeout
 - stop
+- stop_requires
 - stop_timeout
 - subset
 - tags
@@ -111,6 +116,19 @@ This trigger is only executed on leaders.
 **Description:**
 
 A command or script to execute after the resource `run` action.
+
+Errors interrupt the action.
+
+
+## Keyword `blocking_post_stop`
+
+	required:    false
+	scopable:    true
+	rbac:        Triggers require the root grant.
+
+**Description:**
+
+A command or script to execute after the resource `stop` action.
 
 Errors interrupt the action.
 
@@ -152,6 +170,19 @@ Errors interrupt the action.
 **Description:**
 
 A command or script to execute before the resource `run` action.
+
+Errors interrupt the action.
+
+
+## Keyword `blocking_pre_stop`
+
+	required:    false
+	scopable:    true
+	rbac:        Triggers require the root grant.
+
+**Description:**
+
+A command or script to execute before the resource `stop` action.
 
 Errors interrupt the action.
 
@@ -325,7 +356,12 @@ A disabled resource status is `n/a`.
 If set in the `DEFAULT` section of an object, the object is disabled and
 ignores `start`, `stop`, `shutdown`, `provision` and `unprovision` actions.
 
-These actions immediately return success.
+These actions do nothing, and exit 7, a code telling the action was not
+done because the instance is disabled, which the daemon takes as the end of
+a stop and of an unprovision: a disabled object is purged. An `unprovision`
+of a disabled instance whose resources are provisioned fails: the object
+would be deleted with its storage left on the node. Enable it to
+unprovision it.
 
 `om <path> disable` sets `DEFAULT.disable=true`.
 
@@ -1064,6 +1100,19 @@ A command or script to execute after the resource `run` action.
 Errors do not interrupt the action.
 
 
+## Keyword `post_stop`
+
+	required:    false
+	scopable:    true
+	rbac:        Triggers require the root grant.
+
+**Description:**
+
+A command or script to execute after the resource `stop` action.
+
+Errors do not interrupt the action.
+
+
 ## Keyword `post_unprovision`
 
 	required:    false
@@ -1101,6 +1150,19 @@ Errors do not interrupt the action.
 **Description:**
 
 A command or script to execute before the resource `run` action.
+
+Errors do not interrupt the action.
+
+
+## Keyword `pre_stop`
+
+	required:    false
+	scopable:    true
+	rbac:        Triggers require the root grant.
+
+**Description:**
+
+A command or script to execute before the resource `stop` action.
 
 Errors do not interrupt the action.
 
@@ -1380,6 +1442,25 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 The shlex expression of the command to execute to stop a running task.
 
 Without it, the task is stopped by killing the processes its `command` started.
+
+
+## Keyword `stop_requires`
+
+	required:    false
+	scopable:    false
+
+**Example:**
+
+	stop_requires=ip#0 fs#0(down,stdby down)
+
+**Description:**
+
+A whitespace-separated list of conditions to meet to accept a 'stop'
+action.
+
+A condition is expressed as `<rid>(<state>,...)`.
+
+If states are omitted, `up,stdby up` is used as the default expected states.
 
 
 ## Keyword `stop_timeout`

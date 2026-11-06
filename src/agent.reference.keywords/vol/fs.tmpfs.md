@@ -302,7 +302,7 @@ gets `x` because group has `r`, other gets neither because other has
 no `r`.
 
 If `perm` is also not set,
-* the permission of the head directory of the receiver is unchecked
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
 * the permission of other directories defaults to 0755
 * the permission of files from sec objects defaults to 0600
 * the permission of other files defaults to 0644
@@ -313,7 +313,14 @@ If `perm` is also not set,
 
 **Description:**
 
-The permissions to apply to installed directories, in octal notation.
+The permissions, in octal notation, of the directories installed in the
+volume: the ones of the `directories` keyword, the ones of the `install`
+lines ending with a `/`, and the volume root, applied at each install.
+
+The volume root is given this mode, with the owner of the `user` and `group`
+keywords, unless an `install` line names it, as `/ mode 0750 user 70`, which
+sets the root alone. A container not run as root needs a root its user can
+traverse.
 
 
 ## Keyword `disable`
@@ -332,7 +339,12 @@ A disabled resource status is `n/a`.
 If set in the `DEFAULT` section of an object, the object is disabled and
 ignores `start`, `stop`, `shutdown`, `provision` and `unprovision` actions.
 
-These actions immediately return success.
+These actions do nothing, and exit 7, a code telling the action was not
+done because the instance is disabled, which the daemon takes as the end of
+a stop and of an unprovision: a disabled object is purged. An `unprovision`
+of a disabled instance whose resources are provisioned fails: the object
+would be deleted with its storage left on the node. Enable it to
+unprovision it.
 
 `om <path> disable` sets `DEFAULT.disable=true`.
 
@@ -365,8 +377,11 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 **Description:**
 
-The group name or id that will own the volume root and installed files and
-directories.
+The group name or id owning the files and directories installed in the
+volume, and the volume root, at each install: with `dirperm` or `perm` set,
+along with the mode of the root, and alone otherwise, the mode of the root
+then left as it is. An `install` line naming the root, as `/ group 70`, sets
+its group instead.
 
 
 ## Keyword `install`
@@ -442,16 +457,17 @@ Where:
   * `<sig>` is the signal to send to the target resource `<rid>` processes when the file content is modified,
     or the file removed with its key.
 
-* `<uri>`
-  * is the source URI or local file path to seed the datastore key with during provision if the key doesn't already exist.
-  * HTTP/HTTPS URIs (http://, https://) are fetched via HTTP GET.
-  * Local file paths are read directly from the filesystem.
-
 * `required`
   * stop installing items if this item install failed.
 
 * `source <uri>`
   * seed the datastore key with the content of `<uri>`, as it is written: a template is stored as a template.
+  * the key is seeded by the install of the resource, at its start, its provision or its task run, when the
+    datastore does not hold it. A key already there is left as it is.
+  * an `http://` or `https://` uri is fetched, as the `node.allowed_urls` and SSRF policies allow. Any other uri is
+    the path of a file of the node.
+  * the write of a key refreshes the services installing from the datastore, on every node it reaches: a refresh
+    installs what the datastore holds, and seeds no key.
 
 * `template`
   * the key content is a go template, rendered on each node at each install into the installed file. The key
@@ -1430,8 +1446,11 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 **Description:**
 
-The user name or id that will own the volume root and installed files and
-directories.
+The user name or id owning the files and directories installed in the
+volume, and the volume root, at each install: with `dirperm` or `perm` set,
+along with the mode of the root, and alone otherwise, the mode of the root
+then left as it is. An `install` line naming the root, as `/ user 70`, sets
+its owner instead.
 
 
 ## Keyword `zone`

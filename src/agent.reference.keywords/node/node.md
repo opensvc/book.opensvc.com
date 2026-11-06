@@ -178,18 +178,14 @@ Override for the corresponding `om node push asset` discovery probe.
 
 **Example:**
 
-	branch=1.9
+	branch=uat
 
 **Description:**
 
-Set the targeted opensvc agent branch.
+Set the branch of the opensvc packages `om node update pkg` downloads, when no
+repository configured in the package manager offers them: prod, uat or dev.
 
-The downloaded upgrades will honor that branch.
-
-If not set, the `repopkg` imposes the target branch via the current link.
-
-It is recommended to set `branch` when `repopkg` points to a repository
-you are not responsible for.
+If not set, the prod branch, the stable one.
 
 
 ## Keyword `collector`
@@ -296,8 +292,9 @@ Minimum value: 10s
 
 **Description:**
 
-The maximum time to wait for a collector v3 call, as the send of the begin
-or the end of an instance action.
+The maximum time to wait for a collector v3 request: the node register, the
+push of the asset, disks, packages and checks, and the daemon posts of its
+status, the instance configurations, resource information and actions.
 Minimum value: 1s. Maximum value: 20s.
 
 
@@ -399,10 +396,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-
-**Default:**
-
-Same protocol, server and port as `dbopensvc`, but with a different path.
+	deprecated:  since v3.0.0-rc58
 
 **Example:**
 
@@ -410,9 +404,11 @@ Same protocol, server and port as `dbopensvc`, but with a different path.
 
 **Description:**
 
-Set the uri of the collector's main rpc server.
+Ignored: the uri of the compliance rpc server of the former collector, which
+om no longer calls.
 
-The path part of the uri can be left unspecified.
+om reads the compliance of a node from the oc3 server, set by `collector.url`
+or `collector.server`. `om node config migrate` drops this keyword.
 
 
 ## Keyword `dbinsecure`
@@ -448,6 +444,7 @@ is set.
 
 	required:    false
 	scopable:    false
+	deprecated:  since v3.0.0-rc58, replaced by collector.url
 
 **Example:**
 
@@ -455,12 +452,10 @@ is set.
 
 **Description:**
 
-Set the uri of the collector's feed rpc server.
+Ignored: the uri of the former collector, which om no longer feeds.
 
-The path part of the uri can be left unspecified.
-
-If `dbopensvc` is not set, the agent does not try to communicate with a
-collector.
+om feeds an oc3 collector, set by `collector.url`, or `collector.feeder` and
+`collector.server`. `om node config migrate` drops this keyword.
 
 
 ## Keyword `enclosure`
@@ -788,12 +783,18 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
+	candidates:  podman, docker
 
 **Description:**
 
-The default micro-container driver.
+The engine the `oci` container and task resources of the node run with:
+`podman` or `docker`.
 
-If not set, prefer podman if installed, else fallback to docker.
+If not set, podman if the node has it, else docker, as in v2.
+
+The resources of type `oci` are the ones of the engine, and say so as their
+type: `container.podman` or `container.docker`. A node running both engines
+keeps its `oci` resources on docker with `oci = docker`.
 
 
 ## Keyword `os_arch`
@@ -943,11 +944,11 @@ nodes.
 
 **Description:**
 
-Set the uri of the opensvc agent package repository and compliance modules
-gzipped tarball repository.
+Set the uri of the compliance modules gzipped tarball repository, and of the
+packages of the historical opensvc agent.
 
-This parameter is used by the `om node updatepkg` and `om node updatecomp`
-commands.
+This parameter is used by the `om node updatecomp` command. The
+`om node update pkg` command of this agent uses `repopkg` instead.
 
 Expected repository structure:
 
@@ -1004,31 +1005,30 @@ Expected repository structure:
 
 **Example:**
 
-	repopkg=http://repo.opensvc.com
+	repopkg=https://packages.opensvc.com
 
 **Description:**
 
-Set the uri of the opensvc agent package repository.
+Set the uri of the opensvc package repository `om node update pkg` downloads
+the packages from, when no repository configured in the package manager offers
+them. By default, https://packages.opensvc.com.
 
-This parameter is used by the `om node updatepkg` command.
-
-Expected repository structure:
+The repository is laid out as that one, an apt and a rpm repository per
+branch and distribution, and publishes the key its packages are signed with:
 
 ROOT
-+- deb
-+- depot
-+- pkg
-+- sunos-pkg
-+- rpms
-|+- current -> 2.0/current
-|+- 1.9
-| +- current -> opensvc-1.9-50.rpm
-| +- opensvc-1.9-49.rpm
-| `- opensvc-1.9-50.rpm
-|+- 2.0
-| +- current -> opensvc-2.0-90.rpm
-| `- opensvc-2.0-90.rpm
-`- tbz
++- gpg.public.key.asc
++- apt
+|+- debian
+||+- dists/<branch>-opensvc-v3-<codename>/main/binary-<arch>/Packages.gz
+||`- pool/...
+|`- ubuntu
+| `- ...
+`- rpm
+ +- <branch>-opensvc-v3-rhel<major>/<arch>/
+ |+- repodata/repomd.xml
+ |`- opensvc-server-<version>.<arch>.rpm ...
+ `- <branch>-opensvc-v3-sles<major>/<arch>/
 
 
 ## Keyword `ruser`

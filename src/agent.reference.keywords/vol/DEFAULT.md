@@ -206,7 +206,9 @@ The list of resources that contribute their exposed devices to the volume expose
 Disables the object instance:
 
 * Instance and all resource statuses become `n/a`.
-* Instance actions (e.g. start, stop, ...) are silently ignored.
+* Instance actions (e.g. start, stop, ...) do nothing, and exit 7. An
+  unprovision of an instance whose resources are provisioned fails: enable
+  it to unprovision it.
 * Resources stay disabled regardless of `DEFAULT.disable=false`.
 * `disable=false` on a resource does not override `DEFAULT.disable=true`.
 

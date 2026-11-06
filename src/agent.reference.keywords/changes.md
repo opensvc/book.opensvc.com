@@ -1,7 +1,3681 @@
 # Keyword changes
 
-What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc57.
+What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc58.
 
+
+## v3.0.0-rc58
+
+
+### Added
+
+- `svc/task.acme.blocking_post_stop`
+- `svc/task.acme.blocking_pre_stop`
+- `svc/task.acme.post_stop`
+- `svc/task.acme.pre_stop`
+- `svc/task.acme.stop_requires`
+- `svc/task.host.blocking_post_stop`
+- `svc/task.host.blocking_pre_stop`
+- `svc/task.host.post_stop`
+- `svc/task.host.pre_stop`
+- `svc/task.host.stop_requires`
+- `vol/task.host.blocking_post_stop`
+- `vol/task.host.blocking_pre_stop`
+- `vol/task.host.post_stop`
+- `vol/task.host.pre_stop`
+- `vol/task.host.stop_requires`
+
+### Removed
+
+- `svc/container.oci.rootless_group`
+- `svc/container.oci.rootless_user`
+- `svc/task.oci.rootless_group`
+- `svc/task.oci.rootless_user`
+- `vol/task.oci.rootless_group`
+- `vol/task.oci.rootless_user`
+
+### Changed
+
+- `cluster/collector.timeout`
+  - description rewritten
+- `cluster/node.branch`
+  - description rewritten
+- `cluster/node.collector_timeout`
+  - description rewritten
+- `cluster/node.dbcompliance`
+  - defaultText: Same protocol, server and port as `dbopensvc`, but with a different path.
+ -> unset
+  - deprecated: unset -> v3.0.0-rc58
+  - description rewritten
+- `cluster/node.dbopensvc`
+  - deprecated: unset -> v3.0.0-rc58
+  - replacedBy: unset -> collector.url
+  - description rewritten
+- `cluster/node.repo`
+  - description rewritten
+- `cluster/node.repopkg`
+  - description rewritten
+- `node/collector.timeout`
+  - description rewritten
+- `node/node.branch`
+  - description rewritten
+- `node/node.collector_timeout`
+  - description rewritten
+- `node/node.dbcompliance`
+  - defaultText: Same protocol, server and port as `dbopensvc`, but with a different path.
+ -> unset
+  - deprecated: unset -> v3.0.0-rc58
+  - description rewritten
+- `node/node.dbopensvc`
+  - deprecated: unset -> v3.0.0-rc58
+  - replacedBy: unset -> collector.url
+  - description rewritten
+- `node/node.oci`
+  - candidates: unset -> docker, podman
+  - description rewritten
+- `node/node.repo`
+  - description rewritten
+- `node/node.repopkg`
+  - description rewritten
+- `svc/DEFAULT.disable`
+  - description rewritten
+- `svc/app.forking.disable`
+  - description rewritten
+- `svc/app.simple.disable`
+  - description rewritten
+- `svc/container.docker.disable`
+  - description rewritten
+- `svc/container.docker.netns`
+  - description rewritten
+- `svc/container.kvm.disable`
+  - description rewritten
+- `svc/container.lxc.disable`
+  - description rewritten
+- `svc/container.oci.disable`
+  - description rewritten
+- `svc/container.oci.netns`
+  - description rewritten
+- `svc/container.oci.userns`
+  - description rewritten
+- `svc/container.podman.disable`
+  - description rewritten
+- `svc/container.podman.netns`
+  - description rewritten
+- `svc/container.vbox.disable`
+  - description rewritten
+- `svc/disk.crypt.disable`
+  - description rewritten
+- `svc/disk.disk.disable`
+  - description rewritten
+- `svc/disk.drbd.disable`
+  - description rewritten
+- `svc/disk.hp3par.disable`
+  - description rewritten
+- `svc/disk.loop.disable`
+  - description rewritten
+- `svc/disk.lv.disable`
+  - description rewritten
+- `svc/disk.lvm.disable`
+  - description rewritten
+- `svc/disk.md.disable`
+  - description rewritten
+- `svc/disk.rados.disable`
+  - description rewritten
+- `svc/disk.raw.disable`
+  - description rewritten
+- `svc/disk.sgcp_nfs_cg.disable`
+  - description rewritten
+- `svc/disk.vg.disable`
+  - description rewritten
+- `svc/disk.xp8.disable`
+  - description rewritten
+- `svc/disk.zpool.disable`
+  - description rewritten
+- `svc/disk.zvol.disable`
+  - description rewritten
+- `svc/fs.9pfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.9pfs.disable`
+  - description rewritten
+- `svc/fs.9pfs.group`
+  - description rewritten
+- `svc/fs.9pfs.install`
+  - description rewritten
+- `svc/fs.9pfs.user`
+  - description rewritten
+- `svc/fs.afs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.afs.disable`
+  - description rewritten
+- `svc/fs.afs.group`
+  - description rewritten
+- `svc/fs.afs.install`
+  - description rewritten
+- `svc/fs.afs.user`
+  - description rewritten
+- `svc/fs.bfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.bfs.disable`
+  - description rewritten
+- `svc/fs.bfs.group`
+  - description rewritten
+- `svc/fs.bfs.install`
+  - description rewritten
+- `svc/fs.bfs.user`
+  - description rewritten
+- `svc/fs.bind.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.bind.disable`
+  - description rewritten
+- `svc/fs.bind.group`
+  - description rewritten
+- `svc/fs.bind.install`
+  - description rewritten
+- `svc/fs.bind.user`
+  - description rewritten
+- `svc/fs.btrfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.btrfs.disable`
+  - description rewritten
+- `svc/fs.btrfs.group`
+  - description rewritten
+- `svc/fs.btrfs.install`
+  - description rewritten
+- `svc/fs.btrfs.user`
+  - description rewritten
+- `svc/fs.cephfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.cephfs.disable`
+  - description rewritten
+- `svc/fs.cephfs.group`
+  - description rewritten
+- `svc/fs.cephfs.install`
+  - description rewritten
+- `svc/fs.cephfs.user`
+  - description rewritten
+- `svc/fs.cifs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.cifs.disable`
+  - description rewritten
+- `svc/fs.cifs.group`
+  - description rewritten
+- `svc/fs.cifs.install`
+  - description rewritten
+- `svc/fs.cifs.user`
+  - description rewritten
+- `svc/fs.directory.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.directory.disable`
+  - description rewritten
+- `svc/fs.directory.group`
+  - description rewritten
+- `svc/fs.directory.install`
+  - description rewritten
+- `svc/fs.directory.user`
+  - description rewritten
+- `svc/fs.ext2.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.ext2.disable`
+  - description rewritten
+- `svc/fs.ext2.group`
+  - description rewritten
+- `svc/fs.ext2.install`
+  - description rewritten
+- `svc/fs.ext2.user`
+  - description rewritten
+- `svc/fs.ext3.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.ext3.disable`
+  - description rewritten
+- `svc/fs.ext3.group`
+  - description rewritten
+- `svc/fs.ext3.install`
+  - description rewritten
+- `svc/fs.ext3.user`
+  - description rewritten
+- `svc/fs.ext4.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.ext4.disable`
+  - description rewritten
+- `svc/fs.ext4.group`
+  - description rewritten
+- `svc/fs.ext4.install`
+  - description rewritten
+- `svc/fs.ext4.user`
+  - description rewritten
+- `svc/fs.f2fs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.f2fs.disable`
+  - description rewritten
+- `svc/fs.f2fs.group`
+  - description rewritten
+- `svc/fs.f2fs.install`
+  - description rewritten
+- `svc/fs.f2fs.user`
+  - description rewritten
+- `svc/fs.flag.disable`
+  - description rewritten
+- `svc/fs.gfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.gfs.disable`
+  - description rewritten
+- `svc/fs.gfs.group`
+  - description rewritten
+- `svc/fs.gfs.install`
+  - description rewritten
+- `svc/fs.gfs.user`
+  - description rewritten
+- `svc/fs.gfs2.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.gfs2.disable`
+  - description rewritten
+- `svc/fs.gfs2.group`
+  - description rewritten
+- `svc/fs.gfs2.install`
+  - description rewritten
+- `svc/fs.gfs2.user`
+  - description rewritten
+- `svc/fs.glusterfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.glusterfs.disable`
+  - description rewritten
+- `svc/fs.glusterfs.group`
+  - description rewritten
+- `svc/fs.glusterfs.install`
+  - description rewritten
+- `svc/fs.glusterfs.user`
+  - description rewritten
+- `svc/fs.gpfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.gpfs.disable`
+  - description rewritten
+- `svc/fs.gpfs.group`
+  - description rewritten
+- `svc/fs.gpfs.install`
+  - description rewritten
+- `svc/fs.gpfs.user`
+  - description rewritten
+- `svc/fs.hfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.hfs.disable`
+  - description rewritten
+- `svc/fs.hfs.group`
+  - description rewritten
+- `svc/fs.hfs.install`
+  - description rewritten
+- `svc/fs.hfs.user`
+  - description rewritten
+- `svc/fs.hfsplus.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.hfsplus.disable`
+  - description rewritten
+- `svc/fs.hfsplus.group`
+  - description rewritten
+- `svc/fs.hfsplus.install`
+  - description rewritten
+- `svc/fs.hfsplus.user`
+  - description rewritten
+- `svc/fs.hpfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.hpfs.disable`
+  - description rewritten
+- `svc/fs.hpfs.group`
+  - description rewritten
+- `svc/fs.hpfs.install`
+  - description rewritten
+- `svc/fs.hpfs.user`
+  - description rewritten
+- `svc/fs.jffs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.jffs.disable`
+  - description rewritten
+- `svc/fs.jffs.group`
+  - description rewritten
+- `svc/fs.jffs.install`
+  - description rewritten
+- `svc/fs.jffs.user`
+  - description rewritten
+- `svc/fs.jffs2.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.jffs2.disable`
+  - description rewritten
+- `svc/fs.jffs2.group`
+  - description rewritten
+- `svc/fs.jffs2.install`
+  - description rewritten
+- `svc/fs.jffs2.user`
+  - description rewritten
+- `svc/fs.jfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.jfs.disable`
+  - description rewritten
+- `svc/fs.jfs.group`
+  - description rewritten
+- `svc/fs.jfs.install`
+  - description rewritten
+- `svc/fs.jfs.user`
+  - description rewritten
+- `svc/fs.jfs2.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.jfs2.disable`
+  - description rewritten
+- `svc/fs.jfs2.group`
+  - description rewritten
+- `svc/fs.jfs2.install`
+  - description rewritten
+- `svc/fs.jfs2.user`
+  - description rewritten
+- `svc/fs.lofs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.lofs.disable`
+  - description rewritten
+- `svc/fs.lofs.group`
+  - description rewritten
+- `svc/fs.lofs.install`
+  - description rewritten
+- `svc/fs.lofs.user`
+  - description rewritten
+- `svc/fs.logfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.logfs.disable`
+  - description rewritten
+- `svc/fs.logfs.group`
+  - description rewritten
+- `svc/fs.logfs.install`
+  - description rewritten
+- `svc/fs.logfs.user`
+  - description rewritten
+- `svc/fs.minix.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.minix.disable`
+  - description rewritten
+- `svc/fs.minix.group`
+  - description rewritten
+- `svc/fs.minix.install`
+  - description rewritten
+- `svc/fs.minix.user`
+  - description rewritten
+- `svc/fs.msdos.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.msdos.disable`
+  - description rewritten
+- `svc/fs.msdos.group`
+  - description rewritten
+- `svc/fs.msdos.install`
+  - description rewritten
+- `svc/fs.msdos.user`
+  - description rewritten
+- `svc/fs.ncpfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.ncpfs.disable`
+  - description rewritten
+- `svc/fs.ncpfs.group`
+  - description rewritten
+- `svc/fs.ncpfs.install`
+  - description rewritten
+- `svc/fs.ncpfs.user`
+  - description rewritten
+- `svc/fs.nfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.nfs.disable`
+  - description rewritten
+- `svc/fs.nfs.group`
+  - description rewritten
+- `svc/fs.nfs.install`
+  - description rewritten
+- `svc/fs.nfs.user`
+  - description rewritten
+- `svc/fs.nfs4.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.nfs4.disable`
+  - description rewritten
+- `svc/fs.nfs4.group`
+  - description rewritten
+- `svc/fs.nfs4.install`
+  - description rewritten
+- `svc/fs.nfs4.user`
+  - description rewritten
+- `svc/fs.nilfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.nilfs.disable`
+  - description rewritten
+- `svc/fs.nilfs.group`
+  - description rewritten
+- `svc/fs.nilfs.install`
+  - description rewritten
+- `svc/fs.nilfs.user`
+  - description rewritten
+- `svc/fs.none.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.none.disable`
+  - description rewritten
+- `svc/fs.none.group`
+  - description rewritten
+- `svc/fs.none.install`
+  - description rewritten
+- `svc/fs.none.user`
+  - description rewritten
+- `svc/fs.ntfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.ntfs.disable`
+  - description rewritten
+- `svc/fs.ntfs.group`
+  - description rewritten
+- `svc/fs.ntfs.install`
+  - description rewritten
+- `svc/fs.ntfs.user`
+  - description rewritten
+- `svc/fs.ocfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.ocfs.disable`
+  - description rewritten
+- `svc/fs.ocfs.group`
+  - description rewritten
+- `svc/fs.ocfs.install`
+  - description rewritten
+- `svc/fs.ocfs.user`
+  - description rewritten
+- `svc/fs.ocfs2.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.ocfs2.disable`
+  - description rewritten
+- `svc/fs.ocfs2.group`
+  - description rewritten
+- `svc/fs.ocfs2.install`
+  - description rewritten
+- `svc/fs.ocfs2.user`
+  - description rewritten
+- `svc/fs.qnx4.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.qnx4.disable`
+  - description rewritten
+- `svc/fs.qnx4.group`
+  - description rewritten
+- `svc/fs.qnx4.install`
+  - description rewritten
+- `svc/fs.qnx4.user`
+  - description rewritten
+- `svc/fs.reiserfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.reiserfs.disable`
+  - description rewritten
+- `svc/fs.reiserfs.group`
+  - description rewritten
+- `svc/fs.reiserfs.install`
+  - description rewritten
+- `svc/fs.reiserfs.user`
+  - description rewritten
+- `svc/fs.reiserfs4.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.reiserfs4.disable`
+  - description rewritten
+- `svc/fs.reiserfs4.group`
+  - description rewritten
+- `svc/fs.reiserfs4.install`
+  - description rewritten
+- `svc/fs.reiserfs4.user`
+  - description rewritten
+- `svc/fs.rpc_pipefs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.rpc_pipefs.disable`
+  - description rewritten
+- `svc/fs.rpc_pipefs.group`
+  - description rewritten
+- `svc/fs.rpc_pipefs.install`
+  - description rewritten
+- `svc/fs.rpc_pipefs.user`
+  - description rewritten
+- `svc/fs.sgcp_nfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.sgcp_nfs.disable`
+  - description rewritten
+- `svc/fs.sgcp_nfs.group`
+  - description rewritten
+- `svc/fs.sgcp_nfs.install`
+  - description rewritten
+- `svc/fs.sgcp_nfs.user`
+  - description rewritten
+- `svc/fs.smbfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.smbfs.disable`
+  - description rewritten
+- `svc/fs.smbfs.group`
+  - description rewritten
+- `svc/fs.smbfs.install`
+  - description rewritten
+- `svc/fs.smbfs.user`
+  - description rewritten
+- `svc/fs.tmpfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.tmpfs.disable`
+  - description rewritten
+- `svc/fs.tmpfs.group`
+  - description rewritten
+- `svc/fs.tmpfs.install`
+  - description rewritten
+- `svc/fs.tmpfs.user`
+  - description rewritten
+- `svc/fs.tux3.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.tux3.disable`
+  - description rewritten
+- `svc/fs.tux3.group`
+  - description rewritten
+- `svc/fs.tux3.install`
+  - description rewritten
+- `svc/fs.tux3.user`
+  - description rewritten
+- `svc/fs.ufs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.ufs.disable`
+  - description rewritten
+- `svc/fs.ufs.group`
+  - description rewritten
+- `svc/fs.ufs.install`
+  - description rewritten
+- `svc/fs.ufs.user`
+  - description rewritten
+- `svc/fs.ufs2.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.ufs2.disable`
+  - description rewritten
+- `svc/fs.ufs2.group`
+  - description rewritten
+- `svc/fs.ufs2.install`
+  - description rewritten
+- `svc/fs.ufs2.user`
+  - description rewritten
+- `svc/fs.umsdos.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.umsdos.disable`
+  - description rewritten
+- `svc/fs.umsdos.group`
+  - description rewritten
+- `svc/fs.umsdos.install`
+  - description rewritten
+- `svc/fs.umsdos.user`
+  - description rewritten
+- `svc/fs.vfat.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.vfat.disable`
+  - description rewritten
+- `svc/fs.vfat.group`
+  - description rewritten
+- `svc/fs.vfat.install`
+  - description rewritten
+- `svc/fs.vfat.user`
+  - description rewritten
+- `svc/fs.vxfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.vxfs.disable`
+  - description rewritten
+- `svc/fs.vxfs.group`
+  - description rewritten
+- `svc/fs.vxfs.install`
+  - description rewritten
+- `svc/fs.vxfs.user`
+  - description rewritten
+- `svc/fs.xfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.xfs.disable`
+  - description rewritten
+- `svc/fs.xfs.group`
+  - description rewritten
+- `svc/fs.xfs.install`
+  - description rewritten
+- `svc/fs.xfs.user`
+  - description rewritten
+- `svc/fs.xia.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.xia.disable`
+  - description rewritten
+- `svc/fs.xia.group`
+  - description rewritten
+- `svc/fs.xia.install`
+  - description rewritten
+- `svc/fs.xia.user`
+  - description rewritten
+- `svc/fs.zfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/fs.zfs.disable`
+  - description rewritten
+- `svc/fs.zfs.group`
+  - description rewritten
+- `svc/fs.zfs.install`
+  - description rewritten
+- `svc/fs.zfs.user`
+  - description rewritten
+- `svc/ip.cni.disable`
+  - description rewritten
+- `svc/ip.docker.disable`
+  - description rewritten
+- `svc/ip.host.disable`
+  - description rewritten
+- `svc/ip.netns.disable`
+  - description rewritten
+- `svc/ip.route.disable`
+  - description rewritten
+- `svc/ip.rule.disable`
+  - description rewritten
+- `svc/ip.sgcp_dnsalias.disable`
+  - description rewritten
+- `svc/share.nfs.disable`
+  - description rewritten
+- `svc/sync.btrfs.disable`
+  - description rewritten
+- `svc/sync.btrfssnap.disable`
+  - description rewritten
+- `svc/sync.rsync.disable`
+  - description rewritten
+- `svc/sync.store.disable`
+  - description rewritten
+- `svc/sync.symsnapvx.disable`
+  - description rewritten
+- `svc/sync.symsrdfs.disable`
+  - description rewritten
+- `svc/sync.zfs.disable`
+  - description rewritten
+- `svc/sync.zfssnap.disable`
+  - description rewritten
+- `svc/task.acme.disable`
+  - description rewritten
+- `svc/task.docker.disable`
+  - description rewritten
+- `svc/task.host.disable`
+  - description rewritten
+- `svc/task.oci.disable`
+  - description rewritten
+- `svc/task.oci.userns`
+  - description rewritten
+- `svc/task.podman.disable`
+  - description rewritten
+- `svc/volume..dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `svc/volume..disable`
+  - description rewritten
+- `svc/volume..group`
+  - description rewritten
+- `svc/volume..install`
+  - description rewritten
+- `svc/volume..user`
+  - description rewritten
+- `usr/DEFAULT.grant`
+  - description rewritten
+- `vol/DEFAULT.disable`
+  - description rewritten
+- `vol/disk.crypt.disable`
+  - description rewritten
+- `vol/disk.disk.disable`
+  - description rewritten
+- `vol/disk.drbd.disable`
+  - description rewritten
+- `vol/disk.hp3par.disable`
+  - description rewritten
+- `vol/disk.loop.disable`
+  - description rewritten
+- `vol/disk.lv.disable`
+  - description rewritten
+- `vol/disk.lvm.disable`
+  - description rewritten
+- `vol/disk.md.disable`
+  - description rewritten
+- `vol/disk.rados.disable`
+  - description rewritten
+- `vol/disk.raw.disable`
+  - description rewritten
+- `vol/disk.sgcp_nfs_cg.disable`
+  - description rewritten
+- `vol/disk.vg.disable`
+  - description rewritten
+- `vol/disk.xp8.disable`
+  - description rewritten
+- `vol/disk.zpool.disable`
+  - description rewritten
+- `vol/disk.zvol.disable`
+  - description rewritten
+- `vol/fs.9pfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.9pfs.disable`
+  - description rewritten
+- `vol/fs.9pfs.group`
+  - description rewritten
+- `vol/fs.9pfs.install`
+  - description rewritten
+- `vol/fs.9pfs.user`
+  - description rewritten
+- `vol/fs.afs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.afs.disable`
+  - description rewritten
+- `vol/fs.afs.group`
+  - description rewritten
+- `vol/fs.afs.install`
+  - description rewritten
+- `vol/fs.afs.user`
+  - description rewritten
+- `vol/fs.bfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.bfs.disable`
+  - description rewritten
+- `vol/fs.bfs.group`
+  - description rewritten
+- `vol/fs.bfs.install`
+  - description rewritten
+- `vol/fs.bfs.user`
+  - description rewritten
+- `vol/fs.bind.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.bind.disable`
+  - description rewritten
+- `vol/fs.bind.group`
+  - description rewritten
+- `vol/fs.bind.install`
+  - description rewritten
+- `vol/fs.bind.user`
+  - description rewritten
+- `vol/fs.btrfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.btrfs.disable`
+  - description rewritten
+- `vol/fs.btrfs.group`
+  - description rewritten
+- `vol/fs.btrfs.install`
+  - description rewritten
+- `vol/fs.btrfs.user`
+  - description rewritten
+- `vol/fs.cephfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.cephfs.disable`
+  - description rewritten
+- `vol/fs.cephfs.group`
+  - description rewritten
+- `vol/fs.cephfs.install`
+  - description rewritten
+- `vol/fs.cephfs.user`
+  - description rewritten
+- `vol/fs.cifs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.cifs.disable`
+  - description rewritten
+- `vol/fs.cifs.group`
+  - description rewritten
+- `vol/fs.cifs.install`
+  - description rewritten
+- `vol/fs.cifs.user`
+  - description rewritten
+- `vol/fs.directory.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.directory.disable`
+  - description rewritten
+- `vol/fs.directory.group`
+  - description rewritten
+- `vol/fs.directory.install`
+  - description rewritten
+- `vol/fs.directory.user`
+  - description rewritten
+- `vol/fs.ext2.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.ext2.disable`
+  - description rewritten
+- `vol/fs.ext2.group`
+  - description rewritten
+- `vol/fs.ext2.install`
+  - description rewritten
+- `vol/fs.ext2.user`
+  - description rewritten
+- `vol/fs.ext3.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.ext3.disable`
+  - description rewritten
+- `vol/fs.ext3.group`
+  - description rewritten
+- `vol/fs.ext3.install`
+  - description rewritten
+- `vol/fs.ext3.user`
+  - description rewritten
+- `vol/fs.ext4.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.ext4.disable`
+  - description rewritten
+- `vol/fs.ext4.group`
+  - description rewritten
+- `vol/fs.ext4.install`
+  - description rewritten
+- `vol/fs.ext4.user`
+  - description rewritten
+- `vol/fs.f2fs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.f2fs.disable`
+  - description rewritten
+- `vol/fs.f2fs.group`
+  - description rewritten
+- `vol/fs.f2fs.install`
+  - description rewritten
+- `vol/fs.f2fs.user`
+  - description rewritten
+- `vol/fs.flag.disable`
+  - description rewritten
+- `vol/fs.gfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.gfs.disable`
+  - description rewritten
+- `vol/fs.gfs.group`
+  - description rewritten
+- `vol/fs.gfs.install`
+  - description rewritten
+- `vol/fs.gfs.user`
+  - description rewritten
+- `vol/fs.gfs2.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.gfs2.disable`
+  - description rewritten
+- `vol/fs.gfs2.group`
+  - description rewritten
+- `vol/fs.gfs2.install`
+  - description rewritten
+- `vol/fs.gfs2.user`
+  - description rewritten
+- `vol/fs.glusterfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.glusterfs.disable`
+  - description rewritten
+- `vol/fs.glusterfs.group`
+  - description rewritten
+- `vol/fs.glusterfs.install`
+  - description rewritten
+- `vol/fs.glusterfs.user`
+  - description rewritten
+- `vol/fs.gpfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.gpfs.disable`
+  - description rewritten
+- `vol/fs.gpfs.group`
+  - description rewritten
+- `vol/fs.gpfs.install`
+  - description rewritten
+- `vol/fs.gpfs.user`
+  - description rewritten
+- `vol/fs.hfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.hfs.disable`
+  - description rewritten
+- `vol/fs.hfs.group`
+  - description rewritten
+- `vol/fs.hfs.install`
+  - description rewritten
+- `vol/fs.hfs.user`
+  - description rewritten
+- `vol/fs.hfsplus.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.hfsplus.disable`
+  - description rewritten
+- `vol/fs.hfsplus.group`
+  - description rewritten
+- `vol/fs.hfsplus.install`
+  - description rewritten
+- `vol/fs.hfsplus.user`
+  - description rewritten
+- `vol/fs.hpfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.hpfs.disable`
+  - description rewritten
+- `vol/fs.hpfs.group`
+  - description rewritten
+- `vol/fs.hpfs.install`
+  - description rewritten
+- `vol/fs.hpfs.user`
+  - description rewritten
+- `vol/fs.jffs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.jffs.disable`
+  - description rewritten
+- `vol/fs.jffs.group`
+  - description rewritten
+- `vol/fs.jffs.install`
+  - description rewritten
+- `vol/fs.jffs.user`
+  - description rewritten
+- `vol/fs.jffs2.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.jffs2.disable`
+  - description rewritten
+- `vol/fs.jffs2.group`
+  - description rewritten
+- `vol/fs.jffs2.install`
+  - description rewritten
+- `vol/fs.jffs2.user`
+  - description rewritten
+- `vol/fs.jfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.jfs.disable`
+  - description rewritten
+- `vol/fs.jfs.group`
+  - description rewritten
+- `vol/fs.jfs.install`
+  - description rewritten
+- `vol/fs.jfs.user`
+  - description rewritten
+- `vol/fs.jfs2.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.jfs2.disable`
+  - description rewritten
+- `vol/fs.jfs2.group`
+  - description rewritten
+- `vol/fs.jfs2.install`
+  - description rewritten
+- `vol/fs.jfs2.user`
+  - description rewritten
+- `vol/fs.lofs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.lofs.disable`
+  - description rewritten
+- `vol/fs.lofs.group`
+  - description rewritten
+- `vol/fs.lofs.install`
+  - description rewritten
+- `vol/fs.lofs.user`
+  - description rewritten
+- `vol/fs.logfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.logfs.disable`
+  - description rewritten
+- `vol/fs.logfs.group`
+  - description rewritten
+- `vol/fs.logfs.install`
+  - description rewritten
+- `vol/fs.logfs.user`
+  - description rewritten
+- `vol/fs.minix.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.minix.disable`
+  - description rewritten
+- `vol/fs.minix.group`
+  - description rewritten
+- `vol/fs.minix.install`
+  - description rewritten
+- `vol/fs.minix.user`
+  - description rewritten
+- `vol/fs.msdos.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.msdos.disable`
+  - description rewritten
+- `vol/fs.msdos.group`
+  - description rewritten
+- `vol/fs.msdos.install`
+  - description rewritten
+- `vol/fs.msdos.user`
+  - description rewritten
+- `vol/fs.ncpfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.ncpfs.disable`
+  - description rewritten
+- `vol/fs.ncpfs.group`
+  - description rewritten
+- `vol/fs.ncpfs.install`
+  - description rewritten
+- `vol/fs.ncpfs.user`
+  - description rewritten
+- `vol/fs.nfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.nfs.disable`
+  - description rewritten
+- `vol/fs.nfs.group`
+  - description rewritten
+- `vol/fs.nfs.install`
+  - description rewritten
+- `vol/fs.nfs.user`
+  - description rewritten
+- `vol/fs.nfs4.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.nfs4.disable`
+  - description rewritten
+- `vol/fs.nfs4.group`
+  - description rewritten
+- `vol/fs.nfs4.install`
+  - description rewritten
+- `vol/fs.nfs4.user`
+  - description rewritten
+- `vol/fs.nilfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.nilfs.disable`
+  - description rewritten
+- `vol/fs.nilfs.group`
+  - description rewritten
+- `vol/fs.nilfs.install`
+  - description rewritten
+- `vol/fs.nilfs.user`
+  - description rewritten
+- `vol/fs.none.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.none.disable`
+  - description rewritten
+- `vol/fs.none.group`
+  - description rewritten
+- `vol/fs.none.install`
+  - description rewritten
+- `vol/fs.none.user`
+  - description rewritten
+- `vol/fs.ntfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.ntfs.disable`
+  - description rewritten
+- `vol/fs.ntfs.group`
+  - description rewritten
+- `vol/fs.ntfs.install`
+  - description rewritten
+- `vol/fs.ntfs.user`
+  - description rewritten
+- `vol/fs.ocfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.ocfs.disable`
+  - description rewritten
+- `vol/fs.ocfs.group`
+  - description rewritten
+- `vol/fs.ocfs.install`
+  - description rewritten
+- `vol/fs.ocfs.user`
+  - description rewritten
+- `vol/fs.ocfs2.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.ocfs2.disable`
+  - description rewritten
+- `vol/fs.ocfs2.group`
+  - description rewritten
+- `vol/fs.ocfs2.install`
+  - description rewritten
+- `vol/fs.ocfs2.user`
+  - description rewritten
+- `vol/fs.qnx4.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.qnx4.disable`
+  - description rewritten
+- `vol/fs.qnx4.group`
+  - description rewritten
+- `vol/fs.qnx4.install`
+  - description rewritten
+- `vol/fs.qnx4.user`
+  - description rewritten
+- `vol/fs.reiserfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.reiserfs.disable`
+  - description rewritten
+- `vol/fs.reiserfs.group`
+  - description rewritten
+- `vol/fs.reiserfs.install`
+  - description rewritten
+- `vol/fs.reiserfs.user`
+  - description rewritten
+- `vol/fs.reiserfs4.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.reiserfs4.disable`
+  - description rewritten
+- `vol/fs.reiserfs4.group`
+  - description rewritten
+- `vol/fs.reiserfs4.install`
+  - description rewritten
+- `vol/fs.reiserfs4.user`
+  - description rewritten
+- `vol/fs.rpc_pipefs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.rpc_pipefs.disable`
+  - description rewritten
+- `vol/fs.rpc_pipefs.group`
+  - description rewritten
+- `vol/fs.rpc_pipefs.install`
+  - description rewritten
+- `vol/fs.rpc_pipefs.user`
+  - description rewritten
+- `vol/fs.sgcp_nfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.sgcp_nfs.disable`
+  - description rewritten
+- `vol/fs.sgcp_nfs.group`
+  - description rewritten
+- `vol/fs.sgcp_nfs.install`
+  - description rewritten
+- `vol/fs.sgcp_nfs.user`
+  - description rewritten
+- `vol/fs.smbfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.smbfs.disable`
+  - description rewritten
+- `vol/fs.smbfs.group`
+  - description rewritten
+- `vol/fs.smbfs.install`
+  - description rewritten
+- `vol/fs.smbfs.user`
+  - description rewritten
+- `vol/fs.tmpfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.tmpfs.disable`
+  - description rewritten
+- `vol/fs.tmpfs.group`
+  - description rewritten
+- `vol/fs.tmpfs.install`
+  - description rewritten
+- `vol/fs.tmpfs.user`
+  - description rewritten
+- `vol/fs.tux3.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.tux3.disable`
+  - description rewritten
+- `vol/fs.tux3.group`
+  - description rewritten
+- `vol/fs.tux3.install`
+  - description rewritten
+- `vol/fs.tux3.user`
+  - description rewritten
+- `vol/fs.ufs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.ufs.disable`
+  - description rewritten
+- `vol/fs.ufs.group`
+  - description rewritten
+- `vol/fs.ufs.install`
+  - description rewritten
+- `vol/fs.ufs.user`
+  - description rewritten
+- `vol/fs.ufs2.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.ufs2.disable`
+  - description rewritten
+- `vol/fs.ufs2.group`
+  - description rewritten
+- `vol/fs.ufs2.install`
+  - description rewritten
+- `vol/fs.ufs2.user`
+  - description rewritten
+- `vol/fs.umsdos.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.umsdos.disable`
+  - description rewritten
+- `vol/fs.umsdos.group`
+  - description rewritten
+- `vol/fs.umsdos.install`
+  - description rewritten
+- `vol/fs.umsdos.user`
+  - description rewritten
+- `vol/fs.vfat.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.vfat.disable`
+  - description rewritten
+- `vol/fs.vfat.group`
+  - description rewritten
+- `vol/fs.vfat.install`
+  - description rewritten
+- `vol/fs.vfat.user`
+  - description rewritten
+- `vol/fs.vxfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.vxfs.disable`
+  - description rewritten
+- `vol/fs.vxfs.group`
+  - description rewritten
+- `vol/fs.vxfs.install`
+  - description rewritten
+- `vol/fs.vxfs.user`
+  - description rewritten
+- `vol/fs.xfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.xfs.disable`
+  - description rewritten
+- `vol/fs.xfs.group`
+  - description rewritten
+- `vol/fs.xfs.install`
+  - description rewritten
+- `vol/fs.xfs.user`
+  - description rewritten
+- `vol/fs.xia.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.xia.disable`
+  - description rewritten
+- `vol/fs.xia.group`
+  - description rewritten
+- `vol/fs.xia.install`
+  - description rewritten
+- `vol/fs.xia.user`
+  - description rewritten
+- `vol/fs.zfs.dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/fs.zfs.disable`
+  - description rewritten
+- `vol/fs.zfs.group`
+  - description rewritten
+- `vol/fs.zfs.install`
+  - description rewritten
+- `vol/fs.zfs.user`
+  - description rewritten
+- `vol/ip.sgcp_dnsalias.disable`
+  - description rewritten
+- `vol/share.nfs.disable`
+  - description rewritten
+- `vol/sync.btrfs.disable`
+  - description rewritten
+- `vol/sync.btrfssnap.disable`
+  - description rewritten
+- `vol/sync.rsync.disable`
+  - description rewritten
+- `vol/sync.store.disable`
+  - description rewritten
+- `vol/sync.symsnapvx.disable`
+  - description rewritten
+- `vol/sync.symsrdfs.disable`
+  - description rewritten
+- `vol/sync.zfs.disable`
+  - description rewritten
+- `vol/sync.zfssnap.disable`
+  - description rewritten
+- `vol/task.docker.disable`
+  - description rewritten
+- `vol/task.host.disable`
+  - description rewritten
+- `vol/task.oci.disable`
+  - description rewritten
+- `vol/task.oci.userns`
+  - description rewritten
+- `vol/task.podman.disable`
+  - description rewritten
+- `vol/volume..dirperm`
+  - defaultText: The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the permission of the head directory of the receiver is unchecked
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+ -> The value of `perm` with the execute bit added to each class (user,
+group, other) that has the read bit set. For example, `perm = 0640`
+implies `dirperm = 0750`: user gets `x` because user has `r`, group
+gets `x` because group has `r`, other gets neither because other has
+no `r`.
+
+If `perm` is also not set,
+* the mode of the volume root is left as it is, its owner given by `user` and `group` when set
+* the permission of other directories defaults to 0755
+* the permission of files from sec objects defaults to 0600
+* the permission of other files defaults to 0644
+
+  - description rewritten
+- `vol/volume..disable`
+  - description rewritten
+- `vol/volume..group`
+  - description rewritten
+- `vol/volume..install`
+  - description rewritten
+- `vol/volume..user`
+  - description rewritten
 
 ## v3.0.0-rc57
 

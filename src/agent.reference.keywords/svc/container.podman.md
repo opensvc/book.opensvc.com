@@ -344,7 +344,12 @@ A disabled resource status is `n/a`.
 If set in the `DEFAULT` section of an object, the object is disabled and
 ignores `start`, `stop`, `shutdown`, `provision` and `unprovision` actions.
 
-These actions immediately return success.
+These actions do nothing, and exit 7, a code telling the action was not
+done because the instance is disabled, which the daemon takes as the end of
+a stop and of an unprovision: a disabled object is purged. An `unprovision`
+of a disabled instance whose resources are provisioned fails: the object
+would be deleted with its storage left on the node. Enable it to
+unprovision it.
 
 `om <path> disable` sets `DEFAULT.disable=true`.
 
@@ -669,7 +674,15 @@ assigned.
 * empty or `none`
 
   The container has a private netns other `container`, `ip.netns` or
-  `ip.cni` resources can share.
+  `ip.cni` resources can share. An engine network set in `run_args`, as
+  `--net <network>` or `--network <network>`, replaces it. The ports `run_args` publishes, as
+  `-p 2222:22`, are published on an engine network only: the engines
+  discard them in a private netns. The `expose` keyword makes SRV records,
+  and publishes nothing.
+
+  The ip of an om network, by an `ip.netns` resource, is not supported in a
+  container joined to an engine network: the netns would keep the default
+  route of the engine, which the replies to the cluster nodes would take.
 
 * `<rid>`
 

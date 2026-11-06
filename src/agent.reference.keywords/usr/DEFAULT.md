@@ -235,7 +235,13 @@ Pervasive roles:
 
 * `squatter`
 
-  Create a new namespace. 
+  Create and write the namespace configuration objects, `nscfg`, the
+  namespaces themselves: what each namespace may take of the resources the
+  cluster shares, its claims, its process group caps, the accounts it runs
+  rootless containers as. They ration the cluster between the namespaces,
+  so they are not the namespace administrator's to write. The squatter gets
+  no role on the namespaces it creates: the objects of a namespace are the
+  ones its `admin` role creates.
 
 * `prioritizer`
 
@@ -266,8 +272,25 @@ Per-namespace roles:
 * `guest`
 
   List and read configuration and status of the objects in the namespace.
- 
-A `namespace selector` is a glob pattern applied to existing namespaces.
+
+A per-namespace role with no selector, as `guest`, holds the role on every
+namespace, present and to come.
+
+A `namespace selector` is a namespace name, or a glob pattern matched
+against the namespace of each request: `*` matches any number of
+characters, `?` one, and `[...]` one of a set. A pattern holds the role on
+every namespace it matches, the ones created after the grant was written
+among them, and the `system` namespace when it matches it, as `*` does. It
+does not hold the role granted with no selector, which some requests about
+the whole cluster need.
+
+Examples:
+
+* `guest:*` reads the objects of every namespace.
+* `operator:prod*` operates the objects of `prod`, `prod1`, `prod-eu`...
+
+A grantor gives only what its grants hold: `admin:prod*` may give
+`admin:prod1`, not `admin:*`.
 
 
 ## Keyword `id`

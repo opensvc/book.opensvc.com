@@ -51,3 +51,9 @@ A configuration still naming one of these is reported by `om <path> config valid
 | `node/listener.rate_limiter_burst` | v3.0.0-rc53 |
 | `node/listener.rate_limiter_expires` | v3.0.0-rc53 |
 | `node/listener.rate_limiter_rate` | v3.0.0-rc53 |
+| `svc/container.oci.rootless_group` | v3.0.0-rc57 |
+| `svc/container.oci.rootless_user` | v3.0.0-rc57 |
+| `svc/task.oci.rootless_group` | v3.0.0-rc57 |
+| `svc/task.oci.rootless_user` | v3.0.0-rc57 |
+| `vol/task.oci.rootless_group` | v3.0.0-rc57 |
+| `vol/task.oci.rootless_user` | v3.0.0-rc57 |
