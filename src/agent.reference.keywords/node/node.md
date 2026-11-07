@@ -37,6 +37,7 @@
 - loc_zip
 - maintenance_grace_period
 - manufacturer
+- max_install_size
 - max_key_size
 - max_parallel
 - mem_banks
@@ -141,6 +142,13 @@ allows, as patterns: `https://cloud-images.ubuntu.com/*`.
 They are for all that fetches a url on a node: the image of a virtual machine, the
 source of a key. What is fetched ends up where the users of the cluster can read
 it, the ones with no root grant included, so these are to be sources root trusts.
+
+A url allowed is trusted wherever it redirects to, the address of each
+redirect target held to the address ranges all the same: a release download,
+`https://github.com/<owner>/<repo>/releases/*`, needs no pattern for the
+storage it redirects to. What the opensvc organization publishes,
+`https://raw.githubusercontent.com/opensvc/*` and
+`https://github.com/opensvc/*/releases/*`, is allowed with no pattern.
 
 
 ## Keyword `asset_env`
@@ -633,6 +641,20 @@ This parameter should be adjusted to span the daemon restart time.
 **Description:**
 
 Override for the corresponding `om node push asset` discovery probe.
+
+
+## Keyword `max_install_size`
+
+	required:    false
+	scopable:    false
+	default:     64mb
+	convert:     size
+
+**Description:**
+
+The maximum size of a file an install line fetches from an `https://` url into a volume, the line naming no datastore.
+
+A fetch announcing a larger body, or sending one, fails naming the url, and leaves the file installed before as it is.
 
 
 ## Keyword `max_key_size`

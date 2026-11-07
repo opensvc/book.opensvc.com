@@ -381,14 +381,17 @@ its group instead.
 		/etc/ssl/certs/*.pem from ./sec/web-* key fullpem signal HUP:container#haproxy
 		/init/nfs from ./cfg/{name} key init/nfs mode 0755 source https://raw.githubusercontent.com/opensvc/opensvc_templates/refs/heads/main/nfs/script
 		/init/backup from ./cfg/{name} key init/backup mode 0755 source /tmp/scripts/backup.sh
+		/run/secrets/db_password from ./sec/{name} key db_password source random
 		/init/config.sh from ./cfg/{name} key init/config.sh mode 0755 source https://example.com/templates/config.sh template
+		/web/html/index.html.gz required source https://github.com/opensvc/oc3-frontend/releases/latest/download/index.html.gz
 		/data/
 
 **Description:**
 
-A list of files and directories to install in the volume from cfg and sec keys.
+A list of files and directories to install in the volume from cfg and sec keys, or fetched from an https url.
 
 	<path> from <obj_path|obj_relpath> [key <key>] [mode <mode>] [user <user>] [group <group>] [signal <sig>:<rid>] [source <uri>] [template] [required]
+	<path> source <https_url> [sha256 <hex>] [mode <mode>] [user <user>] [group <group>] [signal <sig>:<rid>] [required]
 	<path> [mode <mode>] [user <user>] [group <group>] [signal <sig>:<rid>]
 
 Where:
@@ -396,7 +399,8 @@ Where:
 * `<path>` (e.g. `/init/installed`, `/init/`)
   * must start with a `/`.
   * is relative to the target resource head.
-  * is considered a directory if it ends with a `/` or if `from <obj_path|obj_relpath>` is omitted.
+  * is considered a directory if it ends with a `/` or if both `from <obj_path|obj_relpath>` and `source` are omitted.
+  * is a file fetched from the url if `source <https_url>` is given and `from <obj_path|obj_relpath>` omitted.
   * content is copied from the value of the key referenced by `from <obj_path|obj_relpath>`.
   * if `key <key>` is not specified, the key name defaults to the `<path>` with the leading `/` stripped.
     e.g. `fs#1.install = /a/b from ./sec/sec1` will install `<fs#1 head>/a/b` from the `./sec/sec1` key named `a/b`.
@@ -440,12 +444,49 @@ Where:
 
 * `source <uri>`
   * seed the datastore key with the content of `<uri>`, as it is written: a template is stored as a template.
-  * the key is seeded by the install of the resource, at its start, its provision or its task run, when the
-    datastore does not hold it. A key already there is left as it is.
+  * the key is seeded at the provision and the start of the object, and by the install of the resource, at its
+    start, its provision or its task run, when the datastore does not hold it. A key already there is never
+    written again, whatever the source, and an unprovision leaves it.
+  * `source random` generates a password, once, at the provision of the object on its leader node, the datastore
+    created in the namespace of the object if needed. The other nodes wait for it to reach them. An install not
+    finding it fails, required or not, naming the key and the datastore: no node makes one of its own. An object
+    whose resources have nothing to provision, as apps alone, is never provisioned, and its first start fails on
+    the key missing: give it a `fs.flag` resource, which the provision provisions.
+  * a source seeds a key named: it is refused with a key pattern, as `key conf/*`, which names no key to seed.
+    `source random` is refused in the datastores of a pattern, as `from ./sec/haproxy-*`, as a datastore made
+    later would never have its key: add the key with each datastore. An `http://`, `https://` or file uri seeds
+    the datastores the pattern matches, at each install.
   * an `http://` or `https://` uri is fetched, as the `node.allowed_urls` and SSRF policies allow. Any other uri is
-    the path of a file of the node.
+    the path of a regular file of the node, which requires the root grant. `/dev/urandom` is such a path, and
+    refused as no regular file: `source random` is the generator.
+  * a key two keywords of the object seed from two sources, an install line and an `environment` reference
+    included, and a key of a datastore of another namespace, which shares its keys for the object to read them,
+    are refused by the validation of the configuration.
   * the write of a key refreshes the services installing from the datastore, on every node it reaches: a refresh
     installs what the datastore holds, and seeds no key.
+
+* `source <https_url>` with no `from <obj_path|obj_relpath>`
+  * fetches the file straight into the volume, with no datastore: a file too large for a key, as the web ui of an
+    application, e.g. `/web/html/index.html.gz required source https://github.com/opensvc/oc3-frontend/releases/latest/download/index.html.gz`.
+  * the url is an `https://` one, whatever the grants of the user: an `http://` url, a path or `random` are refused,
+    as they are the sources of a key, which a line names with `from`. The `node.allowed_urls` and SSRF policies apply.
+  * `<path>` names the file, and is refused ending with a `/`. `key` and `template` are refused: the file is no key,
+    and is installed as it is fetched.
+  * the file is fetched at the start, the provision or the install of the resource when it is missing, or when the
+    url changed: a start finding the file of the url fetches nothing. A url naming the latest release is not fetched
+    again on its own: change it for the url of a version, or delete the file, for the next install to fetch it.
+  * the file is written aside and renamed in place once whole, so a fetch failing leaves the file fetched before.
+    A fetch over `node.max_install_size`, announced or sent, fails naming the url. `sha256 <hex>` fails a fetch whose
+    content is of another sha256.
+  * a file kept is checked, at each install, against the `sha256` of the line, else the digest its mark holds,
+    else the one the node recorded at its fetch: a file written over since, by a user of the volume or an
+    upload a volume keeping no mark let in, is fetched again, with a warning. The file stays root's, readable
+    by root alone, until it takes its place, its owner and mode given then.
+  * the file is marked installed from the url: an upload does not replace it, and a delete is allowed. A line taken
+    away from `install` removes its file, as long as it is the one fetched.
+  * a refresh of the datastores, at the write of a key, fetches nothing.
+  * `required` fails the install when the fetch fails, naming the url. Else the fetch failing is a warning.
+  * `<mode>`, `<user>`, `<group>` default values are the ones of a file of a cfg key.
 
 * `template`
   * the key content is a go template, rendered on each node at each install into the installed file. The key
