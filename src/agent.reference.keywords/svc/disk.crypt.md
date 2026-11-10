@@ -26,12 +26,16 @@
 - dev
 - disable
 - encap
+- iter_time
 - label
 - manage_passphrase
 - monitor
 - name
 - no_preempt_abort
 - optional
+- pbkdf
+- pbkdf_memory
+- pbkdf_parallel
 - pg_blkio_weight
 - pg_cpu_burst
 - pg_cpu_quota
@@ -75,6 +79,7 @@
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -90,6 +95,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -103,6 +109,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -116,6 +123,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -131,6 +139,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -144,6 +153,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -157,6 +167,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -170,6 +181,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -183,6 +195,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -201,6 +214,7 @@ The agent does not interpret the value.
 
 	required:    true
 	scopable:    true
+	group:       other
 	stop first:  a change is refused while the resource is up
 	rbac:        This driver group requires the root grant.
 
@@ -224,6 +238,7 @@ The block device to encrypt, written as the other devices of a service are:
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -256,6 +271,7 @@ unprovision it.
 
 	required:    false
 	scopable:    false
+	group:       encap
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -264,10 +280,36 @@ unprovision it.
 Set to `true` to ignore this resource in the nodes context and consider it in the encapnodes context. The resource is thus handled by agents deployed in the service containers.
 
 
+## Keyword `iter_time`
+
+	required:    false
+	scopable:    true
+	group:       other
+	provision:   used only by the provision of the resource
+	convert:     int
+	rbac:        This driver group requires the root grant.
+
+**Default:**
+
+`100` when the derivation is the `pbkdf2` of a passphrase om generates, the
+choice of cryptsetup otherwise (2000).
+
+**Example:**
+
+	iter_time=2000
+
+**Description:**
+
+The time, in milliseconds, the key derivation takes on the node formatting
+the volume, as the `--iter-time` option of `cryptsetup luksFormat`. The
+other nodes take about as long to open the volume, longer when slower.
+
+
 ## Keyword `label`
 
 	required:    false
 	scopable:    true
+	group:       other
 	provision:   used only by the provision of the resource
 	default:     {fqdn}
 	rbac:        This driver group requires the root grant.
@@ -283,6 +325,7 @@ A label helps admin understand the role of a device.
 
 	required:    false
 	scopable:    true
+	group:       other
 	provision:   used only by the provision of the resource
 	default:     true
 	convert:     bool
@@ -296,11 +339,16 @@ printable chars), and forgets it on `unprovision`.
 If set to `false`, require a passphrase to be already present in the `sec`
 object to `provision`, and don't remove it on `unprovision`.
 
+The passphrase om generates is derived with `pbkdf2` for 100ms, as a
+memory-hard derivation makes a random passphrase no harder to guess: see
+`pbkdf`. A passphrase the user supplies is derived as cryptsetup chooses.
+
 
 ## Keyword `monitor`
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -321,6 +369,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
+	group:       other
 	stop first:  a change is refused while the resource is up
 	rbac:        This driver group requires the root grant.
 
@@ -341,6 +390,7 @@ The basename of the exposed device.
 
 	required:    false
 	scopable:    true
+	group:       reservation
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -356,6 +406,7 @@ Some scsi target implementations do not support `preempt and and abort` (esx).
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -372,10 +423,103 @@ Resources tagged as `noaction` are considered optional by default.
 Dump filesystems are a typical use case for optional=true.
 
 
+## Keyword `pbkdf`
+
+	required:    false
+	scopable:    true
+	group:       other
+	provision:   used only by the provision of the resource
+	candidates:  pbkdf2, argon2i, argon2id
+	rbac:        This driver group requires the root grant.
+
+**Default:**
+
+`pbkdf2` when `manage_passphrase` is `true` and neither `pbkdf_memory` nor
+`pbkdf_parallel` is set, the choice of cryptsetup otherwise (argon2 for
+LUKS2).
+
+**Example:**
+
+	pbkdf=argon2id
+
+**Description:**
+
+The key derivation of the LUKS2 keyslot the provision writes, as the
+`--pbkdf` option of `cryptsetup luksFormat`:
+
+* `pbkdf2` costs cpu time only.
+* `argon2i` and `argon2id` cost memory and threads too, which
+  `pbkdf_memory` and `pbkdf_parallel` cap.
+
+A memory-hard derivation slows the guessing of a passphrase a human chose.
+It adds nothing to the random passphrase om generates, and costs the node up
+to a gigabyte of memory and seconds of cpu at each provision and each start,
+which a small node may run short of.
+
+The derivation is written in the header: changing it does not change the
+volumes already provisioned, which open with the derivation they were
+formatted with.
+
+
+## Keyword `pbkdf_memory`
+
+	required:    false
+	scopable:    true
+	group:       other
+	provision:   used only by the provision of the resource
+	rbac:        This driver group requires the root grant.
+
+**Default:**
+
+The choice of cryptsetup, from the memory of the node, up to 1 GiB.
+
+**Example:**
+
+	pbkdf_memory=64m
+
+**Description:**
+
+The memory an argon2 key derivation takes, as the `--pbkdf-memory` option of
+`cryptsetup luksFormat`: a number is a count of KiB, as cryptsetup reads it,
+and a size as `64m` is converted to KiB.
+
+It applies to the argon2 derivations only, and is refused with
+`pbkdf = pbkdf2`. Set with no `pbkdf`, the derivation is the argon2
+cryptsetup chooses, the passphrase om generates included.
+
+
+## Keyword `pbkdf_parallel`
+
+	required:    false
+	scopable:    true
+	group:       other
+	provision:   used only by the provision of the resource
+	convert:     int
+	rbac:        This driver group requires the root grant.
+
+**Default:**
+
+The choice of cryptsetup, from the cpus of the node, up to 4.
+
+**Example:**
+
+	pbkdf_parallel=1
+
+**Description:**
+
+The threads an argon2 key derivation runs, as the `--pbkdf-parallel` option
+of `cryptsetup luksFormat`.
+
+It applies to the argon2 derivations only, and is refused with
+`pbkdf = pbkdf2`. Set with no `pbkdf`, the derivation is the argon2
+cryptsetup chooses, the passphrase om generates included.
+
+
 ## Keyword `pg_blkio_weight`
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -397,6 +541,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -429,6 +574,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -462,6 +608,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -487,6 +634,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	depends:     create_pg=true
 	rbac:        This driver group requires the root grant.
 
@@ -509,6 +657,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -540,6 +689,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -562,6 +712,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -592,6 +743,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -611,6 +763,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -632,6 +785,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -655,6 +809,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -678,6 +833,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -693,6 +849,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -706,6 +863,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -719,6 +877,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -734,6 +893,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -747,6 +907,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -760,6 +921,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -773,6 +935,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -786,6 +949,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       reservation
 	default:     {node.node.prkey}
 	rbac:        This driver group requires the root grant.
 
@@ -800,6 +964,7 @@ It overrides the object-level `prkey` and the node-level `prkey`.
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -813,6 +978,7 @@ If `true`, OpenSVC will try to promote the exposed devices to read-write on
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -834,6 +1000,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -854,6 +1021,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	default:     0
 	convert:     int
 	rbac:        This driver group requires the root grant.
@@ -885,6 +1053,7 @@ increase chances of a restart success.
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	default:     500ms
 	convert:     duration
 	rbac:        This driver group requires the root grant.
@@ -898,6 +1067,7 @@ The minimum delay between two restart tentatives on the resource.
 
 	required:    false
 	scopable:    false
+	group:       reservation
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -916,6 +1086,7 @@ written concurrently from all nodes.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     {name}
 	rbac:        This driver group requires the root grant.
 
@@ -931,6 +1102,7 @@ The `sec` object must be in the same namespace than the object defining the
 
 	required:    false
 	scopable:    true
+	group:       provisioning
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -969,6 +1141,7 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -991,6 +1164,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1011,6 +1185,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 	rbac:        This driver group requires the root grant.
 
@@ -1027,6 +1202,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1047,6 +1223,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       selection
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -1066,6 +1243,7 @@ process group.
 
 	required:    false
 	scopable:    true
+	group:       selection
 	convert:     set
 	rbac:        This driver group requires the root grant.
 
@@ -1090,6 +1268,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -1101,6 +1280,7 @@ The resource driver name.
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -1121,6 +1301,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 	rbac:        This driver group requires the root grant.
 
 **Example:**

@@ -23,6 +23,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc44
 	convert:     int
 
@@ -46,6 +47,7 @@ node of the cluster.
 
 	required:    false
 	scopable:    true
+	group:       other
 	aliases:     tls_addr
 
 **Example:**
@@ -61,6 +63,7 @@ The ip addr the daemon tls listener must listen on.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -78,6 +81,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     /var/lib/opensvc/certs/ca_crl
 
 **Example:**
@@ -95,6 +99,7 @@ The default points to the path of the cluster CA CRL in `{var}/certs/ca_crl`.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     953
 
 **Description:**
@@ -106,6 +111,7 @@ The gid owning the unix socket serving the remote backend to the pdns authoritat
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     953
 
 **Description:**
@@ -117,6 +123,7 @@ The uid owning the unix socket serving the remote backend to the pdns authoritat
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     om3
 
 **Description:**
@@ -128,6 +135,7 @@ The openid client id used by om3-webapp.
 
 	required:    false
 	scopable:    false
+	group:       other
 	aliases:     openid_authority
 
 **Example:**
@@ -157,6 +165,7 @@ the base URL that endpoint is derived from.
 
 	required:    false
 	scopable:    true
+	group:       other
 	aliases:     tls_port
 	default:     1215
 	convert:     int
@@ -176,6 +185,7 @@ The `listener.port` value is sent to the collector on `om node push asset`.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     false
 	convert:     bool
 
@@ -197,6 +207,7 @@ Takes effect at once, with no daemon restart.
 
 	required:    false
 	scopable:    true
+	group:       other
 	aliases:     rate_limiter_burst
 	default:     100
 	convert:     int
@@ -211,6 +222,7 @@ It additionally allows a number of requests to pass when rate limit is reached.
 
 	required:    false
 	scopable:    true
+	group:       other
 	aliases:     rate_limiter_expires
 	default:     60s
 	convert:     duration
@@ -224,6 +236,7 @@ The duration after that a inet listener rate limiter is cleaned up.
 
 	required:    false
 	scopable:    true
+	group:       other
 	aliases:     rate_limiter_rate
 	default:     20
 	convert:     int
@@ -237,6 +250,7 @@ The rate of inet listener requests allowed to pass per seconds.
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc44
 	convert:     list
 
@@ -265,6 +279,7 @@ the listener, which serves the http-01 challenge on `listener.acme_port`.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     opensvc
 
 **Example:**
@@ -296,6 +311,7 @@ root socket.
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc56
 	convert:     int
 

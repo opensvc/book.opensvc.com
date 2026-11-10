@@ -19,6 +19,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -36,6 +37,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     0
 	convert:     int
 
@@ -56,6 +58,7 @@ The `ips_per_node` keyword is deprecated because its value is hard to manage for
 
 	required:    false
 	scopable:    false
+	group:       other
 	candidates:  bridge, routed_bridge, lan
 	default:     bridge
 

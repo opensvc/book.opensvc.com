@@ -1126,6 +1126,18 @@
    "since": "v3.0.0-rc45",
    "until": null
   },
+  "cluster/collector.speaker_grace_period": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "default": "30s",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc60",
+    "textSum": "816fbd76221c83e2"
+   },
+   "since": "v3.0.0-rc61",
+   "until": null
+  },
   "cluster/collector.status_delay": {
    "changes": {},
    "properties": {
@@ -2294,6 +2306,18 @@
     "textSum": "4c8ad33ab38b9c6d"
    },
    "since": "v3.0.0-rc36",
+   "until": null
+  },
+  "cluster/node.load_pool_interval": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "default": "60s",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc60",
+    "textSum": "5d30c6b11bd2d48e"
+   },
+   "since": "v3.0.0-rc61",
    "until": null
   },
   "cluster/node.loc_addr": {
@@ -4700,6 +4724,18 @@
    "since": "v3.0.0-rc45",
    "until": null
   },
+  "node/collector.speaker_grace_period": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "default": "30s",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc60",
+    "textSum": "816fbd76221c83e2"
+   },
+   "since": "v3.0.0-rc61",
+   "until": null
+  },
   "node/collector.status_delay": {
    "changes": {},
    "properties": {
@@ -5933,6 +5969,18 @@
     "textSum": "4c8ad33ab38b9c6d"
    },
    "since": "v3.0.0-rc36",
+   "until": null
+  },
+  "node/node.load_pool_interval": {
+   "changes": {},
+   "properties": {
+    "converter": "duration",
+    "default": "60s",
+    "inherit": "leaf2head",
+    "since": "v3.0.0-rc60",
+    "textSum": "5d30c6b11bd2d48e"
+   },
+   "since": "v3.0.0-rc61",
    "until": null
   },
   "node/node.loc_addr": {
@@ -16078,6 +16126,22 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "svc/disk.crypt.iter_time": {
+   "changes": {},
+   "properties": {
+    "converter": "int",
+    "defaultText": "`100` when the derivation is the `pbkdf2` of a passphrase om generates, the\nchoice of cryptsetup otherwise (2000).\n",
+    "inherit": "leaf2head",
+    "provisioning": true,
+    "scopable": true,
+    "textSum": "0542623fa4692de0",
+    "types": [
+     "crypt"
+    ]
+   },
+   "since": "v3.0.0-rc61",
+   "until": null
+  },
   "svc/disk.crypt.label": {
    "changes": {},
    "properties": {
@@ -16094,14 +16158,18 @@
    "until": null
   },
   "svc/disk.crypt.manage_passphrase": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc61": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "bool",
     "default": "true",
     "inherit": "leaf2head",
     "provisioning": true,
     "scopable": true,
-    "textSum": "c354588f2f635e5a",
+    "textSum": "4a252d5f25a0701f",
     "types": [
      "crypt"
     ]
@@ -16163,6 +16231,57 @@
     ]
    },
    "since": "v3.0.0-rc36",
+   "until": null
+  },
+  "svc/disk.crypt.pbkdf": {
+   "changes": {},
+   "properties": {
+    "candidates": [
+     "argon2i",
+     "argon2id",
+     "pbkdf2"
+    ],
+    "defaultText": "`pbkdf2` when `manage_passphrase` is `true` and neither `pbkdf_memory` nor\n`pbkdf_parallel` is set, the choice of cryptsetup otherwise (argon2 for\nLUKS2).\n",
+    "inherit": "leaf2head",
+    "provisioning": true,
+    "scopable": true,
+    "textSum": "c3d523f7b32f7389",
+    "types": [
+     "crypt"
+    ]
+   },
+   "since": "v3.0.0-rc61",
+   "until": null
+  },
+  "svc/disk.crypt.pbkdf_memory": {
+   "changes": {},
+   "properties": {
+    "defaultText": "The choice of cryptsetup, from the memory of the node, up to 1 GiB.\n",
+    "inherit": "leaf2head",
+    "provisioning": true,
+    "scopable": true,
+    "textSum": "213e8d6ba76e4f4e",
+    "types": [
+     "crypt"
+    ]
+   },
+   "since": "v3.0.0-rc61",
+   "until": null
+  },
+  "svc/disk.crypt.pbkdf_parallel": {
+   "changes": {},
+   "properties": {
+    "converter": "int",
+    "defaultText": "The choice of cryptsetup, from the cpus of the node, up to 4.\n",
+    "inherit": "leaf2head",
+    "provisioning": true,
+    "scopable": true,
+    "textSum": "2569bb0baef74270",
+    "types": [
+     "crypt"
+    ]
+   },
+   "since": "v3.0.0-rc61",
    "until": null
   },
   "svc/disk.crypt.post_provision": {
@@ -77956,6 +78075,22 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "vol/disk.crypt.iter_time": {
+   "changes": {},
+   "properties": {
+    "converter": "int",
+    "defaultText": "`100` when the derivation is the `pbkdf2` of a passphrase om generates, the\nchoice of cryptsetup otherwise (2000).\n",
+    "inherit": "leaf2head",
+    "provisioning": true,
+    "scopable": true,
+    "textSum": "0542623fa4692de0",
+    "types": [
+     "crypt"
+    ]
+   },
+   "since": "v3.0.0-rc61",
+   "until": null
+  },
   "vol/disk.crypt.label": {
    "changes": {},
    "properties": {
@@ -77972,14 +78107,18 @@
    "until": null
   },
   "vol/disk.crypt.manage_passphrase": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc61": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "converter": "bool",
     "default": "true",
     "inherit": "leaf2head",
     "provisioning": true,
     "scopable": true,
-    "textSum": "c354588f2f635e5a",
+    "textSum": "4a252d5f25a0701f",
     "types": [
      "crypt"
     ]
@@ -78041,6 +78180,57 @@
     ]
    },
    "since": "v3.0.0-rc36",
+   "until": null
+  },
+  "vol/disk.crypt.pbkdf": {
+   "changes": {},
+   "properties": {
+    "candidates": [
+     "argon2i",
+     "argon2id",
+     "pbkdf2"
+    ],
+    "defaultText": "`pbkdf2` when `manage_passphrase` is `true` and neither `pbkdf_memory` nor\n`pbkdf_parallel` is set, the choice of cryptsetup otherwise (argon2 for\nLUKS2).\n",
+    "inherit": "leaf2head",
+    "provisioning": true,
+    "scopable": true,
+    "textSum": "c3d523f7b32f7389",
+    "types": [
+     "crypt"
+    ]
+   },
+   "since": "v3.0.0-rc61",
+   "until": null
+  },
+  "vol/disk.crypt.pbkdf_memory": {
+   "changes": {},
+   "properties": {
+    "defaultText": "The choice of cryptsetup, from the memory of the node, up to 1 GiB.\n",
+    "inherit": "leaf2head",
+    "provisioning": true,
+    "scopable": true,
+    "textSum": "213e8d6ba76e4f4e",
+    "types": [
+     "crypt"
+    ]
+   },
+   "since": "v3.0.0-rc61",
+   "until": null
+  },
+  "vol/disk.crypt.pbkdf_parallel": {
+   "changes": {},
+   "properties": {
+    "converter": "int",
+    "defaultText": "The choice of cryptsetup, from the cpus of the node, up to 4.\n",
+    "inherit": "leaf2head",
+    "provisioning": true,
+    "scopable": true,
+    "textSum": "2569bb0baef74270",
+    "types": [
+     "crypt"
+    ]
+   },
+   "since": "v3.0.0-rc61",
    "until": null
   },
   "vol/disk.crypt.post_provision": {
@@ -134503,6 +134693,7 @@
   "v3.0.0-rc56",
   "v3.0.0-rc57",
   "v3.0.0-rc58",
-  "v3.0.0-rc59"
+  "v3.0.0-rc59",
+  "v3.0.0-rc61"
  ]
 }

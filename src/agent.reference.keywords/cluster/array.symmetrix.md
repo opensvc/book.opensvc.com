@@ -24,6 +24,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -42,6 +43,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -57,6 +59,7 @@ The name of the array. If not provided, fallback to the section name suffix.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -78,6 +81,7 @@ Array passwords are usually stored in sec datastores like `system/sec/<array nam
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -91,6 +95,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -110,6 +115,7 @@ The value set must be declared in the `/var/symapi/config/netcnfg` file.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     /usr/symcli
 	rbac:        This driver group requires the root grant.
 
@@ -130,6 +136,7 @@ does not select the version preferred for the array.
 
 	required:    true
 	scopable:    false
+	group:       other
 	candidates:  freenas, hds, eva, nexenta, vioserver, centera, symmetrix, emcvnx, netapp, hp3par, ibmds, ibmsvc, xtremio, dorado, hoc, truenas
 	rbac:        This driver group requires the root grant.
 
@@ -142,6 +149,7 @@ The storage array driver name.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**

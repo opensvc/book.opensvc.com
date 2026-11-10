@@ -31,6 +31,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -48,6 +49,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -68,6 +70,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -99,6 +102,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -131,6 +135,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -155,6 +160,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	depends:     create_pg=true
 
 **Example:**
@@ -176,6 +182,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -206,6 +213,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -227,6 +235,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -256,6 +265,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -274,6 +284,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -294,6 +305,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -316,6 +328,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -338,6 +351,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 
 **Description:**
@@ -353,6 +367,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        Requires the root grant, except for a cni address, for a netns address om draws from a cluster network, and for a host address om draws from a lan network, on the interface and with the netmask the network says.
 
 **Description:**

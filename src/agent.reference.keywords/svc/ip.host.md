@@ -73,6 +73,7 @@
 
 	required:    false
 	scopable:    true
+	group:       addressing
 	recorded:    written when what it names is made, and reset when the object is cloned
 	stop first:  a change is refused while the resource is up
 	rbac:        An address of the user's choosing requires the root grant: om writes the address it draws from the network.
@@ -108,6 +109,7 @@ an instance; an addr without a node is not taken as one.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     true
 	convert:     bool
 	rbac:        Requires the root grant.
@@ -124,6 +126,7 @@ should be set to `false` when possible.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -139,6 +142,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -152,6 +156,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -165,6 +170,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -180,6 +186,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -193,6 +200,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -206,6 +214,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -219,6 +228,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -232,6 +242,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     true
 	convert:     bool
 	rbac:        Requires the root grant.
@@ -247,6 +258,7 @@ Set to `false` if `dev` is a backend bridge or switch.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -264,6 +276,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	group:       other
 	aliases:     ipdev
 	stop first:  a change is refused while the resource is up
 	rbac:        Requires the root grant.
@@ -293,6 +306,7 @@ If the value is expressed as `<name>@<intf>`, a macvtap interface named
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -324,6 +338,7 @@ unprovision it.
 
 	required:    false
 	scopable:    false
+	group:       encap
 	convert:     bool
 
 **Description:**
@@ -335,6 +350,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 
 **Example:**
@@ -351,6 +367,7 @@ socket services that mandate a SRV exposition.
 
 	required:    false
 	scopable:    true
+	group:       other
 	provision:   used only by the provision of the resource
 	rbac:        Requires the root grant.
 
@@ -363,6 +380,7 @@ A zone ip provisioning parameter used in the `sysidcfg` formatting
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	convert:     bool
 
 **Description:**
@@ -382,6 +400,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
+	group:       addressing
 	aliases:     ipname
 	stop first:  a change is refused while the resource is up
 	rbac:        Requires the root grant.
@@ -444,6 +463,7 @@ evaluation.
 
 	required:    false
 	scopable:    true
+	group:       addressing
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -471,6 +491,7 @@ The format is:
 
 	required:    false
 	scopable:    true
+	group:       addressing
 	stop first:  a change is refused while the resource is up
 	rbac:        A network named by a path requires the root grant.
 
@@ -500,6 +521,7 @@ value that is still an address is obsolete, reported and ignored.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -519,6 +541,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -539,6 +562,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -570,6 +594,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -602,6 +627,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -626,6 +652,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	depends:     create_pg=true
 
 **Example:**
@@ -647,6 +674,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -677,6 +705,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -698,6 +727,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -727,6 +757,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -745,6 +776,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -765,6 +797,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -787,6 +820,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -809,6 +843,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -824,6 +859,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -837,6 +873,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -850,6 +887,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -865,6 +903,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -878,6 +917,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -891,6 +931,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -904,6 +945,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -917,6 +959,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 
@@ -937,6 +980,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -956,6 +1000,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	default:     0
 	convert:     int
 
@@ -986,6 +1031,7 @@ increase chances of a restart success.
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	default:     500ms
 	convert:     duration
 
@@ -998,6 +1044,7 @@ The minimum delay between two restart tentatives on the resource.
 
 	required:    false
 	scopable:    true
+	group:       provisioning
 	convert:     bool
 
 **Description:**
@@ -1035,6 +1082,7 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -1056,6 +1104,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1075,6 +1124,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 
 **Description:**
@@ -1090,6 +1140,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1109,6 +1160,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       selection
 
 **Description:**
 
@@ -1127,6 +1179,7 @@ process group.
 
 	required:    false
 	scopable:    true
+	group:       selection
 	convert:     set
 
 **Description:**
@@ -1150,6 +1203,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        Requires the root grant, except for a cni address, for a netns address om draws from a cluster network, and for a host address om draws from a lan network, on the interface and with the netmask the network says.
 
 **Description:**
@@ -1161,6 +1215,7 @@ The resource driver name.
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 
@@ -1180,6 +1235,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1199,6 +1255,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     0
 	convert:     duration
 

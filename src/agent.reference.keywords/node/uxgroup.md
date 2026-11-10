@@ -9,6 +9,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -26,6 +27,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     listlowercase
 
 **Example:**

@@ -27,6 +27,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -44,6 +45,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -58,6 +60,7 @@ The path to the private key to use to log in the switch.
 
 	required:    false
 	scopable:    false
+	group:       other
 	candidates:  telnet, ssh
 	default:     ssh
 
@@ -88,6 +91,7 @@ is refused.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -105,6 +109,7 @@ If not set, fallback to the section name suffix.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -124,6 +129,7 @@ Either `password` or `key` must be specified.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -137,6 +143,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    true
 	scopable:    false
+	group:       other
 	candidates:  brocade
 
 **Description:**
@@ -152,6 +159,7 @@ the collector.
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Example:**
 

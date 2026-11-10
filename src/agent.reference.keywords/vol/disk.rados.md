@@ -76,6 +76,7 @@
 
 	required:    false
 	scopable:    true
+	group:       reservation
 	provision:   used only by the provision of the resource
 	candidates:  rwo, roo, rwx, rox
 	default:     rwo
@@ -97,6 +98,7 @@ Setting `rwx` or `rox` will activate acquire shared locks.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -112,6 +114,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -125,6 +128,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -138,6 +142,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -153,6 +158,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -166,6 +172,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -179,6 +186,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -192,6 +200,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -205,6 +214,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -223,6 +233,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -243,6 +254,7 @@ Value format: `from <datastore path> key <key name>` (the path supports relative
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -275,6 +287,7 @@ unprovision it.
 
 	required:    false
 	scopable:    false
+	group:       encap
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -287,6 +300,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -309,6 +323,7 @@ Value format: a simple group name string.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -328,6 +343,7 @@ Value format: `from <datastore path> key <key name>` (the path supports relative
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -348,6 +364,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    true
 	scopable:    true
+	group:       other
 	stop first:  a change is refused while the resource is up
 	rbac:        This driver group requires the root grant.
 
@@ -364,6 +381,7 @@ The image specifier in the storage system.
 
 	required:    false
 	scopable:    true
+	group:       reservation
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -379,6 +397,7 @@ Some scsi target implementations do not support `preempt and and abort` (esx).
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -399,6 +418,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -420,6 +440,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -452,6 +473,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -485,6 +507,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -510,6 +533,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	depends:     create_pg=true
 	rbac:        This driver group requires the root grant.
 
@@ -532,6 +556,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -563,6 +588,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -585,6 +611,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -615,6 +642,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -634,6 +662,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -655,6 +684,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -678,6 +708,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -701,6 +732,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -716,6 +748,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -729,6 +762,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -742,6 +776,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -757,6 +792,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -770,6 +806,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -783,6 +820,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -796,6 +834,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -809,6 +848,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       reservation
 	default:     {node.node.prkey}
 	rbac:        This driver group requires the root grant.
 
@@ -823,6 +863,7 @@ It overrides the object-level `prkey` and the node-level `prkey`.
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -836,6 +877,7 @@ If `true`, OpenSVC will try to promote the exposed devices to read-write on
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -857,6 +899,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -877,6 +920,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	default:     0
 	convert:     int
 	rbac:        This driver group requires the root grant.
@@ -908,6 +952,7 @@ increase chances of a restart success.
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	default:     500ms
 	convert:     duration
 	rbac:        This driver group requires the root grant.
@@ -921,6 +966,7 @@ The minimum delay between two restart tentatives on the resource.
 
 	required:    false
 	scopable:    false
+	group:       reservation
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -939,6 +985,7 @@ written concurrently from all nodes.
 
 	required:    false
 	scopable:    true
+	group:       provisioning
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -977,6 +1024,7 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    true
+	group:       other
 	provision:   used only by the provision of the resource, which fails without it
 	convert:     size
 	rbac:        This driver group requires the root grant.
@@ -994,6 +1042,7 @@ The size of the image.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -1016,6 +1065,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1036,6 +1086,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 	rbac:        This driver group requires the root grant.
 
@@ -1052,6 +1103,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1072,6 +1124,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       selection
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -1091,6 +1144,7 @@ process group.
 
 	required:    false
 	scopable:    true
+	group:       selection
 	convert:     set
 	rbac:        This driver group requires the root grant.
 
@@ -1115,6 +1169,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -1126,6 +1181,7 @@ The resource driver name.
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -1146,6 +1202,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 	rbac:        This driver group requires the root grant.
 
 **Example:**

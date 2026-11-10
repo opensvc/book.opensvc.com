@@ -10,6 +10,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     shlex
 
 **Description:**
@@ -23,6 +24,7 @@ The program is fed the json-formatted event data through stdin.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -40,6 +42,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     list
 
 **Description:**

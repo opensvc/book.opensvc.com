@@ -27,6 +27,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -44,6 +45,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -62,6 +64,7 @@ server it did not recognize.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -93,6 +96,7 @@ For example, `keep = 24h 7d 4w 6m` keeps 41 runs at most.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        Requires the root grant.
 
 **Description:**
@@ -106,6 +110,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     false
 	convert:     bool
 
@@ -124,6 +129,7 @@ it, over ssh, as root, through the trust `om cluster ssh trust` sets up.
 
 	required:    false
 	scopable:    false
+	group:       other
 	secret:      true
 	rbac:        An ssh private key not written from <sec> key <key> requires the root grant.
 
@@ -146,6 +152,7 @@ datastore holding it must share with its namespace.
 
 	required:    true
 	scopable:    false
+	group:       other
 	candidates:  tar
 	rbac:        Requires the root grant, except for the values tar.
 
@@ -163,6 +170,7 @@ resources of the objects write into it.
 
 	required:    true
 	scopable:    false
+	group:       other
 	rbac:        A store url other than sftp://, a directory of the node, requires the root grant.
 
 **Example:**

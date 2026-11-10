@@ -112,6 +112,7 @@
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -127,6 +128,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -140,6 +142,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -153,6 +156,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -168,6 +172,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -181,6 +186,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -194,6 +200,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -207,6 +214,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -220,6 +228,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       other
 	candidates:  last_run, last_run_warn, 
 
 **Example:**
@@ -241,6 +250,7 @@ If not set (default), the status of a task is always n/a.
 
 	required:    false
 	scopable:    true
+	group:       other
 	aliases:     run_command
 	convert:     shlex
 
@@ -257,6 +267,7 @@ The command to execute in the docker container on run.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -274,6 +285,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	group:       other
 	deprecated:  since v3.0.0-rc57, replaced by environment
 	convert:     shlex
 
@@ -310,6 +322,7 @@ variables in the container command execution environment:
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     bool
 
 **Description:**
@@ -323,6 +336,7 @@ This flag can be used for dangerous tasks like data restoration.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -337,6 +351,7 @@ The current working directory set for the executed command.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     shlex
 	rbac:        Host devices in container require the root grant.
 
@@ -354,6 +369,7 @@ exposing host devices as container devices.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -385,6 +401,7 @@ unprovision it.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 	rbac:        Requires the root grant.
 
@@ -410,6 +427,7 @@ named in a warning at start.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 	rbac:        Requires the root grant.
 
@@ -429,6 +447,7 @@ If empty or not set, the list will be `<name>.<namespace>.svc.<clustername>
 
 	required:    false
 	scopable:    false
+	group:       encap
 	convert:     bool
 
 **Description:**
@@ -440,6 +459,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     shlex
 
 **Example:**
@@ -457,6 +477,7 @@ The entrypoint args must be set in `command`.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     shlex
 	rbac:        A server-local source uri requires the root grant.
 
@@ -521,6 +542,7 @@ key generated, `source random`, which is an error.
 
 	required:    false
 	scopable:    true
+	group:       guest
 	aliases:     guestos
 	candidates:  unix, windows
 	default:     unix
@@ -538,6 +560,7 @@ The name of the operating system in the virtual machine.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -552,6 +575,7 @@ Set the container hostname. If not set, a unique id is used.
 
 	required:    true
 	scopable:    true
+	group:       other
 	aliases:     run_image
 	rbac:        An image starting with a '-' requires the root grant.
 
@@ -568,6 +592,7 @@ The docker image pull, and run the container with.
 
 	required:    false
 	scopable:    true
+	group:       other
 	candidates:  once, always
 
 **Example:**
@@ -591,6 +616,7 @@ The docker image pull policy.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     true
 	convert:     bool
 
@@ -603,6 +629,7 @@ Run an init inside the container that forwards signals and reaps processes.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 
 **Example:**
@@ -645,6 +672,7 @@ A failed install is a failed run, the task's own work not done.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     bool
 
 **Description:**
@@ -658,6 +686,7 @@ To use if the container entrypoint is a shell.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -691,6 +720,7 @@ To use if the container entrypoint is a shell.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     false
 	convert:     bool
 
@@ -708,6 +738,7 @@ journal but its status and its exit code.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     1
 	convert:     int
 
@@ -736,6 +767,7 @@ A new status log message may appear to indicate that the maximum concurrency lim
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	convert:     bool
 
 **Description:**
@@ -755,6 +787,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        A container name of the user's choosing requires the root grant: the default name is the object's own.
 
 **Default:**
@@ -778,6 +811,7 @@ assigned.
 
 	required:    false
 	scopable:    true
+	group:       other
 	aliases:     net
 	rbac:        The host network namespace requires the root grant.
 
@@ -808,6 +842,7 @@ assigned.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 
 **Example:**
@@ -850,6 +885,7 @@ A task installing again the files rendered from the networks with
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -864,6 +900,7 @@ A command to execute on `run` action if `command` returned an error.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -883,6 +920,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
+	group:       guest
 
 **Example:**
 
@@ -901,6 +939,7 @@ sources.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     @10s
 
 **Example:**
@@ -925,6 +964,7 @@ while the events keep coming faster.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -945,6 +985,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -976,6 +1017,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1008,6 +1050,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -1032,6 +1075,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	depends:     create_pg=true
 
 **Example:**
@@ -1053,6 +1097,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -1083,6 +1128,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -1104,6 +1150,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1133,6 +1180,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1151,6 +1199,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1171,6 +1220,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1193,6 +1243,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -1215,6 +1266,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1240,6 +1292,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1255,6 +1308,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1268,6 +1322,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1281,6 +1336,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1296,6 +1352,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1309,6 +1366,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1322,6 +1380,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1335,6 +1394,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1348,6 +1408,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     bool
 	rbac:        A privileged container requires the root grant.
 
@@ -1360,6 +1421,7 @@ Give extended privileges to the container.
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 
@@ -1380,6 +1442,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1399,6 +1462,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     2m
 	convert:     duration
 
@@ -1415,6 +1479,7 @@ Wait for `<duration>` before declaring the container action a failure.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     tristate
 
 **Description:**
@@ -1429,6 +1494,7 @@ declaring the same keyword does.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1446,6 +1512,7 @@ If not specified, the node-level registry credential store is used.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     0:up 1:down
 
 **Example:**
@@ -1471,6 +1538,7 @@ Valid `<status names>` are:
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     bool
 
 **Example:**
@@ -1486,6 +1554,7 @@ If rm=true, the container task instance is removed after successfully run.
 
 	required:    false
 	scopable:    true
+	group:       other
 	since:       v3.0.0-rc42
 
 **Example:**
@@ -1504,6 +1573,7 @@ It has no effect without rootless_user.
 
 	required:    false
 	scopable:    true
+	group:       other
 	since:       v3.0.0-rc42
 
 **Example:**
@@ -1556,6 +1626,7 @@ Empty, the default, runs the container as root.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     shlex
 	rbac:        Requires the root grant.
 
@@ -1573,6 +1644,7 @@ mappings.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1592,6 +1664,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 
 **Example:**
@@ -1609,6 +1682,7 @@ Takes precedence over `timeout`.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1625,6 +1699,7 @@ See `usr/share/doc/opensvc/schedule` for the schedule syntax reference.
 
 	required:    false
 	scopable:    true
+	group:       other
 	deprecated:  since v3.0.0-rc57, replaced by environment
 	convert:     shlex
 
@@ -1661,6 +1736,7 @@ variables in the container command execution environment:
 
 	required:    false
 	scopable:    true
+	group:       provisioning
 	convert:     bool
 
 **Description:**
@@ -1698,6 +1774,7 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 
 **Example:**
@@ -1715,6 +1792,7 @@ set as value.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -1736,6 +1814,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 
 **Description:**
@@ -1751,6 +1830,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1770,6 +1850,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 
 **Example:**
@@ -1788,6 +1869,7 @@ Unset, the container engine default applies.
 
 	required:    false
 	scopable:    true
+	group:       selection
 
 **Description:**
 
@@ -1806,6 +1888,7 @@ process group.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     shlex
 
 **Example:**
@@ -1821,6 +1904,7 @@ Set namespaced kernel tunables exposed via sysctl in the task container.
 
 	required:    false
 	scopable:    true
+	group:       selection
 	convert:     set
 
 **Description:**
@@ -1844,6 +1928,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 
 **Example:**
@@ -1861,6 +1946,7 @@ If no timeout is set, the agent waits indefinitely for the task command to exit.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     bool
 
 **Description:**
@@ -1872,6 +1958,7 @@ Allocate a pseudo-tty.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        Requires the root grant, except for the values oci, docker, podman, acme.
 
 **Description:**
@@ -1883,6 +1970,7 @@ The resource driver name.
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 
@@ -1902,6 +1990,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1921,6 +2010,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1937,6 +2027,7 @@ Also support the `<user>:<group>` syntax.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1953,6 +2044,7 @@ the 'container#...' values are converted to container:id
 
 	required:    false
 	scopable:    true
+	group:       other
 	candidates:  , host
 
 **Example:**
@@ -1974,6 +2066,7 @@ the 'container#...' values are converted to container:id
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     shlex
 	rbac:        Host path mounts in container require the root grant.
 

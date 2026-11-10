@@ -10,6 +10,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -27,6 +28,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     list
 
 **Example:**
@@ -43,6 +45,7 @@ The statistics groups not to push to the collector, among `cpu`, `mem_u`,
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     ~00:00-06:00
 
 **Description:**

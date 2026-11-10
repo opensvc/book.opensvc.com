@@ -28,6 +28,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -46,6 +47,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     xfs
 	rbac:        This driver group requires the root grant.
 
@@ -58,6 +60,7 @@ The filesystem to format the pool devices with.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -74,6 +77,7 @@ prepare the pool volumes devices.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -89,6 +93,7 @@ The mkfs command options to use to format the pool devices.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -100,6 +105,7 @@ The mount options of the fs created over the pool devices.
 
 	required:    true
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -111,6 +117,7 @@ The name of the volume group to allocate the pool volumes logical volumes into.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -125,6 +132,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc54
 	rbac:        This driver group requires the root grant.
 
@@ -148,6 +156,7 @@ The thin pool is made by the sysadmin, as the volume group is:
 
 	required:    false
 	scopable:    false
+	group:       other
 	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, dorado, hoc, drbd, pure, rados
 	default:     loop
 	rbac:        This driver group requires the root grant.

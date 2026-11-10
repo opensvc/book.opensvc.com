@@ -23,6 +23,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc44
 	convert:     int
 	rbac:        This driver group requires the root grant.
@@ -47,6 +48,7 @@ node of the cluster.
 
 	required:    false
 	scopable:    true
+	group:       other
 	aliases:     tls_addr
 	rbac:        This driver group requires the root grant.
 
@@ -63,6 +65,7 @@ The ip addr the daemon tls listener must listen on.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -81,6 +84,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     /var/lib/opensvc/certs/ca_crl
 	rbac:        This driver group requires the root grant.
 
@@ -99,6 +103,7 @@ The default points to the path of the cluster CA CRL in `{var}/certs/ca_crl`.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     953
 	rbac:        This driver group requires the root grant.
 
@@ -111,6 +116,7 @@ The gid owning the unix socket serving the remote backend to the pdns authoritat
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     953
 	rbac:        This driver group requires the root grant.
 
@@ -123,6 +129,7 @@ The uid owning the unix socket serving the remote backend to the pdns authoritat
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     om3
 	rbac:        This driver group requires the root grant.
 
@@ -135,6 +142,7 @@ The openid client id used by om3-webapp.
 
 	required:    false
 	scopable:    false
+	group:       other
 	aliases:     openid_authority
 	rbac:        This driver group requires the root grant.
 
@@ -165,6 +173,7 @@ the base URL that endpoint is derived from.
 
 	required:    false
 	scopable:    true
+	group:       other
 	aliases:     tls_port
 	default:     1215
 	convert:     int
@@ -185,6 +194,7 @@ The `listener.port` value is sent to the collector on `om node push asset`.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -207,6 +217,7 @@ Takes effect at once, with no daemon restart.
 
 	required:    false
 	scopable:    true
+	group:       other
 	aliases:     rate_limiter_burst
 	default:     100
 	convert:     int
@@ -222,6 +233,7 @@ It additionally allows a number of requests to pass when rate limit is reached.
 
 	required:    false
 	scopable:    true
+	group:       other
 	aliases:     rate_limiter_expires
 	default:     60s
 	convert:     duration
@@ -236,6 +248,7 @@ The duration after that a inet listener rate limiter is cleaned up.
 
 	required:    false
 	scopable:    true
+	group:       other
 	aliases:     rate_limiter_rate
 	default:     20
 	convert:     int
@@ -250,6 +263,7 @@ The rate of inet listener requests allowed to pass per seconds.
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc44
 	convert:     list
 	rbac:        This driver group requires the root grant.
@@ -279,6 +293,7 @@ the listener, which serves the http-01 challenge on `listener.acme_port`.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     opensvc
 	rbac:        This driver group requires the root grant.
 
@@ -311,6 +326,7 @@ root socket.
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc56
 	convert:     int
 	rbac:        This driver group requires the root grant.

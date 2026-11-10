@@ -37,6 +37,7 @@
 
 	required:    true
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -49,6 +50,7 @@ configuration.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -67,6 +69,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -80,6 +83,7 @@ Activate compression on created luns.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -93,6 +97,7 @@ Activate data deduplcation on created luns.
 
 	required:    true
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -104,6 +109,7 @@ The name of the array disk group to allocate volumes from.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     xfs
 	rbac:        This driver group requires the root grant.
 
@@ -116,6 +122,7 @@ The filesystem to format the pool devices with.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -127,6 +134,7 @@ The prefix to add to the label assigned to the created disks.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -143,6 +151,7 @@ prepare the pool volumes devices.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -158,6 +167,7 @@ The mkfs command options to use to format the pool devices.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -169,6 +179,7 @@ The mount options of the fs created over the pool devices.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -181,6 +192,7 @@ Volumes are created in this storage pool.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -195,6 +207,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
+	group:       other
 	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, dorado, hoc, drbd, pure, rados
 	default:     loop
 	rbac:        This driver group requires the root grant.
@@ -212,6 +225,7 @@ do so, and a namespace can not claim a pool that does not.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -223,6 +237,7 @@ The start of the range of ldev ids to allocate from.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -234,6 +249,7 @@ The end of the range of ldev ids to allocate from.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**

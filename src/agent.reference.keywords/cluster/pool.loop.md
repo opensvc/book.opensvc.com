@@ -24,6 +24,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -42,6 +43,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     ext4
 	rbac:        This driver group requires the root grant.
 
@@ -54,6 +56,7 @@ The filesystem to format the pool devices with.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -70,6 +73,7 @@ prepare the pool volumes devices.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -85,6 +89,7 @@ The mkfs command options to use to format the pool devices.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -96,6 +101,7 @@ The mount options of the fs created over the pool devices.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     {var}/pool/loop
 	rbac:        This driver group requires the root grant.
 
@@ -108,6 +114,7 @@ The path to create the pool loop files in.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -122,6 +129,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
+	group:       other
 	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, dorado, hoc, drbd, pure, rados
 	default:     loop
 	rbac:        This driver group requires the root grant.

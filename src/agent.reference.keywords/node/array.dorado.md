@@ -31,6 +31,7 @@
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -45,6 +46,7 @@ The array rest api url.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -62,6 +64,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -76,6 +79,7 @@ The name of the array. If not provided, fallback to the section name suffix.
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -96,6 +100,7 @@ Array passwords are usually stored in sec datastores like `system/sec/<array nam
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -108,6 +113,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     120s
 	convert:     duration
 
@@ -124,6 +130,7 @@ The api request timeout.
 
 	required:    true
 	scopable:    false
+	group:       other
 	candidates:  freenas, hds, eva, nexenta, vioserver, centera, symmetrix, emcvnx, netapp, hp3par, ibmds, ibmsvc, xtremio, dorado, hoc, truenas
 
 **Description:**
@@ -135,6 +142,7 @@ The storage array driver name.
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Example:**
 

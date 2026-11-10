@@ -24,6 +24,7 @@
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Default:**
@@ -46,6 +47,7 @@ Use the scoping syntax to assign non-default ip addresses nodes.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -64,6 +66,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     5s
 	convert:     duration
 	rbac:        This driver group requires the root grant.
@@ -82,6 +85,7 @@ synchronization workload.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Default:**
@@ -101,6 +105,7 @@ The interface to bind.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 	rbac:        This driver group requires the root grant.
 
@@ -129,6 +134,7 @@ bladecenters.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     10000
 	convert:     int
 	rbac:        This driver group requires the root grant.
@@ -142,6 +148,7 @@ The port for each node to send to or listen on.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     15s
 	convert:     duration
 	rbac:        This driver group requires the root grant.
@@ -155,6 +162,7 @@ The delay since the last received heartbeat from a node before considering this 
 
 	required:    true
 	scopable:    false
+	group:       other
 	candidates:  unicast, multicast, disk, relay
 	rbac:        This driver group requires the root grant.
 

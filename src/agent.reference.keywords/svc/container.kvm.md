@@ -90,6 +90,7 @@
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -105,6 +106,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -118,6 +120,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -131,6 +134,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -146,6 +150,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -159,6 +164,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -172,6 +178,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -185,6 +192,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -198,6 +206,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    false
+	group:       network
 	provision:   used only by the provision of the resource
 	convert:     list
 	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
@@ -216,6 +225,7 @@ interface per bridge, as `br-prd`. Read by the provision only.
 
 	required:    false
 	scopable:    false
+	group:       install
 	provision:   used only by the provision of the resource
 
 **Example:**
@@ -246,6 +256,7 @@ Read by the provision only. It excludes `image` and `cloud_init`.
 
 	required:    false
 	scopable:    false
+	group:       install
 	provision:   used only by the provision of the resource
 
 **Example:**
@@ -265,6 +276,7 @@ Needs a `virt-install` with the `--cloud-init` option.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -282,6 +294,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -313,6 +326,7 @@ unprovision it.
 
 	required:    false
 	scopable:    false
+	group:       storage
 	provision:   used only by the provision of the resource
 	convert:     list
 
@@ -333,6 +347,7 @@ are theirs. Read by the provision only.
 
 	required:    false
 	scopable:    false
+	group:       encap
 	convert:     bool
 
 **Description:**
@@ -344,6 +359,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
+	group:       guest
 	aliases:     guestos
 	candidates:  unix, windows
 	default:     unix
@@ -362,6 +378,7 @@ The name of the operating system in the virtual machine.
 
 	required:    false
 	scopable:    true
+	group:       identity
 	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
 **Example:**
@@ -377,6 +394,7 @@ Set the container hostname. If not set, the container `name` is used.
 
 	required:    false
 	scopable:    false
+	group:       install
 	provision:   used only by the provision of the resource
 	rbac:        An image starting with a '-' requires the root grant.
 
@@ -399,6 +417,7 @@ first boot. Read by the provision only, which overwrites what the disk holds.
 
 	required:    false
 	scopable:    false
+	group:       machine
 	provision:   used only by the provision of the resource
 	convert:     size
 
@@ -418,6 +437,7 @@ then on, and changing this keyword changes nothing of a provisioned guest.
 
 	required:    false
 	scopable:    true
+	group:       timeouts
 	convert:     duration
 	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
@@ -436,6 +456,7 @@ Unset, a migration that copies no disk, its storage being shared with the destin
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	convert:     bool
 
 **Description:**
@@ -455,6 +476,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
+	group:       identity
 	stop first:  a change is refused while the resource is up
 	rbac:        A container name of the user's choosing requires the root grant: the default name is the object's own.
 
@@ -467,6 +489,7 @@ The name to assign to the container.
 
 	required:    false
 	scopable:    false
+	group:       network
 	convert:     list
 
 **Example:**
@@ -491,6 +514,7 @@ A guest on an om network can not be moved live.
 
 	required:    false
 	scopable:    false
+	group:       network
 	default:     true
 	convert:     bool
 	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
@@ -512,6 +536,7 @@ A guest needs an eui-64 link-local address, which a cloud image is told to use.
 
 	required:    false
 	scopable:    true
+	group:       reservation
 	convert:     bool
 
 **Description:**
@@ -526,6 +551,7 @@ Some scsi target implementations do not support `preempt and and abort` (esx).
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -545,6 +571,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    false
+	group:       machine
 	provision:   used only by the provision of the resource
 
 **Example:**
@@ -563,6 +590,7 @@ By default, it is detected from the image, or generic.
 
 	required:    false
 	scopable:    true
+	group:       guest
 	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
 **Example:**
@@ -582,6 +610,7 @@ sources.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -602,6 +631,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -633,6 +663,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -665,6 +696,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -689,6 +721,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	depends:     create_pg=true
 
 **Example:**
@@ -710,6 +743,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -740,6 +774,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -761,6 +796,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -790,6 +826,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -808,6 +845,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -828,6 +866,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -850,6 +889,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -872,6 +912,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -887,6 +928,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -900,6 +942,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -913,6 +956,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -928,6 +972,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -941,6 +986,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -954,6 +1000,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -967,6 +1014,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -980,6 +1028,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       reservation
 	default:     {node.node.prkey}
 
 **Description:**
@@ -993,6 +1042,7 @@ It overrides the object-level `prkey` and the node-level `prkey`.
 
 	required:    false
 	scopable:    true
+	group:       storage
 	convert:     bool
 	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
@@ -1006,6 +1056,7 @@ If `true`, OpenSVC will try to promote the base devices to read-write on
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 
@@ -1026,6 +1077,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1045,6 +1097,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       guest
 	convert:     bool
 	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
 
@@ -1059,6 +1112,7 @@ This option requires qemu guest agent to be installed in the container.
 
 	required:    false
 	scopable:    true
+	group:       guest
 	default:     10s
 	convert:     duration
 	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
@@ -1071,6 +1125,7 @@ Wait after we successfully tested a pwd in the container, so the os is sufficien
 
 	required:    false
 	scopable:    true
+	group:       guest
 	default:     /usr/bin/ssh -o StrictHostKeyChecking=accept-new -o ForwardX11=no
 	convert:     shlex
 	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
@@ -1088,6 +1143,7 @@ The command to wrap another command to execute it in the container.
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	default:     0
 	convert:     int
 
@@ -1118,6 +1174,7 @@ increase chances of a restart success.
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	default:     500ms
 	convert:     duration
 
@@ -1130,6 +1187,7 @@ The minimum delay between two restart tentatives on the resource.
 
 	required:    false
 	scopable:    false
+	group:       reservation
 	convert:     bool
 
 **Description:**
@@ -1147,6 +1205,7 @@ written concurrently from all nodes.
 
 	required:    false
 	scopable:    true
+	group:       provisioning
 	convert:     bool
 
 **Description:**
@@ -1184,6 +1243,7 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -1205,6 +1265,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1224,6 +1285,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       timeouts
 	default:     4m
 	convert:     duration
 
@@ -1240,6 +1302,7 @@ Wait for `<duration>` before declaring the container action a failure.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 
 **Description:**
@@ -1255,6 +1318,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1274,6 +1338,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       timeouts
 	default:     2m
 	convert:     duration
 
@@ -1290,6 +1355,7 @@ Wait for `<duration>` before declaring the container action a failure.
 
 	required:    false
 	scopable:    true
+	group:       selection
 
 **Description:**
 
@@ -1308,6 +1374,7 @@ process group.
 
 	required:    false
 	scopable:    true
+	group:       selection
 	convert:     set
 
 **Description:**
@@ -1331,6 +1398,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        Requires the root grant, except for the values oci, docker, podman, kvm.
 
 **Description:**
@@ -1342,6 +1410,7 @@ The resource driver name.
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 
@@ -1361,6 +1430,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1380,6 +1450,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    false
+	group:       machine
 	provision:   used only by the provision of the resource
 	convert:     int
 
@@ -1399,6 +1470,7 @@ then on, and changing this keyword changes nothing of a provisioned guest.
 
 	required:    false
 	scopable:    false
+	group:       install
 	provision:   used only by the provision of the resource
 	convert:     shlex
 	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
@@ -1420,6 +1492,7 @@ With a `vsock_port`, a `virt-install` knowing the option is given `--vsock cid.a
 
 	required:    false
 	scopable:    false
+	group:       install
 	provision:   used only by the provision of the resource
 	convert:     shlex
 	rbac:        A keyword of the kvm driver, which needs the root grant to choose.
@@ -1438,6 +1511,7 @@ they do not cover, as `--tpm none --boot uefi`.
 
 	required:    false
 	scopable:    true
+	group:       guest
 	default:     1215
 	convert:     int
 	rbac:        A keyword of the kvm driver, which needs the root grant to choose.

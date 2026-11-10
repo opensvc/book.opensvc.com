@@ -8,6 +8,7 @@
 - feeder
 - ping_interval
 - server
+- speaker_grace_period
 - status_delay
 - timeout
 - url
@@ -16,6 +17,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc44
 	default:     100
 	convert:     int
@@ -38,6 +40,7 @@ Minimum value: 1
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc44
 	default:     10s
 	convert:     duration
@@ -59,6 +62,7 @@ Minimum value: 1s
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -77,6 +81,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc44
 	rbac:        This driver group requires the root grant.
 
@@ -98,6 +103,7 @@ to.
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc44
 	default:     60s
 	convert:     duration
@@ -119,6 +125,7 @@ Minimum value: 60s
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc44
 	rbac:        This driver group requires the root grant.
 
@@ -136,10 +143,38 @@ The url of the OpenSVC Collector v3 server, the api the node registers on and
 reads from.
 
 
+## Keyword `speaker_grace_period`
+
+	required:    false
+	scopable:    false
+	group:       other
+	since:       v3.0.0-rc60
+	default:     30s
+	convert:     duration
+	rbac:        This driver group requires the root grant.
+
+**Example:**
+
+	speaker_grace_period=1m
+
+**Description:**
+
+A duration expression, like `1m`, defining how long the nodes wait for the
+collector speaker when it is away, as when its daemon restarts or its node is
+down, before another node speaks to the collector.
+
+A speaker back within this period speaks again, so a daemon restart does not
+move the speech. A speaker unable to speak, as one whose collector lost its
+node.uuid, leaves the speech at once.
+
+The minimum is `1s`: a lower value, `0` included, is refused.
+
+
 ## Keyword `status_delay`
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc44
 	default:     10s
 	convert:     duration
@@ -159,6 +194,7 @@ Minimum value: 10s
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc44
 	default:     5s
 	convert:     duration
@@ -180,6 +216,7 @@ Minimum value: 1s. Maximum value: 20s.
 
 	required:    false
 	scopable:    false
+	group:       other
 	since:       v3.0.0-rc44
 	rbac:        This driver group requires the root grant.
 

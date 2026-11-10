@@ -23,6 +23,7 @@
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     224.3.29.71
 
 **Description:**
@@ -34,6 +35,7 @@ The multicast address to send to and listen on.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -51,6 +53,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     5s
 	convert:     duration
 
@@ -68,6 +71,7 @@ synchronization workload.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Default:**
 
@@ -86,6 +90,7 @@ The interface to bind.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     10000
 	convert:     int
 
@@ -98,6 +103,7 @@ The port for each node to send to or listen on.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     15s
 	convert:     duration
 
@@ -110,6 +116,7 @@ The delay since the last received heartbeat from a node before considering this 
 
 	required:    true
 	scopable:    false
+	group:       other
 	candidates:  unicast, multicast, disk, relay
 
 **Description:**

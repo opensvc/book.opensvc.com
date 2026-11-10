@@ -40,6 +40,7 @@
 
 	required:    true
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -55,6 +56,7 @@ The array rest api url.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -73,6 +75,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     10s
 	convert:     duration
 	rbac:        This driver group requires the root grant.
@@ -86,6 +89,7 @@ The delay between request attempts on retryable errors.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -101,6 +105,7 @@ The proxy server to use for http requests to the api.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -116,6 +121,7 @@ The proxy server to use for https requests to the api.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -133,6 +139,7 @@ Disable secure socket verification.
 
 	required:    true
 	scopable:    false
+	group:       other
 	candidates:  VSP G370, VSP G700, VSP G900, VSP F370, VSP F700, VSP F900, VSP G350, VSP F350, VSP G800, VSP F800, VSP G400, VSP G600, VSP F400, VSP F600, VSP G200, VSP G1000, VSP G1500, VSP F1500, Virtual Storage Platform, HUS VM
 	rbac:        This driver group requires the root grant.
 
@@ -149,6 +156,7 @@ The array model.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -164,6 +172,7 @@ The name of the array. If not provided, fallback to the section name suffix.
 
 	required:    true
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -185,6 +194,7 @@ Array passwords are usually stored in sec datastores like `system/sec/<array nam
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     30
 	convert:     int
 	rbac:        This driver group requires the root grant.
@@ -198,6 +208,7 @@ The number of request attempts on retryable errors.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -211,6 +222,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     120s
 	convert:     duration
 	rbac:        This driver group requires the root grant.
@@ -228,6 +240,7 @@ The api request timeout.
 
 	required:    true
 	scopable:    false
+	group:       other
 	candidates:  freenas, hds, eva, nexenta, vioserver, centera, symmetrix, emcvnx, netapp, hp3par, ibmds, ibmsvc, xtremio, dorado, hoc, truenas
 	rbac:        This driver group requires the root grant.
 
@@ -240,6 +253,7 @@ The storage array driver name.
 
 	required:    true
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -255,6 +269,7 @@ The username to use to log in.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**

@@ -80,6 +80,7 @@
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -95,6 +96,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -108,6 +110,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -121,6 +124,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -136,6 +140,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -149,6 +154,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -162,6 +168,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -175,6 +182,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -188,6 +196,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       other
 	candidates:  last_run, last_run_warn, 
 
 **Example:**
@@ -209,6 +218,7 @@ If not set (default), the status of a task is always n/a.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -226,6 +236,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     bool
 
 **Description:**
@@ -239,6 +250,7 @@ This flag can be used for dangerous tasks like data restoration.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -258,6 +270,7 @@ Without it, the certificates of the domains are generated, self-signed.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -289,6 +302,7 @@ unprovision it.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -329,6 +343,7 @@ registers. The first one to need it registers it, and the others take it.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -354,6 +369,7 @@ An install line naming the same pattern installs the certificate of each, as
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -370,6 +386,7 @@ account and its certificates. An account without one is valid all the same.
 
 	required:    false
 	scopable:    false
+	group:       encap
 	convert:     bool
 
 **Description:**
@@ -381,6 +398,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 
 **Example:**
@@ -423,6 +441,7 @@ A failed install is a failed run, the task's own work not done.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     false
 	convert:     bool
 
@@ -440,6 +459,7 @@ journal but its status and its exit code.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     1
 	convert:     int
 
@@ -468,6 +488,7 @@ A new status log message may appear to indicate that the maximum concurrency lim
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	convert:     bool
 
 **Description:**
@@ -487,6 +508,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 
 **Example:**
@@ -529,6 +551,7 @@ A task installing again the files rendered from the networks with
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -543,6 +566,7 @@ A command to execute on `run` action if `command` returned an error.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -562,6 +586,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     @10s
 
 **Example:**
@@ -586,6 +611,7 @@ while the events keep coming faster.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -606,6 +632,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -637,6 +664,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -669,6 +697,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -693,6 +722,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	depends:     create_pg=true
 
 **Example:**
@@ -714,6 +744,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -744,6 +775,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -765,6 +797,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -794,6 +827,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -812,6 +846,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -832,6 +867,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -854,6 +890,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -876,6 +913,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -891,6 +929,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -904,6 +943,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -917,6 +957,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -932,6 +973,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -945,6 +987,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -958,6 +1001,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -971,6 +1015,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -984,6 +1029,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 
@@ -1004,6 +1050,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1023,6 +1070,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     0:up 1:down
 
 **Example:**
@@ -1048,6 +1096,7 @@ Valid `<status names>` are:
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1067,6 +1116,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 
 **Example:**
@@ -1084,6 +1134,7 @@ Takes precedence over `timeout`.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1100,6 +1151,7 @@ See `usr/share/doc/opensvc/schedule` for the schedule syntax reference.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 
 **Example:**
@@ -1135,6 +1187,7 @@ certificates of.
 
 	required:    false
 	scopable:    true
+	group:       provisioning
 	convert:     bool
 
 **Description:**
@@ -1172,6 +1225,7 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 
 **Example:**
@@ -1189,6 +1243,7 @@ set as value.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -1210,6 +1265,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 
 **Description:**
@@ -1225,6 +1281,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1244,6 +1301,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       selection
 
 **Description:**
 
@@ -1262,6 +1320,7 @@ process group.
 
 	required:    false
 	scopable:    true
+	group:       selection
 	convert:     set
 
 **Description:**
@@ -1285,6 +1344,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 
 **Example:**
@@ -1302,6 +1362,7 @@ If no timeout is set, the agent waits indefinitely for the task command to exit.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        Requires the root grant, except for the values oci, docker, podman, acme.
 
 **Description:**
@@ -1313,6 +1374,7 @@ The resource driver name.
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 
@@ -1332,6 +1394,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1351,6 +1414,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 

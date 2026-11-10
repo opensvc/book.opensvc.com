@@ -11,6 +11,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -28,6 +29,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -104,6 +106,7 @@ Trust Services do, is not supported: the account is registered without one.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     30d
 	convert:     duration
 
@@ -122,6 +125,7 @@ or self-signed, is renewed whatever its expiry.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        A host path the challenge token is written in requires the root grant.
 
 **Example:**

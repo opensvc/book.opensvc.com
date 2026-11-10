@@ -33,6 +33,7 @@
 
 	required:    true
 	scopable:    true
+	group:       other
 
 **Description:**
 
@@ -44,6 +45,7 @@ configuration.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -61,6 +63,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     xfs
 
 **Description:**
@@ -72,6 +75,7 @@ The filesystem to format the pool devices with.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -87,6 +91,7 @@ prepare the pool volumes devices.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -101,6 +106,7 @@ The mkfs command options to use to format the pool devices.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Description:**
 
@@ -111,6 +117,7 @@ The mount options of the fs created over the pool devices.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -121,6 +128,7 @@ Replication Group to use for SRDF.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -131,6 +139,7 @@ The name of the Service Level Agreement of the selected Storage Group.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     false
 	convert:     bool
 
@@ -143,6 +152,7 @@ Use SRDF replication.
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -153,6 +163,7 @@ The name of the array resource pool to allocate volumes from.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -166,6 +177,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
+	group:       other
 	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, dorado, hoc, drbd, pure, rados
 	default:     loop
 

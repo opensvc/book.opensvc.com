@@ -19,6 +19,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     list
 	rbac:        This driver group requires the root grant.
 
@@ -38,6 +39,7 @@ CA certificate found in these `sec` objects.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Default:**
@@ -54,6 +56,7 @@ TLS socket.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -72,6 +75,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 	rbac:        This driver group requires the root grant.
 
@@ -91,6 +95,7 @@ If set, the search will also be set to:
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     true
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -113,6 +118,7 @@ reverse lookups of its addresses are then not answered.
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     list
 	rbac:        This driver group requires the root grant.
 
@@ -129,6 +135,7 @@ value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     CERT DEV DRP FOR INT PRA PRD PRJ PPRD QUAL REC STG TMP TST UAT
 	convert:     list
 	rbac:        This driver group requires the root grant.
@@ -146,6 +153,7 @@ the user interfaces read from the cluster configuration.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Default:**
@@ -165,6 +173,7 @@ replaces the joiners' cluster id.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Default:**
@@ -192,6 +201,7 @@ The cluster name is provided to joining nodes, so they can replace their own.
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     list
 	rbac:        This driver group requires the root grant.
 
@@ -211,6 +221,7 @@ cluster nodes list, then provide the new list to the joiner.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -229,6 +240,7 @@ reboot or disabled).
 
 	required:    false
 	scopable:    true
+	group:       other
 	secret:      true
 	rbac:        This driver group requires the root grant.
 

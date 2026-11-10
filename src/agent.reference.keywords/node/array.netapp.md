@@ -29,6 +29,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -46,6 +47,7 @@ The agent does not interpret the value.
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -60,6 +62,7 @@ The path to the private key to use to log in.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -72,6 +75,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -86,6 +90,7 @@ The storage server to connect.
 
 	required:    true
 	scopable:    false
+	group:       other
 	candidates:  freenas, hds, eva, nexenta, vioserver, centera, symmetrix, emcvnx, netapp, hp3par, ibmds, ibmsvc, xtremio, dorado, hoc, truenas
 
 **Description:**
@@ -97,6 +102,7 @@ The storage array driver name.
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Example:**
 

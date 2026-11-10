@@ -10,6 +10,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -28,6 +29,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     /var/lib/opensvc/cni/net.d
 	rbac:        This driver group requires the root grant.
 
@@ -44,6 +46,7 @@ The directory hosting the CNI network configuration files.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     /usr/lib/cni
 	rbac:        This driver group requires the root grant.
 

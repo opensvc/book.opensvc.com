@@ -12,6 +12,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -30,6 +31,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     daemon
 	rbac:        This driver group requires the root grant.
 
@@ -42,6 +44,7 @@ The syslog facility to log to.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Default:**
@@ -60,6 +63,7 @@ messages are posted to `/dev/log`.
 
 	required:    false
 	scopable:    false
+	group:       other
 	candidates:  critical, error, warning, info, debug
 	default:     info
 	rbac:        This driver group requires the root grant.
@@ -76,6 +80,7 @@ agent does not emit messages at this level.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     514
 	rbac:        This driver group requires the root grant.
 

@@ -33,6 +33,7 @@
 
 	required:    true
 	scopable:    true
+	group:       other
 
 **Description:**
 
@@ -44,6 +45,7 @@ configuration.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -61,6 +63,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     false
 	convert:     bool
 
@@ -73,6 +76,7 @@ Activate compression on created luns.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     false
 	convert:     bool
 
@@ -85,6 +89,7 @@ Activate data deduplcation on created luns.
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -95,6 +100,7 @@ The name of the array disk group to allocate volumes from.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     xfs
 
 **Description:**
@@ -106,6 +112,7 @@ The filesystem to format the pool devices with.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -120,6 +127,7 @@ Create LUN as HyperMetro replicated pairs, using this domain.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -135,6 +143,7 @@ prepare the pool volumes devices.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -149,6 +158,7 @@ The mkfs command options to use to format the pool devices.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Description:**
 
@@ -159,6 +169,7 @@ The mount options of the fs created over the pool devices.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -172,6 +183,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
+	group:       other
 	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, dorado, hoc, drbd, pure, rados
 	default:     loop
 

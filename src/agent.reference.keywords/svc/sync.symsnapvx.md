@@ -65,6 +65,7 @@
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -80,6 +81,7 @@ Use `-absolute` in symsnapvx commands.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -95,6 +97,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -110,6 +113,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -123,6 +127,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -136,6 +141,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -153,6 +159,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -168,6 +175,7 @@ Use `-delta` in symsnapvx commands.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 	rbac:        Requires the root grant.
 
@@ -184,6 +192,7 @@ The whitespace-separated list of symmetrix device identifiers.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 	rbac:        Requires the root grant.
 
@@ -200,6 +209,7 @@ Use the pointed resource subdevices as the list of devices to snapshot.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -231,6 +241,7 @@ unprovision it.
 
 	required:    false
 	scopable:    false
+	group:       encap
 	convert:     bool
 
 **Description:**
@@ -242,6 +253,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     false
 	convert:     bool
 	rbac:        A keyword of the symsnapvx driver, which needs the root grant to choose.
@@ -260,6 +272,7 @@ in the journal but its status.
 
 	required:    false
 	scopable:    false
+	group:       other
 	aliases:     sync_max_delay
 	convert:     duration
 	rbac:        A keyword of the symsnapvx driver, which needs the root grant to choose.
@@ -277,6 +290,7 @@ The scheduler task interval should be lower than `max_delay`.
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	convert:     bool
 
 **Description:**
@@ -296,6 +310,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -311,6 +326,7 @@ Use `-name` in symsnapvx commands.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -330,6 +346,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -350,6 +367,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -381,6 +399,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -413,6 +432,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -437,6 +457,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	depends:     create_pg=true
 
 **Example:**
@@ -458,6 +479,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -488,6 +510,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -509,6 +532,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -538,6 +562,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -556,6 +581,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -576,6 +602,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -598,6 +625,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -620,6 +648,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -635,6 +664,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -650,6 +680,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -663,6 +694,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -676,6 +708,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 
@@ -696,6 +729,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -715,6 +749,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        A keyword of the symsnapvx driver, which needs the root grant to choose.
 
 **Example:**
@@ -732,6 +767,7 @@ See `usr/share/doc/opensvc/schedule` for the schedule syntax reference.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     bool
 	rbac:        Requires the root grant.
 
@@ -744,6 +780,7 @@ Use `-secure` in symsnapvx commands.
 
 	required:    false
 	scopable:    true
+	group:       provisioning
 	convert:     bool
 
 **Description:**
@@ -781,6 +818,7 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -802,6 +840,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 
 **Description:**
@@ -817,6 +856,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 
 	required:    false
 	scopable:    true
+	group:       selection
 
 **Description:**
 
@@ -835,6 +875,7 @@ process group.
 
 	required:    true
 	scopable:    true
+	group:       other
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -850,6 +891,7 @@ The symmetrix array identifier.
 
 	required:    false
 	scopable:    true
+	group:       selection
 	convert:     set
 
 **Description:**
@@ -873,6 +915,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        Requires the root grant, except for the values store.
 
 **Description:**
@@ -884,6 +927,7 @@ The resource driver name.
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 
@@ -903,6 +947,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -922,6 +967,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 	aliases:     sync_requires, sync_update_requires, sync_nodes_requires, sync_drp_requires
 
 **Example:**

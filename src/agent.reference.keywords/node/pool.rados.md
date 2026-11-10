@@ -28,6 +28,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -45,6 +46,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     xfs
 
 **Description:**
@@ -56,6 +58,7 @@ The filesystem to format the pool devices with.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -71,6 +74,7 @@ prepare the pool volumes devices.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -85,6 +89,7 @@ The mkfs command options to use to format the pool devices.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Description:**
 
@@ -95,6 +100,7 @@ The mount options of the fs created over the pool devices.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -104,6 +110,7 @@ The ceph pool namespace where to create images.
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -113,6 +120,7 @@ The ceph pool where to create images.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -126,6 +134,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
+	group:       other
 	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, dorado, hoc, drbd, pure, rados
 	default:     loop
 

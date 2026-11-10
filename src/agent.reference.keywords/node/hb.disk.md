@@ -25,6 +25,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -42,6 +43,7 @@ The agent does not interpret the value.
 
 	required:    true
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -61,6 +63,7 @@ It must be,
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     5s
 	convert:     duration
 
@@ -78,6 +81,7 @@ synchronization workload.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     1024
 	convert:     int
 
@@ -99,6 +103,7 @@ Do not modify default value if the hb disk is used by multiple clusters.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     15s
 	convert:     duration
 
@@ -111,6 +116,7 @@ The delay since the last received heartbeat from a node before considering this 
 
 	required:    true
 	scopable:    false
+	group:       other
 	candidates:  unicast, multicast, disk, relay
 
 **Description:**

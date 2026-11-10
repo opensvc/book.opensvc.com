@@ -10,6 +10,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -28,6 +29,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     1216
 	convert:     int
 	rbac:        This driver group requires the root grant.
@@ -45,6 +47,7 @@ The nodes of a cluster reach each other's console on the same port, so the keywo
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**

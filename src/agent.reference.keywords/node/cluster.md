@@ -19,6 +19,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     list
 
 **Default:**
@@ -37,6 +38,7 @@ CA certificate found in these `sec` objects.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Default:**
 
@@ -52,6 +54,7 @@ TLS socket.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -69,6 +72,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 
 **Description:**
@@ -87,6 +91,7 @@ If set, the search will also be set to:
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     true
 	convert:     bool
 
@@ -108,6 +113,7 @@ reverse lookups of its addresses are then not answered.
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     list
 
 **Description:**
@@ -123,6 +129,7 @@ value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     CERT DEV DRP FOR INT PRA PRD PRJ PPRD QUAL REC STG TMP TST UAT
 	convert:     list
 
@@ -139,6 +146,7 @@ the user interfaces read from the cluster configuration.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Default:**
 
@@ -157,6 +165,7 @@ replaces the joiners' cluster id.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Default:**
 
@@ -183,6 +192,7 @@ The cluster name is provided to joining nodes, so they can replace their own.
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     list
 
 **Description:**
@@ -201,6 +211,7 @@ cluster nodes list, then provide the new list to the joiner.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     false
 	convert:     bool
 
@@ -218,6 +229,7 @@ reboot or disabled).
 
 	required:    false
 	scopable:    true
+	group:       other
 	secret:      true
 
 **Default:**

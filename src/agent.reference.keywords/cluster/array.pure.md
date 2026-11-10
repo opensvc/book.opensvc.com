@@ -40,6 +40,7 @@
 
 	required:    true
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -55,6 +56,7 @@ The array rest api url.
 
 	required:    true
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -70,6 +72,7 @@ The client id to use as the ``aud`` key in the payload of the login jwt.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -88,6 +91,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -105,6 +109,7 @@ Disable secure socket verification.
 
 	required:    true
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -120,6 +125,7 @@ The issuer to use as the ``iss`` key in the payload of the login jwt token.
 
 	required:    true
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -135,6 +141,7 @@ The key id to use as the ``kid`` key in the header of the login jwt.
 
 	required:    true
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -160,6 +167,7 @@ in it::
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -173,6 +181,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
+	group:       other
 	deprecated:  since 3.0.0, replaced by private_key
 	rbac:        This driver group requires the root grant.
 
@@ -189,6 +198,7 @@ The secret to use to store the information required to create the login jwt, exp
 
 	required:    true
 	scopable:    false
+	group:       other
 	candidates:  freenas, hds, eva, nexenta, vioserver, centera, symmetrix, emcvnx, netapp, hp3par, ibmds, ibmsvc, xtremio, dorado, hoc, truenas
 	rbac:        This driver group requires the root grant.
 
@@ -201,6 +211,7 @@ The storage array driver name.
 
 	required:    true
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Example:**

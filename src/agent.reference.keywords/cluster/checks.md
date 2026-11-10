@@ -9,6 +9,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -27,6 +28,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     ~00:00-06:00
 	rbac:        This driver group requires the root grant.
 

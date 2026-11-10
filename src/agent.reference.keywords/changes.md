@@ -1,7 +1,32 @@
 # Keyword changes
 
-What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc59.
+What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc61.
 
+
+## v3.0.0-rc61
+
+
+### Added
+
+- `cluster/collector.speaker_grace_period`
+- `cluster/node.load_pool_interval`
+- `node/collector.speaker_grace_period`
+- `node/node.load_pool_interval`
+- `svc/disk.crypt.iter_time`
+- `svc/disk.crypt.pbkdf`
+- `svc/disk.crypt.pbkdf_memory`
+- `svc/disk.crypt.pbkdf_parallel`
+- `vol/disk.crypt.iter_time`
+- `vol/disk.crypt.pbkdf`
+- `vol/disk.crypt.pbkdf_memory`
+- `vol/disk.crypt.pbkdf_parallel`
+
+### Changed
+
+- `svc/disk.crypt.manage_passphrase`
+  - description rewritten
+- `vol/disk.crypt.manage_passphrase`
+  - description rewritten
 
 ## v3.0.0-rc59
 

@@ -30,6 +30,7 @@
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Default:**
 
@@ -49,6 +50,7 @@ reachable on the same subnet.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -66,6 +68,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -76,6 +79,7 @@ The network bridge device name. If not set the name will be `obr_<network name>`
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 
 **Example:**
@@ -99,6 +103,7 @@ each, in the order of its ip resources.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Description:**
 
@@ -109,6 +114,7 @@ The gateway to use to reach the network segment of the node specified as scope.
 
 	required:    false
 	scopable:    false
+	group:       other
 	deprecated:  since 3.0.0, replaced by mask_per_node
 	default:     1024
 	convert:     int
@@ -130,6 +136,7 @@ The `ips_per_node` keyword is deprecated because its value is hard to manage for
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     0
 	convert:     int
 
@@ -150,6 +157,7 @@ The `ips_per_node` keyword is deprecated because its value is hard to manage for
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -162,6 +170,7 @@ The routed_bridge driver fragments this network into subnets with a prefix lengt
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     bool
 
 **Description:**
@@ -173,6 +182,7 @@ Set to true if the network ip range is public and we must not configure masquera
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Description:**
 
@@ -189,6 +199,7 @@ list.
 
 	required:    false
 	scopable:    false
+	group:       other
 	default:     main
 	convert:     list
 
@@ -207,6 +218,7 @@ The list of available tables is in `/etc/iproute2/rt_tables`.
 
 	required:    false
 	scopable:    false
+	group:       other
 	candidates:  auto, always, never
 	default:     auto
 
@@ -229,6 +241,7 @@ Create and route traffic through tunnels to peer nodes policy.
 
 	required:    false
 	scopable:    false
+	group:       other
 	candidates:  gre, ipip, ip6ip6
 	default:     ipip
 
@@ -241,6 +254,7 @@ The ip tunnel mode. gre can tunnel mcast ip and ipv6 at the price of a 24B heade
 
 	required:    false
 	scopable:    false
+	group:       other
 	candidates:  bridge, routed_bridge, lan
 	default:     bridge
 

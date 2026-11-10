@@ -96,6 +96,7 @@
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -111,6 +112,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -124,6 +126,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -137,6 +140,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -152,6 +156,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -165,6 +170,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -178,6 +184,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -191,6 +198,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -204,6 +212,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       other
 	candidates:  last_run, last_run_warn, 
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -226,6 +235,7 @@ If not set (default), the status of a task is always n/a.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Description:**
@@ -237,6 +247,7 @@ The shlex expression of the command to execute on `run` actions.
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -254,6 +265,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
+	group:       other
 	deprecated:  since v3.0.0-rc57, replaced by environment
 	convert:     shlex
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
@@ -291,6 +303,7 @@ variables in the process execution environment:
 
 	required:    false
 	scopable:    false
+	group:       other
 	convert:     bool
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -305,6 +318,7 @@ This flag can be used for dangerous tasks like data restoration.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Example:**
@@ -332,6 +346,7 @@ the files a volume or fs `install` wrote, e.g. `swanctl --load-all`.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Description:**
@@ -344,6 +359,7 @@ Change the working directory to the specified location instead of the default
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -375,6 +391,7 @@ unprovision it.
 
 	required:    false
 	scopable:    false
+	group:       encap
 	convert:     bool
 
 **Description:**
@@ -386,6 +403,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     shlex
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -450,6 +468,7 @@ key generated, `source random`, which is an error.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Description:**
@@ -462,6 +481,7 @@ instead of `root`.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -505,6 +525,7 @@ A failed install is a failed run, the task's own work not done.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -520,6 +541,7 @@ When both `limit_vmem` and `limit_as` is used, the max value is chosen.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -532,6 +554,7 @@ The limit on the largest core dump size that can be produced (unit byte).
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -548,6 +571,7 @@ The limit on CPU time (duration).
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -560,6 +584,7 @@ The limit on the data segment size of a process (unit byte).
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -572,6 +597,7 @@ The limit on the largest file that can be created (unit byte).
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -584,6 +610,7 @@ The limit on how much memory a process can lock with mlock(2) (unit byte, no sol
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -596,6 +623,7 @@ The limit on the number files a process can have open at once.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -608,6 +636,7 @@ The limit on the number of processes this user can have at one time, no solaris 
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -621,6 +650,7 @@ The limit on the total physical memory that can be in use by a process
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -633,6 +663,7 @@ The limit on the stack size of a process (unit bytes).
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -645,6 +676,7 @@ The limit on the total virtual memory that can be in use by a process (unit byte
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     false
 	convert:     bool
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
@@ -663,6 +695,7 @@ journal but its status and its exit code.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     1
 	convert:     int
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
@@ -692,6 +725,7 @@ A new status log message may appear to indicate that the maximum concurrency lim
 
 	required:    false
 	scopable:    true
+	group:       monitoring
 	convert:     bool
 
 **Description:**
@@ -711,6 +745,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     list
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -754,6 +789,7 @@ A task installing again the files rendered from the networks with
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Example:**
@@ -769,6 +805,7 @@ A command to execute on `run` action if `command` returned an error.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -788,6 +825,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     @10s
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -813,6 +851,7 @@ while the events keep coming faster.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -833,6 +872,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -864,6 +904,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -896,6 +937,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -920,6 +962,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	depends:     create_pg=true
 
 **Example:**
@@ -941,6 +984,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -971,6 +1015,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -992,6 +1037,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1021,6 +1067,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1039,6 +1086,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1059,6 +1107,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 
 **Example:**
 
@@ -1081,6 +1130,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     size
 
 **Example:**
@@ -1103,6 +1153,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1118,6 +1169,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1131,6 +1183,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1144,6 +1197,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1159,6 +1213,7 @@ This trigger is only executed on leaders.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1172,6 +1227,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1185,6 +1241,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1198,6 +1255,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    true
+	group:       triggers
 	rbac:        Triggers require the root grant.
 
 **Description:**
@@ -1211,6 +1269,7 @@ Errors do not interrupt the action.
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 
@@ -1231,6 +1290,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1250,6 +1310,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 	default:     0:up 1:down
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -1276,6 +1337,7 @@ Valid `<status names>` are:
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1295,6 +1357,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -1313,6 +1376,7 @@ Takes precedence over `timeout`.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Example:**
@@ -1330,6 +1394,7 @@ See `usr/share/doc/opensvc/schedule` for the schedule syntax reference.
 
 	required:    false
 	scopable:    true
+	group:       other
 	deprecated:  since v3.0.0-rc57, replaced by environment
 	convert:     shlex
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
@@ -1367,6 +1432,7 @@ variables in the process execution environment:
 
 	required:    false
 	scopable:    true
+	group:       provisioning
 	convert:     bool
 
 **Description:**
@@ -1404,6 +1470,7 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -1422,6 +1489,7 @@ set as value.
 
 	required:    false
 	scopable:    true
+	group:       availability
 	convert:     bool
 
 **Description:**
@@ -1443,6 +1511,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 
 **Description:**
@@ -1458,6 +1527,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Example:**
@@ -1475,6 +1545,7 @@ Without it, the task is stopped by killing the processes its `command` started.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1494,6 +1565,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -1519,6 +1591,7 @@ stop when an app launcher did not return.
 
 	required:    false
 	scopable:    true
+	group:       selection
 
 **Description:**
 
@@ -1537,6 +1610,7 @@ process group.
 
 	required:    false
 	scopable:    true
+	group:       selection
 	convert:     set
 
 **Description:**
@@ -1560,6 +1634,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     duration
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -1578,6 +1653,7 @@ If no timeout is set, the agent waits indefinitely for the task command to exit.
 
 	required:    false
 	scopable:    false
+	group:       other
 	rbac:        Requires the root grant, except for the values oci, docker, podman, acme.
 
 **Description:**
@@ -1589,6 +1665,7 @@ The resource driver name.
 
 	required:    false
 	scopable:    true
+	group:       other
 	convert:     umask
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -1605,6 +1682,7 @@ The umask to set for the application process.
 
 	required:    false
 	scopable:    false
+	group:       provisioning
 	default:     true
 	convert:     bool
 
@@ -1624,6 +1702,7 @@ destroy data.
 
 	required:    false
 	scopable:    false
+	group:       requirements
 
 **Example:**
 
@@ -1643,6 +1722,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
+	group:       other
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Description:**

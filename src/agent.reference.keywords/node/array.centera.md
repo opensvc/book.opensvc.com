@@ -35,6 +35,7 @@
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -52,6 +53,7 @@ The agent does not interpret the value.
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -66,6 +68,7 @@ The path to the java executable to use to run the Centera management program.
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -80,6 +83,7 @@ The path of the directory hosting the `JCASScript.jar`.
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -100,6 +104,7 @@ Array passwords are usually stored in sec datastores like `system/sec/<array nam
 
 	required:    false
 	scopable:    false
+	group:       other
 
 **Description:**
 
@@ -112,6 +117,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Example:**
 
@@ -126,6 +132,7 @@ The storage server to connect.
 
 	required:    true
 	scopable:    false
+	group:       other
 	candidates:  freenas, hds, eva, nexenta, vioserver, centera, symmetrix, emcvnx, netapp, hp3par, ibmds, ibmsvc, xtremio, dorado, hoc, truenas
 
 **Description:**
@@ -137,6 +144,7 @@ The storage array driver name.
 
 	required:    true
 	scopable:    false
+	group:       other
 
 **Example:**
 
