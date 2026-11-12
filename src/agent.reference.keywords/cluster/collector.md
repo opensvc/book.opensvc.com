@@ -148,7 +148,7 @@ reads from.
 	required:    false
 	scopable:    false
 	group:       other
-	since:       v3.0.0-rc60
+	since:       v3.0.0-rc61
 	default:     30s
 	convert:     duration
 	rbac:        This driver group requires the root grant.

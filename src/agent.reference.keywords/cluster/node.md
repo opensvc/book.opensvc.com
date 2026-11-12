@@ -411,7 +411,7 @@ A code like PRD, DEV, etc... the agent can use to enforce data protection polici
 	required:    false
 	scopable:    false
 	group:       other
-	since:       v3.0.0-rc60
+	since:       v3.0.0-rc61
 	default:     60s
 	convert:     duration
 	rbac:        This driver group requires the root grant.

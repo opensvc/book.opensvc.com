@@ -651,7 +651,7 @@
    "converter": "duration",
    "default": "30s",
    "inherit": "leaf2head",
-   "since": "v3.0.0-rc60",
+   "since": "v3.0.0-rc61",
    "textSum": "816fbd76221c83e2"
   },
   "cluster/collector.status_delay": {
@@ -1263,7 +1263,7 @@
    "converter": "duration",
    "default": "60s",
    "inherit": "leaf2head",
-   "since": "v3.0.0-rc60",
+   "since": "v3.0.0-rc61",
    "textSum": "5d30c6b11bd2d48e"
   },
   "cluster/node.loc_addr": {
@@ -2611,7 +2611,7 @@
    "converter": "duration",
    "default": "30s",
    "inherit": "leaf2head",
-   "since": "v3.0.0-rc60",
+   "since": "v3.0.0-rc61",
    "textSum": "816fbd76221c83e2"
   },
   "node/collector.status_delay": {
@@ -3253,7 +3253,7 @@
    "converter": "duration",
    "default": "60s",
    "inherit": "leaf2head",
-   "since": "v3.0.0-rc60",
+   "since": "v3.0.0-rc61",
    "textSum": "5d30c6b11bd2d48e"
   },
   "node/node.loc_addr": {
@@ -80048,5 +80048,5 @@
    ]
   }
  },
- "version": "v3.0.0-rc61"
+ "version": "v3.0.0-rc62"
 }

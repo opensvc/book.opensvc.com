@@ -1127,12 +1127,16 @@
    "until": null
   },
   "cluster/collector.speaker_grace_period": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc62": [
+     "since: v3.0.0-rc60 -> v3.0.0-rc61"
+    ]
+   },
    "properties": {
     "converter": "duration",
     "default": "30s",
     "inherit": "leaf2head",
-    "since": "v3.0.0-rc60",
+    "since": "v3.0.0-rc61",
     "textSum": "816fbd76221c83e2"
    },
    "since": "v3.0.0-rc61",
@@ -2309,12 +2313,16 @@
    "until": null
   },
   "cluster/node.load_pool_interval": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc62": [
+     "since: v3.0.0-rc60 -> v3.0.0-rc61"
+    ]
+   },
    "properties": {
     "converter": "duration",
     "default": "60s",
     "inherit": "leaf2head",
-    "since": "v3.0.0-rc60",
+    "since": "v3.0.0-rc61",
     "textSum": "5d30c6b11bd2d48e"
    },
    "since": "v3.0.0-rc61",
@@ -4725,12 +4733,16 @@
    "until": null
   },
   "node/collector.speaker_grace_period": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc62": [
+     "since: v3.0.0-rc60 -> v3.0.0-rc61"
+    ]
+   },
    "properties": {
     "converter": "duration",
     "default": "30s",
     "inherit": "leaf2head",
-    "since": "v3.0.0-rc60",
+    "since": "v3.0.0-rc61",
     "textSum": "816fbd76221c83e2"
    },
    "since": "v3.0.0-rc61",
@@ -5972,12 +5984,16 @@
    "until": null
   },
   "node/node.load_pool_interval": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc62": [
+     "since: v3.0.0-rc60 -> v3.0.0-rc61"
+    ]
+   },
    "properties": {
     "converter": "duration",
     "default": "60s",
     "inherit": "leaf2head",
-    "since": "v3.0.0-rc60",
+    "since": "v3.0.0-rc61",
     "textSum": "5d30c6b11bd2d48e"
    },
    "since": "v3.0.0-rc61",
@@ -134694,6 +134710,7 @@
   "v3.0.0-rc57",
   "v3.0.0-rc58",
   "v3.0.0-rc59",
-  "v3.0.0-rc61"
+  "v3.0.0-rc61",
+  "v3.0.0-rc62"
  ]
 }

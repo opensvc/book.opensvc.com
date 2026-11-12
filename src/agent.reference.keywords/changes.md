@@ -1,7 +1,23 @@
 # Keyword changes
 
-What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc61.
+What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc62.
 
+The 20 most recent releases are listed. The whole timeline is in `history.json`, beside this page.
+
+
+## v3.0.0-rc62
+
+
+### Changed
+
+- `cluster/collector.speaker_grace_period`
+  - since: v3.0.0-rc60 -> v3.0.0-rc61
+- `cluster/node.load_pool_interval`
+  - since: v3.0.0-rc60 -> v3.0.0-rc61
+- `node/collector.speaker_grace_period`
+  - since: v3.0.0-rc60 -> v3.0.0-rc61
+- `node/node.load_pool_interval`
+  - since: v3.0.0-rc60 -> v3.0.0-rc61
 
 ## v3.0.0-rc61
 
@@ -6737,7 +6753,3 @@ No keyword changed.
   - description rewritten
 - `vol/DEFAULT.pg_vmem_limit`
   - description rewritten
-
-## v3.0.0-rc36
-
-Where this timeline starts: 8948 keywords, none of them new.
