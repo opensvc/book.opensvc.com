@@ -26,7 +26,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -45,7 +45,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       credentials
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -61,7 +61,7 @@ The path to the private key to use to log in the switch.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	candidates:  telnet, ssh
 	default:     ssh
 	rbac:        This driver group requires the root grant.
@@ -93,7 +93,7 @@ is refused.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -112,7 +112,7 @@ If not set, fallback to the section name suffix.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       credentials
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -133,7 +133,7 @@ Either `password` or `key` must be specified.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       identity
 	candidates:  brocade
 	rbac:        This driver group requires the root grant.
 
@@ -150,7 +150,7 @@ the collector.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       credentials
 	rbac:        This driver group requires the root grant.
 
 **Example:**

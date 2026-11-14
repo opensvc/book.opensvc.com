@@ -10,7 +10,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       scheduling
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -31,7 +31,7 @@ repository.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -50,7 +50,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       scheduling
 	default:     02:00-06:00
 	rbac:        This driver group requires the root grant.
 

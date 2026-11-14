@@ -20,7 +20,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -39,7 +39,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -56,7 +56,7 @@ This should only be enabled for testing.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       endpoint
 	aliases:     name
 	rbac:        This driver group requires the root grant.
 
@@ -96,7 +96,7 @@ Arbitrators are verified every 60s to alert admins of the arbitrator failures.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       quorum
 	default:     1
 	convert:     int
 	rbac:        This driver group requires the root grant.

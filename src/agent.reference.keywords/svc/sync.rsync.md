@@ -124,7 +124,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       transfer
 	rbac:        Requires the root grant.
 
 **Description:**
@@ -138,7 +138,7 @@ Leave empty to enforce no limit.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -188,7 +188,7 @@ unprovision it.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       endpoints
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -210,7 +210,7 @@ rsync.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       endpoints
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -242,7 +242,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       scheduling
 	default:     false
 	convert:     bool
 	rbac:        A keyword of the rsync driver, which needs the root grant to choose.
@@ -261,7 +261,7 @@ in the journal but its status.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       status
 	aliases:     sync_max_delay
 	convert:     duration
 	rbac:        A keyword of the rsync driver, which needs the root grant to choose.
@@ -319,7 +319,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       transfer
 	convert:     shlex
 	rbac:        Requires the root grant.
 
@@ -338,7 +338,7 @@ Typical usage is ACL preservation activation.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -359,7 +359,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -391,7 +391,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -424,7 +424,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -449,7 +449,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	depends:     create_pg=true
 
 **Example:**
@@ -471,7 +471,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -502,7 +502,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -519,12 +519,15 @@ Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
+On a node holding the v1 cgroup hierarchy, `default` lifts the memory+swap
+limit too: a group with no memory limit cannot keep one below it.
+
 
 ## Keyword `pg_mem_oom_control`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -554,7 +557,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -573,7 +576,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -594,7 +597,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -617,7 +620,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -722,6 +725,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -741,7 +745,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       transfer
 	convert:     bool
 	rbac:        Requires the root grant.
 
@@ -756,7 +760,7 @@ This keyword can be used to disable `--xattr` or `--acls` for example.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       scheduling
 	rbac:        A keyword of the rsync driver, which needs the root grant to choose.
 
 **Example:**
@@ -812,7 +816,7 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       transfer
 	convert:     bool
 	rbac:        Requires the root grant.
 
@@ -845,7 +849,7 @@ and the resource status says so meanwhile.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       endpoints
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -889,7 +893,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 
 **Description:**
@@ -948,7 +952,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       endpoints
 	candidates:  nodes, drpnodes, local
 	convert:     list
 	rbac:        Requires the root grant.
@@ -967,7 +971,7 @@ fs resource can be started.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 	rbac:        Requires the root grant.
 
@@ -986,7 +990,7 @@ If no timeout is set, the agent waits indefinitely for the `sync` action to exit
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        Requires the root grant, except for the values store.
 
 **Description:**
@@ -1019,6 +1023,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1040,6 +1045,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    false
 	group:       requirements
 	aliases:     sync_requires, sync_update_requires, sync_nodes_requires, sync_drp_requires
+	references:  requires
 
 **Example:**
 

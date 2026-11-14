@@ -126,7 +126,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -176,7 +176,7 @@ unprovision it.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       endpoints
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -209,7 +209,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       scheduling
 	default:     false
 	convert:     bool
 	rbac:        A keyword of the btrfs driver, which needs the root grant to choose.
@@ -228,7 +228,7 @@ in the journal but its status.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       status
 	aliases:     sync_max_delay
 	convert:     duration
 	rbac:        A keyword of the btrfs driver, which needs the root grant to choose.
@@ -246,7 +246,7 @@ The scheduler task interval should be lower than `max_delay`.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       retention
 	default:     24h
 	convert:     duration
 	rbac:        Requires the root grant.
@@ -306,7 +306,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -327,7 +327,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -359,7 +359,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -392,7 +392,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -417,7 +417,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	depends:     create_pg=true
 
 **Example:**
@@ -439,7 +439,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -470,7 +470,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -487,12 +487,15 @@ Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
+On a node holding the v1 cgroup hierarchy, `default` lifts the memory+swap
+limit too: a group with no memory limit cannot keep one below it.
+
 
 ## Keyword `pg_mem_oom_control`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -522,7 +525,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -541,7 +544,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -562,7 +565,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -585,7 +588,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -690,6 +693,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -709,7 +713,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       transfer
 	default:     false
 	convert:     bool
 	rbac:        Requires the root grant.
@@ -727,7 +731,7 @@ resource takes, are not replicated.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       scheduling
 	rbac:        A keyword of the btrfs driver, which needs the root grant to choose.
 
 **Example:**
@@ -783,7 +787,7 @@ the flex primary gets `--leader` commands.
 
 	required:    true
 	scopable:    true
-	group:       other
+	group:       endpoints
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -829,7 +833,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 
 **Description:**
@@ -888,7 +892,7 @@ Some tags can influence the driver behaviour:
 
 	required:    true
 	scopable:    true
-	group:       other
+	group:       endpoints
 	candidates:  nodes, drpnodes, local
 	convert:     list
 	rbac:        Requires the root grant.
@@ -906,7 +910,7 @@ same server that sends the data from the `src` subvolume.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 	rbac:        Requires the root grant.
 
@@ -925,7 +929,7 @@ If no timeout is set, the agent waits indefinitely for the `sync` action to exit
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        Requires the root grant, except for the values store.
 
 **Description:**
@@ -958,6 +962,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -979,6 +984,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    false
 	group:       requirements
 	aliases:     sync_requires, sync_update_requires, sync_nodes_requires, sync_drp_requires
+	references:  requires
 
 **Example:**
 

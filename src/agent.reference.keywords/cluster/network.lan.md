@@ -27,7 +27,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -46,7 +46,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       interface
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -71,7 +71,7 @@ it.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       dns
 	convert:     list
 	rbac:        This driver group requires the root grant.
 
@@ -96,7 +96,7 @@ each, in the order of its ip resources.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       routing
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -119,7 +119,7 @@ default route of its own reaches the segment only.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       addressing
 	default:     0
 	convert:     int
 	rbac:        This driver group requires the root grant.
@@ -141,7 +141,7 @@ The `ips_per_node` keyword is deprecated because its value is hard to manage for
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       interface
 	candidates:  bridge, macvlan, ipvlan-l2, dedicated, ovs
 	convert:     list
 	rbac:        This driver group requires the root grant.
@@ -169,7 +169,7 @@ keyword is scopable, for the nodes whose interface on the segment differs.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       addressing
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -204,7 +204,7 @@ restart it, or unprovision and provision it.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       addressing
 	convert:     list
 	rbac:        This driver group requires the root grant.
 
@@ -232,7 +232,7 @@ ranges of another lan network of the same segment.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	candidates:  bridge, routed_bridge, lan
 	default:     bridge
 	rbac:        This driver group requires the root grant.
@@ -259,7 +259,7 @@ forward chain drops what docker did not accept, in a chain the docker
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       interface
 	candidates:  access, native-tagged, native-untagged
 	rbac:        This driver group requires the root grant.
 
@@ -278,7 +278,7 @@ to the openvswitch bridge, when the ip.netns names none: `access`,
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       interface
 	rbac:        This driver group requires the root grant.
 
 **Example:**

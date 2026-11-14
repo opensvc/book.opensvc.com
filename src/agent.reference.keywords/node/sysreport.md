@@ -9,7 +9,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -27,7 +27,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       scheduling
 	default:     ~00:00-06:00
 
 **Description:**

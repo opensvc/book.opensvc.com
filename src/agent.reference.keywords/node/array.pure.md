@@ -40,7 +40,7 @@
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       endpoint
 
 **Example:**
 
@@ -55,7 +55,7 @@ The array rest api url.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       credentials
 
 **Example:**
 
@@ -70,7 +70,7 @@ The client id to use as the ``aud`` key in the payload of the login jwt.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -88,7 +88,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	default:     false
 	convert:     bool
 
@@ -105,7 +105,7 @@ Disable secure socket verification.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       credentials
 
 **Example:**
 
@@ -120,7 +120,7 @@ The issuer to use as the ``iss`` key in the payload of the login jwt token.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       credentials
 
 **Example:**
 
@@ -135,7 +135,7 @@ The key id to use as the ``kid`` key in the header of the login jwt.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       credentials
 
 **Example:**
 
@@ -160,7 +160,7 @@ in it::
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       scheduling
 
 **Description:**
 
@@ -173,7 +173,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       credentials
 	deprecated:  since 3.0.0, replaced by private_key
 
 **Example:**
@@ -189,8 +189,8 @@ The secret to use to store the information required to create the login jwt, exp
 
 	required:    true
 	scopable:    false
-	group:       other
-	candidates:  freenas, hds, eva, nexenta, vioserver, centera, symmetrix, emcvnx, netapp, hp3par, ibmds, ibmsvc, xtremio, dorado, hoc, truenas
+	group:       identity
+	candidates:  freenas, hds, symmetrix, hp3par, xtremio, hoc, pure, truenas
 
 **Description:**
 
@@ -201,7 +201,7 @@ The storage array driver name.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       credentials
 
 **Example:**
 

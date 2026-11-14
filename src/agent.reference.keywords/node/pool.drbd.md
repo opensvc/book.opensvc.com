@@ -30,7 +30,7 @@
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       volumes
 
 **Default:**
 
@@ -50,7 +50,7 @@ address.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -68,7 +68,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       filesystem
 	default:     xfs
 
 **Description:**
@@ -80,7 +80,7 @@ The filesystem to format the pool devices with.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 	provision:   used only by the provision of the resource
 	convert:     int
 
@@ -103,7 +103,7 @@ The driver ensures the value is not lesser than the number of instances.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 
 **Example:**
 
@@ -119,7 +119,7 @@ prepare the pool volumes devices.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       filesystem
 
 **Example:**
 
@@ -134,7 +134,7 @@ The mkfs command options to use to format the pool devices.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       filesystem
 
 **Description:**
 
@@ -145,7 +145,7 @@ The mount options of the fs created over the pool devices.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       volumes
 
 **Example:**
 
@@ -168,7 +168,7 @@ segment of their own, as a `lan`, is refused. Name the addresses with
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       source
 
 **Description:**
 
@@ -179,7 +179,7 @@ The fullpath of the directory hosting the pool volumes loop files.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       volumes
 
 **Description:**
 
@@ -193,7 +193,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       volumes
 
 **Example:**
 
@@ -207,8 +207,8 @@ The value of the template keyword to set in the drbd resource of the created vol
 
 	required:    false
 	scopable:    false
-	group:       other
-	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, dorado, hoc, drbd, pure, rados
+	group:       identity
+	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, hoc, drbd, pure, rados
 	default:     loop
 
 **Description:**
@@ -224,7 +224,7 @@ do so, and a namespace can not claim a pool that does not.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       source
 
 **Description:**
 
@@ -235,7 +235,7 @@ The name of the volume group to allocate the pool volumes logical volumes into.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       source
 
 **Description:**
 

@@ -241,7 +241,7 @@ The command to execute in the docker container on run.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -625,6 +625,9 @@ To use if the container entrypoint is a shell.
 	required:    false
 	scopable:    true
 	group:       isolation
+	candidates:  , none, host, private, shareable
+	references:  container rid
+	rbac:        A namespace other than none or a container#<n> of the object requires the root grant.
 
 **Example:**
 
@@ -720,7 +723,9 @@ assigned.
 	scopable:    true
 	group:       network
 	aliases:     net
-	rbac:        The host network namespace requires the root grant.
+	candidates:  , none, host
+	references:  container rid
+	rbac:        A namespace other than none or a container#<n> of the object requires the root grant.
 
 **Example:**
 
@@ -811,7 +816,7 @@ sources.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -832,7 +837,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -864,7 +869,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -897,7 +902,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -922,7 +927,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	depends:     create_pg=true
 
 **Example:**
@@ -944,7 +949,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -975,7 +980,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -992,12 +997,15 @@ Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
+On a node holding the v1 cgroup hierarchy, `default` lifts the memory+swap
+limit too: a group with no memory limit cannot keep one below it.
+
 
 ## Keyword `pg_mem_oom_control`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -1027,7 +1035,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -1046,7 +1054,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -1067,7 +1075,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -1090,7 +1098,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -1114,6 +1122,9 @@ written stays written, whether om wrote it or something else did.
 	required:    false
 	scopable:    true
 	group:       isolation
+	candidates:  , host
+	references:  container rid
+	rbac:        A namespace other than none or a container#<n> of the object requires the root grant.
 
 **Example:**
 
@@ -1304,6 +1315,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1661,6 +1673,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1697,7 +1710,7 @@ Wait for `<duration>` before declaring the container action a failure.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 
 **Description:**
@@ -1714,6 +1727,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1821,7 +1835,7 @@ Allocate a pseudo-tty.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        Requires the root grant, except for the values oci, docker, podman, kvm.
 
 **Description:**
@@ -1854,6 +1868,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1891,6 +1906,7 @@ Also support the `<user>:<group>` syntax.
 	required:    false
 	scopable:    true
 	group:       isolation
+	rbac:        A namespace other than none or a container#<n> of the object requires the root grant.
 
 **Example:**
 
@@ -1910,10 +1926,11 @@ A container with `userns=host` will share the host's userns.
 	scopable:    true
 	group:       isolation
 	candidates:  , host
+	rbac:        A namespace other than none or a container#<n> of the object requires the root grant.
 
 **Example:**
 
-	utsns=container#0
+	utsns=host
 
 **Description:**
 

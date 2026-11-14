@@ -9,7 +9,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	since:       v3.0.0-rc56
 	rbac:        This driver group requires the root grant.
 
@@ -30,7 +30,7 @@ and left out of the cluster status.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**

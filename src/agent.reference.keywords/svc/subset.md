@@ -23,7 +23,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -41,7 +41,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       actions
 	convert:     bool
 
 **Description:**
@@ -81,7 +81,7 @@ app#1 ---> app#2 -+-> app#3
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -102,7 +102,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -134,7 +134,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -167,7 +167,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -192,7 +192,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	depends:     create_pg=true
 
 **Example:**
@@ -214,7 +214,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -245,7 +245,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -262,12 +262,15 @@ Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
+On a node holding the v1 cgroup hierarchy, `default` lifts the memory+swap
+limit too: a group with no memory limit cannot keep one below it.
+
 
 ## Keyword `pg_mem_oom_control`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -297,7 +300,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -316,7 +319,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -337,7 +340,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -360,7 +363,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -383,7 +386,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 
 **Description:**
@@ -399,7 +402,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        Requires the root grant.
 
 **Description:**

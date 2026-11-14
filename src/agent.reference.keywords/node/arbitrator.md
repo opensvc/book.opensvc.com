@@ -20,7 +20,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -38,7 +38,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	default:     false
 	convert:     bool
 
@@ -54,7 +54,7 @@ This should only be enabled for testing.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       endpoint
 	aliases:     name
 
 **Example:**
@@ -93,7 +93,7 @@ Arbitrators are verified every 60s to alert admins of the arbitrator failures.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       quorum
 	default:     1
 	convert:     int
 

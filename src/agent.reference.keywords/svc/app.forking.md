@@ -220,7 +220,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       status
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -246,7 +246,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 	rbac:        This driver group requires the root grant.
 
@@ -272,7 +272,7 @@ status when an app launcher did not return.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -291,7 +291,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       environment
 	deprecated:  since v3.0.0-rc57, replaced by environment
 	convert:     shlex
 	rbac:        This driver group requires the root grant.
@@ -329,7 +329,7 @@ variables in the process execution environment:
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -342,7 +342,7 @@ Change the working directory to the specified location instead of the default
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -404,7 +404,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       environment
 	convert:     shlex
 	rbac:        This driver group requires the root grant.
 
@@ -469,7 +469,7 @@ key generated, `source random`, which is an error.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -482,7 +482,7 @@ instead of `root`.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
 	default:     false
 	rbac:        This driver group requires the root grant.
 
@@ -515,7 +515,7 @@ which then reports no key-value at all.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 	rbac:        This driver group requires the root grant.
 
@@ -541,7 +541,7 @@ info when an app launcher did not return.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -557,7 +557,7 @@ When both `limit_vmem` and `limit_as` is used, the max value is chosen.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -570,7 +570,7 @@ The limit on the largest core dump size that can be produced (unit byte).
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     duration
 	rbac:        This driver group requires the root grant.
 
@@ -587,7 +587,7 @@ The limit on CPU time (duration).
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -600,7 +600,7 @@ The limit on the data segment size of a process (unit byte).
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -613,7 +613,7 @@ The limit on the largest file that can be created (unit byte).
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -626,7 +626,7 @@ The limit on how much memory a process can lock with mlock(2) (unit byte, no sol
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -639,7 +639,7 @@ The limit on the number files a process can have open at once.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -652,7 +652,7 @@ The limit on the number of processes this user can have at one time, no solaris 
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -666,7 +666,7 @@ The limit on the total physical memory that can be in use by a process
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -679,7 +679,7 @@ The limit on the stack size of a process (unit bytes).
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -713,7 +713,8 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
+	references:  ip|container|app rid
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -755,7 +756,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -777,7 +778,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -810,7 +811,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -844,7 +845,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -870,7 +871,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	depends:     create_pg=true
 	rbac:        This driver group requires the root grant.
 
@@ -893,7 +894,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -925,7 +926,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -943,12 +944,15 @@ Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
+On a node holding the v1 cgroup hierarchy, `default` lifts the memory+swap
+limit too: a group with no memory limit cannot keep one below it.
+
 
 ## Keyword `pg_mem_oom_control`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -979,7 +983,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -999,7 +1003,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1021,7 +1025,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1045,7 +1049,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -1208,6 +1212,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1228,7 +1233,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       quiesce
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1296,7 +1301,7 @@ The minimum delay between two restart tentatives on the resource.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       quiesce
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1316,7 +1321,7 @@ argument.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       status
 	default:     0:up 1:down
 	rbac:        This driver group requires the root grant.
 
@@ -1343,7 +1348,7 @@ Valid `<status names>` are:
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -1366,7 +1371,7 @@ or a path in a vol of the namespace, as `app-data/run.sh`.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       environment
 	deprecated:  since v3.0.0-rc57, replaced by environment
 	convert:     shlex
 	rbac:        This driver group requires the root grant.
@@ -1466,7 +1471,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1493,6 +1498,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1513,7 +1519,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 	rbac:        This driver group requires the root grant.
 
@@ -1538,7 +1544,7 @@ A timeout can be coupled with `optional=true` to not abort a service instance
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 	rbac:        This driver group requires the root grant.
 
@@ -1555,7 +1561,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       status
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -1573,7 +1579,7 @@ If `true`, redirect the checker script:
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1600,6 +1606,7 @@ If `true`, redirect the checker script:
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1620,7 +1627,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 	rbac:        This driver group requires the root grant.
 
@@ -1691,7 +1698,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 	rbac:        This driver group requires the root grant.
 
@@ -1716,7 +1723,7 @@ action when an app launcher did not return.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -1728,7 +1735,7 @@ The resource driver name.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
 	convert:     umask
 	rbac:        This driver group requires the root grant.
 
@@ -1767,6 +1774,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1787,7 +1795,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
 	rbac:        This driver group requires the root grant.
 
 **Description:**

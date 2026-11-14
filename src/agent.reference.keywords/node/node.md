@@ -74,7 +74,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       env
 	convert:     list
 
 **Example:**
@@ -97,7 +97,7 @@ For example, on a PRD cluster, `PRD PPRD` also allows the PPRD objects to run.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       fetch
 	convert:     list
 
 **Example:**
@@ -117,7 +117,7 @@ range opened here is opened to all the users allowed a url of it.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       addressing
 	default:     10.0.0.0/8 172.16.0.0/24 192.168.0.0/16
 	convert:     list
 
@@ -132,7 +132,7 @@ Should be restricted to match your site constraints.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       fetch
 	convert:     list
 
 **Example:**
@@ -160,7 +160,7 @@ storage it redirects to. What the opensvc organization publishes,
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       location
 
 **Example:**
 
@@ -175,7 +175,7 @@ An asset information to push to the collector on `om node push asset`, overridin
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 
 **Example:**
 
@@ -190,7 +190,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       repositories
 
 **Example:**
 
@@ -208,7 +208,7 @@ If not set, the prod branch, the stable one.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	deprecated:  since v3.0.0-rc44, replaced by collector.url
 
 **Example:**
@@ -229,7 +229,7 @@ set by its own keyword: `<collector>/feeder` for collector_feeder, and
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	deprecated:  since v3.0.0-rc44, replaced by collector.feeder
 
 **Default:**
@@ -248,7 +248,7 @@ OpenSVC enables Collector v3 feeder calls upon detection of a collector v3 insta
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       timing
 	deprecated:  since v3.0.0-rc44, replaced by collector.ping_interval
 	aliases:     db_min_ping_interval
 	default:     60s
@@ -270,7 +270,7 @@ Minimum value: 60s
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	deprecated:  since v3.0.0-rc44, replaced by collector.server
 
 **Default:**
@@ -288,7 +288,7 @@ OpenSVC enables Collector v3 server calls upon detection of a collector v3 insta
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       timing
 	deprecated:  since v3.0.0-rc44, replaced by collector.status_delay
 	aliases:     db_min_update_interval
 	default:     10s
@@ -307,7 +307,7 @@ Minimum value: 10s
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       timeouts
 	deprecated:  since v3.0.0-rc44, replaced by collector.timeout
 	default:     5s
 	convert:     duration
@@ -324,7 +324,7 @@ Minimum value: 1s. Maximum value: 20s.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -342,7 +342,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 
 **Example:**
 
@@ -362,7 +362,7 @@ On GCE instances, defaults to the instance ip address.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 	convert:     int
 
 **Example:**
@@ -378,7 +378,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 
 **Example:**
 
@@ -393,7 +393,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 
 **Example:**
 
@@ -408,7 +408,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 	convert:     int
 
 **Example:**
@@ -424,7 +424,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	deprecated:  since v3.0.0-rc58
 
 **Example:**
@@ -444,7 +444,7 @@ or `collector.server`. `om node config migrate` drops this keyword.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	convert:     bool
 
 **Description:**
@@ -458,7 +458,7 @@ This should only be used for testing.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       feed
 	default:     true
 	convert:     bool
 
@@ -475,7 +475,7 @@ is set.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	deprecated:  since v3.0.0-rc58, replaced by collector.url
 
 **Example:**
@@ -494,7 +494,7 @@ om feeds an oc3 collector, set by `collector.url`, or `collector.feeder` and
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 
 **Example:**
 
@@ -509,7 +509,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       env
 	default:     TST
 
 **Description:**
@@ -526,7 +526,7 @@ A code like PRD, DEV, etc... the agent can use to enforce data protection polici
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       timing
 	since:       v3.0.0-rc61
 	default:     60s
 	convert:     duration
@@ -550,7 +550,7 @@ The minimum is `1s`: a lower value, `0` included, is refused.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       location
 
 **Example:**
 
@@ -565,7 +565,7 @@ An asset information to push to the collector on `om node push asset`, overridin
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       location
 
 **Example:**
 
@@ -580,7 +580,7 @@ An asset information to push to the collector on `om node push asset`, overridin
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       location
 
 **Example:**
 
@@ -595,7 +595,7 @@ An asset information to push to the collector on `om node push asset`, overridin
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       location
 
 **Example:**
 
@@ -610,7 +610,7 @@ An asset information to push to the collector on `om node push asset`, overridin
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       location
 
 **Example:**
 
@@ -625,7 +625,7 @@ An asset information to push to the collector on `om node push asset`, overridin
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       location
 
 **Example:**
 
@@ -640,7 +640,7 @@ An asset information to push to the collector on `om node push asset`, overridin
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       location
 
 **Example:**
 
@@ -655,7 +655,7 @@ An asset information to push to the collector on `om node push asset`, overridin
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       location
 
 **Example:**
 
@@ -670,7 +670,7 @@ An asset information to push to the collector on `om node push asset`, overridin
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       timing
 	default:     60
 	convert:     duration
 
@@ -692,7 +692,7 @@ This parameter should be adjusted to span the daemon restart time.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 
 **Example:**
 
@@ -707,7 +707,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       limits
 	default:     64mb
 	convert:     size
 
@@ -722,7 +722,7 @@ A fetch announcing a larger body, or sending one, fails naming the url, and leav
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       limits
 	default:     1mb
 	convert:     size
 
@@ -737,7 +737,7 @@ Adding or changing a key with a larger value is refused.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       limits
 	default:     10
 	convert:     int
 
@@ -760,7 +760,7 @@ refused, and the daemon raises one written before to 2.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 	convert:     int
 
 **Example:**
@@ -776,7 +776,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 	convert:     size
 
 **Example:**
@@ -792,7 +792,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 	convert:     int
 
 **Example:**
@@ -808,7 +808,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       limits
 	aliases:     min_avail_mem_pct
 	default:     2%
 	convert:     share
@@ -833,7 +833,7 @@ memory it amounts to, and as 50% at most. `0` disables the check.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       limits
 	aliases:     min_avail_swap_pct
 	default:     10%
 	convert:     share
@@ -859,7 +859,7 @@ overloaded by it.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 
 **Example:**
 
@@ -874,7 +874,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       containers
 	candidates:  podman, docker
 
 **Description:**
@@ -893,7 +893,7 @@ keeps its `oci` resources on docker with `oci = docker`.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 
 **Example:**
 
@@ -908,7 +908,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 
 **Example:**
 
@@ -923,7 +923,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 
 **Example:**
 
@@ -938,7 +938,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 
 **Example:**
 
@@ -953,7 +953,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Default:**
 
@@ -968,7 +968,7 @@ The scsi3 persistent reservation key used by the pr resources.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       timing
 	default:     5s
 	convert:     duration
 
@@ -986,7 +986,7 @@ Usually set to allow at least a couple of heartbeats to be received.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       timing
 	default:     90s
 	convert:     duration
 
@@ -1036,7 +1036,7 @@ nodes.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       repositories
 
 **Example:**
 
@@ -1078,7 +1078,7 @@ ROOT
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       repositories
 
 **Example:**
 
@@ -1103,7 +1103,7 @@ Expected repository structure:
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       repositories
 
 **Example:**
 
@@ -1137,7 +1137,7 @@ ROOT
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       remote
 	default:     root
 
 **Example:**
@@ -1164,7 +1164,7 @@ If @node is omitted, user is considered the new default user.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       location
 
 **Example:**
 
@@ -1179,7 +1179,7 @@ An asset information to push to the collector on `om node push asset`, overridin
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       fetch
 	default:     true
 	convert:     bool
 
@@ -1192,7 +1192,7 @@ If set to false, disable ssl authentication checks on all uri fetches.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 
 **Example:**
 
@@ -1207,7 +1207,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 
 **Example:**
 
@@ -1222,7 +1222,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       quorum
 	candidates:  crash, reboot, disabled
 	default:     crash
 
@@ -1254,7 +1254,7 @@ Possible values are:
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       remote
 	default:     opensvc
 
 **Description:**
@@ -1267,7 +1267,7 @@ For example, the `opensvc` default value serves ~/.ssh/opensvc.pub.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       location
 
 **Example:**
 
@@ -1282,7 +1282,7 @@ An asset information to push to the collector on `om node push asset`, overridin
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       location
 
 **Example:**
 
@@ -1297,7 +1297,7 @@ An asset information to push to the collector on `om node push asset`, overridin
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       asset
 
 **Example:**
 
@@ -1312,7 +1312,7 @@ Override for the corresponding `om node push asset` discovery probe.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       credentials
 	secret:      true
 
 **Description:**

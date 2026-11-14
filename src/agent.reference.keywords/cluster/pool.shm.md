@@ -23,7 +23,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -42,7 +42,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -59,7 +59,7 @@ prepare the pool volumes devices.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       filesystem
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -75,7 +75,7 @@ The mkfs command options to use to format the pool devices.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       filesystem
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -87,7 +87,7 @@ The mount options of the fs created over the pool devices.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       filesystem
 	since:       v3.0.0-rc42
 	convert:     filemode
 	rbac:        This driver group requires the root grant.
@@ -113,7 +113,7 @@ when the pool is changed afterwards.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       volumes
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -128,8 +128,8 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
-	group:       other
-	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, dorado, hoc, drbd, pure, rados
+	group:       identity
+	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, hoc, drbd, pure, rados
 	default:     loop
 	rbac:        This driver group requires the root grant.
 

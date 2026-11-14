@@ -31,7 +31,7 @@
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       endpoint
 
 **Example:**
 
@@ -46,7 +46,7 @@ The array rest api url.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -64,7 +64,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	default:     false
 	convert:     bool
 
@@ -81,7 +81,7 @@ Disable secure socket verification.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       credentials
 
 **Example:**
 
@@ -102,7 +102,7 @@ Array passwords are usually stored in sec datastores like `system/sec/<array nam
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       scheduling
 
 **Description:**
 
@@ -115,7 +115,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       timeouts
 	default:     120s
 	convert:     duration
 
@@ -132,8 +132,8 @@ The api request timeout.
 
 	required:    true
 	scopable:    false
-	group:       other
-	candidates:  freenas, hds, eva, nexenta, vioserver, centera, symmetrix, emcvnx, netapp, hp3par, ibmds, ibmsvc, xtremio, dorado, hoc, truenas
+	group:       identity
+	candidates:  freenas, hds, symmetrix, hp3par, xtremio, hoc, pure, truenas
 
 **Description:**
 
@@ -144,7 +144,7 @@ The storage array driver name.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       credentials
 
 **Example:**
 

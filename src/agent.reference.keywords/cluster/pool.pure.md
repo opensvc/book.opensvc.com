@@ -34,7 +34,7 @@
 
 	required:    true
 	scopable:    true
-	group:       other
+	group:       source
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -47,7 +47,7 @@ configuration.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -66,7 +66,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 	default:     true
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -80,7 +80,7 @@ If set to false the pure volumes are not immediately deleted on unprovision, so 
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       source
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -92,7 +92,7 @@ The name of the array disk group to allocate volumes from.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       filesystem
 	default:     xfs
 	rbac:        This driver group requires the root grant.
 
@@ -105,7 +105,7 @@ The filesystem to format the pool devices with.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -117,7 +117,7 @@ The prefix to add to the label assigned to the created disks.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -134,7 +134,7 @@ prepare the pool volumes devices.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       filesystem
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -150,7 +150,7 @@ The mkfs command options to use to format the pool devices.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       filesystem
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -162,7 +162,7 @@ The mount options of the fs created over the pool devices.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       source
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -174,7 +174,7 @@ The pod to create volume into.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       volumes
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -189,8 +189,8 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
-	group:       other
-	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, dorado, hoc, drbd, pure, rados
+	group:       identity
+	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, hoc, drbd, pure, rados
 	default:     loop
 	rbac:        This driver group requires the root grant.
 
@@ -207,7 +207,7 @@ do so, and a namespace can not claim a pool that does not.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       source
 	rbac:        This driver group requires the root grant.
 
 **Description:**

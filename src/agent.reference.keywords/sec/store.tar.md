@@ -25,7 +25,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -43,7 +43,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       store
 
 **Example:**
 
@@ -62,7 +62,7 @@ server it did not recognize.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       store
 
 **Example:**
 
@@ -94,7 +94,7 @@ For example, `keep = 24h 7d 4w 6m` keeps 41 runs at most.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       store
 	secret:      true
 	rbac:        An ssh private key not written from <sec> key <key> requires the root grant.
 
@@ -117,7 +117,7 @@ datastore holding it must share with its namespace.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       store
 	candidates:  tar
 	rbac:        Requires the root grant, except for the values tar.
 
@@ -135,7 +135,7 @@ resources of the objects write into it.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       store
 	rbac:        A store url other than sftp://, a directory of the node, requires the root grant.
 
 **Example:**

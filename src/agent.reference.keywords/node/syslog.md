@@ -12,7 +12,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -30,7 +30,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       logging
 	default:     daemon
 
 **Description:**
@@ -42,7 +42,7 @@ The syslog facility to log to.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 
 **Default:**
 
@@ -60,7 +60,7 @@ messages are posted to `/dev/log`.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       logging
 	candidates:  critical, error, warning, info, debug
 	default:     info
 
@@ -76,7 +76,7 @@ agent does not emit messages at this level.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	default:     514
 
 **Description:**

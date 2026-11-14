@@ -35,7 +35,7 @@
 
 	required:    true
 	scopable:    true
-	group:       other
+	group:       source
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -48,7 +48,7 @@ configuration.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 	default:     512
 	convert:     size
 	rbac:        This driver group requires the root grant.
@@ -62,7 +62,7 @@ The block size of the zvol created for a volume of this pool.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -81,7 +81,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 	candidates:  inherit, none, lz4, gzip-1, gzip-2, gzip-3, gzip-4, gzip-5, gzip-6, gzip-7, gzip-8, gzip-9, zle, lzjb
 	default:     inherit
 	rbac:        This driver group requires the root grant.
@@ -95,7 +95,7 @@ Compression level.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 	default:     off
 	rbac:        This driver group requires the root grant.
 
@@ -108,7 +108,7 @@ Activate data deduplication on created dataset and zvol. Example values: on, off
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       source
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -120,7 +120,7 @@ The name of the array disk group to allocate volumes from.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       filesystem
 	default:     xfs
 	rbac:        This driver group requires the root grant.
 
@@ -133,7 +133,7 @@ The filesystem to format the pool devices with.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -147,7 +147,7 @@ Allow initiators to xcopy without authenticating to foreign targets.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -164,7 +164,7 @@ prepare the pool volumes devices.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       filesystem
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -180,7 +180,7 @@ The mkfs command options to use to format the pool devices.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       filesystem
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -192,7 +192,7 @@ The mount options of the fs created over the pool devices.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -206,7 +206,7 @@ Create zvol in sparse mode.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       volumes
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -221,8 +221,8 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
-	group:       other
-	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, dorado, hoc, drbd, pure, rados
+	group:       identity
+	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, hoc, drbd, pure, rados
 	default:     loop
 	rbac:        This driver group requires the root grant.
 

@@ -27,7 +27,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -45,7 +45,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 
 **Example:**
 
@@ -64,7 +64,7 @@ server it did not recognize.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       retention
 
 **Example:**
 
@@ -96,7 +96,7 @@ For example, `keep = 24h 7d 4w 6m` keeps 41 runs at most.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       scheduling
 
 **Description:**
 
@@ -109,7 +109,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	default:     false
 	convert:     bool
 
@@ -128,7 +128,7 @@ it, over ssh, as root, through the trust `om cluster ssh trust` sets up.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       credentials
 	secret:      true
 
 **Example:**
@@ -150,7 +150,7 @@ datastore holding it must share with its namespace.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       identity
 	candidates:  tar
 
 **Description:**
@@ -167,7 +167,7 @@ resources of the objects write into it.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       endpoint
 
 **Example:**
 

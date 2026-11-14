@@ -185,7 +185,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -235,7 +235,7 @@ unprovision it.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       dns
 
 **Example:**
 
@@ -265,7 +265,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       dns
 	convert:     list
 
 **Example:**
@@ -304,10 +304,11 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       interface
 	aliases:     container_rid
 	stop first:  a change is refused while the resource is up
-	rbac:        The host network namespace requires the root grant.
+	references:  container rid
+	rbac:        A namespace other than none or a container#<n> of the object requires the root grant.
 
 **Example:**
 
@@ -322,7 +323,7 @@ The resource id of the container to plumb the ip into.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       addressing
 	stop first:  a change is refused while the resource is up
 	default:     default
 	rbac:        A network named by a path requires the root grant.
@@ -342,7 +343,7 @@ The `default` network is created using the `host-local` bridge plugin.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       interface
 	aliases:     ipdev
 
 **Example:**
@@ -378,7 +379,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -399,7 +400,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -431,7 +432,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -464,7 +465,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -489,7 +490,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	depends:     create_pg=true
 
 **Example:**
@@ -511,7 +512,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -542,7 +543,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -559,12 +560,15 @@ Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
+On a node holding the v1 cgroup hierarchy, `default` lifts the memory+swap
+limit too: a group with no memory limit cannot keep one below it.
+
 
 ## Keyword `pg_mem_oom_control`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -594,7 +598,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -613,7 +617,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -634,7 +638,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -657,7 +661,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -818,6 +822,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -942,6 +947,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -961,7 +967,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 
 **Description:**
@@ -978,6 +984,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1040,7 +1047,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        Requires the root grant, except for a cni address, for a netns address om draws from a cluster network, and for a host address om draws from a lan network, on the interface and with the netmask the network says.
 
 **Description:**
@@ -1073,6 +1080,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1092,7 +1100,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       dns
 	default:     0
 	convert:     duration
 

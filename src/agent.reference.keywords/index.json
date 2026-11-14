@@ -76,166 +76,16 @@
    "inherit": "leaf2head",
    "textSum": "3c272fb993f485d9"
   },
-  "cluster/array.centera.java_bin": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "7498d6fc3f5bf45e",
-   "types": [
-    "centera"
-   ]
-  },
-  "cluster/array.centera.jcass_dir": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "9dbfb6b74b7e9fea",
-   "types": [
-    "centera"
-   ]
-  },
-  "cluster/array.centera.password": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "db58ec3f6f50cad6",
-   "types": [
-    "centera",
-    "dorado",
-    "eva",
-    "freenas",
-    "hds",
-    "hoc",
-    "nexenta",
-    "truenas",
-    "xtremio"
-   ]
-  },
-  "cluster/array.centera.server": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "1e1098e7af77aec9",
-   "types": [
-    "centera",
-    "netapp"
-   ]
-  },
-  "cluster/array.centera.username": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "9b25591f34919dff",
-   "types": [
-    "centera",
-    "dorado",
-    "eva",
-    "freenas",
-    "hds",
-    "hoc",
-    "ibmds",
-    "ibmsvc",
-    "netapp",
-    "nexenta",
-    "truenas",
-    "vioserver",
-    "xtremio"
-   ]
-  },
-  "cluster/array.dorado.api": {
+  "cluster/array.freenas.api": {
    "inherit": "leaf2head",
    "required": true,
    "textSum": "c30f80e5da7ab987",
    "types": [
-    "dorado",
     "freenas",
     "hoc",
     "pure",
     "truenas",
     "xtremio"
-   ]
-  },
-  "cluster/array.dorado.name": {
-   "inherit": "leaf2head",
-   "textSum": "6d561f8de3e8a5a8",
-   "types": [
-    "dorado",
-    "hoc"
-   ]
-  },
-  "cluster/array.dorado.timeout": {
-   "converter": "duration",
-   "default": "120s",
-   "inherit": "leaf2head",
-   "textSum": "116614c51f518a94",
-   "types": [
-    "dorado",
-    "freenas",
-    "hoc",
-    "truenas"
-   ]
-  },
-  "cluster/array.emcvnx.method": {
-   "candidates": [
-    "credentials",
-    "secfile"
-   ],
-   "default": "secfile",
-   "inherit": "leaf2head",
-   "textSum": "5e3b726441494ab3",
-   "types": [
-    "emcvnx"
-   ]
-  },
-  "cluster/array.emcvnx.password": {
-   "inherit": "leaf2head",
-   "textSum": "db58ec3f6f50cad6",
-   "types": [
-    "emcvnx",
-    "symmetrix"
-   ]
-  },
-  "cluster/array.emcvnx.scope": {
-   "default": "0",
-   "inherit": "leaf2head",
-   "textSum": "b14e44a0d8528fdf",
-   "types": [
-    "emcvnx"
-   ]
-  },
-  "cluster/array.emcvnx.spa": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "52eff53816d61044",
-   "types": [
-    "emcvnx"
-   ]
-  },
-  "cluster/array.emcvnx.spb": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "4459cfce3dc71040",
-   "types": [
-    "emcvnx"
-   ]
-  },
-  "cluster/array.emcvnx.username": {
-   "inherit": "leaf2head",
-   "textSum": "9c9bf08497d20a1a",
-   "types": [
-    "emcvnx",
-    "hp3par",
-    "symmetrix"
-   ]
-  },
-  "cluster/array.eva.bin": {
-   "inherit": "leaf2head",
-   "textSum": "131ba32dd5d9df8d",
-   "types": [
-    "eva"
-   ]
-  },
-  "cluster/array.eva.manager": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "94e21d09de76ba16",
-   "types": [
-    "eva"
    ]
   },
   "cluster/array.freenas.insecure": {
@@ -248,6 +98,41 @@
     "hoc",
     "pure",
     "truenas"
+   ]
+  },
+  "cluster/array.freenas.password": {
+   "inherit": "leaf2head",
+   "required": true,
+   "textSum": "db58ec3f6f50cad6",
+   "types": [
+    "freenas",
+    "hds",
+    "hoc",
+    "truenas",
+    "xtremio"
+   ]
+  },
+  "cluster/array.freenas.timeout": {
+   "converter": "duration",
+   "default": "120s",
+   "inherit": "leaf2head",
+   "textSum": "116614c51f518a94",
+   "types": [
+    "freenas",
+    "hoc",
+    "truenas"
+   ]
+  },
+  "cluster/array.freenas.username": {
+   "inherit": "leaf2head",
+   "required": true,
+   "textSum": "9b25591f34919dff",
+   "types": [
+    "freenas",
+    "hds",
+    "hoc",
+    "truenas",
+    "xtremio"
    ]
   },
   "cluster/array.hds.bin": {
@@ -332,6 +217,13 @@
     "hoc"
    ]
   },
+  "cluster/array.hoc.name": {
+   "inherit": "leaf2head",
+   "textSum": "6d561f8de3e8a5a8",
+   "types": [
+    "hoc"
+   ]
+  },
   "cluster/array.hoc.retry": {
    "converter": "int",
    "default": "30",
@@ -366,7 +258,7 @@
   "cluster/array.hp3par.manager": {
    "defaultText": "The name of the array\n",
    "inherit": "leaf2head",
-   "textSum": "3f81318c95ab6cfa",
+   "textSum": "343e96398c4d4315",
    "types": [
     "hp3par"
    ]
@@ -374,12 +266,11 @@
   "cluster/array.hp3par.method": {
    "candidates": [
     "cli",
-    "proxy",
     "ssh"
    ],
    "default": "ssh",
    "inherit": "leaf2head",
-   "textSum": "fcb8553aeab338a4",
+   "textSum": "f8848cc19eab1880",
    "types": [
     "hp3par"
    ]
@@ -391,39 +282,12 @@
     "hp3par"
    ]
   },
-  "cluster/array.ibmds.hmc1": {
+  "cluster/array.hp3par.username": {
    "inherit": "leaf2head",
-   "required": true,
-   "textSum": "5a9589b7f43388c4",
+   "textSum": "9c9bf08497d20a1a",
    "types": [
-    "ibmds"
-   ]
-  },
-  "cluster/array.ibmds.hmc2": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "c5ab981ebe126469",
-   "types": [
-    "ibmds"
-   ]
-  },
-  "cluster/array.ibmsvc.key": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "d0d5b33abf0cc737",
-   "types": [
-    "ibmsvc",
-    "netapp",
-    "vioserver"
-   ]
-  },
-  "cluster/array.nexenta.port": {
-   "converter": "int",
-   "default": "2000",
-   "inherit": "leaf2head",
-   "textSum": "e68d6f5b1c32f8cd",
-   "types": [
-    "nexenta"
+    "hp3par",
+    "symmetrix"
    ]
   },
   "cluster/array.pure.client_id": {
@@ -486,6 +350,13 @@
     "symmetrix"
    ]
   },
+  "cluster/array.symmetrix.password": {
+   "inherit": "leaf2head",
+   "textSum": "db58ec3f6f50cad6",
+   "types": [
+    "symmetrix"
+   ]
+  },
   "cluster/array.symmetrix.symcli_connect": {
    "inherit": "leaf2head",
    "textSum": "5f57a973e4b32aee",
@@ -503,21 +374,13 @@
   },
   "cluster/array.type": {
    "candidates": [
-    "centera",
-    "dorado",
-    "emcvnx",
-    "eva",
     "freenas",
     "hds",
     "hoc",
     "hp3par",
-    "ibmds",
-    "ibmsvc",
-    "netapp",
-    "nexenta",
+    "pure",
     "symmetrix",
     "truenas",
-    "vioserver",
     "xtremio"
    ],
    "inherit": "leaf2head",
@@ -663,7 +526,7 @@
   },
   "cluster/collector.timeout": {
    "converter": "duration",
-   "default": "5s",
+   "default": "10s",
    "inherit": "leaf2head",
    "since": "v3.0.0-rc44",
    "textSum": "55085d2a4d1f7279"
@@ -703,7 +566,7 @@
    "inherit": "leaf2head",
    "required": true,
    "scopable": true,
-   "textSum": "74b3f10a5768dedd",
+   "textSum": "43b759d8780d74be",
    "types": [
     "disk"
    ]
@@ -728,7 +591,7 @@
    "default": "224.3.29.71",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "ad1fbb3207f472d7",
+   "textSum": "fa634e3e4f48befd",
    "types": [
     "multicast"
    ]
@@ -737,7 +600,7 @@
    "defaultText": "The natural interface for `<addr>`\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "42405414f769edd8",
+   "textSum": "2e7bd8350de98fcb",
    "types": [
     "multicast"
    ]
@@ -807,7 +670,7 @@
    "defaultText": "0.0.0.0 for listening and to the resolved nodename for sending.\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "2e91f2d359eba313",
+   "textSum": "9349ad132b36599b",
    "types": [
     "unicast"
    ]
@@ -1425,58 +1288,20 @@
     "directory"
    ]
   },
-  "cluster/pool.dorado.array": {
+  "cluster/pool.drbd.addr": {
+   "defaultText": "The ipaddr resolved for the nodename.\n",
    "inherit": "leaf2head",
-   "required": true,
    "scopable": true,
-   "textSum": "57ccd3522d1d4d7f",
+   "textSum": "389ebbdf8d78e9e6",
    "types": [
-    "dorado",
-    "freenas",
-    "hoc",
-    "pure",
-    "symmetrix",
-    "truenas"
+    "drbd"
    ]
   },
-  "cluster/pool.dorado.compression": {
-   "converter": "bool",
-   "default": "false",
-   "inherit": "leaf2head",
-   "textSum": "73d44f00429a0fa0",
-   "types": [
-    "dorado",
-    "hoc"
-   ]
-  },
-  "cluster/pool.dorado.dedup": {
-   "converter": "bool",
-   "default": "false",
-   "inherit": "leaf2head",
-   "textSum": "3f5af6a63f7d6c0a",
-   "types": [
-    "dorado",
-    "hoc"
-   ]
-  },
-  "cluster/pool.dorado.diskgroup": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "3d67f0a14f4986c8",
-   "types": [
-    "dorado",
-    "freenas",
-    "hoc",
-    "pure",
-    "truenas"
-   ]
-  },
-  "cluster/pool.dorado.fs_type": {
+  "cluster/pool.drbd.fs_type": {
    "default": "xfs",
    "inherit": "leaf2head",
    "textSum": "c1bc9a2cfcc16fa0",
    "types": [
-    "dorado",
     "drbd",
     "freenas",
     "hoc",
@@ -1485,22 +1310,6 @@
     "symmetrix",
     "truenas",
     "vg"
-   ]
-  },
-  "cluster/pool.dorado.hypermetrodomain": {
-   "inherit": "leaf2head",
-   "textSum": "a3bd521c11125e7a",
-   "types": [
-    "dorado"
-   ]
-  },
-  "cluster/pool.drbd.addr": {
-   "defaultText": "The ipaddr resolved for the nodename.\n",
-   "inherit": "leaf2head",
-   "scopable": true,
-   "textSum": "389ebbdf8d78e9e6",
-   "types": [
-    "drbd"
    ]
   },
   "cluster/pool.drbd.max_peers": {
@@ -1548,6 +1357,19 @@
     "drbd"
    ]
   },
+  "cluster/pool.freenas.array": {
+   "inherit": "leaf2head",
+   "required": true,
+   "scopable": true,
+   "textSum": "57ccd3522d1d4d7f",
+   "types": [
+    "freenas",
+    "hoc",
+    "pure",
+    "symmetrix",
+    "truenas"
+   ]
+  },
   "cluster/pool.freenas.blocksize": {
    "converter": "size",
    "default": "512",
@@ -1592,6 +1414,17 @@
     "truenas"
    ]
   },
+  "cluster/pool.freenas.diskgroup": {
+   "inherit": "leaf2head",
+   "required": true,
+   "textSum": "3d67f0a14f4986c8",
+   "types": [
+    "freenas",
+    "hoc",
+    "pure",
+    "truenas"
+   ]
+  },
   "cluster/pool.freenas.insecure_tpc": {
    "converter": "bool",
    "default": "false",
@@ -1610,6 +1443,24 @@
    "types": [
     "freenas",
     "truenas"
+   ]
+  },
+  "cluster/pool.hoc.compression": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "textSum": "73d44f00429a0fa0",
+   "types": [
+    "hoc"
+   ]
+  },
+  "cluster/pool.hoc.dedup": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "textSum": "3f5af6a63f7d6c0a",
+   "types": [
+    "hoc"
    ]
   },
   "cluster/pool.hoc.label_prefix": {
@@ -1771,7 +1622,6 @@
   "cluster/pool.type": {
    "candidates": [
     "directory",
-    "dorado",
     "drbd",
     "freenas",
     "hoc",
@@ -2036,166 +1886,16 @@
    "inherit": "leaf2head",
    "textSum": "3c272fb993f485d9"
   },
-  "node/array.centera.java_bin": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "7498d6fc3f5bf45e",
-   "types": [
-    "centera"
-   ]
-  },
-  "node/array.centera.jcass_dir": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "9dbfb6b74b7e9fea",
-   "types": [
-    "centera"
-   ]
-  },
-  "node/array.centera.password": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "db58ec3f6f50cad6",
-   "types": [
-    "centera",
-    "dorado",
-    "eva",
-    "freenas",
-    "hds",
-    "hoc",
-    "nexenta",
-    "truenas",
-    "xtremio"
-   ]
-  },
-  "node/array.centera.server": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "1e1098e7af77aec9",
-   "types": [
-    "centera",
-    "netapp"
-   ]
-  },
-  "node/array.centera.username": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "9b25591f34919dff",
-   "types": [
-    "centera",
-    "dorado",
-    "eva",
-    "freenas",
-    "hds",
-    "hoc",
-    "ibmds",
-    "ibmsvc",
-    "netapp",
-    "nexenta",
-    "truenas",
-    "vioserver",
-    "xtremio"
-   ]
-  },
-  "node/array.dorado.api": {
+  "node/array.freenas.api": {
    "inherit": "leaf2head",
    "required": true,
    "textSum": "c30f80e5da7ab987",
    "types": [
-    "dorado",
     "freenas",
     "hoc",
     "pure",
     "truenas",
     "xtremio"
-   ]
-  },
-  "node/array.dorado.name": {
-   "inherit": "leaf2head",
-   "textSum": "6d561f8de3e8a5a8",
-   "types": [
-    "dorado",
-    "hoc"
-   ]
-  },
-  "node/array.dorado.timeout": {
-   "converter": "duration",
-   "default": "120s",
-   "inherit": "leaf2head",
-   "textSum": "116614c51f518a94",
-   "types": [
-    "dorado",
-    "freenas",
-    "hoc",
-    "truenas"
-   ]
-  },
-  "node/array.emcvnx.method": {
-   "candidates": [
-    "credentials",
-    "secfile"
-   ],
-   "default": "secfile",
-   "inherit": "leaf2head",
-   "textSum": "5e3b726441494ab3",
-   "types": [
-    "emcvnx"
-   ]
-  },
-  "node/array.emcvnx.password": {
-   "inherit": "leaf2head",
-   "textSum": "db58ec3f6f50cad6",
-   "types": [
-    "emcvnx",
-    "symmetrix"
-   ]
-  },
-  "node/array.emcvnx.scope": {
-   "default": "0",
-   "inherit": "leaf2head",
-   "textSum": "b14e44a0d8528fdf",
-   "types": [
-    "emcvnx"
-   ]
-  },
-  "node/array.emcvnx.spa": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "52eff53816d61044",
-   "types": [
-    "emcvnx"
-   ]
-  },
-  "node/array.emcvnx.spb": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "4459cfce3dc71040",
-   "types": [
-    "emcvnx"
-   ]
-  },
-  "node/array.emcvnx.username": {
-   "inherit": "leaf2head",
-   "textSum": "9c9bf08497d20a1a",
-   "types": [
-    "emcvnx",
-    "hp3par",
-    "symmetrix"
-   ]
-  },
-  "node/array.eva.bin": {
-   "inherit": "leaf2head",
-   "textSum": "131ba32dd5d9df8d",
-   "types": [
-    "eva"
-   ]
-  },
-  "node/array.eva.manager": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "94e21d09de76ba16",
-   "types": [
-    "eva"
    ]
   },
   "node/array.freenas.insecure": {
@@ -2208,6 +1908,41 @@
     "hoc",
     "pure",
     "truenas"
+   ]
+  },
+  "node/array.freenas.password": {
+   "inherit": "leaf2head",
+   "required": true,
+   "textSum": "db58ec3f6f50cad6",
+   "types": [
+    "freenas",
+    "hds",
+    "hoc",
+    "truenas",
+    "xtremio"
+   ]
+  },
+  "node/array.freenas.timeout": {
+   "converter": "duration",
+   "default": "120s",
+   "inherit": "leaf2head",
+   "textSum": "116614c51f518a94",
+   "types": [
+    "freenas",
+    "hoc",
+    "truenas"
+   ]
+  },
+  "node/array.freenas.username": {
+   "inherit": "leaf2head",
+   "required": true,
+   "textSum": "9b25591f34919dff",
+   "types": [
+    "freenas",
+    "hds",
+    "hoc",
+    "truenas",
+    "xtremio"
    ]
   },
   "node/array.hds.bin": {
@@ -2292,6 +2027,13 @@
     "hoc"
    ]
   },
+  "node/array.hoc.name": {
+   "inherit": "leaf2head",
+   "textSum": "6d561f8de3e8a5a8",
+   "types": [
+    "hoc"
+   ]
+  },
   "node/array.hoc.retry": {
    "converter": "int",
    "default": "30",
@@ -2326,7 +2068,7 @@
   "node/array.hp3par.manager": {
    "defaultText": "The name of the array\n",
    "inherit": "leaf2head",
-   "textSum": "3f81318c95ab6cfa",
+   "textSum": "343e96398c4d4315",
    "types": [
     "hp3par"
    ]
@@ -2334,12 +2076,11 @@
   "node/array.hp3par.method": {
    "candidates": [
     "cli",
-    "proxy",
     "ssh"
    ],
    "default": "ssh",
    "inherit": "leaf2head",
-   "textSum": "fcb8553aeab338a4",
+   "textSum": "f8848cc19eab1880",
    "types": [
     "hp3par"
    ]
@@ -2351,39 +2092,12 @@
     "hp3par"
    ]
   },
-  "node/array.ibmds.hmc1": {
+  "node/array.hp3par.username": {
    "inherit": "leaf2head",
-   "required": true,
-   "textSum": "5a9589b7f43388c4",
+   "textSum": "9c9bf08497d20a1a",
    "types": [
-    "ibmds"
-   ]
-  },
-  "node/array.ibmds.hmc2": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "c5ab981ebe126469",
-   "types": [
-    "ibmds"
-   ]
-  },
-  "node/array.ibmsvc.key": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "d0d5b33abf0cc737",
-   "types": [
-    "ibmsvc",
-    "netapp",
-    "vioserver"
-   ]
-  },
-  "node/array.nexenta.port": {
-   "converter": "int",
-   "default": "2000",
-   "inherit": "leaf2head",
-   "textSum": "e68d6f5b1c32f8cd",
-   "types": [
-    "nexenta"
+    "hp3par",
+    "symmetrix"
    ]
   },
   "node/array.pure.client_id": {
@@ -2446,6 +2160,13 @@
     "symmetrix"
    ]
   },
+  "node/array.symmetrix.password": {
+   "inherit": "leaf2head",
+   "textSum": "db58ec3f6f50cad6",
+   "types": [
+    "symmetrix"
+   ]
+  },
   "node/array.symmetrix.symcli_connect": {
    "inherit": "leaf2head",
    "textSum": "5f57a973e4b32aee",
@@ -2463,21 +2184,13 @@
   },
   "node/array.type": {
    "candidates": [
-    "centera",
-    "dorado",
-    "emcvnx",
-    "eva",
     "freenas",
     "hds",
     "hoc",
     "hp3par",
-    "ibmds",
-    "ibmsvc",
-    "netapp",
-    "nexenta",
+    "pure",
     "symmetrix",
     "truenas",
-    "vioserver",
     "xtremio"
    ],
    "inherit": "leaf2head",
@@ -2623,7 +2336,7 @@
   },
   "node/collector.timeout": {
    "converter": "duration",
-   "default": "5s",
+   "default": "10s",
    "inherit": "leaf2head",
    "since": "v3.0.0-rc44",
    "textSum": "55085d2a4d1f7279"
@@ -2663,7 +2376,7 @@
    "inherit": "leaf2head",
    "required": true,
    "scopable": true,
-   "textSum": "74b3f10a5768dedd",
+   "textSum": "43b759d8780d74be",
    "types": [
     "disk"
    ]
@@ -2688,7 +2401,7 @@
    "default": "224.3.29.71",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "ad1fbb3207f472d7",
+   "textSum": "fa634e3e4f48befd",
    "types": [
     "multicast"
    ]
@@ -2697,7 +2410,7 @@
    "defaultText": "The natural interface for `<addr>`\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "42405414f769edd8",
+   "textSum": "2e7bd8350de98fcb",
    "types": [
     "multicast"
    ]
@@ -2767,7 +2480,7 @@
    "defaultText": "0.0.0.0 for listening and to the resolved nodename for sending.\n",
    "inherit": "leaf2head",
    "scopable": true,
-   "textSum": "2e91f2d359eba313",
+   "textSum": "9349ad132b36599b",
    "types": [
     "unicast"
    ]
@@ -3484,58 +3197,20 @@
     "directory"
    ]
   },
-  "node/pool.dorado.array": {
+  "node/pool.drbd.addr": {
+   "defaultText": "The ipaddr resolved for the nodename.\n",
    "inherit": "leaf2head",
-   "required": true,
    "scopable": true,
-   "textSum": "57ccd3522d1d4d7f",
+   "textSum": "389ebbdf8d78e9e6",
    "types": [
-    "dorado",
-    "freenas",
-    "hoc",
-    "pure",
-    "symmetrix",
-    "truenas"
+    "drbd"
    ]
   },
-  "node/pool.dorado.compression": {
-   "converter": "bool",
-   "default": "false",
-   "inherit": "leaf2head",
-   "textSum": "73d44f00429a0fa0",
-   "types": [
-    "dorado",
-    "hoc"
-   ]
-  },
-  "node/pool.dorado.dedup": {
-   "converter": "bool",
-   "default": "false",
-   "inherit": "leaf2head",
-   "textSum": "3f5af6a63f7d6c0a",
-   "types": [
-    "dorado",
-    "hoc"
-   ]
-  },
-  "node/pool.dorado.diskgroup": {
-   "inherit": "leaf2head",
-   "required": true,
-   "textSum": "3d67f0a14f4986c8",
-   "types": [
-    "dorado",
-    "freenas",
-    "hoc",
-    "pure",
-    "truenas"
-   ]
-  },
-  "node/pool.dorado.fs_type": {
+  "node/pool.drbd.fs_type": {
    "default": "xfs",
    "inherit": "leaf2head",
    "textSum": "c1bc9a2cfcc16fa0",
    "types": [
-    "dorado",
     "drbd",
     "freenas",
     "hoc",
@@ -3544,22 +3219,6 @@
     "symmetrix",
     "truenas",
     "vg"
-   ]
-  },
-  "node/pool.dorado.hypermetrodomain": {
-   "inherit": "leaf2head",
-   "textSum": "a3bd521c11125e7a",
-   "types": [
-    "dorado"
-   ]
-  },
-  "node/pool.drbd.addr": {
-   "defaultText": "The ipaddr resolved for the nodename.\n",
-   "inherit": "leaf2head",
-   "scopable": true,
-   "textSum": "389ebbdf8d78e9e6",
-   "types": [
-    "drbd"
    ]
   },
   "node/pool.drbd.max_peers": {
@@ -3607,6 +3266,19 @@
     "drbd"
    ]
   },
+  "node/pool.freenas.array": {
+   "inherit": "leaf2head",
+   "required": true,
+   "scopable": true,
+   "textSum": "57ccd3522d1d4d7f",
+   "types": [
+    "freenas",
+    "hoc",
+    "pure",
+    "symmetrix",
+    "truenas"
+   ]
+  },
   "node/pool.freenas.blocksize": {
    "converter": "size",
    "default": "512",
@@ -3651,6 +3323,17 @@
     "truenas"
    ]
   },
+  "node/pool.freenas.diskgroup": {
+   "inherit": "leaf2head",
+   "required": true,
+   "textSum": "3d67f0a14f4986c8",
+   "types": [
+    "freenas",
+    "hoc",
+    "pure",
+    "truenas"
+   ]
+  },
   "node/pool.freenas.insecure_tpc": {
    "converter": "bool",
    "default": "false",
@@ -3669,6 +3352,24 @@
    "types": [
     "freenas",
     "truenas"
+   ]
+  },
+  "node/pool.hoc.compression": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "textSum": "73d44f00429a0fa0",
+   "types": [
+    "hoc"
+   ]
+  },
+  "node/pool.hoc.dedup": {
+   "converter": "bool",
+   "default": "false",
+   "inherit": "leaf2head",
+   "textSum": "3f5af6a63f7d6c0a",
+   "types": [
+    "hoc"
    ]
   },
   "node/pool.hoc.label_prefix": {
@@ -3830,7 +3531,6 @@
   "node/pool.type": {
    "candidates": [
     "directory",
-    "dorado",
     "drbd",
     "freenas",
     "hoc",
@@ -4426,7 +4126,7 @@
    "converter": "size",
    "inherit": "leaf",
    "scopable": true,
-   "textSum": "5e10a0ca32dfc391"
+   "textSum": "80383ba2945ae134"
   },
   "svc/DEFAULT.pg_mem_oom_control": {
    "inherit": "leaf",
@@ -5992,6 +5692,13 @@
    ]
   },
   "svc/container.docker.ipcns": {
+   "candidates": [
+    "",
+    "host",
+    "none",
+    "private",
+    "shareable"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "ef15b9611c434ae4",
@@ -6031,6 +5738,11 @@
    "aliases": [
     "net"
    ],
+   "candidates": [
+    "",
+    "host",
+    "none"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "c7eda63878088863",
@@ -6065,6 +5777,10 @@
    ]
   },
   "svc/container.docker.pidns": {
+   "candidates": [
+    "",
+    "host"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "6509bbdd5f0e662b",
@@ -6753,6 +6469,7 @@
   },
   "svc/container.kvm.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "b34c56fcb3e3be10",
@@ -7232,6 +6949,7 @@
   },
   "svc/container.lxc.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "b34c56fcb3e3be10",
@@ -7637,6 +7355,13 @@
    ]
   },
   "svc/container.oci.ipcns": {
+   "candidates": [
+    "",
+    "host",
+    "none",
+    "private",
+    "shareable"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "ef15b9611c434ae4",
@@ -7676,6 +7401,11 @@
    "aliases": [
     "net"
    ],
+   "candidates": [
+    "",
+    "host",
+    "none"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "c7eda63878088863",
@@ -7710,6 +7440,10 @@
    ]
   },
   "svc/container.oci.pidns": {
+   "candidates": [
+    "",
+    "host"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "6509bbdd5f0e662b",
@@ -8325,6 +8059,13 @@
    ]
   },
   "svc/container.podman.ipcns": {
+   "candidates": [
+    "",
+    "host",
+    "none",
+    "private",
+    "shareable"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "ef15b9611c434ae4",
@@ -8364,6 +8105,11 @@
    "aliases": [
     "net"
    ],
+   "candidates": [
+    "",
+    "host",
+    "none"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "c7eda63878088863",
@@ -8398,6 +8144,10 @@
    ]
   },
   "svc/container.podman.pidns": {
+   "candidates": [
+    "",
+    "host"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "6509bbdd5f0e662b",
@@ -9030,6 +8780,7 @@
   },
   "svc/container.vbox.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "b34c56fcb3e3be10",
@@ -9445,6 +9196,7 @@
   },
   "svc/disk.crypt.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -9793,6 +9545,7 @@
   },
   "svc/disk.disk.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -10156,6 +9909,7 @@
   },
   "svc/disk.drbd.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -10531,6 +10285,7 @@
   },
   "svc/disk.hp3par.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -10883,6 +10638,7 @@
   },
   "svc/disk.loop.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -11210,6 +10966,7 @@
   },
   "svc/disk.lv.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -11559,6 +11316,7 @@
   },
   "svc/disk.lvm.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -11914,6 +11672,7 @@
   },
   "svc/disk.md.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -12281,6 +12040,7 @@
   },
   "svc/disk.rados.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -12627,6 +12387,7 @@
   },
   "svc/disk.raw.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -13281,6 +13042,7 @@
   },
   "svc/disk.vg.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -13933,6 +13695,7 @@
   },
   "svc/disk.zpool.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -14278,6 +14041,7 @@
   },
   "svc/disk.zvol.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -14479,7 +14243,9 @@
   },
   "svc/fs.9pfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -14497,7 +14263,9 @@
   },
   "svc/fs.9pfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -14739,7 +14507,9 @@
   },
   "svc/fs.9pfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -14756,7 +14526,9 @@
    ]
   },
   "svc/fs.9pfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -14921,7 +14693,9 @@
   },
   "svc/fs.afs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -14939,7 +14713,9 @@
   },
   "svc/fs.afs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -15181,7 +14957,9 @@
   },
   "svc/fs.afs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -15198,7 +14976,9 @@
    ]
   },
   "svc/fs.afs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -15363,7 +15143,9 @@
   },
   "svc/fs.bfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -15381,7 +15163,9 @@
   },
   "svc/fs.bfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -15623,7 +15407,9 @@
   },
   "svc/fs.bfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -15640,7 +15426,9 @@
    ]
   },
   "svc/fs.bfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -15805,7 +15593,9 @@
   },
   "svc/fs.bind.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -15823,7 +15613,9 @@
   },
   "svc/fs.bind.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -16065,7 +15857,9 @@
   },
   "svc/fs.bind.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -16082,7 +15876,9 @@
    ]
   },
   "svc/fs.bind.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -16247,7 +16043,9 @@
   },
   "svc/fs.btrfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -16265,7 +16063,9 @@
   },
   "svc/fs.btrfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -16517,7 +16317,9 @@
   },
   "svc/fs.btrfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -16534,7 +16336,9 @@
    ]
   },
   "svc/fs.btrfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -16708,7 +16512,9 @@
   },
   "svc/fs.cephfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -16726,7 +16532,9 @@
   },
   "svc/fs.cephfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -16968,7 +16776,9 @@
   },
   "svc/fs.cephfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -16985,7 +16795,9 @@
    ]
   },
   "svc/fs.cephfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -17150,7 +16962,9 @@
   },
   "svc/fs.cifs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -17168,7 +16982,9 @@
   },
   "svc/fs.cifs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -17410,7 +17226,9 @@
   },
   "svc/fs.cifs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -17427,7 +17245,9 @@
    ]
   },
   "svc/fs.cifs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -17582,7 +17402,9 @@
   },
   "svc/fs.directory.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -17591,7 +17413,9 @@
   },
   "svc/fs.directory.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -17790,7 +17614,9 @@
   },
   "svc/fs.directory.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -17807,7 +17633,9 @@
    ]
   },
   "svc/fs.directory.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -17963,7 +17791,9 @@
   },
   "svc/fs.ext2.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -17981,7 +17811,9 @@
   },
   "svc/fs.ext2.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -18223,7 +18055,9 @@
   },
   "svc/fs.ext2.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -18240,7 +18074,9 @@
    ]
   },
   "svc/fs.ext2.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -18405,7 +18241,9 @@
   },
   "svc/fs.ext3.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -18423,7 +18261,9 @@
   },
   "svc/fs.ext3.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -18665,7 +18505,9 @@
   },
   "svc/fs.ext3.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -18682,7 +18524,9 @@
    ]
   },
   "svc/fs.ext3.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -18847,7 +18691,9 @@
   },
   "svc/fs.ext4.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -18865,7 +18711,9 @@
   },
   "svc/fs.ext4.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -19107,7 +18955,9 @@
   },
   "svc/fs.ext4.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -19124,7 +18974,9 @@
    ]
   },
   "svc/fs.ext4.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -19289,7 +19141,9 @@
   },
   "svc/fs.f2fs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -19307,7 +19161,9 @@
   },
   "svc/fs.f2fs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -19549,7 +19405,9 @@
   },
   "svc/fs.f2fs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -19566,7 +19424,9 @@
    ]
   },
   "svc/fs.f2fs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -19995,7 +19855,9 @@
   },
   "svc/fs.gfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -20013,7 +19875,9 @@
   },
   "svc/fs.gfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -20255,7 +20119,9 @@
   },
   "svc/fs.gfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -20272,7 +20138,9 @@
    ]
   },
   "svc/fs.gfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -20437,7 +20305,9 @@
   },
   "svc/fs.gfs2.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -20455,7 +20325,9 @@
   },
   "svc/fs.gfs2.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -20697,7 +20569,9 @@
   },
   "svc/fs.gfs2.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -20714,7 +20588,9 @@
    ]
   },
   "svc/fs.gfs2.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -20879,7 +20755,9 @@
   },
   "svc/fs.glusterfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -20897,7 +20775,9 @@
   },
   "svc/fs.glusterfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -21139,7 +21019,9 @@
   },
   "svc/fs.glusterfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -21156,7 +21038,9 @@
    ]
   },
   "svc/fs.glusterfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -21321,7 +21205,9 @@
   },
   "svc/fs.gpfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -21339,7 +21225,9 @@
   },
   "svc/fs.gpfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -21581,7 +21469,9 @@
   },
   "svc/fs.gpfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -21598,7 +21488,9 @@
    ]
   },
   "svc/fs.gpfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -21763,7 +21655,9 @@
   },
   "svc/fs.hfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -21781,7 +21675,9 @@
   },
   "svc/fs.hfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -22023,7 +21919,9 @@
   },
   "svc/fs.hfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -22040,7 +21938,9 @@
    ]
   },
   "svc/fs.hfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -22205,7 +22105,9 @@
   },
   "svc/fs.hfsplus.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -22223,7 +22125,9 @@
   },
   "svc/fs.hfsplus.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -22465,7 +22369,9 @@
   },
   "svc/fs.hfsplus.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -22482,7 +22388,9 @@
    ]
   },
   "svc/fs.hfsplus.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -22647,7 +22555,9 @@
   },
   "svc/fs.hpfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -22665,7 +22575,9 @@
   },
   "svc/fs.hpfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -22907,7 +22819,9 @@
   },
   "svc/fs.hpfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -22924,7 +22838,9 @@
    ]
   },
   "svc/fs.hpfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -23089,7 +23005,9 @@
   },
   "svc/fs.jffs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -23107,7 +23025,9 @@
   },
   "svc/fs.jffs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -23349,7 +23269,9 @@
   },
   "svc/fs.jffs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -23366,7 +23288,9 @@
    ]
   },
   "svc/fs.jffs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -23531,7 +23455,9 @@
   },
   "svc/fs.jffs2.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -23549,7 +23475,9 @@
   },
   "svc/fs.jffs2.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -23791,7 +23719,9 @@
   },
   "svc/fs.jffs2.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -23808,7 +23738,9 @@
    ]
   },
   "svc/fs.jffs2.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -23973,7 +23905,9 @@
   },
   "svc/fs.jfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -23991,7 +23925,9 @@
   },
   "svc/fs.jfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -24233,7 +24169,9 @@
   },
   "svc/fs.jfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -24250,7 +24188,9 @@
    ]
   },
   "svc/fs.jfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -24415,7 +24355,9 @@
   },
   "svc/fs.jfs2.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -24433,7 +24375,9 @@
   },
   "svc/fs.jfs2.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -24675,7 +24619,9 @@
   },
   "svc/fs.jfs2.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -24692,7 +24638,9 @@
    ]
   },
   "svc/fs.jfs2.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -24857,7 +24805,9 @@
   },
   "svc/fs.lofs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -24875,7 +24825,9 @@
   },
   "svc/fs.lofs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -25117,7 +25069,9 @@
   },
   "svc/fs.lofs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -25134,7 +25088,9 @@
    ]
   },
   "svc/fs.lofs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -25299,7 +25255,9 @@
   },
   "svc/fs.logfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -25317,7 +25275,9 @@
   },
   "svc/fs.logfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -25559,7 +25519,9 @@
   },
   "svc/fs.logfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -25576,7 +25538,9 @@
    ]
   },
   "svc/fs.logfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -25741,7 +25705,9 @@
   },
   "svc/fs.minix.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -25759,7 +25725,9 @@
   },
   "svc/fs.minix.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -26001,7 +25969,9 @@
   },
   "svc/fs.minix.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -26018,7 +25988,9 @@
    ]
   },
   "svc/fs.minix.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -26183,7 +26155,9 @@
   },
   "svc/fs.msdos.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -26201,7 +26175,9 @@
   },
   "svc/fs.msdos.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -26443,7 +26419,9 @@
   },
   "svc/fs.msdos.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -26460,7 +26438,9 @@
    ]
   },
   "svc/fs.msdos.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -26625,7 +26605,9 @@
   },
   "svc/fs.ncpfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -26643,7 +26625,9 @@
   },
   "svc/fs.ncpfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -26885,7 +26869,9 @@
   },
   "svc/fs.ncpfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -26902,7 +26888,9 @@
    ]
   },
   "svc/fs.ncpfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -27067,7 +27055,9 @@
   },
   "svc/fs.nfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -27085,7 +27075,9 @@
   },
   "svc/fs.nfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -27327,7 +27319,9 @@
   },
   "svc/fs.nfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -27344,7 +27338,9 @@
    ]
   },
   "svc/fs.nfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -27509,7 +27505,9 @@
   },
   "svc/fs.nfs4.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -27527,7 +27525,9 @@
   },
   "svc/fs.nfs4.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -27769,7 +27769,9 @@
   },
   "svc/fs.nfs4.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -27786,7 +27788,9 @@
    ]
   },
   "svc/fs.nfs4.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -27951,7 +27955,9 @@
   },
   "svc/fs.nilfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -27969,7 +27975,9 @@
   },
   "svc/fs.nilfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -28211,7 +28219,9 @@
   },
   "svc/fs.nilfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -28228,7 +28238,9 @@
    ]
   },
   "svc/fs.nilfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -28393,7 +28405,9 @@
   },
   "svc/fs.none.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -28411,7 +28425,9 @@
   },
   "svc/fs.none.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -28653,7 +28669,9 @@
   },
   "svc/fs.none.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -28670,7 +28688,9 @@
    ]
   },
   "svc/fs.none.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -28835,7 +28855,9 @@
   },
   "svc/fs.ntfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -28853,7 +28875,9 @@
   },
   "svc/fs.ntfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -29095,7 +29119,9 @@
   },
   "svc/fs.ntfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -29112,7 +29138,9 @@
    ]
   },
   "svc/fs.ntfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -29277,7 +29305,9 @@
   },
   "svc/fs.ocfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -29295,7 +29325,9 @@
   },
   "svc/fs.ocfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -29537,7 +29569,9 @@
   },
   "svc/fs.ocfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -29554,7 +29588,9 @@
    ]
   },
   "svc/fs.ocfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -29719,7 +29755,9 @@
   },
   "svc/fs.ocfs2.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -29737,7 +29775,9 @@
   },
   "svc/fs.ocfs2.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -29979,7 +30019,9 @@
   },
   "svc/fs.ocfs2.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -29996,7 +30038,9 @@
    ]
   },
   "svc/fs.ocfs2.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -30161,7 +30205,9 @@
   },
   "svc/fs.qnx4.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -30179,7 +30225,9 @@
   },
   "svc/fs.qnx4.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -30421,7 +30469,9 @@
   },
   "svc/fs.qnx4.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -30438,7 +30488,9 @@
    ]
   },
   "svc/fs.qnx4.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -30603,7 +30655,9 @@
   },
   "svc/fs.reiserfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -30621,7 +30675,9 @@
   },
   "svc/fs.reiserfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -30863,7 +30919,9 @@
   },
   "svc/fs.reiserfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -30880,7 +30938,9 @@
    ]
   },
   "svc/fs.reiserfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -31045,7 +31105,9 @@
   },
   "svc/fs.reiserfs4.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -31063,7 +31125,9 @@
   },
   "svc/fs.reiserfs4.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -31305,7 +31369,9 @@
   },
   "svc/fs.reiserfs4.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -31322,7 +31388,9 @@
    ]
   },
   "svc/fs.reiserfs4.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -31487,7 +31555,9 @@
   },
   "svc/fs.rpc_pipefs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -31505,7 +31575,9 @@
   },
   "svc/fs.rpc_pipefs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -31747,7 +31819,9 @@
   },
   "svc/fs.rpc_pipefs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -31764,7 +31838,9 @@
    ]
   },
   "svc/fs.rpc_pipefs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -31929,7 +32005,9 @@
   },
   "svc/fs.sgcp_nfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -31947,7 +32025,9 @@
   },
   "svc/fs.sgcp_nfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -32202,7 +32282,9 @@
   },
   "svc/fs.sgcp_nfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -32219,7 +32301,9 @@
    ]
   },
   "svc/fs.sgcp_nfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -32402,7 +32486,9 @@
   },
   "svc/fs.smbfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -32420,7 +32506,9 @@
   },
   "svc/fs.smbfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -32662,7 +32750,9 @@
   },
   "svc/fs.smbfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -32679,7 +32769,9 @@
    ]
   },
   "svc/fs.smbfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -32844,7 +32936,9 @@
   },
   "svc/fs.tmpfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -32862,7 +32956,9 @@
   },
   "svc/fs.tmpfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -33114,7 +33210,9 @@
   },
   "svc/fs.tmpfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -33131,7 +33229,9 @@
    ]
   },
   "svc/fs.tmpfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -33307,7 +33407,9 @@
   },
   "svc/fs.tux3.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -33325,7 +33427,9 @@
   },
   "svc/fs.tux3.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -33567,7 +33671,9 @@
   },
   "svc/fs.tux3.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -33584,7 +33690,9 @@
    ]
   },
   "svc/fs.tux3.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -33749,7 +33857,9 @@
   },
   "svc/fs.ufs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -33767,7 +33877,9 @@
   },
   "svc/fs.ufs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -34009,7 +34121,9 @@
   },
   "svc/fs.ufs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -34026,7 +34140,9 @@
    ]
   },
   "svc/fs.ufs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -34191,7 +34307,9 @@
   },
   "svc/fs.ufs2.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -34209,7 +34327,9 @@
   },
   "svc/fs.ufs2.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -34451,7 +34571,9 @@
   },
   "svc/fs.ufs2.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -34468,7 +34590,9 @@
    ]
   },
   "svc/fs.ufs2.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -34633,7 +34757,9 @@
   },
   "svc/fs.umsdos.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -34651,7 +34777,9 @@
   },
   "svc/fs.umsdos.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -34893,7 +35021,9 @@
   },
   "svc/fs.umsdos.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -34910,7 +35040,9 @@
    ]
   },
   "svc/fs.umsdos.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -35075,7 +35207,9 @@
   },
   "svc/fs.vfat.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -35093,7 +35227,9 @@
   },
   "svc/fs.vfat.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -35335,7 +35471,9 @@
   },
   "svc/fs.vfat.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -35352,7 +35490,9 @@
    ]
   },
   "svc/fs.vfat.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -35517,7 +35657,9 @@
   },
   "svc/fs.vxfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -35535,7 +35677,9 @@
   },
   "svc/fs.vxfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -35777,7 +35921,9 @@
   },
   "svc/fs.vxfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -35794,7 +35940,9 @@
    ]
   },
   "svc/fs.vxfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -35959,7 +36107,9 @@
   },
   "svc/fs.xfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -35977,7 +36127,9 @@
   },
   "svc/fs.xfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -36219,7 +36371,9 @@
   },
   "svc/fs.xfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -36236,7 +36390,9 @@
    ]
   },
   "svc/fs.xfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -36401,7 +36557,9 @@
   },
   "svc/fs.xia.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -36419,7 +36577,9 @@
   },
   "svc/fs.xia.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -36661,7 +36821,9 @@
   },
   "svc/fs.xia.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -36678,7 +36840,9 @@
    ]
   },
   "svc/fs.xia.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -36833,7 +36997,9 @@
   },
   "svc/fs.zfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -36851,7 +37017,9 @@
   },
   "svc/fs.zfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -37096,7 +37264,9 @@
   },
   "svc/fs.zfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -37113,7 +37283,9 @@
    ]
   },
   "svc/fs.zfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -37546,6 +37718,7 @@
   "svc/ip.docker.alias": {
    "converter": "bool",
    "default": "true",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "bdf1de1fee3430e5",
@@ -37713,7 +37886,7 @@
    "inherit": "leaf2head",
    "minimal": true,
    "scopable": true,
-   "textSum": "698c8cc51393384e",
+   "textSum": "18a9f4adef78eee3",
    "types": [
     "docker"
    ]
@@ -38119,6 +38292,7 @@
    ]
   },
   "svc/ip.host.gateway": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "provisioning": true,
    "scopable": true,
@@ -38359,6 +38533,7 @@
   "svc/ip.netns.alias": {
    "converter": "bool",
    "default": "true",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "bdf1de1fee3430e5",
@@ -38526,7 +38701,7 @@
    "inherit": "leaf2head",
    "minimal": true,
    "scopable": true,
-   "textSum": "698c8cc51393384e",
+   "textSum": "18a9f4adef78eee3",
    "types": [
     "netns"
    ]
@@ -42827,6 +43002,13 @@
    ]
   },
   "svc/task.docker.ipcns": {
+   "candidates": [
+    "",
+    "host",
+    "none",
+    "private",
+    "shareable"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "ef15b9611c434ae4",
@@ -42875,6 +43057,11 @@
   "svc/task.docker.netns": {
    "aliases": [
     "net"
+   ],
+   "candidates": [
+    "",
+    "host",
+    "none"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -42927,6 +43114,10 @@
    ]
   },
   "svc/task.docker.pidns": {
+   "candidates": [
+    "",
+    "host"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "6509bbdd5f0e662b",
@@ -44069,6 +44260,13 @@
    ]
   },
   "svc/task.oci.ipcns": {
+   "candidates": [
+    "",
+    "host",
+    "none",
+    "private",
+    "shareable"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "ef15b9611c434ae4",
@@ -44117,6 +44315,11 @@
   "svc/task.oci.netns": {
    "aliases": [
     "net"
+   ],
+   "candidates": [
+    "",
+    "host",
+    "none"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -44169,6 +44372,10 @@
    ]
   },
   "svc/task.oci.pidns": {
+   "candidates": [
+    "",
+    "host"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "6509bbdd5f0e662b",
@@ -44750,6 +44957,13 @@
    ]
   },
   "svc/task.podman.ipcns": {
+   "candidates": [
+    "",
+    "host",
+    "none",
+    "private",
+    "shareable"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "ef15b9611c434ae4",
@@ -44798,6 +45012,11 @@
   "svc/task.podman.netns": {
    "aliases": [
     "net"
+   ],
+   "candidates": [
+    "",
+    "host",
+    "none"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -44850,6 +45069,10 @@
    ]
   },
   "svc/task.podman.pidns": {
+   "candidates": [
+    "",
+    "host"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "6509bbdd5f0e662b",
@@ -45276,7 +45499,9 @@
   },
   "svc/volume..configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -45285,7 +45510,9 @@
   },
   "svc/volume..directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -45515,7 +45742,9 @@
   },
   "svc/volume..secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -45532,7 +45761,9 @@
    ]
   },
   "svc/volume..signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -45965,7 +46196,7 @@
    "converter": "size",
    "inherit": "leaf",
    "scopable": true,
-   "textSum": "5e10a0ca32dfc391"
+   "textSum": "80383ba2945ae134"
   },
   "vol/DEFAULT.pg_mem_oom_control": {
    "inherit": "leaf",
@@ -46434,6 +46665,7 @@
   },
   "vol/disk.crypt.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -46782,6 +47014,7 @@
   },
   "vol/disk.disk.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -47145,6 +47378,7 @@
   },
   "vol/disk.drbd.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -47520,6 +47754,7 @@
   },
   "vol/disk.hp3par.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -47872,6 +48107,7 @@
   },
   "vol/disk.loop.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -48199,6 +48435,7 @@
   },
   "vol/disk.lv.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -48548,6 +48785,7 @@
   },
   "vol/disk.lvm.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -48903,6 +49141,7 @@
   },
   "vol/disk.md.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -49270,6 +49509,7 @@
   },
   "vol/disk.rados.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -49616,6 +49856,7 @@
   },
   "vol/disk.raw.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -50270,6 +50511,7 @@
   },
   "vol/disk.vg.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -50922,6 +51164,7 @@
   },
   "vol/disk.zpool.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -51267,6 +51510,7 @@
   },
   "vol/disk.zvol.promote_rw": {
    "converter": "bool",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
    "textSum": "482d63141fd7cc6f",
    "types": [
@@ -51468,7 +51712,9 @@
   },
   "vol/fs.9pfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -51486,7 +51732,9 @@
   },
   "vol/fs.9pfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -51728,7 +51976,9 @@
   },
   "vol/fs.9pfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -51745,7 +51995,9 @@
    ]
   },
   "vol/fs.9pfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -51910,7 +52162,9 @@
   },
   "vol/fs.afs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -51928,7 +52182,9 @@
   },
   "vol/fs.afs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -52170,7 +52426,9 @@
   },
   "vol/fs.afs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -52187,7 +52445,9 @@
    ]
   },
   "vol/fs.afs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -52352,7 +52612,9 @@
   },
   "vol/fs.bfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -52370,7 +52632,9 @@
   },
   "vol/fs.bfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -52612,7 +52876,9 @@
   },
   "vol/fs.bfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -52629,7 +52895,9 @@
    ]
   },
   "vol/fs.bfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -52794,7 +53062,9 @@
   },
   "vol/fs.bind.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -52812,7 +53082,9 @@
   },
   "vol/fs.bind.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -53054,7 +53326,9 @@
   },
   "vol/fs.bind.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -53071,7 +53345,9 @@
    ]
   },
   "vol/fs.bind.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -53236,7 +53512,9 @@
   },
   "vol/fs.btrfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -53254,7 +53532,9 @@
   },
   "vol/fs.btrfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -53506,7 +53786,9 @@
   },
   "vol/fs.btrfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -53523,7 +53805,9 @@
    ]
   },
   "vol/fs.btrfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -53697,7 +53981,9 @@
   },
   "vol/fs.cephfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -53715,7 +54001,9 @@
   },
   "vol/fs.cephfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -53957,7 +54245,9 @@
   },
   "vol/fs.cephfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -53974,7 +54264,9 @@
    ]
   },
   "vol/fs.cephfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -54139,7 +54431,9 @@
   },
   "vol/fs.cifs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -54157,7 +54451,9 @@
   },
   "vol/fs.cifs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -54399,7 +54695,9 @@
   },
   "vol/fs.cifs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -54416,7 +54714,9 @@
    ]
   },
   "vol/fs.cifs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -54571,7 +54871,9 @@
   },
   "vol/fs.directory.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -54580,7 +54882,9 @@
   },
   "vol/fs.directory.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -54779,7 +55083,9 @@
   },
   "vol/fs.directory.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -54796,7 +55102,9 @@
    ]
   },
   "vol/fs.directory.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -54952,7 +55260,9 @@
   },
   "vol/fs.ext2.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -54970,7 +55280,9 @@
   },
   "vol/fs.ext2.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -55212,7 +55524,9 @@
   },
   "vol/fs.ext2.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -55229,7 +55543,9 @@
    ]
   },
   "vol/fs.ext2.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -55394,7 +55710,9 @@
   },
   "vol/fs.ext3.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -55412,7 +55730,9 @@
   },
   "vol/fs.ext3.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -55654,7 +55974,9 @@
   },
   "vol/fs.ext3.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -55671,7 +55993,9 @@
    ]
   },
   "vol/fs.ext3.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -55836,7 +56160,9 @@
   },
   "vol/fs.ext4.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -55854,7 +56180,9 @@
   },
   "vol/fs.ext4.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -56096,7 +56424,9 @@
   },
   "vol/fs.ext4.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -56113,7 +56443,9 @@
    ]
   },
   "vol/fs.ext4.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -56278,7 +56610,9 @@
   },
   "vol/fs.f2fs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -56296,7 +56630,9 @@
   },
   "vol/fs.f2fs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -56538,7 +56874,9 @@
   },
   "vol/fs.f2fs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -56555,7 +56893,9 @@
    ]
   },
   "vol/fs.f2fs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -56984,7 +57324,9 @@
   },
   "vol/fs.gfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -57002,7 +57344,9 @@
   },
   "vol/fs.gfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -57244,7 +57588,9 @@
   },
   "vol/fs.gfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -57261,7 +57607,9 @@
    ]
   },
   "vol/fs.gfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -57426,7 +57774,9 @@
   },
   "vol/fs.gfs2.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -57444,7 +57794,9 @@
   },
   "vol/fs.gfs2.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -57686,7 +58038,9 @@
   },
   "vol/fs.gfs2.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -57703,7 +58057,9 @@
    ]
   },
   "vol/fs.gfs2.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -57868,7 +58224,9 @@
   },
   "vol/fs.glusterfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -57886,7 +58244,9 @@
   },
   "vol/fs.glusterfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -58128,7 +58488,9 @@
   },
   "vol/fs.glusterfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -58145,7 +58507,9 @@
    ]
   },
   "vol/fs.glusterfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -58310,7 +58674,9 @@
   },
   "vol/fs.gpfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -58328,7 +58694,9 @@
   },
   "vol/fs.gpfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -58570,7 +58938,9 @@
   },
   "vol/fs.gpfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -58587,7 +58957,9 @@
    ]
   },
   "vol/fs.gpfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -58752,7 +59124,9 @@
   },
   "vol/fs.hfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -58770,7 +59144,9 @@
   },
   "vol/fs.hfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -59012,7 +59388,9 @@
   },
   "vol/fs.hfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -59029,7 +59407,9 @@
    ]
   },
   "vol/fs.hfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -59194,7 +59574,9 @@
   },
   "vol/fs.hfsplus.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -59212,7 +59594,9 @@
   },
   "vol/fs.hfsplus.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -59454,7 +59838,9 @@
   },
   "vol/fs.hfsplus.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -59471,7 +59857,9 @@
    ]
   },
   "vol/fs.hfsplus.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -59636,7 +60024,9 @@
   },
   "vol/fs.hpfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -59654,7 +60044,9 @@
   },
   "vol/fs.hpfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -59896,7 +60288,9 @@
   },
   "vol/fs.hpfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -59913,7 +60307,9 @@
    ]
   },
   "vol/fs.hpfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -60078,7 +60474,9 @@
   },
   "vol/fs.jffs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -60096,7 +60494,9 @@
   },
   "vol/fs.jffs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -60338,7 +60738,9 @@
   },
   "vol/fs.jffs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -60355,7 +60757,9 @@
    ]
   },
   "vol/fs.jffs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -60520,7 +60924,9 @@
   },
   "vol/fs.jffs2.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -60538,7 +60944,9 @@
   },
   "vol/fs.jffs2.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -60780,7 +61188,9 @@
   },
   "vol/fs.jffs2.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -60797,7 +61207,9 @@
    ]
   },
   "vol/fs.jffs2.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -60962,7 +61374,9 @@
   },
   "vol/fs.jfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -60980,7 +61394,9 @@
   },
   "vol/fs.jfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -61222,7 +61638,9 @@
   },
   "vol/fs.jfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -61239,7 +61657,9 @@
    ]
   },
   "vol/fs.jfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -61404,7 +61824,9 @@
   },
   "vol/fs.jfs2.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -61422,7 +61844,9 @@
   },
   "vol/fs.jfs2.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -61664,7 +62088,9 @@
   },
   "vol/fs.jfs2.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -61681,7 +62107,9 @@
    ]
   },
   "vol/fs.jfs2.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -61846,7 +62274,9 @@
   },
   "vol/fs.lofs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -61864,7 +62294,9 @@
   },
   "vol/fs.lofs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -62106,7 +62538,9 @@
   },
   "vol/fs.lofs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -62123,7 +62557,9 @@
    ]
   },
   "vol/fs.lofs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -62288,7 +62724,9 @@
   },
   "vol/fs.logfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -62306,7 +62744,9 @@
   },
   "vol/fs.logfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -62548,7 +62988,9 @@
   },
   "vol/fs.logfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -62565,7 +63007,9 @@
    ]
   },
   "vol/fs.logfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -62730,7 +63174,9 @@
   },
   "vol/fs.minix.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -62748,7 +63194,9 @@
   },
   "vol/fs.minix.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -62990,7 +63438,9 @@
   },
   "vol/fs.minix.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -63007,7 +63457,9 @@
    ]
   },
   "vol/fs.minix.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -63172,7 +63624,9 @@
   },
   "vol/fs.msdos.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -63190,7 +63644,9 @@
   },
   "vol/fs.msdos.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -63432,7 +63888,9 @@
   },
   "vol/fs.msdos.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -63449,7 +63907,9 @@
    ]
   },
   "vol/fs.msdos.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -63614,7 +64074,9 @@
   },
   "vol/fs.ncpfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -63632,7 +64094,9 @@
   },
   "vol/fs.ncpfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -63874,7 +64338,9 @@
   },
   "vol/fs.ncpfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -63891,7 +64357,9 @@
    ]
   },
   "vol/fs.ncpfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -64056,7 +64524,9 @@
   },
   "vol/fs.nfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -64074,7 +64544,9 @@
   },
   "vol/fs.nfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -64316,7 +64788,9 @@
   },
   "vol/fs.nfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -64333,7 +64807,9 @@
    ]
   },
   "vol/fs.nfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -64498,7 +64974,9 @@
   },
   "vol/fs.nfs4.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -64516,7 +64994,9 @@
   },
   "vol/fs.nfs4.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -64758,7 +65238,9 @@
   },
   "vol/fs.nfs4.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -64775,7 +65257,9 @@
    ]
   },
   "vol/fs.nfs4.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -64940,7 +65424,9 @@
   },
   "vol/fs.nilfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -64958,7 +65444,9 @@
   },
   "vol/fs.nilfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -65200,7 +65688,9 @@
   },
   "vol/fs.nilfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -65217,7 +65707,9 @@
    ]
   },
   "vol/fs.nilfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -65382,7 +65874,9 @@
   },
   "vol/fs.none.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -65400,7 +65894,9 @@
   },
   "vol/fs.none.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -65642,7 +66138,9 @@
   },
   "vol/fs.none.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -65659,7 +66157,9 @@
    ]
   },
   "vol/fs.none.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -65824,7 +66324,9 @@
   },
   "vol/fs.ntfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -65842,7 +66344,9 @@
   },
   "vol/fs.ntfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -66084,7 +66588,9 @@
   },
   "vol/fs.ntfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -66101,7 +66607,9 @@
    ]
   },
   "vol/fs.ntfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -66266,7 +66774,9 @@
   },
   "vol/fs.ocfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -66284,7 +66794,9 @@
   },
   "vol/fs.ocfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -66526,7 +67038,9 @@
   },
   "vol/fs.ocfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -66543,7 +67057,9 @@
    ]
   },
   "vol/fs.ocfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -66708,7 +67224,9 @@
   },
   "vol/fs.ocfs2.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -66726,7 +67244,9 @@
   },
   "vol/fs.ocfs2.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -66968,7 +67488,9 @@
   },
   "vol/fs.ocfs2.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -66985,7 +67507,9 @@
    ]
   },
   "vol/fs.ocfs2.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -67150,7 +67674,9 @@
   },
   "vol/fs.qnx4.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -67168,7 +67694,9 @@
   },
   "vol/fs.qnx4.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -67410,7 +67938,9 @@
   },
   "vol/fs.qnx4.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -67427,7 +67957,9 @@
    ]
   },
   "vol/fs.qnx4.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -67592,7 +68124,9 @@
   },
   "vol/fs.reiserfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -67610,7 +68144,9 @@
   },
   "vol/fs.reiserfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -67852,7 +68388,9 @@
   },
   "vol/fs.reiserfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -67869,7 +68407,9 @@
    ]
   },
   "vol/fs.reiserfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -68034,7 +68574,9 @@
   },
   "vol/fs.reiserfs4.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -68052,7 +68594,9 @@
   },
   "vol/fs.reiserfs4.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -68294,7 +68838,9 @@
   },
   "vol/fs.reiserfs4.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -68311,7 +68857,9 @@
    ]
   },
   "vol/fs.reiserfs4.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -68476,7 +69024,9 @@
   },
   "vol/fs.rpc_pipefs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -68494,7 +69044,9 @@
   },
   "vol/fs.rpc_pipefs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -68736,7 +69288,9 @@
   },
   "vol/fs.rpc_pipefs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -68753,7 +69307,9 @@
    ]
   },
   "vol/fs.rpc_pipefs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -68918,7 +69474,9 @@
   },
   "vol/fs.sgcp_nfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -68936,7 +69494,9 @@
   },
   "vol/fs.sgcp_nfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -69191,7 +69751,9 @@
   },
   "vol/fs.sgcp_nfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -69208,7 +69770,9 @@
    ]
   },
   "vol/fs.sgcp_nfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -69391,7 +69955,9 @@
   },
   "vol/fs.smbfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -69409,7 +69975,9 @@
   },
   "vol/fs.smbfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -69651,7 +70219,9 @@
   },
   "vol/fs.smbfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -69668,7 +70238,9 @@
    ]
   },
   "vol/fs.smbfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -69833,7 +70405,9 @@
   },
   "vol/fs.tmpfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -69851,7 +70425,9 @@
   },
   "vol/fs.tmpfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -70103,7 +70679,9 @@
   },
   "vol/fs.tmpfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -70120,7 +70698,9 @@
    ]
   },
   "vol/fs.tmpfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -70296,7 +70876,9 @@
   },
   "vol/fs.tux3.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -70314,7 +70896,9 @@
   },
   "vol/fs.tux3.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -70556,7 +71140,9 @@
   },
   "vol/fs.tux3.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -70573,7 +71159,9 @@
    ]
   },
   "vol/fs.tux3.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -70738,7 +71326,9 @@
   },
   "vol/fs.ufs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -70756,7 +71346,9 @@
   },
   "vol/fs.ufs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -70998,7 +71590,9 @@
   },
   "vol/fs.ufs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -71015,7 +71609,9 @@
    ]
   },
   "vol/fs.ufs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -71180,7 +71776,9 @@
   },
   "vol/fs.ufs2.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -71198,7 +71796,9 @@
   },
   "vol/fs.ufs2.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -71440,7 +72040,9 @@
   },
   "vol/fs.ufs2.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -71457,7 +72059,9 @@
    ]
   },
   "vol/fs.ufs2.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -71622,7 +72226,9 @@
   },
   "vol/fs.umsdos.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -71640,7 +72246,9 @@
   },
   "vol/fs.umsdos.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -71882,7 +72490,9 @@
   },
   "vol/fs.umsdos.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -71899,7 +72509,9 @@
    ]
   },
   "vol/fs.umsdos.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -72064,7 +72676,9 @@
   },
   "vol/fs.vfat.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -72082,7 +72696,9 @@
   },
   "vol/fs.vfat.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -72324,7 +72940,9 @@
   },
   "vol/fs.vfat.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -72341,7 +72959,9 @@
    ]
   },
   "vol/fs.vfat.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -72506,7 +73126,9 @@
   },
   "vol/fs.vxfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -72524,7 +73146,9 @@
   },
   "vol/fs.vxfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -72766,7 +73390,9 @@
   },
   "vol/fs.vxfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -72783,7 +73409,9 @@
    ]
   },
   "vol/fs.vxfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -72948,7 +73576,9 @@
   },
   "vol/fs.xfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -72966,7 +73596,9 @@
   },
   "vol/fs.xfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -73208,7 +73840,9 @@
   },
   "vol/fs.xfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -73225,7 +73859,9 @@
    ]
   },
   "vol/fs.xfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -73390,7 +74026,9 @@
   },
   "vol/fs.xia.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -73408,7 +74046,9 @@
   },
   "vol/fs.xia.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -73650,7 +74290,9 @@
   },
   "vol/fs.xia.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -73667,7 +74309,9 @@
    ]
   },
   "vol/fs.xia.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -73822,7 +74466,9 @@
   },
   "vol/fs.zfs.configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -73840,7 +74486,9 @@
   },
   "vol/fs.zfs.directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -74085,7 +74733,9 @@
   },
   "vol/fs.zfs.secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -74102,7 +74752,9 @@
    ]
   },
   "vol/fs.zfs.signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -77230,6 +77882,13 @@
    ]
   },
   "vol/task.docker.ipcns": {
+   "candidates": [
+    "",
+    "host",
+    "none",
+    "private",
+    "shareable"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "ef15b9611c434ae4",
@@ -77278,6 +77937,11 @@
   "vol/task.docker.netns": {
    "aliases": [
     "net"
+   ],
+   "candidates": [
+    "",
+    "host",
+    "none"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -77330,6 +77994,10 @@
    ]
   },
   "vol/task.docker.pidns": {
+   "candidates": [
+    "",
+    "host"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "6509bbdd5f0e662b",
@@ -78472,6 +79140,13 @@
    ]
   },
   "vol/task.oci.ipcns": {
+   "candidates": [
+    "",
+    "host",
+    "none",
+    "private",
+    "shareable"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "ef15b9611c434ae4",
@@ -78520,6 +79195,11 @@
   "vol/task.oci.netns": {
    "aliases": [
     "net"
+   ],
+   "candidates": [
+    "",
+    "host",
+    "none"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -78572,6 +79252,10 @@
    ]
   },
   "vol/task.oci.pidns": {
+   "candidates": [
+    "",
+    "host"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "6509bbdd5f0e662b",
@@ -79153,6 +79837,13 @@
    ]
   },
   "vol/task.podman.ipcns": {
+   "candidates": [
+    "",
+    "host",
+    "none",
+    "private",
+    "shareable"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "ef15b9611c434ae4",
@@ -79201,6 +79892,11 @@
   "vol/task.podman.netns": {
    "aliases": [
     "net"
+   ],
+   "candidates": [
+    "",
+    "host",
+    "none"
    ],
    "inherit": "leaf2head",
    "scopable": true,
@@ -79253,6 +79949,10 @@
    ]
   },
   "vol/task.podman.pidns": {
+   "candidates": [
+    "",
+    "host"
+   ],
    "inherit": "leaf2head",
    "scopable": true,
    "textSum": "6509bbdd5f0e662b",
@@ -79679,7 +80379,9 @@
   },
   "vol/volume..configs": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "b30d2609f9230515",
    "types": [
@@ -79688,7 +80390,9 @@
   },
   "vol/volume..directories": {
    "converter": "list",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a2eb316929038f53",
    "types": [
@@ -79918,7 +80622,9 @@
   },
   "vol/volume..secrets": {
    "converter": "shlex",
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "95fb1bc950faddfc",
    "types": [
@@ -79935,7 +80641,9 @@
    ]
   },
   "vol/volume..signal": {
+   "deprecated": "v3.0.0-rc62",
    "inherit": "leaf2head",
+   "replacedBy": "install",
    "scopable": true,
    "textSum": "a3cc2b6f637ceac2",
    "types": [
@@ -80048,5 +80756,5 @@
    ]
   }
  },
- "version": "v3.0.0-rc62"
+ "version": "v3.0.0-rc64"
 }

@@ -24,7 +24,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -42,7 +42,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Example:**
 
@@ -57,7 +57,7 @@ The name of the array. If not provided, fallback to the section name suffix.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       credentials
 
 **Example:**
 
@@ -78,7 +78,7 @@ Array passwords are usually stored in sec datastores like `system/sec/<array nam
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       scheduling
 
 **Description:**
 
@@ -91,7 +91,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 
 **Example:**
 
@@ -110,7 +110,7 @@ The value set must be declared in the `/var/symapi/config/netcnfg` file.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       tools
 	default:     /usr/symcli
 
 **Example:**
@@ -130,8 +130,8 @@ does not select the version preferred for the array.
 
 	required:    true
 	scopable:    false
-	group:       other
-	candidates:  freenas, hds, eva, nexenta, vioserver, centera, symmetrix, emcvnx, netapp, hp3par, ibmds, ibmsvc, xtremio, dorado, hoc, truenas
+	group:       identity
+	candidates:  freenas, hds, symmetrix, hp3par, xtremio, hoc, pure, truenas
 
 **Description:**
 
@@ -142,7 +142,7 @@ The storage array driver name.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       credentials
 
 **Example:**
 

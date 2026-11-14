@@ -212,7 +212,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       status
 	candidates:  last_run, last_run_warn, 
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -235,7 +235,7 @@ If not set (default), the status of a task is always n/a.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Description:**
@@ -247,7 +247,7 @@ The shlex expression of the command to execute on `run` actions.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -265,7 +265,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       environment
 	deprecated:  since v3.0.0-rc57, replaced by environment
 	convert:     shlex
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
@@ -303,7 +303,7 @@ variables in the process execution environment:
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       run
 	convert:     bool
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -318,7 +318,8 @@ This flag can be used for dangerous tasks like data restoration.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
+	references:  container rid
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Example:**
@@ -346,7 +347,7 @@ the files a volume or fs `install` wrote, e.g. `swanctl --load-all`.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Description:**
@@ -403,7 +404,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       environment
 	convert:     shlex
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -468,7 +469,7 @@ key generated, `source random`, which is an error.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Description:**
@@ -481,7 +482,8 @@ instead of `root`.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       install
+	references:  fs|volume rids
 	convert:     list
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -525,7 +527,7 @@ A failed install is a failed run, the task's own work not done.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -541,7 +543,7 @@ When both `limit_vmem` and `limit_as` is used, the max value is chosen.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -554,7 +556,7 @@ The limit on the largest core dump size that can be produced (unit byte).
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     duration
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -571,7 +573,7 @@ The limit on CPU time (duration).
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -584,7 +586,7 @@ The limit on the data segment size of a process (unit byte).
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -597,7 +599,7 @@ The limit on the largest file that can be created (unit byte).
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -610,7 +612,7 @@ The limit on how much memory a process can lock with mlock(2) (unit byte, no sol
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -623,7 +625,7 @@ The limit on the number files a process can have open at once.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -636,7 +638,7 @@ The limit on the number of processes this user can have at one time, no solaris 
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -650,7 +652,7 @@ The limit on the total physical memory that can be in use by a process
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -663,7 +665,7 @@ The limit on the stack size of a process (unit bytes).
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       limits
 	convert:     size
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -676,7 +678,7 @@ The limit on the total virtual memory that can be in use by a process (unit byte
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       run
 	default:     false
 	convert:     bool
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
@@ -695,7 +697,7 @@ journal but its status and its exit code.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       run
 	default:     1
 	convert:     int
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
@@ -745,7 +747,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       scheduling
 	convert:     list
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -789,7 +791,7 @@ A task installing again the files rendered from the networks with
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       run
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Example:**
@@ -825,7 +827,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       scheduling
 	default:     @10s
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -851,7 +853,7 @@ while the events keep coming faster.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -872,7 +874,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -904,7 +906,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -937,7 +939,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -962,7 +964,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	depends:     create_pg=true
 
 **Example:**
@@ -984,7 +986,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -1015,7 +1017,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -1032,12 +1034,15 @@ Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
+On a node holding the v1 cgroup hierarchy, `default` lifts the memory+swap
+limit too: a group with no memory limit cannot keep one below it.
+
 
 ## Keyword `pg_mem_oom_control`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -1067,7 +1072,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -1086,7 +1091,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -1107,7 +1112,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -1130,7 +1135,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -1291,6 +1296,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1310,7 +1316,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       status
 	default:     0:up 1:down
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -1338,6 +1344,7 @@ Valid `<status names>` are:
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1357,7 +1364,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -1376,7 +1383,7 @@ Takes precedence over `timeout`.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       scheduling
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Example:**
@@ -1394,7 +1401,7 @@ See `usr/share/doc/opensvc/schedule` for the schedule syntax reference.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       environment
 	deprecated:  since v3.0.0-rc57, replaced by environment
 	convert:     shlex
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
@@ -1470,7 +1477,7 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       run
 	convert:     duration
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -1511,7 +1518,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 
 **Description:**
@@ -1527,7 +1534,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Example:**
@@ -1546,6 +1553,7 @@ Without it, the task is stopped by killing the processes its `command` started.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1565,7 +1573,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -1634,7 +1642,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -1653,7 +1661,7 @@ If no timeout is set, the agent waits indefinitely for the task command to exit.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        Requires the root grant, except for the values oci, docker, podman, acme.
 
 **Description:**
@@ -1665,7 +1673,7 @@ The resource driver name.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
 	convert:     umask
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
@@ -1703,6 +1711,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1722,7 +1731,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       process
 	rbac:        A keyword of the host driver, which needs the root grant to choose.
 
 **Description:**

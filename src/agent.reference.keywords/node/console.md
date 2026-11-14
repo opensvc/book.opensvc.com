@@ -10,7 +10,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -28,7 +28,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       listener
 	default:     1216
 	convert:     int
 
@@ -45,7 +45,7 @@ The nodes of a cluster reach each other's console on the same port, so the keywo
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       listener
 
 **Example:**
 

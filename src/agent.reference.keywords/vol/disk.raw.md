@@ -192,7 +192,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -211,7 +211,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       access
 	default:     true
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -233,7 +233,7 @@ delete them using the `raw` kernel driver.
 
 	required:    true
 	scopable:    true
-	group:       other
+	group:       device
 	stop first:  a change is refused while the resource is up
 	convert:     list
 	rbac:        This driver group requires the root grant.
@@ -304,7 +304,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       access
 	convert:     group
 	rbac:        This driver group requires the root grant.
 
@@ -379,7 +379,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       access
 	convert:     filemode
 	rbac:        This driver group requires the root grant.
 
@@ -396,7 +396,7 @@ The permissions the device should have. A string representing the octal permissi
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -418,7 +418,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -451,7 +451,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -485,7 +485,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -511,7 +511,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	depends:     create_pg=true
 	rbac:        This driver group requires the root grant.
 
@@ -534,7 +534,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -566,7 +566,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -584,12 +584,15 @@ Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
+On a node holding the v1 cgroup hierarchy, `default` lifts the memory+swap
+limit too: a group with no memory limit cannot keep one below it.
+
 
 ## Keyword `pg_mem_oom_control`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -620,7 +623,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -640,7 +643,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -662,7 +665,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -686,7 +689,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -841,7 +844,8 @@ It overrides the object-level `prkey` and the node-level `prkey`.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       access
+	deprecated:  since v3.0.0-rc62
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -878,6 +882,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1026,6 +1031,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1046,7 +1052,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 	rbac:        This driver group requires the root grant.
 
@@ -1064,6 +1070,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1129,7 +1136,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -1163,6 +1170,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1183,7 +1191,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       access
 	convert:     user
 	rbac:        This driver group requires the root grant.
 
@@ -1200,7 +1208,7 @@ The user that should own the device. Either in numeric or symbolic form.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       access
 	rbac:        This driver group requires the root grant.
 
 **Example:**

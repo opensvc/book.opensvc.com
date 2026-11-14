@@ -10,7 +10,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       scheduling
 	default:     false
 	convert:     bool
 
@@ -30,7 +30,7 @@ repository.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -48,7 +48,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       scheduling
 	default:     02:00-06:00
 
 **Description:**

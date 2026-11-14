@@ -203,7 +203,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       status
 	default:     false
 	convert:     bool
 	rbac:        A resource of a volume requires the root grant.
@@ -224,7 +224,7 @@ when mnt_opt contains 'ro'.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -242,7 +242,8 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       install
+	deprecated:  since v3.0.0-rc62, replaced by install
 	convert:     shlex
 	rbac:        A resource of a volume requires the root grant.
 
@@ -260,7 +261,7 @@ The whitespace-separated list of
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       device
 	stop first:  a change is refused while the resource is up
 	default:     none
 	rbac:        A resource of a volume requires the root grant.
@@ -286,7 +287,8 @@ scoping syntax.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       install
+	deprecated:  since v3.0.0-rc62, replaced by install
 	convert:     list
 	rbac:        A resource of a volume requires the root grant.
 
@@ -303,7 +305,7 @@ The whitespace-separated list of directories to create in the `vol` head.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       permissions
 	convert:     filemode
 	rbac:        A resource of a volume requires the root grant.
 
@@ -385,7 +387,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       permissions
 	rbac:        A resource of a volume requires the root grant.
 
 **Example:**
@@ -405,7 +407,7 @@ its group instead.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       install
 	convert:     shlex
 	rbac:        A resource of a volume requires the root grant.
 
@@ -564,7 +566,7 @@ what reads them read them again, e.g. a host task with `container` running `swan
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       creation
 	since:       v3.0.0-rc47
 	provision:   used only by the provision of the resource
 	rbac:        A resource of a volume requires the root grant.
@@ -586,7 +588,7 @@ A `-L` or `--label` option of mkfs_opt naming another label is refused.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       creation
 	provision:   used only by the provision of the resource
 	convert:     shlex
 	rbac:        A resource of a volume requires the root grant.
@@ -600,7 +602,7 @@ Options to pass to the `mkfs` command called by the `provision` action.
 
 	required:    true
 	scopable:    true
-	group:       other
+	group:       mount
 	stop first:  a change is refused while the resource is up
 	rbac:        A resource of a volume requires the root grant.
 
@@ -620,7 +622,7 @@ under the root directory of that container on the host.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       mount
 	rbac:        A resource of a volume requires the root grant.
 
 **Description:**
@@ -687,7 +689,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       permissions
 	convert:     filemode
 	rbac:        A resource of a volume requires the root grant.
 
@@ -715,7 +717,7 @@ a cfg with mode `0644`.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -736,7 +738,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -768,7 +770,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -801,7 +803,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -826,7 +828,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	depends:     create_pg=true
 
 **Example:**
@@ -848,7 +850,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -879,7 +881,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -896,12 +898,15 @@ Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
+On a node holding the v1 cgroup hierarchy, `default` lifts the memory+swap
+limit too: a group with no memory limit cannot keep one below it.
+
 
 ## Keyword `pg_mem_oom_control`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -931,7 +936,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -950,7 +955,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -971,7 +976,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -994,7 +999,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -1147,7 +1152,7 @@ It overrides the object-level `prkey` and the node-level `prkey`.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       device
 	convert:     bool
 	rbac:        A resource of a volume requires the root grant.
 
@@ -1183,6 +1188,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1264,7 +1270,8 @@ written concurrently from all nodes.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       install
+	deprecated:  since v3.0.0-rc62, replaced by install
 	convert:     shlex
 	rbac:        A resource of a volume requires the root grant.
 
@@ -1320,7 +1327,8 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       install
+	deprecated:  since v3.0.0-rc62, replaced by install
 	rbac:        A resource of a volume requires the root grant.
 
 **Example:**
@@ -1366,6 +1374,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1385,7 +1394,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       status
 	default:     5s
 	convert:     duration
 
@@ -1403,6 +1412,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1441,7 +1451,7 @@ process group.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       mount
 	since:       v3.0.0-rc47
 	rbac:        A resource of a volume requires the root grant.
 
@@ -1486,7 +1496,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        A resource of a volume requires the root grant.
 
 **Description:**
@@ -1519,6 +1529,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1538,7 +1549,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       permissions
 	rbac:        A resource of a volume requires the root grant.
 
 **Example:**
@@ -1558,7 +1569,7 @@ its owner instead.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       mount
 	rbac:        A resource of a volume requires the root grant.
 
 **Description:**

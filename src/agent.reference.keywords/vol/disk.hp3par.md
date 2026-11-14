@@ -82,7 +82,7 @@
 
 	required:    true
 	scopable:    true
-	group:       other
+	group:       replication
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -98,7 +98,7 @@ Suffix of the array configuration section in cluster.conf (the part after `#` in
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       replication
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -228,7 +228,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -293,7 +293,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       replication
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -307,7 +307,7 @@ Trigger a sync before migrate if the rcg mode is Periodic.
 
 	required:    true
 	scopable:    true
-	group:       other
+	group:       replication
 	aliases:     rcg
 	rbac:        This driver group requires the root grant.
 
@@ -324,7 +324,7 @@ Name of the Remote Copy Group (RCG) for volume replication.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       replication
 	aliases:     sync_max_delay
 	convert:     duration
 	rbac:        This driver group requires the root grant.
@@ -345,7 +345,7 @@ The rcp sync period should be lower than `max_delay` minus the expected sync dur
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       replication
 	default:     sync
 	rbac:        This driver group requires the root grant.
 
@@ -420,7 +420,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -442,7 +442,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -475,7 +475,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -509,7 +509,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -535,7 +535,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	depends:     create_pg=true
 	rbac:        This driver group requires the root grant.
 
@@ -558,7 +558,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -590,7 +590,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -608,12 +608,15 @@ Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
+On a node holding the v1 cgroup hierarchy, `default` lifts the memory+swap
+limit too: a group with no memory limit cannot keep one below it.
+
 
 ## Keyword `pg_mem_oom_control`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -644,7 +647,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -664,7 +667,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -686,7 +689,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -710,7 +713,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 	rbac:        This driver group requires the root grant.
 
@@ -865,7 +868,8 @@ It overrides the object-level `prkey` and the node-level `prkey`.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       access
+	deprecated:  since v3.0.0-rc62
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -902,6 +906,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1050,6 +1055,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1070,7 +1076,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	provision:   used only by the provision of the resource
 	default:     5m
 	convert:     duration
@@ -1089,7 +1095,7 @@ Maximum duration to wait for start operations to complete.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 	rbac:        This driver group requires the root grant.
 
@@ -1107,6 +1113,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1147,7 +1154,7 @@ process group.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       replication
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -1186,7 +1193,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	provision:   used only by the provision of the resource
 	default:     10s
 	convert:     duration
@@ -1205,7 +1212,7 @@ Maximum duration to wait for operations to complete.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -1239,6 +1246,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -1261,6 +1269,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    false
 	group:       requirements
 	aliases:     sync_requires, sync_update_requires, sync_nodes_requires, sync_drp_requires
+	references:  requires
 	rbac:        This driver group requires the root grant.
 
 **Example:**

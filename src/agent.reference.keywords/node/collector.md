@@ -17,7 +17,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       limits
 	since:       v3.0.0-rc44
 	default:     100
 	convert:     int
@@ -39,7 +39,7 @@ Minimum value: 1
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       timeouts
 	since:       v3.0.0-rc44
 	default:     10s
 	convert:     duration
@@ -60,7 +60,7 @@ Minimum value: 1s
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -78,7 +78,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	since:       v3.0.0-rc44
 
 **Default:**
@@ -99,7 +99,7 @@ to.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       timing
 	since:       v3.0.0-rc44
 	default:     60s
 	convert:     duration
@@ -120,7 +120,7 @@ Minimum value: 60s
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	since:       v3.0.0-rc44
 
 **Default:**
@@ -141,7 +141,7 @@ reads from.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       timing
 	since:       v3.0.0-rc61
 	default:     30s
 	convert:     duration
@@ -167,7 +167,7 @@ The minimum is `1s`: a lower value, `0` included, is refused.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       timing
 	since:       v3.0.0-rc44
 	default:     10s
 	convert:     duration
@@ -186,9 +186,9 @@ Minimum value: 10s
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       timeouts
 	since:       v3.0.0-rc44
-	default:     5s
+	default:     10s
 	convert:     duration
 
 **Example:**
@@ -207,7 +207,7 @@ Minimum value: 1s. Maximum value: 20s.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	since:       v3.0.0-rc44
 
 **Example:**

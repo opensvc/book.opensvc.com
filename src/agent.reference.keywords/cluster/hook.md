@@ -10,7 +10,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       hook
 	convert:     shlex
 	rbac:        This driver group requires the root grant.
 
@@ -25,7 +25,7 @@ The program is fed the json-formatted event data through stdin.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -44,7 +44,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       hook
 	convert:     list
 	rbac:        This driver group requires the root grant.
 

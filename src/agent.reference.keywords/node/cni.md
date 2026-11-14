@@ -10,7 +10,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -28,7 +28,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       containers
 	default:     /var/lib/opensvc/cni/net.d
 
 **Example:**
@@ -44,7 +44,7 @@ The directory hosting the CNI network configuration files.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       containers
 	default:     /usr/lib/cni
 
 **Example:**

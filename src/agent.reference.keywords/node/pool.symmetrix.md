@@ -33,7 +33,7 @@
 
 	required:    true
 	scopable:    true
-	group:       other
+	group:       source
 
 **Description:**
 
@@ -45,7 +45,7 @@ configuration.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -63,7 +63,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       filesystem
 	default:     xfs
 
 **Description:**
@@ -75,7 +75,7 @@ The filesystem to format the pool devices with.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 
 **Example:**
 
@@ -91,7 +91,7 @@ prepare the pool volumes devices.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       filesystem
 
 **Example:**
 
@@ -106,7 +106,7 @@ The mkfs command options to use to format the pool devices.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       filesystem
 
 **Description:**
 
@@ -117,7 +117,7 @@ The mount options of the fs created over the pool devices.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 
 **Description:**
 
@@ -128,7 +128,7 @@ Replication Group to use for SRDF.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 
 **Description:**
 
@@ -139,7 +139,7 @@ The name of the Service Level Agreement of the selected Storage Group.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 	default:     false
 	convert:     bool
 
@@ -152,7 +152,7 @@ Use SRDF replication.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       source
 
 **Description:**
 
@@ -163,7 +163,7 @@ The name of the array resource pool to allocate volumes from.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       volumes
 
 **Description:**
 
@@ -177,8 +177,8 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
-	group:       other
-	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, dorado, hoc, drbd, pure, rados
+	group:       identity
+	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, hoc, drbd, pure, rados
 	default:     loop
 
 **Description:**

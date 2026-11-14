@@ -25,7 +25,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       tools
 	default:     3parcli
 	rbac:        This driver group requires the root grant.
 
@@ -42,7 +42,7 @@ The path of the executable hp3par CLI.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -61,7 +61,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       credentials
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -77,7 +77,7 @@ The path to the private key to use to log in.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	rbac:        This driver group requires the root grant.
 
 **Default:**
@@ -90,15 +90,15 @@ The name of the array
 
 **Description:**
 
-The array manager host name.
+The host name the commands are sent to: the array manager, or, with the `ssh` method, a bastion of the zone of the array whose authorized key forces a command passing the commands on to the array.
 
 
 ## Keyword `method`
 
 	required:    false
 	scopable:    false
-	group:       other
-	candidates:  proxy, cli, ssh
+	group:       endpoint
+	candidates:  cli, ssh
 	default:     ssh
 	rbac:        This driver group requires the root grant.
 
@@ -110,12 +110,22 @@ The array manager host name.
 
 The connection method to use.
 
+* `ssh`
+
+  Run the commands on the array over ssh, as the `username` with the private `key`. The ssh client never prompts and gives up a `manager` it can not reach in 10 seconds.
+
+* `cli`
+
+  Run the commands through the 3PAR cli installed on this node, with the password file `pwf`.
+
+The `proxy` method of v2, which served the commands of the nodes of a dmz from a node of the zone of the array, is not supported. Use the `ssh` method, its `manager` a bastion of the zone of the array whose authorized key forces a command passing on to the array the remote copy commands it allows.
+
 
 ## Keyword `pwf`
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       credentials
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -131,7 +141,7 @@ The path to the 3par password file to use to log in.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       scheduling
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -145,8 +155,8 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    true
 	scopable:    false
-	group:       other
-	candidates:  freenas, hds, eva, nexenta, vioserver, centera, symmetrix, emcvnx, netapp, hp3par, ibmds, ibmsvc, xtremio, dorado, hoc, truenas
+	group:       identity
+	candidates:  freenas, hds, symmetrix, hp3par, xtremio, hoc, pure, truenas
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -158,7 +168,7 @@ The storage array driver name.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       credentials
 	rbac:        This driver group requires the root grant.
 
 **Example:**

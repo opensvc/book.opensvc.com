@@ -27,7 +27,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -45,7 +45,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       interface
 
 **Example:**
 
@@ -69,7 +69,7 @@ it.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       dns
 	convert:     list
 
 **Example:**
@@ -93,7 +93,7 @@ each, in the order of its ip resources.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       routing
 
 **Example:**
 
@@ -115,7 +115,7 @@ default route of its own reaches the segment only.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       addressing
 	default:     0
 	convert:     int
 
@@ -136,7 +136,7 @@ The `ips_per_node` keyword is deprecated because its value is hard to manage for
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       interface
 	candidates:  bridge, macvlan, ipvlan-l2, dedicated, ovs
 	convert:     list
 
@@ -163,7 +163,7 @@ keyword is scopable, for the nodes whose interface on the segment differs.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       addressing
 
 **Example:**
 
@@ -197,7 +197,7 @@ restart it, or unprovision and provision it.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       addressing
 	convert:     list
 
 **Example:**
@@ -224,7 +224,7 @@ ranges of another lan network of the same segment.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	candidates:  bridge, routed_bridge, lan
 	default:     bridge
 
@@ -250,7 +250,7 @@ forward chain drops what docker did not accept, in a chain the docker
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       interface
 	candidates:  access, native-tagged, native-untagged
 
 **Example:**
@@ -268,7 +268,7 @@ to the openvswitch bridge, when the ip.netns names none: `access`,
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       interface
 
 **Example:**
 

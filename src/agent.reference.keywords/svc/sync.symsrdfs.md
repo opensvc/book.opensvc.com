@@ -158,7 +158,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -220,7 +220,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       scheduling
 	default:     false
 	convert:     bool
 	rbac:        A keyword of the symsrdfs driver, which needs the root grant to choose.
@@ -239,7 +239,7 @@ in the journal but its status.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       status
 	aliases:     sync_max_delay
 	convert:     duration
 	rbac:        A keyword of the symsrdfs driver, which needs the root grant to choose.
@@ -297,7 +297,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -318,7 +318,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -350,7 +350,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -383,7 +383,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -408,7 +408,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	depends:     create_pg=true
 
 **Example:**
@@ -430,7 +430,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -461,7 +461,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -478,12 +478,15 @@ Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
+On a node holding the v1 cgroup hierarchy, `default` lifts the memory+swap
+limit too: a group with no memory limit cannot keep one below it.
+
 
 ## Keyword `pg_mem_oom_control`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -513,7 +516,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -532,7 +535,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -553,7 +556,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -576,7 +579,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -709,6 +712,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -728,7 +732,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       array
 	convert:     int
 	rbac:        Requires the root grant.
 
@@ -789,7 +793,7 @@ The minimum delay between two restart tentatives on the resource.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       scheduling
 	rbac:        A keyword of the symsrdfs driver, which needs the root grant to choose.
 
 **Example:**
@@ -868,6 +872,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -887,7 +892,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 
 **Description:**
@@ -922,7 +927,7 @@ process group.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       array
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -938,7 +943,7 @@ Name of the symmetrix device group where the source and target devices are group
 
 	required:    true
 	scopable:    true
-	group:       other
+	group:       array
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -978,7 +983,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        Requires the root grant, except for the values store.
 
 **Description:**
@@ -1011,6 +1016,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1032,6 +1038,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    false
 	group:       requirements
 	aliases:     sync_requires, sync_update_requires, sync_nodes_requires, sync_drp_requires
+	references:  requires
 
 **Example:**
 

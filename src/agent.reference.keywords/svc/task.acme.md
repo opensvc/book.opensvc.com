@@ -196,7 +196,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       status
 	candidates:  last_run, last_run_warn, 
 
 **Example:**
@@ -218,7 +218,7 @@ If not set (default), the status of a task is always n/a.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -236,7 +236,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       run
 	convert:     bool
 
 **Description:**
@@ -250,7 +250,7 @@ This flag can be used for dangerous tasks like data restoration.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       certificates
 
 **Example:**
 
@@ -302,7 +302,7 @@ unprovision it.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       certificates
 
 **Example:**
 
@@ -343,7 +343,7 @@ registers. The first one to need it registers it, and the others take it.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       certificates
 
 **Example:**
 
@@ -369,7 +369,7 @@ An install line naming the same pattern installs the certificate of each, as
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       certificates
 
 **Example:**
 
@@ -398,7 +398,8 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       install
+	references:  fs|volume rids
 	convert:     list
 
 **Example:**
@@ -441,7 +442,7 @@ A failed install is a failed run, the task's own work not done.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       run
 	default:     false
 	convert:     bool
 
@@ -459,7 +460,7 @@ journal but its status and its exit code.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       run
 	default:     1
 	convert:     int
 
@@ -508,7 +509,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       scheduling
 	convert:     list
 
 **Example:**
@@ -551,7 +552,7 @@ A task installing again the files rendered from the networks with
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       run
 
 **Example:**
 
@@ -586,7 +587,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       scheduling
 	default:     @10s
 
 **Example:**
@@ -611,7 +612,7 @@ while the events keep coming faster.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -632,7 +633,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -664,7 +665,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -697,7 +698,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -722,7 +723,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	depends:     create_pg=true
 
 **Example:**
@@ -744,7 +745,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -775,7 +776,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -792,12 +793,15 @@ Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
+On a node holding the v1 cgroup hierarchy, `default` lifts the memory+swap
+limit too: a group with no memory limit cannot keep one below it.
+
 
 ## Keyword `pg_mem_oom_control`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -827,7 +831,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -846,7 +850,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -867,7 +871,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -890,7 +894,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -1051,6 +1055,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1070,7 +1075,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       status
 	default:     0:up 1:down
 
 **Example:**
@@ -1097,6 +1102,7 @@ Valid `<status names>` are:
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1116,7 +1122,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 
 **Example:**
@@ -1134,7 +1140,7 @@ Takes precedence over `timeout`.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       scheduling
 
 **Example:**
 
@@ -1151,7 +1157,7 @@ See `usr/share/doc/opensvc/schedule` for the schedule syntax reference.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       certificates
 	convert:     list
 
 **Example:**
@@ -1225,7 +1231,7 @@ the flex primary gets `--leader` commands.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       run
 	convert:     duration
 
 **Example:**
@@ -1265,7 +1271,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 
 **Description:**
@@ -1282,6 +1288,7 @@ a monitor action (reboot or crash the node) if the resource is monitored.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1344,7 +1351,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 
 **Example:**
@@ -1362,7 +1369,7 @@ If no timeout is set, the agent waits indefinitely for the task command to exit.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        Requires the root grant, except for the values oci, docker, podman, acme.
 
 **Description:**
@@ -1395,6 +1402,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -1414,7 +1422,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       certificates
 
 **Example:**
 

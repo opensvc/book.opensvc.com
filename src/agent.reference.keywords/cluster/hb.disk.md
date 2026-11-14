@@ -25,7 +25,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -44,7 +44,7 @@ The agent does not interpret the value.
 
 	required:    true
 	scopable:    true
-	group:       other
+	group:       transport
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -58,14 +58,17 @@ The device to write the heartbeats to and read from.
 It must be,
 
 * Dedicated to the daemon use.
-* Sized 1MB for metadata + 1MB/node.
+* Named by a static path, as `/dev/mapper/<name>` or `/dev/disk/by-id/<id>`: a `/dev/dm-<n>` path is refused, its number changing across reboots, and a `/dev/sd<x>` path is warned of.
+* Sized `max_slots` x 4 KiB for the metadata, plus 1 MiB per node, plus 1 MiB: 7 MiB for 2 nodes with the default `max_slots`. The streams of a smaller device fail to start.
+
+Signing a device that is not a heartbeat disk yet (`om daemon hb sign`) zeroes its metadata area, its first `max_slots` x 4 KiB, and is refused on a device holding another signature, as a filesystem, unless forced.
 
 
 ## Keyword `interval`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timing
 	default:     5s
 	convert:     duration
 	rbac:        This driver group requires the root grant.
@@ -84,7 +87,7 @@ synchronization workload.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       transport
 	default:     1024
 	convert:     int
 	rbac:        This driver group requires the root grant.
@@ -107,7 +110,7 @@ Do not modify default value if the hb disk is used by multiple clusters.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timing
 	default:     15s
 	convert:     duration
 	rbac:        This driver group requires the root grant.
@@ -121,7 +124,7 @@ The delay since the last received heartbeat from a node before considering this 
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       identity
 	candidates:  unicast, multicast, disk, relay
 	rbac:        This driver group requires the root grant.
 

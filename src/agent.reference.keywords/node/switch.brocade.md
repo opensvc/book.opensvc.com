@@ -27,7 +27,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -45,7 +45,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       credentials
 
 **Example:**
 
@@ -60,7 +60,7 @@ The path to the private key to use to log in the switch.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	candidates:  telnet, ssh
 	default:     ssh
 
@@ -91,7 +91,7 @@ is refused.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 
 **Example:**
 
@@ -109,7 +109,7 @@ If not set, fallback to the section name suffix.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       credentials
 
 **Example:**
 
@@ -129,7 +129,7 @@ Either `password` or `key` must be specified.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       scheduling
 
 **Description:**
 
@@ -143,7 +143,7 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       identity
 	candidates:  brocade
 
 **Description:**
@@ -159,7 +159,7 @@ the collector.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       credentials
 
 **Example:**
 

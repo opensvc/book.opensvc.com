@@ -24,7 +24,7 @@
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       transport
 
 **Default:**
 
@@ -36,17 +36,22 @@
 
 **Description:**
 
+The address to listen on, and the address the peers send to. An IPv4 or
+IPv6 address, as `fd01::11`, or a name.
+
 Use the scoping syntax to assign non-default ip addresses nodes.
 
 > **Warning**: Using the unscoped syntax would assign the same address to
   all nodes and the heartbeat would go down.
+
+IPv6 link-local addresses, as `fe80::11%eth0`, are not supported.
 
 
 ## Keyword `comment`
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -64,7 +69,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timing
 	default:     5s
 	convert:     duration
 
@@ -82,7 +87,7 @@ synchronization workload.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       transport
 
 **Default:**
 
@@ -101,7 +106,7 @@ The interface to bind.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       nodes
 	convert:     list
 
 **Default:**
@@ -129,7 +134,7 @@ bladecenters.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       transport
 	default:     10000
 	convert:     int
 
@@ -142,7 +147,7 @@ The port for each node to send to or listen on.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timing
 	default:     15s
 	convert:     duration
 
@@ -155,7 +160,7 @@ The delay since the last received heartbeat from a node before considering this 
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       identity
 	candidates:  unicast, multicast, disk, relay
 
 **Description:**

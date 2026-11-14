@@ -26,7 +26,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -44,7 +44,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       creation
 
 **Example:**
 
@@ -60,7 +60,7 @@ prepare the pool volumes devices.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       filesystem
 
 **Example:**
 
@@ -75,7 +75,7 @@ The mkfs command options to use to format the pool devices.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       filesystem
 
 **Description:**
 
@@ -86,7 +86,7 @@ The mount options of the fs created over the pool devices.
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       source
 
 **Description:**
 
@@ -97,7 +97,7 @@ The name of the zpool to allocate the pool volumes zvol or datasets into.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       volumes
 
 **Description:**
 
@@ -111,8 +111,8 @@ See `usr/share/doc/schedule` for the schedule syntax.
 
 	required:    false
 	scopable:    false
-	group:       other
-	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, dorado, hoc, drbd, pure, rados
+	group:       identity
+	candidates:  directory, loop, vg, zpool, freenas, share, shm, symmetrix, truenas, virtual, hoc, drbd, pure, rados
 	default:     loop
 
 **Description:**

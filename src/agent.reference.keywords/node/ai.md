@@ -9,7 +9,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       endpoint
 	since:       v3.0.0-rc56
 
 **Example:**
@@ -29,7 +29,7 @@ and left out of the cluster status.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 

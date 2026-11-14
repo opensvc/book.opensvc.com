@@ -1,9 +1,1515 @@
 # Keyword changes
 
-What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc62.
+What each release of the agent added, removed and changed in its keywords. The reference itself documents v3.0.0-rc64.
 
 The 20 most recent releases are listed. The whole timeline is in `history.json`, beside this page.
 
+
+## v3.0.0-rc64
+
+
+### Added
+
+- `cluster/array.freenas.api`
+- `cluster/array.freenas.password`
+- `cluster/array.freenas.username`
+- `cluster/array.hoc.name`
+- `cluster/array.hp3par.username`
+- `cluster/array.symmetrix.password`
+- `cluster/pool.drbd.fs_type`
+- `cluster/pool.hoc.compression`
+- `cluster/pool.hoc.dedup`
+- `node/array.freenas.api`
+- `node/array.freenas.password`
+- `node/array.freenas.username`
+- `node/array.hoc.name`
+- `node/array.hp3par.username`
+- `node/array.symmetrix.password`
+- `node/pool.drbd.fs_type`
+- `node/pool.hoc.compression`
+- `node/pool.hoc.dedup`
+
+### Removed
+
+- `cluster/array.centera.java_bin`
+- `cluster/array.centera.jcass_dir`
+- `cluster/array.centera.password`
+- `cluster/array.centera.server`
+- `cluster/array.centera.username`
+- `cluster/array.dorado.api`
+- `cluster/array.dorado.name`
+- `cluster/array.dorado.timeout`
+- `cluster/array.emcvnx.method`
+- `cluster/array.emcvnx.password`
+- `cluster/array.emcvnx.scope`
+- `cluster/array.emcvnx.spa`
+- `cluster/array.emcvnx.spb`
+- `cluster/array.emcvnx.username`
+- `cluster/array.eva.bin`
+- `cluster/array.eva.manager`
+- `cluster/array.ibmds.hmc1`
+- `cluster/array.ibmds.hmc2`
+- `cluster/array.ibmsvc.key`
+- `cluster/array.nexenta.port`
+- `cluster/pool.dorado.array`
+- `cluster/pool.dorado.compression`
+- `cluster/pool.dorado.dedup`
+- `cluster/pool.dorado.diskgroup`
+- `cluster/pool.dorado.fs_type`
+- `cluster/pool.dorado.hypermetrodomain`
+- `node/array.centera.java_bin`
+- `node/array.centera.jcass_dir`
+- `node/array.centera.password`
+- `node/array.centera.server`
+- `node/array.centera.username`
+- `node/array.dorado.api`
+- `node/array.dorado.name`
+- `node/array.dorado.timeout`
+- `node/array.emcvnx.method`
+- `node/array.emcvnx.password`
+- `node/array.emcvnx.scope`
+- `node/array.emcvnx.spa`
+- `node/array.emcvnx.spb`
+- `node/array.emcvnx.username`
+- `node/array.eva.bin`
+- `node/array.eva.manager`
+- `node/array.ibmds.hmc1`
+- `node/array.ibmds.hmc2`
+- `node/array.ibmsvc.key`
+- `node/array.nexenta.port`
+- `node/pool.dorado.array`
+- `node/pool.dorado.compression`
+- `node/pool.dorado.dedup`
+- `node/pool.dorado.diskgroup`
+- `node/pool.dorado.fs_type`
+- `node/pool.dorado.hypermetrodomain`
+
+### Changed
+
+- `cluster/array.freenas.timeout`
+  - types: dorado, freenas, hoc, truenas -> freenas, hoc, truenas
+- `cluster/array.hp3par.manager`
+  - description rewritten
+- `cluster/array.hp3par.method`
+  - candidates: cli, proxy, ssh -> cli, ssh
+  - description rewritten
+- `cluster/array.type`
+  - candidates: centera, dorado, emcvnx, eva, freenas, hds, hoc, hp3par, ibmds, ibmsvc, netapp, nexenta, symmetrix, truenas, vioserver, xtremio -> freenas, hds, hoc, hp3par, pure, symmetrix, truenas, xtremio
+- `cluster/collector.timeout`
+  - default: 5s -> 10s
+- `cluster/hb.disk.dev`
+  - description rewritten
+- `cluster/hb.multicast.addr`
+  - description rewritten
+- `cluster/hb.multicast.intf`
+  - description rewritten
+- `cluster/hb.unicast.addr`
+  - description rewritten
+- `cluster/pool.freenas.array`
+  - types: dorado, freenas, hoc, pure, symmetrix, truenas -> freenas, hoc, pure, symmetrix, truenas
+- `cluster/pool.freenas.diskgroup`
+  - types: dorado, freenas, hoc, pure, truenas -> freenas, hoc, pure, truenas
+- `cluster/pool.type`
+  - candidates: directory, dorado, drbd, freenas, hoc, loop, pure, rados, share, shm, symmetrix, truenas, vg, virtual, zpool -> directory, drbd, freenas, hoc, loop, pure, rados, share, shm, symmetrix, truenas, vg, virtual, zpool
+- `node/array.freenas.timeout`
+  - types: dorado, freenas, hoc, truenas -> freenas, hoc, truenas
+- `node/array.hp3par.manager`
+  - description rewritten
+- `node/array.hp3par.method`
+  - candidates: cli, proxy, ssh -> cli, ssh
+  - description rewritten
+- `node/array.type`
+  - candidates: centera, dorado, emcvnx, eva, freenas, hds, hoc, hp3par, ibmds, ibmsvc, netapp, nexenta, symmetrix, truenas, vioserver, xtremio -> freenas, hds, hoc, hp3par, pure, symmetrix, truenas, xtremio
+- `node/collector.timeout`
+  - default: 5s -> 10s
+- `node/hb.disk.dev`
+  - description rewritten
+- `node/hb.multicast.addr`
+  - description rewritten
+- `node/hb.multicast.intf`
+  - description rewritten
+- `node/hb.unicast.addr`
+  - description rewritten
+- `node/pool.freenas.array`
+  - types: dorado, freenas, hoc, pure, symmetrix, truenas -> freenas, hoc, pure, symmetrix, truenas
+- `node/pool.freenas.diskgroup`
+  - types: dorado, freenas, hoc, pure, truenas -> freenas, hoc, pure, truenas
+- `node/pool.type`
+  - candidates: directory, dorado, drbd, freenas, hoc, loop, pure, rados, share, shm, symmetrix, truenas, vg, virtual, zpool -> directory, drbd, freenas, hoc, loop, pure, rados, share, shm, symmetrix, truenas, vg, virtual, zpool
+- `svc/DEFAULT.pg_mem_limit`
+  - description rewritten
+- `svc/container.docker.ipcns`
+  - candidates: unset -> , host, none, private, shareable
+- `svc/container.docker.netns`
+  - candidates: unset -> , host, none
+- `svc/container.docker.pidns`
+  - candidates: unset -> , host
+- `svc/container.kvm.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/container.lxc.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/container.oci.ipcns`
+  - candidates: unset -> , host, none, private, shareable
+- `svc/container.oci.netns`
+  - candidates: unset -> , host, none
+- `svc/container.oci.pidns`
+  - candidates: unset -> , host
+- `svc/container.podman.ipcns`
+  - candidates: unset -> , host, none, private, shareable
+- `svc/container.podman.netns`
+  - candidates: unset -> , host, none
+- `svc/container.podman.pidns`
+  - candidates: unset -> , host
+- `svc/container.vbox.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/disk.crypt.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/disk.disk.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/disk.drbd.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/disk.hp3par.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/disk.loop.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/disk.lv.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/disk.lvm.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/disk.md.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/disk.rados.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/disk.raw.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/disk.vg.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/disk.zpool.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/disk.zvol.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/fs.9pfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.9pfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.9pfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.9pfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.afs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.afs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.afs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.afs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.bfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.bfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.bfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.bfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.bind.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.bind.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.bind.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.bind.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.btrfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.btrfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.btrfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.btrfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.cephfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.cephfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.cephfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.cephfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.cifs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.cifs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.cifs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.cifs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.directory.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.directory.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.directory.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.directory.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ext2.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ext2.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ext2.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ext2.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ext3.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ext3.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ext3.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ext3.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ext4.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ext4.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ext4.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ext4.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.f2fs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.f2fs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.f2fs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.f2fs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.gfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.gfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.gfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.gfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.gfs2.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.gfs2.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.gfs2.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.gfs2.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.glusterfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.glusterfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.glusterfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.glusterfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.gpfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.gpfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.gpfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.gpfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.hfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.hfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.hfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.hfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.hfsplus.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.hfsplus.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.hfsplus.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.hfsplus.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.hpfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.hpfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.hpfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.hpfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jffs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jffs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jffs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jffs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jffs2.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jffs2.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jffs2.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jffs2.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jfs2.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jfs2.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jfs2.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.jfs2.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.lofs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.lofs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.lofs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.lofs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.logfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.logfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.logfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.logfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.minix.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.minix.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.minix.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.minix.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.msdos.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.msdos.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.msdos.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.msdos.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ncpfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ncpfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ncpfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ncpfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.nfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.nfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.nfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.nfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.nfs4.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.nfs4.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.nfs4.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.nfs4.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.nilfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.nilfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.nilfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.nilfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.none.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.none.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.none.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.none.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ntfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ntfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ntfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ntfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ocfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ocfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ocfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ocfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ocfs2.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ocfs2.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ocfs2.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ocfs2.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.qnx4.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.qnx4.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.qnx4.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.qnx4.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.reiserfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.reiserfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.reiserfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.reiserfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.reiserfs4.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.reiserfs4.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.reiserfs4.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.reiserfs4.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.rpc_pipefs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.rpc_pipefs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.rpc_pipefs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.rpc_pipefs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.sgcp_nfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.sgcp_nfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.sgcp_nfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.sgcp_nfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.smbfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.smbfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.smbfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.smbfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.tmpfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.tmpfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.tmpfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.tmpfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.tux3.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.tux3.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.tux3.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.tux3.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ufs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ufs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ufs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ufs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ufs2.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ufs2.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ufs2.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.ufs2.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.umsdos.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.umsdos.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.umsdos.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.umsdos.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.vfat.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.vfat.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.vfat.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.vfat.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.vxfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.vxfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.vxfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.vxfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.xfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.xfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.xfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.xfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.xia.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.xia.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.xia.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.xia.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.zfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.zfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.zfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/fs.zfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/ip.docker.alias`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/ip.docker.mode`
+  - description rewritten
+- `svc/ip.host.gateway`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/ip.netns.alias`
+  - deprecated: unset -> v3.0.0-rc62
+- `svc/ip.netns.mode`
+  - description rewritten
+- `svc/task.docker.ipcns`
+  - candidates: unset -> , host, none, private, shareable
+- `svc/task.docker.netns`
+  - candidates: unset -> , host, none
+- `svc/task.docker.pidns`
+  - candidates: unset -> , host
+- `svc/task.oci.ipcns`
+  - candidates: unset -> , host, none, private, shareable
+- `svc/task.oci.netns`
+  - candidates: unset -> , host, none
+- `svc/task.oci.pidns`
+  - candidates: unset -> , host
+- `svc/task.podman.ipcns`
+  - candidates: unset -> , host, none, private, shareable
+- `svc/task.podman.netns`
+  - candidates: unset -> , host, none
+- `svc/task.podman.pidns`
+  - candidates: unset -> , host
+- `svc/volume..configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/volume..directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/volume..secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `svc/volume..signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/DEFAULT.pg_mem_limit`
+  - description rewritten
+- `vol/disk.crypt.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `vol/disk.disk.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `vol/disk.drbd.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `vol/disk.hp3par.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `vol/disk.loop.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `vol/disk.lv.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `vol/disk.lvm.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `vol/disk.md.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `vol/disk.rados.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `vol/disk.raw.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `vol/disk.vg.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `vol/disk.zpool.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `vol/disk.zvol.promote_rw`
+  - deprecated: unset -> v3.0.0-rc62
+- `vol/fs.9pfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.9pfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.9pfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.9pfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.afs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.afs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.afs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.afs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.bfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.bfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.bfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.bfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.bind.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.bind.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.bind.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.bind.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.btrfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.btrfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.btrfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.btrfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.cephfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.cephfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.cephfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.cephfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.cifs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.cifs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.cifs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.cifs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.directory.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.directory.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.directory.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.directory.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ext2.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ext2.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ext2.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ext2.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ext3.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ext3.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ext3.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ext3.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ext4.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ext4.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ext4.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ext4.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.f2fs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.f2fs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.f2fs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.f2fs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.gfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.gfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.gfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.gfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.gfs2.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.gfs2.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.gfs2.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.gfs2.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.glusterfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.glusterfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.glusterfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.glusterfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.gpfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.gpfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.gpfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.gpfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.hfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.hfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.hfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.hfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.hfsplus.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.hfsplus.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.hfsplus.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.hfsplus.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.hpfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.hpfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.hpfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.hpfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jffs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jffs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jffs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jffs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jffs2.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jffs2.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jffs2.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jffs2.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jfs2.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jfs2.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jfs2.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.jfs2.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.lofs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.lofs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.lofs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.lofs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.logfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.logfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.logfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.logfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.minix.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.minix.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.minix.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.minix.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.msdos.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.msdos.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.msdos.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.msdos.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ncpfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ncpfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ncpfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ncpfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.nfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.nfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.nfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.nfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.nfs4.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.nfs4.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.nfs4.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.nfs4.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.nilfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.nilfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.nilfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.nilfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.none.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.none.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.none.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.none.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ntfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ntfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ntfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ntfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ocfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ocfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ocfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ocfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ocfs2.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ocfs2.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ocfs2.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ocfs2.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.qnx4.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.qnx4.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.qnx4.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.qnx4.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.reiserfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.reiserfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.reiserfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.reiserfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.reiserfs4.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.reiserfs4.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.reiserfs4.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.reiserfs4.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.rpc_pipefs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.rpc_pipefs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.rpc_pipefs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.rpc_pipefs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.sgcp_nfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.sgcp_nfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.sgcp_nfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.sgcp_nfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.smbfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.smbfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.smbfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.smbfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.tmpfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.tmpfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.tmpfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.tmpfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.tux3.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.tux3.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.tux3.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.tux3.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ufs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ufs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ufs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ufs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ufs2.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ufs2.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ufs2.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.ufs2.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.umsdos.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.umsdos.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.umsdos.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.umsdos.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.vfat.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.vfat.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.vfat.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.vfat.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.vxfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.vxfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.vxfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.vxfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.xfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.xfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.xfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.xfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.xia.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.xia.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.xia.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.xia.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.zfs.configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.zfs.directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.zfs.secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/fs.zfs.signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/task.docker.ipcns`
+  - candidates: unset -> , host, none, private, shareable
+- `vol/task.docker.netns`
+  - candidates: unset -> , host, none
+- `vol/task.docker.pidns`
+  - candidates: unset -> , host
+- `vol/task.oci.ipcns`
+  - candidates: unset -> , host, none, private, shareable
+- `vol/task.oci.netns`
+  - candidates: unset -> , host, none
+- `vol/task.oci.pidns`
+  - candidates: unset -> , host
+- `vol/task.podman.ipcns`
+  - candidates: unset -> , host, none, private, shareable
+- `vol/task.podman.netns`
+  - candidates: unset -> , host, none
+- `vol/task.podman.pidns`
+  - candidates: unset -> , host
+- `vol/volume..configs`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/volume..directories`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/volume..secrets`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
+- `vol/volume..signal`
+  - deprecated: unset -> v3.0.0-rc62
+  - replacedBy: unset -> install
 
 ## v3.0.0-rc62
 
@@ -6282,19 +7788,13 @@ No keyword changed.
 
 ### Removed
 
-- `cluster/array.freenas.timeout`
 - `cluster/array.netapp.key`
 - `cluster/array.pure.insecure`
 - `cluster/drbd.max_peers`
-- `cluster/pool.freenas.array`
-- `cluster/pool.freenas.diskgroup`
 - `cluster/pool.freenas.fs_type`
-- `node/array.freenas.timeout`
 - `node/array.netapp.key`
 - `node/array.pure.insecure`
 - `node/drbd.max_peers`
-- `node/pool.freenas.array`
-- `node/pool.freenas.diskgroup`
 - `node/pool.freenas.fs_type`
 - `svc/disk.hp3par.sync_requires`
 - `svc/sync.rsync.sync_requires`
@@ -6697,59 +8197,4 @@ No keyword changed.
 - `vol/fs.sgcp_nfs.endpoint`
   - description rewritten
 - `vol/ip.sgcp_dnsalias.endpoint`
-  - description rewritten
-
-## v3.0.0-rc37
-
-
-### Added
-
-- `cluster/array.pure.private_key`
-- `node/array.pure.private_key`
-
-### Changed
-
-- `cluster/array.pure.secret`
-  - deprecated: unset -> 3.0.0
-  - replacedBy: unset -> private_key
-  - required: true -> unset
-- `node/array.pure.secret`
-  - deprecated: unset -> 3.0.0
-  - replacedBy: unset -> private_key
-  - required: true -> unset
-- `svc/DEFAULT.pg_blkio_weight`
-  - description rewritten
-- `svc/DEFAULT.pg_cpu_quota`
-  - description rewritten
-- `svc/DEFAULT.pg_cpu_shares`
-  - description rewritten
-- `svc/DEFAULT.pg_cpus`
-  - description rewritten
-- `svc/DEFAULT.pg_mem_limit`
-  - description rewritten
-- `svc/DEFAULT.pg_mem_oom_control`
-  - description rewritten
-- `svc/DEFAULT.pg_mem_swappiness`
-  - description rewritten
-- `svc/DEFAULT.pg_mems`
-  - description rewritten
-- `svc/DEFAULT.pg_vmem_limit`
-  - description rewritten
-- `vol/DEFAULT.pg_blkio_weight`
-  - description rewritten
-- `vol/DEFAULT.pg_cpu_quota`
-  - description rewritten
-- `vol/DEFAULT.pg_cpu_shares`
-  - description rewritten
-- `vol/DEFAULT.pg_cpus`
-  - description rewritten
-- `vol/DEFAULT.pg_mem_limit`
-  - description rewritten
-- `vol/DEFAULT.pg_mem_oom_control`
-  - description rewritten
-- `vol/DEFAULT.pg_mem_swappiness`
-  - description rewritten
-- `vol/DEFAULT.pg_mems`
-  - description rewritten
-- `vol/DEFAULT.pg_vmem_limit`
   - description rewritten

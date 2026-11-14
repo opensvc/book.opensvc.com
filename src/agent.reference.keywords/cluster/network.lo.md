@@ -19,7 +19,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -38,7 +38,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       addressing
 	default:     0
 	convert:     int
 	rbac:        This driver group requires the root grant.
@@ -60,7 +60,7 @@ The `ips_per_node` keyword is deprecated because its value is hard to manage for
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	candidates:  bridge, routed_bridge, lan
 	default:     bridge
 	rbac:        This driver group requires the root grant.

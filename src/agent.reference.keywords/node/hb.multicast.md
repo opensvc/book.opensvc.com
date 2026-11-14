@@ -23,19 +23,23 @@
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       transport
 	default:     224.3.29.71
 
 **Description:**
 
-The multicast address to send to and listen on.
+The multicast group to send to and listen on, IPv4 or IPv6.
+
+An IPv6 group, as `ff02::1:4141`, requires `intf` on every node of the
+heartbeat. The group names no zone, as `ff02::1:4141%eth0`: name the
+interface with `intf`.
 
 
 ## Keyword `comment`
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -53,7 +57,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timing
 	default:     5s
 	convert:     duration
 
@@ -71,7 +75,7 @@ synchronization workload.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       transport
 
 **Default:**
 
@@ -83,14 +87,17 @@ The natural interface for `<addr>`
 
 **Description:**
 
-The interface to bind.
+The interface to join the multicast group on, and to send from.
+
+Required for an IPv6 group, on every node of the heartbeat: use the scoping
+syntax when the interface name differs between nodes.
 
 
 ## Keyword `port`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       transport
 	default:     10000
 	convert:     int
 
@@ -103,7 +110,7 @@ The port for each node to send to or listen on.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timing
 	default:     15s
 	convert:     duration
 
@@ -116,7 +123,7 @@ The delay since the last received heartbeat from a node before considering this 
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       identity
 	candidates:  unicast, multicast, disk, relay
 
 **Description:**

@@ -27,7 +27,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -46,7 +46,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       transport
 	default:     false
 	convert:     bool
 	rbac:        This driver group requires the root grant.
@@ -62,7 +62,7 @@ This should only be enabled for testing.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timing
 	default:     5s
 	convert:     duration
 	rbac:        This driver group requires the root grant.
@@ -81,7 +81,7 @@ synchronization workload.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       credentials
 	default:     system/sec/relay
 	rbac:        This driver group requires the root grant.
 
@@ -106,7 +106,7 @@ namespaced, so it resolves in the `system` namespace: `./sec/relays` is
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       transport
 	rbac:        This driver group requires the root grant.
 
 **Example:**
@@ -124,7 +124,7 @@ If not specified, the port value is 1215, i.e. the default opensvc listener port
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timing
 	default:     15s
 	convert:     duration
 	rbac:        This driver group requires the root grant.
@@ -138,7 +138,7 @@ The delay since the last received heartbeat from a node before considering this 
 
 	required:    true
 	scopable:    false
-	group:       other
+	group:       identity
 	candidates:  unicast, multicast, disk, relay
 	rbac:        This driver group requires the root grant.
 
@@ -151,7 +151,7 @@ The heartbeat driver name.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       credentials
 	default:     relay
 	rbac:        This driver group requires the root grant.
 

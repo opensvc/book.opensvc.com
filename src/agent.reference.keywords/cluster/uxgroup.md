@@ -9,7 +9,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -28,7 +28,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       authentication
 	convert:     listlowercase
 	rbac:        This driver group requires the root grant.
 

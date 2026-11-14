@@ -65,7 +65,7 @@
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       snapshots
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -141,7 +141,7 @@ Errors interrupt the action.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -159,7 +159,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       snapshots
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -175,7 +175,7 @@ Use `-delta` in symsnapvx commands.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       array
 	convert:     list
 	rbac:        Requires the root grant.
 
@@ -192,7 +192,8 @@ The whitespace-separated list of symmetrix device identifiers.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       array
+	references:  disk|fs|volume|container rids
 	convert:     list
 	rbac:        Requires the root grant.
 
@@ -253,7 +254,7 @@ Set to `true` to ignore this resource in the nodes context and consider it in th
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       scheduling
 	default:     false
 	convert:     bool
 	rbac:        A keyword of the symsnapvx driver, which needs the root grant to choose.
@@ -272,7 +273,7 @@ in the journal but its status.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       status
 	aliases:     sync_max_delay
 	convert:     duration
 	rbac:        A keyword of the symsnapvx driver, which needs the root grant to choose.
@@ -310,7 +311,7 @@ A resource with `monitor=true` will trigger the `monitor_action`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       snapshots
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -346,7 +347,7 @@ Dump filesystems are a typical use case for optional=true.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -367,7 +368,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -399,7 +400,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -432,7 +433,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -457,7 +458,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	depends:     create_pg=true
 
 **Example:**
@@ -479,7 +480,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -510,7 +511,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -527,12 +528,15 @@ Setting this keyword to `default` puts the capping back where a node that
 never capped anything leaves it. Removing the keyword does not: what was
 written stays written, whether om wrote it or something else did.
 
+On a node holding the v1 cgroup hierarchy, `default` lifts the memory+swap
+limit too: a group with no memory limit cannot keep one below it.
+
 
 ## Keyword `pg_mem_oom_control`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -562,7 +566,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -581,7 +585,7 @@ it there is warned about, and ignored.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -602,7 +606,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 
 **Example:**
 
@@ -625,7 +629,7 @@ written stays written, whether om wrote it or something else did.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       pg
 	convert:     size
 
 **Example:**
@@ -730,6 +734,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -749,7 +754,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       scheduling
 	rbac:        A keyword of the symsnapvx driver, which needs the root grant to choose.
 
 **Example:**
@@ -767,7 +772,7 @@ See `usr/share/doc/opensvc/schedule` for the schedule syntax reference.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       snapshots
 	convert:     bool
 	rbac:        Requires the root grant.
 
@@ -840,7 +845,7 @@ remote filesystem must be mounted to not overflow the underlying filesystem.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       timeouts
 	convert:     duration
 
 **Description:**
@@ -875,7 +880,7 @@ process group.
 
 	required:    true
 	scopable:    true
-	group:       other
+	group:       array
 	rbac:        Requires the root grant.
 
 **Example:**
@@ -915,7 +920,7 @@ Some tags can influence the driver behaviour:
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        Requires the root grant, except for the values store.
 
 **Description:**
@@ -948,6 +953,7 @@ destroy data.
 	required:    false
 	scopable:    false
 	group:       requirements
+	references:  requires
 
 **Example:**
 
@@ -969,6 +975,7 @@ If states are omitted, `up,stdby up` is used as the default expected states.
 	scopable:    false
 	group:       requirements
 	aliases:     sync_requires, sync_update_requires, sync_nodes_requires, sync_drp_requires
+	references:  requires
 
 **Example:**
 

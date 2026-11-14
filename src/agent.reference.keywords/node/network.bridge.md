@@ -23,7 +23,7 @@
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 
 **Description:**
 
@@ -41,7 +41,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       interface
 
 **Description:**
 
@@ -52,7 +52,7 @@ The network bridge device name. If not set the name will be `obr_<network name>`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       dns
 	convert:     list
 
 **Example:**
@@ -76,7 +76,7 @@ each, in the order of its ip resources.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       addressing
 	default:     0
 	convert:     int
 
@@ -97,7 +97,7 @@ The `ips_per_node` keyword is deprecated because its value is hard to manage for
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       addressing
 
 **Description:**
 
@@ -110,7 +110,7 @@ The routed_bridge driver fragments this network into subnets with a prefix lengt
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       routing
 	convert:     bool
 
 **Description:**
@@ -122,7 +122,7 @@ Set to true if the network ip range is public and we must not configure masquera
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	candidates:  bridge, routed_bridge, lan
 	default:     bridge
 

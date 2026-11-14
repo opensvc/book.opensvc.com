@@ -30,7 +30,7 @@
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       routing
 	rbac:        This driver group requires the root grant.
 
 **Default:**
@@ -51,7 +51,7 @@ reachable on the same subnet.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -70,7 +70,7 @@ The agent does not interpret the value.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       interface
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -82,7 +82,7 @@ The network bridge device name. If not set the name will be `obr_<network name>`
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       dns
 	convert:     list
 	rbac:        This driver group requires the root grant.
 
@@ -107,7 +107,7 @@ each, in the order of its ip resources.
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       routing
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -119,7 +119,7 @@ The gateway to use to reach the network segment of the node specified as scope.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       addressing
 	deprecated:  since 3.0.0, replaced by mask_per_node
 	default:     1024
 	convert:     int
@@ -142,7 +142,7 @@ The `ips_per_node` keyword is deprecated because its value is hard to manage for
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       addressing
 	default:     0
 	convert:     int
 	rbac:        This driver group requires the root grant.
@@ -164,7 +164,7 @@ The `ips_per_node` keyword is deprecated because its value is hard to manage for
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       addressing
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -178,7 +178,7 @@ The routed_bridge driver fragments this network into subnets with a prefix lengt
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       routing
 	convert:     bool
 	rbac:        This driver group requires the root grant.
 
@@ -191,7 +191,7 @@ Set to true if the network ip range is public and we must not configure masquera
 
 	required:    false
 	scopable:    true
-	group:       other
+	group:       addressing
 	rbac:        This driver group requires the root grant.
 
 **Description:**
@@ -209,7 +209,7 @@ list.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       routing
 	default:     main
 	convert:     list
 	rbac:        This driver group requires the root grant.
@@ -229,7 +229,7 @@ The list of available tables is in `/etc/iproute2/rt_tables`.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       routing
 	candidates:  auto, always, never
 	default:     auto
 	rbac:        This driver group requires the root grant.
@@ -253,7 +253,7 @@ Create and route traffic through tunnels to peer nodes policy.
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       routing
 	candidates:  gre, ipip, ip6ip6
 	default:     ipip
 	rbac:        This driver group requires the root grant.
@@ -267,7 +267,7 @@ The ip tunnel mode. gre can tunnel mcast ip and ipv6 at the price of a 24B heade
 
 	required:    false
 	scopable:    false
-	group:       other
+	group:       identity
 	candidates:  bridge, routed_bridge, lan
 	default:     bridge
 	rbac:        This driver group requires the root grant.
