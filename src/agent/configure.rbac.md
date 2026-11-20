@@ -204,12 +204,13 @@ May read how the networks are set up on the nodes, and nothing else of the API:
 the networks, their addresses, and the setup status of each network on each
 node, with the addresses the nodes reach each other at, the devices, the ports
 and the tunnels. Give it to whoever troubleshoots the networks without
-administering the cluster. It reads them through the API, the cluster status
-and the events, and cannot set up a network or change anything.
+administering the cluster. It reads them through the network endpoints of the
+API, and cannot set up a network or change anything.
 
 The network setup status is left out of the cluster status and of the events
 for the other roles, `root` aside: a guest reads the objects, not the topology
-of the cluster. Pair `inspector` with `guest` to read both, as the web app
+of the cluster. Pair `inspector` with `guest` to read the objects too, and the
+network setup status in the cluster status and the events, as the web app
 needs.
 
 <div class="tabs">
