@@ -65,12 +65,17 @@ tunnel once, with the addresses of its two ends:
 ```
 # Rendered by om on {{ref "nodename"}}: one transport mode connection per
 # tunnel of the networks of the node, encrypting what it carries.
+#
+# A connection is named after its tunnel, not only its peer node: a node
+# reaching a peer over ipv4 and over ipv6 has two tunnels to it, and two
+# sections of the same name merge into one, leaving a tunnel unencrypted.
 connections {
 {{- range tunnels }}
-    {{.Nodename}} {
+    {{.nodename}}-{{.tunnel}} {
         version      = 2
-        local_addrs  = {{.Local}}
-        remote_addrs = {{.Remote}}
+        local_addrs  = {{.local}}
+        remote_addrs = {{.remote}}
+        dpd_delay    = 30s
         local {
             auth = psk
         }
@@ -80,9 +85,11 @@ connections {
         children {
             om-tunnel {
                 mode         = transport
-                local_ts     = dynamic[4],dynamic[41]
-                remote_ts    = dynamic[4],dynamic[41]
+                local_ts     = dynamic[4],dynamic[41],dynamic[47]
+                remote_ts    = dynamic[4],dynamic[41],dynamic[47]
                 start_action = trap
+                dpd_action   = trap
+                close_action = trap
             }
         }
     }
@@ -95,12 +102,20 @@ secrets {
 }
 ```
 
-* The connections are in transport mode, and select the protocols `4` and
-  `41`, the `ipip` and `ip6ip6` tunnels: what is encrypted is the tunnel
-  traffic, between the two ends. With `tunnel_mode = gre`, select `47`.
+* A connection is named after its peer and its tunnel, `{{.nodename}}-{{.tunnel}}`:
+  a node reaching a peer over ipv4 and over ipv6 has two tunnels to it, and two
+  connections of the same name would merge into one.
+* The connections are in transport mode, and select the protocols `4`, `41`
+  and `47`, the `ipip`, `ip6ip6` and `gre` tunnels: what is encrypted is the
+  tunnel traffic, between the two ends, whatever the `tunnel_mode`.
 * `start_action = trap` negotiates a connection on its first packet, so a node
   joining needs no action of its peers. The packets sent while it is
-  negotiated are dropped.
+  negotiated are dropped. `dpd_delay` checks the peer every 30 seconds, and
+  `dpd_action` and `close_action` set the trap again when it is gone or closes
+  the connection, so the next packet negotiates it again.
+* The template reads the tunnels as the om api names them, in snake case:
+  `nodename`, `local`, `remote`, `tunnel`. It needs an agent of v3.0.0-rc68 or
+  later; the earlier ones name them `Nodename`, `Local`, `Remote` and `Tunnel`.
 * `key` reads the pre-shared key from the sec. The rendered file holds it, so
   its install line sets mode `600`.
 

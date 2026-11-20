@@ -179,10 +179,14 @@ value of `env.port`. The functions are:
 * `key "<path>" "<key>"`: the content of a key of another datastore, which
   shares its keys with the namespace of the object. The file holds what the key
   holds, so a file rendering a sec key wants a `mode` as tight as the key's.
-* `network "<name>"`, `networks`, `tunnels`: the networks of the node, and the
-  peers a [routed bridge](configure.networks.md#routed-bridge) reaches, with
-  their addresses and the tunnel to each. `tunnels` lists each tunnel once:
-  `{{range tunnels}}{{.Nodename}} {{.Local}} {{.Remote}}{{end}}`.
+* `network "<name>"`, `networks`, `tunnels`: the networks of the node, with the
+  fields `name`, `type`, `network`, `peers` and `reverse_zones`, and the peers a
+  [routed bridge](configure.networks.md#routed-bridge) reaches, with the fields
+  `nodename`, `local` and `remote` (the addresses of the two ends), `subnet`,
+  `via` (`tunnel` or `route`), and `tunnel` and `tunnel_mode` (the tunnel
+  device and its mode, empty for a peer routed to). The fields are named as
+  the api names them, in snake case. `tunnels` lists each tunnel once:
+  `{{range tunnels}}{{.nodename}} {{.local}} {{.remote}}{{end}}`.
 
 A template reading a key that does not exist, an `[env]` value not set or a
 reference not known fails to render, and its file is not written rather than
