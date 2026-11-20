@@ -198,6 +198,45 @@ curl -s -X PATCH -H "Authorization: Bearer $TOKEN" \
 </div>
 </div>
 
+### inspector
+
+May read how the networks are set up on the nodes, and nothing else of the API:
+the networks, their addresses, and the setup status of each network on each
+node, with the addresses the nodes reach each other at, the devices, the ports
+and the tunnels. Give it to whoever troubleshoots the networks without
+administering the cluster. It reads them through the API, the cluster status
+and the events, and cannot set up a network or change anything.
+
+The network setup status is left out of the cluster status and of the events
+for the other roles, `root` aside: a guest reads the objects, not the topology
+of the cluster. Pair `inspector` with `guest` to read both, as the web app
+needs.
+
+<div class="tabs">
+<div class="tab" data-title="CLI">
+
+```
+om system/usr/netops create --kw grant="inspector guest"
+om system/usr/netops key add password --value <password>
+```
+
+</div>
+<div class="tab" data-title="API">
+
+```
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/octet-stream" \
+  --data-binary $'[DEFAULT]\ngrant = inspector guest\n' \
+  "https://<node>:1215/api/object/path/system/usr/netops/config/file"
+curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/octet-stream" \
+  --data-binary '<password>' \
+  "https://<node>:1215/api/object/path/system/usr/netops/data/key?name=password"
+```
+
+</div>
+</div>
+
 ## Keyword rules
 
 A role says which objects a user may write. Some keywords ask for more than
