@@ -96,7 +96,7 @@ For example, `keep = 24h 7d 4w 6m` keeps 41 runs at most.
 	scopable:    false
 	group:       store
 	secret:      true
-	rbac:        An ssh private key not written from <sec> key <key> requires the root grant.
+	rbac:        An ssh private key not written from . key <key>, a key of the sec declaring the store, requires the root grant.
 
 **Example:**
 
@@ -112,19 +112,28 @@ In a store declared in a sec, `from .` is that sec, a relative path is of its
 namespace, and the key is read as the object using the store, so the
 datastore holding it must share with its namespace.
 
+A namespace administrator writes it `from . key <key>`, a key of the sec
+declaring the store: as the key is read as the object using the store, a key
+of another datastore, which a store shared with other namespaces would read
+for them, requires the root grant.
+
 
 ## Keyword `type`
 
 	required:    true
 	scopable:    false
 	group:       store
-	candidates:  tar
-	rbac:        Requires the root grant, except for the values tar.
+	candidates:  plakar, tar
+	rbac:        Requires the root grant, except for the values plakar, tar.
 
 **Description:**
 
 The driver of the store, the tool keeping the backups the `sync.store`
 resources of the objects write into it.
+
+`plakar`
+  A Kloset store, driven through the plakar binary of the node. It
+  deduplicates, compresses and encrypts.
 
 `tar`
   A directory holding a gzipped tar archive per member of a run. It
@@ -136,7 +145,7 @@ resources of the objects write into it.
 	required:    true
 	scopable:    false
 	group:       store
-	rbac:        A store url other than sftp://, a directory of the node, requires the root grant.
+	rbac:        A keyword of the tar driver, which needs the root grant to choose.
 
 **Example:**
 

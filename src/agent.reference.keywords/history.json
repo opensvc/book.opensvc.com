@@ -3732,6 +3732,24 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "cluster/reboot.blocking_pre": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "d6e4558337f12bf5"
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "cluster/reboot.pre": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "3c06a579c87115cb"
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
   "cluster/stats.disable": {
    "changes": {},
    "properties": {
@@ -3776,6 +3794,135 @@
    "since": "v3.0.0-rc56",
    "until": null
   },
+  "cluster/store.plakar.access_key": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "textSum": "6a85b98b4ad13d45",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "cluster/store.plakar.ca": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "e352ea53117d74fd",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "cluster/store.plakar.disable_tls": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "default": "false",
+    "inherit": "leaf2head",
+    "textSum": "153bf764bf1392c2",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "cluster/store.plakar.host_key": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "8d862916f1f2f622",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "cluster/store.plakar.passphrase": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "required": true,
+    "textSum": "5cdbc6c39cdcca97",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "cluster/store.plakar.region": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "4daecc4cd0d2b07a",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "cluster/store.plakar.secret_key": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "textSum": "be48853f757d3c05",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "cluster/store.plakar.ssh_private_key": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "textSum": "1d42f2ff5c1c32f1",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "cluster/store.plakar.token": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "textSum": "4d725f0210921da0",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "cluster/store.plakar.url": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "required": true,
+    "textSum": "3b12e69ea1651801",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
   "cluster/store.schedule": {
    "changes": {},
    "properties": {
@@ -3812,11 +3959,15 @@
    "until": null
   },
   "cluster/store.tar.ssh_private_key": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc72": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
     "redactSecret": true,
-    "textSum": "a4cb64a2c77b40cb",
+    "textSum": "a8cf19a7cea9e907",
     "types": [
      "tar"
     ]
@@ -3838,14 +3989,20 @@
    "until": null
   },
   "cluster/store.type": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc72": [
+     "candidates: tar -> plakar, tar",
+     "description rewritten"
+    ]
+   },
    "properties": {
     "candidates": [
+     "plakar",
      "tar"
     ],
     "inherit": "leaf2head",
     "required": true,
-    "textSum": "88ee00c9bf025c4f"
+    "textSum": "2020190eb6c4f7d8"
    },
    "since": "v3.0.0-rc56",
    "until": null
@@ -7883,6 +8040,24 @@
    "since": "v3.0.0-rc36",
    "until": null
   },
+  "node/reboot.blocking_pre": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "d6e4558337f12bf5"
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "node/reboot.pre": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "3c06a579c87115cb"
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
   "node/stats.disable": {
    "changes": {},
    "properties": {
@@ -7927,6 +8102,135 @@
    "since": "v3.0.0-rc56",
    "until": null
   },
+  "node/store.plakar.access_key": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "textSum": "6a85b98b4ad13d45",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "node/store.plakar.ca": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "e352ea53117d74fd",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "node/store.plakar.disable_tls": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "default": "false",
+    "inherit": "leaf2head",
+    "textSum": "153bf764bf1392c2",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "node/store.plakar.host_key": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "8d862916f1f2f622",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "node/store.plakar.passphrase": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "required": true,
+    "textSum": "5cdbc6c39cdcca97",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "node/store.plakar.region": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "4daecc4cd0d2b07a",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "node/store.plakar.secret_key": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "textSum": "be48853f757d3c05",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "node/store.plakar.ssh_private_key": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "textSum": "1d42f2ff5c1c32f1",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "node/store.plakar.token": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "textSum": "4d725f0210921da0",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "node/store.plakar.url": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "required": true,
+    "textSum": "3b12e69ea1651801",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
   "node/store.schedule": {
    "changes": {},
    "properties": {
@@ -7963,11 +8267,15 @@
    "until": null
   },
   "node/store.tar.ssh_private_key": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc72": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
     "redactSecret": true,
-    "textSum": "a4cb64a2c77b40cb",
+    "textSum": "a8cf19a7cea9e907",
     "types": [
      "tar"
     ]
@@ -7989,14 +8297,20 @@
    "until": null
   },
   "node/store.type": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc72": [
+     "candidates: tar -> plakar, tar",
+     "description rewritten"
+    ]
+   },
    "properties": {
     "candidates": [
+     "plakar",
      "tar"
     ],
     "inherit": "leaf2head",
     "required": true,
-    "textSum": "88ee00c9bf025c4f"
+    "textSum": "2020190eb6c4f7d8"
    },
    "since": "v3.0.0-rc56",
    "until": null
@@ -8420,6 +8734,135 @@
    "since": "v3.0.0-rc56",
    "until": null
   },
+  "sec/store.plakar.access_key": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "textSum": "6a85b98b4ad13d45",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "sec/store.plakar.ca": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "e352ea53117d74fd",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "sec/store.plakar.disable_tls": {
+   "changes": {},
+   "properties": {
+    "converter": "bool",
+    "default": "false",
+    "inherit": "leaf2head",
+    "textSum": "153bf764bf1392c2",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "sec/store.plakar.host_key": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "8d862916f1f2f622",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "sec/store.plakar.passphrase": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "required": true,
+    "textSum": "5cdbc6c39cdcca97",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "sec/store.plakar.region": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "textSum": "4daecc4cd0d2b07a",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "sec/store.plakar.secret_key": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "textSum": "be48853f757d3c05",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "sec/store.plakar.ssh_private_key": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "textSum": "1d42f2ff5c1c32f1",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "sec/store.plakar.token": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "redactSecret": true,
+    "textSum": "4d725f0210921da0",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
+  "sec/store.plakar.url": {
+   "changes": {},
+   "properties": {
+    "inherit": "leaf2head",
+    "required": true,
+    "textSum": "3b12e69ea1651801",
+    "types": [
+     "plakar"
+    ]
+   },
+   "since": "v3.0.0-rc72",
+   "until": null
+  },
   "sec/store.tar.host_key": {
    "changes": {},
    "properties": {
@@ -8433,11 +8876,15 @@
    "until": null
   },
   "sec/store.tar.ssh_private_key": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc72": [
+     "description rewritten"
+    ]
+   },
    "properties": {
     "inherit": "leaf2head",
     "redactSecret": true,
-    "textSum": "a4cb64a2c77b40cb",
+    "textSum": "a8cf19a7cea9e907",
     "types": [
      "tar"
     ]
@@ -8459,14 +8906,20 @@
    "until": null
   },
   "sec/store.type": {
-   "changes": {},
+   "changes": {
+    "v3.0.0-rc72": [
+     "candidates: tar -> plakar, tar",
+     "description rewritten"
+    ]
+   },
    "properties": {
     "candidates": [
+     "plakar",
      "tar"
     ],
     "inherit": "leaf2head",
     "required": true,
-    "textSum": "88ee00c9bf025c4f"
+    "textSum": "2020190eb6c4f7d8"
    },
    "since": "v3.0.0-rc56",
    "until": null
@@ -139449,6 +139902,7 @@
   "v3.0.0-rc67",
   "v3.0.0-rc68",
   "v3.0.0-rc70",
-  "v3.0.0-rc71"
+  "v3.0.0-rc71",
+  "v3.0.0-rc72"
  ]
 }
